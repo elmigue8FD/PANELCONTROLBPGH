@@ -591,7 +591,7 @@
                   </div>
                   <div class="md-card">
                     <div class="md-card-content">
-                      <form action="#" class="uk-form-stacked" id="altaproducto" name="altaproducto">
+                      <form action="#" class="uk-form-stacked" id="altaproducto" name="altaproducto" novalidate>
                         <div class="md-card-content large-padding">
                           <div class="uk-grid uk-grid-divider uk-grid-collapse form_section form_section_separator" data-uk-grid-margin>
                             
@@ -602,8 +602,10 @@
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
                                       <div class="parsley-row">
+                                      <div class="md-input-wrapper">
                                         <label> Nombre del Producto <span class="req"> * </span> </label> <br/>
                                         <input type="text" name="alta_nombre_producto_linea" id="alta_nombre_producto_linea" required class="md-input" />
+                                      </div>
                                       </div>
                                     </div> 
                                   </div>
@@ -668,7 +670,8 @@
                                         <div class="parsley-row">
                                           <h5 class="heading_c uk-margin-small-bottom">Clasificacíon <span class="req"> * </span></h5>
                                           <select id="alta_clasificacion_producto_linea" name="alta_clasificacion_producto_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
-                                            <option value="" disabled selected hidden></option>
+                                            <option value=""></option>
+                                            <option value="" selected></option>
                                           </select>
                                         </div>
                                       </div>  
@@ -686,10 +689,9 @@
                                     <div class="uk-width-medium-1-1">
                                       <div class="md-card">
                                         <div class="md-card-content">
-                                          <h5>
-                                              Fotografía 1
+                                          <h5 id="alta_srcimg1_producto_linea_titulo">
+                                              Fotografía 1  <span class="req"> * </span>
                                           </h5>
-                                          <span class="req"> * </span>
                                           <input type="file" id="alta_srcimg1_producto_linea" name="srcimg1_producto" class="dropify" data-max-file-size="2000K" />
                                           <input type="hidden" id="alta_srcimg1_producto_lineaBD" name="srcimg1_productoBD" />
                                         </div>
@@ -698,10 +700,9 @@
                                     <div class="uk-width-medium-1-1">
                                       <div class="md-card">
                                         <div class="md-card-content">
-                                          <h5>
-                                              Fotografía 2
-                                          </h5>
-                                          <span class="req"> * </span>
+                                          <h5 id="alta_srcimg2_producto_linea_titulo">
+                                              Fotografía 2 <span class="req"> * </span>
+                                          </h5>                                          
                                           <input type="file" id="alta_srcimg2_producto_linea" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
                                           <input type="hidden" id="alta_srcimg2_producto_lineaBD" name="srcimg2_productoBD" />
                                         </div>
@@ -710,10 +711,9 @@
                                     <div class="uk-width-medium-1-1">
                                       <div class="md-card">
                                         <div class="md-card-content">
-                                          <h5>
-                                              Fotografía 3
-                                          </h5>
-                                          <span class="req"> * </span>
+                                          <h5 id="alta_srcimg3_producto_linea_titulo">
+                                              Fotografía 3 <span class="req"> * </span>
+                                          </h5>                                          
                                           <input type="file" id="alta_srcimg3_producto_linea" name="srcimg3_producto" class="dropify" data-max-file-size="2000K" />
                                           <input type="hidden" id="alta_srcimg3_producto_lineaBD" name="srcimg3_productoBD" />
                                         </div>
@@ -726,7 +726,7 @@
                             </div>
 
                             <div class="uk-width-large-3-10">
-                              <h4 class="heading_c uk-margin-small-bottom">3 Especificación de Tamaños</h4>
+                              <h4 class="heading_c uk-margin-small-bottom">3 Detalles</h4>
                               <div class="uk-grid form_section" id="productdetalle">
                                 <div class="uk-width-1-1">
                                   <div class="uk-grid">
@@ -755,7 +755,7 @@
                                     <li>
                                       <div class="uk-grid">
                                         <div class="uk-width-medium-1-1">
-                                          <h5 class="heading_c uk-margin-bottom">Forma del producto (elegir solo uno)</h5>
+                                          <h5 class="heading_c uk-margin-bottom" id="alta_forma_producto_linea_titulo">Forma del producto (elegir solo uno)</h5>
                                           <ul id="forma_producto" class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#switcher-content-a-fade', animation: 'fade'}">
                                             <li class="uk-active"> <a href="#"> Cuadrado </a> </li>
                                             <li> <a href="#"> Circular </a> </li>
@@ -766,26 +766,26 @@
                                               <div class="uk-width-1-1"> 
                                                 <label>&nbsp;Largo(cm) <span class="req"> * </span> </label>
                                                 <br/>
-                                                <input type="text" name="alta_clasifcateg_cuadrado_largo_producto_linea" id="alta_clasifcategproduct_cuadrado_largo_producto_linea" class="md-input" />
+                                                <input type="number" min="0" name="alta_clasifcateg_cuadrado_largo_producto_linea" id="alta_clasifcategproduct_cuadrado_largo_producto_linea" class="md-input" />
                                               </div>
                                               <div class="uk-width-1-1"> 
                                                 <label> &nbsp;Ancho(cm) <span class="req"> * </span> </label>
                                                 <br/>
-                                                <input type="text" name="alta_clasifcateg_cuadrado_ancho_producto_linea" id="alta_clasifcategproduct_cuadrado_ancho_producto_linea" class="md-input" />
+                                                <input type="number" min="0" name="alta_clasifcateg_cuadrado_ancho_producto_linea" id="alta_clasifcategproduct_cuadrado_ancho_producto_linea" class="md-input" />
                                               </div>
                                             </li>
                                             <li>
                                               <div class="uk-width-1-1">
                                                 <label> &nbsp;Diámetro(cm) <span class="req"> * </span> </label>
                                                 <br/>
-                                                <input type="text" name="alta_clasifcateg_circular_diametro_producto_linea" id="alta_clasifcategproduct_circular_diametro_producto_linea" class="md-input" />
+                                                <input type="number" min="0" name="alta_clasifcateg_circular_diametro_producto_linea" id="alta_clasifcategproduct_circular_diametro_producto_linea" class="md-input" />
                                               </div>
                                             </li>
                                             <li>
                                               <div class="uk-width-1-1">
                                                 <label> &nbsp;Número de piezas <span class="req"> * </span> </label>
                                                 <br/>
-                                                <input type="text" name="alta_clasifcateg_piezas_producto_linea" id="alta_clasifcategproduct_piezas_producto_linea" class="md-input" />
+                                                <input type="number" min="0" name="alta_clasifcateg_piezas_producto_linea" id="alta_clasifcategproduct_piezas_producto_linea" class="md-input" />
                                               </div>
                                             </li>
                                           </ul>
@@ -798,17 +798,17 @@
                                          <div class="uk-width-large-1-1">
                                           <h5 class="heading_c uk-margin-small-bottom">Otros Detalles</h5>
                                         </div>
-                                        <div class="uk-width-large-1-3"><br/>
-                                          <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Dias en Elaborar</label><br/>
-                                          <input type="number" class="md-input" name="alta_detalle_diasElborar_producto_linea" id="alta_detalle_diasElborar_producto_linea"  />
+                                        <div class="uk-width-large-1-1"><br/>
+                                          <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Dias en Elaborar <span class="req"> * </span></label>
+                                          <input type="number" class="md-input" min="0" name="alta_detalle_diasElborar_producto_linea" id="alta_detalle_diasElborar_producto_linea"  />
                                         </div>
-                                        <div class="uk-width-large-1-3"><br/>
-                                          <label class="uk-h6"><i class="uk-icon-usd"></i>&nbsp;Precio</label><br/><br/>
-                                          <input type="number" class="md-input" name="alta_detalle_precioreal_producto_linea" id="alta_detalle_precioreal_producto_linea" />
+                                        <div class="uk-width-large-1-1"><br/>
+                                          <label class="uk-h6"><i class="uk-icon-usd"></i>&nbsp;Precio <span class="req"> * </span></label>
+                                          <input type="number" class="md-input" min="0" name="alta_detalle_precioreal_producto_linea" id="alta_detalle_precioreal_producto_linea" />
                                         </div>
-                                        <div class="uk-width-large-1-3"><br/>
-                                          <label class="uk-h6"><i class="uk-icon-cubes"></i>&nbsp;Stock</label><br/><br/>
-                                          <input type="number" class="md-input" name="alta_detalle_stock_producto_linea" id="alta_detalle_stock_producto_linea" />
+                                        <div class="uk-width-large-1-1"><br/>
+                                          <label class="uk-h6"><i class="uk-icon-cubes"></i>&nbsp;Stock <span class="req"> * </span></label>
+                                          <input type="number" class="md-input" min="0" name="alta_detalle_stock_producto_linea" id="alta_detalle_stock_producto_linea" />
                                         </div>
                                       </div>
                                       <br/>
@@ -823,7 +823,7 @@
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="submit" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea'); UIkit.modal.alert('Producto Registrado'); });">Agregar Producto </button> 
+                    <button type="submit" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>
@@ -1846,6 +1846,26 @@ $( window ).ready(function()
       /*
       VARIABLES
        */
+      boolError=false;
+      boolErrorNombre=false;
+      boolErrorDescripcion=false;
+      boolErrorIngredientes=false;
+      boolErrorSeo=false;
+      boolErrorCategoria=false;
+      boolErrorClasificacion=false;
+
+      boolErrorSrcimg1=false;
+      boolErrorSrcimg2=false;
+      boolErrorSrcimg3=false;
+      boolErrorPorciones=false;
+
+      boolErrorDiasElaboracion=false;
+      boolErrorStock=false;
+      boolErrorPrecioReal=false;
+
+      boolErrorEspecifIngrediente=false;
+
+      mensajeErrorProductoLinea='';
       //tblproducto
       nombreproduct='';
       descripcion='';
@@ -1925,20 +1945,280 @@ $( window ).ready(function()
         ancho='';
         diametro='';
       }
-      //VALIDAR CAMPOS OBLIGATORIOS VACIOS}
-      if(nombreproduct==''||!nombreproduct.trim())
-        console.log('nombreproduct::'+nombreproduct);
+      /////////////////////////DATOS GENERALES/////////////////////////
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(nombreproduct=='')
+      {
+        boolError=true;
+        boolErrorNombre=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(nombreproduct.length>90)
+      {
+        boolError=true;
+        boolErrorNombre=true;
+      }
+      //VALIDAR CAMPOS SOLO CON ESPACIOS
+      if(!nombreproduct.trim())
+      {
+        boolError=true;
+        boolErrorNombre=true;
+      }
+      if(boolErrorNombre)
+        $( "#alta_nombre_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_nombre_producto_linea" ).removeClass( "md-input-danger" );
+      //descripcion -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(descripcion=='')
+      {
+        boolError=true;
+        boolErrorDescripcion=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(descripcion.length>300)
+      {
+        boolError=true;
+        boolErrorDescripcion=true;
+      }
+      //VALIDAR CAMPOS SOLO CON ESPACIOS
+      if(!descripcion.trim())
+      {
+        boolError=true;
+        boolErrorDescripcion=true;
+      }
+      if(boolErrorDescripcion)
+        $( "#alta_descripcion_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_descripcion_producto_linea" ).removeClass( "md-input-danger" );
+      //ingredientes -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(ingredientes=='')
+      {
+        boolError=true;
+        boolErrorIngredientes=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(ingredientes.length>250)
+      {
+        boolError=true;
+        boolErrorIngredientes=true;
+      }
+      //VALIDAR CAMPOS SOLO CON ESPACIOS
+      if(!ingredientes.trim())
+      {
+        boolError=true;
+        boolErrorIngredientes=true;
+      }
+      if(boolErrorIngredientes)
+        $( "#alta_ingredientes_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_ingredientes_producto_linea" ).removeClass( "md-input-danger" );
+      //seo -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(seo=='')
+      {
+        boolError=true;
+        boolErrorSeo=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(seo.length>250)
+      {
+        boolError=true;
+        boolErrorSeo=true;
+      }
+      //VALIDAR CAMPOS SOLO CON ESPACIOS
+      if(!seo.trim())
+      {
+        boolError=true;
+        boolErrorSeo=true;
+      }
+      if(boolErrorSeo)
+        $( "#alta_seo_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_seo_producto_linea" ).removeClass( "md-input-danger" );
+      //idtblcategproduc -> Select
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(idtblcategproduc=='')
+      {
+        boolError=true;
+        boolErrorCategoria=true;
+      }    
+      if(boolErrorCategoria)
+        $( "#alta_categoria_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_categoria_producto_linea" ).removeClass( "md-input-danger" );
+      //idtblclasifproduct -> Select
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(idtblclasifproduct=='')
+      {
+        boolError=true;
+        boolErrorClasificacion=true;
+      }    
+      if(boolErrorClasificacion)
+        $( "#alta_clasificacion_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_clasificacion_producto_linea" ).removeClass( "md-input-danger" );
+      ///////////////////////////////////////////////////////////////////////////
+      /////////////////////////DATOS FOTOGRAFIA//////////////////////////////////
+      if(srcimg1=='')
+      {
+        console.log('srcimg1 vacio');
+        boolError=true;
+        boolErrorSrcimg1=true;
+      }
+      if(boolErrorSrcimg1)
+        $( "#alta_srcimg1_producto_linea_titulo" ).css('color','red');
+      else
+        $( "#alta_srcimg1_producto_linea_titulo" ).css('color','black');
+      if(srcimg2=='')
+      {
+        console.log('srcimg1 vacio');
+        boolError=true;
+        boolErrorSrcimg2=true;
+      }
+      if(boolErrorSrcimg2)
+        $( "#alta_srcimg2_producto_linea_titulo" ).css('color','red');
+      else
+        $( "#alta_srcimg2_producto_linea_titulo" ).css('color','black');
+      if(srcimg3=='')
+      {
+        console.log('srcimg1 vacio');
+        boolError=true;
+        boolErrorSrcimg3=true;
+      }
+      if(boolErrorSrcimg3)
+        $( "#alta_srcimg3_producto_linea_titulo" ).css('color','red');
+      else
+        $( "#alta_srcimg3_producto_linea_titulo" ).css('color','black');
+      ///////////////////////////////////////////////////////////////////////////
+      ////////////////////////////DATOS DETALLES///////////////////////////////
+      //diaselaboracion -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(diaselaboracion=='')
+      {
+        boolError=true;
+        boolErrorDiasElaboracion=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(diaselaboracion<0)
+      {
+        console.log('menor a cero');
+        boolError=true;
+        boolErrorDiasElaboracion=true;
+      }
+      //VALIDAR CAMPOS NO SON NUMEROS
+      if(!$.isNumeric(diaselaboracion))
+      {
+        boolError=true;
+        boolErrorDiasElaboracion=true;
+
+      }
+      if(boolErrorDiasElaboracion)
+        $( "#alta_detalle_diasElborar_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_detalle_diasElborar_producto_linea" ).removeClass( "md-input-danger" );
+      //stock -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(stock=='')
+      {
+        boolError=true;
+        boolErrorStock=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(stock<0)
+      {
+        console.log('menor a cero');
+        boolError=true;
+        boolErrorStock=true;
+      }
+      //VALIDAR CAMPOS NO SON NUMEROS
+      if(!$.isNumeric(stock))
+      {
+        boolError=true;
+        boolErrorStock=true;
+
+      }
+      if(boolErrorStock)
+        $( "#alta_detalle_stock_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_detalle_stock_producto_linea" ).removeClass( "md-input-danger" );
+      //precioreal -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(precioreal=='')
+      {
+        boolError=true;
+        boolErrorPrecioReal=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(precioreal<0)
+      {
+        console.log('menor a cero');
+        boolError=true;
+        boolErrorPrecioReal=true;
+      }
+      //VALIDAR CAMPOS NO SON NUMEROS
+      if(!$.isNumeric(precioreal))
+      {
+        boolError=true;
+        boolErrorPrecioReal=true;
+
+      }
+      if(boolErrorPrecioReal)
+        $( "#alta_detalle_precioreal_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_detalle_precioreal_producto_linea" ).removeClass( "md-input-danger" );
+      //porciones -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(porciones=='')
+      {
+        boolError=true;
+        boolErrorPorciones=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(porciones<0)
+      {
+        console.log('menor a cero');
+        boolError=true;
+        boolErrorPorciones=true;
+      }
+      //VALIDAR CAMPOS NO SON NUMEROS
+      if(!$.isNumeric(porciones))
+      {
+        boolError=true;
+        boolErrorPorciones=true;
+
+      }
+      if(boolErrorPorciones)
+        $( "#alta_forma_producto_linea_titulo" ).css('color','red');
+      else
+        $( "#alta_forma_producto_linea_titulo" ).css('color','black');
+      /////////////////////////////////////////////////////////////////////////
+      ////////////////////////////DATOS INGREDIENTE ESPECIAL///////////////////
+      //idtblclasifproduct -> Select
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(idtblespecificingrediente=='')
+      {
+        boolError=true;
+        boolErrorEspecifIngrediente=true;
+      }    
+      if(boolErrorEspecifIngrediente)
+        $( "#alta_especificingredientes_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#alta_especificingredientes_producto_linea" ).removeClass( "md-input-danger" );
+      /////////////////////////////////////////////////////////////////////////
       /*
-      descripcion
-      ingredientes
-      activado
-      seo
-      idtblcategproduc
-      idtblclasifproduct
-      */
+      seoelaboracion=$('#alta_detalle_diasElborar_producto_linea').val();
+      stock=$('#alta_detalle_stock_producto_linea').val();
+      precioreal=$('#alta_detalle_precioreal_producto_linea').val();
+       */
       //VALIDAR TIPO DE DATOS
       //VALIDAR RANGO DE DE DATOS
-      
+      if(!boolError)
+        console.log('registrarProductoLinea');
+      else
+        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!'+mensajeErrorProductoLinea);
       //registrarProductoLinea();
     }
   }
@@ -1986,6 +2266,15 @@ $( window ).ready(function()
 
     //cotizador
     $("#alta_evento_producto_cotizador").empty();
+
+    $("#alta_clasificacion_producto_linea").append('<option value=""></option>');
+    $("#alta_clasificacion_producto_cotizador").append('<option value=""></option>');
+    $("#alta_categoria_producto_linea").append('<option value=""></option>');
+    $("#alta_categoria_producto_cotizador").append('<option value=""></option>');
+    $("#alta_especificingredientes_producto_linea").append('<option value=""></option>');
+    $("#alta_especificingredientes_producto_cotizador").append('<option value=""></option>');
+    $("#alta_evento_producto_cotizador").append('<option value=""></option>');
+
     //mostar la categorias disponibles
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblcategproductAct.php",  data: {solicitadoBy:"WEB"}  })
       .done(function( msg ) {   $.each(msg.datos, function(i,item){  
@@ -2582,6 +2871,7 @@ $( window ).ready(function()
                             $('#productoslineaPlantilla').html("");
                             $('#altaproducto')[0].reset();
                             UIkit.modal("#popup_nuevoproductolinea").hide();
+                            UIkit.modal.alert('Producto Registrado');
                             cargarValoresDefault();
                           })
                           .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
