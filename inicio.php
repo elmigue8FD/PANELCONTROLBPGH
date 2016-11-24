@@ -879,7 +879,7 @@
                                       Días de Elaboración                                   
                                     </label>
                                     <br/>
-                                    <input type="number" class="md-input" name="modificar_detalle_diasElborar_producto_linea" id="modificar_detalle_diasElborar_producto_linea"  />
+                                    <input type="number" min="0" class="md-input" name="modificar_detalle_diasElborar_producto_linea" id="modificar_detalle_diasElborar_producto_linea"  />
                                   </div>
                                 </div>
                                 <div class="uk-form-row">
@@ -891,7 +891,7 @@
                                       Precio
                                     </label>
                                     <br/>
-                                    <input type="number" class="md-input" name="modificar_detalle_precio_producto_linea" id="modificar_detalle_precio_producto_linea"  />
+                                    <input type="number" min="0" class="md-input" name="modificar_detalle_precio_producto_linea" id="modificar_detalle_precio_producto_linea"  />
                                   </div>
                                 </div>
                                 <div class="uk-form-row">
@@ -904,10 +904,10 @@
                                       Stock &nbsp;&nbsp;
                                     </label>
                                     <br/>
-                                    <input type="number" class="md-input" name="modificar_detalle_stock_producto_linea" id="modificar_detalle_stock_producto_linea" />
+                                    <input type="number" min="0" class="md-input" name="modificar_detalle_stock_producto_linea" id="modificar_detalle_stock_producto_linea" />
                                     <br/>
                                     <br/>
-                                          <h5 class="heading_c uk-margin-bottom">Forma del producto (elegir solo uno)</h5>
+                                          <h5 class="heading_c uk-margin-bottom" id="modificar_forma_producto_linea_titulo">Forma del producto (elegir solo uno)</h5>
                                           <ul id="modificar_forma_producto" class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#modificar_switcher-content-a-fade', animation: 'fade'}">
                                             <li id="modificar_tab_cuadrado" class="uk-active"> <a href="#"> Cuadrado </a> </li>
                                             <li id="modificar_tab_circulo"> <a href="#"> Circular </a> </li>
@@ -918,26 +918,26 @@
                                               <div class="uk-width-1-1"> 
                                                 <label>&nbsp;Largo(cm) <span class="req"> * </span> </label>
                                                 <br/>
-                                                <input type="text" name="modificar_clasifcategproduct_cuadrado_largo_producto_linea" id="modificar_clasifcategproduct_cuadrado_largo_producto_linea" class="md-input" />
+                                                <input type="number" min="0" name="modificar_clasifcategproduct_cuadrado_largo_producto_linea" id="modificar_clasifcategproduct_cuadrado_largo_producto_linea" class="md-input" />
                                               </div>
                                               <div class="uk-width-1-1"> 
                                                 <label> &nbsp;Ancho(cm) <span class="req"> * </span> </label>
                                                 <br/>
-                                                <input type="text" name="modificar_clasifcategproduct_cuadrado_ancho_producto_linea" id="modificar_clasifcategproduct_cuadrado_ancho_producto_linea" class="md-input" />
+                                                <input type="number" min="0" name="modificar_clasifcategproduct_cuadrado_ancho_producto_linea" id="modificar_clasifcategproduct_cuadrado_ancho_producto_linea" class="md-input" />
                                               </div>
                                             </li>
                                             <li>
                                               <div class="uk-width-1-1">
                                                 <label> &nbsp;Diámetro(cm) <span class="req"> * </span> </label>
                                                 <br/>
-                                                <input type="text" name="modificar_clasifcategproduct_circular_diametro_producto_linea" id="modificar_clasifcategproduct_circular_diametro_producto_linea" class="md-input" />
+                                                <input type="number" min="0" name="modificar_clasifcategproduct_circular_diametro_producto_linea" id="modificar_clasifcategproduct_circular_diametro_producto_linea" class="md-input" />
                                               </div>
                                             </li>
                                             <li>
                                               <div class="uk-width-1-1">
                                                 <label> &nbsp;Número de piezas <span class="req"> * </span> </label>
                                                 <br/>
-                                                <input type="text" name="modificar_clasifcategproduct_piezas_producto_linea" id="modificar_clasifcategproduct_piezas_producto_linea" class="md-input" />
+                                                <input type="number" min="0" name="modificar_clasifcategproduct_piezas_producto_linea" id="modificar_clasifcategproduct_piezas_producto_linea" class="md-input" />
                                               </div>
                                             </li>
                                           </ul>
@@ -957,7 +957,8 @@
                       Modif. Datos General
                     </button>
                     <!-- Boton para aceptar la actualizar de las modificaciones de Datos especificos de un Producto -->
-                    <button type="button" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ actualizarProductoDetalle(); UIkit.modal.alert('Confirmed!'); });">
+                    <!--<button type="submit" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button> -->
+                    <button type="submit" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_productos_linea_detalle'); });">
                       Actualizar
                     </button>
                   </div>
@@ -1882,8 +1883,6 @@ $( window ).ready(function()
       srcimg1='';
       srcimg2='';
       srcimg3='';
-      idtblproducto='';
-      emailcreo='';
 
       //productodetalle
       diaselaboracion='';
@@ -1895,10 +1894,7 @@ $( window ).ready(function()
       ancho='';
       porciones='';
       piezas='';
-      activado='';
-      idtblespecifingrediente='';
-      idtblproducto='';
-      emailcreo='';
+      idtblespecificingrediente='';
       console.log('entro a if de form_alta_productos_linea');
       //OBTENEMOS LOS DATOS DEL FORMULARIO
       nombreproduct=$('#alta_nombre_producto_linea').val();
@@ -2208,19 +2204,188 @@ $( window ).ready(function()
       else
         $( "#alta_especificingredientes_producto_linea" ).removeClass( "md-input-danger" );
       /////////////////////////////////////////////////////////////////////////
-      /*
-      seoelaboracion=$('#alta_detalle_diasElborar_producto_linea').val();
-      stock=$('#alta_detalle_stock_producto_linea').val();
-      precioreal=$('#alta_detalle_precioreal_producto_linea').val();
-       */
-      //VALIDAR TIPO DE DATOS
-      //VALIDAR RANGO DE DE DATOS
       if(!boolError)
+      {
         console.log('registrarProductoLinea');
+        registrarProductoLinea();
+      }
       else
+      {
         UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!'+mensajeErrorProductoLinea);
+      }
       //registrarProductoLinea();
     }
+    else if(formularioAValidar=='form_modificar_productos_linea_detalle')
+    {
+       /*
+      VARIABLES
+       */
+      boolError=false;
+      boolErrorPorciones=false;
+      boolErrorDiasElaboracion=false;
+      boolErrorStock=false;
+      boolErrorPrecioReal=false;
+      boolErrorEspecifIngrediente=false;
+      //productodetalle
+      diaselaboracion='';
+      stock='';
+      precioreal='';
+      preciobp='';
+      diametro='';
+      largo='';
+      ancho='';
+      porciones='';
+      piezas='';
+      idtblespecifingrediente='';
+      ///////////////////////////////
+      //OBTENEMOS LOS DATOS
+      diaselaboracion=$('#modificar_detalle_diasElborar_producto_linea').val();
+      stock=$('#modificar_detalle_stock_producto_linea').val();
+      precioreal=$('#modificar_detalle_precio_producto_linea').val();
+      preciobp=precioreal;
+      diametro=$('#modificar_clasifcategproduct_circular_diametro_producto_linea').val();
+      largo=$('#modificar_clasifcategproduct_cuadrado_largo_producto_linea').val();
+      ancho=$('#modificar_clasifcategproduct_cuadrado_ancho_producto_linea').val();
+      piezas=$('#modificar_clasifcategproduct_piezas_producto_linea').val();
+      activado=1;
+      idtblespecificingrediente=$('#modificar_especificingredientes_producto_linea').val();
+      if(diametro!=''){
+        porciones=Math.round((Math.PI*diametro)/2);
+        largo='';
+        ancho='';
+        piezas='';
+      }
+      else if(largo!=''&&ancho!=''){
+        porciones=largo*ancho/2*5;
+        diametro='';
+        piezas='';
+      }
+      else if(piezas!=''){
+        porciones=piezas;
+        largo='';
+        ancho='';
+        diametro='';
+      }
+      //////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////DATOS DETALLES///////////////////////////////
+      //diaselaboracion -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(diaselaboracion=='')
+      {
+        boolError=true;
+        boolErrorDiasElaboracion=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(diaselaboracion<0)
+      {
+        boolError=true;
+        boolErrorDiasElaboracion=true;
+      }
+      //VALIDAR CAMPOS NO SON NUMEROS
+      if(!$.isNumeric(diaselaboracion))
+      {
+        boolError=true;
+        boolErrorDiasElaboracion=true;
+      }
+      if(boolErrorDiasElaboracion)
+        $( "#modificar_detalle_diasElborar_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_detalle_diasElborar_producto_linea" ).removeClass( "md-input-danger" );
+      //stock -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(stock=='')
+      {
+        boolError=true;
+        boolErrorStock=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(stock<0)
+      {
+        boolError=true;
+        boolErrorStock=true;
+      }
+      //VALIDAR CAMPOS NO SON NUMEROS
+      if(!$.isNumeric(stock))
+      {
+        boolError=true;
+        boolErrorStock=true;
+      }
+      if(boolErrorStock)
+        $( "#modificar_detalle_stock_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_detalle_stock_producto_linea" ).removeClass( "md-input-danger" );
+      //precioreal -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(precioreal=='')
+      {
+        boolError=true;
+        boolErrorPrecioReal=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(precioreal<0)
+      {
+        boolError=true;
+        boolErrorPrecioReal=true;
+      }
+      //VALIDAR CAMPOS NO SON NUMEROS
+      if(!$.isNumeric(precioreal))
+      {
+        boolError=true;
+        boolErrorPrecioReal=true;
+      }
+      if(boolErrorPrecioReal)
+        $( "#modificar_detalle_precio_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_detalle_precio_producto_linea" ).removeClass( "md-input-danger" );
+      //porciones -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(porciones=='')
+      {
+        boolError=true;
+        boolErrorPorciones=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(porciones<0)
+      {
+        boolError=true;
+        boolErrorPorciones=true;
+      }
+      //VALIDAR CAMPOS NO SON NUMEROS
+      if(!$.isNumeric(porciones))
+      {
+        boolError=true;
+        boolErrorPorciones=true;
+      }
+      if(boolErrorPorciones)
+        $( "#modificar_forma_producto_linea_titulo" ).css('color','red');
+      else
+        $( "#modificar_forma_producto_linea_titulo" ).css('color','black');
+      /////////////////////////////////////////////////////////////////////////
+      ////////////////////////////DATOS INGREDIENTE ESPECIAL///////////////////
+      //idtblclasifproduct -> Select
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(idtblespecificingrediente=='')
+      {
+        boolError=true;
+        boolErrorEspecifIngrediente=true;
+      }    
+      if(boolErrorEspecifIngrediente)
+        $( "#modificar_especificingredientes_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_especificingredientes_producto_linea" ).removeClass( "md-input-danger" );
+      /////////////////////////////////////////////////////////////////////////
+      if(!boolError)
+      {
+        console.log('actualizarProductoDetalle');
+        //actualizarProductoDetalle();      
+      }
+      else
+      {
+        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+      }
+       
+    }
+
   }
   function cargarValoresDefault(){     
     solicitadoBy="WEB";    
@@ -2791,6 +2956,8 @@ $( window ).ready(function()
     srcimg2=$('#alta_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
     srcimg3=$('#alta_srcimg3_producto_linea').val().replace(/C:\\fakepath\\/i, '');
 
+    alert('imagnees srcimg1::'+srcimg1+' srcim2'+srcimg2+' srcimg3'+srcimg3);
+
     diaselaboracion=$('#alta_detalle_diasElborar_producto_linea').val();
     stock=$('#alta_detalle_stock_producto_linea').val();
     precioreal=$('#alta_detalle_precioreal_producto_linea').val();
@@ -2844,6 +3011,7 @@ $( window ).ready(function()
             srcimg1='p_'+idtblproducto+'_'+srcimg1;
             srcimg2='p_'+idtblproducto+'_'+srcimg2;
             srcimg3='p_'+idtblproducto+'_'+srcimg3;
+            alert('Id unico imagnees srcimg1::'+srcimg1+' srcim2'+srcimg2+' srcimg3'+srcimg3);
             //PARA ONTEBER EL ID MANDAR AL MODAL EL ID DE LAS IMAGNEE JUNTO CON LAS IMAGNES Y DESPUS BTENERLO Y SOLO ASIGANRALO 
             $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproducto:idtblproducto,emailcreo:emailcreo}  })
               .done(function( msgTblProductoImg1 )
@@ -2853,10 +3021,12 @@ $( window ).ready(function()
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproducto:idtblproducto,emailcreo:emailcreo}  })
                   .done(function( msgTblProductoImg2 )
                   {
+                    console.log('msgTblProductoImg2.datos::'+msgTblProductoImg2.datos);
                     srcimg2=$('#alta_srcimg2_producto_lineaBD').val(msgTblProductoImg2.datos); 
                      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproducto:idtblproducto,emailcreo:emailcreo}  })
                       .done(function( msgTblProductoImg3 )
                       {
+                        console.log('msgTblProductoImg3.datos::'+msgTblProductoImg3.datos);
                         srcimg3=$('#alta_srcimg3_producto_lineaBD').val(msgTblProductoImg3.datos);
                         //mandamos el fom para subir las imagenes al servidor
                         var formData = new FormData($("#altaproducto")[0]);
@@ -2865,14 +3035,15 @@ $( window ).ready(function()
                         processData: false, })
                           .done(function( datos )
                           {
+                            alert('done uploadImgProductoLinea datos::'+datos);
                             //$('#productoslineaPlantilla').html("");
                             $('#productosComplementarioPlantilla').html("");
                             $('#productoscotizadorPlantilla').html("");
                             $('#productoslineaPlantilla').html("");
                             $('#altaproducto')[0].reset();
+                            cargarValoresDefault();
                             UIkit.modal("#popup_nuevoproductolinea").hide();
                             UIkit.modal.alert('Producto Registrado');
-                            cargarValoresDefault();
                           })
                           .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
                           .always(function(){  /*console.log("always");*/ });                         

@@ -12,7 +12,7 @@ if (isset($_FILES["srcimg1_producto"]))
     $dimensiones = getimagesize($ruta_provisional);
     $width = $dimensiones[0];
     $height = $dimensiones[1];
-    $carpeta = "./../assests_general/productos/";
+    $carpeta = "./../assests_general/productos/linea/";
     
     if ($tipo != 'image/jpg' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/gif')
     {
@@ -54,7 +54,7 @@ if (isset($_FILES["srcimg2_producto"]))
     $dimensiones = getimagesize($ruta_provisional);
     $width = $dimensiones[0];
     $height = $dimensiones[1];
-    $carpeta = "./../assests_general/productos/";
+    $carpeta = "./../assests_general/productos/linea/";
     
     if ($tipo != 'image/jpg' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/gif')
     {
@@ -96,7 +96,7 @@ if (isset($_FILES["srcimg3_producto"]))
     $dimensiones = getimagesize($ruta_provisional);
     $width = $dimensiones[0];
     $height = $dimensiones[1];
-    $carpeta = "./../assests_general/productos/";
+    $carpeta = "./../assests_general/productos/linea/";
     
     if ($tipo != 'image/jpg' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/gif')
     {
