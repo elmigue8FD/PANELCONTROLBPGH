@@ -1,7 +1,6 @@
 <!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> 
-<!--cambios-->
 <html lang="en"> <!--<![endif]-->
 
 <head>
@@ -1175,7 +1174,7 @@
                                 <li>
                                   <div class="uk-grid ">
                                      <div id="ingredientesCheck" class="uk-width-large-1-1">
-                                      <h5 class="heading_c uk-margin-small-bottom">Ingredientes Importantes </h5>
+                                      <h5 class="heading_c uk-margin-small-bottom">Ingredientes Importantes <span class="req"> * </span> </h5>
                                       <textarea class="md-input" name="alta_ingredientes_producto_cotizador" id="alta_ingredientes_producto_cotizador" cols="30" rows="1"></textarea>
                                      </div>
                                   </div>
@@ -1187,8 +1186,8 @@
                                     <div class="uk-width-large-1-1">
                                     </div>
                                     <div class="uk-width-large-1-1"><br/>
-                                      <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Dias en Elaborar</label>
-                                      <input type="number" class="md-input" name="alta_detalle_diasElborar_producto_cotizador" id="alta_detalle_diasElborar_producto_cotizador"  />
+                                      <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Dias en Elaborar <span class="req"> * </span></label>
+                                      <input type="number" min="0" class="md-input" name="alta_detalle_diasElborar_producto_cotizador" id="alta_detalle_diasElborar_producto_cotizador"  />
                                     </div>
                                   </div>
                                   <br/>
@@ -1213,7 +1212,7 @@
                                 <li>
                                   <div class="uk-grid">
                                     <div class="uk-width-medium-1-1">
-                                      <h5 class="heading_c uk-margin-small-bottom">Tipo de evento</h5>
+                                      <h5 class="heading_c uk-margin-small-bottom">Tipo de evento <span class="req"> * </span></h5>
                                     </div>
                                     <div class="uk-width-medium-1-1 ">
                                       <div class="uk-input-group">
@@ -1231,12 +1230,12 @@
                                 </li>
                                 
                                 <li>
-                                  <h4 class="heading_c uk-margin-small-bottom">Fotografías </h4>
+                                  <h4 class="heading_c uk-margin-small-bottom">Fotografías <span class="req"> * </span> </h4>
                                   <div class="uk-grid" data-uk-grid-margin>
                                     <div class="uk-width-medium-1-3">
                                       <div class="md-card">
                                         <div class="md-card-content">
-                                          <h5>
+                                          <h5 id="alta_srcimg1_producto_cotizador_titulo">
                                               Fotografía 1
                                           </h5>
                                           <input type="file" id="alta_srcimg1_producto_cotizador" name="srcimg1_producto" class="dropify" data-max-file-size="2000K" />
@@ -1247,7 +1246,7 @@
                                     <div class="uk-width-medium-1-3">
                                       <div class="md-card">
                                         <div class="md-card-content">
-                                          <h5>
+                                          <h5 id="alta_srcimg2_producto_cotizador_titulo">
                                               Fotografía 2
                                           </h5>
                                           <input type="file" id="alta_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
@@ -1258,7 +1257,7 @@
                                     <div class="uk-width-medium-1-3">
                                       <div class="md-card">
                                         <div class="md-card-content">
-                                          <h5>
+                                          <h5 id="alta_srcimg3_producto_cotizador_titulo">
                                               Fotografía 3
                                           </h5>
                                           <input type="file" id="alta_srcimg3_producto_cotizador" name="srcimg3_producto" class="dropify" data-max-file-size="2000K" />
@@ -1277,7 +1276,7 @@
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ registrarProductoCotizador(); UIkit.modal.alert('Producto Registrado'); });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_cotizador') });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1332,7 +1331,7 @@
                                     <div class="uk-width-large-1-1"><br/>
                                       <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Dias en Elaborar</label>
                                       <br/>
-                                      <input type="number" class="md-input" name="modificar_detalle_diasElborar_producto_cotizador" id="modificar_detalle_diasElborar_producto_cotizador"  />
+                                      <input type="number" min="0" class="md-input" name="modificar_detalle_diasElborar_producto_cotizador" id="modificar_detalle_diasElborar_producto_cotizador"  />
                                     </div>
                                   </div>
                                   <br/>
@@ -1484,7 +1483,7 @@
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ actualizarProductoCotizador(); UIkit.modal.alert('Producto Registrado'); });">Actualziar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){  validarFormulario('form_modificar_productos_cotizador');  });">Actualziar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1572,7 +1571,7 @@
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
                                       <label> Precio <span class="req"> * </span> </label> <br/>
-                                      <input type="number" name="alta_precioreal_producto_Complementario" id="alta_precioreal_producto_Complementario" class="md-input" />
+                                      <input type="number" min="0" name="alta_precioreal_producto_Complementario" id="alta_precioreal_producto_Complementario" class="md-input" />
                                     </div> 
                                   </div>
                                   <br/>
@@ -1597,7 +1596,7 @@
                                   <div class="uk-grid">
                                     <div class="uk-width-large-1-1"><br/>
                                       <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Stock</label><br/>
-                                      <input type="number" class="md-input" name="alta_stock_producto_Complementario" id="alta_stock_producto_Complementario"  />
+                                      <input type="number" min="0" class="md-input" name="alta_stock_producto_Complementario" id="alta_stock_producto_Complementario"  />
                                     </div>
                                   </div>
                                   <br/>
@@ -1607,7 +1606,7 @@
                                     <div class="uk-width-medium-1-1">
                                       <div class="md-card">
                                         <div class="md-card-content">
-                                          <h5>
+                                          <h5 id="alta_srcimg1_producto_Complementario_titulo">
                                               Fotografía 1
                                           </h5>
                                           <input type="file" id="alta_srcimg1_producto_Complementario" name="srcimg1_producto" class="dropify" data-max-file-size="2000K" />
@@ -1626,7 +1625,7 @@
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ registrarProductoComplementario(); UIkit.modal.alert('Producto Registrado'); });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_complementario'); });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1682,7 +1681,7 @@
                                     </div>
                                     <div class="uk-width-large-1-1"><br/>
                                       <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Stock</label><br/>
-                                      <input type="number" class="md-input" name="modificar_stock_producto_Complementario" id="modificar_stock_producto_Complementario"  />
+                                      <input type="number" min="0" class="md-input" name="modificar_stock_producto_Complementario" id="modificar_stock_producto_Complementario"  />
                                     </div>
                                   </div>
                                   <br/>
@@ -1722,7 +1721,7 @@
                                     <div class="uk-width-medium-1-1">
                                       <div class="md-card">
                                         <div class="md-card-content">
-                                          <h5 class="heading_a uk-margin-small-bottom">
+                                          <h5 class="heading_a uk-margin-small-bottom" id="modificar_srcimg1_producto_Complementario_titulo">
                                               Fotografá 1
                                           </h5>
                                           <input type="file" id="modificar_srcimg1_producto_Complementario" name="srcimg1_producto" class="dropify" data-max-file-size="2000K" />
@@ -1741,7 +1740,7 @@
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ actualizarProductoComplementario(); UIkit.modal.alert('Producto Registrado'); });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ validarFormulario('form_modificar_productos_complementario'); });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1979,6 +1978,9 @@ $( window ).ready(function()
       srcimg2=$('#alta_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
       srcimg3=$('#alta_srcimg3_producto_linea').val().replace(/C:\\fakepath\\/i, '');
 
+      if(srcimg1!=''||srcimg2!=''||srcimg3!='')
+        boolHabilitarValidacionSrcImg=true;
+
       diaselaboracion=$('#alta_detalle_diasElborar_producto_linea').val();
       stock=$('#alta_detalle_stock_producto_linea').val();
       precioreal=$('#alta_detalle_precioreal_producto_linea').val();
@@ -2124,36 +2126,39 @@ $( window ).ready(function()
         $( "#alta_clasificacion_producto_linea" ).removeClass( "md-input-danger" );
       ///////////////////////////////////////////////////////////////////////////
       /////////////////////////DATOS FOTOGRAFIA//////////////////////////////////
-      if(srcimg1=='')
+      if(boolHabilitarValidacionSrcImg)
       {
-        console.log('srcimg1 vacio');
-        boolError=true;
-        boolErrorSrcimg1=true;
+        if(srcimg1=='')
+        {
+          console.log('srcimg1 vacio');
+          boolError=true;
+          boolErrorSrcimg1=true;
+        }
+        if(boolErrorSrcimg1)
+          $( "#alta_srcimg1_producto_linea_titulo" ).css('color','red');
+        else
+          $( "#alta_srcimg1_producto_linea_titulo" ).css('color','black');
+        if(srcimg2=='')
+        {
+          console.log('srcimg1 vacio');
+          boolError=true;
+          boolErrorSrcimg2=true;
+        }
+        if(boolErrorSrcimg2)
+          $( "#alta_srcimg2_producto_linea_titulo" ).css('color','red');
+        else
+          $( "#alta_srcimg2_producto_linea_titulo" ).css('color','black');
+        if(srcimg3=='')
+        {
+          console.log('srcimg1 vacio');
+          boolError=true;
+          boolErrorSrcimg3=true;
+        }
+        if(boolErrorSrcimg3)
+          $( "#alta_srcimg3_producto_linea_titulo" ).css('color','red');
+        else
+          $( "#alta_srcimg3_producto_linea_titulo" ).css('color','black');
       }
-      if(boolErrorSrcimg1)
-        $( "#alta_srcimg1_producto_linea_titulo" ).css('color','red');
-      else
-        $( "#alta_srcimg1_producto_linea_titulo" ).css('color','black');
-      if(srcimg2=='')
-      {
-        console.log('srcimg1 vacio');
-        boolError=true;
-        boolErrorSrcimg2=true;
-      }
-      if(boolErrorSrcimg2)
-        $( "#alta_srcimg2_producto_linea_titulo" ).css('color','red');
-      else
-        $( "#alta_srcimg2_producto_linea_titulo" ).css('color','black');
-      if(srcimg3=='')
-      {
-        console.log('srcimg1 vacio');
-        boolError=true;
-        boolErrorSrcimg3=true;
-      }
-      if(boolErrorSrcimg3)
-        $( "#alta_srcimg3_producto_linea_titulo" ).css('color','red');
-      else
-        $( "#alta_srcimg3_producto_linea_titulo" ).css('color','black');
       ///////////////////////////////////////////////////////////////////////////
       ////////////////////////////DATOS DETALLES///////////////////////////////
       //diaselaboracion -> Number
@@ -2605,14 +2610,394 @@ $( window ).ready(function()
       else
       {
         UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
-      }
-       
+      }       
     }
+    else if(formularioAValidar=='form_alta_productos_cotizador')
+    {
+       /*
+      VARIABLES
+       */
+      boolError=false;
+      boolErrorNombre=false;
+      boolErrorDescripcion=false;
+      boolErrorIngredientes=false;
+      boolErrorDiasElaboracion=false;
+      boolErrorEvento=false;
 
+      boolErrorSrcimg1=false;
+      boolErrorSrcimg2=false;
+      boolErrorSrcimg3=false;
 
+       //tblproducto
+      nombreproduct='';
+      descripcion='';
+      ingredientes='';
+      diaselaboracion='';
+      evento='';
 
-     
+      srcimg1='';
+      srcimg2='';
+      srcimg3='';
 
+      //OBTENEMOS LOS DATOS DEL FORMULARIO
+      nombreproduct=$('#alta_nombre_producto_cotizador').val();
+      descripcion=$('#alta_descripcion_producto_cotizador').val();
+      ingredientes=$('#alta_ingredientes_producto_cotizador').val();
+      diaselaboracion=$('#alta_detalle_diasElborar_producto_cotizador').val();
+      evento=$('#alta_evento_producto_cotizador').val();
+
+      srcimg1=$('#alta_srcimg1_producto_cotizador').val();
+      srcimg2=$('#alta_srcimg2_producto_cotizador').val();
+      srcimg3=$('#alta_srcimg3_producto_cotizador').val();
+
+      /////////////////////////DATOS GENERALES/////////////////////////
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorNombre=validarCamposString(nombreproduct,70);      
+      if(boolErrorNombre){ $( "#alta_nombre_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_nombre_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorDescripcion=validarCamposString(descripcion,300);      
+      if(boolErrorDescripcion){ $( "#alta_descripcion_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_descripcion_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorIngredientes=validarCamposString(ingredientes,300);      
+      if(boolErrorIngredientes){ $( "#alta_ingredientes_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_ingredientes_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorDiasElaboracion=validarCamposNumericos(diaselaboracion);      
+      if(boolErrorDiasElaboracion){ $( "#alta_detalle_diasElborar_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_detalle_diasElborar_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorEvento=validarCamposSelect(evento);      
+      if(boolErrorEvento){ $( "#alta_evento_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_evento_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      ///////////////////////////////////////////////////////////////////////////
+      /////////////////////////DATOS FOTOGRAFIA//////////////////////////////////
+      //srcimg1
+      boolErrorSrcimg1=validarCamposImg(srcimg1);      
+      if(boolErrorSrcimg1){ $( "#alta_srcimg1_producto_cotizador_titulo" ).css('color','red'); boolError=true; }
+      else{ $( "#alta_srcimg1_producto_cotizador_titulo" ).css('color','black'); }
+      //srcimg2
+      boolErrorSrcimg2=validarCamposImg(srcimg2);      
+      if(boolErrorSrcimg2){ $( "#alta_srcimg2_producto_cotizador_titulo" ).css('color','red'); boolError=true; }
+      else{ $( "#alta_srcimg2_producto_cotizador_titulo" ).css('color','black'); }
+      //srcimg3
+      boolErrorSrcimg3=validarCamposImg(srcimg3);      
+      if(boolErrorSrcimg3){ $( "#alta_srcimg3_producto_cotizador_titulo" ).css('color','red'); boolError=true; }
+      else{ $( "#alta_srcimg3_producto_cotizador_titulo" ).css('color','black'); }
+      ///////////////////////////////////////////////////////////////////////////
+      
+      if(!boolError)
+      {
+        console.log('actualizarProductoGeneral');
+        //registrarProductoCotizador();      
+      }
+      else
+      {
+        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+      }       
+    }
+    else if(formularioAValidar=='form_modificar_productos_cotizador')
+    {
+       /*
+      VARIABLES
+       */
+      boolError=false;
+      boolErrorNombre=false;
+      boolErrorDescripcion=false;
+      boolErrorIngredientes=false;
+      boolErrorDiasElaboracion=false;
+      boolErrorEvento=false;
+
+      boolErrorSrcimg1=false;
+      boolErrorSrcimg2=false;
+      boolErrorSrcimg3=false;
+
+      boolHabilitarValidacionSrcImg=false;
+
+       //tblproducto
+      nombreproduct='';
+      descripcion='';
+      ingredientes='';
+      diaselaboracion='';
+      evento='';
+
+      srcimg1='';
+      srcimg2='';
+      srcimg3='';
+
+      //OBTENEMOS LOS DATOS DEL FORMULARIO
+      nombreproduct=$('#modificar_nombre_producto_cotizador').val();
+      descripcion=$('#modificar_descripcion_producto_cotizador').val();
+      ingredientes=$('#modificar_ingredientes_producto_cotizador').val();
+      diaselaboracion=$('#modificar_detalle_diasElborar_producto_cotizador').val();
+      evento=$('#modificar_evento_producto_cotizador').val();
+
+      srcimg1=$('#modificar_srcimg1_producto_cotizador').val();
+      srcimg2=$('#modificar_srcimg2_producto_cotizador').val();
+      srcimg3=$('#modificar_srcimg3_producto_cotizador').val();
+
+      if(srcimg1!=''||srcimg2!=''||srcimg3!='')
+        boolHabilitarValidacionSrcImg=true;
+
+      /////////////////////////DATOS GENERALES/////////////////////////
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorNombre=validarCamposString(nombreproduct,70);      
+      if(boolErrorNombre){ $( "#modificar_nombre_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_nombre_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorDescripcion=validarCamposString(descripcion,300);      
+      if(boolErrorDescripcion){ $( "#modificar_descripcion_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_descripcion_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorIngredientes=validarCamposString(ingredientes,300);      
+      if(boolErrorIngredientes){ $( "#modificar_ingredientes_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_ingredientes_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorDiasElaboracion=validarCamposNumericos(diaselaboracion);      
+      if(boolErrorDiasElaboracion){ $( "#modificar_detalle_diasElborar_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_detalle_diasElborar_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorEvento=validarCamposSelect(evento);      
+      if(boolErrorEvento){ $( "#modificar_evento_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_evento_producto_cotizador" ).removeClass( "md-input-danger" ); }
+      ///////////////////////////////////////////////////////////////////////////
+      /////////////////////////DATOS FOTOGRAFIA//////////////////////////////////
+      //srcimg1
+      if(boolHabilitarValidacionSrcImg)
+      {
+        boolErrorSrcimg1=validarCamposImg(srcimg1);      
+        if(boolErrorSrcimg1){ $( "#alta_srcimg1_producto_cotizador_titulo" ).css('color','red'); boolError=true; }
+        else{ $( "#alta_srcimg1_producto_cotizador_titulo" ).css('color','black'); }
+        //srcimg2
+        boolErrorSrcimg2=validarCamposImg(srcimg2);      
+        if(boolErrorSrcimg2){ $( "#alta_srcimg2_producto_cotizador_titulo" ).css('color','red'); boolError=true; }
+        else{ $( "#alta_srcimg2_producto_cotizador_titulo" ).css('color','black'); }
+        //srcimg3
+        boolErrorSrcimg3=validarCamposImg(srcimg3);      
+        if(boolErrorSrcimg3){ $( "#alta_srcimg3_producto_cotizador_titulo" ).css('color','red'); boolError=true; }
+        else{ $( "#alta_srcimg3_producto_cotizador_titulo" ).css('color','black'); }
+      }
+      ///////////////////////////////////////////////////////////////////////////
+      
+      if(!boolError)
+      {
+        console.log('actualizarProductoGeneral');
+        actualizarProductoCotizador();      
+      }
+      else
+      {
+        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+      }       
+    }
+    else if(formularioAValidar=='form_alta_productos_complementario')
+    {
+       /*
+      VARIABLES
+       */
+      boolError=false;
+      boolErrorNombre=false;
+      boolErrorDescripcion=false;
+      boolErrorSeo=false;
+      boolErrorPrecio=false;
+      boolErrorStock=false;
+
+      boolErrorSrcimg1=false;
+
+       //tblproducto
+      nombreproduct='';
+      descripcion='';
+      seo='';
+      precio='';
+      stock='';
+
+      srcimg1='';
+
+      //OBTENEMOS LOS DATOS DEL FORMULARIO
+      nombreproduct=$('#alta_nombre_producto_Complementario').val();
+      descripcion=$('#alta_descripcion_producto_Complementario').val();
+      seo=$('#alta_seo_producto_Complementario').val();
+      precio=$('#alta_precioreal_producto_Complementario').val();
+      stock=$('#alta_stock_producto_Complementario').val();
+
+      srcimg1=$('#alta_srcimg1_producto_Complementario').val();
+      /////////////////////////DATOS GENERALES/////////////////////////
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorNombre=validarCamposString(nombreproduct,90);      
+      if(boolErrorNombre){ $( "#alta_nombre_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_nombre_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorDescripcion=validarCamposString(descripcion,300);      
+      if(boolErrorDescripcion){ $( "#alta_descripcion_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_descripcion_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorSeo=validarCamposString(seo,250);      
+      if(boolErrorSeo){ $( "#alta_seo_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_seo_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorPrecio=validarCamposNumericos(precio);      
+      if(boolErrorPrecio){ $( "#alta_precioreal_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_precioreal_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorStock=validarCamposNumericos(stock);      
+      if(boolErrorStock){ $( "#alta_stock_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_stock_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      ///////////////////////////////////////////////////////////////////////////
+      /////////////////////////DATOS FOTOGRAFIA//////////////////////////////////
+      //srcimg1
+      boolErrorSrcimg1=validarCamposImg(srcimg1);      
+      if(boolErrorSrcimg1){ $( "#alta_srcimg1_producto_Complementario_titulo" ).css('color','red'); boolError=true; }
+      else{ $( "#alta_srcimg1_producto_Complementario_titulo" ).css('color','black'); }
+      ///////////////////////////////////////////////////////////////////////////
+      
+      if(!boolError)
+      {
+        console.log('registrar producto complementario');
+        registrarProductoComplementario();      
+      }
+      else
+      {
+        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+      }       
+    }
+    else if(formularioAValidar=='form_modificar_productos_complementario')
+    {
+       /*
+      VARIABLES
+       */
+      boolError=false;
+      boolErrorNombre=false;
+      boolErrorDescripcion=false;
+      boolErrorSeo=false;
+      boolErrorPrecio=false;
+      boolErrorStock=false;
+
+      boolErrorSrcimg1=false;
+      boolHabilitarValidacionSrcImg=false;
+
+       //tblproducto
+      nombreproduct='';
+      descripcion='';
+      seo='';
+      precio='';
+      stock='';
+
+      srcimg1='';
+
+      //OBTENEMOS LOS DATOS DEL FORMULARIO
+      nombreproduct=$('#modificar_nombre_producto_Complementario').val();
+      descripcion=$('#modificar_descripcion_producto_Complementario').val();
+      seo=$('#modificar_seo_producto_Complementario').val();
+      precio=$('#modificar_precio_producto_Complementario').val();
+      stock=$('#modificar_stock_producto_Complementario').val();
+
+      srcimg1=$('#modificar_srcimg1_producto_Complementario').val();
+      if(srcimg1!='')
+        boolHabilitarValidacionSrcImg=true;
+      /////////////////////////DATOS GENERALES/////////////////////////
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorNombre=validarCamposString(nombreproduct,90);      
+      if(boolErrorNombre){ $( "#modificar_nombre_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_nombre_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorDescripcion=validarCamposString(descripcion,300);      
+      if(boolErrorDescripcion){ $( "#modificar_descripcion_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_descripcion_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorSeo=validarCamposString(seo,250);      
+      if(boolErrorSeo){ $( "#modificar_seo_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_seo_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorPrecio=validarCamposNumericos(precio);      
+      if(boolErrorPrecio){ $( "#modificar_precio_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_precio_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorStock=validarCamposNumericos(stock);      
+      if(boolErrorStock){ $( "#modificar_stock_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#modificar_stock_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      ///////////////////////////////////////////////////////////////////////////
+      /////////////////////////DATOS FOTOGRAFIA//////////////////////////////////
+      //srcimg1
+      if(boolHabilitarValidacionSrcImg)
+      {
+        boolErrorSrcimg1=validarCamposImg(srcimg1);      
+        if(boolErrorSrcimg1){ $( "#modificar_srcimg1_producto_Complementario_titulo" ).css('color','red'); boolError=true; }
+        else{ $( "#modificar_srcimg1_producto_Complementario_titulo" ).css('color','black'); }
+      }
+      ///////////////////////////////////////////////////////////////////////////
+      
+      if(!boolError)
+      {
+        console.log('actualizar producto complementario');
+        actualizarProductoComplementario();      
+      }
+      else
+      {
+        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+      }       
+    }
+  
+
+  }
+  function validarCamposString(string,numCaracterValido)
+  {
+    boolErrorString=false;
+    if(string=='')
+      boolErrorString=true;
+    //VALIDAR RANGO DE DATOS ACEPTABLES
+    if(string.length>numCaracterValido)
+      boolErrorString=true;
+    //VALIDAR CAMPOS SOLO CON ESPACIOS
+    if(!string.trim())
+      boolErrorString=true;
+    return boolErrorString;
+  }
+  function validarCamposNumericos(numero)
+  {
+    boolErrorNumero=false;
+    if(numero=='')
+      boolErrorNumero=true;
+    //VALIDAR RANGO DE DATOS ACEPTABLES
+    if(numero<0)
+      boolErrorNumero=true;
+    //VALIDAR CAMPOS NO SON NUMEROS
+    if(!$.isNumeric(numero))
+      boolErrorNumero=true;
+    return boolErrorNumero;
+  }
+  function validarCamposSelect(option)
+  {
+    boolErrorSelect=false;
+    if(option=='')
+      boolErrorSelect=true;
+    return boolErrorSelect;
+  }
+  function validarCamposImg(srcimg)
+  {
+    boolErrorSrcimg=false;
+    if(srcimg=='')
+      boolErrorSrcimg=true;
+    return boolErrorSrcimg;
   }
   function cargarValoresDefault(){     
     solicitadoBy="WEB";    
@@ -3398,6 +3783,7 @@ $( window ).ready(function()
                             $('#productoslineaPlantilla').html("");
                             $('#altaproductocotizador')[0].reset();
                             UIkit.modal("#popup_nuevoproductocotizador").hide();
+                            UIkit.modal.alert('Producto en Cotizador Registrado');
                             cargarValoresDefault();
 
 
@@ -3537,6 +3923,7 @@ $( window ).ready(function()
                       $('#productoslineaPlantilla').html("");
                       $('#altaproductoComplementario')[0].reset();
                       UIkit.modal("#popup_nuevoproductoComplementario").hide();
+                      UIkit.modal.alert('Producto Complementario Registrado');
                       cargarValoresDefault();
                     })
                     .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoComplementario fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
@@ -3735,7 +4122,7 @@ $( window ).ready(function()
 
   //function modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+'){
   function modificarProductoComplementario(idexArreglo,idtblproductcomplementario,nombre){
-    alert('entro a modificarProductoComplementario');
+    //alert('entro a modificarProductoComplementario');
     /*
     0 arregloInfoUnProductoComplementario.push(idProductoComplementario);
     1 arregloInfoUnProductoComplementario.push(nombreComplementario);
@@ -3860,6 +4247,7 @@ $( window ).ready(function()
         $('#productoslineaPlantilla').html("");
         $('#formActualizarProductoComplementario')[0].reset();
         UIkit.modal("#popup_modificarproductoComplementario").hide();
+        UIkit.modal.alert('Producto Complementario Actualizado');
         cargarValoresDefault();
       })
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcomplem fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
@@ -3968,7 +4356,7 @@ $( window ).ready(function()
                               $('#productoscotizadorPlantilla').html("");
                               $('#productoslineaPlantilla').html("");
                               $('#formActualizarProductoCotizador')[0].reset();
-                              UIkit.modal("#popup_modificarproductocotizador").hide();
+                             
                               cargarValoresDefault();
                             })
                             .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
@@ -4021,7 +4409,8 @@ $( window ).ready(function()
         $('#productoscotizadorPlantilla').html("");
         $('#productosComplementarioPlantilla').html("");
         $('#productoslineaPlantilla').html("");
-        
+        UIkit.modal.alert('Producto Cotizador Actualizado');
+        UIkit.modal("#popup_modificarproductocotizador").hide();
         cargarValoresDefault();
       })
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
