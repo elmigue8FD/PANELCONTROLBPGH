@@ -3420,18 +3420,20 @@ $( window ).ready(function()
    */
   function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado){
     nombre = nombre.replace(' ', '_');
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img name="imagenPortadaProductoLinea'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/linea/" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tama? : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">Sin Azucar</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick="eliminarProductoLinea('+idProducto+','+idProductoDetalle+');">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    mensajeEliminacion="'Realmente deseas eliminar el producto?'";
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img name="imagenPortadaProductoLinea'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/linea/" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tama? : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">Sin Azucar</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
     nombre = nombre.replace(' ', '_');
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img name="imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/cotizador/" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick="eliminarProductoCotizador('+idProducto+');">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    mensajeEliminacion="'Realmente deseas eliminar el producto?'";
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img id="imagenPortadaProductoCotizador'+idProducto+'" name="imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/cotizador/" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick="UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoCotizador('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function productosPlantillaComplementario(idexArreglo,idProducto,nombre,activado,srcimgComplementario){
     nombre = nombre.replace(' ', '_');
-
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/Complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick="eliminarProductoComplementario('+idProducto+');">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    mensajeEliminacion="'Realmente deseas eliminar el producto?'";
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function llamarFuncion(idProducto){
@@ -4635,9 +4637,9 @@ $( window ).ready(function()
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){   });
   }
+  //function confirmacionEliminarProductoLinea(){}
   function eliminarProductoLinea(idProducto,idProductoDetalle){
-    var respuesta=confirm("Realmente deseas eliminar el producto");
-    if (respuesta == true) {
+    //if (respuesta == true) {
     numeroProductosDetalle='';
     /*
     Recibir el id del producto general tblproducto
@@ -4692,7 +4694,8 @@ $( window ).ready(function()
                 console.log('ELIMINAR DESDE EL PRODUCTO');
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproducto.php",  data: {solicitadoBy:"WEB",idtblproduct:idProducto}  })
                   .done(function( msgTblProducto ) {
-                    alert('Elimnaci? Exitosa');
+                    
+                    UIkit.modal.alert('Elimnación Exitosa');
                     //$('#productoslineaPlantilla').html("");
                     //cargarValoresDefault();
                     $('#productosComplementarioPlantilla').html("");
@@ -4730,21 +4733,80 @@ $( window ).ready(function()
         .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
 
-
+        /*
     }
+    
+    
     else
     {
       alert('nada');
     }
+    */
   }
-  function eliminarProductoCotizador(idProducto){
-    var respuesta=confirm("Realmente deseas eliminar el producto");
+  function eliminarProductoCotizador(idtblproductcotizador){
+      /*
+      Recibir el id del producto general tblproducto
+      ver cuantos productos detalles existe de este producto
+      si productos detalle es solo 1
+      si existe solo este eliminar el producto (en cascada se elimianr los productos detalle y las imagenes)
+      SiNo solo elimianr el producto que esta  seleccionando
+      */
+      /////////////////////////////////////////////////////////
+      var arregloIdtblproductimg=[];
+      var arregloTblproductimg_srcimg=[];
+      //SOLICITAMOS TODOS LOS REGISTROS DE IMANGENES DE UN PRODUCTO
+      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcotimg.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idtblproductcotizador} })
+        .done(function( msgTblProductoImg )
+        {
+          //OBTENEMOS TODOS LOS REGISTROS 
+          $.each(msgTblProductoImg.datos, function(i,item){
+            //GUARDAMOS EL ID DEL LA IAMGEN EN EL ARREGLO
+            arregloIdtblproductimg.push(msgTblProductoImg.datos[i].idtblproductcotimg);
+            //GUARDAMOS EL NOMBRE DE LA IAMGEN EN EL ARREGLO
+            arregloTblproductimg_srcimg.push(msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
+            //alert('msgTblProductoImg.datos[i].tblproductcotimg_srcimg::'+msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
+          });          
+          //RECORREMOS EL ARREGLO DE LOS ID
+          $.each(arregloIdtblproductimg, function(i,item){
+            //SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS
+            //alert('entro al each i::'+i+' item::'+item+' arregloTblproductimg_srcimg[i]::'+arregloTblproductimg_srcimg[i]);
+            
+            $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimg[i]} })
+              .done(function( datos ){ 
+                //alert('done datos.datos::'+datos.datos+' datos.success::'+datos.success);
+              })
+              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .always(function(){   });
+            
+          });
+          //COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
+          //
+          //ELIMINAR DESDE EL PRODUCTO COTIZADOR
+          console.log('ELIMINAR DESDE EL PRODUCTO');
+          //alert('setDeleteTblproductcotizador idtblproductcotizador::'+idtblproductcotizador)
+          
+          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcotizador.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idtblproductcotizador}  })
+            .done(function( msgTblProducto ) {
+              UIkit.modal.alert('Elimnación Exitosa');
+              //$('#productoslineaPlantilla').html("");
+              //cargarValoresDefault();
+              $('#productosComplementarioPlantilla').html("");
+              $('#productoscotizadorPlantilla').html("");
+              $('#productoslineaPlantilla').html("");
+              cargarValoresDefault();
+            })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .always(function(){   });
+            
+          //FIN COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
+        })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
     
   }
   function eliminarProductoComplementario(idProducto){
-
-    var respuesta=confirm("Realmente deseas eliminar el producto Complementario");
-    if (respuesta == true) {
+    //UIkit.modal.confirm('Realmente deseas eliminar el producto Complementario?', function(){  respuesta=true;  });
+    //if (respuesta == true) {
       //srcimgActual=$("#fotografia_complementario_actual").val();
       srcimgActual=$("#imagenPortadaProductoComplementario"+idProducto).attr("src");
       srcimgActual=srcimgActual.replace('./../assests_general/productos/complementario/', '');
@@ -4756,7 +4818,7 @@ $( window ).ready(function()
 
           $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcomplem.php",  data: {solicitadoBy:"WEB",idtblproductcomplem:idProducto}  })
             .done(function( msgTblProductoComplementario ) {
-              alert('Elimnaci? Exitosa');
+              UIkit.modal.alert('Elimnación Exitosa');
               $('#productoslineaPlantilla').html("");
               $('#productoscotizadorPlantilla').html("");
               $('#productosComplementarioPlantilla').html("");
@@ -4771,10 +4833,11 @@ $( window ).ready(function()
         //console.log("setDeleteFileImgProductoCotizador  always");
          });
 
-      
+      /*
     }else{
       alert('no hacer nada');
     }
+    */
   }
   /*
   FIN FUNCIONES MIGUEL
