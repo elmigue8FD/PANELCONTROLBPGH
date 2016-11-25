@@ -865,6 +865,7 @@
                                   <br/>
                                   <label for="product_edit_memory_control" class="uk-form-label">
                                     Caract. Especifica
+                                    <span class="req"> * </span>
                                   </label>
                                   <select id="modificar_especificingredientes_producto_linea" name="modificar_especificingredientes_producto_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                     <option value="" disabled selected hidden></option>
@@ -876,7 +877,8 @@
                                       <i class="uk-icon-calendar"></i>
                                     </span>
                                     <label for="product_edit_quantity_control">                                      
-                                      Días de Elaboración                                   
+                                      Días de Elaboración
+                                      <span class="req"> * </span>                                 
                                     </label>
                                     <br/>
                                     <input type="number" min="0" class="md-input" name="modificar_detalle_diasElborar_producto_linea" id="modificar_detalle_diasElborar_producto_linea"  />
@@ -889,6 +891,7 @@
                                     </span>
                                     <label for="product_edit_quantity_control">
                                       Precio
+                                      <span class="req"> * </span>
                                     </label>
                                     <br/>
                                     <input type="number" min="0" class="md-input" name="modificar_detalle_precio_producto_linea" id="modificar_detalle_precio_producto_linea"  />
@@ -902,12 +905,14 @@
                                     </span>
                                     <label for="product_edit_quantity_control">
                                       Stock &nbsp;&nbsp;
+                                      <span class="req"> * </span>
                                     </label>
                                     <br/>
                                     <input type="number" min="0" class="md-input" name="modificar_detalle_stock_producto_linea" id="modificar_detalle_stock_producto_linea" />
                                     <br/>
                                     <br/>
-                                          <h5 class="heading_c uk-margin-bottom" id="modificar_forma_producto_linea_titulo">Forma del producto (elegir solo uno)</h5>
+                                          <h5 class="heading_c uk-margin-bottom" id="modificar_forma_producto_linea_titulo">Forma del producto (elegir solo uno)<span class="req"> * </span></h5>
+
                                           <ul id="modificar_forma_producto" class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#modificar_switcher-content-a-fade', animation: 'fade'}">
                                             <li id="modificar_tab_cuadrado" class="uk-active"> <a href="#"> Cuadrado </a> </li>
                                             <li id="modificar_tab_circulo"> <a href="#"> Circular </a> </li>
@@ -980,9 +985,9 @@
                       &nbsp;&nbsp;Detalles Generales de Producto
                     </h3>
                   </div>
-                  <form id="formActualizarProductoLineaGeneral" action="" class="uk-form-stacked">
+                  <form id="formActualizarProductoLineaGeneral" name="formActualizarProductoLineaGeneral" action="" class="uk-form-stacked">
                     <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
-                      <div class="uk-width-xLarge-8-10  uk-width-large-1-2">
+                      <div class="uk-width-large-4-10">
                         <div class="md-card">
                           <div class="md-card-toolbar">
                             <h3 class="md-card-toolbar-heading-text">Datos</h3>
@@ -991,16 +996,16 @@
                             <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                               <div class="uk-width-large-1-1">
                                 <div class="uk-form-row">
-                                  <label for="product_edit_name_control">Nombre de Producto</label>
+                                  <label for="product_edit_name_control">Nombre de Producto<span class="req"> * </span></label>
                                   <input type="text" class="md-input" id="modificar_nombre_producto_linea_general" name="modificar_nombre_producto_linea_general" value="Nombre Producto "/>
                                 </div>
                                 <div class="uk-form-row">
-                                  <label for="product_edit_manufacturer_control">SEO</label>
+                                  <label for="product_edit_manufacturer_control">SEO<span class="req"> * </span></label>
                                   <input type="text" class="md-input" id="modificar_seo_producto_linea_general" name="modificar_seo_producto_linea_general" value="pastelsecodechocolate"/>
                                 </div>
                                 <div class="uk-form-row">
                                   <label for="product_edit_memory_control" class="uk-form-label">
-                                    Categoria del Producto
+                                    Categoria del Producto<span class="req"> * </span>
                                   </label>
                                   <select id="modificar_categoria_producto_linea_general" name="modificar_categoria_producto_linea_general" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                     <option value="" disabled selected hidden></option>
@@ -1008,7 +1013,7 @@
                                 </div>
                                 <div class="uk-form-row">
                                   <label for="product_edit_memory_control" class="uk-form-label">
-                                    Clasificación
+                                    Clasificación<span class="req"> * </span>
                                   </label>
                                   <select id="modificar_clasificacion_producto_linea_general" name="modificar_clasificacion_producto_linea_general" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                     <option value="" disabled selected hidden></option>
@@ -1016,15 +1021,17 @@
                                 </div>
                                 <div class="uk-form-row">
                                   <label for="product_edit_manufacturer_control">Activo</label>
-                                  <input type="checkbox" name="modificar_activado_producto_linea_general" id="modificar_activado_producto_linea_general" />
+                                  <div class="uk-float-right">
+                                    <input type="checkbox" name="modificar_activado_producto_linea_general" id="modificar_activado_producto_linea_general" />
+                                  </div>
                                 </div>
                               </div>
                               <div class="uk-width-large-1-1">
                                 <div class="uk-form-row">
-                                  <label for="product_edit_description_control">Descripción</label><br/>
+                                  <label for="product_edit_description_control">Descripción<span class="req"> * </span></label><br/>
                                   <textarea class="md-input" name="modificar_descripcion_producto_linea_general" id="modificar_descripcion_producto_linea_general" cols="10" rows="1"></textarea>
                                   <br/>
-                                  <label for="product_edit_description_control">Ingredientes</label><br/>
+                                  <label for="product_edit_description_control">Ingredientes<span class="req"> * </span></label><br/>
                                   
                                   <textarea class="md-input" name="modificar_ingredientes_producto_linea_general" id="modificar_ingredientes_producto_linea_general" cols="10" rows="1"></textarea>
                                 </div>
@@ -1033,7 +1040,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="uk-width-xLarge-2-10 uk-width-large-1-2">
+                      <div class="uk-width-large-6-10">
                         <input type="hidden" id="modificar_id_producto_linea_general" name="modificar_id_producto_linea_general"> 
                         <!--uk-margin-large-bottom-->
                         <div class="md-card ">
@@ -1089,7 +1096,7 @@
                         <!-- Boton para eliminar un Producto en su totalidad-->
                       <button type="button" class="md-btn md-btn-flat" onclick="UIkit.modal.confirm('?Elimianr el Producto?', function(){ UIkit.modal.alert('Eliminado!'); });">Eliminar</button>
                       <!-- Boton para actualizar las modificaciones de Datos Generales de un Producto -->
-                      <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?', function(){ actualizarProductoGeneral(); UIkit.modal.alert('Actualizado'); });">Actualizar </button>
+                      <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?', function(){ validarFormulario('form_modificar_productos_linea_general') });">Actualizar </button>
                     </div>
                   </form>
                 </div>
@@ -1287,7 +1294,7 @@
                       <form action="" class="uk-form-stacked" id="formActualizarProductoCotizador" name="formActualizarProductoCotizador">
                         <div class="md-card-content large-padding">
                           <div class="uk-grid uk-grid-divider uk-grid-medium form_section form_section_separator" data-uk-grid-margin>
-                            <div class="uk-width-large-1-2">
+                            <div class="uk-width-medium-4-10">
                               <h4 class="heading_c uk-margin-small-bottom">Datos Generales </h4>
                               <input type="hidden" name="modificar_id_producto_cotizador" id="modificar_id_producto_cotizador" class="md-input" />
                               <input type="hidden" name="modificar_idProveedor_producto_cotizador" id="modificar_idProveedor_producto_cotizador" class="md-input" />
@@ -1352,7 +1359,7 @@
                                 
                               </ul>
                             </div>
-                            <div class="uk-width-large-1-2">                                                      
+                            <div class="uk-width-medium-6-10">                                                      
                               <ul class="md-list">                                    
                                 <li>
                                   <div class="uk-grid">
@@ -1365,7 +1372,64 @@
                                   </div>
                                   <br/>
                                 </li>
-                                
+
+
+
+                                <li>
+                                  <div class="uk-width-medium-1-1">
+                                    <!--uk-margin-large-bottom-->
+                                    <div class="md-card ">
+                                      <div class="md-card-toolbar">
+                                        <h3 class="md-card-toolbar-heading-text">Fotografías</h3>
+                                      </div>
+                                      <div class="md-card-content" >
+                                        <!--<h3 class="heading_a uk-margin-bottom"></h3>-->
+                                        <h4>Fotografías actuales del producto</h4>
+                                        <div  id="modificar_galeria_producto_cotizador" class="uk-grid" data-uk-grid-margin>
+                                        </div>
+                                      </div>      
+                                      <div class="uk-grid" data-uk-grid-margin>
+                                        <div class="uk-width-medium-1-3">
+                                          <div class="md-card">
+                                            <div class="md-card-content">
+                                              <h5>
+                                                  Fotografía 1
+                                              </h5>
+                                              <input type="file" id="modificar_srcimg1_producto_cotizador" name="srcimg1_producto" class="dropify" data-max-file-size="2000K"/>
+                                              <input type="hidden" id="modificar_srcimg1_producto_cotizadorBD" name="srcimg1_productoBD" />
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="uk-width-medium-1-3">
+                                          <div class="md-card">
+                                            <div class="md-card-content">
+                                              <h5>
+                                                  Fotografía 2
+                                              </h5>
+                                              <input type="file" id="modificar_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
+                                              <input type="hidden" id="modificar_srcimg2_producto_lineaBD" name="srcimg2_productoBD" />
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="uk-width-medium-1-3">
+                                          <div class="md-card">
+                                            <div class="md-card-content">
+                                              <h5>
+                                                  Fotografía 3
+                                              </h5>
+                                              <input type="file" id="modificar_srcimg3_producto_cotizador" name="srcimg3_producto" class="dropify" data-max-file-size="2000K" />
+                                              <input type="hidden" id="modificar_srcimg3_producto_cotizadorBD" name="srcimg3_productoBD" />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>                          
+                                    </div>                                  
+                                  </div>
+                                </li>
+
+
+
+                                <!--
                                 <li>
                                   <div class="md-card-content" >
                                     <h4>Fotografías</h4>
@@ -1374,7 +1438,7 @@
                                     </div>
                                   </div> 
                                   <div class="uk-grid" data-uk-grid-margin>
-                                    <div class="uk-width-medium-1-3">
+                                    <div class="uk-width-large-1-3">
                                       <div class="md-card">
                                         <div class="md-card-content">
                                           <h5>
@@ -1385,7 +1449,7 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="uk-width-medium-1-3">
+                                    <div class="uk-width-large-1-3">
                                       <div class="md-card">
                                         <div class="md-card-content">
                                           <h5>
@@ -1396,7 +1460,7 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="uk-width-medium-1-3">
+                                    <div class="uk-width-large-1-3">
                                       <div class="md-card">
                                         <div class="md-card-content">
                                           <h5>
@@ -1410,6 +1474,7 @@
                                   </div>
                                   <br/>
                                 </li>
+                                -->
                               </ul>
                             </div>
                           </div>
@@ -1418,7 +1483,7 @@
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ actualizarProductoCotizador(); UIkit.modal.alert('Producto Registrado'); });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ actualizarProductoCotizador(); UIkit.modal.alert('Producto Registrado'); });">Actualziar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -2377,7 +2442,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('actualizarProductoDetalle');
-        //actualizarProductoDetalle();      
+        actualizarProductoDetalle();      
       }
       else
       {
@@ -2385,6 +2450,167 @@ $( window ).ready(function()
       }
        
     }
+    else if(formularioAValidar=='form_modificar_productos_linea_general')
+    {
+       /*
+      VARIABLES
+       */
+      boolError=false;
+      boolErrorNombre=false;
+      boolErrorDescripcion=false;
+      boolErrorIngredientes=false;
+      boolErrorSeo=false;
+      boolErrorCategoria=false;
+      boolErrorClasificacion=false;
+
+       //tblproducto
+      nombreproduct='';
+      descripcion='';
+      ingredientes='';
+      seo='';
+      idtblcategproduc='';
+      idtblclasifproduct='';
+
+      //OBTENEMOS LOS DATOS DEL FORMULARIO
+      nombreproduct=$('#modificar_nombre_producto_linea_general').val();
+      descripcion=$('#modificar_descripcion_producto_linea_general').val();
+      ingredientes=$('#modificar_ingredientes_producto_linea_general').val();
+      seo=$('#modificar_seo_producto_linea_general').val();      
+      idtblcategproduc=$('#modificar_categoria_producto_linea_general').val();
+      idtblclasifproduct=$('#modificar_clasificacion_producto_linea_general').val();
+
+      /////////////////////////DATOS GENERALES/////////////////////////
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(nombreproduct=='')
+      {
+        boolError=true;
+        boolErrorNombre=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(nombreproduct.length>90)
+      {
+        boolError=true;
+        boolErrorNombre=true;
+      }
+      //VALIDAR CAMPOS SOLO CON ESPACIOS
+      if(!nombreproduct.trim())
+      {
+        boolError=true;
+        boolErrorNombre=true;
+      }
+      if(boolErrorNombre)
+        $( "#modificar_nombre_producto_linea_general" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_nombre_producto_linea_general" ).removeClass( "md-input-danger" );
+      //descripcion -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(descripcion=='')
+      {
+        boolError=true;
+        boolErrorDescripcion=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(descripcion.length>300)
+      {
+        boolError=true;
+        boolErrorDescripcion=true;
+      }
+      //VALIDAR CAMPOS SOLO CON ESPACIOS
+      if(!descripcion.trim())
+      {
+        boolError=true;
+        boolErrorDescripcion=true;
+      }
+      if(boolErrorDescripcion)
+        $( "#modificar_descripcion_producto_linea_general" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_descripcion_producto_linea_general" ).removeClass( "md-input-danger" );
+      //ingredientes -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(ingredientes=='')
+      {
+        boolError=true;
+        boolErrorIngredientes=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(ingredientes.length>250)
+      {
+        boolError=true;
+        boolErrorIngredientes=true;
+      }
+      //VALIDAR CAMPOS SOLO CON ESPACIOS
+      if(!ingredientes.trim())
+      {
+        boolError=true;
+        boolErrorIngredientes=true;
+      }
+      if(boolErrorIngredientes)
+        $( "#modificar_ingredientes_producto_linea_general" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_ingredientes_producto_linea_general" ).removeClass( "md-input-danger" );
+      //seo -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(seo=='')
+      {
+        boolError=true;
+        boolErrorSeo=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(seo.length>250)
+      {
+        boolError=true;
+        boolErrorSeo=true;
+      }
+      //VALIDAR CAMPOS SOLO CON ESPACIOS
+      if(!seo.trim())
+      {
+        boolError=true;
+        boolErrorSeo=true;
+      }
+      if(boolErrorSeo)
+        $( "#modificar_seo_producto_linea_general" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_seo_producto_linea_general" ).removeClass( "md-input-danger" );
+      //idtblcategproduc -> Select
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(idtblcategproduc=='')
+      {
+        boolError=true;
+        boolErrorCategoria=true;
+      }    
+      if(boolErrorCategoria)
+        $( "#modificar_categoria_producto_linea_general" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_categoria_producto_linea_general" ).removeClass( "md-input-danger" );
+      //idtblclasifproduct -> Select
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(idtblclasifproduct=='')
+      {
+        boolError=true;
+        boolErrorClasificacion=true;
+      }    
+      if(boolErrorClasificacion)
+        $( "#modificar_clasificacion_producto_linea_general" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_clasificacion_producto_linea_general" ).removeClass( "md-input-danger" );
+      ///////////////////////////////////////////////////////////////////////////
+      
+      if(!boolError)
+      {
+        console.log('actualizarProductoGeneral');
+        actualizarProductoGeneral();      
+      }
+      else
+      {
+        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+      }
+       
+    }
+
+
+
+     
 
   }
   function cargarValoresDefault(){     
@@ -3508,6 +3734,7 @@ $( window ).ready(function()
 
   //function modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+'){
   function modificarProductoComplementario(idexArreglo,idtblproductcomplementario,nombre){
+    alert('entro a modificarProductoComplementario');
     /*
     0 arregloInfoUnProductoComplementario.push(idProductoComplementario);
     1 arregloInfoUnProductoComplementario.push(nombreComplementario);
@@ -3530,6 +3757,7 @@ $( window ).ready(function()
     $("#modificar_activado_producto_Complementario").empty();    
     $("#modificar_idProveedor_producto_Complementario").empty();
     $("#modificar_stock_producto_Complementario").empty();
+    $("#modificar_galeria_producto_Complementario").html("");
 
 
     $('#modificar_id_producto_Complementario').val(idtblproductcomplementario);
@@ -3541,7 +3769,7 @@ $( window ).ready(function()
     $("#modificar_idProveedor_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][7]);
 
     $("#modificar_stock_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][8]);
-
+    
     $("#modificar_galeria_producto_Complementario").append('<div class="uk-width-medium-1-3"><div class="md-card"><div class="md-card-content" > <img id="fotografia_complementario_actual" name="fotografia_complementario_actual" class="" src="./../assests_general/productos/complementario/'+arregloInfoTodosProductoComplementario[idexArreglo][5]+'" alt=""></div></div></div>');
 
     if(arregloInfoTodosProductoComplementario[idexArreglo][6]==0)
@@ -3565,9 +3793,9 @@ $( window ).ready(function()
     emailmodifico='miguel@bepickler.com';
     //srcimgActual=$("#fotografia_complementario_actual").val();
     srcimgActual=$("#fotografia_complementario_actual").attr("src");
-    alert('srcimgActual::'+srcimgActual);
+    //alert('srcimgActual::'+srcimgActual);
     srcimgActual=srcimgActual.replace('./../assests_general/productos/complementario/', '');
-    alert('srcimgActual::'+srcimgActual);
+    //alert('srcimgActual::'+srcimgActual);
     
     if(activado=='on'){
       activado=1;
@@ -3578,7 +3806,7 @@ $( window ).ready(function()
 
     //obentenso el inptup de la iamgen
     srcimg1=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
-    alert('srcimg1::'+srcimg1);   
+    //alert('srcimg1::'+srcimg1);   
     //.replace(/C:\\fakepath\\/i, ''); 
     //si no esta vacio le asignamos la el nombre de la nueva imagen, si lo esta solo asignamos  el mismo nombre que tenia anteriormente
     if(srcimg1!=''){
@@ -3591,7 +3819,7 @@ $( window ).ready(function()
           $('#productosComplementarioPlantilla').html("");
           $('#productoscotizadorPlantilla').html("");
           $('#productoslineaPlantilla').html(""); 
-          cargarValoresDefault();
+          //cargarValoresDefault();
           console.log('setDeleteFileImgProductoComplementario datos::'+datos.datos);
         })
         .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
@@ -3610,7 +3838,7 @@ $( window ).ready(function()
           $('#productosComplementarioPlantilla').html("");
           $('#productoscotizadorPlantilla').html("");
           $('#productoslineaPlantilla').html("");
-          cargarValoresDefault();
+          //cargarValoresDefault();
         })
         .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
         .always(function(){  
@@ -3649,7 +3877,11 @@ $( window ).ready(function()
     descripcion=$("#modificar_descripcion_producto_cotizador").val();
     ingrediente=$("#modificar_ingredientes_producto_cotizador").val();
     idtblevento=$("#modificar_evento_producto_cotizador").val();
-    activado=$('#modificar_activado_producto_cotizador').val();
+    activado=$('#modificar_activado_producto_cotizador').is(':checked');
+    if(activado)
+      activado=1;
+    else
+      activado=0;
     idtblproveedor=1;
     diaselaboracion=$("#modificar_detalle_diasElborar_producto_cotizador").val();
     promcalificacion=5;
@@ -3731,7 +3963,11 @@ $( window ).ready(function()
                             .done(function( datos )
                             {
                               console.log('uploadImgProductoCotizador done datos::'+datos);
-                              $('#productoscotizadorPlantilla').html("");                              
+                              $('#productosComplementarioPlantilla').html("");
+                              $('#productoscotizadorPlantilla').html("");
+                              $('#productoslineaPlantilla').html("");
+                              $('#formActualizarProductoCotizador')[0].reset();
+                              UIkit.modal("#popup_modificarproductocotizador").hide();
                               cargarValoresDefault();
                             })
                             .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
@@ -3784,8 +4020,7 @@ $( window ).ready(function()
         $('#productoscotizadorPlantilla').html("");
         $('#productosComplementarioPlantilla').html("");
         $('#productoslineaPlantilla').html("");
-        $('#formActualizarProductoCotizador')[0].reset();
-        UIkit.modal("#popup_modificarproductocotizador").hide();
+        
         cargarValoresDefault();
       })
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
@@ -3823,6 +4058,11 @@ $( window ).ready(function()
     }
     piezas=$("#modificar_clasifcategproduct_piezas_producto_linea").val();
     activado=$("#modificar_activado_producto_linea").is(':checked');
+    //alert('activado::'+activado);
+    if(activado)
+      activado=1;
+    else
+      activado=0;
     idProducto=$("#modificar_id_producto_linea").val();
     especificingredientes=$("#modificar_especificingredientes_producto_linea").val();
     emailmodifico='miguel@bepickler.com';
@@ -3854,7 +4094,11 @@ $( window ).ready(function()
     ingredientes=$("#modificar_ingredientes_producto_linea_general").val();
     seo=$("#modificar_seo_producto_linea_general").val();
     promcalif=5;
-    activado=$("#modificar_activado_producto_linea_general").val();
+    activado=$("#modificar_activado_producto_linea_general").is(':checked');
+    if(activado)
+      activado=1
+    else
+      activado=0 
     idtblproveedor=1;
     categoria=$("#modificar_categoria_producto_linea_general").val();
     clasificacion=$("#modificar_clasificacion_producto_linea_general").val();
@@ -3894,15 +4138,19 @@ $( window ).ready(function()
             //GUARDAMOS EL NOMBRE DE LA IAMGEN EN EL ARREGLO
             arregloTblproductimg_srcimg.push(msgTblProductoImg.datos[i].tblproductimg_srcimg);
           });
+          //alert('SOLICITAMOS BORRAR TODOS LOS REGISTROS DE LAS IMAGENES DEL PRODUCTO');
           //SOLICITAMOS BORRAR TODOS LOS REGISTROS DE LAS IMAGENES DEL PRODUCTO
           $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductImgOfProducto.php",  data: {solicitadoBy:"WEB",idtblproducto:idProducto} })
             .done(function( datos )
             {
+              //alert('SE BORRARON EXITOSAMENTE -> REGISTRAR LA PRIMERA IMAGEN');
               //SE BORRARON EXITOSAMENTE
               //REGISTRAR LA PRIMERA IMAGEN
               $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",idtblproductimg:idProducto,srcimg:srcimg1,idtblproducto:idProducto,emailcreo:emailmodifico}  })
                 .done(function( msgTblProductoImg1 )
                 {
+                  //SE REGISTRO LA PRIMERA IMAGEN
+                  //OBTENEMOS EL NOMBRE DE LA UMAGEN Y LA ASIGNAMOS A modificar_srcimg1_producto_lineaBD
                   srcimg1=$('#modificar_srcimg1_producto_lineaBD').val(msgTblProductoImg1.datos);
                   $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",idtblproductimg:idProducto,srcimg:srcimg2,idtblproducto:idProducto,emailcreo:emailmodifico}  })
                     .done(function( msgTblProductoImg2 )
@@ -3912,18 +4160,24 @@ $( window ).ready(function()
                         .done(function( msgTblProductoImg3 )
                         {
                           srcimg3=$('#modificar_srcimg3_producto_lineaBD').val(msgTblProductoImg3.datos);
+                          //alert('//SUBIMOS LAS NUEVAS IMAGENES AL ARCHIVO');
                           //SUBIMOS LAS NUEVAS IMAGENES AL ARCHIVO
-                          var formData = new FormData($("#actualizarProducto")[0]);
+                          //var formData = new FormData($("#actualizarProducto")[0]);
+                          var formData = new FormData($("#formActualizarProductoLineaGeneral")[0]);
+                          //alert('formData::'+formData);
                           var ruta = "imagen-ajax.php";
                           $.ajax({  method: "POST",  url: "uploadImgProductoLinea.php",  data: formData ,contentType: false,
                           processData: false, })
                             .done(function( datos )
                             {
+                              //alert('SE SUBIERON CONEXITO LAS IMAGENES DE LA PARPETA DATOS::'+datos);
                               //$('#productoslineaPlantilla').html("");
                               //cargarValoresDefault();
                               $('#productosComplementarioPlantilla').html("");
                             $('#productoscotizadorPlantilla').html("");
                             $('#productoslineaPlantilla').html("");
+                            $('#formActualizarProductoLineaGeneral')[0].reset();
+                            UIkit.modal("#popup_modificarproductolineageneral").hide();
                             cargarValoresDefault();
                             })
                             .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
@@ -3958,21 +4212,25 @@ $( window ).ready(function()
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
       
     }
-
+    //alert('setUpdateTblproducto::'+activado);
+    //console.log('idProducto:'+idProducto+' nombre::'+nombre+' descripcion::'+descripcion+' ingredientes::'+ingredientes+' seo::'+seo+' promcalif::'+promcalif+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' categoria::'+categoria+' clasificacion::'+clasificacion+' emailmodifico::'+emailmodifico);
+    
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproducto.php", data: {solicitadoBy:"WEB",idtblproducto:idProducto,nombreproduct:nombre,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:categoria,idtblclasifproduct:clasificacion,emailmodifico:emailmodifico }  })
-      .done(function( msgTblProductoDetalles ) {
-        //alert('Elimnaci? Exitosa');
-        //$('#productoslineaPlantilla').html("");
-        //cargarValoresDefault();
+      .done(function( msgTblProductoGeneral ) {
+        //alert('msgTblProductoGeneral'+msgTblProductoGeneral.success);
         $('#productosComplementarioPlantilla').html("");
         $('#productoscotizadorPlantilla').html("");
         $('#productoslineaPlantilla').html("");
-        $('#formActualizarProductoLineaGeneral')[0].reset();
+        if(srcimg1!=''&&srcimg2!=''&&srcimg3!='')
+        {
+          $('#formActualizarProductoLineaGeneral')[0].reset();         
+        }
         UIkit.modal("#popup_modificarproductolineageneral").hide();
+        UIkit.modal.alert('Actualizado');
         cargarValoresDefault();
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-      .always(function(){  /*console.log("always");*/ });
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+      .always(function(){   });
   }
   function eliminarProductoLinea(idProducto,idProductoDetalle){
     var respuesta=confirm("Realmente deseas eliminar el producto");
@@ -4081,9 +4339,19 @@ $( window ).ready(function()
     
   }
   function eliminarProductoComplementario(idProducto){
+
     var respuesta=confirm("Realmente deseas eliminar el producto Complementario");
     if (respuesta == true) {
-      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcomplem.php",  data: {solicitadoBy:"WEB",idtblproductcomplem:idProducto}  })
+      //srcimgActual=$("#fotografia_complementario_actual").val();
+      srcimgActual=$("#imagenPortadaProductoComplementario"+idProducto).attr("src");
+      srcimgActual=srcimgActual.replace('./../assests_general/productos/complementario/', '');
+
+      //borramos la actual file de la fotografia del servidor
+      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoComplementario.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:srcimgActual} })
+        .done(function( datos ){
+          console.log('setDeleteFileImgProductoComplementario datos::'+datos.datos);
+
+          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcomplem.php",  data: {solicitadoBy:"WEB",idtblproductcomplem:idProducto}  })
             .done(function( msgTblProductoComplementario ) {
               alert('Elimnaci? Exitosa');
               $('#productoslineaPlantilla').html("");
@@ -4093,6 +4361,14 @@ $( window ).ready(function()
             })
             .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductcomplem fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
             .always(function(){   });
+
+        })
+        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .always(function(){  
+        //console.log("setDeleteFileImgProductoCotizador  always");
+         });
+
+      
     }else{
       alert('no hacer nada');
     }
