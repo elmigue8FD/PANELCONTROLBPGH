@@ -418,6 +418,56 @@
         var required2 = $("#colonias_servicio_domicilio").kendoMultiSelect().data("kendoMultiSelect");
         cargarValoresDefault();
       });
+      function validarFormulario(formularioAValidar)
+      {
+        console.log('entro a la function validarFormulario');
+        if(formularioAValidar=='form_alta_productos_linea')
+        {
+
+        }
+      }
+      //FUNCIONES DE VALIDACION DE DATOS/////////////////////////////////////////////////////////////////////////////////
+      function validarCamposString(string,numCaracterValido)
+      {
+        boolErrorString=false;
+        if(string=='')
+          boolErrorString=true;
+        //VALIDAR RANGO DE DATOS ACEPTABLES
+        if(string.length>numCaracterValido)
+          boolErrorString=true;
+        //VALIDAR CAMPOS SOLO CON ESPACIOS
+        if(!string.trim())
+          boolErrorString=true;
+        return boolErrorString;
+      }
+      function validarCamposNumericos(numero)
+      {
+        boolErrorNumero=false;
+        if(numero=='')
+          boolErrorNumero=true;
+        //VALIDAR RANGO DE DATOS ACEPTABLES
+        if(numero<0)
+          boolErrorNumero=true;
+        //VALIDAR CAMPOS NO SON NUMEROS
+        if(!$.isNumeric(numero))
+          boolErrorNumero=true;
+        return boolErrorNumero;
+      }
+      function validarCamposSelect(option)
+      {
+        boolErrorSelect=false;
+        if(option=='')
+          boolErrorSelect=true;
+        return boolErrorSelect;
+      }
+      function validarCamposImg(srcimg)
+      {
+        boolErrorSrcimg=false;
+        if(srcimg=='')
+          boolErrorSrcimg=true;
+        return boolErrorSrcimg;
+      }
+  //FIN FUNCIONES DE VALIDACION DE DATOS/////////////////////////////////////////////////////////////////////////////////
       function cargarValoresDefault(){
         //console.log('cargarValoresDefault');
         cargarDatosPerfilTienda();
