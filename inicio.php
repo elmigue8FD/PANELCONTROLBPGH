@@ -36,7 +36,7 @@
                 <div class="uk-width-1-1">
                   <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content'}" id="tabs_1">
                     <li class="named_tab" id="inicio"><a href="" ><font size="3"> Inicio </font></a></li>
-                    <li class="named_tab" name="ordenes" id="ordenes"><a href="#contenido_Ordenes" ><font size="3"> Ordenes </font></a></li>
+                    <li class="named_tab" id="ordenes"><a href="" ><font size="3"> Ordenes </font></a></li>
                     <li class="named_tab" id="productos"><a href="" ><font size="3"> Productos </font></a></li>
                     <li class="named_tab" id="cotizaciones"><a href="" ><font size="3"> Cotizaciones </font></a></li>
                     <li class="named_tab" id="notif"><a href="" ><font size="3"> Notificaciones </font></a></li>
@@ -96,21 +96,20 @@
           <div class="md-card"><br/>
            <div class="md-card-content">
             <div id="calendar_selectable"></div>
+            <div><label><i class="uk-icon-hand-o-up"></i>&nbsp;Clic para visualizar Calendario  </label></div>
            </div>
-          </div>            
+          </div>           
          </div><!--  end Contenido de Pesta? Inicio -->
          <div id="contenido_Ordenes"><!-- Contenido de Pesta? Ordenes -->
-          <h3 class="heading_b uk-margin-bottom"> Ordenes </h3>
+          <h3 class="heading_b uk-margin-bottom"> Ordenes Por Entregar </h3>
           <div class="md-card uk-margin-medium-bottom" >
             <div class="md-card-content">
               <div class="uk-overflow-container">
-                <table class="uk-table uk-table-nowrap table_check uk-table-hover">
+                <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair" id="tbl_ordenes">
                   <thead >
                     <tr>
-                      <th class="uk-width-2-10 uk-text-center">No. Orden </th>
-                      <th class="uk-width-1-10 uk-text-center">Fecha de Compra</th>
-                      <th class="uk-width-2-10 uk-text-center">Fecha de Entrega</th>
-                      <th class="uk-width-2-10 uk-text-center">Status de Entrega</th>
+                      <th class="uk-width-2-10 uk-text-center" >No. Orden </th>
+                      <th class="uk-width-2-10 uk-text-center" >Fecha de Entrega</th>
                     </tr>
                   </thead>
                   <tbody id="tblordenes_item" name="tblordenes_item">
@@ -123,13 +122,11 @@
           <div class="md-card uk-margin-medium-bottom" >
             <div class="md-card-content">
               <div class="uk-overflow-container">
-                <table class="uk-table uk-table-nowrap table_check uk-table-hover">
+                <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair" id="tbl_ordenespendiente">
                   <thead >
                     <tr>
                       <th class="uk-width-2-10 uk-text-center">No. Orden </th>
-                      <th class="uk-width-1-10 uk-text-center">Fecha de Compra</th>
                       <th class="uk-width-2-10 uk-text-center">Fecha de Entrega</th>
-                      <th class="uk-width-2-10 uk-text-center">Status de Entrega</th>
                     </tr>
                   </thead>
                   <tbody id="tblordenespendiente_item" name="tblordenespendiente_item">
@@ -142,12 +139,13 @@
          <div class="md-card uk-margin-medium-bottom">
           <div class="md-card-content">
            <div class="uk-overflow-container">
-            <table class="uk-table uk-table-nowrap table_check uk-table-hover">
+            <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair" id="tbl_ordeneshistorial">
               <thead>
                <tr>
                 <th class="uk-width-2-10 uk-text-center">No. Orden </th>
                 <th class="uk-width-1-10 uk-text-center">Total de Compra</th>
-                <th class="uk-width-2-10 uk-text-center">Fecha de Deposito</th>
+                <th class="uk-width-2-10 uk-text-center">Fecha Deposito</th>
+                <th class="uk-width-2-10 uk-text-center">Status Deposito</th>
                </tr>
               </thead>
              <tbody id="tblordeneshistorial_item" name="tblordeneshistorial_item">
@@ -374,11 +372,10 @@
                  <div class="uk-width-large-1-2">
                   <div class="md-list-content" >
                    <div class="md-list-heading" id="diventrega_statusentrega">
-                    <select name="entrega_statusentrega" id="entrega_statusentrega" class="md-input">
+                    <select name="entrega_statusentrega" id="entrega_statusentrega" class="md-input" onChange="pendienteDesc()">
                       <option value="" disabled selected hidden>Status de Pedido</option>
                       <option value="ENTREGADO">ENTREGADO</option> 
                       <option value="PENDIENTE">PENDIENTE</option>
-                      <option value="NO SE ENCONTRO CLIEN">NO SE ENCONTRO PERSONA</option>
                     </select> 
                   </div>
                  </div>
@@ -387,13 +384,16 @@
                <li>
                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                  <div class="uk-width-large-1-2">
-                  <input type="file" name="img1Productv1" id="img1Productv1"  value="" class="dropify" />
+                  <input type="file" name="img1Productv1" id="img1Productv1" class="dropify" data-show-loader="false"  />
                  </div>
                  <div class="uk-width-large-1-2">
                   <input type="file" name="img2Productv1" id="img2Productv1" value="" class="dropify" />   
                  </div>
                 </div>  
                </li>
+               <li id="li_descripcionPendiente">
+                <textarea cols="30" rows="2" class="md-input autosize" style="margin-top: 0px; margin-bottom: 0px; height: 2px;" placeholder="Descripción del porque el status es pendiente" id="descripcionpendiente"></textarea>
+                </li>
               </ul>
              </div>
             </form><br>
@@ -488,7 +488,6 @@
                       <option value="" disabled selected hidden>Status de Pedido</option>
                       <option value="ENTREGADO">ENTREGADO</option> 
                       <option value="PENDIENTE">PENDIENTE</option>
-                      <option value="NO SE ENCONTRO CLIEN">NO SE ENCONTRO PERSONA</option>
                     </select> 
                   </div>
                  </div>
@@ -548,6 +547,8 @@
           </div>
          </div>
         </div><!-- end Contenido de Pesta? Ordenes -->
+
+        <!--COMIENZA MIGUEL HTML -->
         <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
           <!-- Contenido de Iitem de Producto en Linea -->
             <div id="productoslinea">
@@ -1757,10 +1758,8 @@
             </div>
             <!--Contenido de Item de Producto en Cotizador -->
             <!-- end Contenido de Item de Producto en Cotizador -->
-
-
-
         </div>
+        <!-- FIN MIGUEL HTML -->
         <div id="contenido_Cotizador"><!-- Contenido de Pesta? Cotizador -->
           <h3 class="heading_b uk-margin-bottom"> Cotizaciones De Productos  </h3>
           <div class="md-card uk-margin-medium-bottom">
@@ -1847,13 +1846,18 @@ var idmapaCotizaciones=2;
 var idmapaCotizacionesNuevas=3;
 var eventos_Calendario=[];
 
+//Variables para saber que tabla hace referencia en Ordenes 
+var tabla_Ordenes=1;
+var tabla_OrdenesPendiente=2;
+var tabla_OrdenesHistorial=3;
+
 //Variables de Sesion
 var idtblproveedor = 1;
 var tblproveedorNombre = "MisPasteles";
 var emailproveedor = "mispasteles@gmail.com";
 
 /*
-  VARIABLES MIGUEL
+ COMIENZA VARIABLES MIGUEL
  */
   var solicitadoBy="WEB";
   var arregloInfoUnProducto=[];
@@ -1877,7 +1881,7 @@ var emailproveedor = "mispasteles@gmail.com";
   var arregloImagenesTodosProductoComplementario=[];
   var arregloImagenesUnProductoComplementario=[];
   /*
-  END VARIABLES MIGUEL
+  FIN VARIABLES MIGUEL
    */
 $( window ).ready(function()
 {
@@ -1903,6 +1907,37 @@ $( window ).ready(function()
   });
   /*
   FUNCIONES MIGUEL
+   */
+  function cargarValoresDefault(){     
+    solicitadoBy="WEB";    
+    arregloInfoUnProducto=[];
+    arregloInfoUnProductoCotizador=[];
+    arregloInfoUnProductoComplementario=[];
+    arregloInfoTodosProducto=[];
+    arregloInfoTodosProductoCotizador=[];
+    arregloInfoTodosProductoComplementario=[];
+    arregloCategoriaProductoId=[];
+    arregloCategoriaProductoNombre=[];
+    arregloClasificacionProductoId=[];
+    arregloClasificacionProductoNombre=[];
+    arregloEspecifiIngredientesId=[];
+    arregloEspecifiIngredientesNombre=[];
+    arregloEventosId=[];
+    arregloEventosNombre=[];
+    arregloImagenesTodosProducto=[];
+    arregloImagenesUnProducto=[];
+    arregloImagenesTodosProductoCotizador=[];
+    arregloImagenesUnProductoCotizador=[]; 
+    cargarValoresAltaProductoLinea();
+    mostrarProductos();
+  }
+  /*
+  COMIENZA FUNCIONES MIGUEL
+   */
+  /**
+   * FUNCION USADA PARA VALIDAR LOS FORMULARIOS DE INICIO->PRODCUTOS Y PERFIL DE TIENDA
+   * @param  {[STRING]} formularioAValidar [NOMBRE DEL FORMULARIO A VALIDAR]
+   * @return {[MENSAJE ]}                    [INFORMACION SOBRE LA VALIDACION Y ACCION DEL FORMULARIO]
    */
   function validarFormulario(formularioAValidar)
   {
@@ -2959,6 +2994,7 @@ $( window ).ready(function()
   
 
   }
+  //FUNCIONES DE VALIDACION DE DATOS/////////////////////////////////////////////////////////////////////////////////
   function validarCamposString(string,numCaracterValido)
   {
     boolErrorString=false;
@@ -2998,29 +3034,6 @@ $( window ).ready(function()
     if(srcimg=='')
       boolErrorSrcimg=true;
     return boolErrorSrcimg;
-  }
-  function cargarValoresDefault(){     
-    solicitadoBy="WEB";    
-    arregloInfoUnProducto=[];
-    arregloInfoUnProductoCotizador=[];
-    arregloInfoUnProductoComplementario=[];
-    arregloInfoTodosProducto=[];
-    arregloInfoTodosProductoCotizador=[];
-    arregloInfoTodosProductoComplementario=[];
-    arregloCategoriaProductoId=[];
-    arregloCategoriaProductoNombre=[];
-    arregloClasificacionProductoId=[];
-    arregloClasificacionProductoNombre=[];
-    arregloEspecifiIngredientesId=[];
-    arregloEspecifiIngredientesNombre=[];
-    arregloEventosId=[];
-    arregloEventosNombre=[];
-    arregloImagenesTodosProducto=[];
-    arregloImagenesUnProducto=[];
-    arregloImagenesTodosProductoCotizador=[];
-    arregloImagenesUnProductoCotizador=[]; 
-    cargarValoresAltaProductoLinea();
-    mostrarProductos();
   }
   function cargarValoresAltaProductoLinea(){    
     //BORRAR Y VOVLER A CARGAR
@@ -4764,25 +4777,29 @@ $( window ).ready(function()
     }
   }
   /*
-  END FUNCIONES MIGUEL
+  FIN FUNCIONES MIGUEL
    */
 
 function llenarDatosCalendario(){
+  console.log("CreandoArchivo");
   $.ajax({
       method: "POST",  
       dataType: "json",  
       url: "./../../controllers/setCalendario.php",  
       data: {idtblproveedor:idtblproveedor}})
-    .done(function( msg) {    
+    .done(function( msg) {  
+        console.log(msg);
     })
     .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
     .always(function(){  console.log("always");  });
+    setTimeout('',1500);
 
 }
 
 function cargaCalendario(){
-
+  setTimeout('',1500);
   nombrearchivo='calendarioproveedor_'+idtblproveedor+'.json';
+  console.log(nombrearchivo);
 
   $("#calendar_selectable").fullCalendar({
      header: {
@@ -4933,8 +4950,34 @@ function indicadoresIndex(){
 
 }
 
+//inicializa las tablas para poder realizar filtros 
+function inicializarTablas(){
+  $("#tbl_ordenes").tablesorter({
+    sortList: [[1,0]], //ordenar por de inicio esa columna 
+    headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
+    widgets: ['filter']//activar el widget de filtro de busqueda
+  });
+
+  $("#tbl_ordenespendiente").tablesorter({
+    sortList: [[1,0]] ,
+    headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } },
+    widgets: ['filter'], 
+  });
+
+  $("#tbl_ordeneshistorial").tablesorter({
+    sortList: [[0,0]] ,
+    headers: {1: {sorter: 'digit'} ,
+              2: { sorter: "shortDate", dateFormat: "ddmmyyyy" }
+              },
+    widgets: ['filter'],});
+
+}
+
 //funcion para mostrar los registros en las tablas de Ordenes
 function mostrarListaOrdenes(){
+  
+  //inicializa las tablas para poder realizar filtros 
+  inicializarTablas();
 
 //AJAX encargado de solicitar las ordenes del proveedor  
     $.ajax({
@@ -4952,7 +4995,7 @@ function mostrarListaOrdenes(){
           dataType: "json",  
           url: "./../../controllers/getTblentregaproducto.php",  
           data: {solicitadoBy:solicitadoBy,idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
-            .done(function( msg2 ) {
+            .done(function( msg2 ){
               if(parseInt(msg2.success)==1){//si es exitoso entoces esta entregado
                 console.log("Probablemente ENTREGADO");
                 $.each(msg2.datos, function(x,item){
@@ -4969,9 +5012,9 @@ function mostrarListaOrdenes(){
                     //se añade a la tabla Ordenes Pendiente la fila con los campos  
                     $("#tblordenespendiente_item").append(
                       '<tr data-uk-modal="{target:'+"'#detalleOrdenPendiente'"+', bgclose:false,modal:false, }" onclick="datosDetalleOrden('+msg.datos[i].idtblordencompra+','+tabla_OrdenesPendiente+')"><td class="uk-text-center">'+msg.datos[i].idtblordencompra+
-                      '</td><td class="uk-text-center">'+fchordencompra+
                       '</td><td class="uk-text-center">'+fchagendado+
-                      '</td><td class="uk-text-center"><span class="uk-badge md-bg-red-A700">'+msg2.datos[x].tblentregaproducto_status+'</span></td></tr>');
+                      '</td></tr>');
+                    $("#tbl_ordenespendiente").trigger('updateAll', [true]);//actualiza tabla
 
                    }else {//Orden entregada
                   //cambio de formato de fechas  pagoproveedor
@@ -4981,9 +5024,19 @@ function mostrarListaOrdenes(){
                   //se añade a la tabla Ordenes Hostorial la fila con los campos  
                   $("#tblordeneshistorial_item").append(
                   '<tr data-uk-modal="{target:'+"'#detalleOrdenPendiente'"+', bgclose:false,modal:false, }" onclick="datosDetalleOrden('+msg.datos[i].idtblordencompra+','+tabla_OrdenesHistorial+')"><td class="uk-text-center">'+msg.datos[i].idtblordencompra+
-                  '</td><td class="uk-text-center">$ <span name="totaltabla'+i+'" id="totaltabla'+i+'"></span</td><td class="uk-text-center">'+fchpagoproveedor+'</td></tr>');
+                  '</td><td class="uk-text-center">$<span name="totaltabla'+i+'" id="totaltabla'+i+'"></span</td><td class="uk-text-center">'+fchpagoproveedor+'</td><td class="uk-text-center" id="tblstatusdeposito'+i+'"></td></tr>');
+                  
+
+
+                  if(msg2.datos[x].tblentregaproducto_statusdeposito!="PENDIENTE"){
+                      $('#tblstatusdeposito'+i).append('<span class="uk-badge uk-badge-success">'+msg2.datos[x].tblentregaproducto_statusdeposito+'</span>');
+                    }else { 
+                       $('#tblstatusdeposito'+i).append('<span class="uk-badge uk-badge-warning">'+msg2.datos[x].tblentregaproducto_statusdeposito+'</span>');
+                     }
                   //funcion para calcular el Total de la Orden 
                   totalCompra(msg.datos[i].idtblordencompra,i);
+
+                  $("#tbl_ordeneshistorial").trigger('updateAll', [true]);//actualiza tabla
                  }
                 });
               }else {
@@ -4999,15 +5052,16 @@ function mostrarListaOrdenes(){
                 //se añade a la tabla Ordenes la fila con los campos  
                 $("#tblordenes_item").append(
                   '<tr data-uk-modal="{target:'+"'#detalleOrdenPendiente'"+', bgclose:false,modal:false, }" onclick="datosDetalleOrden('+msg.datos[i].idtblordencompra+','+tabla_Ordenes+')"><td class="uk-text-center">'+msg.datos[i].idtblordencompra+
-                  '</td><td class="uk-text-center">'+fchordencompra+
-                  '</td><td class="uk-text-center">'+fchagendado+
-                  '</td><td class="uk-text-center"><span class="uk-badge uk-badge-warning">Por Entregar</span></td></tr>');
+                  '</td><td class="uk-text-center">'+fchagendado+ '</td></tr>');
+                $("#tbl_ordenes").trigger('updateAll', [true]);//actualiza tabla
               }
+
+            
             }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+
       });
     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
 }
-
 //funcion para calcular el total de la orden y colocarlo en la tabla
 function totalCompra(idtblordencompra,x){
    var totalproveedor =0;
@@ -5026,7 +5080,8 @@ function totalCompra(idtblordencompra,x){
           console.log("TOTAL"+totalproveedor); 
         });
 
-      $('#totaltabla'+x).text(totalproveedor);  
+      $('#totaltabla'+x).text(totalproveedor);
+      $("#tbl_ordeneshistorial").trigger('updateAll', [true]);  
     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
 
@@ -5050,14 +5105,14 @@ function totalCompra(idtblordencompra,x){
         totalproveedor = totalproveedor + subtotalcomplem;
           console.log("TOTAL"+totalproveedor); 
         });
-          $('#totaltabla'+x).text(totalproveedor);   
+          $('#totaltabla'+x).text(totalproveedor); 
+           $("#tbl_ordeneshistorial").trigger('updateAll', [true]);   
           }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
         
         }
     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
 }
-
 //Funcion para llenar el pop con los detalles de la orden seleccionada
 function datosDetalleOrden(idtblordencompra,idTabla){
   
@@ -5249,11 +5304,53 @@ function datosDetalleOrden(idtblordencompra,idTabla){
   if(idTabla==tabla_OrdenesPendiente){
   console.log("TABLA ORDENES PENDIENTE");
   $("#marcarorden").append('<button class="md-btn md-bg-red-A700 md-color-deep-purple-50 md-btn-block" data-uk-modal="{target:'+"'#popupmodif_marcarorden'"+', bgclose:false}" onclick="modificarStatus('+idtblordencompra+')">MODIFICAR STATUS DE ENTREGA</button>');
+
+
+  $.ajax({//se obtiene datos del producto
+    method: "POST",  
+    dataType: "json",  
+    url: "./../../controllers/getTblentregaproducto.php",  
+    data: {solicitadoBy:solicitadoBy,idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
+    .done(function( msg9) {
+      console.log("ENTREGA");
+      console.log(msg9);
+      $.each(msg9.datos, function(i,item3){
+
+
+      //se añade al popupdedetalleorden la visualizacion de los datos de evidencias (imgs)
+      $("#entregaEvidencia").append('<div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1"><div class="md-card"><div class="md-card-toolbar"><h2 class=" uk-text-large uk-text-middle uk-text-bold">Evidencias de Orden Entregada</h2></div><div class="md-card-content large-padding"><div class="uk-grid "></div><div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom"> Información </h4><div class="uk-form-row"><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE877;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg9.datos[i].tblentregaproducto_status+' </span><span class="uk-text-small uk-text-muted">Status del Pedido</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE002;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg9.datos[i].tblentregaproducto_descripcion+' </span><span class="uk-text-small uk-text-muted">Observacion de Entrega</span></div></li></ul></div></div><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Evidencias de Entrega </h4><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2" id="imgcomplem1"><div class="md-card-head uk-text-center uk-position-relative"><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg9.datos[i].tblentregaproducto_srcimgevidencia1+'" /></div></div></div><div class="uk-width-large-1-2" id="imgcomplem2"><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg9.datos[i].tblentregaproducto_srcimgevidencia2+'" /></div></div></div></div></div></div></div></div></div>');
+
+
+      });
+
+
+      if(productosComplem){
+      $.ajax({
+        method: "POST",  
+        dataType: "json",  
+        url: "./../../controllers/getTblentregacomplem.php",  
+        data: {solicitadoBy:solicitadoBy,idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
+       .done(function( msg10) {
+           $.each(msg10.datos, function(i,item){
+             $("#imgcomplem1").append('<div class="md-card-head uk-text-center uk-position-relative" ><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg10.datos[i].tblentregacomplem_srcimgevidencia1+'" /></div></div>');                             
+             $("#imgcomplem2").append('<div class="md-card-head uk-text-center uk-position-relative" ><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg10.datos[i].tblentregacomplem_srcimgevidencia2+'" /></div></div>');
+           });
+        })
+        .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .always(function(){  console.log("always");  });
+     }
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+
+
+
+
+
   }
+
   if(idTabla==tabla_OrdenesHistorial){
   console.log("TABLA ORDENES HISTORIAL");
 
-  $.ajax({//se obtiene la fecha 
+  $.ajax({//se obtiene datos del producto
     method: "POST",  
     dataType: "json",  
     url: "./../../controllers/getTblentregaproducto.php",  
@@ -5266,9 +5363,19 @@ function datosDetalleOrden(idtblordencompra,idTabla){
       fchpagoproveedor= msg9.datos[i].tblentregaproducto_fchpagoproveedor;
       fchpagoproveedor = fchpagoproveedor.split("-");
       fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
+
+
       //se añade al popupdedetalleorden la visualizacion de los datos de evidencias (imgs)
-      $("#entregaEvidencia").append('<div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1"><div class="md-card"><div class="md-card-toolbar"><h2 class=" uk-text-large uk-text-middle uk-text-bold">Evidencias de Orden Entregada</h2></div><div class="md-card-content large-padding"><div class="uk-grid "></div><div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom"> Información </h4><div class="uk-form-row"><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8DF;</i></div><div class="md-list-content"><span class="md-list-heading">'+fchpagoproveedor+' </span><span class="uk-text-small uk-text-muted">Fecha de Deposito </span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE53E;</i></div><div class="md-list-content"><span class="md-list-heading uk-float-left"><span class="uk-badge uk-badge-success">'+msg9.datos[i].tblentregaproducto_status.toString().toUpperCase()+'</span></span><br/><span class="uk-text-small uk-text-muted">Status de Pago</span></div></li></ul></div></div><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Imagenes </h4><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2" id="imgcomplem1"><div class="md-card-head uk-text-center uk-position-relative"><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg9.datos[i].tblentregaproducto_srcimgevidencia1+'" /></div></div></div><div class="uk-width-large-1-2" id="imgcomplem2"><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg9.datos[i].tblentregaproducto_srcimgevidencia2+'" /></div></div></div></div></div></div></div></div></div>');
+      $("#entregaEvidencia").append('<div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1"><div class="md-card"><div class="md-card-toolbar"><h2 class=" uk-text-large uk-text-middle uk-text-bold">Evidencias de Orden Entregada</h2></div><div class="md-card-content large-padding"><div class="uk-grid "></div><div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom"> Información </h4><div class="uk-form-row"><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE877;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg9.datos[i].tblentregaproducto_status+' </span><span class="uk-text-small uk-text-muted">Status del Pedido</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8DF;</i></div><div class="md-list-content"><span class="md-list-heading">'+fchpagoproveedor+' </span><span class="uk-text-small uk-text-muted">Fecha de Deposito </span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE002;</i></div><div class="md-list-content"><span class="md-list-heading uk-float-left" id="statusdeposito"></span><br/><span class="uk-text-small uk-text-muted">Status de Deposito</span></div></li></ul></div></div><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Evidencias de Entrega </h4><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2" id="imgcomplem1"><div class="md-card-head uk-text-center uk-position-relative"><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg9.datos[i].tblentregaproducto_srcimgevidencia1+'" /></div></div></div><div class="uk-width-large-1-2" id="imgcomplem2"><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg9.datos[i].tblentregaproducto_srcimgevidencia2+'" /></div></div></div></div></div></div></div></div></div>');
+
+      if(msg9.datos[i].tblentregaproducto_statusdeposito!="PENDIENTE"){
+        $('#statusdeposito').append('<span class="uk-badge uk-badge-success">'+msg9.datos[i].tblentregaproducto_statusdeposito+'</span>');
+      }else {$('#statusdeposito').append('<span class="uk-badge uk-badge-warning">'+msg9.datos[i].tblentregaproducto_statusdeposito+'</span>');}
+
+
       });
+
+
       if(productosComplem){
       $.ajax({
         method: "POST",  
@@ -5292,12 +5399,10 @@ function datosDetalleOrden(idtblordencompra,idTabla){
 //funcion para marcar el status de la orden (BOTON)
 function botonMarcarStatus(idtblordencompra){
   
-  $('#img1Product').empty();
-  $('#img2Product').val('');
-  $('#img1Complem').val('');
-  $('#img2Complem').val('');
   $('#formevidenciaProductos')[0].reset();
-  $("#entrega_complementariosform").hide();
+  $("#entrega_complementariosform").hide();  
+  $("#li_descripcionPendiente").hide();
+
 
  totalProductos=0;
  totalProductosComplem=0;
@@ -5361,6 +5466,7 @@ function marcarordenEntregada(){
   var boleanVerificacionProductos= false;
   var boleanVerificacionComplementarios= false;
   var boleanStatus= false;
+  var boleanDescripcioStatus=false;
 
   //obtiene los datos que se requieren
   idorden= document.getElementById("entrega_idorden").innerHTML;
@@ -5371,6 +5477,7 @@ function marcarordenEntregada(){
   status = $("#entrega_statusentrega").val();
   fchentrega = document.getElementById("entrega_fchentrega").innerHTML;
   fchpagoproveedor= (sumaFecha(15,fchentrega)).toString();
+  statusdeposito="PENDIENTE";
 
   fchentrega = fchentrega.split("/");
   fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
@@ -5379,6 +5486,17 @@ function marcarordenEntregada(){
 
   //Se verifica que contenga algo status 
   if(status!="null"){boleanStatus=true;}else {boleanStatus=false;}
+
+  //se verifica la descripcion si esta activa 
+  if($("#li_descripcionPendiente").is(':visible')){
+     descripcionPen = $("#descripcionpendiente").val();
+    if(descripcionPen!="" && !(/^\s+$/.test(descripcionPen)) ){
+      boleanDescripcioStatus=true; 
+    }else {boleanStatus=false;}
+  }else{
+    boleanDescripcioStatus=true;
+    descripcionPen="";
+  }
   
   //se verifica si el pop_marcarcomoentregado tiene el formulario de entrega para productos complementarios 
   if($("#entrega_complementariosform").is(':visible')){boleanComplementarios=true; }else{boleanComplementarios=false;}
@@ -5398,7 +5516,8 @@ function marcarordenEntregada(){
 
 
  //si cumple la validacion 
- if(boleanVerificacionComplementarios && boleanVerificacionProductos && boleanStatus){
+ if(boleanVerificacionComplementarios && boleanVerificacionProductos && boleanStatus && boleanDescripcioStatus){
+
 
   srcimg1=$("#img1Productv1").val().replace(/C:\\fakepath\\/i, '');
   srcimg1='Evid1_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimg1;
@@ -5428,10 +5547,11 @@ function marcarordenEntregada(){
     $.ajax({ //registrar de tblentregaproduct 
       method: "POST",  
       url: "./../../controllers/setTblentregaproducto.php",  
-      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status, descripcion:descripcionPen,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
       .done(function( datos ){
         console.log(datos);
-        if(parseInt(datos.success)==1){// si se guarda con exito se guardan las imagenes
+        console.log(datos.success);
+        if(datos.success==1){// si se guarda con exito se guardan las imagenes
             $.ajax({ method: "POST", url: './phps/uploadImgEvidencias.php', data: formData,contentType: false,processData: false,})
             .done(function(datos){//img guardadas con exito
                 if(datos=="success"){
@@ -5443,6 +5563,7 @@ function marcarordenEntregada(){
                          //si el registro de complementarios es exitoso entonces guarda las imagenes
                          $.ajax({ method: "POST", url: './phps/uploadImgEvidenciasComplementarios.php', data: formDataC ,contentType: false,processData: false,})
                           .done(function(datos){
+
                             if(datos=="success"){
                               UIkit.modal("#popup_marcarorden").hide();
                               UIkit.modal("#detalleOrdenPendiente").hide();
@@ -5547,6 +5668,7 @@ $.ajax({//se obtiene la fecha
           $("#entregamodif_idorden").text(item.tblentregaproducto_idtblordencompra);    
           $("#entregamodif_noproductpedido").text(item.tblentregaproducto_numproductpedidos);
           $("#entregamodif_statusentrega").val(item.tblentregaproducto_status);
+
       });
          
       }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
@@ -5587,11 +5709,13 @@ function marcarordenEntregadaModif(){
   status = $("#entregamodif_statusentrega").val();
   fchentrega = document.getElementById("entregamodif_fchentrega").innerHTML;
   fchpagoproveedor= (sumaFecha(15,fchentrega)).toString();
+  statusdeposito ="PENDIENTE";
 
   fchentrega = fchentrega.split("/");
   fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
   fchpagoproveedor = fchpagoproveedor.split("/");
   fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
+
 
   //Se verifica que contenga algo status 
   if(status!="null"){boleanStatus=true;}else {boleanStatus=false;}
@@ -5642,7 +5766,7 @@ function marcarordenEntregadaModif(){
     $.ajax({ //registrar de tblentregaproduct 
       method: "POST",  
       url: "./../../controllers/setUpdateTblentregaproducto.php",  
-      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
       .done(function(datos){
         if(parseInt(datos.success)==1){
         // si se guarda con exito se guardan las imagenes
@@ -5694,7 +5818,7 @@ function marcarordenEntregadaModif(){
                           //si no se guarda correctamente el registro de complementarios elimina el registro de productos
                         $.ajax({method: "POST", dataType: "json", 
                           url: "./../../controllers/setUpdateTblentregaproducto.php",
-                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                           .done(function(msg7) {   
                            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                               
@@ -5720,7 +5844,7 @@ function marcarordenEntregadaModif(){
                 }else{//sin exito el guardar las fotos, elimina el registro de tblentregaproducet
                    $.ajax({method: "POST", dataType: "json", 
                     url: "./../../controllers/setUpdateTblentregaproducto.php",
-                    data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                    data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                     .done(function(msg7) {   
                      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                     UIkit.modal.alert(datos);
@@ -5734,6 +5858,20 @@ function marcarordenEntregadaModif(){
       }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
 
  }else UIkit.modal.alert('Verifique la Información o Complete los campos requeridos'); 
+
+}
+
+
+function pendienteDesc(){
+
+  status = "PENDIENTE";
+
+  statuspendiente = $("#entrega_statusentrega").val();
+
+  if(statuspendiente == status){
+    $("#li_descripcionPendiente").show();
+  }else {$("#li_descripcionPendiente").hide();}
+
 
 }
 
@@ -6185,7 +6323,13 @@ $.ajax({
  <!-- fullcalendar -->
  <script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
  <script src='bower_components/fullcalendar/dist/lang/es.js'></script>
-
+<!-- tablesorter -->
+    <script src="bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
+    <script src="bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
+    <script src="bower_components/tablesorter/dist/js/widgets/widget-alignChar.min.js"></script>
+    <script src="bower_components/tablesorter/dist/js/widgets/widget-columnSelector.min.js"></script>
+    <script src="bower_components/tablesorter/dist/js/widgets/widget-print.min.js"></script>
+    <script src="bower_components/tablesorter/dist/js/extras/jquery.tablesorter.pager.min.js"></script>
 
  <!--  calendar functions 
  <script src="./assets/js/pages/plugins_fullcalendar.js"></script>-->
@@ -6247,15 +6391,6 @@ $.ajax({
   <script src="assets/js/pages/kendoui.min.js"></script>
   <!--page_contact_list-->
   <script src="assets/js/pages/page_contact_list.min.js"></script>
-  <!-- parsley (validation) -->
-    <script>
-    // load parsley config (altair_admin_common.js)
-    altair_forms.parsley_validation_config();
-    </script>
-    <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
-
-    <!--  forms validation functions -->
-    <script src="assets/js/pages/forms_validation.min.js"></script>
   <!--
 <script src="assets/js/pages/dashboard.min.js"></script>
   -->
