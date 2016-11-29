@@ -5658,7 +5658,8 @@ function marcarordenEntregada(){
 
 
     $.ajax({ //registrar de tblentregaproduct 
-      method: "POST",  
+      method: "POST",
+      dataType: "json",  
       url: "./../../controllers/setTblentregaproducto.php",  
       data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status, descripcion:descripcionPen,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
       .done(function( datos ){
