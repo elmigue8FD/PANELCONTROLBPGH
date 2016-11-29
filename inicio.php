@@ -6132,7 +6132,7 @@ function detalleOrdenCotizador(idcarritocotizador,x){
        $("#detallecotizador_email"+x).append('<span class="md-list-heading">'+ msg.datos[i].tblordencotizador_email+'</span><span class="uk-text-small uk-text-muted">Email</span>');
        $("#detallecotizador_telef"+x).append('<span class="md-list-heading">'+msg.datos[i].tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Teléfono</span>');
 
-       if(msg.datos[i].tblcarritoproductcotizador_srcimg!=null){
+       if(msg.datos[i].tblcarritoproductcotizador_srcimg!=null){//tiene img enviada o no 
         $("#imgOrdenCotizador"+x).append('<li><img src="./../assests_general/productos/imgcotizadornuevo/'+msg.datos[i].tblcarritoproductcotizador_srcimg+'" alt="" /></li><span style="display:none" id="cotizacion_srimg'+i+x+'">'+msg.datos[i].tblcarritoproductcotizador_srcimg+'</span>');
        }
        
