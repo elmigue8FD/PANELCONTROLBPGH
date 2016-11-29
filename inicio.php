@@ -6131,7 +6131,11 @@ function detalleOrdenCotizador(idcarritocotizador,x){
        $("#detallecotizador_nombrecliente"+x).append('<span class="md-list-heading">'+msg.datos[i].tblordencotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Completo</span>');
        $("#detallecotizador_email"+x).append('<span class="md-list-heading">'+ msg.datos[i].tblordencotizador_email+'</span><span class="uk-text-small uk-text-muted">Email</span>');
        $("#detallecotizador_telef"+x).append('<span class="md-list-heading">'+msg.datos[i].tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Teléfono</span>');
-       $("#imgOrdenCotizador"+x).append('<li><img src="assets/img/ecommerce/prt2.png" alt="" /></li><li><img src="assets/img/imgcotizador/'+msg.datos[i].tblcarritoproductcotizador_srcimg+'" alt="" /></li><span style="display:none" id="cotizacion_srimg'+i+x+'">'+msg.datos[i].tblcarritoproductcotizador_srcimg+'</span>');
+
+       if(msg.datos[i].tblcarritoproductcotizador_srcimg!=null){
+        $("#imgOrdenCotizador"+x).append('<li><img src="./../assests_general/productos/imgcotizadornuevo/'+msg.datos[i].tblcarritoproductcotizador_srcimg+'" alt="" /></li><span style="display:none" id="cotizacion_srimg'+i+x+'">'+msg.datos[i].tblcarritoproductcotizador_srcimg+'</span>');
+       }
+       
        $("#detallecotizador_direccion"+x).append('<span class="md-list-heading" id="dirCompletaCotizacion'+x+'">'+msg.datos[i].tblordencotizador_pais+", "+msg.datos[i].tblordencotizador_ciudad+", "+msg.datos[i].tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Dirección de Evento</span>');
        $("#cotizacion_botondeubicacion"+x).append('<button class="md-btn md-btn-primary md-btn-block md-btn-wave-light" type="button" onclick="mapaGeo('+x+','+idmapaCotizaciones+')" data-uk-modal="{target:'+"'#mapa'"+',modal: false,bgclose:false}"> Ubicacion de Entrega en Mapa</button>');
 
