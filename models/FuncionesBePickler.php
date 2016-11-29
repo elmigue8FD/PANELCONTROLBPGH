@@ -5003,9 +5003,9 @@ class FuncionesBePickler{
 ///// FUNCIONES REFRENTE A TABLA tblcarritoproductcotizador (donde se guardan las cotizaciones de los productos del cotizador) 
     
     /*Insertar un registro en tblcarritoproductcotizador*/
-	 public static function setTblcarritoproductcotizador($numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$emailcreo){
+	 public static function setTblcarritoproductcotizador($numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$costotienda,$costodomicilio,$emailcreo){
         
-        $insert ="INSERT INTO tblcarritoproductcotizador (tblcarritoproductcotizador_numpersonas,tblcarritoproductcotizador_fchentrega,tblcarritoproductcotizador_srcimg,tblordencotizador_idtblordencotizador,tblproductcotizador_idtblproductcotizador,tblcarritoproductcotizador_fchmodificacion,tblcarritoproductcotizador_fchcreacion,tblcarritoproductcotizador_emailusuacreo,tblcarritoproductcotizador_emailusuamodifico) VALUES (?,?,?,?,?,NOW(),NOW(),?,?)"; 
+        $insert ="INSERT INTO tblcarritoproductcotizador (tblcarritoproductcotizador_numpersonas,tblcarritoproductcotizador_fchentrega,tblcarritoproductcotizador_srcimg,tblordencotizador_idtblordencotizador,tblproductcotizador_idtblproductcotizador,tblcarritoproductcotizador_costotienda,tblcarritoproductcotizador_costodomicilio,tblcarritoproductcotizador_fchmodificacion,tblcarritoproductcotizador_fchcreacion,tblcarritoproductcotizador_emailusuacreo,tblcarritoproductcotizador_emailusuamodifico) VALUES (?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -5014,8 +5014,10 @@ class FuncionesBePickler{
 			$resultado->bindParam(3,$srcimgproducto,PDO::PARAM_STR);
 			$resultado->bindParam(4,$idtblordencotizador,PDO::PARAM_INT);
 			$resultado->bindParam(5,$idtblproductcotizador,PDO::PARAM_INT);
-			$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
-			$resultado->bindParam(7,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(6,$costotienda,PDO::PARAM_STR);
+			$resultado->bindParam(7,$costodomicilio,PDO::PARAM_STR);
+			$resultado->bindParam(8,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(9,$emailcreo,PDO::PARAM_STR);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
@@ -5040,9 +5042,9 @@ class FuncionesBePickler{
     }
     
      /*Actualiza un registro en tblcarritoproductcotizador*/
-	 public static function setUpdateTblcarritoproductcotizador($idtblcarritoproductcotizador,$numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$emailmodifico){
+	 public static function setUpdateTblcarritoproductcotizador($idtblcarritoproductcotizador,$numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$costotienda,$costodomicilio,$emailmodifico){
         
-        $update ="UPDATE tblcarritoproductcotizador SET tblcarritoproductcotizador_numpersonas = ? , tblcarritoproductcotizador_fchentrega = ?,tblcarritoproductcotizador_srcimg = ?,tblordencotizador_idtblordencotizador= ? ,tblproductcotizador_idtblproductcotizador = ? ,tblcarritoproductcotizador_fchmodificacion= NOW(),tblcarritoproductcotizador_emailusuamodifico = ? WHERE idtblcarritoproductcotizador = ?"; 
+        $update ="UPDATE tblcarritoproductcotizador SET tblcarritoproductcotizador_numpersonas = ? , tblcarritoproductcotizador_fchentrega = ?,tblcarritoproductcotizador_srcimg = ?,tblordencotizador_idtblordencotizador= ? ,tblproductcotizador_idtblproductcotizador = ?,tblcarritoproductcotizador_costotienda = ?,tblcarritoproductcotizador_costodomicilio = ?,tblcarritoproductcotizador_fchmodificacion= NOW(),tblcarritoproductcotizador_emailusuamodifico = ? WHERE idtblcarritoproductcotizador = ?"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
@@ -5051,8 +5053,10 @@ class FuncionesBePickler{
 			$resultado->bindParam(3,$srcimgproducto,PDO::PARAM_STR);
 			$resultado->bindParam(4,$idtblordencotizador,PDO::PARAM_INT);
 			$resultado->bindParam(5,$idtblproductcotizador,PDO::PARAM_INT);
-			$resultado->bindParam(6,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(7,$idtblcarritoproductcotizador,PDO::PARAM_INT);
+			$resultado->bindParam(6,$costotienda,PDO::PARAM_STR);
+			$resultado->bindParam(7,$costodomicilio,PDO::PARAM_STR);			
+			$resultado->bindParam(8,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(9,$idtblcarritoproductcotizador,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
