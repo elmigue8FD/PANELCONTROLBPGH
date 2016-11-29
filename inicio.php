@@ -49,9 +49,9 @@
       </div><!-- end SubMenu de INDEX -->
       <div>
         <div id="tabs_1_content" class="uk-switcher">
-         <div id="contenido_Inicio"><!-- Contenido de Pestaña Inicio -->
+         <div id="contenido_Inicio"><!-- Contenido de Pesta? Inicio -->
           <!-- indicadores -->
-          <div class="uk-grid uk-grid-width-large-1-3 uk-grid-width-medium-1-2 uk-grid-medium " data-uk-grid-margin>
+          <div class="uk-grid uk-grid-width-large-1-4 uk-grid-width-medium-1-2 uk-grid-medium " data-uk-grid-margin>
             <div>
                 <div class="md-card">
                  <div class="md-card-content">
@@ -82,7 +82,7 @@
                   </div>
                  </div>
             </div>
-            <!--<div>
+            <div>
                  <div class="md-card">
                   <div class="md-card-content">
                    <div class="md-list-content-horizontal">
@@ -91,7 +91,7 @@
                    </div>
                   </div>
                  </div>
-            </div>-->
+            </div>
           </div>
           <div class="md-card"><br/>
            <div class="md-card-content">
@@ -99,8 +99,8 @@
             <div><label><i class="uk-icon-hand-o-up"></i>&nbsp;Clic para visualizar Calendario  </label></div>
            </div>
           </div>           
-         </div><!--  end Contenido de Pestaña Inicio -->
-         <div id="contenido_Ordenes"><!-- Contenido de Pestaña Ordenes -->
+         </div><!--  end Contenido de Pesta? Inicio -->
+         <div id="contenido_Ordenes"><!-- Contenido de Pesta? Ordenes -->
           <h3 class="heading_b uk-margin-bottom"> Ordenes Por Entregar </h3>
           <div class="md-card uk-margin-medium-bottom" >
             <div class="md-card-content">
@@ -384,11 +384,9 @@
                <li>
                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                  <div class="uk-width-large-1-2">
-                  <label id="evidencia1Producto">1° Evidencia </label>
                   <input type="file" name="img1Productv1" id="img1Productv1" class="dropify" data-show-loader="false"  />
                  </div>
                  <div class="uk-width-large-1-2">
-                  <label id="evidencia2Producto">2° Evidencia </label>
                   <input type="file" name="img2Productv1" id="img2Productv1" value="" class="dropify" />   
                  </div>
                 </div>  
@@ -423,11 +421,9 @@
                 <li>
                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                  <div class="uk-width-large-1-2">
-                 <label id="evidencia1Complementario">1° Evidencia</label>
                   <input type="file" name="img1Complemv1" id="img1Complemv1" class="dropify"/>
                  </div>
                  <div class="uk-width-large-1-2">
-                 <label id="evidencia2Complementario">2° Evidencia </label>
                   <input type="file" name="img2Complemv1" id="img2Complemv1" class="dropify"/>  
                  </div>
                 </li>
@@ -500,11 +496,9 @@
                <li>
                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                  <div class="uk-width-large-1-2">
-                 <label id="evidencia1Productov2">1° Evidencia </label>
                   <input type="file" name="img1Productv2" id="img1Productv2"  value="" class="dropify" />
                  </div>
                  <div class="uk-width-large-1-2">
-                  <label id="evidencia2Productov2">2° Evidencia </label>
                   <input type="file" name="img2Productv2" id="img2Productv2" value="" class="dropify" />   
                  </div>
                 </div>  
@@ -536,11 +530,9 @@
                 <li>
                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                  <div class="uk-width-large-1-2">
-                 <label id="evidencia1Complementariov2">1° Evidencia </label>
                   <input type="file" name="img1Complemv2" id="img1Complemv2" class="dropify"/>
                  </div>
                  <div class="uk-width-large-1-2">
-                 <label id="evidencia2Complementariov2">2° Evidencia </label>
                   <input type="file" name="img2Complemv2" id="img2Complemv2" class="dropify"/>  
                  </div>
                 </li>
@@ -554,10 +546,10 @@
            </div>
           </div>
          </div>
-        </div><!-- end Contenido de Pestaña Ordenes -->
+        </div><!-- end Contenido de Pesta? Ordenes -->
 
         <!--COMIENZA MIGUEL HTML -->
-        <div id="contenido_Productos"><!-- Contenido de Pestaña Productos -->
+        <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
           <!-- Contenido de Iitem de Producto en Linea -->
             <div id="productoslinea">
               <h3 class="heading_b uk-margin-bottom"> Productos en Línea </h3>
@@ -600,7 +592,7 @@
                   </div>
                   <div class="md-card">
                     <div class="md-card-content">
-                      <form action="#" class="uk-form-stacked" id="altaproducto" name="altaproducto" novalidate>
+                      <form action="./uploadImgProductoLinea.php" class="uk-form-stacked" id="altaproducto" name="altaproducto" novalidate>
                         <div class="md-card-content large-padding">
                           <div class="uk-grid uk-grid-divider uk-grid-collapse form_section form_section_separator" data-uk-grid-margin>
                             
@@ -838,7 +830,7 @@
               </div>
               <!--/////////////////////////////////// -->
               <!--/////////////////////////////////// -->              
-              <!-- PopUp para modificación de Datos Especificos de un Producto -->
+              <!-- PopUp para modificaci? de Datos Especificos de un Producto -->
               <div class="uk-modal" id="popup_modificarproductolinea">
                 <div class="uk-modal-dialog ">
                   <button type="button" class="uk-modal-close uk-close">                    
@@ -966,7 +958,7 @@
                     </div>
                   </form>
                   <div class="uk-modal-footer uk-text-right">
-                    <!-- Boton  para abrir el PopUp de modificación de Datos Generales de un Producto -->
+                    <!-- Boton  para abrir el PopUp de modificaci? de Datos Generales de un Producto -->
                     <button type="button" class="md-btn md-btn-flat md-btn-small" data-uk-modal="{target:'#popup_modificarproductolineageneral'}">
                       Modif. Datos General
                     </button>
@@ -980,7 +972,7 @@
               </div>
               <!--</div>-->
               <!--end PopUp de datos especificos-->              
-              <!-- PopUp para modificación de Datos generales de un Producto -->
+              <!-- PopUp para modificaci? de Datos generales de un Producto -->
               <!--<div class="uk-modal" id="popup_productgeneral">-->
               <div class="uk-modal" id="popup_modificarproductolineageneral">
                 <div class="uk-modal-dialog uk-modal-dialog-large">
@@ -1103,14 +1095,14 @@
                     </div>
                     <div class="uk-modal-footer uk-text-right">
                         <!-- Boton para eliminar un Producto en su totalidad-->
-                      <button type="button" class="md-btn md-btn-flat" onclick="UIkit.modal.confirm('¿Elimianr el Producto?', function(){ UIkit.modal.alert('Eliminado!'); });">Eliminar</button>
+                      <button type="button" class="md-btn md-btn-flat" onclick="UIkit.modal.confirm('?Elimianr el Producto?', function(){ UIkit.modal.alert('Eliminado!'); });">Eliminar</button>
                       <!-- Boton para actualizar las modificaciones de Datos Generales de un Producto -->
                       <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?', function(){ validarFormulario('form_modificar_productos_linea_general') });">Actualizar </button>
                     </div>
                   </form>
                 </div>
               </div>
-              <!-- PopUp para modificación de Datos generales de un Producto -->
+              <!-- PopUp para modificaci? de Datos generales de un Producto -->
             </div><!-- end Contenido de Item de Producto en Linea -->
             <!--CONTE -->
             <!--Linea divisora-->
@@ -1291,7 +1283,7 @@
               </div>              
               <!--/////////////////////////////////// -->
               <!--/////////////////////////////////// -->              
-              <!-- PopUp para modificación de Datos Especificos de un Producto -->
+              <!-- PopUp para modificaci? de Datos Especificos de un Producto -->
               <div class="uk-modal" id="popup_modificarproductocotizador">
                 <div class="uk-modal-dialog uk-modal-dialog-large">
                   <button type="button" class="uk-modal-close uk-close"></button>
@@ -1416,7 +1408,7 @@
                                                   Fotografía 2
                                               </h5>
                                               <input type="file" id="modificar_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
-                                              <input type="hidden" id="modificar_srcimg2_producto_lineaBD" name="srcimg2_productoBD" />
+                                              <input type="hidden" id="modificar_srcimg2_producto_cotizadorBD" name="srcimg2_productoBD" />
                                             </div>
                                           </div>
                                         </div>
@@ -1640,7 +1632,7 @@
               </div>              
               <!--/////////////////////////////////// -->
               <!--/////////////////////////////////// -->              
-              <!-- PopUp para modificación de Datos Especificos de un Producto Complemetario -->
+              <!-- PopUp para modificaci? de Datos Especificos de un Producto Complemetario -->
               <div class="uk-modal" id="popup_modificarproductoComplementario">
                 <div class="uk-modal-dialog uk-modal-dialog-large">
                   <button type="button" class="uk-modal-close uk-close"></button>
@@ -1699,7 +1691,7 @@
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
                                       <label> Precio <span class="req"> * </span> </label> <br/>
-                                      <input type="text" name="modificar_precio_producto_Complementario" id="modificar_precio_producto_Complementario" class="md-input" />
+                                      <input type="number" min="0" name="modificar_precio_producto_Complementario" id="modificar_precio_producto_Complementario" class="md-input" />
                                     </div> 
                                   </div>
                                   <br/>
@@ -1768,7 +1760,7 @@
             <!-- end Contenido de Item de Producto en Cotizador -->
         </div>
         <!-- FIN MIGUEL HTML -->
-        <div id="contenido_Cotizador"><!-- Contenido de Pestaña Cotizador -->
+        <div id="contenido_Cotizador"><!-- Contenido de Pesta? Cotizador -->
           <h3 class="heading_b uk-margin-bottom"> Cotizaciones De Productos  </h3>
           <div class="md-card uk-margin-medium-bottom">
            <div class="md-card-content">
@@ -1776,7 +1768,7 @@
               <table class="uk-table uk-table-nowrap uk-table-hover" id="tblordenespendiente">
                <thead>
                  <tr >
-                   <th class="uk-width-1-10 uk-text-center">No. Orden Cotización</th>
+                   <th class="uk-width-1-10 uk-text-center">No. Orden Cotizaci?</th>
                    <th class="uk-width-2-10 uk-text-center">Nombre Producto</th>
                    <th class="uk-width-1-10 uk-text-center">Fecha de Evento</th>
                    <th class="uk-width-1-10 uk-text-center">Tipo de Evento</th>
@@ -1798,7 +1790,7 @@
            <table class="uk-table uk-table-nowrap uk-table-hover">
             <thead>
              <tr>
-              <th class="uk-width-1-10 uk-text-center">No. Orden Cotización</th>
+              <th class="uk-width-1-10 uk-text-center">No. Orden Cotizaci?</th>
               <th class="uk-width-1-10 uk-text-center">Fecha de Entrega</th>
               <th class="uk-width-1-10 uk-text-center">Tipo de Evento</th>
               <th class="uk-width-1-10 uk-text-center">$Costo S. Tienda</th>
@@ -2738,7 +2730,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('actualizarProductoGeneral');
-        //registrarProductoCotizador();      
+        registrarProductoCotizador();      
       }
       else
       {
@@ -3080,7 +3072,7 @@ $( window ).ready(function()
         arregloCategoriaProductoId.push(msg.datos[i].idtblcategproduct);
         arregloCategoriaProductoNombre.push(msg.datos[i].tblcategproduct_nombre);
       });  })
-      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblcategproductAct fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblcategproductAct fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/  });
     //mostrar clasificacion disponibles
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblclasifproductAct.php",  data: {solicitadoBy:"WEB"}  })
@@ -3090,7 +3082,7 @@ $( window ).ready(function()
         arregloClasificacionProductoNombre.push(msg.datos[i].tblclasifproduct_nombre);
       });
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblclasifproductAct fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblclasifproductAct fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/  });
     // mostar las especific de ingredeinte disponibles
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblespecificingrediente.php",  data: {solicitadoBy:"WEB"}  })
@@ -3101,7 +3093,7 @@ $( window ).ready(function()
           arregloEspecifiIngredientesNombre.push(msg.datos[i].tblespecificingrediente_nombre);  
         });        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblespecificingrediente fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblespecificingrediente fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/  });
       //COTIZADOR
       $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTbleventoAct.php",  data: {solicitadoBy:"WEB"}  })
@@ -3115,7 +3107,7 @@ $( window ).ready(function()
         });
         
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("getAllTbleventoAct fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("getAllTbleventoAct fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/  });
   }
   function mostrarProductos(){
@@ -3250,7 +3242,7 @@ $( window ).ready(function()
               arregloImagenesTodosProducto.push(arregloImagenesUnProducto);
               arregloImagenesUnProducto=[];
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("always");*/ });
             //FIN IMG
 
@@ -3258,7 +3250,7 @@ $( window ).ready(function()
         });
           
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
 
       //PRODUCTOS COTIZADOR
@@ -3347,14 +3339,14 @@ $( window ).ready(function()
                 arregloImagenesUnProductoCotizador=[];
 
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){   });          
           });
           //FIN IMG
           
             
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductcotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductcotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){
           //console.log("getAllTblproductcotizador  always"); 
         });
@@ -3418,7 +3410,7 @@ $( window ).ready(function()
             boton_nuevoproductoComplementario=agregarProductoPlantillaComplementario(); 
             $("#productosComplementarioPlantilla").append(boton_nuevoproductoComplementario);
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductComplementario fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductComplementario fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){
           //console.log("getAllTblproductComplementario  always"); 
         });
@@ -3429,7 +3421,7 @@ $( window ).ready(function()
   function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado){
     nombre = nombre.replace(' ', '_');
     mensajeEliminacion="'Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img name="imagenPortadaProductoLinea'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/linea/" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">Sin Azucar</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img name="imagenPortadaProductoLinea'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/linea/" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tama? : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">Sin Azucar</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
@@ -3448,7 +3440,7 @@ $( window ).ready(function()
     UIkit.modal.confirm('Are you sure?', function(){ UIkit.modal.alert('Confirmed!'); });
   }
   /*
-  genera un cuadro de añadir productos 
+  genera un cuadro de a?dir productos 
    */
   function agregarProductoPlantilla(){
     boton_nuevoproductolinea='<div data-product-name="agregarproductolinea">        <div class="uk-badge md-card ">          <div class="md-card-content uk-border-circle">            <div class="uk-text-center uk-border-circle"> <h3>Agregar un producto nuevo</h3>            <button id="agregar" type="button" class="md-btn md-btn-flat md-btn-small uk-border-circle" data-uk-modal="{target:popup_nuevoproductolinea}">                <label class="menu_icon"><i class="material-icons md-48">&#xE145;</i></label>              </button>            </div>          </div>        </div></div>';
@@ -3506,7 +3498,7 @@ $( window ).ready(function()
     $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleActivar.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,activado:activado,emailusuamodifico:emailUsuarioLogin}  })
       .done(function( msgTblproductDetalle ) {        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
     //FIN AJAX ACTIVAR PRODUCTO
   }
@@ -3522,7 +3514,7 @@ $( window ).ready(function()
     $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleActivar.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProducto,activado:activado,emailusuamodifico:emailUsuarioLogin}  })
       .done(function( msgTblproductDetalle ) {        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
     //FIN AJAX ACTIVAR PRODUCTO
   }
@@ -3532,7 +3524,7 @@ $( window ).ready(function()
     $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleStock.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,stock:stock,emailusuamodifico:emailUsuarioLogin}  })
       .done(function( msgTblproductDetalle ) {        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleStock fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleStock fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
   }
   function registrarProductoLinea(){  
@@ -3661,6 +3653,9 @@ $( window ).ready(function()
                      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproducto:idtblproducto,emailcreo:emailcreo}  })
                       .done(function( msgTblProductoImg3 )
                       {
+                        alert('SUBIR LOS ARCHIVOS AL SERVIDOR');
+                        $('#altaproducto').submit()
+                        /*
                         //console.log('msgTblProductoImg3.datos::'+msgTblProductoImg3.datos);
                         srcimg3=$('#alta_srcimg3_producto_lineaBD').val(msgTblProductoImg3.datos);
                         //mandamos el fom para subir las imagenes al servidor
@@ -3680,18 +3675,19 @@ $( window ).ready(function()
                             UIkit.modal("#popup_nuevoproductolinea").hide();
                             UIkit.modal.alert('Producto Registrado');
                           })
-                          .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-                          .always(function(){  /*console.log("always");*/ });                         
+                          .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+                          .always(function(){   });
+                          */
                       })
-                      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                       .always(function(){  /*console.log("always");*/ }); 
                   })
-                  .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                  .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){  /*console.log("always");*/ });
                 // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo  
                 
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg IMG fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg IMG fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
               .always(function(){  /*console.log("always");*/ });
            
             //producto detalles
@@ -3699,15 +3695,15 @@ $( window ).ready(function()
               .done(function( msgTblProductoDetalle )
               {
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductDetalle fail detalle jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductDetalle fail detalle jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){  /*console.log("always");*/ });
             /////////////////////////////////////////////////////////////////////
           })
-          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoId fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoId fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
           .always(function(){  /*console.log("always");*/ });
         /////////////////////////////////////////////////////////////////////////
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setTblproducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
       
   }
@@ -3716,6 +3712,7 @@ $( window ).ready(function()
     /*
     VARIABLES
      */
+    idtblproductcotizador='';
     //tblproducto
     nombreproduct='';
     descripcion='';
@@ -3767,9 +3764,11 @@ $( window ).ready(function()
     
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotizador.php",  data: {solicitadoBy:"WEB",nombreproductcotizador:nombreproduct,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalif, diaselaboracion:diaselaboracion, activado:activado, idtblevento:idtblevento, idtblproveedor:idtblproveedor, emailcreo:emailcreo}  })
       .done(function( msgTblProducto ) {
+        //alert('msgTblProducto::'+msgTblProducto.success);
         /////////////////////////////////////////////////////////////////////////
         $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoCotizadorId.php",  data: {solicitadoBy:"WEB",nombreproductcotizador:nombreproduct,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalif, diaselaboracion:diaselaboracion, activado:activado, idtblevento:idtblevento, idtblproveedor:idtblproveedor, emailcreo:emailcreo}  })
           .done(function( msgTblProductoId ) {
+            //alert('msgTblProductoId.datos[0].idtblproductcotizador::'+msgTblProductoId.datos[0].idtblproductcotizador+' otro::'+msgTblProductoId.datos.idtblproductcotizador);
             idtblproductcotizador=msgTblProductoId.datos[0].idtblproductcotizador;
             /////////////////////////////////////////////////////////////////////]
             //imagenes
@@ -3811,36 +3810,36 @@ $( window ).ready(function()
 
 
                           })
-                          .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                          .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                           .always(function(){ 
                            //console.log("always");
                             });                         
                       })
-                      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                       .always(function(){ 
                       //console.log("always");
                     }); 
                   })
-                  .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                  .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){  
                   console.log("always");
                    });
                 // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo  
                 
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
               .always(function(){  
               //console.log("always");
                });
             /////////////////////////////////////////////////////////////////////
           })
-          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoCotizadorId fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoCotizadorId fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
           .always(function(){  
           //console.log("always");
         });
         /////////////////////////////////////////////////////////////////////////
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  
         //console.log("always");
        });
@@ -3949,28 +3948,28 @@ $( window ).ready(function()
                       UIkit.modal.alert('Producto Complementario Registrado');
                       cargarValoresDefault();
                     })
-                    .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoComplementario fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                    .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoComplementario fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                     .always(function(){ 
                      //console.log("always");
                     });
                     
                   // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo  
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
               .always(function(){  
               //console.log("always");
                });
               
             /////////////////////////////////////////////////////////////////////
           })
-          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoComplementarioId fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoComplementarioId fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
           .always(function(){  
           //console.log("always");
         });
         /////////////////////////////////////////////////////////////////////////
         
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcomplem fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  
         //console.log("always");
        });
@@ -4063,7 +4062,7 @@ $( window ).ready(function()
       else
         $("#modificar_categoria_producto_linea_general").append('<option value="'+item+'"selected>'+arregloCategoriaProductoNombre[i]+'</option>');
     });
-    //CREAMOS LAS OPCIONES PARA CLASIFICACIÓN Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
+    //CREAMOS LAS OPCIONES PARA CLASIFICACI? Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
     $.each(arregloClasificacionProductoId, function(i,item){
       if(arregloInfoTodosProducto[idexArreglo][17]==arregloClasificacionProductoId[i])
         $("#modificar_clasificacion_producto_linea_general").append('<option value="'+item+'"selected>'+arregloClasificacionProductoNombre[i]+'</option>');
@@ -4217,6 +4216,7 @@ $( window ).ready(function()
 
     //obentenso el inptup de la iamgen
     srcimg1=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
+    nuevaImagen=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
     //alert('srcimg1::'+srcimg1);   
     //.replace(/C:\\fakepath\\/i, ''); 
     //si no esta vacio le asignamos la el nombre de la nueva imagen, si lo esta solo asignamos  el mismo nombre que tenia anteriormente
@@ -4227,13 +4227,9 @@ $( window ).ready(function()
       //borramos la actual file de la fotografia del servidor
       $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoComplementario.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:srcimgActual} })
         .done(function( datos ){
-          $('#productosComplementarioPlantilla').html("");
-          $('#productoscotizadorPlantilla').html("");
-          $('#productoslineaPlantilla').html(""); 
-          //cargarValoresDefault();
           console.log('setDeleteFileImgProductoComplementario datos::'+datos.datos);
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  
         //console.log("setDeleteFileImgProductoCotizador  always");
          });
@@ -4249,9 +4245,10 @@ $( window ).ready(function()
           $('#productosComplementarioPlantilla').html("");
           $('#productoscotizadorPlantilla').html("");
           $('#productoslineaPlantilla').html("");
-          //cargarValoresDefault();
+          //alert('cargarValoresDefault con iamgen');
+          cargarValoresDefault();
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  
         //console.log("always");
          });
@@ -4263,7 +4260,7 @@ $( window ).ready(function()
     console.log('datos para actualizar:: idtblproductcomplem'+idtblproductcomplem+' nombre::'+nombre+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' preciobp::'+preciobp+' srcimg1::'+srcimg1+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' emailmodifico::'+emailmodifico);
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplem.php", data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem,nombreproductcomplem:nombre,descripcion:descripcion,seo:seo,precioreal:precioreal,preciobp:preciobp,srcimg:srcimg1,activado:activado,idtblproveedor:idtblproveedor,stock:stock,emailmodifico:emailmodifico }  })
       .done(function( msgTblProductoComplementario ) {
-        //alert('Elimnación Exitosa');
+        //alert('Elimnaci? Exitosa');
         console.log('setUpdateTblproductcomplem done msgTblProductoComplementario::'+msgTblProductoComplementario.datos);
         $('#productosComplementarioPlantilla').html("");
         $('#productoscotizadorPlantilla').html("");
@@ -4271,9 +4268,13 @@ $( window ).ready(function()
         $('#formActualizarProductoComplementario')[0].reset();
         UIkit.modal("#popup_modificarproductoComplementario").hide();
         UIkit.modal.alert('Producto Complementario Actualizado');
-        cargarValoresDefault();
+        if(nuevaImagen=='')
+        {
+          //alert('cargar cargarValoresDefault sin iamgen');
+          cargarValoresDefault();
+        }
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcomplem fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){ 
        //console.log("always");
      });
@@ -4353,7 +4354,7 @@ $( window ).ready(function()
               $idtblproductcotizador=$_POST["idtblproductcotizador"];
               $emailcreo=$_POST["emailcreo"];
                */
-              console.log('datos a envair srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3+' idtblproductcotizador::'+idProductoCotizador+' emailcreo::'+emailmodifico)
+              //alert('datos a envair srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3+' idtblproductcotizador::'+idProductoCotizador+' emailcreo::'+emailmodifico)
               $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
                 .done(function( msgTblProductoImg1 )
                 {
@@ -4362,6 +4363,7 @@ $( window ).ready(function()
                     .done(function( msgTblProductoImg2 )
                     {
                       srcimg2=$('#modificar_srcimg2_producto_cotizadorBD').val(msgTblProductoImg2.datos);
+                      //alert('msgTblProductoImg2.datos::'+msgTblProductoImg2.datos);
                       $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
                         .done(function( msgTblProductoImg3 )
                         {
@@ -4374,6 +4376,7 @@ $( window ).ready(function()
                           processData: false, })
                             .done(function( datos )
                             {
+                              //alert('subio los archivos al servidor');
                               console.log('uploadImgProductoCotizador done datos::'+datos);
                               $('#productosComplementarioPlantilla').html("");
                               $('#productoscotizadorPlantilla').html("");
@@ -4382,20 +4385,20 @@ $( window ).ready(function()
                              
                               cargarValoresDefault();
                             })
-                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                             .always(function(){  /*console.log("always");*/ });                         
                         })
-                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                         .always(function(){  /*console.log("always");*/ }); 
                     })
-                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                     .always(function(){  /*console.log("always");*/ });
                   // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo            
                 })
-                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
                 .always(function(){  /*console.log("always");*/ });              
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("setDeleteTblproductImgOfProducto  always");*/ });
           //RECORREMOS EL ARREGLO DE LOS ID
           $.each(arregloIdtblproductimgCotizador, function(i,item){
@@ -4403,11 +4406,11 @@ $( window ).ready(function()
             $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimgCotizador[i]} })
               .done(function( datos ){ 
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){  /*console.log("setDeleteFileImgProductoCotizador  always");*/ });
           });
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
       
     }
@@ -4428,15 +4431,20 @@ $( window ).ready(function()
     
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcotizador.php", data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto,nombreproductcotizador:nombre,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalificacion,diaselaboracion:diaselaboracion,activado:activado,idtblproveedor:idtblproveedor,idtblevento:idtblevento,emailmodifico:emailmodifico }  })
       .done(function( msgTblProductoDetalles ) {
-        //alert('Elimnación Exitosa');
+        //alert('Elimnaci? Exitosa');
         $('#productoscotizadorPlantilla').html("");
         $('#productosComplementarioPlantilla').html("");
         $('#productoslineaPlantilla').html("");
+        if (srcimg1==''&&srcimg2==''&&srcimg3=='')
+        {
+          alert('no tiene imagenes');
+          $('#formActualizarProductoCotizador')[0].reset();
+        }
         UIkit.modal.alert('Producto Cotizador Actualizado');
         UIkit.modal("#popup_modificarproductocotizador").hide();
         cargarValoresDefault();
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
   }
 
@@ -4482,7 +4490,7 @@ $( window ).ready(function()
 
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalle.php", data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,diaselaboracion:diasElborar,stock:stock,precioreal:precio,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,porciones:porciones,piezas:piezas,activado:activado,idtblproducto:idProducto, idtblespecifingrediente:especificingredientes ,emailmodifico:emailmodifico }  })
             .done(function( msgTblProductoDetalles ) {
-              //alert('Elimnación Exitosa');
+              //alert('Elimnaci? Exitosa');
               //$('#productoslineaPlantilla').html("");
               //cargarValoresAltaProductoLinea();
               //mostrarProductos();
@@ -4495,7 +4503,7 @@ $( window ).ready(function()
               UIkit.modal("#popup_modificarproductolinea").hide();
               cargarValoresDefault();
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalle fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalle fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("always");*/ });
 
   }
@@ -4520,9 +4528,8 @@ $( window ).ready(function()
     srcimg1=$("#modificar_srcimg1_producto_linea").val();
     srcimg2=$("#modificar_srcimg2_producto_linea").val();
     srcimg3=$("#modificar_srcimg3_producto_linea").val();
-    //los 3 campos son obligatorios para poder regitrar la nueva imagen del producto si no se dara por vacios y no se registrar las nuevas fotografías
+    //los 3 campos son obligatorios para poder regitrar la nueva imagen del producto si no se dara por vacios y no se registrar las nuevas fotograf?s
     if(srcimg1==''||srcimg2==''||srcimg3=='')
-    //if(1!=1)
     {
       srcimg1='';
       srcimg2='';
@@ -4536,7 +4543,7 @@ $( window ).ready(function()
       srcimg1='p_'+idProducto+'_'+srcimg1;
       srcimg2='p_'+idProducto+'_'+srcimg2;
       srcimg3='p_'+idProducto+'_'+srcimg3;
-     
+      //alert('entro a actualizar con imagen srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3);
       /////////////////////////////////////////////////////////
       var arregloIdtblproductimg=[];
       var arregloTblproductimg_srcimg=[];
@@ -4587,26 +4594,27 @@ $( window ).ready(function()
                               //$('#productoslineaPlantilla').html("");
                               //cargarValoresDefault();
                               $('#productosComplementarioPlantilla').html("");
-                            $('#productoscotizadorPlantilla').html("");
-                            $('#productoslineaPlantilla').html("");
-                            $('#formActualizarProductoLineaGeneral')[0].reset();
-                            UIkit.modal("#popup_modificarproductolineageneral").hide();
-                            cargarValoresDefault();
+                              $('#productoscotizadorPlantilla').html("");
+                              $('#productoslineaPlantilla').html("");
+                              $('#formActualizarProductoLineaGeneral')[0].reset();
+                              UIkit.modal("#popup_modificarproductolineageneral").hide();  
+                              UIkit.modal.alert('Actualizado');
+                              cargarValoresDefault();
                             })
-                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                             .always(function(){  /*console.log("always");*/ });                         
                         })
-                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                         .always(function(){  /*console.log("always");*/ }); 
                     })
-                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                     .always(function(){  /*console.log("always");*/ });
                   // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo            
                 })
-                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg IMG fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg IMG fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
                 .always(function(){  /*console.log("always");*/ });              
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("setDeleteTblproductImgOfProducto  always");*/ });
           //alert('antes del each de borrar file');
           //RECORREMOS EL ARREGLO DE LOS ID
@@ -4617,11 +4625,11 @@ $( window ).ready(function()
               .done(function( datos ){ 
                 //alert('done datos.datos::'+datos.datos+' datos.success::'+datos.success);
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){  /*console.log("setDeleteFileImgProducto  always");*/ });
           });
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
       
     }
@@ -4634,15 +4642,17 @@ $( window ).ready(function()
         $('#productosComplementarioPlantilla').html("");
         $('#productoscotizadorPlantilla').html("");
         $('#productoslineaPlantilla').html("");
-        if(srcimg1!=''&&srcimg2!=''&&srcimg3!='')
+        if(srcimg1==''&&srcimg2==''&&srcimg3=='')
         {
+          //alert('no tiene imagen');
           $('#formActualizarProductoLineaGeneral')[0].reset();         
-        }
-        UIkit.modal("#popup_modificarproductolineageneral").hide();
-        UIkit.modal.alert('Actualizado');
-        cargarValoresDefault();
+          UIkit.modal("#popup_modificarproductolineageneral").hide();
+          UIkit.modal.alert('Actualizado');
+          cargarValoresDefault();
+        }      
+        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproducto fail jqXHR::"+jqXHR.status.status+" textStatus::"+textStatus);  })
       .always(function(){   });
   }
   //function confirmacionEliminarProductoLinea(){}
@@ -4682,7 +4692,7 @@ $( window ).ready(function()
               .done(function( datos ){ 
                 //alert('done datos.datos::'+datos.datos+' datos.success::'+datos.success);
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){  /*console.log("setDeleteFileImgProducto  always");*/ });
           });
           //COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
@@ -4711,7 +4721,7 @@ $( window ).ready(function()
                                   $('#productoslineaPlantilla').html("");
                                   cargarValoresDefault();
                   })
-                  .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                  .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){   });
               }
               else if(numeroProductosDetalle>1)
@@ -4720,7 +4730,7 @@ $( window ).ready(function()
                 console.log('ELIMINAR SOLO ESTE PRODUCTO DETALLE');
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductDetalle.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle}  })
                   .done(function( msgTblProductoDetalles ) {
-                    alert('Elimnación Exitosa');
+                    alert('Elimnaci? Exitosa');
                     //$('#productoslineaPlantilla').html("");
                     //cargarValoresDefault();
                     $('#productosComplementarioPlantilla').html("");
@@ -4728,17 +4738,17 @@ $( window ).ready(function()
                                   $('#productoslineaPlantilla').html("");
                                   cargarValoresDefault();
                   })
-                  .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductDetalle fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                  .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductDetalle fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){   });
               }
               
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoDetalleProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoDetalleProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("always");*/ });
           
           //FIN COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
 
         /*
@@ -4766,27 +4776,33 @@ $( window ).ready(function()
       $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcotimg.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idtblproductcotizador} })
         .done(function( msgTblProductoImg )
         {
-          //OBTENEMOS TODOS LOS REGISTROS 
-          $.each(msgTblProductoImg.datos, function(i,item){
-            //GUARDAMOS EL ID DEL LA IAMGEN EN EL ARREGLO
-            arregloIdtblproductimg.push(msgTblProductoImg.datos[i].idtblproductcotimg);
-            //GUARDAMOS EL NOMBRE DE LA IAMGEN EN EL ARREGLO
-            arregloTblproductimg_srcimg.push(msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
-            //alert('msgTblProductoImg.datos[i].tblproductcotimg_srcimg::'+msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
-          });          
-          //RECORREMOS EL ARREGLO DE LOS ID
-          $.each(arregloIdtblproductimg, function(i,item){
-            //SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS
-            //alert('entro al each i::'+i+' item::'+item+' arregloTblproductimg_srcimg[i]::'+arregloTblproductimg_srcimg[i]);
-            
-            $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimg[i]} })
-              .done(function( datos ){ 
-                //alert('done datos.datos::'+datos.datos+' datos.success::'+datos.success);
-              })
-              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-              .always(function(){   });
-            
-          });
+          if(msgTblProductoImg.datos!='Hubo algun error, vuelve a intentarlo WEB')
+          {
+            //alert('getAllTblproductcotimg done OBTENEMOS TODOS LOS REGISTROS')
+            //OBTENEMOS TODOS LOS REGISTROS 
+            $.each(msgTblProductoImg.datos, function(i,item){
+              //GUARDAMOS EL ID DEL LA IAMGEN EN EL ARREGLO
+              arregloIdtblproductimg.push(msgTblProductoImg.datos[i].idtblproductcotimg);
+              //GUARDAMOS EL NOMBRE DE LA IAMGEN EN EL ARREGLO
+              arregloTblproductimg_srcimg.push(msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
+              //alert('msgTblProductoImg.datos[i].tblproductcotimg_srcimg::'+msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
+            });          
+            //RECORREMOS EL ARREGLO DE LOS ID
+            //alert('//RECORREMOS EL ARREGLO DE LOS ID');
+            $.each(arregloIdtblproductimg, function(i,item){
+              //SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS
+              //alert('//SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS');
+              //alert('entro al each i::'+i+' item::'+item+' arregloTblproductimg_srcimg[i]::'+arregloTblproductimg_srcimg[i]);
+              
+              $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimg[i]} })
+                .done(function( datos ){ 
+                  //alert('setDeleteFileImgProductoCotizador done');
+                })
+                .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+                .always(function(){   });
+              
+            });
+          }
           //COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
           //
           //ELIMINAR DESDE EL PRODUCTO COTIZADOR
@@ -4803,17 +4819,17 @@ $( window ).ready(function()
               $('#productoslineaPlantilla').html("");
               cargarValoresDefault();
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){   });
             
           //FIN COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
     
   }
   function eliminarProductoComplementario(idProducto){
-    //UIkit.modal.confirm('Realmente deseas eliminar el producto Complementario', function(){  respuesta=true;  });
+    //UIkit.modal.confirm('Realmente deseas eliminar el producto Complementario?', function(){  respuesta=true;  });
     //if (respuesta == true) {
       //srcimgActual=$("#fotografia_complementario_actual").val();
       srcimgActual=$("#imagenPortadaProductoComplementario"+idProducto).attr("src");
@@ -4832,11 +4848,11 @@ $( window ).ready(function()
               $('#productosComplementarioPlantilla').html("");
               cargarValoresDefault();
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductcomplem fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){   });
 
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  
         //console.log("setDeleteFileImgProductoCotizador  always");
          });
@@ -4861,7 +4877,7 @@ function llenarDatosCalendario(){
     .done(function( msg) {  
         console.log(msg);
     })
-    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
     .always(function(){  console.log("always");  });
     setTimeout('',1500);
 
@@ -4926,7 +4942,7 @@ function indicadoresIndex(){
       if(parseInt(msg9.success)==1){ $("#indicadorNumeroPedidos").text(msg9.datos);}
      
     })
-    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
     .always(function(){  console.log("always");  });
 
   //////////////////////////////////////////////////////
@@ -4944,7 +4960,7 @@ function indicadoresIndex(){
         $("#indicadorNumeroCotizaciones").text(numCotizaciones);
       }
     })
-    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
     .always(function(){  console.log("always");  });
 
   //////////////////////////////////////////////////////
@@ -4962,7 +4978,7 @@ function indicadoresIndex(){
       $("#indicadorNumeroCotizaciones").text(numCotizaciones);
       }
     })
-    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
     .always(function(){  console.log("always");  });
 
   //////////////////////////////////////////////////////
@@ -4981,7 +4997,7 @@ function indicadoresIndex(){
         $("#indicadorVentas").text(ventasTotal.toFixed(2));
       });  
     })
-    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
     .always(function(){  console.log("always");  });
 
     $.ajax({
@@ -4996,7 +5012,7 @@ function indicadoresIndex(){
         $("#indicadorVentas").text(ventasTotal.toFixed(2));
       });  
     })
-    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
     .always(function(){  console.log("always");  });
 
   //////////////////////////////////////////////////////
@@ -5014,7 +5030,7 @@ function indicadoresIndex(){
       });
 
     })
-    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+    .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
     .always(function(){  console.log("always");  });
 
     //////////////////////////////////////////////////////
@@ -5128,10 +5144,10 @@ function mostrarListaOrdenes(){
               }
 
             
-            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
 
       });
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
 }
 //funcion para calcular el total de la orden y colocarlo en la tabla
 function totalCompra(idtblordencompra,x){
@@ -5153,7 +5169,7 @@ function totalCompra(idtblordencompra,x){
 
       $('#totaltabla'+x).text(totalproveedor);
       $("#tbl_ordeneshistorial").trigger('updateAll', [true]);  
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
 
     $.ajax({
@@ -5178,10 +5194,10 @@ function totalCompra(idtblordencompra,x){
         });
           $('#totaltabla'+x).text(totalproveedor); 
            $("#tbl_ordeneshistorial").trigger('updateAll', [true]);   
-          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
         
         }
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
 }
 //Funcion para llenar el pop con los detalles de la orden seleccionada
@@ -5240,8 +5256,8 @@ function datosDetalleOrden(idtblordencompra,idTabla){
               $("#datosfactura").append('<li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE90D;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg2.datos[i2].tblcliente_rfc+'</span><span class="uk-text-small uk-text-muted">RFC</span></div></li>');
           }else {$("#ordenactual_factura").text("NO Requiere Factura");}
       });
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
   //Datos de Productos
   $.ajax({
@@ -5286,12 +5302,12 @@ function datosDetalleOrden(idtblordencompra,idTabla){
            $("#prod"+i4).append('<span class="md-list-heading">Especificacón: '+msg6.datos[i6].tblespecificingrediente_nombre+' </span><br/>')}
            );
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  console.log("always");  });
 
       });
     })
-     .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+     .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
      .always(function(){  console.log("always");  });
 
      if(msg4.datos[i4].tblcarritoproduct_personalizar!=null){
@@ -5307,7 +5323,7 @@ function datosDetalleOrden(idtblordencompra,idTabla){
     console.log("PRODUCTOS: "+ intProducts);
         });
   $("#ordenactual_totalcompra").text((totalproveedor).toFixed(2));
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
   $.ajax({
       method: "POST",  
@@ -5333,9 +5349,9 @@ function datosDetalleOrden(idtblordencompra,idTabla){
                 
               });
               $("#ordenactual_totalcompra").text((totalproveedor).toFixed(2));   
-              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
         }else {productosComplem=false;}
-      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
     $.ajax({//datos de envio de la orden
       method: "POST",  
@@ -5364,7 +5380,7 @@ function datosDetalleOrden(idtblordencompra,idTabla){
     $("#ordenactual_personarecibeentrega").text(msg3.datos[i3].tbldatosenvio_nombrerecibe);
     $("#ordenactual_telefonorecibeentrega").text(msg3.datos[i3].tbldatosenvio_celularrecibe);   
     })
-  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
   .always(function(){  console.log("always");  });
 
   if(idTabla==tabla_Ordenes){
@@ -5407,10 +5423,10 @@ function datosDetalleOrden(idtblordencompra,idTabla){
              $("#imgcomplem2").append('<div class="md-card-head uk-text-center uk-position-relative" ><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg10.datos[i].tblentregacomplem_srcimgevidencia2+'" /></div></div>');
            });
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  console.log("always");  });
      }
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
 
 
 
@@ -5459,10 +5475,10 @@ function datosDetalleOrden(idtblordencompra,idTabla){
              $("#imgcomplem2").append('<div class="md-card-head uk-text-center uk-position-relative" ><div class="md-card-head uk-text-center uk-position-relative"><img class="md-card-head-img" src="assets/img/evidencias/'+msg10.datos[i].tblentregacomplem_srcimgevidencia2+'" /></div></div>');
            });
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  console.log("always");  });
      }
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
   }
 
 }
@@ -5471,14 +5487,9 @@ function datosDetalleOrden(idtblordencompra,idTabla){
 function botonMarcarStatus(idtblordencompra){
   
   $('#formevidenciaProductos')[0].reset();
-  $('#formevidenciaComplem')[0].reset();
   $("#entrega_complementariosform").hide();  
   $("#li_descripcionPendiente").hide();
-  $("#evidencia1Producto").css('color','black');
-  $("#evidencia2Producto").css('color','black');
-  $("#evidencia1Complementario").css('color','black');
-  $("#evidencia2Complementario").css('color','black');
-  $("#entrega_statusentrega").removeClass("md-input-danger");
+
 
  totalProductos=0;
  totalProductosComplem=0;
@@ -5495,7 +5506,7 @@ function botonMarcarStatus(idtblordencompra){
       fch = fch.split("/");
       fchen = fch[2]+"/"+fch[1]+"/"+fch[0];
       $("#entrega_fchentrega").text(fchen);
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
 
     $.ajax({//se obtiene la fecha 
     method: "POST",  
@@ -5507,7 +5518,7 @@ function botonMarcarStatus(idtblordencompra){
         totalProductos = totalProductos + parseInt(msg.datos[i].tblcarritoproduct_cantidad); 
       });
        $("#entrega_noproductpedido").text(totalProductos);
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
 
     $.ajax({
       method: "POST",  
@@ -5529,9 +5540,9 @@ function botonMarcarStatus(idtblordencompra){
                 totalProductosComplem = totalProductosComplem + parseInt(msg7.datos[i].tblcarritoproductcomplem_cantidad);                
               });
               $("#entrega_nocomplempedidos").text(totalProductosComplem);   
-              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
         }else {productosComplem=false;}
-      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
 }
 
@@ -5561,26 +5572,7 @@ function marcarordenEntregada(){
   fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
 
   //Se verifica que contenga algo status 
-  if(status!="null"){
-    boleanStatus=true;
-    $("#entrega_statusentrega").removeClass("md-input-danger");
-  }else{
-    boleanStatus=false;
-    $("#entrega_statusentrega").addClass( "md-input-danger");
-  }
-
-  //Indicador para ver que no tiene nada la imgs productos 
-  if(($("#img1Productv1").val()!="")){
-    $("#evidencia1Producto").css('color','black');
-  }else {
-    $("#evidencia1Producto").css('color','red');
-  }
-
-  if(($("#img2Productv1").val()!="")){
-    $("#evidencia2Producto").css('color','black');
-  }else {
-    $("#evidencia2Producto").css('color','red');
-  }
+  if(status!="null"){boleanStatus=true;}else {boleanStatus=false;}
 
   //se verifica la descripcion si esta activa 
   if($("#li_descripcionPendiente").is(':visible')){
@@ -5594,25 +5586,7 @@ function marcarordenEntregada(){
   }
   
   //se verifica si el pop_marcarcomoentregado tiene el formulario de entrega para productos complementarios 
-  if($("#entrega_complementariosform").is(':visible')){
-    boleanComplementarios=true;
-
-    //Indicador para ver que no tiene nada la imgs productoscomplementarios 
-    if(($("#img1Complemv1").val()!="")){
-      $("#evidencia1Complementario").css('color','black');
-    }else {
-      $("#evidencia1Complementario").css('color','red');
-    }
-
-    if(($("#img2Complemv1").val()!="")){
-      $("#evidencia2Complementario").css('color','black');
-    }else {
-      $("#evidencia2Complementario").css('color','red');
-    }
-
-  }else{
-    boleanComplementarios=false;
-  }
+  if($("#entrega_complementariosform").is(':visible')){boleanComplementarios=true; }else{boleanComplementarios=false;}
 
   if(($("#img1Productv1").val()!="") && ($("#img2Productv1").val()!="")){
   //se valida que tenga datos los campos del formulario productos
@@ -5658,8 +5632,7 @@ function marcarordenEntregada(){
 
 
     $.ajax({ //registrar de tblentregaproduct 
-      method: "POST",
-      dataType: "json",    
+      method: "POST",  
       url: "./../../controllers/setTblentregaproducto.php",  
       data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status, descripcion:descripcionPen,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
       .done(function( datos ){
@@ -5671,7 +5644,7 @@ function marcarordenEntregada(){
                 if(datos=="success"){
                   if(boleanComplementarios){//existen productos complementarios
                      $.ajax({ //actualiza el registro de tblentregaproduct 
-                      method: "POST",dataType: "json",url: "./../../controllers/setTblentregacomplem.php", data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductoscomplem,numproductentregados:numproductosentregadoscomplem,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimgComplem1,srcimg2:srcimgComplem2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                      method: "POST",url: "./../../controllers/setTblentregacomplem.php", data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductoscomplem,numproductentregados:numproductosentregadoscomplem,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimgComplem1,srcimg2:srcimgComplem2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                     .done(function( datos ){
                        if(parseInt(datos.success)==1){
                          //si el registro de complementarios es exitoso entonces guarda las imagenes
@@ -5694,33 +5667,33 @@ function marcarordenEntregada(){
                               $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregacomplem.php",  
                                  data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
                                 .done(function(msg7) {   
-                                 }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                                 }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
                               //elimina el registro en tblentregaproduct
                               $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
                                  data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
                                 .done(function(msg7) {   
-                                 }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                                 }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
                                 UIkit.modal.alert(datos);
 
                             }
 
-                          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+                          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
 
                        }else {
                           //si no se guarda correctamente el registro de complementarios elimina el registro de productos
                         $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
                          data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
                         .done(function(msg7) {   
-                         }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                         }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                         
                         UIkit.modal.alert('Error, Vuelva Intenarlo.');
                         
 
                        }
 
-                    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+                    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
 
                   }else{//si no hay lanza msj
 
@@ -5738,16 +5711,16 @@ function marcarordenEntregada(){
                    $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
                      data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
                     .done(function(msg7) {   
-                     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                     UIkit.modal.alert(datos);
                 }
-            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
+            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
         }else{
          UIkit.modal.alert('Error Vuelva Intentarlo');
         }
         
 
-      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
 
  }else{UIkit.modal.alert('Verifique la Información o Complete los campos requeridos'); }
 
@@ -5756,13 +5729,7 @@ function marcarordenEntregada(){
 //funcion para modificar el status dela orden (LLENAR POP)
 function modificarStatus(idtblordencompra){
 
-  $('#formevidenciaProductos_modif')[0].reset();
-  $('#formevidenciaComplem_modif')[0].reset();
   $('#entregamodif_complementariosform').hide();
-  $("#evidencia1Productov2").css('color','black');
-  $("#evidencia2Productov2").css('color','black');
-  $("#evidencia1Complementariov2").css('color','black');
-  $("#evidencia2Complementariov2").css('color','black');
 
 $.ajax({//se obtiene la fecha 
     method: "POST",  
@@ -5774,7 +5741,7 @@ $.ajax({//se obtiene la fecha
       fch = fch.split("/");
       fchen = fch[2]+"/"+fch[1]+"/"+fch[0];
       $("#entregamodif_fchentrega").text(fchen);
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
 
    $.ajax({
     method: "POST",  
@@ -5791,7 +5758,7 @@ $.ajax({//se obtiene la fecha
 
       });
          
-      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
 
       $.ajax({
@@ -5808,7 +5775,7 @@ $.ajax({//se obtiene la fecha
               });
 
             }             
-          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 }
 
 //funcion para enviar las modificaciones del status de la orden
@@ -5839,37 +5806,9 @@ function marcarordenEntregadaModif(){
 
   //Se verifica que contenga algo status 
   if(status!="null"){boleanStatus=true;}else {boleanStatus=false;}
-
-  //Indicador para ver que no tiene nada la imgs productos 
-  if(($("#img1Productv2").val()!="")){
-    $("#evidencia1Productov2").css('color','black');
-  }else {
-    $("#evidencia1Productov2").css('color','red');
-  }
-
-  if(($("#img2Productv2").val()!="")){
-    $("#evidencia2Productov2").css('color','black');
-  }else {
-    $("#evidencia2Productov2").css('color','red');
-  }
   
-   //se verifica si el pop_marcarcomoentregado tiene el formulario de entrega para productos complementarios 
-  if($("#entregamodif_complementariosform").is(':visible')){
-    boleanComplementarios=true; 
-    //Indicador para ver que no tiene nada la imgs productoscomplementarios 
-    if(($("#img1Complemv2").val()!="")){
-      $("#evidencia1Complementariov2").css('color','black');
-    }else {
-      $("#evidencia1Complementariov2").css('color','red');
-    }
-
-    if(($("#img2Complemv2").val()!="")){
-      $("#evidencia2Complementariov2").css('color','black');
-    }else {
-      $("#evidencia2Complementariov2").css('color','red');
-    }
-
-  }else{boleanComplementarios=false;}
+  //se verifica si el pop_marcarcomoentregado tiene el formulario de entrega para productos complementarios 
+  if($("#entregamodif_complementariosform").is(':visible')){boleanComplementarios=true; }else{boleanComplementarios=false;}
 
   if(($("#img1Productv2").val()!="") && ($("#img2Productv2").val()!="")){
   //se valida que tenga datos los campos del formulario productos
@@ -5923,7 +5862,7 @@ function marcarordenEntregadaModif(){
                 if(datos=="success"){ 
                   if(boleanComplementarios){//existen productos complementarios
                     $.ajax({ //actualiza el registro de tblentregaproduct 
-                      method: "POST",dataType: "json",url: "./../../controllers/setUpdateTtblentregacomplem.php", data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductoscomplem,numproductentregados:numproductosentregadoscomplem,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimgComplem1,srcimg2:srcimgComplem2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                      method: "POST",url: "./../../controllers/setUpdateTtblentregacomplem.php", data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductoscomplem,numproductentregados:numproductosentregadoscomplem,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimgComplem1,srcimg2:srcimgComplem2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                     .done(function( datos ){
                         if(parseInt(datos.success)==1){ 
                          
@@ -5947,20 +5886,20 @@ function marcarordenEntregadaModif(){
                           url: "./../../controllers/setUpdateTtblentregacomplem.php",
                           data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                                 .done(function(msg7) {   
-                                 }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                                 }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
                               //elimina el registro en tblentregaproduct
                               $.ajax({method: "POST", dataType: "json", 
                           url: "./../../controllers/setUpdateTblentregaproducto.php",
                           data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                           .done(function(msg7) {   
-                           }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                           }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
                                 UIkit.modal.alert(datos);
 
                             }
 
-                          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+                          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
 
                        }else {
                           //si no se guarda correctamente el registro de complementarios elimina el registro de productos
@@ -5968,14 +5907,14 @@ function marcarordenEntregadaModif(){
                           url: "./../../controllers/setUpdateTblentregaproducto.php",
                           data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                           .done(function(msg7) {   
-                           }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                           }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                               
                         UIkit.modal.alert('Error, Vuelva Intenarlo.');
                         
 
                        }
 
-                    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+                    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
 
                   }else{//si no hay lanza msj
 
@@ -5994,16 +5933,16 @@ function marcarordenEntregadaModif(){
                     url: "./../../controllers/setUpdateTblentregaproducto.php",
                     data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                     .done(function(msg7) {   
-                     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                     UIkit.modal.alert(datos);
                 }
-            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
+            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
         }else{
          UIkit.modal.alert('Error Vuelva Intentarlo');
         }
         
 
-      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
 
  }else UIkit.modal.alert('Verifique la Información o Complete los campos requeridos'); 
 
@@ -6050,9 +5989,9 @@ function geocodeResult(results, status) {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map($("#gmap").get(0), mapOptions);
-        // fitBounds acercar el mapa con el zoom adecuado de acuerdo a lo buscado
+        // fitBounds acercar?el mapa con el zoom adecuado de acuerdo a lo buscado
         map.fitBounds(results[0].geometry.viewport);
-        // Dibujamos un marcador con la ubicación del primer resultado obtenido
+        // Dibujamos un marcador con la ubicaci? del primer resultado obtenido
         var markerOptions = { position: results[0].geometry.location }
         var marker = new google.maps.Marker(markerOptions);
         marker.setMap(map);
@@ -6080,7 +6019,7 @@ function mostrarCotizaciones(){
       fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
 
       idpopup_detalleordencotizador = "'#popup_ordencotizador"+i+"'";
-      popup_ordencotizador= '<div class="uk-modal" id="popup_ordencotizador'+i+'"><div class="uk-modal-dialog uk-modal-dialog-large"><button type="button" class="uk-modal-close uk-close"></button><div class="uk-modal-header"><h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotización </h3></div><div class="uk-grid" ><div class="uk-width-large-1-2"></div><div  class="uk-width-large-1-2" id="cotizacion_botondeubicacion'+i+'"></div></div><form action="" class="uk-form-stacked" id="product_edit_form"><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1"><div class="md-card"><div class="md-card-toolbar"><h3 class="md-card-toolbar-heading-text" id="detallecotizador_idordencotizador'+i+'"></h3></div><div class="md-card-content large-padding"><div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Datos de Evento </h4><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8B1;</i></div><div class="md-list-content" id="detallecotizador_tipoevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE916;</i></div><div class="md-list-content" id="detallecotizador_fchevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FB;</i></div><div class="md-list-content" id="detallecotizador_numinvitados'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7E9;</i></div><div class="md-list-content" id="detallecotizador_nomproducto'+i+'"></div></li></ul><ul class="uk-grid uk-grid-width-1-2 uk-text-center" data-uk-grid-margin id="imgOrdenCotizador'+i+'"></ul></div><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Información de Cliente </h4><div class="uk-form-row"><ul class="md-list md-list-addon" id="detallecotizador_costos'+i+'"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="detallecotizador_nombrecliente'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content" id="detallecotizador_email'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content" id="detallecotizador_telef'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon  material-icons">&#xE55F;</i></div><div class="md-list-content" id="detallecotizador_direccion'+i+'"></div></li><br/></ul></div></div></div></div></div></div></div><div class="uk-modal-footer uk-text-right" id="detallecotizador_enviar'+i+'"></div></form></div></div>'; 
+      popup_ordencotizador= '<div class="uk-modal" id="popup_ordencotizador'+i+'"><div class="uk-modal-dialog uk-modal-dialog-large"><button type="button" class="uk-modal-close uk-close"></button><div class="uk-modal-header"><h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotizaci? </h3></div><div class="uk-grid" ><div class="uk-width-large-1-2"></div><div  class="uk-width-large-1-2" id="cotizacion_botondeubicacion'+i+'"></div></div><form action="" class="uk-form-stacked" id="product_edit_form"><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1"><div class="md-card"><div class="md-card-toolbar"><h3 class="md-card-toolbar-heading-text" id="detallecotizador_idordencotizador'+i+'"></h3></div><div class="md-card-content large-padding"><div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Datos de Evento </h4><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8B1;</i></div><div class="md-list-content" id="detallecotizador_tipoevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE916;</i></div><div class="md-list-content" id="detallecotizador_fchevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FB;</i></div><div class="md-list-content" id="detallecotizador_numinvitados'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7E9;</i></div><div class="md-list-content" id="detallecotizador_nomproducto'+i+'"></div></li></ul><ul class="uk-grid uk-grid-width-1-2 uk-text-center" data-uk-grid-margin id="imgOrdenCotizador'+i+'"></ul></div><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Informaci? de Cliente </h4><div class="uk-form-row"><ul class="md-list md-list-addon" id="detallecotizador_costos'+i+'"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="detallecotizador_nombrecliente'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content" id="detallecotizador_email'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content" id="detallecotizador_telef'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon  material-icons">&#xE55F;</i></div><div class="md-list-content" id="detallecotizador_direccion'+i+'"></div></li><br/></ul></div></div></div></div></div></div></div><div class="uk-modal-footer uk-text-right" id="detallecotizador_enviar'+i+'"></div></form></div></div>'; 
 
       $("#ordenesdecotizacionesproductos").append(popup_ordencotizador);
       if(msg.datos[i].tblcarritoproductcotizador_costotienda==null){costotienda='<span class="uk-badge uk-badge-warning">---</span>';}
@@ -6101,7 +6040,7 @@ function mostrarCotizaciones(){
     }); 
 
 })
-.fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+.fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
 .always(function(){  console.log("always");  });
 
 }
@@ -6123,28 +6062,28 @@ function detalleOrdenCotizador(idcarritocotizador,x){
 
       if(parseInt(msg.datos[i].idtblcarritoproductcotizador) == parseInt(idcarritocotizador))
       {
-       $("#detallecotizador_idordencotizador"+x).append('#'+msg.datos[i].idtblordencotizador+' Cotización<span style="display:none" id="cotizacion_idtblordencotizacion'+i+x+'">'+msg.datos[i].idtblordencotizador+'</span>');
+       $("#detallecotizador_idordencotizador"+x).append('#'+msg.datos[i].idtblordencotizador+' Cotizaci?<span style="display:none" id="cotizacion_idtblordencotizacion'+i+x+'">'+msg.datos[i].idtblordencotizador+'</span>');
        $("#detallecotizador_tipoevento"+x).append('<span class="md-list-heading">'+msg.datos[i].tblevento_nombre+'</span><span class="uk-text-small uk-text-muted">Tipo de Evento</span>');
        $("#detallecotizador_fchevento"+x).append('<span class="md-list-heading" id="cotizacion_fchevento'+i+x+'">'+fchentrega+'</span><span class="uk-text-small uk-text-muted">Fecha de Evento</span>');
-       $("#detallecotizador_numinvitados"+x).append('<span class="md-list-heading" id="cotizacion_numpersonas'+i+x+'">'+msg.datos[i].tblcarritoproductcotizador_numpersonas+'</span><span class="uk-text-small uk-text-muted"># Número de Invitados</span>');
+       $("#detallecotizador_numinvitados"+x).append('<span class="md-list-heading" id="cotizacion_numpersonas'+i+x+'">'+msg.datos[i].tblcarritoproductcotizador_numpersonas+'</span><span class="uk-text-small uk-text-muted"># N?mero de Invitados</span>');
        $("#detallecotizador_nomproducto"+x).append('<span class="md-list-heading">'+msg.datos[i].tblproductcotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Producto</span><span style="display:none" id="cotizacion_idproductcotizador'+i+x+'">'+msg.datos[i].tblproductcotizador_idtblproductcotizador+'</span>');
        $("#detallecotizador_nombrecliente"+x).append('<span class="md-list-heading">'+msg.datos[i].tblordencotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Completo</span>');
        $("#detallecotizador_email"+x).append('<span class="md-list-heading">'+ msg.datos[i].tblordencotizador_email+'</span><span class="uk-text-small uk-text-muted">Email</span>');
-       $("#detallecotizador_telef"+x).append('<span class="md-list-heading">'+msg.datos[i].tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Teléfono</span>');
+       $("#detallecotizador_telef"+x).append('<span class="md-list-heading">'+msg.datos[i].tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Telef?o</span>');
        $("#imgOrdenCotizador"+x).append('<li><img src="assets/img/ecommerce/prt2.png" alt="" /></li><li><img src="assets/img/imgcotizador/'+msg.datos[i].tblcarritoproductcotizador_srcimg+'" alt="" /></li><span style="display:none" id="cotizacion_srimg'+i+x+'">'+msg.datos[i].tblcarritoproductcotizador_srcimg+'</span>');
-       $("#detallecotizador_direccion"+x).append('<span class="md-list-heading" id="dirCompletaCotizacion'+x+'">'+msg.datos[i].tblordencotizador_pais+", "+msg.datos[i].tblordencotizador_ciudad+", "+msg.datos[i].tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Dirección de Evento</span>');
+       $("#detallecotizador_direccion"+x).append('<span class="md-list-heading" id="dirCompletaCotizacion'+x+'">'+msg.datos[i].tblordencotizador_pais+", "+msg.datos[i].tblordencotizador_ciudad+", "+msg.datos[i].tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Direcci? de Evento</span>');
        $("#cotizacion_botondeubicacion"+x).append('<button class="md-btn md-btn-primary md-btn-block md-btn-wave-light" type="button" onclick="mapaGeo('+x+','+idmapaCotizaciones+')" data-uk-modal="{target:'+"'#mapa'"+',modal: false,bgclose:false}"> Ubicacion de Entrega en Mapa</button>');
 
       if(msg.datos[i].tblcarritoproductcotizador_costotienda==null && msg.datos[i].tblcarritoproductcotizador_costodomicilio==null){
-        $("#detallecotizador_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" step="any" class="md-input uk-text-center" placeholder="Precio de Cotización con Entrega en Tienda" id="cotizacion_costotienda'+i+x+'" min="1"/></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" class="md-input uk-text-center" placeholder="Precio de Cotización con Servicio a Domicilio" id="cotizacion_costodomicilio'+i+x+'" min="1" /></div>');
-        $("#detallecotizador_enviar"+x).append('<button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="enviarCotizacion('+msg.datos[i].idtblcarritoproductcotizador+','+i+','+x+')" >Enviar Cotización </button>');
+        $("#detallecotizador_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" step="any" class="md-input uk-text-center" placeholder="Precio de Cotizaci? con Entrega en Tienda" id="cotizacion_costotienda'+i+x+'" min="1"/></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" class="md-input uk-text-center" placeholder="Precio de Cotizaci? con Servicio a Domicilio" id="cotizacion_costodomicilio'+i+x+'" min="1" /></div>');
+        $("#detallecotizador_enviar"+x).append('<button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="enviarCotizacion('+msg.datos[i].idtblcarritoproductcotizador+','+i+','+x+')" >Enviar Cotizaci? </button>');
       }else{
         $("#detallecotizador_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg.datos[i].tblcarritoproductcotizador_costotienda+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio en Tienda</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg.datos[i].tblcarritoproductcotizador_costodomicilio+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio a Domicilio</span></div></li>');}
       }      
     });
 
 })
-.fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+.fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
 .always(function(){  console.log("always");  });
 }
 
@@ -6162,15 +6101,6 @@ function enviarCotizacion(idtblcarritoproductcotizador,i,x){
   costotienda = $("#cotizacion_costotienda"+i+x).val().toString();
   costodomicilio = $("#cotizacion_costodomicilio"+i+x).val().toString();
   emailmodif= emailproveedor;
-
-  //validacion de valores
-  if((costotienda!="")){
-    $("#cotizacion_costotienda"+i+x).removeClass( "md-input-danger" );
-  }else $("#cotizacion_costotienda"+i+x).addClass( "md-input-danger" );
-
-  if((costodomicilio!="")){
-    $("#cotizacion_costodomicilio"+i+x).removeClass( "md-input-danger" );
-  }else $("#cotizacion_costodomicilio"+i+x).addClass( "md-input-danger" );
 
  if((costotienda!="") && (costodomicilio!="")){
 
@@ -6190,11 +6120,11 @@ UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Pre
             UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
         }
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);})
       .always(function(){  console.log("always");});
 });
 
- }else UIkit.modal.alert('Ingrese el Precio de la Cotización');
+ }else UIkit.modal.alert('Ingrese el Precio de la Cotizaci?');
 }
 
 //funcion para llenar la tabla de cotizaciones de productos nuevos y los pops de cada orden 
@@ -6216,7 +6146,7 @@ function mostrarCotizacionesProductosNuevos(){
       fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
 
       idpopup_detalleordencotizadorproductnuevo = "'#popup_ordencotizadorproductNuevo"+i+"'";
-      popup_ordencotizadorproductnuevo = '<div class="uk-modal" id="popup_ordencotizadorproductNuevo'+i+'"><div class="uk-modal-dialog uk-modal-dialog-large"><button type="button" class="uk-modal-close uk-close"></button><div class="uk-modal-header"><h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotización </h3></div><div class="uk-grid" ><div class="uk-width-large-1-2"></div><div  class="uk-width-large-1-2" id="cotizacionnueva_botondeubicacion'+i+'"></div></div><form action="" class="uk-form-stacked" id="product_edit_form"><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1"><div class="md-card"><div class="md-card-toolbar"><h3 class="md-card-toolbar-heading-text" id="detallecotizadorproductnuevo_idordencotizador'+i+'"></h3></div><div class="md-card-content large-padding"><div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Datos de Evento </h4><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8B1;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_tipoevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE916;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_fchevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FB;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_numinvitados'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7E9;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_nomproducto'+i+'"></div></li></ul><ul class="uk-grid uk-grid-width-1-2 uk-text-center" data-uk-grid-margin id="imgOrdenCotizadorproductnuevo'+i+'"></ul></div><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Información de Cliente </h4><div class="uk-form-row"><ul class="md-list md-list-addon" id="detallecotizadorproductnuevo_costos'+i+'"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_nombrecliente'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_email'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_telef'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon  material-icons">&#xE55F;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_direccion'+i+'"></div></li><br/></ul></div></div></div></div></div></div></div><div class="uk-modal-footer uk-text-right" id="detallecotizadorproductnuevo_enviar'+i+'"></div></form></div></div>'; 
+      popup_ordencotizadorproductnuevo = '<div class="uk-modal" id="popup_ordencotizadorproductNuevo'+i+'"><div class="uk-modal-dialog uk-modal-dialog-large"><button type="button" class="uk-modal-close uk-close"></button><div class="uk-modal-header"><h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotizaci? </h3></div><div class="uk-grid" ><div class="uk-width-large-1-2"></div><div  class="uk-width-large-1-2" id="cotizacionnueva_botondeubicacion'+i+'"></div></div><form action="" class="uk-form-stacked" id="product_edit_form"><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1"><div class="md-card"><div class="md-card-toolbar"><h3 class="md-card-toolbar-heading-text" id="detallecotizadorproductnuevo_idordencotizador'+i+'"></h3></div><div class="md-card-content large-padding"><div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Datos de Evento </h4><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8B1;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_tipoevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE916;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_fchevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FB;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_numinvitados'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7E9;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_nomproducto'+i+'"></div></li></ul><ul class="uk-grid uk-grid-width-1-2 uk-text-center" data-uk-grid-margin id="imgOrdenCotizadorproductnuevo'+i+'"></ul></div><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Informaci? de Cliente </h4><div class="uk-form-row"><ul class="md-list md-list-addon" id="detallecotizadorproductnuevo_costos'+i+'"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_nombrecliente'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_email'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_telef'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon  material-icons">&#xE55F;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_direccion'+i+'"></div></li><br/></ul></div></div></div></div></div></div></div><div class="uk-modal-footer uk-text-right" id="detallecotizadorproductnuevo_enviar'+i+'"></div></form></div></div>'; 
 
       $("#ordenesdecotizacionesproductos").append(popup_ordencotizadorproductnuevo);
 
@@ -6240,7 +6170,7 @@ function mostrarCotizacionesProductosNuevos(){
       $("#cotizadorproductnuevo_costodomicilio"+i).append('<span class="uk-badge uk-badge-warning">---</span>');
     }
   })
-  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
   .always(function(){  console.log("always");  });
         
        detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,i);
@@ -6248,7 +6178,7 @@ function mostrarCotizacionesProductosNuevos(){
     }); 
 
 })
-.fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+.fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
 .always(function(){  console.log("always");  });
 
 }
@@ -6270,10 +6200,10 @@ function detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,x){
       fchentrega = fchentrega.split("-");
       fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
 
-      $("#detallecotizadorproductnuevo_idordencotizador"+x).append('#'+msg.datos[i].tblordencotizador_idtblordencotizador+' Cotización');
+      $("#detallecotizadorproductnuevo_idordencotizador"+x).append('#'+msg.datos[i].tblordencotizador_idtblordencotizador+' Cotizaci?');
       $("#detallecotizadorproductnuevo_fchevento"+x).append('<span class="md-list-heading">'+fchentrega+'</span><span class="uk-text-small uk-text-muted">Fecha de Evento</span>');
       $("#detallecotizadorproductnuevo_tipoevento"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevocotizador_tipodeevento+'</span><span class="uk-text-small uk-text-muted">Tipo de Evento</span>');
-      $("#detallecotizadorproductnuevo_numinvitados"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevocotizador_numpersonas+'</span><span class="uk-text-small uk-text-muted"># Número de Invitados</span>');
+      $("#detallecotizadorproductnuevo_numinvitados"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevocotizador_numpersonas+'</span><span class="uk-text-small uk-text-muted"># N?mero de Invitados</span>');
       $("#detallecotizadorproductnuevo_nomproducto"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevocotizador_sabores+'</span><span class="uk-text-small uk-text-muted">Sabores</span><span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevocotizador_comentarios  +'</span><span class="uk-text-small uk-text-muted">Comentarios</span>');
       $("#imgOrdenCotizadorproductnuevo"+x).append('<div><img src="assets/img/imgcotizador/'+msg.datos[i].tblcarritoproductnuevocotizador_srcimg +'" alt="" /></div>');
 
@@ -6289,13 +6219,13 @@ function detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,x){
         $.each(msg2.datos, function(i,item){
           $("#detallecotizadorproductnuevo_nombrecliente"+x).append('<span class="md-list-heading">'+msg2.datos[i].tblordencotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Completo</span>');
           $("#detallecotizadorproductnuevo_email"+x).append('<span class="md-list-heading">'+ msg2.datos[i].tblordencotizador_email+'</span><span class="uk-text-small uk-text-muted">Email</span>');
-          $("#detallecotizadorproductnuevo_telef"+x).append('<span class="md-list-heading">'+msg2.datos[i].tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Teléfono</span>');
-          $("#detallecotizadorproductnuevo_direccion"+x).append('<span class="md-list-heading" id="dirCompletaCotizacionNueva'+x+'">'+msg2.datos[i].tblordencotizador_pais+", "+msg2.datos[i].tblordencotizador_ciudad+", "+msg2.datos[i].tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Dirección de Evento</span>');
+          $("#detallecotizadorproductnuevo_telef"+x).append('<span class="md-list-heading">'+msg2.datos[i].tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Telef?o</span>');
+          $("#detallecotizadorproductnuevo_direccion"+x).append('<span class="md-list-heading" id="dirCompletaCotizacionNueva'+x+'">'+msg2.datos[i].tblordencotizador_pais+", "+msg2.datos[i].tblordencotizador_ciudad+", "+msg2.datos[i].tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Direcci? de Evento</span>');
           $("#cotizacionnueva_botondeubicacion"+x).append('<button class="md-btn md-btn-primary md-btn-block md-btn-wave-light" type="button" onclick="mapaGeo('+x+','+idmapaCotizacionesNuevas+')" data-uk-modal="{target:'+"'#mapa'"+',modal: false,bgclose:false}"> Ubicacion de Entrega en Mapa</button>');
 
         });
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  console.log("always");  });
 
       $.ajax({
@@ -6306,18 +6236,18 @@ function detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,x){
   .done(function( msg3)
   {
     if(msg3.success!=1){
-        $("#detallecotizadorproductnuevo_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" step="any" class="md-input uk-text-center" placeholder="Precio de Cotización con Entrega en Tienda" id="cotizacionnuevo_costotienda'+i+x+'" min="1"/></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" class="md-input uk-text-center" placeholder="Precio de Cotización con Servicio a Domicilio" id="cotizacionnuevo_costodomicilio'+i+x+'" min="1" /></div>');
-        $("#detallecotizadorproductnuevo_enviar"+x).append('<button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="enviarCotizacionProductNuevo('+idtblcarritoproductnuevocotizador+','+i+','+x+')">Enviar Cotización </button>');// 
+        $("#detallecotizadorproductnuevo_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" step="any" class="md-input uk-text-center" placeholder="Precio de Cotizaci? con Entrega en Tienda" id="cotizacionnuevo_costotienda'+i+x+'" min="1"/></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" class="md-input uk-text-center" placeholder="Precio de Cotizaci? con Servicio a Domicilio" id="cotizacionnuevo_costodomicilio'+i+x+'" min="1" /></div>');
+        $("#detallecotizadorproductnuevo_enviar"+x).append('<button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="enviarCotizacionProductNuevo('+idtblcarritoproductnuevocotizador+','+i+','+x+')">Enviar Cotizaci? </button>');// 
     }else {
       $("#detallecotizadorproductnuevo_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg3.datos[i].tblcostocotizacionproductnuevo_costotienda+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio en Tienda</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg3.datos[i].tblcostocotizacionproductnuevo_costodomicilio+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio a Domicilio</span></div></li>');
     }
   })
-  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
   .always(function(){  console.log("always");  });
     });
 
  })
- .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+ .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
  .always(function(){  console.log("always");  });
 }
 
@@ -6347,11 +6277,11 @@ UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Pre
             UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
         }
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);})
       .always(function(){  console.log("always");});
 });
 
- }else UIkit.modal.alert('Ingrese el Precio de la Cotización');
+ }else UIkit.modal.alert('Ingrese el Precio de la Cotizaci?');
 }
 
 var map;
@@ -6397,7 +6327,7 @@ function mostrarNotificaciones(){
             '</td><td>'+notif.datos[i].tblnotificacion_emisor+'</td></tr>');
           });
         })
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);})
       .always(function(){  console.log("always");});
 }
 function notifi(idredireccion, idtblnotificacionvista){
@@ -6465,7 +6395,7 @@ function notificacionVista(idtblnotificacionvista){
 $.ajax({ 
       method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblnotificacionvista.php", data: {solicitadoBy:solicitadoBy,idtblnotificacionvista:idtblnotificacionvista,emailproveedor:emailproveedor}})
         .done(function(notif){})
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);})
       .always(function(){  console.log("always");});
 }
 
