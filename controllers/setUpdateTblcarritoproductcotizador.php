@@ -12,7 +12,10 @@ $idtblcarritoproductcotizador      = '';
 $numpersonas     = '';
 $fchentrega         = '';
 $srcimgproducto       = '';
+$idtblordencotizador = '';
 $idtblproductcotizador       = '';
+$costotienda = '';
+$costodomicilio = '';
 $emailmodifico  = '';
 $resultado         = '';
 /**
@@ -20,31 +23,35 @@ $resultado         = '';
  */
 if (!empty($_POST)){
 
-	$solicitadoBy	                 = $_POST["solicitadoBy"];
+    $solicitadoBy                    = $_POST["solicitadoBy"];
     $idtblcarritoproductcotizador    = $_POST['idtblcarritoproductcotizador'];
-	$numpersonas		             = $_POST['numpersonas'];
-	$fchentrega			             = $_POST['fchentrega'];
-	$srcimgproducto		             = $_POST['srcimgproducto'];
+    $numpersonas                     = $_POST['numpersonas'];
+    $fchentrega                      = $_POST['fchentrega'];
+    $srcimgproducto                  = $_POST['srcimgproducto'];
+    $idtblordencotizador             = $_POST['idtblordencotizador'];
     $idtblproductcotizador           = $_POST['idtblproductcotizador'];
-	$emailmodifico	                 = $_POST['emailmodifico'];
+    $costotienda                     = $_POST['costotienda'];
+    $costodomicilio                  = $_POST['costodomicilio'];    
+    $emailmodifico                   = $_POST['emailmodifico'];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setUpdateTblpais($idtblcarritoproductcotizador, $numpersonas, $fchentrega, $srcimgproducto, $idtblproductcotizador, $emailmodifico);
+    $resultado = FuncionesBePickler::setUpdateTblcarritoproductcotizador($idtblcarritoproductcotizador,$numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$costotienda,$costodomicilio,$emailmodifico);
 
     if($resultado)
     {
         /**
          * Si es éxitos le mandamos los resultados a quien lo solicito.
          */
-    	InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
+        
+        InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
 
     }else
     {
         /**
          * Si fallo manda a la función de fallo a quien lo solicito.
          */
-    	InfoSolicitadaBy::sinDatos($solicitadoBy);
+        InfoSolicitadaBy::sinDatos($solicitadoBy);
     }
 }
 /**
