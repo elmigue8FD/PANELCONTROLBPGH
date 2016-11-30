@@ -56,7 +56,7 @@
                     <div class="uk-grid">
                       <div class="uk-width-1-1">
                         <div id="file_upload-drop">
-                          <a class="uk-form-file md-btn md-color-red-300 md-bg-grey-200 md-btn-block md-btn-wave-light waves-effect waves-button waves-light">Click<input id="file_upload-select" type="file"></a>
+                          <a class="uk-form-file md-btn md-color-red-300 md-bg-grey-200 md-btn-block md-btn-wave-light waves-effect waves-button waves-light" href="./phps/descargarManualFotografia.php">Click</a>
                         </div>
                       </div>
                     </div><br><br>
