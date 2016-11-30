@@ -7048,7 +7048,7 @@ class FuncionesBePickler{
     /*Insertar un registro en tblcostocotizacionproductnuevo*/
 	 public static function setTblcostocotizacionproductnuevo($costotienda,$costodomicilio,$idtblcarritoproductnuevcotiza,$idtblproveedor,$emailcreo){
         
-        $insert ="INSERT INTO tblcostocotizacionproductnuevo (tblcostocotizacionproductnuevo_costotienda,tblcostocotizacionproductnuevo_costodomicilio,tblcostocotizacionproductnuevo_fchmodificacion,tblcostocotizacionproductnuevo_fchcreacion,tblcostocotizacionproductnuevo_emailusuacreo,tblcostocotizacionproductnuevo_emailusuamodifico,tblcarritoproductnuevcotiza_idtblcarritoproductnuevocot,tblproveedor_idtblproveedor) VALUES (?,?,NOW(),NOW(),?,?,?,?)"; 
+        $insert ="INSERT INTO tblcostocotizacionproductnuevo (tblcostocotizacionproductnuevo_costotienda,tblcostocotizacionproductnuevo_costodomicilio,tblcostocotizacionproductnuevo_fchmodificacion,tblcostocotizacionproductnuevo_fchcreacion,tblcostocotizacionproductnuevo_emailusuacreo,tblcostocotizacionproductnuevo_emailusuamodifico,tblcarritoproductnuevcotiza_idtblcarritoproductnuevcotiza,tblproveedor_idtblproveedor) VALUES (?,?,NOW(),NOW(),?,?,?,?)"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -7068,7 +7068,7 @@ class FuncionesBePickler{
     /*Obtiene un registro de tblcostocotizacionproductnuevo*/
     public static function getTblcostocotizacionproductnuevo($idtblcarritoproductnuevcotiza,$idtblproveedor){
 	    
-		$consulta = "SELECT * FROM tblcostocotizacionproductnuevo WHERE tblcarritoproductnuevcotiza_idtblcarritoproductnuevocot = ? AND tblproveedor_idtblproveedor	 = ?";
+		$consulta = "SELECT * FROM tblcostocotizacionproductnuevo WHERE tblcarritoproductnuevcotiza_idtblcarritoproductnuevcotiza = ? AND tblproveedor_idtblproveedor	 = ?";
 		
 		try{
 
