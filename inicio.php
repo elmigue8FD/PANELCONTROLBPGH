@@ -6206,16 +6206,16 @@ function mostrarCotizacionesProductosNuevos(){
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getAlltblcarritoproductnuevcotiza2.php",  
+    url: "./../../controllers/getAllTblcarritoproductnuevcotiza2.php",  
     data: {solicitadoBy:solicitadoBy, idtblproveedor:idtblproveedor}})
   .done(function( msg)
   { 
     $.each(msg.datos, function(i,item)
     { 
 
-      idtblcarritoproductnuevocotizador=msg.datos[i].idtblcarritoproductnuevocotizador
+      idtblcarritoproductnuevocotizador=msg.datos[i].idtblcarritoproductnuevcotiza;
 
-      fchentrega= msg.datos[i].tblcarritoproductnuevocotizador_fchentrega ;
+      fchentrega= msg.datos[i].tblcarritoproductnuevcotiza_fchentrega ;
       fchentrega = fchentrega.split("-");
       fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
 
@@ -6227,7 +6227,7 @@ function mostrarCotizacionesProductosNuevos(){
       $("#tblcotizacionesproductosnuevos").append(
         '<tr data-uk-modal="{target:'+idpopup_detalleordencotizadorproductnuevo+' ,bgclose:false}" ><td class="uk-text-center">'+msg.datos[i].tblordencotizador_idtblordencotizador+
         '</td><td class="uk-text-center">'+fchentrega+
-        '</td><td class="uk-text-center">'+msg.datos[i].tblcarritoproductnuevocotizador_tipodeevento+
+        '</td><td class="uk-text-center">'+msg.datos[i].tblcarritoproductnuevcotiza_tipodeevento+
         '</td><td class="uk-text-center" id="cotizadorproductnuevo_costotienda'+i+'"></td><td class="uk-text-center" id="cotizadorproductnuevo_costodomicilio'+i+'"></td></tr>');
       $.ajax({
     method: "POST",  
@@ -6270,16 +6270,16 @@ function detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,x){
 
     $.each(msg.datos, function(i,item)
     { 
-      fchentrega=  msg.datos[i].tblcarritoproductnuevocotizador_fchentrega;
+      fchentrega=  msg.datos[i].tblcarritoproductnuevcotiza_fchentrega;
       fchentrega = fchentrega.split("-");
       fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
 
       $("#detallecotizadorproductnuevo_idordencotizador"+x).append('#'+msg.datos[i].tblordencotizador_idtblordencotizador+' Cotización');
       $("#detallecotizadorproductnuevo_fchevento"+x).append('<span class="md-list-heading">'+fchentrega+'</span><span class="uk-text-small uk-text-muted">Fecha de Evento</span>');
-      $("#detallecotizadorproductnuevo_tipoevento"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevocotizador_tipodeevento+'</span><span class="uk-text-small uk-text-muted">Tipo de Evento</span>');
-      $("#detallecotizadorproductnuevo_numinvitados"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevocotizador_numpersonas+'</span><span class="uk-text-small uk-text-muted"># Número de Invitados</span>');
-      $("#detallecotizadorproductnuevo_nomproducto"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevocotizador_sabores+'</span><span class="uk-text-small uk-text-muted">Sabores</span><span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevocotizador_comentarios  +'</span><span class="uk-text-small uk-text-muted">Comentarios</span>');
-      $("#imgOrdenCotizadorproductnuevo"+x).append('<div><img src="assets/img/imgcotizador/'+msg.datos[i].tblcarritoproductnuevocotizador_srcimg +'" alt="" /></div>');
+      $("#detallecotizadorproductnuevo_tipoevento"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevcotiza_tipodeevento+'</span><span class="uk-text-small uk-text-muted">Tipo de Evento</span>');
+      $("#detallecotizadorproductnuevo_numinvitados"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevcotiza_numpersonas+'</span><span class="uk-text-small uk-text-muted"># Número de Invitados</span>');
+      $("#detallecotizadorproductnuevo_nomproducto"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevcotiza_sabores+'</span><span class="uk-text-small uk-text-muted">Sabores</span><span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevcotiza_comentarios  +'</span><span class="uk-text-small uk-text-muted">Comentarios</span>');
+      $("#imgOrdenCotizadorproductnuevo"+x).append('<div><img src="./../assests_general/productos/imgcotizadornuevo/'+msg.datos[i].tblcarritoproductnuevcotiza_srcimg +'" alt="" /></div>');
 
       idordencotizadorproductnuevo= msg.datos[i].tblordencotizador_idtblordencotizador;
        //datos del cliente
@@ -6332,6 +6332,15 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador,i,x){
   costodomicilio = $("#cotizacionnuevo_costodomicilio"+i+x).val().toString();
   idproveedor=idtblproveedor;
   emailcreo= emailproveedor;
+
+//validacion de valores
+  if((costotienda!="")){
+    $("#cotizacionnuevo_costotienda"+i+x).removeClass( "md-input-danger" );
+  }else $("#cotizacionnuevo_costotienda"+i+x).addClass( "md-input-danger" );
+
+  if((costodomicilio!="")){
+    $("#cotizacionnuevo_costodomicilio"+i+x).removeClass( "md-input-danger" );
+  }else $("#cotizacionnuevo_costodomicilio"+i+x).addClass( "md-input-danger" );
 
  if((costotienda!="") && (costodomicilio!="")){
 
