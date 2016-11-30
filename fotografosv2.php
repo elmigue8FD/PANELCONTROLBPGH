@@ -109,6 +109,7 @@
             .done(function(msg2){
                  console.log(msg2);
                  $.each(msg2.datos, function(x,item){
+                   $("#catalogo2"+i).append('<div class="uk-width-1-2 uk-container-center"><img src="./assets/img/fotografos/'+item.tblfotografocatalogo_srcimg+'" alt="" /></div>');
                  });
 
               })
