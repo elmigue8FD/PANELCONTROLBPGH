@@ -22,9 +22,7 @@ if (!empty($_POST)){
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    if($resultado==0)
-    {
-        $resultado = FuncionesBePickler::getAllTblcarritoproductnuevcotiza2();
+        $resultado = FuncionesBePickler::getAlltblcarritoproductnuevcotiza2();
         if($resultado){
             /**
              * Si es éxitos le mandamos los resultados a quien lo solicito.
@@ -36,15 +34,11 @@ if (!empty($_POST)){
              * Si fallo manda a la función de fallo a quien lo solicito.
              */
             InfoSolicitadaBy::sinDatos($solicitadoBy);
-        }  
-    }else{
-        InfoSolicitadaBy::registroRepetido($solicitadoBy);
-    }    
+        }   
 }
 /**
  * Desctruimos las variables para liberar memoria
  */
 unset($solicitadoBy);
 unset($resultado);
-unset($_POST);
 ?>

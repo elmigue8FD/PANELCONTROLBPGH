@@ -13,6 +13,7 @@ if (isset($_FILES["srcimg1_producto"]))
     $width = $dimensiones[0];
     $height = $dimensiones[1];
     $carpeta = "./../assests_general/productos/linea/";
+    
     if ($tipo != 'image/jpg' && $tipo != 'image/jpeg' && $tipo != 'image/png' && $tipo != 'image/gif')
     {
       echo "Error, el archivo no es una imagen"; 
