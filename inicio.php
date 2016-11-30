@@ -6206,7 +6206,7 @@ function mostrarCotizacionesProductosNuevos(){
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getAllTblcarritoproductnuevocotizador2.php",  
+    url: "./../../controllers/getAlltblcarritoproductnuevcotiza2.php",  
     data: {solicitadoBy:solicitadoBy, idtblproveedor:idtblproveedor}})
   .done(function( msg)
   { 
@@ -6263,7 +6263,7 @@ function detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,x){
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getTblcarritoproductnuevocotizador.php",  
+    url: "./../../controllers/gettblcarritoproductnuevcotiza.php",  
     data: {solicitadoBy:solicitadoBy, idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador}})
   .done(function( msg)
   { 
