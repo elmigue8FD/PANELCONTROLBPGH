@@ -1,3 +1,10 @@
+<?php session_start(); ?>
+<?php 
+if(!isset($_SESSION['sesion_activa1']))
+{
+ header("Location: index.php");
+}
+?>
 <!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> 
@@ -1867,6 +1874,10 @@ var emailproveedor = "mispasteles@gmail.com";
 /*
  COMIENZA VARIABLES MIGUEL
  */
+  var idtblproveedor = <?php echo $_SESSION['idtblproveedor']; ?>;
+  var idusuarioproveedor=<?php echo $_SESSION['idusuario']; ?>;
+  var emailproveedor="<?php echo $_SESSION['usuario']; ?>";
+  //alert('idtblproveedor::'+idtblproveedor);
   var solicitadoBy="WEB";
   var arregloInfoUnProducto=[];
   var arregloInfoTodosProducto=[];
@@ -1982,7 +1993,7 @@ $( window ).ready(function()
       seo='';
       promcalif='';
       activado='';
-      idtblproveedor='';
+      //idtblproveedor='';
       idtblcategproduc='';
       idtblclasifproduct='';
       emailcreo='';
@@ -2008,11 +2019,12 @@ $( window ).ready(function()
       nombreproduct=$('#alta_nombre_producto_linea').val();
       descripcion=$('#alta_descripcion_producto_linea').val();
       ingredientes=$('#alta_ingredientes_producto_linea').val();
-      seo=$('#alta_seo_producto_linea').val();
+
+      seo=$('#alta_nombre_producto_linea').val().replace(" ", '');
       promcalif='5';
       activado=$('#alta_activado_producto_linea').val();
       if(activado=='on'){activado=1;}
-      idtblproveedor='1';
+      //idtblproveedor='1';
       idtblcategproduc=$('#alta_categoria_producto_linea').val();
       idtblclasifproduct=$('#alta_clasificacion_producto_linea').val();
       emailcreo='miguel@bepickler.com';
@@ -2122,6 +2134,7 @@ $( window ).ready(function()
         $( "#alta_ingredientes_producto_linea" ).addClass( "md-input-danger" );
       else
         $( "#alta_ingredientes_producto_linea" ).removeClass( "md-input-danger" );
+      /*
       //seo -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       if(seo=='')
@@ -2145,6 +2158,7 @@ $( window ).ready(function()
         $( "#alta_seo_producto_linea" ).addClass( "md-input-danger" );
       else
         $( "#alta_seo_producto_linea" ).removeClass( "md-input-danger" );
+      */
       //idtblcategproduc -> Select
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       if(idtblcategproduc=='')
@@ -2524,7 +2538,7 @@ $( window ).ready(function()
       nombreproduct=$('#modificar_nombre_producto_linea_general').val();
       descripcion=$('#modificar_descripcion_producto_linea_general').val();
       ingredientes=$('#modificar_ingredientes_producto_linea_general').val();
-      seo=$('#modificar_seo_producto_linea_general').val();      
+      seo=$('#modificar_nombre_producto_linea_general').val().replace(" ", '');      
       idtblcategproduc=$('#modificar_categoria_producto_linea_general').val();
       idtblclasifproduct=$('#modificar_clasificacion_producto_linea_general').val();
 
@@ -2598,6 +2612,7 @@ $( window ).ready(function()
         $( "#modificar_ingredientes_producto_linea_general" ).addClass( "md-input-danger" );
       else
         $( "#modificar_ingredientes_producto_linea_general" ).removeClass( "md-input-danger" );
+      /*
       //seo -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       if(seo=='')
@@ -2621,6 +2636,7 @@ $( window ).ready(function()
         $( "#modificar_seo_producto_linea_general" ).addClass( "md-input-danger" );
       else
         $( "#modificar_seo_producto_linea_general" ).removeClass( "md-input-danger" );
+      */
       //idtblcategproduc -> Select
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       if(idtblcategproduc=='')
@@ -2738,7 +2754,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('actualizarProductoGeneral');
-        //registrarProductoCotizador();      
+        registrarProductoCotizador();      
       }
       else
       {
@@ -2869,7 +2885,7 @@ $( window ).ready(function()
       //OBTENEMOS LOS DATOS DEL FORMULARIO
       nombreproduct=$('#alta_nombre_producto_Complementario').val();
       descripcion=$('#alta_descripcion_producto_Complementario').val();
-      seo=$('#alta_seo_producto_Complementario').val();
+      seo=$('#alta_nombre_producto_Complementario').val().replace(" ", '');;
       precio=$('#alta_precioreal_producto_Complementario').val();
       stock=$('#alta_stock_producto_Complementario').val();
 
@@ -2887,9 +2903,11 @@ $( window ).ready(function()
       else{ $( "#alta_descripcion_producto_Complementario" ).removeClass( "md-input-danger" ); }
       //nombreproduct -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      /*
       boolErrorSeo=validarCamposString(seo,250);      
       if(boolErrorSeo){ $( "#alta_seo_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
       else{ $( "#alta_seo_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      */
       //nombreproduct -> Number
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       boolErrorPrecio=validarCamposNumericos(precio);      
@@ -2945,7 +2963,7 @@ $( window ).ready(function()
       //OBTENEMOS LOS DATOS DEL FORMULARIO
       nombreproduct=$('#modificar_nombre_producto_Complementario').val();
       descripcion=$('#modificar_descripcion_producto_Complementario').val();
-      seo=$('#modificar_seo_producto_Complementario').val();
+      seo=$('#modificar_nombre_producto_Complementario').val().replace(" ", '');;
       precio=$('#modificar_precio_producto_Complementario').val();
       stock=$('#modificar_stock_producto_Complementario').val();
 
@@ -2965,9 +2983,11 @@ $( window ).ready(function()
       else{ $( "#modificar_descripcion_producto_Complementario" ).removeClass( "md-input-danger" ); }
       //nombreproduct -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      /*
       boolErrorSeo=validarCamposString(seo,250);      
       if(boolErrorSeo){ $( "#modificar_seo_producto_Complementario" ).addClass( "md-input-danger" ); boolError=true; }
       else{ $( "#modificar_seo_producto_Complementario" ).removeClass( "md-input-danger" ); }
+      */
       //nombreproduct -> Number
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       boolErrorPrecio=validarCamposNumericos(precio);      
@@ -3080,7 +3100,7 @@ $( window ).ready(function()
         arregloCategoriaProductoId.push(msg.datos[i].idtblcategproduct);
         arregloCategoriaProductoNombre.push(msg.datos[i].tblcategproduct_nombre);
       });  })
-      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblcategproductAct fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblcategproductAct fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/  });
     //mostrar clasificacion disponibles
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblclasifproductAct.php",  data: {solicitadoBy:"WEB"}  })
@@ -3090,7 +3110,7 @@ $( window ).ready(function()
         arregloClasificacionProductoNombre.push(msg.datos[i].tblclasifproduct_nombre);
       });
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblclasifproductAct fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblclasifproductAct fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/  });
     // mostar las especific de ingredeinte disponibles
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblespecificingrediente.php",  data: {solicitadoBy:"WEB"}  })
@@ -3101,7 +3121,7 @@ $( window ).ready(function()
           arregloEspecifiIngredientesNombre.push(msg.datos[i].tblespecificingrediente_nombre);  
         });        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblespecificingrediente fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("getAllTblespecificingrediente fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/  });
       //COTIZADOR
       $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTbleventoAct.php",  data: {solicitadoBy:"WEB"}  })
@@ -3115,7 +3135,7 @@ $( window ).ready(function()
         });
         
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("getAllTbleventoAct fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("getAllTbleventoAct fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/  });
   }
   function mostrarProductos(){
@@ -3153,7 +3173,7 @@ $( window ).ready(function()
     top="top";
     modal_new="#modal_new";
 
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductoTblproductoDetalleOfProveedor.php",  data: {solicitadoBy:"WEB",idtblproveedor:"1"}  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductoTblproductoDetalleOfProveedor.php",  data: {solicitadoBy:"WEB",idtblproveedor:idtblproveedor}  })
       .done(function( msgTblProductoYDetalles ) {
         
         if(msgTblProductoYDetalles.datos!="Hubo algun error, vuelve a intentarlo WEB")
@@ -3162,7 +3182,7 @@ $( window ).ready(function()
           idexArreglo=i;
           idProducto=msgTblProductoYDetalles.datos[i].idProducto;
           nombre=msgTblProductoYDetalles.datos[i].nombre;
-
+          //alert('mostrar liena nombre::'+nombre);
           descripcion=msgTblProductoYDetalles.datos[i].descripcion;
           ingredientes=msgTblProductoYDetalles.datos[i].ingredientes;
           seo=msgTblProductoYDetalles.datos[i].seo;
@@ -3214,8 +3234,9 @@ $( window ).ready(function()
             productdetalle_size=largo+" x "+ancho+' largo/ancho';
           else if(piezas!="")
             productdetalle_size=piezas+' piezas';
-          productoAcitvado=verificarActivoProducto(idProductoDetalle,activado); 
-          ProductoJS=productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,productoAcitvado);
+          productoAcitvado=verificarActivoProducto(idProductoDetalle,activado);
+          //alert('parametro nombre::'+nombre) 
+          ProductoJS=productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,productoAcitvado,nombreIngrediente);
           //LANZA LA PLANTILLA AL DOM
           $("#productoslineaPlantilla").append(ProductoJS);
           
@@ -3240,17 +3261,24 @@ $( window ).ready(function()
                 //AGREGAMOS LAS IMAGENES DE ESE PRODUCTO
                 arregloImagenesUnProducto.push(productoImagen);
 
+                //QUITAR EL ICONO DE CARGANDO
+                $('#load_imagenPortadaProductoLinea'+tblproductimg_idproducto).remove();
+                //CARGANDO EL ELEMNT DE IMAGEN Y CARGAR LA IMAGEN DEFAULT
+                if(i==0)
+                $('#div_imagenPortadaProductoLinea'+tblproductimg_idproducto).append('<img name="imagenPortadaProductoLinea'+tblproductimg_idproducto+'" class="md-card-head-img" src="./../assests_general/productos/default-img.gif" alt=""/>');  
+              
                 //LANZAMOS LA PRIMERA IMAGEN DEL PRODUCTO
                 if(i==0)                              
                   $("[name="+imgSrcProductoLinea+"]").attr("src",productoImagen);
-                
+                //if(i==0)
+                  //alert('imgSrcProductoLinea::'+imgSrcProductoLinea+' productoImagen::'+productoImagen);
                 //return false;
               });
               //SE AGREGA AL ARREGLO QUE TANDRA A TODOS LAS IMAGENES DE TODOS LOS PRODUCTOS Y LIMPIAMOS EL ARREGLO arregloImagenesUnProducto PARA EL SIGUIENTE PRODUCTO
               arregloImagenesTodosProducto.push(arregloImagenesUnProducto);
               arregloImagenesUnProducto=[];
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("always");*/ });
             //FIN IMG
 
@@ -3258,11 +3286,11 @@ $( window ).ready(function()
         });
           
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
 
       //PRODUCTOS COTIZADOR
-      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcotizador.php",  data: {solicitadoBy:"WEB",idtblproveedor:"1"}  })
+      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcotizador.php",  data: {solicitadoBy:"WEB",idtblproveedor:idtblproveedor}  })
         .done(function( msgTblProductoCotizador ) {
           if(msgTblProductoCotizador.datos!="Hubo algun error, vuelve a intentarlo WEB")
         {
@@ -3347,20 +3375,20 @@ $( window ).ready(function()
                 arregloImagenesUnProductoCotizador=[];
 
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){   });          
           });
           //FIN IMG
           
             
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductcotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductcotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){
           //console.log("getAllTblproductcotizador  always"); 
         });
       ///////////////////////////////////////////////////////////////////////////////////////////////////////
       //PRODUCTOS COMPLEMETARIO
-      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcomplemOfProveedor.php",  data: {solicitadoBy:"WEB",idtblproveedor:"1"}  })
+      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcomplemOfProveedor.php",  data: {solicitadoBy:"WEB",idtblproveedor:idtblproveedor}  })
         .done(function( msgTblProductoComplementario ) {
           //console.log('entro a msgTblProductoComplementario');
           
@@ -3418,18 +3446,19 @@ $( window ).ready(function()
             boton_nuevoproductoComplementario=agregarProductoPlantillaComplementario(); 
             $("#productosComplementarioPlantilla").append(boton_nuevoproductoComplementario);
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductComplementario fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductComplementario fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){
           //console.log("getAllTblproductComplementario  always"); 
         });
   }
   /*
   Funcion para geenerar el cuadro donde se muestran los productos
+  '<i class="uk-icon-spinner uk-icon-spin"></i>';
    */
-  function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado){
-    nombre = nombre.replace(' ', '_');
+  function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado,nombreIngrediente){
+    //nombre = nombre.replace(' ', '_');
     mensajeEliminacion="'Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img name="imagenPortadaProductoLinea'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/linea/" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">Sin Azucar</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative"> <i  id="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tama? : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
@@ -3448,20 +3477,23 @@ $( window ).ready(function()
     UIkit.modal.confirm('Are you sure?', function(){ UIkit.modal.alert('Confirmed!'); });
   }
   /*
-  genera un cuadro de añadir productos 
+  genera un cuadro de a?dir productos 
    */
   function agregarProductoPlantilla(){
     boton_nuevoproductolinea='<div data-product-name="agregarproductolinea">        <div class="uk-badge md-card ">          <div class="md-card-content uk-border-circle">            <div class="uk-text-center uk-border-circle"> <h3>Agregar un producto nuevo</h3>            <button id="agregar" type="button" class="md-btn md-btn-flat md-btn-small uk-border-circle" data-uk-modal="{target:popup_nuevoproductolinea}">                <label class="menu_icon"><i class="material-icons md-48">&#xE145;</i></label>              </button>            </div>          </div>        </div></div>';
+    boton_nuevoproductolinea='<div class="md-card-head-avatar md-fab" data-uk-modal="{target:popup_nuevoproductolinea}">  <i class="material-icons">&#xE145;</i> </div>';
     return boton_nuevoproductolinea;
   }
 
   function agregarProductoPlantillaCotizador(){
     boton_nuevoproductoCotizador='<div data-product-name="agregarproductoCotizador">        <div class="uk-badge md-card ">          <div class="md-card-content uk-border-circle">            <div class="uk-text-center uk-border-circle"> <h3>Agregar un producto para cotizar nuevo</h3>            <button id="agregar" type="button" class="md-btn md-btn-flat md-btn-small uk-border-circle" data-uk-modal="{target:popup_nuevoproductocotizador}">                <label class="menu_icon"><i class="material-icons md-48">&#xE145;</i></label>              </button>            </div>          </div>        </div></div>';
+    boton_nuevoproductoCotizador='<div class="md-card-head-avatar md-fab" data-uk-modal="{target:popup_nuevoproductocotizador}">  <i class="material-icons">&#xE145;</i> </div>';
     return boton_nuevoproductoCotizador;
   }
 
   function agregarProductoPlantillaComplementario(){
     boton_nuevoproductoComplementario='<div data-product-name="agregarproductoComplementario">        <div class="uk-badge md-card ">          <div class="md-card-content uk-border-circle">            <div class="uk-text-center uk-border-circle"> <h3>Agregar un producto complementario nuevo</h3>            <button id="agregar" type="button" class="md-btn md-btn-flat md-btn-small uk-border-circle" data-uk-modal="{target:popup_nuevoproductoComplementario}">                <label class="menu_icon"><i class="material-icons md-48">&#xE145;</i></label>              </button>            </div>          </div>        </div></div>';
+    boton_nuevoproductoComplementario='<div class="md-card-head-avatar md-fab" data-uk-modal="{target:popup_nuevoproductoComplementario}">  <i class="material-icons">&#xE145;</i> </div>';
     return boton_nuevoproductoComplementario;
   }
 
@@ -3506,7 +3538,7 @@ $( window ).ready(function()
     $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleActivar.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,activado:activado,emailusuamodifico:emailUsuarioLogin}  })
       .done(function( msgTblproductDetalle ) {        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
     //FIN AJAX ACTIVAR PRODUCTO
   }
@@ -3522,7 +3554,7 @@ $( window ).ready(function()
     $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleActivar.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProducto,activado:activado,emailusuamodifico:emailUsuarioLogin}  })
       .done(function( msgTblproductDetalle ) {        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
     //FIN AJAX ACTIVAR PRODUCTO
   }
@@ -3532,7 +3564,7 @@ $( window ).ready(function()
     $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleStock.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,stock:stock,emailusuamodifico:emailUsuarioLogin}  })
       .done(function( msgTblproductDetalle ) {        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleStock fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleStock fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
   }
   function registrarProductoLinea(){  
@@ -3546,7 +3578,7 @@ $( window ).ready(function()
     seo='';
     promcalif='';
     activado='';
-    idtblproveedor='';
+    //idtblproveedor='';
     idtblcategproduc='';
     idtblclasifproduct='';
     emailcreo='';
@@ -3578,11 +3610,11 @@ $( window ).ready(function()
     nombreproduct=$('#alta_nombre_producto_linea').val();
     descripcion=$('#alta_descripcion_producto_linea').val();
     ingredientes=$('#alta_ingredientes_producto_linea').val();
-    seo=$('#alta_seo_producto_linea').val();
+    seo=$('#alta_nombre_producto_linea').val().replace(" ", '');
     promcalif='5';
     activado=$('#alta_activado_producto_linea').val();
     if(activado=='on'){activado=1;}
-    idtblproveedor='1';
+    //idtblproveedor='1';
     idtblcategproduc=$('#alta_categoria_producto_linea').val();
     idtblclasifproduct=$('#alta_clasificacion_producto_linea').val();
     emailcreo='miguel@bepickler.com';
@@ -3661,15 +3693,29 @@ $( window ).ready(function()
                      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproducto:idtblproducto,emailcreo:emailcreo}  })
                       .done(function( msgTblProductoImg3 )
                       {
+                        //alert('SUBIR LOS ARCHIVOS AL SERVIDOR');
+                        $('#altaproducto').submit()
+                        
                         //console.log('msgTblProductoImg3.datos::'+msgTblProductoImg3.datos);
                         srcimg3=$('#alta_srcimg3_producto_lineaBD').val(msgTblProductoImg3.datos);
                         //mandamos el fom para subir las imagenes al servidor
                         var formData = new FormData($("#altaproducto")[0]);
                         var ruta = "imagen-ajax.php";
+
+                        /*
+                        $('#productosComplementarioPlantilla').html("");
+                        $('#productoscotizadorPlantilla').html("");
+                        $('#productoslineaPlantilla').html("");
+                        $('#altaproducto')[0].reset();
+                        cargarValoresDefault();
+                        UIkit.modal("#popup_nuevoproductolinea").hide();
+                        */
+                        
                         $.ajax({  method: "POST",  url: "uploadImgProductoLinea.php",  data: formData ,contentType: false,
                         processData: false, })
                           .done(function( datos )
                           {
+                            
                             //alert('done uploadImgProductoLinea datos::'+datos);
                             //$('#productoslineaPlantilla').html("");
                             $('#productosComplementarioPlantilla').html("");
@@ -3677,21 +3723,22 @@ $( window ).ready(function()
                             $('#productoslineaPlantilla').html("");
                             $('#altaproducto')[0].reset();
                             cargarValoresDefault();
-                            UIkit.modal("#popup_nuevoproductolinea").hide();
+                            
                             UIkit.modal.alert('Producto Registrado');
                           })
-                          .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-                          .always(function(){  /*console.log("always");*/ });                         
+                          .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+                          .always(function(){  });
+                          
                       })
-                      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                       .always(function(){  /*console.log("always");*/ }); 
                   })
-                  .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                  .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){  /*console.log("always");*/ });
                 // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo  
                 
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg IMG fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg IMG fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
               .always(function(){  /*console.log("always");*/ });
            
             //producto detalles
@@ -3699,15 +3746,15 @@ $( window ).ready(function()
               .done(function( msgTblProductoDetalle )
               {
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductDetalle fail detalle jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductDetalle fail detalle jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){  /*console.log("always");*/ });
             /////////////////////////////////////////////////////////////////////
           })
-          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoId fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoId fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
           .always(function(){  /*console.log("always");*/ });
         /////////////////////////////////////////////////////////////////////////
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setTblproducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
       
   }
@@ -3716,6 +3763,7 @@ $( window ).ready(function()
     /*
     VARIABLES
      */
+    idtblproductcotizador='';
     //tblproducto
     nombreproduct='';
     descripcion='';
@@ -3723,7 +3771,7 @@ $( window ).ready(function()
     idtblevento='';
     promcalif='';
     activado='';
-    idtblproveedor='';
+    //idtblproveedor='';
     emailcreo='';
     //productoimg
     srcimg1='';
@@ -3741,7 +3789,7 @@ $( window ).ready(function()
     activado=$('#alta_activado_producto_cotizador').val();
     if(activado=='on'){activado=1;}
     //SESSION
-    idtblproveedor='1';
+    //idtblproveedor='1';
     ///////////////////
     idtblevento=$('#alta_evento_producto_cotizador').val();
     emailcreo='miguel@bepickler.com';
@@ -3767,9 +3815,11 @@ $( window ).ready(function()
     
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotizador.php",  data: {solicitadoBy:"WEB",nombreproductcotizador:nombreproduct,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalif, diaselaboracion:diaselaboracion, activado:activado, idtblevento:idtblevento, idtblproveedor:idtblproveedor, emailcreo:emailcreo}  })
       .done(function( msgTblProducto ) {
+        //alert('msgTblProducto::'+msgTblProducto.success);
         /////////////////////////////////////////////////////////////////////////
         $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoCotizadorId.php",  data: {solicitadoBy:"WEB",nombreproductcotizador:nombreproduct,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalif, diaselaboracion:diaselaboracion, activado:activado, idtblevento:idtblevento, idtblproveedor:idtblproveedor, emailcreo:emailcreo}  })
           .done(function( msgTblProductoId ) {
+            //alert('msgTblProductoId.datos[0].idtblproductcotizador::'+msgTblProductoId.datos[0].idtblproductcotizador+' otro::'+msgTblProductoId.datos.idtblproductcotizador);
             idtblproductcotizador=msgTblProductoId.datos[0].idtblproductcotizador;
             /////////////////////////////////////////////////////////////////////]
             //imagenes
@@ -3811,36 +3861,36 @@ $( window ).ready(function()
 
 
                           })
-                          .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                          .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                           .always(function(){ 
                            //console.log("always");
                             });                         
                       })
-                      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                       .always(function(){ 
                       //console.log("always");
                     }); 
                   })
-                  .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                  .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){  
                   console.log("always");
                    });
                 // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo  
                 
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
               .always(function(){  
               //console.log("always");
                });
             /////////////////////////////////////////////////////////////////////
           })
-          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoCotizadorId fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoCotizadorId fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
           .always(function(){  
           //console.log("always");
         });
         /////////////////////////////////////////////////////////////////////////
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  
         //console.log("always");
        });
@@ -3860,20 +3910,20 @@ $( window ).ready(function()
     precioreal='';
     srcimg='';
     activado='';
-    idProveedor='';
+    //idProveedor='';
     stock=''; 
     /*
     ASINGACION DE VALORES
      */
     nombreproduct=$('#alta_nombre_producto_Complementario').val();
     descripcion=$('#alta_descripcion_producto_Complementario').val();
-    seo=$('#alta_seo_producto_Complementario').val();
+    seo=$('#alta_nombre_producto_Complementario').val().replace(" ", '');;
     precioreal=$('#alta_precioreal_producto_Complementario').val();
     preciobp=precioreal;
     activado=$('#alta_activado_producto_cotizador').val();
     if(activado=='on'){activado=1;}
     //SESSION
-    idtblproveedor='1';
+    //idtblproveedor='1';
     ///////////////////
     emailcreo='miguel@bepickler.com';
 
@@ -3949,28 +3999,28 @@ $( window ).ready(function()
                       UIkit.modal.alert('Producto Complementario Registrado');
                       cargarValoresDefault();
                     })
-                    .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoComplementario fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                    .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoComplementario fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                     .always(function(){ 
                      //console.log("always");
                     });
                     
                   // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo  
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
               .always(function(){  
               //console.log("always");
                });
               
             /////////////////////////////////////////////////////////////////////
           })
-          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoComplementarioId fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+          .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoComplementarioId fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
           .always(function(){  
           //console.log("always");
         });
         /////////////////////////////////////////////////////////////////////////
         
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcomplem fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  
         //console.log("always");
        });
@@ -4053,7 +4103,8 @@ $( window ).ready(function()
     });
 
     $('#modificar_nombre_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][1]);
-    $('#modificar_seo_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][14]);
+    //$('#modificar_seo_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][14]);
+    //$('#modificar_seo_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][1].replace(" ", ''));
     $('#modificar_descripcion_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][12]);
     $('#modificar_ingredientes_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][13]);
     //CREAMOS LAS OPCIONES PARA CATEGORIAS Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
@@ -4061,9 +4112,9 @@ $( window ).ready(function()
       if(arregloInfoTodosProducto[idexArreglo][16]==arregloCategoriaProductoId[i])
         $("#modificar_categoria_producto_linea_general").append('<option value="'+item+'"selected>'+arregloCategoriaProductoNombre[i]+'</option>');
       else
-        $("#modificar_categoria_producto_linea_general").append('<option value="'+item+'"selected>'+arregloCategoriaProductoNombre[i]+'</option>');
+        $("#modificar_categoria_producto_linea_general").append('<option value="'+item+'">'+arregloCategoriaProductoNombre[i]+'</option>');
     });
-    //CREAMOS LAS OPCIONES PARA CLASIFICACIÓN Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
+    //CREAMOS LAS OPCIONES PARA CLASIFICACI? Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
     $.each(arregloClasificacionProductoId, function(i,item){
       if(arregloInfoTodosProducto[idexArreglo][17]==arregloClasificacionProductoId[i])
         $("#modificar_clasificacion_producto_linea_general").append('<option value="'+item+'"selected>'+arregloClasificacionProductoNombre[i]+'</option>');
@@ -4131,7 +4182,7 @@ $( window ).ready(function()
       if(arregloInfoTodosProductoCotizador[idexArreglo][7]==arregloEventosId[i])
         $("#modificar_evento_producto_cotizador").append('<option value="'+item+'"selected>'+arregloEventosNombre[i]+'</option>');
       else
-        $("#modificar_evento_producto_cotizador").append('<option value="'+item+'"selected>'+arregloEventosNombre[i]+'</option>');
+        $("#modificar_evento_producto_cotizador").append('<option value="'+item+'">'+arregloEventosNombre[i]+'</option>');
     });
 
     $("#modificar_idProveedor_producto_cotizador").val(arregloInfoTodosProductoCotizador[idexArreglo][8]);
@@ -4162,7 +4213,7 @@ $( window ).ready(function()
      */
     $("#modificar_nombre_producto_Complementario").empty();
     $("#modificar_descripcion_producto_Complementario").empty();
-    $("#modificar_seo_producto_Complementario").empty();
+    //$("#modificar_seo_producto_Complementario").empty();
     $("#modificar_precio_producto_Complementario").empty();
     $("#modificar_srcimg1_producto_Complementario").empty();
     $("#modificar_activado_producto_Complementario").empty();    
@@ -4174,7 +4225,7 @@ $( window ).ready(function()
     $('#modificar_id_producto_Complementario').val(idtblproductcomplementario);
     $("#modificar_nombre_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][1]);
     $("#modificar_descripcion_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][2]);
-    $("#modificar_seo_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][3]);
+    //$("#modificar_seo_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][3]);
     $("#modificar_precio_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][4]);
 
     $("#modificar_idProveedor_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][7]);
@@ -4195,7 +4246,7 @@ $( window ).ready(function()
     idtblproductcomplem=$('#modificar_id_producto_Complementario').val();
     nombre=$("#modificar_nombre_producto_Complementario").val();
     descripcion=$("#modificar_descripcion_producto_Complementario").val();
-    seo=$("#modificar_seo_producto_Complementario").val();
+    seo=$("#modificar_nombre_producto_Complementario").val().replace(" ", '');
     precioreal=$("#modificar_precio_producto_Complementario").val();
     preciobp=precioreal;
     idtblproveedor=$("#modificar_idProveedor_producto_Complementario").val();
@@ -4217,6 +4268,7 @@ $( window ).ready(function()
 
     //obentenso el inptup de la iamgen
     srcimg1=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
+    nuevaImagen=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
     //alert('srcimg1::'+srcimg1);   
     //.replace(/C:\\fakepath\\/i, ''); 
     //si no esta vacio le asignamos la el nombre de la nueva imagen, si lo esta solo asignamos  el mismo nombre que tenia anteriormente
@@ -4227,13 +4279,9 @@ $( window ).ready(function()
       //borramos la actual file de la fotografia del servidor
       $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoComplementario.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:srcimgActual} })
         .done(function( datos ){
-          $('#productosComplementarioPlantilla').html("");
-          $('#productoscotizadorPlantilla').html("");
-          $('#productoslineaPlantilla').html(""); 
-          //cargarValoresDefault();
           console.log('setDeleteFileImgProductoComplementario datos::'+datos.datos);
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  
         //console.log("setDeleteFileImgProductoCotizador  always");
          });
@@ -4249,9 +4297,10 @@ $( window ).ready(function()
           $('#productosComplementarioPlantilla').html("");
           $('#productoscotizadorPlantilla').html("");
           $('#productoslineaPlantilla').html("");
-          //cargarValoresDefault();
+          //alert('cargarValoresDefault con iamgen');
+          cargarValoresDefault();
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  
         //console.log("always");
          });
@@ -4263,7 +4312,7 @@ $( window ).ready(function()
     console.log('datos para actualizar:: idtblproductcomplem'+idtblproductcomplem+' nombre::'+nombre+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' preciobp::'+preciobp+' srcimg1::'+srcimg1+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' emailmodifico::'+emailmodifico);
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplem.php", data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem,nombreproductcomplem:nombre,descripcion:descripcion,seo:seo,precioreal:precioreal,preciobp:preciobp,srcimg:srcimg1,activado:activado,idtblproveedor:idtblproveedor,stock:stock,emailmodifico:emailmodifico }  })
       .done(function( msgTblProductoComplementario ) {
-        //alert('Elimnación Exitosa');
+        //alert('Elimnaci? Exitosa');
         console.log('setUpdateTblproductcomplem done msgTblProductoComplementario::'+msgTblProductoComplementario.datos);
         $('#productosComplementarioPlantilla').html("");
         $('#productoscotizadorPlantilla').html("");
@@ -4271,9 +4320,13 @@ $( window ).ready(function()
         $('#formActualizarProductoComplementario')[0].reset();
         UIkit.modal("#popup_modificarproductoComplementario").hide();
         UIkit.modal.alert('Producto Complementario Actualizado');
-        cargarValoresDefault();
+        if(nuevaImagen=='')
+        {
+          //alert('cargar cargarValoresDefault sin iamgen');
+          cargarValoresDefault();
+        }
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcomplem fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){ 
        //console.log("always");
      });
@@ -4294,7 +4347,7 @@ $( window ).ready(function()
       activado=1;
     else
       activado=0;
-    idtblproveedor=1;
+    //idtblproveedor=1;
     diaselaboracion=$("#modificar_detalle_diasElborar_producto_cotizador").val();
     promcalificacion=5;
     emailmodifico='miguel@bepickler.com';
@@ -4353,7 +4406,7 @@ $( window ).ready(function()
               $idtblproductcotizador=$_POST["idtblproductcotizador"];
               $emailcreo=$_POST["emailcreo"];
                */
-              console.log('datos a envair srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3+' idtblproductcotizador::'+idProductoCotizador+' emailcreo::'+emailmodifico)
+              //alert('datos a envair srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3+' idtblproductcotizador::'+idProductoCotizador+' emailcreo::'+emailmodifico)
               $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
                 .done(function( msgTblProductoImg1 )
                 {
@@ -4362,6 +4415,7 @@ $( window ).ready(function()
                     .done(function( msgTblProductoImg2 )
                     {
                       srcimg2=$('#modificar_srcimg2_producto_cotizadorBD').val(msgTblProductoImg2.datos);
+                      //alert('msgTblProductoImg2.datos::'+msgTblProductoImg2.datos);
                       $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
                         .done(function( msgTblProductoImg3 )
                         {
@@ -4374,6 +4428,7 @@ $( window ).ready(function()
                           processData: false, })
                             .done(function( datos )
                             {
+                              //alert('subio los archivos al servidor');
                               console.log('uploadImgProductoCotizador done datos::'+datos);
                               $('#productosComplementarioPlantilla').html("");
                               $('#productoscotizadorPlantilla').html("");
@@ -4382,20 +4437,20 @@ $( window ).ready(function()
                              
                               cargarValoresDefault();
                             })
-                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                             .always(function(){  /*console.log("always");*/ });                         
                         })
-                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                         .always(function(){  /*console.log("always");*/ }); 
                     })
-                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                     .always(function(){  /*console.log("always");*/ });
                   // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo            
                 })
-                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
                 .always(function(){  /*console.log("always");*/ });              
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("setDeleteTblproductImgOfProducto  always");*/ });
           //RECORREMOS EL ARREGLO DE LOS ID
           $.each(arregloIdtblproductimgCotizador, function(i,item){
@@ -4403,11 +4458,11 @@ $( window ).ready(function()
             $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimgCotizador[i]} })
               .done(function( datos ){ 
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){  /*console.log("setDeleteFileImgProductoCotizador  always");*/ });
           });
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
       
     }
@@ -4428,15 +4483,20 @@ $( window ).ready(function()
     
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcotizador.php", data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto,nombreproductcotizador:nombre,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalificacion,diaselaboracion:diaselaboracion,activado:activado,idtblproveedor:idtblproveedor,idtblevento:idtblevento,emailmodifico:emailmodifico }  })
       .done(function( msgTblProductoDetalles ) {
-        //alert('Elimnación Exitosa');
+        //alert('Elimnaci? Exitosa');
         $('#productoscotizadorPlantilla').html("");
         $('#productosComplementarioPlantilla').html("");
         $('#productoslineaPlantilla').html("");
+        if (srcimg1==''&&srcimg2==''&&srcimg3=='')
+        {
+          alert('no tiene imagenes');
+          $('#formActualizarProductoCotizador')[0].reset();
+        }
         UIkit.modal.alert('Producto Cotizador Actualizado');
         UIkit.modal("#popup_modificarproductocotizador").hide();
         cargarValoresDefault();
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcotizador fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
   }
 
@@ -4482,7 +4542,7 @@ $( window ).ready(function()
 
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalle.php", data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,diaselaboracion:diasElborar,stock:stock,precioreal:precio,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,porciones:porciones,piezas:piezas,activado:activado,idtblproducto:idProducto, idtblespecifingrediente:especificingredientes ,emailmodifico:emailmodifico }  })
             .done(function( msgTblProductoDetalles ) {
-              //alert('Elimnación Exitosa');
+              //alert('Elimnaci? Exitosa');
               //$('#productoslineaPlantilla').html("");
               //cargarValoresAltaProductoLinea();
               //mostrarProductos();
@@ -4495,7 +4555,7 @@ $( window ).ready(function()
               UIkit.modal("#popup_modificarproductolinea").hide();
               cargarValoresDefault();
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalle fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalle fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("always");*/ });
 
   }
@@ -4505,14 +4565,14 @@ $( window ).ready(function()
     nombre=$("#modificar_nombre_producto_linea_general").val();
     descripcion=$("#modificar_descripcion_producto_linea_general").val();
     ingredientes=$("#modificar_ingredientes_producto_linea_general").val();
-    seo=$("#modificar_seo_producto_linea_general").val();
+    seo=$('#modificar_nombre_producto_linea_general').val().replace(" ", '');
     promcalif=5;
     activado=$("#modificar_activado_producto_linea_general").is(':checked');
     if(activado)
       activado=1
     else
       activado=0 
-    idtblproveedor=1;
+    //idtblproveedor=1;
     categoria=$("#modificar_categoria_producto_linea_general").val();
     clasificacion=$("#modificar_clasificacion_producto_linea_general").val();
     emailmodifico='miguel@bepickler.com';
@@ -4520,9 +4580,8 @@ $( window ).ready(function()
     srcimg1=$("#modificar_srcimg1_producto_linea").val();
     srcimg2=$("#modificar_srcimg2_producto_linea").val();
     srcimg3=$("#modificar_srcimg3_producto_linea").val();
-    //los 3 campos son obligatorios para poder regitrar la nueva imagen del producto si no se dara por vacios y no se registrar las nuevas fotografías
+    //los 3 campos son obligatorios para poder regitrar la nueva imagen del producto si no se dara por vacios y no se registrar las nuevas fotograf?s
     if(srcimg1==''||srcimg2==''||srcimg3=='')
-    //if(1!=1)
     {
       srcimg1='';
       srcimg2='';
@@ -4536,7 +4595,7 @@ $( window ).ready(function()
       srcimg1='p_'+idProducto+'_'+srcimg1;
       srcimg2='p_'+idProducto+'_'+srcimg2;
       srcimg3='p_'+idProducto+'_'+srcimg3;
-     
+      //alert('entro a actualizar con imagen srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3);
       /////////////////////////////////////////////////////////
       var arregloIdtblproductimg=[];
       var arregloTblproductimg_srcimg=[];
@@ -4587,26 +4646,27 @@ $( window ).ready(function()
                               //$('#productoslineaPlantilla').html("");
                               //cargarValoresDefault();
                               $('#productosComplementarioPlantilla').html("");
-                            $('#productoscotizadorPlantilla').html("");
-                            $('#productoslineaPlantilla').html("");
-                            $('#formActualizarProductoLineaGeneral')[0].reset();
-                            UIkit.modal("#popup_modificarproductolineageneral").hide();
-                            cargarValoresDefault();
+                              $('#productoscotizadorPlantilla').html("");
+                              $('#productoslineaPlantilla').html("");
+                              $('#formActualizarProductoLineaGeneral')[0].reset();
+                              UIkit.modal("#popup_modificarproductolineageneral").hide();  
+                              UIkit.modal.alert('Actualizado');
+                              cargarValoresDefault();
                             })
-                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                             .always(function(){  /*console.log("always");*/ });                         
                         })
-                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                         .always(function(){  /*console.log("always");*/ }); 
                     })
-                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                     .always(function(){  /*console.log("always");*/ });
                   // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo            
                 })
-                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg IMG fail jqXHR::"+jqXHR+" IMG textStatus::"+textStatus);  })
+                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg IMG fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
                 .always(function(){  /*console.log("always");*/ });              
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("setDeleteTblproductImgOfProducto  always");*/ });
           //alert('antes del each de borrar file');
           //RECORREMOS EL ARREGLO DE LOS ID
@@ -4617,11 +4677,11 @@ $( window ).ready(function()
               .done(function( datos ){ 
                 //alert('done datos.datos::'+datos.datos+' datos.success::'+datos.success);
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){  /*console.log("setDeleteFileImgProducto  always");*/ });
           });
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
       
     }
@@ -4634,15 +4694,17 @@ $( window ).ready(function()
         $('#productosComplementarioPlantilla').html("");
         $('#productoscotizadorPlantilla').html("");
         $('#productoslineaPlantilla').html("");
-        if(srcimg1!=''&&srcimg2!=''&&srcimg3!='')
+        if(srcimg1==''&&srcimg2==''&&srcimg3=='')
         {
+          //alert('no tiene imagen');
           $('#formActualizarProductoLineaGeneral')[0].reset();         
-        }
-        UIkit.modal("#popup_modificarproductolineageneral").hide();
-        UIkit.modal.alert('Actualizado');
-        cargarValoresDefault();
+          UIkit.modal("#popup_modificarproductolineageneral").hide();
+          UIkit.modal.alert('Actualizado');
+          cargarValoresDefault();
+        }      
+        
       })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproducto fail jqXHR::"+jqXHR.status.status+" textStatus::"+textStatus);  })
       .always(function(){   });
   }
   //function confirmacionEliminarProductoLinea(){}
@@ -4682,7 +4744,7 @@ $( window ).ready(function()
               .done(function( datos ){ 
                 //alert('done datos.datos::'+datos.datos+' datos.success::'+datos.success);
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){  /*console.log("setDeleteFileImgProducto  always");*/ });
           });
           //COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
@@ -4711,7 +4773,7 @@ $( window ).ready(function()
                                   $('#productoslineaPlantilla').html("");
                                   cargarValoresDefault();
                   })
-                  .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                  .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){   });
               }
               else if(numeroProductosDetalle>1)
@@ -4720,7 +4782,7 @@ $( window ).ready(function()
                 console.log('ELIMINAR SOLO ESTE PRODUCTO DETALLE');
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductDetalle.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle}  })
                   .done(function( msgTblProductoDetalles ) {
-                    alert('Elimnación Exitosa');
+                    alert('Elimnaci? Exitosa');
                     //$('#productoslineaPlantilla').html("");
                     //cargarValoresDefault();
                     $('#productosComplementarioPlantilla').html("");
@@ -4728,17 +4790,17 @@ $( window ).ready(function()
                                   $('#productoslineaPlantilla').html("");
                                   cargarValoresDefault();
                   })
-                  .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductDetalle fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                  .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductDetalle fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){   });
               }
               
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoDetalleProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoDetalleProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){  /*console.log("always");*/ });
           
           //FIN COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
 
         /*
@@ -4766,27 +4828,33 @@ $( window ).ready(function()
       $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcotimg.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idtblproductcotizador} })
         .done(function( msgTblProductoImg )
         {
-          //OBTENEMOS TODOS LOS REGISTROS 
-          $.each(msgTblProductoImg.datos, function(i,item){
-            //GUARDAMOS EL ID DEL LA IAMGEN EN EL ARREGLO
-            arregloIdtblproductimg.push(msgTblProductoImg.datos[i].idtblproductcotimg);
-            //GUARDAMOS EL NOMBRE DE LA IAMGEN EN EL ARREGLO
-            arregloTblproductimg_srcimg.push(msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
-            //alert('msgTblProductoImg.datos[i].tblproductcotimg_srcimg::'+msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
-          });          
-          //RECORREMOS EL ARREGLO DE LOS ID
-          $.each(arregloIdtblproductimg, function(i,item){
-            //SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS
-            //alert('entro al each i::'+i+' item::'+item+' arregloTblproductimg_srcimg[i]::'+arregloTblproductimg_srcimg[i]);
-            
-            $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimg[i]} })
-              .done(function( datos ){ 
-                //alert('done datos.datos::'+datos.datos+' datos.success::'+datos.success);
-              })
-              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-              .always(function(){   });
-            
-          });
+          if(msgTblProductoImg.datos!='Hubo algun error, vuelve a intentarlo WEB')
+          {
+            //alert('getAllTblproductcotimg done OBTENEMOS TODOS LOS REGISTROS')
+            //OBTENEMOS TODOS LOS REGISTROS 
+            $.each(msgTblProductoImg.datos, function(i,item){
+              //GUARDAMOS EL ID DEL LA IAMGEN EN EL ARREGLO
+              arregloIdtblproductimg.push(msgTblProductoImg.datos[i].idtblproductcotimg);
+              //GUARDAMOS EL NOMBRE DE LA IAMGEN EN EL ARREGLO
+              arregloTblproductimg_srcimg.push(msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
+              //alert('msgTblProductoImg.datos[i].tblproductcotimg_srcimg::'+msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
+            });          
+            //RECORREMOS EL ARREGLO DE LOS ID
+            //alert('//RECORREMOS EL ARREGLO DE LOS ID');
+            $.each(arregloIdtblproductimg, function(i,item){
+              //SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS
+              //alert('//SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS');
+              //alert('entro al each i::'+i+' item::'+item+' arregloTblproductimg_srcimg[i]::'+arregloTblproductimg_srcimg[i]);
+              
+              $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimg[i]} })
+                .done(function( datos ){ 
+                  //alert('setDeleteFileImgProductoCotizador done');
+                })
+                .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+                .always(function(){   });
+              
+            });
+          }
           //COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
           //
           //ELIMINAR DESDE EL PRODUCTO COTIZADOR
@@ -4803,17 +4871,17 @@ $( window ).ready(function()
               $('#productoslineaPlantilla').html("");
               cargarValoresDefault();
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){   });
             
           //FIN COMIENZA CON LA ELIMINACION DE LAS BASES DE DATOS
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
     
   }
   function eliminarProductoComplementario(idProducto){
-    //UIkit.modal.confirm('Realmente deseas eliminar el producto Complementario', function(){  respuesta=true;  });
+    //UIkit.modal.confirm('Realmente deseas eliminar el producto Complementario?', function(){  respuesta=true;  });
     //if (respuesta == true) {
       //srcimgActual=$("#fotografia_complementario_actual").val();
       srcimgActual=$("#imagenPortadaProductoComplementario"+idProducto).attr("src");
@@ -4832,11 +4900,11 @@ $( window ).ready(function()
               $('#productosComplementarioPlantilla').html("");
               cargarValoresDefault();
             })
-            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductcomplem fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){   });
 
         })
-        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  
         //console.log("setDeleteFileImgProductoCotizador  always");
          });
