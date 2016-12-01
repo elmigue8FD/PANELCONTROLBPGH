@@ -7,6 +7,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
     <!-- altair admin login page -->
     <link rel="stylesheet" href="assets/css/login_page.min.css" />
+    
   </head>
   <body class="login_page">
 
@@ -14,47 +15,50 @@
       <div class="md-card" id="login_card">
         <div class="md-card-content large-padding" id="login_form">
           <div class="login_heading">
-            <div class="user_avatar"></div>
+            <!--<div class="user_avatar"> </div>-->
+            <img src="./assets/img/bepickler.png">
           </div>
           <form>
           <!--role="form" id="formLogin" name="formLogin" method="post" action="./../../controllers/setCheckTblusuarioproveedorLogin.php"-->
             <div class="uk-form-row">
-              <label for="login_username">Username</label>
+              <label for="login_username">Usuario</label>
               <input class="md-input" type="text" id="emailproveedor" name="emailproveedor" />
             </div>
             <div class="uk-form-row">
               <label for="login_password">Password</label>
               <input class="md-input" type="password" id="passwordproveedor" name="passwordproveedor" />
             </div>
-            <div class="uk-margin-medium-top">
-              <a id="sigIn" class="md-btn md-btn-primary md-btn-block md-btn-large">Sign In</a>
+            <div class="uk-margin-medium-top ">
+              <a id="sigIn" class="md-btn md-btn-primary md-btn-block md-btn-large md-bg-pink-300">Acceder</a>
             </div>
             <div class="uk-margin-top">
-              <a href="#" id="login_help_show" class="uk-float-right">Need help?</a>
+              <a href="ayudaAcceder.php" id="login_help_show" class="uk-float-right md-color-pink-300">¿Necesitas ayuda?</a>
+              <!--
               <span class="icheck-inline">
                 <input type="checkbox" name="login_page_stay_signed" id="login_page_stay_signed" data-md-icheck />
                 <label for="login_page_stay_signed" class="inline-label">Stay signed in</label>
               </span>
+              -->
             </div>
           </form>
         </div>
         <div class="md-card-content large-padding uk-position-relative" id="login_help" style="display: none">
           <button type="button" class="uk-position-top-right uk-close uk-margin-right uk-margin-top back_to_login"></button>
-          <h2 class="heading_b uk-text-success">Can't log in?</h2>
-          <p>Here’s the info to get you back in to your account as quickly as possible.</p>
-          <p>First, try the easiest thing: if you remember your password but it isn’t working, make sure that Caps Lock is turned off, and that your username is spelled correctly, and then try again.</p>
-          <p>If your password still isn’t working, it’s time to <a href="#" id="password_reset_show">reset your password</a>.</p>
+          <h2 class="heading_b uk-text-success">Lamentamos que tuvieras problemas para acceder</h2>
+          <p>Los usuarios y contraseñas son sensibles a MAYUSCULAS, minúsculas, puntos y comas.</p>
+          <p>Primero, intenta lo mas sencillo: Si tu recuerdas tu constraseña pero no funciona, revisa si tu usuario este escrito correctamente, luego intenta denuevo.</p>
+          <p>Si aún no puedes acceder puedes mandar una solicitud de ayuda a <a href="#" id="password_reset_show">Solicitar soporte de Bepickler</a>.</p>
         </div>
         <div class="md-card-content large-padding" id="login_password_reset" style="display: none">
           <button type="button" class="uk-position-top-right uk-close uk-margin-right uk-margin-top back_to_login"></button>
-          <h2 class="heading_a uk-margin-large-bottom">Reset password</h2>
+          <h2 class="heading_a uk-margin-large-bottom">Ayuda de soporte de Bepickler</h2>
           <form>
             <div class="uk-form-row">
-              <label for="login_email_reset">Your email address</label>
+              <label for="login_email_reset">Dirección de correo electrónico usuario</label>
               <input class="md-input" type="text" id="login_email_reset" name="login_email_reset" />
             </div>
             <div class="uk-margin-medium-top">
-              <a href="index.php" class="md-btn md-btn-primary md-btn-block">Reset password</a>
+              <a href="index.php" class="md-btn md-btn-primary md-btn-block">Solicitar soporte</a>
             </div>
           </form>
         </div>
@@ -119,7 +123,7 @@
             }
           })
           .fail(function( jqXHR, textStatus ) {
-            console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);
+            console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);
             alert( "Request failed: " + textStatus );
           })
           .always(function(){
