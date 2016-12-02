@@ -1,3 +1,7 @@
 .md-fab {
 	margin-left: 25px;
+	margin-top: 25px;
+}
+.uk-grid-medium+.uk-grid-medium, .uk-grid-medium>*>.uk-panel+.uk-panel, .uk-grid-medium>.uk-grid-margin {
+	margin-top: 25px;
 }

@@ -1,9 +1,5 @@
-<?php session_start(); ?>
 <?php 
-if(!isset($_SESSION['sesion_activa1']))
-{
- header("Location: index.php");
-}
+include('./php/seguridad_general.php');
 ?>
 <!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
@@ -16,6 +12,7 @@ if(!isset($_SESSION['sesion_activa1']))
   <!-- fullcalendar -->
   <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
   <link rel="stylesheet" href="./assets/skins/dropify/css/dropify.css">
+  <link rel="stylesheet" href="./assets/css/estilo_miguel_inicio.css">
 </head>
 
 <body class=" sidebar_main_open sidebar_main_swipe">
@@ -564,7 +561,7 @@ if(!isset($_SESSION['sesion_activa1']))
         </div><!-- end Contenido de Pestaña Ordenes -->
 
         <!--COMIENZA MIGUEL HTML -->
-       <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
+        <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
           <!-- Contenido de Iitem de Producto en Linea -->
             <div id="productoslinea">
               <h3 class="heading_b uk-margin-bottom"> Productos en Línea </h3>
@@ -710,7 +707,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                           <h5 id="alta_srcimg1_producto_linea_titulo">
                                               Fotografía 1  <span class="req"> * </span>
                                           </h5>
-                                          <input type="file" id="alta_srcimg1_producto_linea" name="srcimg1_producto" class="dropify" data-max-file-size="2000K" />
+                                          <input type="file" id="alta_srcimg1_producto_linea" name="srcimg1_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg1_producto_lineaBD" name="srcimg1_productoBD" />
                                         </div>
                                       </div>
@@ -721,7 +718,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                           <h5 id="alta_srcimg2_producto_linea_titulo">
                                               Fotografía 2 <span class="req"> * </span>
                                           </h5>                                          
-                                          <input type="file" id="alta_srcimg2_producto_linea" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
+                                          <input type="file" id="alta_srcimg2_producto_linea" name="srcimg2_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg2_producto_lineaBD" name="srcimg2_productoBD" />
                                         </div>
                                       </div>
@@ -732,7 +729,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                           <h5 id="alta_srcimg3_producto_linea_titulo">
                                               Fotografía 3 <span class="req"> * </span>
                                           </h5>                                          
-                                          <input type="file" id="alta_srcimg3_producto_linea" name="srcimg3_producto" class="dropify" data-max-file-size="2000K" />
+                                          <input type="file" id="alta_srcimg3_producto_linea" name="srcimg3_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg3_producto_lineaBD" name="srcimg3_productoBD" />
                                         </div>
                                       </div>
@@ -841,10 +838,11 @@ if(!isset($_SESSION['sesion_activa1']))
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="submit" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button> 
+                    <button type="button" data-uk-modal="{target:'#popup_spinner_registrando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>
+
               <!--/////////////////////////////////// -->
               <!--/////////////////////////////////// -->              
               <!-- PopUp para modificaci? de Datos Especificos de un Producto -->
@@ -980,8 +978,7 @@ if(!isset($_SESSION['sesion_activa1']))
                       Modif. Datos General
                     </button>
                     <!-- Boton para aceptar la actualizar de las modificaciones de Datos especificos de un Producto -->
-                    <!--<button type="submit" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button> -->
-                    <button type="submit" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_productos_linea_detalle'); });">
+                    <button type="button" data-uk-modal="{target:'#popup_spinner_modificando_producto'}" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_productos_linea_detalle'); });">
                       Actualizar
                     </button>
                   </div>
@@ -1017,12 +1014,6 @@ if(!isset($_SESSION['sesion_activa1']))
                                   <label for="product_edit_name_control">Nombre de Producto<span class="req"> * </span></label>
                                   <input type="text" class="md-input" id="modificar_nombre_producto_linea_general" name="modificar_nombre_producto_linea_general" value="Nombre Producto "/>
                                 </div>
-                                <!--
-                                <div class="uk-form-row">
-                                  <label for="product_edit_manufacturer_control">SEO<span class="req"> * </span></label>
-                                  <input type="text" class="md-input" id="modificar_seo_producto_linea_general" name="modificar_seo_producto_linea_general" value="pastelsecodechocolate"/>
-                                </div>
-                                -->
                                 <div class="uk-form-row">
                                   <label for="product_edit_memory_control" class="uk-form-label">
                                     Categoria del Producto<span class="req"> * </span>
@@ -1077,10 +1068,10 @@ if(!isset($_SESSION['sesion_activa1']))
                             <div class="uk-width-medium-1-3">
                               <div class="md-card">
                                 <div class="md-card-content">
-                                  <h5>
+                                  <h5 id="modificar_srcimg1_producto_linea_titulo">
                                       Fotografía 1
                                   </h5>
-                                  <input type="file" id="modificar_srcimg1_producto_linea" name="srcimg1_producto" class="dropify" data-max-file-size="2000K"/>
+                                  <input type="file" id="modificar_srcimg1_producto_linea" name="srcimg1_producto" class="dropify" data-max-file-size="20000K"/>
                                   <input type="hidden" id="modificar_srcimg1_producto_lineaBD" name="srcimg1_productoBD" />
                                 </div>
                               </div>
@@ -1088,10 +1079,10 @@ if(!isset($_SESSION['sesion_activa1']))
                             <div class="uk-width-medium-1-3">
                               <div class="md-card">
                                 <div class="md-card-content">
-                                  <h5>
+                                  <h5 id="modificar_srcimg2_producto_linea_titulo">
                                       Fotografía 2
                                   </h5>
-                                  <input type="file" id="modificar_srcimg2_producto_linea" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
+                                  <input type="file" id="modificar_srcimg2_producto_linea" name="srcimg2_producto" class="dropify" data-max-file-size="20000K" />
                                   <input type="hidden" id="modificar_srcimg2_producto_lineaBD" name="srcimg2_productoBD" />
                                 </div>
                               </div>
@@ -1099,10 +1090,10 @@ if(!isset($_SESSION['sesion_activa1']))
                             <div class="uk-width-medium-1-3">
                               <div class="md-card">
                                 <div class="md-card-content">
-                                  <h5>
+                                  <h5 id="modificar_srcimg2_producto_linea_titulo">
                                       Fotografía 3
                                   </h5>
-                                  <input type="file" id="modificar_srcimg3_producto_linea" name="srcimg3_producto" class="dropify" data-max-file-size="2000K" />
+                                  <input type="file" id="modificar_srcimg3_producto_linea" name="srcimg3_producto" class="dropify" data-max-file-size="20000K" />
                                   <input type="hidden" id="modificar_srcimg3_producto_lineaBD" name="srcimg3_productoBD" />
                                 </div>
                               </div>
@@ -1116,7 +1107,7 @@ if(!isset($_SESSION['sesion_activa1']))
                         <!-- Boton para eliminar un Producto en su totalidad-->
                       <button type="button" class="md-btn md-btn-flat" onclick="UIkit.modal.confirm('?Elimianr el Producto?', function(){ UIkit.modal.alert('Eliminado!'); });">Eliminar</button>
                       <!-- Boton para actualizar las modificaciones de Datos Generales de un Producto -->
-                      <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?', function(){ validarFormulario('form_modificar_productos_linea_general') });">Actualizar </button>
+                      <button type="button" data-uk-modal="{target:'#popup_spinner_modificando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?', function(){ validarFormulario('form_modificar_productos_linea_general') });">Actualizar </button>
                     </div>
                   </form>
                 </div>
@@ -1258,7 +1249,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                           <h5 id="alta_srcimg1_producto_cotizador_titulo">
                                               Fotografía 1
                                           </h5>
-                                          <input type="file" id="alta_srcimg1_producto_cotizador" name="srcimg1_producto" class="dropify" data-max-file-size="2000K" />
+                                          <input type="file" id="alta_srcimg1_producto_cotizador" name="srcimg1_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg1_producto_cotizadorBD" name="srcimg1_productoBD" />
                                         </div>
                                       </div>
@@ -1269,7 +1260,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                           <h5 id="alta_srcimg2_producto_cotizador_titulo">
                                               Fotografía 2
                                           </h5>
-                                          <input type="file" id="alta_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
+                                          <input type="file" id="alta_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg2_producto_cotizadorBD" name="srcimg2_productoBD" />
                                         </div>
                                       </div>
@@ -1280,7 +1271,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                           <h5 id="alta_srcimg3_producto_cotizador_titulo">
                                               Fotografía 3
                                           </h5>
-                                          <input type="file" id="alta_srcimg3_producto_cotizador" name="srcimg3_producto" class="dropify" data-max-file-size="2000K" />
+                                          <input type="file" id="alta_srcimg3_producto_cotizador" name="srcimg3_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg3_producto_cotizadorBD" name="srcimg3_productoBD" />
                                         </div>
                                       </div>
@@ -1296,7 +1287,7 @@ if(!isset($_SESSION['sesion_activa1']))
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_cotizador') });">Agregar Producto </button> 
+                    <button type="button" data-uk-modal="{target:'#popup_spinner_registrando_producto'}"  class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_cotizador') });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1415,7 +1406,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                               <h5>
                                                   Fotografía 1
                                               </h5>
-                                              <input type="file" id="modificar_srcimg1_producto_cotizador" name="srcimg1_producto" class="dropify" data-max-file-size="2000K"/>
+                                              <input type="file" id="modificar_srcimg1_producto_cotizador" name="srcimg1_producto" class="dropify" data-max-file-size="20000K"/>
                                               <input type="hidden" id="modificar_srcimg1_producto_cotizadorBD" name="srcimg1_productoBD" />
                                             </div>
                                           </div>
@@ -1426,7 +1417,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                               <h5>
                                                   Fotografía 2
                                               </h5>
-                                              <input type="file" id="modificar_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
+                                              <input type="file" id="modificar_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="20000K" />
                                               <input type="hidden" id="modificar_srcimg2_producto_cotizadorBD" name="srcimg2_productoBD" />
                                             </div>
                                           </div>
@@ -1437,7 +1428,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                               <h5>
                                                   Fotografía 3
                                               </h5>
-                                              <input type="file" id="modificar_srcimg3_producto_cotizador" name="srcimg3_producto" class="dropify" data-max-file-size="2000K" />
+                                              <input type="file" id="modificar_srcimg3_producto_cotizador" name="srcimg3_producto" class="dropify" data-max-file-size="20000K" />
                                               <input type="hidden" id="modificar_srcimg3_producto_cotizadorBD" name="srcimg3_productoBD" />
                                             </div>
                                           </div>
@@ -1446,55 +1437,6 @@ if(!isset($_SESSION['sesion_activa1']))
                                     </div>                                  
                                   </div>
                                 </li>
-
-
-
-                                <!--
-                                <li>
-                                  <div class="md-card-content" >
-                                    <h4>Fotografías</h4>
-                                    <h5 >Fotografías actuales del producto</h5>
-                                    <div  id="modificar_galeria_producto_cotizador" class="uk-grid" data-uk-grid-margin>
-                                    </div>
-                                  </div> 
-                                  <div class="uk-grid" data-uk-grid-margin>
-                                    <div class="uk-width-large-1-3">
-                                      <div class="md-card">
-                                        <div class="md-card-content">
-                                          <h5>
-                                              Fotografía 1
-                                          </h5>
-                                          <input type="file" id="modificar_srcimg1_producto_cotizador" name="srcimg1_producto" class="dropify" data-max-file-size="2000K" />
-                                          <input type="hidden" id="modificar_srcimg1_producto_cotizadorBD" name="srcimg1_productoBD" />
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="uk-width-large-1-3">
-                                      <div class="md-card">
-                                        <div class="md-card-content">
-                                          <h5>
-                                              Fotografía 2
-                                          </h5>
-                                          <input type="file" id="modificar_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
-                                          <input type="hidden" id="modificar_srcimg2_producto_cotizadorBD" name="srcimg2_productoBD" />
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="uk-width-large-1-3">
-                                      <div class="md-card">
-                                        <div class="md-card-content">
-                                          <h5>
-                                              Fotografía 3
-                                          </h5>
-                                          <input type="file" id="modificar_srcimg3_producto_cotizador" name="srcimg3_producto" class="dropify" data-max-file-size="2000K" />
-                                          <input type="hidden" id="modificar_srcimg3_producto_cotizadorBD" name="srcimg3_productoBD" />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <br/>
-                                </li>
-                                -->
                               </ul>
                             </div>
                           </div>
@@ -1503,7 +1445,7 @@ if(!isset($_SESSION['sesion_activa1']))
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){  validarFormulario('form_modificar_productos_cotizador');  });">Actualziar Producto </button> 
+                    <button type="button" data-uk-modal="{target:'#popup_spinner_modificando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){  validarFormulario('form_modificar_productos_cotizador');  });">Actualziar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1579,17 +1521,6 @@ if(!isset($_SESSION['sesion_activa1']))
                                   <br/>
                                 </li>
                                 <li>
-                                  <!--
-                                  <div class="uk-grid ">
-                                     <div id="ingredientesCheck" class="uk-width-large-1-1">
-                                      <h5 class="heading_c uk-margin-small-bottom">Seo </h5>
-                                      <input type="text" class="md-input" name="alta_seo_producto_Complementario" id="alta_seo_producto_Complementario"></input>
-                                     </div>
-                                  </div>
-                                  -->
-                                  <br/>
-                                </li>
-                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
                                       <label> Precio <span class="req"> * </span> </label> <br/>
@@ -1631,7 +1562,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                           <h5 id="alta_srcimg1_producto_Complementario_titulo">
                                               Fotografía 1
                                           </h5>
-                                          <input type="file" id="alta_srcimg1_producto_Complementario" name="srcimg1_producto" class="dropify" data-max-file-size="2000K" />
+                                          <input type="file" id="alta_srcimg1_producto_Complementario" name="srcimg1_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg1_producto_ComplementarioBD" name="srcimg1_productoBD" />
                                         </div>
                                       </div>
@@ -1647,7 +1578,7 @@ if(!isset($_SESSION['sesion_activa1']))
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_complementario'); });">Agregar Producto </button> 
+                    <button type="button" data-uk-modal="{target:'#popup_spinner_registrando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_complementario'); });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1689,14 +1620,6 @@ if(!isset($_SESSION['sesion_activa1']))
                                   <br/>
                                 </li>
                                 <li>
-                                  <!--
-                                  <div class="uk-grid ">
-                                     <div id="ingredientesCheck" class="uk-width-large-1-1">
-                                      <h5 class="heading_c uk-margin-small-bottom">Seo </h5>
-                                      <input type="text" class="md-input" name="modificar_seo_producto_Complementario" id="modificar_seo_producto_Complementario"></input>
-                                     </div>
-                                  </div>
-                                  -->
                                   <br/>
                                 </li>
                                 <li>
@@ -1764,13 +1687,27 @@ if(!isset($_SESSION['sesion_activa1']))
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ validarFormulario('form_modificar_productos_complementario'); });">Agregar Producto </button> 
+                    <button type="button" data-uk-modal="{target:'#popup_spinner_modificando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ validarFormulario('form_modificar_productos_complementario'); });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
               <!--</div>-->
               <!--end PopUp de datos especificos-->
-            </div><!-- end Contenido de Item de Producto en Cotizador -->
+              <!--POPUP REGISTRANDO-->
+              <div class="uk-modal" id="popup_spinner_registrando_producto">
+                <div class="uk-modal-dialog">                  
+                  <div class="uk-modal-spinner"></div>
+                  <h4> Espere miestras se registra </h4>
+                </div>
+              </div>
+              <!--POPUP MODIFICANDO-->
+              <div class="uk-modal" id="popup_spinner_modificando_producto">
+                <div class="uk-modal-dialog">                  
+                  <div class="uk-modal-spinner"></div>
+                  <h4> Espere miestras se actualiza </h4>
+                </div>
+              </div>
+            </div><!-- end Contenido de Item de Producto -->
             <!--///////////////////////////////////////////////////////////// -->
             <div>
               <br/><br/>
@@ -1781,7 +1718,7 @@ if(!isset($_SESSION['sesion_activa1']))
             </div>
             <!--Contenido de Item de Producto en Cotizador -->
             <!-- end Contenido de Item de Producto en Cotizador -->
-        </div>
+        </div>        
         <!-- FIN MIGUEL HTML -->
         <div id="contenido_Cotizador"><!-- Contenido de Pestaña Cotizador -->
           <h3 class="heading_b uk-margin-bottom"> Cotizaciones De Productos  </h3>
@@ -1882,6 +1819,7 @@ var emailproveedor = "mispasteles@gmail.com";
 /*
  COMIENZA VARIABLES MIGUEL
  */
+//UIkit.modal.alert('Producto Registrado');
   var idtblproveedor = <?php echo $_SESSION['idtblproveedor']; ?>;
   var idusuarioproveedor=<?php echo $_SESSION['idusuario']; ?>;
   var emailproveedor="<?php echo $_SESSION['usuario']; ?>";
@@ -1935,7 +1873,13 @@ $( window ).ready(function()
   /*
   FUNCIONES MIGUEL
    */
-  function cargarValoresDefault(){     
+  function cargarValoresDefault(){
+    //BORRAMOS LOS PRODUCTOS PARA MOSTRAR LOS MAS RECIENTES
+    /*
+    $('#productosComplementarioPlantilla').html("");
+    $('#productoscotizadorPlantilla').html("");
+    $('#productoslineaPlantilla').html("");
+    */     
     solicitadoBy="WEB";    
     arregloInfoUnProducto=[];
     arregloInfoUnProductoCotizador=[];
@@ -1968,7 +1912,7 @@ $( window ).ready(function()
    */
   function validarFormulario(formularioAValidar)
   {
-    console.log('entro a la function validarFormulario');
+    //console.log('entro a la function validarFormulario');
     if(formularioAValidar=='form_alta_productos_linea')
     {
       /*
@@ -2022,7 +1966,7 @@ $( window ).ready(function()
       porciones='';
       piezas='';
       idtblespecificingrediente='';
-      console.log('entro a if de form_alta_productos_linea');
+      //console.log('entro a if de form_alta_productos_linea');
       //OBTENEMOS LOS DATOS DEL FORMULARIO
       nombreproduct=$('#alta_nombre_producto_linea').val();
       descripcion=$('#alta_descripcion_producto_linea').val();
@@ -2041,8 +1985,8 @@ $( window ).ready(function()
       srcimg2=$('#alta_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
       srcimg3=$('#alta_srcimg3_producto_linea').val().replace(/C:\\fakepath\\/i, '');
 
-      if(srcimg1!=''||srcimg2!=''||srcimg3!='')
-        boolHabilitarValidacionSrcImg=true;
+      //if(srcimg1!=''||srcimg2!=''||srcimg3!='')
+        //boolHabilitarValidacionSrcImg=true;
 
       diaselaboracion=$('#alta_detalle_diasElborar_producto_linea').val();
       stock=$('#alta_detalle_stock_producto_linea').val();
@@ -2191,39 +2135,38 @@ $( window ).ready(function()
         $( "#alta_clasificacion_producto_linea" ).removeClass( "md-input-danger" );
       ///////////////////////////////////////////////////////////////////////////
       /////////////////////////DATOS FOTOGRAFIA//////////////////////////////////
-      if(boolHabilitarValidacionSrcImg)
+      
+      if(srcimg1=='')
       {
-        if(srcimg1=='')
-        {
-          console.log('srcimg1 vacio');
-          boolError=true;
-          boolErrorSrcimg1=true;
-        }
-        if(boolErrorSrcimg1)
-          $( "#alta_srcimg1_producto_linea_titulo" ).css('color','red');
-        else
-          $( "#alta_srcimg1_producto_linea_titulo" ).css('color','black');
-        if(srcimg2=='')
-        {
-          console.log('srcimg1 vacio');
-          boolError=true;
-          boolErrorSrcimg2=true;
-        }
-        if(boolErrorSrcimg2)
-          $( "#alta_srcimg2_producto_linea_titulo" ).css('color','red');
-        else
-          $( "#alta_srcimg2_producto_linea_titulo" ).css('color','black');
-        if(srcimg3=='')
-        {
-          console.log('srcimg1 vacio');
-          boolError=true;
-          boolErrorSrcimg3=true;
-        }
-        if(boolErrorSrcimg3)
-          $( "#alta_srcimg3_producto_linea_titulo" ).css('color','red');
-        else
-          $( "#alta_srcimg3_producto_linea_titulo" ).css('color','black');
+        console.log('srcimg1 vacio');
+        boolError=true;
+        boolErrorSrcimg1=true;
       }
+      if(boolErrorSrcimg1)
+        $( "#alta_srcimg1_producto_linea_titulo" ).css('color','red');
+      else
+        $( "#alta_srcimg1_producto_linea_titulo" ).css('color','black');
+      if(srcimg2=='')
+      {
+        console.log('srcimg1 vacio');
+        boolError=true;
+        boolErrorSrcimg2=true;
+      }
+      if(boolErrorSrcimg2)
+        $( "#alta_srcimg2_producto_linea_titulo" ).css('color','red');
+      else
+        $( "#alta_srcimg2_producto_linea_titulo" ).css('color','black');
+      if(srcimg3=='')
+      {
+        console.log('srcimg1 vacio');
+        boolError=true;
+        boolErrorSrcimg3=true;
+      }
+      if(boolErrorSrcimg3)
+        $( "#alta_srcimg3_producto_linea_titulo" ).css('color','red');
+      else
+        $( "#alta_srcimg3_producto_linea_titulo" ).css('color','black');
+      
       ///////////////////////////////////////////////////////////////////////////
       ////////////////////////////DATOS DETALLES///////////////////////////////
       //diaselaboracion -> Number
@@ -2347,7 +2290,9 @@ $( window ).ready(function()
       }
       else
       {
+        UIkit.modal("#popup_spinner_registrando_producto").hide();
         UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!'+mensajeErrorProductoLinea);
+
       }
       //registrarProductoLinea();
     }
@@ -2517,6 +2462,7 @@ $( window ).ready(function()
       }
       else
       {
+        UIkit.modal("#popup_spinner_modificando_producto").hide();
         UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
       }
        
@@ -2533,6 +2479,11 @@ $( window ).ready(function()
       boolErrorSeo=false;
       boolErrorCategoria=false;
       boolErrorClasificacion=false;
+      boolHabilitarValidacionSrcImg=false;
+
+      boolErrorSrcimg1=false;
+      boolErrorSrcimg2=false;
+      boolErrorSrcimg3=false;
 
        //tblproducto
       nombreproduct='';
@@ -2549,6 +2500,13 @@ $( window ).ready(function()
       seo=$('#modificar_nombre_producto_linea_general').val().replace(" ", '');      
       idtblcategproduc=$('#modificar_categoria_producto_linea_general').val();
       idtblclasifproduct=$('#modificar_clasificacion_producto_linea_general').val();
+
+      srcimg1=$('#modificar_srcimg1_producto_linea').val().replace(/C:\\fakepath\\/i, '');
+      srcimg2=$('#modificar_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
+      srcimg3=$('#modificar_srcimg3_producto_linea').val().replace(/C:\\fakepath\\/i, '');
+
+      if(srcimg1=!''||srcimg2!=''||srcimg3!='')
+        boolHabilitarValidacionSrcImg=true;
 
       /////////////////////////DATOS GENERALES/////////////////////////
       //nombreproduct -> String
@@ -2668,14 +2626,50 @@ $( window ).ready(function()
       else
         $( "#modificar_clasificacion_producto_linea_general" ).removeClass( "md-input-danger" );
       ///////////////////////////////////////////////////////////////////////////
+      /////////////////////////DATOS FOTOGRAFIA//////////////////////////////////
+      if(boolHabilitarValidacionSrcImg)
+      {
+        if(srcimg1=='')
+        {
+          console.log('srcimg1 vacio');
+          boolError=true;
+          boolErrorSrcimg1=true;
+        }
+        if(boolErrorSrcimg1)
+          $( "#modificar_srcimg1_producto_linea_titulo" ).css('color','red');
+        else
+          $( "#modificar_srcimg1_producto_linea_titulo" ).css('color','black');
+        if(srcimg2=='')
+        {
+          console.log('srcimg1 vacio');
+          boolError=true;
+          boolErrorSrcimg2=true;
+        }
+        if(boolErrorSrcimg2)
+          $( "#modificar_srcimg2_producto_linea_titulo" ).css('color','red');
+        else
+          $( "#modificar_srcimg2_producto_linea_titulo" ).css('color','black');
+        if(srcimg3=='')
+        {
+          console.log('srcimg1 vacio');
+          boolError=true;
+          boolErrorSrcimg3=true;
+        }
+        if(boolErrorSrcimg3)
+          $( "#modificar_srcimg3_producto_linea_titulo" ).css('color','red');
+        else
+          $( "#modificar_srcimg3_producto_linea_titulo" ).css('color','black');
+      }
+      ///////////////////////////////////////////////////////////////////////////
       
       if(!boolError)
       {
-        console.log('actualizarProductoGeneral');
+        //console.log('actualizarProductoGeneral');
         actualizarProductoGeneral();      
       }
       else
       {
+        UIkit.modal("#popup_spinner_modificando_producto").hide();
         UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
       }       
     }
@@ -2761,11 +2755,12 @@ $( window ).ready(function()
       
       if(!boolError)
       {
-        console.log('actualizarProductoGeneral');
+        //console.log('registrar producto cotizador');
         registrarProductoCotizador();      
       }
       else
       {
+        UIkit.modal("#popup_spinner_registrando_producto").hide();
         UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
       }       
     }
@@ -2859,11 +2854,12 @@ $( window ).ready(function()
       
       if(!boolError)
       {
-        console.log('actualizarProductoGeneral');
+        //console.log('actualizarProducto cotizador');
         actualizarProductoCotizador();      
       }
       else
       {
+        UIkit.modal("#popup_spinner_modificando_producto").hide();
         UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
       }       
     }
@@ -2941,6 +2937,7 @@ $( window ).ready(function()
       }
       else
       {
+        UIkit.modal("#popup_spinner_registrando_producto").hide();
         UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
       }       
     }
@@ -3024,6 +3021,7 @@ $( window ).ready(function()
       }
       else
       {
+        UIkit.modal("#popup_spinner_modificando_producto").hide();
         UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
       }       
     }
@@ -3274,7 +3272,7 @@ $( window ).ready(function()
                 //CARGANDO EL ELEMNT DE IMAGEN Y CARGAR LA IMAGEN DEFAULT
                 if(i==0)
                 $('#div_imagenPortadaProductoLinea'+tblproductimg_idproducto).append('<img name="imagenPortadaProductoLinea'+tblproductimg_idproducto+'" class="md-card-head-img" src="./../assests_general/productos/default-img.gif" alt=""/>');  
-              
+                
                 //LANZAMOS LA PRIMERA IMAGEN DEL PRODUCTO
                 if(i==0)                              
                   $("[name="+imgSrcProductoLinea+"]").attr("src",productoImagen);
@@ -3371,6 +3369,16 @@ $( window ).ready(function()
                   imgSrcProductoCotizador="imagenPortadaProductoCotizador"+tblproductcotizador_idtblproductcotizador;
                   //AGREGAMOS LAS IMAGENES DE ESE PRODUCTO
                   arregloImagenesUnProductoCotizador.push(productoCotizadorImagen);
+
+                  //QUITAR EL ICONO DE CARGANDO
+                  $('#load_imagenPortadaProductoCotizador'+tblproductcotizador_idtblproductcotizador).remove();
+
+                  //CARGANDO EL ELEMNT DE IMAGEN Y CARGAR LA IMAGEN DEFAULT
+                  if(i==0)
+                  {
+                  $('#div_imagenPortadaProductoCotizador'+tblproductcotizador_idtblproductcotizador).append('<img name="imagenPortadaProductoCotizador'+tblproductcotizador_idtblproductcotizador+'" class="md-card-head-img" src="./../assests_general/productos/default-img.gif" alt=""/>');
+                   //alert('cotizador img i::'+i+' item::'+item+' tblproductcotizador_idtblproductcotizador::'+tblproductcotizador_idtblproductcotizador);
+                 }
                   //LANZAMOS LA PRIMERA IMAGEN DEL PRODUCTO
                   if(i==0)                              
                     $("[name="+imgSrcProductoCotizador+"]").attr("src",productoCotizadorImagen);
@@ -3447,7 +3455,8 @@ $( window ).ready(function()
             ProductoJS=productosPlantillaComplementario(indexArregloComplementario,idProductoComplementario,nombreComplementario,activadoComplementario,srcimgComplementario);
             //LANZA LA PLANTILLA AL DOM
             $("#productosComplementarioPlantilla").append(ProductoJS);
-            
+            //QUITAR EL ICONO DE CARGANDO
+            $('#load_imagenPortadaProductoComplementario'+idProductoComplementario).remove();
 
           });          
            }   
@@ -3466,19 +3475,19 @@ $( window ).ready(function()
   function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado,nombreIngrediente){
     //nombre = nombre.replace(' ', '_');
     mensajeEliminacion="'Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative"> <i  id="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tama? : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tama? : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
     nombre = nombre.replace(' ', '_');
     mensajeEliminacion="'Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img id="imagenPortadaProductoCotizador'+idProducto+'" name="imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/cotizador/" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick="UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoCotizador('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoCotizador'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick="UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoCotizador('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function productosPlantillaComplementario(idexArreglo,idProducto,nombre,activado,srcimgComplementario){
     nombre = nombre.replace(' ', '_');
     mensajeEliminacion="'Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div class="md-card-head uk-text-center uk-position-relative"><img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoComplentario'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoComplementario'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  <img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function llamarFuncion(idProducto){
@@ -3488,8 +3497,8 @@ $( window ).ready(function()
   genera un cuadro de a?dir productos 
    */
   function agregarProductoPlantilla(){
-    boton_nuevoproductolinea='<div data-product-name="agregarproductolinea">        <div class="uk-badge md-card ">          <div class="md-card-content uk-border-circle">            <div class="uk-text-center uk-border-circle"> <h3>Agregar un producto nuevo</h3>            <button id="agregar" type="button" class="md-btn md-btn-flat md-btn-small uk-border-circle" data-uk-modal="{target:popup_nuevoproductolinea}">                <label class="menu_icon"><i class="material-icons md-48">&#xE145;</i></label>              </button>            </div>          </div>        </div></div>';
-    boton_nuevoproductolinea='<div class="md-card-head-avatar md-fab" data-uk-modal="{target:popup_nuevoproductolinea}">  <i class="material-icons">&#xE145;</i> </div>';
+    boton_nuevoproductolinea='<div data-product-name="agregarproductolinea">        <div class="uk-badge md-card ">          <div class="md-card-content uk-border-circle">            <div class="uk-text-center uk-border-circle"> <h3>Agregar un producto nuevo</h3>            <button id="agregar" type="button" class="md-btn md-btn-flat md-btn-small uk-border-circle" data-uk-modal="{target:popup_nuevoproductolinea,bgclose:false,modal:false,modal:false}">                <label class="menu_icon"><i class="material-icons md-48">&#xE145;</i></label>              </button>            </div>          </div>        </div></div>';
+    boton_nuevoproductolinea='<div class="md-card-head-avatar md-fab" data-uk-modal="{target:popup_nuevoproductolinea,bgclose:false,modal:false,modal:false}">  <i class="material-icons">&#xE145;</i> </div>';
     return boton_nuevoproductolinea;
   }
 
@@ -3702,7 +3711,7 @@ $( window ).ready(function()
                       .done(function( msgTblProductoImg3 )
                       {
                         //alert('SUBIR LOS ARCHIVOS AL SERVIDOR');
-                        $('#altaproducto').submit()
+                        //$('#altaproducto').submit()
                         
                         //console.log('msgTblProductoImg3.datos::'+msgTblProductoImg3.datos);
                         srcimg3=$('#alta_srcimg3_producto_lineaBD').val(msgTblProductoImg3.datos);
@@ -3714,10 +3723,11 @@ $( window ).ready(function()
                         $('#productosComplementarioPlantilla').html("");
                         $('#productoscotizadorPlantilla').html("");
                         $('#productoslineaPlantilla').html("");
+                        */
                         $('#altaproducto')[0].reset();
                         cargarValoresDefault();
                         UIkit.modal("#popup_nuevoproductolinea").hide();
-                        */
+                        
                         
                         $.ajax({  method: "POST",  url: "uploadImgProductoLinea.php",  data: formData ,contentType: false,
                         processData: false, })
@@ -3729,9 +3739,9 @@ $( window ).ready(function()
                             $('#productosComplementarioPlantilla').html("");
                             $('#productoscotizadorPlantilla').html("");
                             $('#productoslineaPlantilla').html("");
-                            $('#altaproducto')[0].reset();
+                            //$('#altaproducto')[0].reset();
                             cargarValoresDefault();
-                            
+                            UIkit.modal("#popup_spinner_registrando_producto").hide();
                             UIkit.modal.alert('Producto Registrado');
                           })
                           .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -3854,6 +3864,11 @@ $( window ).ready(function()
                         //mandamos el fom para subir las imagenes al servidor
                         var formData = new FormData($("#altaproductocotizador")[0]);
                         var ruta = "imagen-ajax.php";
+
+                        UIkit.modal("#popup_nuevoproductocotizador").hide();
+                        $('#altaproductocotizador')[0].reset();
+                        cargarValoresDefault();
+
                         $.ajax({  method: "POST",  url: "uploadImgProductoCotizador.php",  data: formData ,contentType: false,
                         processData: false, })
                           .done(function( datos )
@@ -3862,8 +3877,8 @@ $( window ).ready(function()
                             $('#productosComplementarioPlantilla').html("");
                             $('#productoscotizadorPlantilla').html("");
                             $('#productoslineaPlantilla').html("");
-                            $('#altaproductocotizador')[0].reset();
-                            UIkit.modal("#popup_nuevoproductocotizador").hide();
+                            
+                            UIkit.modal("#popup_spinner_registrando_producto").hide();
                             UIkit.modal.alert('Producto en Cotizador Registrado');
                             cargarValoresDefault();
 
@@ -4004,6 +4019,7 @@ $( window ).ready(function()
                       $('#productoslineaPlantilla').html("");
                       $('#altaproductoComplementario')[0].reset();
                       UIkit.modal("#popup_nuevoproductoComplementario").hide();
+                      UIkit.modal("#popup_spinner_registrando_producto").hide();
                       UIkit.modal.alert('Producto Complementario Registrado');
                       cargarValoresDefault();
                     })
@@ -4248,269 +4264,6 @@ $( window ).ready(function()
       $('#modificar_activado_producto_Complementario').prop('checked', true);
   }
 
-
-  function actualizarProductoComplementario(){
-
-    idtblproductcomplem=$('#modificar_id_producto_Complementario').val();
-    nombre=$("#modificar_nombre_producto_Complementario").val();
-    descripcion=$("#modificar_descripcion_producto_Complementario").val();
-    seo=$("#modificar_nombre_producto_Complementario").val().replace(" ", '');
-    precioreal=$("#modificar_precio_producto_Complementario").val();
-    preciobp=precioreal;
-    idtblproveedor=$("#modificar_idProveedor_producto_Complementario").val();
-    stock=$("#modificar_stock_producto_Complementario").val();
-    activado=$('#modificar_activado_producto_Complementario').val();
-    emailmodifico='miguel@bepickler.com';
-    //srcimgActual=$("#fotografia_complementario_actual").val();
-    srcimgActual=$("#fotografia_complementario_actual").attr("src");
-    //alert('srcimgActual::'+srcimgActual);
-    srcimgActual=srcimgActual.replace('./../assests_general/productos/complementario/', '');
-    //alert('srcimgActual::'+srcimgActual);
-    
-    if(activado=='on'){
-      activado=1;
-    }else{
-      activado=0;
-    }
-    //./../assests_general/productos/complementario/i_11_p_1_12.jpg
-
-    //obentenso el inptup de la iamgen
-    srcimg1=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
-    nuevaImagen=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
-    //alert('srcimg1::'+srcimg1);   
-    //.replace(/C:\\fakepath\\/i, ''); 
-    //si no esta vacio le asignamos la el nombre de la nueva imagen, si lo esta solo asignamos  el mismo nombre que tenia anteriormente
-    if(srcimg1!=''){
-      console.log('entro al if srcimg1 tiene datos');
-      srcimg1='i_'+idtblproductcomplem+'p_'+idtblproveedor+'_'+srcimg1;
-      $('#modificar_srcimg1_producto_ComplementarioBD').val(srcimg1);
-      //borramos la actual file de la fotografia del servidor
-      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoComplementario.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:srcimgActual} })
-        .done(function( datos ){
-          console.log('setDeleteFileImgProductoComplementario datos::'+datos.datos);
-        })
-        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-        .always(function(){  
-        //console.log("setDeleteFileImgProductoCotizador  always");
-         });
-
-      //subimos la nueva fotografia al servidor
-      var formData = new FormData($("#formActualizarProductoComplementario")[0]);
-      var ruta = "imagen-ajax.php";
-      $.ajax({  method: "POST",  url: "uploadImgProductoComplementario.php",  data: formData ,contentType: false,
-        processData: false, })
-        .done(function( datos )
-        {
-          console.log('uploadImgProductoComplementario done datos::'+datos);
-          $('#productosComplementarioPlantilla').html("");
-          $('#productoscotizadorPlantilla').html("");
-          $('#productoslineaPlantilla').html("");
-          //alert('cargarValoresDefault con iamgen');
-          cargarValoresDefault();
-        })
-        .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-        .always(function(){  
-        //console.log("always");
-         });
-    }else{
-      console.log('entro al else srcimg1 tiene datos');
-      srcimg1=srcimgActual;
-    }    
-    
-    console.log('datos para actualizar:: idtblproductcomplem'+idtblproductcomplem+' nombre::'+nombre+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' preciobp::'+preciobp+' srcimg1::'+srcimg1+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' emailmodifico::'+emailmodifico);
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplem.php", data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem,nombreproductcomplem:nombre,descripcion:descripcion,seo:seo,precioreal:precioreal,preciobp:preciobp,srcimg:srcimg1,activado:activado,idtblproveedor:idtblproveedor,stock:stock,emailmodifico:emailmodifico }  })
-      .done(function( msgTblProductoComplementario ) {
-        //alert('Elimnaci? Exitosa');
-        console.log('setUpdateTblproductcomplem done msgTblProductoComplementario::'+msgTblProductoComplementario.datos);
-        $('#productosComplementarioPlantilla').html("");
-        $('#productoscotizadorPlantilla').html("");
-        $('#productoslineaPlantilla').html("");
-        $('#formActualizarProductoComplementario')[0].reset();
-        UIkit.modal("#popup_modificarproductoComplementario").hide();
-        UIkit.modal.alert('Producto Complementario Actualizado');
-        if(nuevaImagen=='')
-        {
-          //alert('cargar cargarValoresDefault sin iamgen');
-          cargarValoresDefault();
-        }
-      })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-      .always(function(){ 
-       //console.log("always");
-     });
-    
-  }
-
-
-  function actualizarProductoCotizador(){
-    //tblproducto
-    idProducto=$('#modificar_id_producto_cotizador').val();
-    //alert(idProducto);
-    nombre=$("#modificar_nombre_producto_cotizador").val();
-    descripcion=$("#modificar_descripcion_producto_cotizador").val();
-    ingrediente=$("#modificar_ingredientes_producto_cotizador").val();
-    idtblevento=$("#modificar_evento_producto_cotizador").val();
-    activado=$('#modificar_activado_producto_cotizador').is(':checked');
-    if(activado)
-      activado=1;
-    else
-      activado=0;
-    //idtblproveedor=1;
-    diaselaboracion=$("#modificar_detalle_diasElborar_producto_cotizador").val();
-    promcalificacion=5;
-    emailmodifico='miguel@bepickler.com';
-
-    srcimg1=$("#modificar_srcimg1_producto_cotizador").val();
-    srcimg2=$("#modificar_srcimg2_producto_cotizador").val();
-    srcimg3=$("#modificar_srcimg3_producto_cotizador").val();
-    if(srcimg1==''||srcimg2==''||srcimg3=='')
-    //if(1!=1)
-    {
-      srcimg1='';
-      srcimg2='';
-      srcimg3='';
-    }else 
-    {
-      srcimg1=srcimg1.replace(/C:\\fakepath\\/i, '');
-      srcimg2=srcimg2.replace(/C:\\fakepath\\/i, '');
-      srcimg3=srcimg3.replace(/C:\\fakepath\\/i, '');
-      //personalizar el nombre del producto
-      srcimg1='p_'+idProducto+'_'+srcimg1;
-      srcimg2='p_'+idProducto+'_'+srcimg2;
-      srcimg3='p_'+idProducto+'_'+srcimg3;
-      //alert(idProducto);
-      /////////////////////////////////////////////////////////
-      var arregloIdtblproductimgCotizador=[];
-      var arregloTblproductimg_srcimgCotizador=[];
-      //SOLICITAMOS TODOS LOS REGISTROS DE IMANGENES DE UN PRODUCTO
-      /*
-      $solicitadoBy=$_POST["solicitadoBy"];
-    $idtblproductcotizador=$_POST["idtblproductcotizador"];
-       */
-      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcotimg.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto} })
-        .done(function( msgTblProductoImg )
-        {
-          //OBTENEMOS TODOS LOS REGISTROS 
-          $.each(msgTblProductoImg.datos, function(i,item){
-            //GUARDAMOS EL ID DEL LA IAMGEN EN EL ARREGLO
-            arregloIdtblproductimgCotizador.push(msgTblProductoImg.datos[i].idtblproductcotimg);
-            //GUARDAMOS EL NOMBRE DE LA IAMGEN EN EL ARREGLO
-            arregloTblproductimg_srcimgCotizador.push(msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
-          });
-          //SOLICITAMOS BORRAR TODOS LOS REGISTROS DE LAS IMAGENES DEL PRODUCTO
-          //alert(idProducto);
-          idProductoCotizador=idProducto;
-          //alert('idProductoCotizador::'+idProductoCotizador);
-          $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcotimgOfProducto.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto} })
-            .done(function( datos )
-            {
-              //alert(idProducto);
-              console.log('SE BORRARON EXITOSAMENTE');
-              //SE BORRARON EXITOSAMENTE
-              //REGISTRAR LA PRIMERA IMAGEN
-              /*
-              $solicitadoBy=$_POST["solicitadoBy"];
-              $srcimg=$_POST["srcimg"];
-              $idtblproductcotizador=$_POST["idtblproductcotizador"];
-              $emailcreo=$_POST["emailcreo"];
-               */
-              //alert('datos a envair srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3+' idtblproductcotizador::'+idProductoCotizador+' emailcreo::'+emailmodifico)
-              $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
-                .done(function( msgTblProductoImg1 )
-                {
-                  srcimg1=$('#modificar_srcimg1_producto_cotizadorBD').val(msgTblProductoImg1.datos);
-                  $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
-                    .done(function( msgTblProductoImg2 )
-                    {
-                      srcimg2=$('#modificar_srcimg2_producto_cotizadorBD').val(msgTblProductoImg2.datos);
-                      //alert('msgTblProductoImg2.datos::'+msgTblProductoImg2.datos);
-                      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
-                        .done(function( msgTblProductoImg3 )
-                        {
-                          srcimg3=$('#modificar_srcimg3_producto_cotizadorBD').val(msgTblProductoImg3.datos);
-                          //SUBIMOS LAS NUEVAS IMAGENES AL ARCHIVO
-                          console.log('SUBIMOS LAS NUEVAS IMAGENES AL ARCHIVO');
-                          var formData = new FormData($("#formActualizarProductoCotizador")[0]);
-                          var ruta = "imagen-ajax.php";
-                          $.ajax({  method: "POST",  url: "uploadImgProductoCotizador.php",  data: formData ,contentType: false,
-                          processData: false, })
-                            .done(function( datos )
-                            {
-                              //alert('subio los archivos al servidor');
-                              console.log('uploadImgProductoCotizador done datos::'+datos);
-                              $('#productosComplementarioPlantilla').html("");
-                              $('#productoscotizadorPlantilla').html("");
-                              $('#productoslineaPlantilla').html("");
-                              $('#formActualizarProductoCotizador')[0].reset();
-                             
-                              cargarValoresDefault();
-                            })
-                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-                            .always(function(){  /*console.log("always");*/ });                         
-                        })
-                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-                        .always(function(){  /*console.log("always");*/ }); 
-                    })
-                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-                    .always(function(){  /*console.log("always");*/ });
-                  // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo            
-                })
-                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
-                .always(function(){  /*console.log("always");*/ });              
-            })
-            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-            .always(function(){  /*console.log("setDeleteTblproductImgOfProducto  always");*/ });
-          //RECORREMOS EL ARREGLO DE LOS ID
-          $.each(arregloIdtblproductimgCotizador, function(i,item){
-            //SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS
-            $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimgCotizador[i]} })
-              .done(function( datos ){ 
-              })
-              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-              .always(function(){  /*console.log("setDeleteFileImgProductoCotizador  always");*/ });
-          });
-        })
-        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-        .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
-      
-    }
-
-    /*
-    $solicitadoBy=$_POST["solicitadoBy"];
-    $idtblproductcotizador=$_POST["idtblproductcotizador"];
-    $nombreproductcotizador=$_POST["nombreproductcotizador"];
-    $descripcion=$_POST["descripcion"];
-    $ingrediente=$_POST["ingrediente"];
-    $promcalificacion=$_POST["promcalificacion"];
-    $diaselaboracion=$_POST["diaselaboracion"];
-    $activado=$_POST["activado"];
-    $idtblevento=$_POST["idtblevento"];
-    $idtblproveedor=$_POST["idtblproveedor"];
-    $emailmodifico=$_POST["emailmodifico"];
-     */
-    
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcotizador.php", data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto,nombreproductcotizador:nombre,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalificacion,diaselaboracion:diaselaboracion,activado:activado,idtblproveedor:idtblproveedor,idtblevento:idtblevento,emailmodifico:emailmodifico }  })
-      .done(function( msgTblProductoDetalles ) {
-        //alert('Elimnaci? Exitosa');
-        $('#productoscotizadorPlantilla').html("");
-        $('#productosComplementarioPlantilla').html("");
-        $('#productoslineaPlantilla').html("");
-        if (srcimg1==''&&srcimg2==''&&srcimg3=='')
-        {
-          alert('no tiene imagenes');
-          $('#formActualizarProductoCotizador')[0].reset();
-        }
-        UIkit.modal.alert('Producto Cotizador Actualizado');
-        UIkit.modal("#popup_modificarproductocotizador").hide();
-        cargarValoresDefault();
-      })
-      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-      .always(function(){  /*console.log("always");*/ });
-  }
-
-
-
-
   function actualizarProductoDetalle(){
     idProductoDetalle=$("#modificar_id_productoDetalle_linea").val();
     diasElborar=$("#modificar_detalle_diasElborar_producto_linea").val();
@@ -4549,22 +4302,22 @@ $( window ).ready(function()
     emailmodifico='miguel@bepickler.com';
 
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalle.php", data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,diaselaboracion:diasElborar,stock:stock,precioreal:precio,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,porciones:porciones,piezas:piezas,activado:activado,idtblproducto:idProducto, idtblespecifingrediente:especificingredientes ,emailmodifico:emailmodifico }  })
-            .done(function( msgTblProductoDetalles ) {
-              //alert('Elimnaci? Exitosa');
-              //$('#productoslineaPlantilla').html("");
-              //cargarValoresAltaProductoLinea();
-              //mostrarProductos();
-              
-              //cargarValoresDefault();
-              $('#productosComplementarioPlantilla').html("");
-              $('#productoscotizadorPlantilla').html("");
-              $('#productoslineaPlantilla').html("");
-              $('#formActualizarProductoLinea')[0].reset();
-              UIkit.modal("#popup_modificarproductolinea").hide();
-              cargarValoresDefault();
-            })
-            .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalle fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-            .always(function(){  /*console.log("always");*/ });
+    .done(function( msgTblProductoDetalles ) {
+      //alert('Elimnaci? Exitosa');
+      //$('#productoslineaPlantilla').html("");
+      //cargarValoresAltaProductoLinea();
+      //mostrarProductos();              
+      //cargarValoresDefault();
+      $('#productosComplementarioPlantilla').html("");
+      $('#productoscotizadorPlantilla').html("");
+      $('#productoslineaPlantilla').html("");
+      $('#formActualizarProductoLinea')[0].reset();
+      UIkit.modal("#popup_spinner_modificando_producto").hide();
+      UIkit.modal("#popup_modificarproductolinea").hide();
+      cargarValoresDefault();
+    })
+    .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalle fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+  .always(function(){  /*console.log("always");*/ });
 
   }
   function actualizarProductoGeneral(){
@@ -4643,6 +4396,10 @@ $( window ).ready(function()
                           //alert('//SUBIMOS LAS NUEVAS IMAGENES AL ARCHIVO');
                           //SUBIMOS LAS NUEVAS IMAGENES AL ARCHIVO
                           //var formData = new FormData($("#actualizarProducto")[0]);
+                          
+                          
+                          cargarValoresDefault();
+                          
                           var formData = new FormData($("#formActualizarProductoLineaGeneral")[0]);
                           //alert('formData::'+formData);
                           var ruta = "imagen-ajax.php";
@@ -4657,8 +4414,8 @@ $( window ).ready(function()
                               $('#productoscotizadorPlantilla').html("");
                               $('#productoslineaPlantilla').html("");
                               $('#formActualizarProductoLineaGeneral')[0].reset();
-                              UIkit.modal("#popup_modificarproductolineageneral").hide();  
-                              UIkit.modal.alert('Actualizado');
+                              UIkit.modal("#popup_spinner_modificando_producto").hide(); 
+                              UIkit.modal.alert('Producto en lÍnea Actualizado');
                               cargarValoresDefault();
                             })
                             .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoLinea fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -4702,12 +4459,13 @@ $( window ).ready(function()
         $('#productosComplementarioPlantilla').html("");
         $('#productoscotizadorPlantilla').html("");
         $('#productoslineaPlantilla').html("");
+        UIkit.modal("#popup_modificarproductolineageneral").hide();
         if(srcimg1==''&&srcimg2==''&&srcimg3=='')
         {
           //alert('no tiene imagen');
-          $('#formActualizarProductoLineaGeneral')[0].reset();         
-          UIkit.modal("#popup_modificarproductolineageneral").hide();
-          UIkit.modal.alert('Actualizado');
+          $('#formActualizarProductoLineaGeneral')[0].reset();
+          UIkit.modal("#popup_spinner_modificando_producto").hide();       
+          UIkit.modal.alert('Producto en lÍnea Actualizado');
           cargarValoresDefault();
         }      
         
@@ -4715,6 +4473,272 @@ $( window ).ready(function()
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproducto fail jqXHR::"+jqXHR.status.status+" textStatus::"+textStatus);  })
       .always(function(){   });
   }
+
+
+  function actualizarProductoCotizador(){
+    //tblproducto
+    idProducto=$('#modificar_id_producto_cotizador').val();
+    //alert(idProducto);
+    nombre=$("#modificar_nombre_producto_cotizador").val();
+    descripcion=$("#modificar_descripcion_producto_cotizador").val();
+    ingrediente=$("#modificar_ingredientes_producto_cotizador").val();
+    idtblevento=$("#modificar_evento_producto_cotizador").val();
+    activado=$('#modificar_activado_producto_cotizador').is(':checked');
+    if(activado)
+      activado=1;
+    else
+      activado=0;
+    //idtblproveedor=1;
+    diaselaboracion=$("#modificar_detalle_diasElborar_producto_cotizador").val();
+    promcalificacion=5;
+    emailmodifico='miguel@bepickler.com';
+
+    srcimg1=$("#modificar_srcimg1_producto_cotizador").val();
+    srcimg2=$("#modificar_srcimg2_producto_cotizador").val();
+    srcimg3=$("#modificar_srcimg3_producto_cotizador").val();
+    if(srcimg1==''||srcimg2==''||srcimg3=='')
+    //if(1!=1)
+    {
+      srcimg1='';
+      srcimg2='';
+      srcimg3='';
+    }else 
+    {
+      srcimg1=srcimg1.replace(/C:\\fakepath\\/i, '');
+      srcimg2=srcimg2.replace(/C:\\fakepath\\/i, '');
+      srcimg3=srcimg3.replace(/C:\\fakepath\\/i, '');
+      //personalizar el nombre del producto
+      srcimg1='p_'+idProducto+'_'+srcimg1;
+      srcimg2='p_'+idProducto+'_'+srcimg2;
+      srcimg3='p_'+idProducto+'_'+srcimg3;
+      //alert(idProducto);
+      /////////////////////////////////////////////////////////
+      var arregloIdtblproductimgCotizador=[];
+      var arregloTblproductimg_srcimgCotizador=[];
+      //SOLICITAMOS TODOS LOS REGISTROS DE IMANGENES DE UN PRODUCTO
+      /*
+      $solicitadoBy=$_POST["solicitadoBy"];
+    $idtblproductcotizador=$_POST["idtblproductcotizador"];
+       */
+      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcotimg.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto} })
+        .done(function( msgTblProductoImg )
+        {
+          //OBTENEMOS TODOS LOS REGISTROS 
+          $.each(msgTblProductoImg.datos, function(i,item){
+            //GUARDAMOS EL ID DEL LA IAMGEN EN EL ARREGLO
+            arregloIdtblproductimgCotizador.push(msgTblProductoImg.datos[i].idtblproductcotimg);
+            //GUARDAMOS EL NOMBRE DE LA IAMGEN EN EL ARREGLO
+            arregloTblproductimg_srcimgCotizador.push(msgTblProductoImg.datos[i].tblproductcotimg_srcimg);
+          });
+          //SOLICITAMOS BORRAR TODOS LOS REGISTROS DE LAS IMAGENES DEL PRODUCTO
+          //alert(idProducto);
+          idProductoCotizador=idProducto;
+          //alert('idProductoCotizador::'+idProductoCotizador);
+          $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcotimgOfProducto.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto} })
+            .done(function( datos )
+            {
+              //alert(idProducto);
+              //console.log('SE BORRARON EXITOSAMENTE');
+              //SE BORRARON EXITOSAMENTE
+              //REGISTRAR LA PRIMERA IMAGEN              
+              //alert('datos a envair srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3+' idtblproductcotizador::'+idProductoCotizador+' emailcreo::'+emailmodifico)
+              $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
+                .done(function( msgTblProductoImg1 )
+                {
+                  srcimg1=$('#modificar_srcimg1_producto_cotizadorBD').val(msgTblProductoImg1.datos);
+                  $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
+                    .done(function( msgTblProductoImg2 )
+                    {
+                      srcimg2=$('#modificar_srcimg2_producto_cotizadorBD').val(msgTblProductoImg2.datos);
+                      //alert('msgTblProductoImg2.datos::'+msgTblProductoImg2.datos);
+                      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
+                        .done(function( msgTblProductoImg3 )
+                        {
+                          srcimg3=$('#modificar_srcimg3_producto_cotizadorBD').val(msgTblProductoImg3.datos);
+                          //SUBIMOS LAS NUEVAS IMAGENES AL ARCHIVO
+                          //console.log('SUBIMOS LAS NUEVAS IMAGENES AL ARCHIVO');
+
+                          cargarValoresDefault();
+
+
+                          var formData = new FormData($("#formActualizarProductoCotizador")[0]);
+                          var ruta = "imagen-ajax.php";
+                          $.ajax({  method: "POST",  url: "uploadImgProductoCotizador.php",  data: formData ,contentType: false,
+                          processData: false, })
+                            .done(function( datos )
+                            {
+                              //alert('subio los archivos al servidor');
+                              console.log('uploadImgProductoCotizador done datos::'+datos);
+                              $('#productosComplementarioPlantilla').html("");
+                              $('#productoscotizadorPlantilla').html("");
+                              $('#productoslineaPlantilla').html("");
+                              $('#formActualizarProductoCotizador')[0].reset();
+                              UIkit.modal("#popup_spinner_modificando_producto").hide();
+                              UIkit.modal.alert('Producto Cotizador Actualizado');
+                              cargarValoresDefault();
+                            })
+                            .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+                            .always(function(){  /*console.log("always");*/ });                         
+                        })
+                        .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg3 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+                        .always(function(){  /*console.log("always");*/ }); 
+                    })
+                    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg2 fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+                    .always(function(){  /*console.log("always");*/ });
+                  // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo            
+                })
+                .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
+                .always(function(){  /*console.log("always");*/ });              
+            })
+            .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductImgOfProducto  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+            .always(function(){  /*console.log("setDeleteTblproductImgOfProducto  always");*/ });
+          //RECORREMOS EL ARREGLO DE LOS ID
+          $.each(arregloIdtblproductimgCotizador, function(i,item){
+            //SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS
+            $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimgCotizador[i]} })
+              .done(function( datos ){ 
+              })
+              .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+              .always(function(){  /*console.log("setDeleteFileImgProductoCotizador  always");*/ });
+          });
+        })
+        .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+        .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
+      
+    }
+
+    /*
+    $solicitadoBy=$_POST["solicitadoBy"];
+    $idtblproductcotizador=$_POST["idtblproductcotizador"];
+    $nombreproductcotizador=$_POST["nombreproductcotizador"];
+    $descripcion=$_POST["descripcion"];
+    $ingrediente=$_POST["ingrediente"];
+    $promcalificacion=$_POST["promcalificacion"];
+    $diaselaboracion=$_POST["diaselaboracion"];
+    $activado=$_POST["activado"];
+    $idtblevento=$_POST["idtblevento"];
+    $idtblproveedor=$_POST["idtblproveedor"];
+    $emailmodifico=$_POST["emailmodifico"];
+     */
+    
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcotizador.php", data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto,nombreproductcotizador:nombre,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalificacion,diaselaboracion:diaselaboracion,activado:activado,idtblproveedor:idtblproveedor,idtblevento:idtblevento,emailmodifico:emailmodifico }  })
+      .done(function( msgTblProductoDetalles ) {
+        //alert('Elimnaci? Exitosa');
+        $('#productoscotizadorPlantilla').html("");
+        $('#productosComplementarioPlantilla').html("");
+        $('#productoslineaPlantilla').html("");
+        UIkit.modal("#popup_modificarproductocotizador").hide();
+        if (srcimg1==''&&srcimg2==''&&srcimg3=='')
+        {
+          //alert('no tiene imagenes');
+          $('#formActualizarProductoCotizador')[0].reset();
+          UIkit.modal("#popup_spinner_modificando_producto").hide();
+          UIkit.modal.alert('Producto cotizador Actualizado');        
+          cargarValoresDefault();
+        }
+        
+        
+      })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+      .always(function(){  /*console.log("always");*/ });
+  }
+
+
+  function actualizarProductoComplementario(){
+
+    idtblproductcomplem=$('#modificar_id_producto_Complementario').val();
+    nombre=$("#modificar_nombre_producto_Complementario").val();
+    descripcion=$("#modificar_descripcion_producto_Complementario").val();
+    seo=$("#modificar_nombre_producto_Complementario").val().replace(" ", '');
+    precioreal=$("#modificar_precio_producto_Complementario").val();
+    preciobp=precioreal;
+    idtblproveedor=$("#modificar_idProveedor_producto_Complementario").val();
+    stock=$("#modificar_stock_producto_Complementario").val();
+    activado=$('#modificar_activado_producto_Complementario').val();
+    emailmodifico='miguel@bepickler.com';
+    //srcimgActual=$("#fotografia_complementario_actual").val();
+    srcimgActual=$("#fotografia_complementario_actual").attr("src");
+    //alert('srcimgActual::'+srcimgActual);
+    srcimgActual=srcimgActual.replace('./../assests_general/productos/complementario/', '');
+    //alert('srcimgActual::'+srcimgActual);
+    
+    if(activado=='on'){
+      activado=1;
+    }else{
+      activado=0;
+    }
+    //./../assests_general/productos/complementario/i_11_p_1_12.jpg
+
+    //obentenso el inptup de la iamgen
+    srcimg1=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
+    nuevaImagen=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
+    //alert('srcimg1::'+srcimg1);   
+    //.replace(/C:\\fakepath\\/i, ''); 
+    //si no esta vacio le asignamos la el nombre de la nueva imagen, si lo esta solo asignamos  el mismo nombre que tenia anteriormente
+    if(srcimg1!=''){
+      //console.log('entro al if srcimg1 tiene datos');
+      srcimg1='i_'+idtblproductcomplem+'p_'+idtblproveedor+'_'+srcimg1;
+      $('#modificar_srcimg1_producto_ComplementarioBD').val(srcimg1);
+      //borramos la actual file de la fotografia del servidor
+      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoComplementario.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:srcimgActual} })
+        .done(function( datos ){
+          console.log('setDeleteFileImgProductoComplementario datos::'+datos.datos);
+        })
+        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+        .always(function(){  
+        //console.log("setDeleteFileImgProductoCotizador  always");
+         });
+
+        //subimos la nueva fotografia al servidor
+        var formData = new FormData($("#formActualizarProductoComplementario")[0]);
+
+        var ruta = "imagen-ajax.php";
+        $.ajax({  method: "POST",  url: "uploadImgProductoComplementario.php",  data: formData ,contentType: false,
+          processData: false, })
+          .done(function( datos )
+          {
+            $('#productosComplementarioPlantilla').html("");
+            $('#productoscotizadorPlantilla').html("");
+            $('#productoslineaPlantilla').html("");
+            UIkit.modal("#popup_spinner_modificando_producto").hide();
+            $('#formActualizarProductoComplementario')[0].reset();
+            UIkit.modal.alert('Producto Complementario Actualizado');
+            cargarValoresDefault();
+          })
+        .fail(function( jqXHR, textStatus ) {  console.log("uploadImgProductoCotizador fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+        .always(function(){  
+        //console.log("always");
+         });
+    }else{
+      console.log('entro al else srcimg1 tiene datos');
+      srcimg1=srcimgActual;
+    }    
+    
+    console.log('datos para actualizar:: idtblproductcomplem'+idtblproductcomplem+' nombre::'+nombre+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' preciobp::'+preciobp+' srcimg1::'+srcimg1+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' emailmodifico::'+emailmodifico);
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplem.php", data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem,nombreproductcomplem:nombre,descripcion:descripcion,seo:seo,precioreal:precioreal,preciobp:preciobp,srcimg:srcimg1,activado:activado,idtblproveedor:idtblproveedor,stock:stock,emailmodifico:emailmodifico }  })
+      .done(function( msgTblProductoComplementario ) {
+        //alert('Elimnaci? Exitosa');
+        console.log('setUpdateTblproductcomplem done msgTblProductoComplementario::'+msgTblProductoComplementario.datos);
+        $('#productosComplementarioPlantilla').html("");
+        $('#productoscotizadorPlantilla').html("");
+        $('#productoslineaPlantilla').html("");        
+        UIkit.modal("#popup_modificarproductoComplementario").hide();
+        if(nuevaImagen=='')
+        {
+          console.log('modificar producto complementario sin imagen'+nuevaImagen)
+          $('#formActualizarProductoComplementario')[0].reset();
+          UIkit.modal("#popup_spinner_modificando_producto").hide();
+          UIkit.modal.alert('Producto Complementario Actualizado');
+          cargarValoresDefault();
+        }
+      })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+      .always(function(){ 
+       //console.log("always");
+     });
+    
+  }
+
   //function confirmacionEliminarProductoLinea(){}
   function eliminarProductoLinea(idProducto,idProductoDetalle){
     //if (respuesta == true) {
@@ -6286,6 +6310,8 @@ function mostrarCotizacionesProductosNuevos(){
     data: {solicitadoBy:solicitadoBy, idtblproveedor:idtblproveedor}})
   .done(function( msg)
   { 
+    console.log("COTIZACIONES Nuevos");
+    console.log(msg);
     $.each(msg.datos, function(i,item)
     { 
 
@@ -6339,7 +6365,7 @@ function detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,x){
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/gettblcarritoproductnuevcotiza.php",  
+    url: "./../../controllers/getTblcarritoproductnuevcotiza.php",  
     data: {solicitadoBy:solicitadoBy, idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador}})
   .done(function( msg)
   { 
@@ -6409,7 +6435,7 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador,i,x){
   idproveedor=idtblproveedor;
   emailcreo= emailproveedor;
 
-//validacion de valores
+  //validacion de valores
   if((costotienda!="")){
     $("#cotizacionnuevo_costotienda"+i+x).removeClass( "md-input-danger" );
   }else $("#cotizacionnuevo_costotienda"+i+x).addClass( "md-input-danger" );
@@ -6425,6 +6451,7 @@ UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Pre
     $.ajax({ //ingresa el registro con los costos de la cotizacion 
       method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo}})
         .done(function(datos){
+          console.log(datos);
            if(parseInt(datos.success)==1){
            UIkit.modal.alert('Exitoso, Cotizacion Enviada');
            $("#ordenesdecotizacionesproductos").empty();
