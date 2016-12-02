@@ -564,7 +564,7 @@ if(!isset($_SESSION['sesion_activa1']))
         </div><!-- end Contenido de Pestaña Ordenes -->
 
         <!--COMIENZA MIGUEL HTML -->
-        <div id="contenido_Productos"><!-- Contenido de Pestaña Productos -->
+       <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
           <!-- Contenido de Iitem de Producto en Linea -->
             <div id="productoslinea">
               <h3 class="heading_b uk-margin-bottom"> Productos en Línea </h3>
@@ -603,7 +603,7 @@ if(!isset($_SESSION['sesion_activa1']))
                 <div class="uk-modal-dialog uk-modal-dialog-large">
                   <button type="button" class="uk-modal-close uk-close"></button>
                   <div class="uk-modal-header">
-                    <h3 class="uk-modal-title"><i class="material-icons" data-uk-tooltip="{pos:'top'}">&#xE148;</i>&nbsp;&nbsp;Nuevo Producto en Líea</h3>
+                    <h3 class="uk-modal-title"><i class="material-icons" data-uk-tooltip="{pos:'top'}">&#xE148;</i>&nbsp;&nbsp;Nuevo Producto en Línea</h3>
                   </div>
                   <div class="md-card">
                     <div class="md-card-content">
@@ -653,10 +653,12 @@ if(!isset($_SESSION['sesion_activa1']))
                                       </div>
                                       <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activado</label>
                                     </div>
+                                    <!--
                                     <div class="uk-width-medium-1-1 ">
                                       <label for="wizard_birth">SEO <span class="req"> * </span></label>
                                       <input type="text" name="alta_seo_producto_linea" id="alta_seo_producto_linea"  class="md-input" />
-                                    </div>                                    
+                                    </div>        
+                                    -->
                                   </div>
                                   <br/>
                                 </li>
@@ -845,7 +847,7 @@ if(!isset($_SESSION['sesion_activa1']))
               </div>
               <!--/////////////////////////////////// -->
               <!--/////////////////////////////////// -->              
-              <!-- PopUp para modificación de Datos Especificos de un Producto -->
+              <!-- PopUp para modificaci? de Datos Especificos de un Producto -->
               <div class="uk-modal" id="popup_modificarproductolinea">
                 <div class="uk-modal-dialog ">
                   <button type="button" class="uk-modal-close uk-close">                    
@@ -973,7 +975,7 @@ if(!isset($_SESSION['sesion_activa1']))
                     </div>
                   </form>
                   <div class="uk-modal-footer uk-text-right">
-                    <!-- Boton  para abrir el PopUp de modificación de Datos Generales de un Producto -->
+                    <!-- Boton  para abrir el PopUp de modificaci? de Datos Generales de un Producto -->
                     <button type="button" class="md-btn md-btn-flat md-btn-small" data-uk-modal="{target:'#popup_modificarproductolineageneral'}">
                       Modif. Datos General
                     </button>
@@ -987,7 +989,7 @@ if(!isset($_SESSION['sesion_activa1']))
               </div>
               <!--</div>-->
               <!--end PopUp de datos especificos-->              
-              <!-- PopUp para modificación de Datos generales de un Producto -->
+              <!-- PopUp para modificaci? de Datos generales de un Producto -->
               <!--<div class="uk-modal" id="popup_productgeneral">-->
               <div class="uk-modal" id="popup_modificarproductolineageneral">
                 <div class="uk-modal-dialog uk-modal-dialog-large">
@@ -1015,10 +1017,12 @@ if(!isset($_SESSION['sesion_activa1']))
                                   <label for="product_edit_name_control">Nombre de Producto<span class="req"> * </span></label>
                                   <input type="text" class="md-input" id="modificar_nombre_producto_linea_general" name="modificar_nombre_producto_linea_general" value="Nombre Producto "/>
                                 </div>
+                                <!--
                                 <div class="uk-form-row">
                                   <label for="product_edit_manufacturer_control">SEO<span class="req"> * </span></label>
                                   <input type="text" class="md-input" id="modificar_seo_producto_linea_general" name="modificar_seo_producto_linea_general" value="pastelsecodechocolate"/>
                                 </div>
+                                -->
                                 <div class="uk-form-row">
                                   <label for="product_edit_memory_control" class="uk-form-label">
                                     Categoria del Producto<span class="req"> * </span>
@@ -1110,14 +1114,14 @@ if(!isset($_SESSION['sesion_activa1']))
                     </div>
                     <div class="uk-modal-footer uk-text-right">
                         <!-- Boton para eliminar un Producto en su totalidad-->
-                      <button type="button" class="md-btn md-btn-flat" onclick="UIkit.modal.confirm('¿Elimianr el Producto?', function(){ UIkit.modal.alert('Eliminado!'); });">Eliminar</button>
+                      <button type="button" class="md-btn md-btn-flat" onclick="UIkit.modal.confirm('?Elimianr el Producto?', function(){ UIkit.modal.alert('Eliminado!'); });">Eliminar</button>
                       <!-- Boton para actualizar las modificaciones de Datos Generales de un Producto -->
                       <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?', function(){ validarFormulario('form_modificar_productos_linea_general') });">Actualizar </button>
                     </div>
                   </form>
                 </div>
               </div>
-              <!-- PopUp para modificación de Datos generales de un Producto -->
+              <!-- PopUp para modificaci? de Datos generales de un Producto -->
             </div><!-- end Contenido de Item de Producto en Linea -->
             <!--CONTE -->
             <!--Linea divisora-->
@@ -1298,7 +1302,7 @@ if(!isset($_SESSION['sesion_activa1']))
               </div>              
               <!--/////////////////////////////////// -->
               <!--/////////////////////////////////// -->              
-              <!-- PopUp para modificación de Datos Especificos de un Producto -->
+              <!-- PopUp para modificaci? de Datos Especificos de un Producto -->
               <div class="uk-modal" id="popup_modificarproductocotizador">
                 <div class="uk-modal-dialog uk-modal-dialog-large">
                   <button type="button" class="uk-modal-close uk-close"></button>
@@ -1423,7 +1427,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                                   Fotografía 2
                                               </h5>
                                               <input type="file" id="modificar_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="2000K" />
-                                              <input type="hidden" id="modificar_srcimg2_producto_lineaBD" name="srcimg2_productoBD" />
+                                              <input type="hidden" id="modificar_srcimg2_producto_cotizadorBD" name="srcimg2_productoBD" />
                                             </div>
                                           </div>
                                         </div>
@@ -1575,12 +1579,14 @@ if(!isset($_SESSION['sesion_activa1']))
                                   <br/>
                                 </li>
                                 <li>
+                                  <!--
                                   <div class="uk-grid ">
                                      <div id="ingredientesCheck" class="uk-width-large-1-1">
                                       <h5 class="heading_c uk-margin-small-bottom">Seo </h5>
                                       <input type="text" class="md-input" name="alta_seo_producto_Complementario" id="alta_seo_producto_Complementario"></input>
                                      </div>
                                   </div>
+                                  -->
                                   <br/>
                                 </li>
                                  <li>
@@ -1647,7 +1653,7 @@ if(!isset($_SESSION['sesion_activa1']))
               </div>              
               <!--/////////////////////////////////// -->
               <!--/////////////////////////////////// -->              
-              <!-- PopUp para modificación de Datos Especificos de un Producto Complemetario -->
+              <!-- PopUp para modificaci? de Datos Especificos de un Producto Complemetario -->
               <div class="uk-modal" id="popup_modificarproductoComplementario">
                 <div class="uk-modal-dialog uk-modal-dialog-large">
                   <button type="button" class="uk-modal-close uk-close"></button>
@@ -1683,12 +1689,14 @@ if(!isset($_SESSION['sesion_activa1']))
                                   <br/>
                                 </li>
                                 <li>
+                                  <!--
                                   <div class="uk-grid ">
                                      <div id="ingredientesCheck" class="uk-width-large-1-1">
                                       <h5 class="heading_c uk-margin-small-bottom">Seo </h5>
                                       <input type="text" class="md-input" name="modificar_seo_producto_Complementario" id="modificar_seo_producto_Complementario"></input>
                                      </div>
                                   </div>
+                                  -->
                                   <br/>
                                 </li>
                                 <li>
@@ -1706,7 +1714,7 @@ if(!isset($_SESSION['sesion_activa1']))
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
                                       <label> Precio <span class="req"> * </span> </label> <br/>
-                                      <input type="text" name="modificar_precio_producto_Complementario" id="modificar_precio_producto_Complementario" class="md-input" />
+                                      <input type="number" min="0" name="modificar_precio_producto_Complementario" id="modificar_precio_producto_Complementario" class="md-input" />
                                     </div> 
                                   </div>
                                   <br/>
