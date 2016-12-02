@@ -1,5 +1,9 @@
+<?php session_start(); ?>
 <?php 
-include('./php/seguridad_general.php');
+if(!isset($_SESSION['sesion_activa1']))
+{
+ header("Location: index.php");
+}
 ?>
 <!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
@@ -561,7 +565,7 @@ include('./php/seguridad_general.php');
         </div><!-- end Contenido de Pestaña Ordenes -->
 
         <!--COMIENZA MIGUEL HTML -->
-        <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
+       <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
           <!-- Contenido de Iitem de Producto en Linea -->
             <div id="productoslinea">
               <h3 class="heading_b uk-margin-bottom"> Productos en Línea </h3>
@@ -1718,7 +1722,7 @@ include('./php/seguridad_general.php');
             </div>
             <!--Contenido de Item de Producto en Cotizador -->
             <!-- end Contenido de Item de Producto en Cotizador -->
-        </div>        
+        </div>
         <!-- FIN MIGUEL HTML -->
         <div id="contenido_Cotizador"><!-- Contenido de Pestaña Cotizador -->
           <h3 class="heading_b uk-margin-bottom"> Cotizaciones De Productos  </h3>
@@ -1819,11 +1823,11 @@ var emailproveedor = "mispasteles@gmail.com";
 /*
  COMIENZA VARIABLES MIGUEL
  */
-//UIkit.modal.alert('Producto Registrado');
+  var idusuarioproveedor=<?php echo $_SESSION['idusuario']; ?>;
   var idtblproveedor = <?php echo $_SESSION['idtblproveedor']; ?>;
   var idusuarioproveedor=<?php echo $_SESSION['idusuario']; ?>;
   var emailproveedor="<?php echo $_SESSION['usuario']; ?>";
-  //alert('idtblproveedor::'+idtblproveedor);
+  alert('idtblproveedor::'+idtblproveedor);
   var solicitadoBy="WEB";
   var arregloInfoUnProducto=[];
   var arregloInfoTodosProducto=[];
@@ -1873,13 +1877,7 @@ $( window ).ready(function()
   /*
   FUNCIONES MIGUEL
    */
-  function cargarValoresDefault(){
-    //BORRAMOS LOS PRODUCTOS PARA MOSTRAR LOS MAS RECIENTES
-    /*
-    $('#productosComplementarioPlantilla').html("");
-    $('#productoscotizadorPlantilla').html("");
-    $('#productoslineaPlantilla').html("");
-    */     
+  function cargarValoresDefault(){     
     solicitadoBy="WEB";    
     arregloInfoUnProducto=[];
     arregloInfoUnProductoCotizador=[];
@@ -3475,19 +3473,19 @@ $( window ).ready(function()
   function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado,nombreIngrediente){
     //nombre = nombre.replace(' ', '_');
     mensajeEliminacion="'Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tama? : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tama? : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
     nombre = nombre.replace(' ', '_');
     mensajeEliminacion="'Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoCotizador'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick="UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoCotizador('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoCotizador'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick="UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoCotizador('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador,bgclose:false,modal:false,modal:false}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function productosPlantillaComplementario(idexArreglo,idProducto,nombre,activado,srcimgComplementario){
     nombre = nombre.replace(' ', '_');
     mensajeEliminacion="'Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoComplentario'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoComplementario'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  <img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoComplentario'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoComplementario'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  <img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario,bgclose:false,modal:false,modal:false}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function llamarFuncion(idProducto){
@@ -3504,13 +3502,13 @@ $( window ).ready(function()
 
   function agregarProductoPlantillaCotizador(){
     boton_nuevoproductoCotizador='<div data-product-name="agregarproductoCotizador">        <div class="uk-badge md-card ">          <div class="md-card-content uk-border-circle">            <div class="uk-text-center uk-border-circle"> <h3>Agregar un producto para cotizar nuevo</h3>            <button id="agregar" type="button" class="md-btn md-btn-flat md-btn-small uk-border-circle" data-uk-modal="{target:popup_nuevoproductocotizador}">                <label class="menu_icon"><i class="material-icons md-48">&#xE145;</i></label>              </button>            </div>          </div>        </div></div>';
-    boton_nuevoproductoCotizador='<div class="md-card-head-avatar md-fab" data-uk-modal="{target:popup_nuevoproductocotizador}">  <i class="material-icons">&#xE145;</i> </div>';
+    boton_nuevoproductoCotizador='<div class="md-card-head-avatar md-fab" data-uk-modal="{target:popup_nuevoproductocotizador,bgclose:false,modal:false,modal:false}">  <i class="material-icons">&#xE145;</i> </div>';
     return boton_nuevoproductoCotizador;
   }
 
   function agregarProductoPlantillaComplementario(){
     boton_nuevoproductoComplementario='<div data-product-name="agregarproductoComplementario">        <div class="uk-badge md-card ">          <div class="md-card-content uk-border-circle">            <div class="uk-text-center uk-border-circle"> <h3>Agregar un producto complementario nuevo</h3>            <button id="agregar" type="button" class="md-btn md-btn-flat md-btn-small uk-border-circle" data-uk-modal="{target:popup_nuevoproductoComplementario}">                <label class="menu_icon"><i class="material-icons md-48">&#xE145;</i></label>              </button>            </div>          </div>        </div></div>';
-    boton_nuevoproductoComplementario='<div class="md-card-head-avatar md-fab" data-uk-modal="{target:popup_nuevoproductoComplementario}">  <i class="material-icons">&#xE145;</i> </div>';
+    boton_nuevoproductoComplementario='<div class="md-card-head-avatar md-fab" data-uk-modal="{target:popup_nuevoproductoComplementario,bgclose:false,modal:false,modal:false}">  <i class="material-icons">&#xE145;</i> </div>';
     return boton_nuevoproductoComplementario;
   }
 
@@ -6310,8 +6308,6 @@ function mostrarCotizacionesProductosNuevos(){
     data: {solicitadoBy:solicitadoBy, idtblproveedor:idtblproveedor}})
   .done(function( msg)
   { 
-    console.log("COTIZACIONES Nuevos");
-    console.log(msg);
     $.each(msg.datos, function(i,item)
     { 
 
@@ -6365,7 +6361,7 @@ function detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,x){
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getTblcarritoproductnuevcotiza.php",  
+    url: "./../../controllers/gettblcarritoproductnuevcotiza.php",  
     data: {solicitadoBy:solicitadoBy, idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador}})
   .done(function( msg)
   { 
@@ -6435,7 +6431,7 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador,i,x){
   idproveedor=idtblproveedor;
   emailcreo= emailproveedor;
 
-  //validacion de valores
+//validacion de valores
   if((costotienda!="")){
     $("#cotizacionnuevo_costotienda"+i+x).removeClass( "md-input-danger" );
   }else $("#cotizacionnuevo_costotienda"+i+x).addClass( "md-input-danger" );
@@ -6451,7 +6447,6 @@ UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Pre
     $.ajax({ //ingresa el registro con los costos de la cotizacion 
       method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo}})
         .done(function(datos){
-          console.log(datos);
            if(parseInt(datos.success)==1){
            UIkit.modal.alert('Exitoso, Cotizacion Enviada');
            $("#ordenesdecotizacionesproductos").empty();
