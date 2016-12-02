@@ -1,5 +1,6 @@
-
-<!doctype html>
+<?php 
+include('./php/seguridad_general.php');
+?><!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> 
 <html lang="en"> <!--<![endif]-->
@@ -148,7 +149,7 @@
                           <div class="uk-width-medium-1-3">
                             <!--<button class="md-btn md-btn-success" type="button" data-uk-button>Guardar Cambios</button>-->
                             <!--<button type="button" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ actualizarPerfilTienda(); UIkit.modal.alert('Confirmed!'); });">-->
-                            <button type="button" class="md-btn md-btn-success" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ actualizarPerfilTienda(); UIkit.modal.alert('Confirmed!'); });">
+                            <button type="button" class="md-btn md-btn-success" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_perfilTienda');; });">
                               Guardar Cambio
                             </button>
                           </div>
@@ -264,7 +265,7 @@
                           
                           <div class="uk-width-medium-1-3">
                             <!--0<button class="md-btn md-btn-success" type="button" data-uk-button>Guardar Cambios</button>-->
-                            <button type="button" class="md-btn md-btn-success" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ actualizarPerfilTiendaServicios(); UIkit.modal.alert('Confirmed!'); });">
+                            <button type="button" class="md-btn md-btn-success" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_perfilTienda_servicios');  });">
                           Guardar Cambio
                         </button>
                           </div>
@@ -276,107 +277,6 @@
               </div>
             </div>
           </div>
-              <!--
-              <div id="contenido_Servicios">           
-                <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium uk-sortable sortable-handler hierarchical_show" data-uk-sortable data-uk-grid-margin>                  
-                  <div class="uk-grid" data-uk-grid-margin>
-                    <div class="uk-width-medium-1-1">
-                      <div class="md-card">
-                        <div class="md-card-content">
-                          <div class="uk-form-row">
-                            <div class="uk-grid " data-uk-grid-margin>
-                              <div class="pricing_table pricing_table_c uk-grid uk-grid-small uk-grid-width-medium-1-2 uk-grid-width-large-1-4 uk-margin-large-bottom" data-uk-grid-margin data-uk-grid-match="{target:'.md-card-content'}">
-                                <div>
-                                  <div class="md-card">
-                                    <div class="md-card-content padding-reset">
-                                      <div class="pricing_table_plan"><i class="material-icons md-24 md-color-grey-500">&#xE83A;</i></div>
-                                      <div class="pricing_table_price">
-                                        <span class="currency">$</span>0<span class="period">/mo</span>
-                                      </div>
-                                      <ul class="pricing_table_features">
-                                        <li><strong>3</strong> Productos</li>
-                                        <li><strong>(Online ó Cotizador)</strong> Seccion</li>
-                                        <li><strong>Local</strong> Area limitada</li>
-                                        <li><strong>18:00</strong> Hora de entrega</li>  
-                                        <li><strong>No</strong> Productos Complementarios</li>
-                                      </ul>
-                                      <div class="pricing_table_select">
-                                        <a href="#" class="md-btn md-btn-flat md-btn-flat-primary">Get it now</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div>
-                                  <div class="md-card md-bg-light-blue-600 md-color-white">
-                                    <div class="md-card-content padding-reset">
-                                      <div class="pricing_table_plan"><i class="material-icons md-24 md-color-white">&#xE838;</i><i class="material-icons md-24 md-color-white">&#xE838;</i></div>
-                                      <div class="pricing_table_price">
-                                        <span class="currency">$</span>20<span class="period md-color-white">/mo</span>
-                                      </div>
-                                      <ul class="pricing_table_features">
-                                        <li><strong>6</strong> Productos</li>
-                                        <li><strong>(Online ó Cotizador)</strong> Seccion</li>
-                                        <li><strong>Regional</strong> Area limitada</li>
-                                        <li><strong>9:00 y 18:00</strong> Hora de entrega</li>  
-                                        <li><strong>No</strong> Productos Complementarios</li>
-                                      </ul>
-                                      <div class="pricing_table_select">
-                                        <a href="#" class="md-btn">Get it now</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div>
-                                  <div class="md-card">
-                                    <div class="md-card-content padding-reset">
-                                      <div class="pricing_table_plan"><i class="material-icons md-24 md-color-grey-500">&#xE83A;</i><i class="material-icons md-24 md-color-grey-500">&#xE83A;</i><i class="material-icons md-24 md-color-grey-500">&#xE83A;</i></div>
-                                      <div class="pricing_table_price">
-                                        <span class="currency">$</span>40<span class="period">/mo</span>
-                                      </div>
-                                      <ul class="pricing_table_features">
-                                        <li><strong>20</strong> Productos</li>
-                                        <li><strong>(Online y Cotizador)</strong> Seccion</li>
-                                        <li><strong>Regional</strong> Area limitada</li>
-                                        <li><strong>Personalizado</strong> Hora de entrega</li>  
-                                        <li><strong>Si</strong> Productos Complementarios</li>
-                                      </ul>
-                                      <div class="pricing_table_select">
-                                        <a href="#" class="md-btn md-btn-flat md-btn-flat-primary">Get it now</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div>
-                                  <div class="md-card">
-                                    <div class="md-card-content padding-reset">
-                                      <div class="pricing_table_plan"><i class="material-icons md-24 md-color-grey-500">&#xE83A;</i><i class="material-icons md-24 md-color-grey-500">&#xE83A;</i><i class="material-icons md-24 md-color-grey-500">&#xE83A;</i><i class="material-icons md-24 md-color-grey-500">&#xE83A;</i></div>
-                                      <div class="pricing_table_price">
-                                        <span class="currency">$</span>80<span class="period">/mo</span>
-                                      </div>
-                                      <ul class="pricing_table_features">
-                                        <li><strong>Ilimitado</strong> Productos</li>
-                                        <li><strong>(Online y Cotizador)</strong> Seccion</li>
-                                        <li><strong>Nacional</strong> Area limitada</li>
-                                        <li><strong>Perzonalizado</strong> Hora de entrega</li>  
-                                        <li><strong>Si</strong> Productos Complementarios</li>
-                                      </ul>
-                                      <div class="pricing_table_select">
-                                        <a href="#" class="md-btn md-btn-flat md-btn-flat-primary">Get it now</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              -->
             </div> 
             <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->                      
           </div>
@@ -422,10 +322,86 @@
       function validarFormulario(formularioAValidar)
       {
         console.log('entro a la function validarFormulario');
-        if(formularioAValidar=='form_alta_productos_linea')
+        if(formularioAValidar=='form_modificar_perfilTienda')
         {
+           /*
+          VARIABLES
+           */
+          boolError=false;
+          boolErrorNombrePasteleria=false;
+          boolErrorDescripcion=false;
+          boolErrorNombreContacto=false;
+          boolErrorTelefonoTienda=false;
+          boolErrorCelular=false;
+          boolErrorEmail=false;
+          boolErrorDireccionPasteleria=false;
 
+           //tblproducto
+          nombrePasteleria='';
+          descripcion='';
+          nombreContacto='';
+          telefonoTienda='';
+          celular='';
+          email='';
+          direccionPasteleria='';
+
+          //OBTENEMOS LOS DATOS DEL FORMULARIO
+          nombrePasteleria=$('#modificar_nombre_perfilTienda').val();
+          descripcion=$('#modificar_descripcion_perfilTienda').val();
+          nombreContacto=$('#modificar_nombre_contacto_perfilTienda').val();
+          telefonoTienda=$('#modificar_telefono_tienda_perfilTienda').val();
+          celular=$('#modificar_celular_perfilTienda').val();
+          email=$('#modificar_email_perfilTienda').val();
+          direccionPasteleria=$('#modificar_direccion_pasteleria_perfilTienda').val();
+          /////////////////////////DATOS GENERALES/////////////////////////
+          //nombreproduct -> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorNombre=validarCamposString(nombrePasteleria,90);      
+          if(boolErrorNombre){ $( "#modificar_nombre_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; }
+          else{ $( "#modificar_nombre_perfilTienda" ).removeClass( "md-input-danger" ); }
+          //nombreproduct -> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorDescripcion=validarCamposString(descripcion,300);      
+          if(boolErrorDescripcion){ $( "#modificar_descripcion_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; }
+          else{ $( "#modificar_descripcion_perfilTienda" ).removeClass( "md-input-danger" ); }
+          //nombreproduct -> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorNombreContacto=validarCamposString(nombreContacto,110);      
+          if(boolErrorNombreContacto){ $( "#modificar_nombre_contacto_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; }
+          else{ $( "#modificar_nombre_contacto_perfilTienda" ).removeClass( "md-input-danger" ); }
+          //nombreproduct -> Number
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorTelefonoTienda=validarCamposString(telefonoTienda,20);      
+          if(boolErrorTelefonoTienda){ $( "#modificar_telefono_tienda_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; }
+          else{ $( "#modificar_telefono_tienda_perfilTienda" ).removeClass( "md-input-danger" ); }
+          //nombreproduct -> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorCelular=validarCamposString(celular,30);      
+          if(boolErrorCelular){ $( "#modificar_celular_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; }
+          else{ $( "#modificar_celular_perfilTienda" ).removeClass( "md-input-danger" ); }
+          //nombreproduct -> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorEmail=validarCamposString(email,70);      
+          if(boolErrorEmail){ $( "#modificar_email_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; }
+          else{ $( "#modificar_email_perfilTienda" ).removeClass( "md-input-danger" ); }
+          //nombreproduct -> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorDireccionPasteleria=validarCamposString(direccionPasteleria,50);      
+          if(boolErrorDireccionPasteleria){ $( "#modificar_direccion_pasteleria_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; }
+          else{ $( "#modificar_direccion_pasteleria_perfilTienda" ).removeClass( "md-input-danger" ); }
+          ///////////////////////////////////////////////////////////////////////////
+          /////////////////////////////////////////////////////////////////////////
+          if(!boolError)
+          {
+            console.log('registrarProductoLinea');
+            actualizarPerfilTienda();
+          }
+          else
+          {
+            UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+          }
         }
+         
       }
       //FUNCIONES DE VALIDACION DE DATOS/////////////////////////////////////////////////////////////////////////////////
       function validarCamposString(string,numCaracterValido)
@@ -651,6 +627,7 @@
           $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproveedor.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, nombreprov:nombreprov, srclogo:srclogo, descripcion:descripcion, direccion:direccion, seo:seo, telftienda:telftienda, extencion:extencion, celular:celular, email:email, activado:activado, idtbltipopedido:idtbltipopedido, idtbltiposervicio:idtbltiposervicio, idtblcolonia:idtblcolonia, idtblpaquete:idtblpaquete, emailmodifico:emailmodifico}  })
             .done(function( msgUpdateProveedor ) { 
               //console.log('done msgUpdateProveedor::'+msgUpdateProveedor.datos);
+              UIkit.modal.alert('Perfil de tienda actualizado');
             })
             .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproveedor fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
             .always(function(){  
@@ -658,7 +635,7 @@
             });            
         }else
         {
-          alert('algun campo con * esta vacio favor de verificar');
+          //alert('algun campo con * esta vacio favor de verificar');
         }
 
       }

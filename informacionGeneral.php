@@ -1,4 +1,6 @@
-
+<?php 
+include('./php/seguridad_general.php');
+?>
 <!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> 
