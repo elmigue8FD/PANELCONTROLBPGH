@@ -1711,7 +1711,8 @@ if(!isset($_SESSION['sesion_activa1']))
                   <h4> Espere miestras se actualiza </h4>
                 </div>
               </div>
-            </div><!-- end Contenido de Item de Producto -->
+            </div>
+            <!-- end Contenido de Item de Producto -->
             <!--///////////////////////////////////////////////////////////// -->
             <div>
               <br/><br/>
@@ -1827,7 +1828,6 @@ var emailproveedor = "mispasteles@gmail.com";
   var idtblproveedor = <?php echo $_SESSION['idtblproveedor']; ?>;
   var idusuarioproveedor=<?php echo $_SESSION['idusuario']; ?>;
   var emailproveedor="<?php echo $_SESSION['usuario']; ?>";
-  alert('idtblproveedor::'+idtblproveedor);
   var solicitadoBy="WEB";
   var arregloInfoUnProducto=[];
   var arregloInfoTodosProducto=[];
@@ -4454,7 +4454,7 @@ $( window ).ready(function()
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproducto.php", data: {solicitadoBy:"WEB",idtblproducto:idProducto,nombreproduct:nombre,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:categoria,idtblclasifproduct:clasificacion,emailmodifico:emailmodifico }  })
       .done(function( msgTblProductoGeneral ) {
         //alert('msgTblProductoGeneral'+msgTblProductoGeneral.success);
-        $('#productosComplementarioPlantilla').html("");
+        $('#productosComplementarioPlantilla').html("");  
         $('#productoscotizadorPlantilla').html("");
         $('#productoslineaPlantilla').html("");
         UIkit.modal("#popup_modificarproductolineageneral").hide();
