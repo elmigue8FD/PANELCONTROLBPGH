@@ -30,6 +30,12 @@ if (!empty($_POST)){
         foreach( $resultado as $row )  
         {
             $_SESSION['idusuario'] = $row['idtblusuarioproveedor'];
+
+            $_SESSION['nombre'] = $row['tblusuarioproveedor_nombre'];
+            $_SESSION['apellido'] = $row['tblusuarioproveedor_apellido'];
+            $_SESSION['celular'] = $row['tblusuarioproveedor_celular'];
+            $_SESSION['password'] = $row['tblusuarioproveedor_password'];
+
             $_SESSION['idtblproveedor']=$row['tblproveedor_idtblproveedor'];
             $_SESSION['usuario'] = $row['tblusuarioproveedor_email'];
             $_SESSION['nivel'] = $row['tblniveleacceso_idtblniveleacceso'];
