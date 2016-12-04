@@ -137,7 +137,7 @@
 
         $("#Solicitar_soporte").click(function(){
         login_email_reset=$('#login_email_reset').val();
-        alert('#login_email_reset::'+login_email_reset);
+        //alert('#login_email_reset::'+login_email_reset);
         
         $.ajax({
             method: "POST",   
@@ -146,7 +146,8 @@
 
           })
         .done(function( msg ) {
-          alert('msg::'+msg);
+          UIkit.modal.alert('La solicitud ha sido enviada en breve nos comunicaremos contigo');
+          location.reload();
         })
           .fail(function( jqXHR, textStatus ) {
             console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);
