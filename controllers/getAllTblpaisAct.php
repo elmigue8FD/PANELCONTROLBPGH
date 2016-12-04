@@ -25,13 +25,13 @@ if (!empty($_POST)){
     	/**
          * Si es éxitos le mandamos los resultados a quien lo solicito.
          */
-    	InfoSolicitadaBy::solicitadaby($solicitaBy, $resultado);
+    	InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
 
     }else{
     	/**
          * Si fallo manda a la función de fallo a quien lo solicito.
          */
-    	InfoSolicitadaBy::sinDatos($solicitaBy);
+    	InfoSolicitadaBy::sinDatos($solicitadoBy);
     }
 }
 /**
