@@ -47,7 +47,7 @@
           <h2 class="heading_b uk-text-success">Lamentamos que tuvieras problemas para acceder</h2>
           <p>Los usuarios y contraseñas son sensibles a MAYUSCULAS, minúsculas, puntos y comas.</p>
           <p>Primero, intenta lo mas sencillo: Si tu recuerdas tu constraseña pero no funciona, revisa si tu usuario este escrito correctamente, luego intenta denuevo.</p>
-          <p>Si aún no puedes acceder puedes mandar una solicitud de ayuda a <a href="#" id="password_reset_show">Solicitar soporte de Bepickler</a>.</p>
+          <p>Si aún no puedes acceder puedes mandar una solicitud de ayuda a <a class="md-color-pink-300" href="#" id="password_reset_show">Solicitar soporte de Bepickler</a>.</p>
         </div>
         <div class="md-card-content large-padding" id="login_password_reset" style="display: none">
           <button type="button" class="uk-position-top-right uk-close uk-margin-right uk-margin-top back_to_login"></button>
@@ -58,7 +58,8 @@
               <input class="md-input" type="text" id="login_email_reset" name="login_email_reset" />
             </div>
             <div class="uk-margin-medium-top">
-              <a href="index.php" class="md-btn md-btn-primary md-btn-block">Solicitar soporte</a>
+              <a  id="Solicitar_soporte" class="md-btn md-btn-primary md-btn-block md-bg-pink-300">Solicitar soporte</a>
+              <!--href="index.php"-->
             </div>
           </form>
         </div>
@@ -89,13 +90,15 @@
     
       $( window ).ready(function()
       {
+
         console.log('cargo por completo la pagina');
         $("#sigIn").show();
         $("#sigIn").click(function(){
           emailproveedor=$("#emailproveedor").val();
           passwordproveedor=$("#passwordproveedor").val();
           console.log("realizo el click en sigIn emailproveedor:"+emailproveedor+" passwordproveedor:"+passwordproveedor);
-          $.ajax({
+          $.
+          ajax({
             method: "POST",     
             dataType: "json",
             url: "./../../controllers/setCheckTblusuarioproveedorLogin.php",
@@ -130,7 +133,36 @@
             console.log("always");
           });
         });
+
+
+        $("#Solicitar_soporte").click(function(){
+        login_email_reset=$('#login_email_reset').val();
+        alert('#login_email_reset::'+login_email_reset);
+        
+        $.ajax({
+            method: "POST",   
+            url: "./php/solicitudDeSoporteLoginPanel.php",
+            data: {login_email_reset:login_email_reset}
+
+          })
+        .done(function( msg ) {
+          alert('msg::'+msg);
+        })
+          .fail(function( jqXHR, textStatus ) {
+            console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);
+            alert( "Request failed: " + textStatus );
+          })
+          .always(function(){
+            console.log("always");
+          });
+          
+        });
+
+
       });
+      
+
+
       
     </script>
   </body>
