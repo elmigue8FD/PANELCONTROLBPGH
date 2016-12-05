@@ -3,10 +3,12 @@
 <!--[if gt IE 9]><!--> 
 <html lang="en"> <!--<![endif]-->
   <head>
-    <?php include("./codigo_general/head.php"); ?>
+    
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
     <!-- altair admin login page -->
     <link rel="stylesheet" href="assets/css/login_page.min.css" />
+
+    <?php include("./codigo_general/head.php"); ?>
     
   </head>
   <body class="login_page">
@@ -29,10 +31,10 @@
               <input class="md-input" type="password" id="passwordproveedor" name="passwordproveedor" />
             </div>
             <div class="uk-margin-medium-top ">
-              <a id="sigIn" class="md-btn md-btn-primary md-btn-block md-btn-large md-bg-pink-300">Acceder</a>
+              <a id="sigIn" class="md-btn md-btn-primary md-btn-block md-btn-large">Acceder</a>
             </div>
             <div class="uk-margin-top">
-              <a href="ayudaAcceder.php" id="login_help_show" class="uk-float-right md-color-pink-300">¿Necesitas ayuda?</a>
+              <a href="ayudaAcceder.php" id="login_help_show" class="uk-float-right" >¿Necesitas ayuda?</a>
               <!--
               <span class="icheck-inline">
                 <input type="checkbox" name="login_page_stay_signed" id="login_page_stay_signed" data-md-icheck />
@@ -47,7 +49,7 @@
           <h2 class="heading_b uk-text-success">Lamentamos que tuvieras problemas para acceder</h2>
           <p>Los usuarios y contraseñas son sensibles a MAYUSCULAS, minúsculas, puntos y comas.</p>
           <p>Primero, intenta lo mas sencillo: Si tu recuerdas tu constraseña pero no funciona, revisa si tu usuario este escrito correctamente, luego intenta denuevo.</p>
-          <p>Si aún no puedes acceder puedes mandar una solicitud de ayuda a <a class="md-color-pink-300" href="#" id="password_reset_show">Solicitar soporte de Bepickler</a>.</p>
+          <p>Si aún no puedes acceder puedes mandar una solicitud de ayuda a <a class="" href="#" id="password_reset_show">Solicitar soporte de Bepickler</a>.</p>
         </div>
         <div class="md-card-content large-padding" id="login_password_reset" style="display: none">
           <button type="button" class="uk-position-top-right uk-close uk-margin-right uk-margin-top back_to_login"></button>
@@ -58,7 +60,7 @@
               <input class="md-input" type="text" id="login_email_reset" name="login_email_reset" />
             </div>
             <div class="uk-margin-medium-top">
-              <a  id="Solicitar_soporte" class="md-btn md-btn-primary md-btn-block md-bg-pink-300">Solicitar soporte</a>
+              <a  id="Solicitar_soporte" class="md-btn md-btn-primary md-btn-block">Solicitar soporte</a>
               <!--href="index.php"-->
             </div>
           </form>

@@ -32,6 +32,9 @@
 <!-- themes -->
 <link rel="stylesheet" href="./assets/css/themes/themes_combined.min.css" media="all">
 
+
+<link rel="stylesheet" href="assets/css/estilo_miguel_general.css" />
+
 <!-- matchMedia polyfill for testing media queries in JS -->
 <!--[if lte IE 9]>
     <script type="text/javascript" src="bower_components/matchMedia/matchMedia.js"></script>
