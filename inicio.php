@@ -1,9 +1,5 @@
-<?php session_start(); ?>
 <?php 
-if(!isset($_SESSION['sesion_activa1']))
-{
- header("Location: index.php");
-}
+include('./php/seguridad_general.php');
 ?>
 <!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
