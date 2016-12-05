@@ -172,7 +172,6 @@ function cerrarSesion()
                   })
                   .fail(function( jqXHR, textStatus ) {
                     console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);
-                    alert( "Request failed: " + textStatus );
                   })
                   .always(function(){
                     console.log("always");
