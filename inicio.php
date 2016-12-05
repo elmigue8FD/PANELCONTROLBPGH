@@ -561,7 +561,7 @@ include('./php/seguridad_general.php');
         </div><!-- end Contenido de Pestaña Ordenes -->
 
         <!--COMIENZA MIGUEL HTML -->
-       <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
+        <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
           <!-- Contenido de Iitem de Producto en Linea -->
             <div id="productoslinea">
               <h3 class="heading_b uk-margin-bottom"> Productos en Línea </h3>
@@ -838,11 +838,11 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" data-uk-modal="{target:'#popup_spinner_registrando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button> 
+                    <button type="button"  class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>
-
+              <!--data-uk-modal="{target:'#popup_spinner_registrando_producto'}"-->
               <!--/////////////////////////////////// -->
               <!--/////////////////////////////////// -->              
               <!-- PopUp para modificaci? de Datos Especificos de un Producto -->
@@ -974,11 +974,11 @@ include('./php/seguridad_general.php');
                   </form>
                   <div class="uk-modal-footer uk-text-right">
                     <!-- Boton  para abrir el PopUp de modificaci? de Datos Generales de un Producto -->
-                    <button type="button" class="md-btn md-btn-flat md-btn-small" data-uk-modal="{target:'#popup_modificarproductolineageneral'}">
+                    <button type="button" class="md-btn md-btn-flat md-btn-small" data-uk-modal="{target:'#popup_modificarproductolineageneral',bgclose:false,modal:false,modal:false}">
                       Modif. Datos General
                     </button>
                     <!-- Boton para aceptar la actualizar de las modificaciones de Datos especificos de un Producto -->
-                    <button type="button" data-uk-modal="{target:'#popup_spinner_modificando_producto'}" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_productos_linea_detalle'); });">
+                    <button type="button" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_productos_linea_detalle'); });">
                       Actualizar
                     </button>
                   </div>
@@ -1090,7 +1090,7 @@ include('./php/seguridad_general.php');
                             <div class="uk-width-medium-1-3">
                               <div class="md-card">
                                 <div class="md-card-content">
-                                  <h5 id="modificar_srcimg2_producto_linea_titulo">
+                                  <h5 id="modificar_srcimg3_producto_linea_titulo">
                                       Fotografía 3
                                   </h5>
                                   <input type="file" id="modificar_srcimg3_producto_linea" name="srcimg3_producto" class="dropify" data-max-file-size="20000K" />
@@ -1105,9 +1105,9 @@ include('./php/seguridad_general.php');
                     </div>
                     <div class="uk-modal-footer uk-text-right">
                         <!-- Boton para eliminar un Producto en su totalidad-->
-                      <button type="button" class="md-btn md-btn-flat" onclick="UIkit.modal.confirm('?Elimianr el Producto?', function(){ UIkit.modal.alert('Eliminado!'); });">Eliminar</button>
+                      <!--<button type="button" class="md-btn md-btn-flat" onclick="UIkit.modal.confirm('?Elimianr el Producto?', function(){ UIkit.modal.alert('Eliminado!'); });">Eliminar</button>-->
                       <!-- Boton para actualizar las modificaciones de Datos Generales de un Producto -->
-                      <button type="button" data-uk-modal="{target:'#popup_spinner_modificando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?', function(){ validarFormulario('form_modificar_productos_linea_general') });">Actualizar </button>
+                      <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?', function(){ validarFormulario('form_modificar_productos_linea_general') });">Actualizar </button>
                     </div>
                   </form>
                 </div>
@@ -1287,7 +1287,7 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" data-uk-modal="{target:'#popup_spinner_registrando_producto'}"  class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_cotizador') });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_cotizador') });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1445,7 +1445,7 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" data-uk-modal="{target:'#popup_spinner_modificando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){  validarFormulario('form_modificar_productos_cotizador');  });">Actualziar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){  validarFormulario('form_modificar_productos_cotizador');  });">Actualziar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1578,7 +1578,7 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" data-uk-modal="{target:'#popup_spinner_registrando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_complementario'); });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_complementario'); });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1687,7 +1687,7 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" data-uk-modal="{target:'#popup_spinner_modificando_producto'}" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ validarFormulario('form_modificar_productos_complementario'); });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ validarFormulario('form_modificar_productos_complementario'); });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -2280,6 +2280,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('registrarProductoLinea');
+        UIkit.modal("#popup_spinner_registrando_producto").show();
         registrarProductoLinea();
       }
       else
@@ -2452,6 +2453,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('actualizarProductoDetalle');
+        UIkit.modal("#popup_spinner_modificando_producto").show();
         actualizarProductoDetalle();      
       }
       else
@@ -2487,6 +2489,10 @@ $( window ).ready(function()
       idtblcategproduc='';
       idtblclasifproduct='';
 
+      srcimg1='';
+      srcimg2='';
+      srcimg3='';
+
       //OBTENEMOS LOS DATOS DEL FORMULARIO
       nombreproduct=$('#modificar_nombre_producto_linea_general').val();
       descripcion=$('#modificar_descripcion_producto_linea_general').val();
@@ -2495,13 +2501,13 @@ $( window ).ready(function()
       idtblcategproduc=$('#modificar_categoria_producto_linea_general').val();
       idtblclasifproduct=$('#modificar_clasificacion_producto_linea_general').val();
 
-      srcimg1=$('#modificar_srcimg1_producto_linea').val().replace(/C:\\fakepath\\/i, '');
-      srcimg2=$('#modificar_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
-      srcimg3=$('#modificar_srcimg3_producto_linea').val().replace(/C:\\fakepath\\/i, '');
+      //alert('srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3+'val::'+$('#modificar_srcimg1_producto_linea').val());
+        srcimg1=$('#modificar_srcimg1_producto_linea').val().replace(/C:\\fakepath\\/i, '');
+        srcimg2=$('#modificar_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
+        srcimg3=$('#modificar_srcimg3_producto_linea').val().replace(/C:\\fakepath\\/i, '');
 
-      if(srcimg1=!''||srcimg2!=''||srcimg3!='')
+      if(srcimg1!=''||srcimg2!=''||srcimg3!='')
         boolHabilitarValidacionSrcImg=true;
-
       /////////////////////////DATOS GENERALES/////////////////////////
       //nombreproduct -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
@@ -2635,7 +2641,7 @@ $( window ).ready(function()
           $( "#modificar_srcimg1_producto_linea_titulo" ).css('color','black');
         if(srcimg2=='')
         {
-          console.log('srcimg1 vacio');
+          console.log('srcimg2 vacio');
           boolError=true;
           boolErrorSrcimg2=true;
         }
@@ -2645,7 +2651,7 @@ $( window ).ready(function()
           $( "#modificar_srcimg2_producto_linea_titulo" ).css('color','black');
         if(srcimg3=='')
         {
-          console.log('srcimg1 vacio');
+          console.log('srcimg3 vacio');
           boolError=true;
           boolErrorSrcimg3=true;
         }
@@ -2659,6 +2665,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         //console.log('actualizarProductoGeneral');
+        UIkit.modal("#popup_spinner_modificando_producto").show();
         actualizarProductoGeneral();      
       }
       else
@@ -2750,6 +2757,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         //console.log('registrar producto cotizador');
+        UIkit.modal("#popup_spinner_registrando_producto").show();
         registrarProductoCotizador();      
       }
       else
@@ -2849,6 +2857,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         //console.log('actualizarProducto cotizador');
+        UIkit.modal("#popup_spinner_modificando_producto").show();
         actualizarProductoCotizador();      
       }
       else
@@ -2927,6 +2936,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('registrar producto complementario');
+        UIkit.modal("#popup_spinner_registrando_producto").show();
         registrarProductoComplementario();      
       }
       else
@@ -3011,6 +3021,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('actualizar producto complementario');
+         UIkit.modal("#popup_spinner_modificando_producto").show();
         actualizarProductoComplementario();      
       }
       else
@@ -4324,9 +4335,10 @@ $( window ).ready(function()
     promcalif=5;
     activado=$("#modificar_activado_producto_linea_general").is(':checked');
     if(activado)
-      activado=1
+      activado=1;
     else
-      activado=0 
+      activado=0;
+    //alert('activado::'+activado); 
     //idtblproveedor=1;
     categoria=$("#modificar_categoria_producto_linea_general").val();
     clasificacion=$("#modificar_clasificacion_producto_linea_general").val();
@@ -4445,7 +4457,7 @@ $( window ).ready(function()
       
     }
     //alert('setUpdateTblproducto::'+activado);
-    //console.log('idProducto:'+idProducto+' nombre::'+nombre+' descripcion::'+descripcion+' ingredientes::'+ingredientes+' seo::'+seo+' promcalif::'+promcalif+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' categoria::'+categoria+' clasificacion::'+clasificacion+' emailmodifico::'+emailmodifico);
+    console.log('idProducto:'+idProducto+' nombre::'+nombre+' descripcion::'+descripcion+' ingredientes::'+ingredientes+' seo::'+seo+' promcalif::'+promcalif+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' categoria::'+categoria+' clasificacion::'+clasificacion+' emailmodifico::'+emailmodifico);
     
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproducto.php", data: {solicitadoBy:"WEB",idtblproducto:idProducto,nombreproduct:nombre,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:categoria,idtblclasifproduct:clasificacion,emailmodifico:emailmodifico }  })
       .done(function( msgTblProductoGeneral ) {
@@ -4454,6 +4466,7 @@ $( window ).ready(function()
         $('#productoscotizadorPlantilla').html("");
         $('#productoslineaPlantilla').html("");
         UIkit.modal("#popup_modificarproductolineageneral").hide();
+        UIkit.modal("#popup_modificarproductolinea").hide();
         if(srcimg1==''&&srcimg2==''&&srcimg3=='')
         {
           //alert('no tiene imagen');
