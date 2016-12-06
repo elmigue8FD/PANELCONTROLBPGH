@@ -234,6 +234,10 @@ include('./php/seguridad_general.php');
                                   <span id="span_checkbox_demo_inline_15_18" class="icheck-inline">
                                     <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_15_18" data-md-icheck />
                                     <label for="checkbox_demo_inline_15_18" class="inline-label">15-18</label>
+                                  </span>
+                                  <span id="span_checkbox_demo_inline_18_21" class="icheck-inline">
+                                    <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_18_21" data-md-icheck />
+                                    <label for="checkbox_demo_inline_18_21" class="inline-label">18-21</label>
                                   </span> 
                                 </div>                    
                               </form>
@@ -749,6 +753,12 @@ include('./php/seguridad_general.php');
                       $('#checkbox_demo_inline_15_18').prop('checked', true);
                       $( "#span_checkbox_demo_inline_15_18 .icheckbox_md" ).removeClass( "icheckbox_md" ).addClass( "icheckbox_md checked" );
                     }
+                    if($.inArray("18:00:00",arreglohoraTblhora)>-1&&$.inArray("19:00:00",arreglohoraTblhora)>-1&&$.inArray("20:00:00",arreglohoraTblhora)>-1&&$.inArray("21:00:00",arreglohoraTblhora)>-1)
+                    {
+                      console.log('18-21');
+                      $('#checkbox_demo_inline_18_21').prop('checked', true);
+                      $( "#span_checkbox_demo_inline_18_21 .icheckbox_md" ).removeClass( "icheckbox_md" ).addClass( "icheckbox_md checked" );
+                    }
                   })
                   .fail(function( jqXHR, textStatus ) {  console.log("getAllTblcoloniaAct fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
                   .always(function(){  
@@ -1003,6 +1013,8 @@ include('./php/seguridad_general.php');
             console.log('inputHoraDom_12_15::'+inputHoraDom_12_15);
             inputHoraDom_15_18=$( "input[id='checkbox_demo_inline_15_18']" ).is(':checked');
             console.log('inputHoraDom_15_18::'+inputHoraDom_15_18);
+            inputHoraDom_18_21=$( "input[id='checkbox_demo_inline_18_21']" ).is(':checked');
+            console.log('inputHoraDom_18_21::'+inputHoraDom_18_21);
 
             if(inputHoraDom_9_12)
             {
@@ -1040,6 +1052,21 @@ include('./php/seguridad_general.php');
               arregloHoras1518=[8,9,10,11];
               $.each(arregloHoras1518, function(i,item){ 
                 console.log('arregloHoras1518::'+item);
+                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblhrsprovdom.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, idtblhora:item, emailcreo:emailcreo}  })
+                .done(function( msgsetTblhrsprovdom ) { 
+                  console.log('regsitro las horas domicilio::'+msgsetTblhrsprovdom.datos);              
+                })
+                .fail(function( jqXHR, textStatus ) {  console.log("setTblhrsprovdom fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                .always(function(){  
+                  //console.log("always");
+                });
+              });
+            }
+            if(inputHoraDom_18_21)
+            {
+              arregloHoras1821=[11,12,13,14];
+              $.each(arregloHoras1821, function(i,item){ 
+                console.log('arregloHoras1821::'+item);
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblhrsprovdom.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, idtblhora:item, emailcreo:emailcreo}  })
                 .done(function( msgsetTblhrsprovdom ) { 
                   console.log('regsitro las horas domicilio::'+msgsetTblhrsprovdom.datos);              
