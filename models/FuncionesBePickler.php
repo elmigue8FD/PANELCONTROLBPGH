@@ -2768,6 +2768,21 @@ class FuncionesBePickler{
 			return false;
 		}
 	}
+
+	/*Obtiene los registro de tblhrsprovdom junto con horas de un provedor */
+    public static function getAllTblhrsprovdomWithTblhora($idtblproveedor){
+		//$consulta = "SELECT * FROM tblhrsprovdom WHERE tblproveedor_idtblproveedor = ?";
+		$consulta = "SELECT horadomprov.tblhora_idtblhora,tblhora_hora  FROM tblhrsprovdom as horadomprov INNER JOIN tblhora as hora ON horadomprov.tblhora_idtblhora=hora.idtblhora WHERE tblproveedor_idtblproveedor = ?";
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
     
     /*Obtiene todas los registro de tblhrsprovdom*/
     public static function getAllTblhrsprovdom(){

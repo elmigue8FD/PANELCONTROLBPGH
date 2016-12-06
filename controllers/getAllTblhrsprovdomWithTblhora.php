@@ -20,7 +20,8 @@ if (!empty($_POST)){
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::getAllTblhrsprovdom1($idtblproveedor);
+    //$resultado = FuncionesBePickler::getAllTblhrsprovdom1($idtblproveedor);
+    $resultado = FuncionesBePickler::getAllTblhrsprovdomWithTblhora($idtblproveedor);
     
     if($resultado)
     {

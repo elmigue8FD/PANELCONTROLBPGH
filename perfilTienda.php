@@ -78,7 +78,7 @@ include('./php/seguridad_general.php');
                             </div>
                           </div>
                           <div class="uk-width-medium-1-1">
-                            <label><strong>Datos en Generales</strong></label>
+                            <label><strong>Datos Generales</strong></label>
                           </div>
                           <input type="hidden" id="modificar_id_perfilTienda" name="modificar_id_perfilTienda" class="md-input" />
                           <div class="uk-width-medium-1-1">
@@ -93,14 +93,14 @@ include('./php/seguridad_general.php');
                         <hr class="uk-grid-divider">
                         <div class="uk-grid " data-uk-grid-margin>
                           <div class="uk-width-medium-1-1">
-                            <label><strong>Datos en Contacto</strong></label><br/>
+                            <label><strong>Datos de Contacto</strong></label><br/>
                           </div>
                           <div class="uk-width-medium-1-4">
                             <label>* Nombre de contacto</label><br/>
                             <input type="text" id="modificar_nombre_contacto_perfilTienda" name="modificar_nombre_contacto_perfilTienda" class="md-input" required readonly />
                           </div>
                           <div class="uk-width-medium-1-4">
-                            <label>* Telefono Tienda</label><br/>
+                            <label>* Teléfono Tienda</label><br/>
                             <input class="md-input masked_input" id="modificar_telefono_tienda_perfilTienda" name="modificar_telefono_tienda_perfilTienda" type="text" data-inputmask="'mask': '9 - 99 99 99'" data-inputmask-showmaskonhover="false" required/>
                             <!--<input type="text" class="md-input" />-->
                           </div>
@@ -125,31 +125,31 @@ include('./php/seguridad_general.php');
                         <hr class="uk-grid-divider">
                         <div class="uk-grid " data-uk-grid-margin>
                           <div class="uk-width-medium-1-1">
-                            <label><strong>Datos en Bepickler</strong></label><br/>
+                            <label><strong>Datos de Bepickler</strong></label><br/>
                           </div>
-                          <div class="uk-width-medium-1-3">
-                            <label>Productos en línea</label><br/>
+                          <div class="uk-width-medium-1-4">
+                            <label>Productos de línea</label><br/>
                             <input type="text" id="modificar_productos_linea_perfilTienda" name="modificar_productos_linea_perfilTienda" class="md-input" readonly />
                           </div>
-                          <div class="uk-width-medium-1-3">
+                          <div class="uk-width-medium-1-4">
                             <label>Productos complemetarios</label><br/>
                             <input type="text" id="modificar_productos_complementario_perfilTienda" name="modificar_productos_complementario_perfilTienda" class="md-input" readonly />
                           </div>
-                          <div class="uk-width-medium-1-3">
-                            <label>Productos en cotizador</label><br/>
+                          <div class="uk-width-medium-1-4">
+                            <label>Productos de cotizador</label><br/>
                             <input type="text" id="modificar_productos_cotizador_perfilTienda" name="modificar_productos_cotizador_perfilTienda" class="md-input" readonly />
                           </div>
-                          <div class="uk-width-medium-1-3">
+                          <div class="uk-width-medium-1-4">
                             <label>Paquete</label><br/>
                             <input type="text" id="modificar_paquete_perfilTienda" name="modificar_paquete_perfilTienda" class="md-input" value="" readonly />
                           </div>                                
                         </div>
                         <hr class="uk-grid-divider">
                         <div class="uk-grid " data-uk-grid-margin>
-                          <div class="uk-width-medium-1-3">
+                          <div class="uk-width-medium-1-1 uk-text-right">
                             <!--<button class="md-btn md-btn-success" type="button" data-uk-button>Guardar Cambios</button>-->
-                            <!--<button type="button" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ actualizarPerfilTienda(); UIkit.modal.alert('Confirmed!'); });">-->
-                            <button type="button" class="md-btn md-btn-success" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_perfilTienda');; });">
+                            <!--<button type="button" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ actualizarPerfilTienda(); UIkit.modal.alert('Confirmed!'); });">--><!--class="md-btn md-btn-success"-->
+                            <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar los cambios?',  function(){ validarFormulario('form_modificar_perfilTienda');; });">
                               Guardar Cambio
                             </button>
                           </div>
@@ -170,52 +170,27 @@ include('./php/seguridad_general.php');
                       <div class="uk-form-row">
                         <div class="uk-grid " data-uk-grid-margin>
                           <div class="uk-width-large-1-1">
-                            <h4>Personaliza tu servicios </h4>
+                            <h4>Personaliza tus servicios </h4>
                           </div>
-                           <div class="uk-width-large-1-1">
-                            <br/>
-                           </div>
                           <div class="uk-width-large-1-1">
+                            <br/>
+                          </div>
+                          <div class="uk-width-medium-1-1">
+                              <label><strong>Descripción general de servicios habilitados </strong></label>
+                            </div>
+                            <div class="uk-width-medium-1-2">
+                              <label>Pedidos habilitados</label><br/>
+                              <input id="pedidosHabilitados" type="text" class="md-input" />
+                            </div>
+                            <div class="uk-width-medium-1-2">
+                              <label>Entregas habilitadas</label><br/>
+                              <input id="serviciosHabilitados" type="text" class="md-input" />
+                            </div>
+                          <div class="uk-width-large-1-1">
+                            <br/>
                             <label><strong>Días de servicio </strong></label>
                           </div>
                           <div class="uk-width-medium-1-1" id="modificar_dias_servicio">    
-                          </div>
-                          <div class="uk-grid uk-width-medium-1-1">
-                            <div class="uk-width-large-1-1">
-                              <form class="uk-form-stacked" id="div_horario_servicio_domicilio">
-                                <div class="uk-width-medium-1-1">                                             
-                                  <label>
-                                    <strong>Horarios de entregá a domicilio </strong>
-                                  </label>
-                                </div>
-                                <div class="uk-width-medium-1-1">
-                                  <br/>
-                                  <span class="icheck-inline">
-                                    <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_9_12" data-md-icheck />
-                                    <label for="checkbox_demo_inline_9_12" class="inline-label">9-12</label>
-                                  </span>
-                                  <span class="icheck-inline">
-                                    <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_12_15" data-md-icheck />
-                                    <label for="checkbox_demo_inline_12_15" class="inline-label">12-15</label>
-                                  </span>
-                                  <span class="icheck-inline">
-                                    <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_15_18" data-md-icheck />
-                                    <label for="checkbox_demo_inline_15_18" class="inline-label">15-18</label>
-                                  </span> 
-                                </div>                    
-                              </form>
-                            </div>
-                          </div>
-                          <div class="uk-width-medium-1-1">
-                            <label><strong>Servicios Habilitados </strong></label>
-                          </div>
-                          <div class="uk-width-medium-1-3">
-                            <label>Pedido habilitados</label>
-                            <input type="text" class="md-input" />
-                          </div>
-                          <div class="uk-width-medium-1-3">
-                            <label>Servicios habilitados</label>
-                            <input type="text" class="md-input" />
                           </div>
                           <div class="uk-width-medium-1-1">
                             <label><strong>Horario de la pastelería </strong></label>
@@ -238,9 +213,36 @@ include('./php/seguridad_general.php');
                                </select>
                             </div>
                           </div>
+                          <div class="uk-grid uk-width-medium-1-1">
+                            <div class="uk-width-large-1-1">
+                              <form class="uk-form-stacked" id="div_horario_servicio_domicilio">
+                                <div class="uk-width-medium-1-1">                                             
+                                  <label>
+                                    <strong>Horarios de entrega a domicilio </strong>
+                                  </label>
+                                </div>
+                                <div class="uk-width-medium-1-1">
+                                  <br/>
+                                  <span id="span_checkbox_demo_inline_9_12" class="icheck-inline">
+                                    <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_9_12" data-md-icheck />
+                                    <label for="checkbox_demo_inline_9_12" class="inline-label">9-12</label>
+                                  </span>
+                                  <span id="span_checkbox_demo_inline_12_15" class="icheck-inline">
+                                    <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_12_15" data-md-icheck />
+                                    <label for="checkbox_demo_inline_12_15" class="inline-label">12-15</label>
+                                  </span>
+                                  <span id="span_checkbox_demo_inline_15_18" class="icheck-inline">
+                                    <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_15_18" data-md-icheck />
+                                    <label for="checkbox_demo_inline_15_18" class="inline-label">15-18</label>
+                                  </span> 
+                                </div>                    
+                              </form>
+                            </div>
+                          </div>
+                          
+                          
                           <div class="uk-width-medium-1-1">
                           </div>
-
                           <div class="uk-grid uk-width-medium-1-1">
                             <div class="uk-width-large-1-1" id="div_colonias_servicio_domicilio">
                               <form class="uk-form-stacked">
@@ -254,18 +256,13 @@ include('./php/seguridad_general.php');
                               </form>
                             </div>
                           </div>
-
                           <div class="uk-width-medium-1-1">                                	
                             <h3>Mapa Guía</h3>
                             <div id="map_canvas" style="height:290px; width:100%;"></div>
                           </div>
-                          
-
-                          
-                          
-                          <div class="uk-width-medium-1-3">
+                          <div class="uk-width-medium-1-1 uk-text-right">
                             <!--0<button class="md-btn md-btn-success" type="button" data-uk-button>Guardar Cambios</button>-->
-                            <button type="button" class="md-btn md-btn-success" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_perfilTienda_servicios');  });">
+                            <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar los Cambios?',  function(){ validarFormulario('form_modificar_perfilTienda_servicios');  });">
                           Guardar Cambio
                         </button>
                           </div>
@@ -293,6 +290,7 @@ include('./php/seguridad_general.php');
         var emailcreo='miguel@bepickler.com';
       ///////////////////////////////
       //VARIABLES GLOBALES 
+      var mensaje_error_validacion='¡Atención favor de verificar y completar los campos marcados en rojo!';
       var Idtblproveedor='';
       var Nombre='';
       var Srclogo='';
@@ -308,9 +306,20 @@ include('./php/seguridad_general.php');
       var Idtbltiposervicio='';
       var Idtblcolonia='';
       var Idtblpaquete='';
+      
       var contadorColonnias=0;      
       var contadorDias=0;
+      
       var arregloIdTblcoloniaAct=[];
+      var arregloidTblhrspromdom=[];
+      var arreglohoraTblhora=[];
+
+      
+      var habilitadosDiasServicio=false;
+      var habilitadosHorarioPasteleria=false;
+      var habilitadosHorarioDomicilio=false;
+      var habilitadosColoniasDomicilio=false;
+
      
       
       $( window ).ready(function()
@@ -393,12 +402,32 @@ include('./php/seguridad_general.php');
           /////////////////////////////////////////////////////////////////////////
           if(!boolError)
           {
-            console.log('registrarProductoLinea');
+            console.log('registrarPerfilTeienda');
             actualizarPerfilTienda();
           }
           else
           {
-            UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+            UIkit.modal.alert(mensaje_error_validacion);
+          }
+        }else if(formularioAValidar=='form_modificar_perfilTienda_servicios')
+        {
+           /*
+          VARIABLES
+           */
+           boolError=false;
+           //tblproducto
+
+          //OBTENEMOS LOS DATOS DEL FORMULARIO
+          /////////////////////////DATOS GENERALES/////////////////////////
+          /////////////////////////////////////////////////////////////////////////
+          if(!boolError)
+          {
+            console.log('registrarServicios');
+            actualizarPerfilTiendaServicios();
+          }
+          else
+          {
+            UIkit.modal.alert(mensaje_error_validacion);
           }
         }
          
@@ -667,7 +696,9 @@ include('./php/seguridad_general.php');
                       //console.log('msgTblColoniaProServicio.  tblcolonia_idtblcolonia::'+msgTblColoniaProServicio.datos[i].tblcolonia_idtblcolonia);
                       $('#colonia_i_'+msgTblColoniaProServicio.datos[i].tblcolonia_idtblcolonia).prop('checked', true);
                       contadorColProve=i;
+                      habilitadosColoniasDomicilio=true;
                     });
+                    descripcionGeneralServicios();
                     //SI TODAS LAS COLONIAS DE SERVI A DOMICI ESTAN SELECCIONADAS CAMBIAMOS EL VALOR DEL CHECKBOX DE SELECCIONAR TODAS
                     if(contadorColAct==contadorColProve)
                     {
@@ -686,19 +717,44 @@ include('./php/seguridad_general.php');
             });
 
             //MOSTRAR HORAS DE ENTREGA DE DOMICILIO DISPONIBLES
-            /*
-            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblhora.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
-                  .done(function( msgTblColoniaProServicio ) { 
-                    $.each(msgTblColoniaProServicio.datos, function(i,item){ 
-                      console.log('msgTblColoniaProServicio.  tblcolonia_idtblcolonia::'+msgTblColoniaProServicio.datos[i].tblcolonia_idtblcolonia);
-                      $('#colonia_i_'+msgTblColoniaProServicio.datos[i].tblcolonia_idtblcolonia).prop('checked', true);
-                    });  
+            
+            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblhrsprovdomWithTblhora.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
+                  .done(function( msgTblHoraProDomServicio ) { 
+                    //console.log('horas de domiclio registrasdas::'+JSON.stringify(msgTblHoraProDomServicio, null, 4));
+                    
+                    $.each(msgTblHoraProDomServicio.datos, function(i,item){ 
+                      //console.log('msgTblHoraProDomServicio.tblhora_idtblhora::'+msgTblHoraProDomServicio.datos[i].tblhora_hora);
+                      //$('#colonia_i_'+msgTblHoraProDomServicio.datos[i].tblhora_idtblhora).prop('checked', true);
+                      arregloidTblhrspromdom.push(msgTblHoraProDomServicio.datos[i].tblhora_idtblhora);
+                      arreglohoraTblhora.push(msgTblHoraProDomServicio.datos[i].tblhora_hora);
+                      habilitadosHorarioDomicilio=true;
+                    }); 
+                    descripcionGeneralServicios();
+                    //console.log('imprimir encontro hora::'+$.inArray("09:00:00",arreglohoraTblhora))
+                    if($.inArray("09:00:00",arreglohoraTblhora)>-1&&$.inArray("10:00:00",arreglohoraTblhora)>-1&&$.inArray("11:00:00",arreglohoraTblhora)>-1&&$.inArray("12:00:00",arreglohoraTblhora)>-1)
+                    {
+                      console.log('9-12');
+                      $('#checkbox_demo_inline_9_12').prop('checked', true);
+                      $( "#span_checkbox_demo_inline_9_12 .icheckbox_md" ).removeClass( "icheckbox_md" ).addClass( "icheckbox_md checked" );
+                    }
+                    if($.inArray("12:00:00",arreglohoraTblhora)>-1&&$.inArray("13:00:00",arreglohoraTblhora)>-1&&$.inArray("14:00:00",arreglohoraTblhora)>-1&&$.inArray("15:00:00",arreglohoraTblhora)>-1)
+                    {
+                      console.log('12-15');
+                      $('#checkbox_demo_inline_12_15').prop('checked', true);
+                      $( "#span_checkbox_demo_inline_12_15 .icheckbox_md" ).removeClass( "icheckbox_md" ).addClass( "icheckbox_md checked" );
+                    }
+                    if($.inArray("15:00:00",arreglohoraTblhora)>-1&&$.inArray("16:00:00",arreglohoraTblhora)>-1&&$.inArray("17:00:00",arreglohoraTblhora)>-1&&$.inArray("18:00:00",arreglohoraTblhora)>-1)
+                    {
+                      console.log('15-18');
+                      $('#checkbox_demo_inline_15_18').prop('checked', true);
+                      $( "#span_checkbox_demo_inline_15_18 .icheckbox_md" ).removeClass( "icheckbox_md" ).addClass( "icheckbox_md checked" );
+                    }
                   })
                   .fail(function( jqXHR, textStatus ) {  console.log("getAllTblcoloniaAct fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
                   .always(function(){  
                     //console.log("always");
                   });
-            */
+            
             //MOSTRAR HORAS DISPONIBLES DE APERTURA DE TIENDA
             $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblhraabreWithHora.php",  data: {solicitadoBy:"WEB"}  })
               .done(function( msgTblhraabreWithHora ) {                
@@ -708,8 +764,10 @@ include('./php/seguridad_general.php');
                   idtblhraabre=msgTblhraabreWithHora.datos[i].idtblhraabre;
                   tblhora_hora=msgTblhraabreWithHora.datos[i].tblhora_hora;
                   tblhora_hora=tblhora_hora.substring(0, 5);
-                  $("#modificar_hora_abre_pasteleria").append('<option value="'+idtblhraabre+'">'+tblhora_hora+'</option>');                  
+                  $("#modificar_hora_abre_pasteleria").append('<option value="'+idtblhraabre+'">'+tblhora_hora+'</option>');
+                  habilitadosHorarioPasteleria=true;                  
                 });
+                descripcionGeneralServicios();
                 //CAMBIAR CHECKET LA HORA ABRE QUE ESTAN REGISTRADAS
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblhrsprovtienda.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
                   .done(function( msgTblhrsprovtienda ) { 
@@ -736,8 +794,10 @@ include('./php/seguridad_general.php');
                   idtblhracierra=msgTblhrcierraWithHora.datos[i].idtblhracierra;
                   tblhora_hora=msgTblhrcierraWithHora.datos[i].tblhora_hora;
                   tblhora_hora=tblhora_hora.substring(0, 5);
-                  $("#modificar_hora_cierra_pasteleria").append('<option value="'+idtblhracierra+'">'+tblhora_hora+'</option>');                  
+                  $("#modificar_hora_cierra_pasteleria").append('<option value="'+idtblhracierra+'">'+tblhora_hora+'</option>');
+                  habilitadosHorarioPasteleria=true;
                 });
+                descripcionGeneralServicios();
                 //CAMBIAR CHECKET LA HORA CIERRE QUE ESTAN REGISTRADAS
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblhrsprovtienda.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
                   .done(function( msgTblhrsprovtienda ) { 
@@ -763,8 +823,10 @@ include('./php/seguridad_general.php');
                   //console.log('msgTbldiasemana.idtbldiasemana::'+msgTbldiasemana.datos[i].idtbldiasemana+' tbldiasemana_dia::'+msgTbldiasemana.datos[i].tbldiasemana_dia);
                   $("#modificar_dias_servicio").append('<span class="icheck-inline"> <input type="checkbox" name="dia_i_'+i+'" id="dia_i_'+msgTbldiasemana.datos[i].idtbldiasemana+'" value="'+msgTbldiasemana.datos[i].idtbldiasemana+'" data-md-icheck /> <label for="checkbox_demo_inline_1" class="inline-label">'+msgTbldiasemana.datos[i].tbldiasemana_dia+'</label> </span>');
                   contadorDias=i;
+                  habilitadosDiasServicio=true;
                   //////////////////////////////
-                });  
+                });
+                descripcionGeneralServicios();  
                 //CAMBIAR CHECKET LOS DIAS QUE ESTAN REGISTRADAS
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTbldiaprovservicioOfProveedor.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
                   .done(function( msgTbldiaprovservicio ) { 
@@ -785,6 +847,20 @@ include('./php/seguridad_general.php');
             
         //$("#colonias_servicio_domicilio").append('<option value="99">Nuevo</option>');
         //$("#colonias").append('<span class="icheck-inline"> <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_1" data-md-icheck /> <label for="checkbox_demo_inline_1" class="inline-label">Lunes</label> </span>');
+      }
+      function descripcionGeneralServicios(){
+        pedidos_habilitados='';
+        servicios_habilitados='';
+      if(habilitadosDiasServicio)
+        pedidos_habilitados=pedidos_habilitados+' Sobre pedido';
+      if(habilitadosHorarioPasteleria)
+        pedidos_habilitados=pedidos_habilitados+' hoy';
+      if(habilitadosHorarioDomicilio)
+        servicios_habilitados=servicios_habilitados+' hora domicilio';
+      if(habilitadosColoniasDomicilio)
+        servicios_habilitados=servicios_habilitados+' Colonia domicilio';
+      $('#pedidosHabilitados').val(pedidos_habilitados);
+      $('#serviciosHabilitados').val(servicios_habilitados);
       }
       function actualizarPerfilTiendaServicios()
       {
@@ -935,7 +1011,8 @@ include('./php/seguridad_general.php');
                 console.log('arregloHoras912::'+item);
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblhrsprovdom.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, idtblhora:item, emailcreo:emailcreo}  })
                 .done(function( msgsetTblhrsprovdom ) { 
-                  console.log('regsitro las horas domicilio::'+msgsetTblhrsprovdom.datos);              
+                  console.log('registro las horas domicilio::'+msgsetTblhrsprovdom.datos);
+                  console.log('imprimir json::'+JSON.stringify(msgsetTblhrsprovdom, null, 4));              
                 })
                 .fail(function( jqXHR, textStatus ) {  console.log("setTblhrsprovdom fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
                 .always(function(){  

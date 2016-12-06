@@ -564,7 +564,7 @@ include('./php/seguridad_general.php');
         <div id="contenido_Productos"><!-- Contenido de Pesta? Productos -->
           <!-- Contenido de Iitem de Producto en Linea -->
             <div id="productoslinea">
-              <h3 class="heading_b uk-margin-bottom"> Productos en Línea </h3>
+              <h3 class="heading_b uk-margin-bottom"> Productos de Línea </h3>
               <div id="productoslineaPlantilla" class="uk-grid uk-grid-medium uk-grid-width-medium-1-3 uk-grid-width-large-1-4" data-uk-grid-margin data-uk-grid-match="{target:'.md-card-content'}">
               </div>
               <!--/////////////////////////////////// -->
@@ -609,17 +609,17 @@ include('./php/seguridad_general.php');
                           <div class="uk-grid uk-grid-divider uk-grid-collapse form_section form_section_separator" data-uk-grid-margin>
                             
                             <div class="uk-width-large-3-10">
-                              <h4 class="heading_c uk-margin-small-bottom">1 Datos Generales </h4>
+                              <h4 class="heading_c uk-margin-small-bottom">1) Datos Generales </h4>
                               <ul class="md-list">
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <div class="parsley-row">
-                                      <div class="md-input-wrapper">
-                                        <label> Nombre del Producto <span class="req"> * </span> </label> <br/>
-                                        <input type="text" name="alta_nombre_producto_linea" id="alta_nombre_producto_linea" required class="md-input" />
-                                      </div>
-                                      </div>
+                                      <!--<div class="parsley-row">-->
+                                        <!--<div class="md-input-wrapper">-->
+                                          <label><span class="req"> * </span>Nombre del producto </label> <br/>
+                                          <input type="text" name="alta_nombre_producto_linea" id="alta_nombre_producto_linea" required class="md-input" />
+                                        <!--</div>-->
+                                      <!--</div>-->
                                     </div> 
                                   </div>
                                   <br/>
@@ -627,18 +627,19 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label for="wizard_address"> Descripción <span class="req"> * </span> </label> <br/>
+                                      <label><span class="req"> * </span>Descripción</label> <br/>
                                       <textarea class="md-input" name="alta_descripcion_producto_linea" id="alta_descripcion_producto_linea" cols="30" rows="1"> </textarea>
                                     </div>                                    
                                   </div>
                                   <br/>
                                 </li>
                                 <li>
-                                  <div class="uk-grid ">
-                                     <div id="ingredientesCheck" class="uk-width-large-1-1">
-                                      <h5 class="heading_c uk-margin-small-bottom">Ingredientes Importantes <span class="req"> * </span> </h5>
+                                  <div class="uk-grid ">                                  
+                                    <div id="ingredientesCheck" class="uk-width-large-1-1">
+                                      <label><span class="req"> * </span>Ingredientes importantes</label> <br/>
+                                      <!--<h5 class="heading_c uk-margin-small-bottom">Ingredientes importantes <span class="req"> * </span> </h5>-->
                                       <textarea class="md-input" name="alta_ingredientes_producto_linea" id="alta_ingredientes_producto_linea" cols="30" rows="1"></textarea>
-                                     </div>
+                                    </div>
                                   </div>
                                   <br/>
                                 </li>
@@ -668,7 +669,9 @@ include('./php/seguridad_general.php');
                                       <div class="uk-input-group">
                                         <span class="uk-input-group-addon"> <i class="uk-icon-chevron-circle-right"> </i> </span>
                                         <div class="parsley-row">
-                                          <h5 class="heading_c uk-margin-small-bottom">Categória <span class="req"> * </span></h5>
+                                          <label><span class="req"> * </span>Categoría</label> <br/>
+                                          <!--<h5 class="heading_c uk-margin-small-bottom">Categoría <span class="req"> * </span></h5>-->
+
                                           <select id="alta_categoria_producto_linea" name="alta_categoria_producto_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                             <option value="" disabled selected hidden></option>
                                           </select>
@@ -683,7 +686,8 @@ include('./php/seguridad_general.php');
                                       <div class="uk-input-group">
                                         <span class="uk-input-group-addon"><i class="uk-icon-chevron-circle-right"></i></span>
                                         <div class="parsley-row">
-                                          <h5 class="heading_c uk-margin-small-bottom">Clasificacíon <span class="req"> * </span></h5>
+                                          <label><span class="req"> * </span>Clasificación</label> <br/>
+                                          <!--<h5 class="heading_c uk-margin-small-bottom">Clasificación <span class="req"> * </span></h5>-->
                                           <select id="alta_clasificacion_producto_linea" name="alta_clasificacion_producto_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                             <option value=""></option>
                                             <option value="" selected></option>
@@ -697,7 +701,7 @@ include('./php/seguridad_general.php');
                               </ul>
                             </div>
                             <div class="uk-width-large-4-10">
-                              <h4 class="heading_c uk-margin-small-bottom">2 Fotografias </h4>
+                              <h4 class="heading_c uk-margin-small-bottom">2) Fotografías </h4>
                               <ul class="md-list">
                                 <li>
                                   <div class="uk-grid" data-uk-grid-margin>
@@ -705,7 +709,7 @@ include('./php/seguridad_general.php');
                                       <div class="md-card">
                                         <div class="md-card-content">
                                           <h5 id="alta_srcimg1_producto_linea_titulo">
-                                              Fotografía 1  <span class="req"> * </span>
+                                              <span class="req"> * </span>Fotografía 1
                                           </h5>
                                           <input type="file" id="alta_srcimg1_producto_linea" name="srcimg1_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg1_producto_lineaBD" name="srcimg1_productoBD" />
@@ -716,7 +720,7 @@ include('./php/seguridad_general.php');
                                       <div class="md-card">
                                         <div class="md-card-content">
                                           <h5 id="alta_srcimg2_producto_linea_titulo">
-                                              Fotografía 2 <span class="req"> * </span>
+                                              <span class="req"> * </span>Fotografía 2 
                                           </h5>                                          
                                           <input type="file" id="alta_srcimg2_producto_linea" name="srcimg2_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg2_producto_lineaBD" name="srcimg2_productoBD" />
@@ -727,7 +731,7 @@ include('./php/seguridad_general.php');
                                       <div class="md-card">
                                         <div class="md-card-content">
                                           <h5 id="alta_srcimg3_producto_linea_titulo">
-                                              Fotografía 3 <span class="req"> * </span>
+                                              <span class="req"> * </span>Fotografía 3
                                           </h5>                                          
                                           <input type="file" id="alta_srcimg3_producto_linea" name="srcimg3_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg3_producto_lineaBD" name="srcimg3_productoBD" />
@@ -741,7 +745,7 @@ include('./php/seguridad_general.php');
                             </div>
 
                             <div class="uk-width-large-3-10">
-                              <h4 class="heading_c uk-margin-small-bottom">3 Detalles</h4>
+                              <h4 class="heading_c uk-margin-small-bottom">3) Detalles</h4>
                               <div class="uk-grid form_section" id="productdetalle">
                                 <div class="uk-width-1-1">
                                   <div class="uk-grid">
@@ -757,7 +761,8 @@ include('./php/seguridad_general.php');
                                           <div class="uk-input-group">
                                             <span class="uk-input-group-addon"><i class="uk-icon-chevron-circle-right"></i></span>
                                             <div class="parsley-row">
-                                              <h5 class="heading_c uk-margin-small-bottom"> Caract. Especifica</h5>
+                                              <label><span class="req"> * </span>Caract. Específica</label> <br/>
+                                              <!--<h5 class="heading_c uk-margin-small-bottom"> Caract. Especifica</h5>-->
                                               <select id="alta_especificingredientes_producto_linea" name="alta_especificingredientes_producto_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                                 <option value="" disabled selected hidden></option>
                                               </select>
@@ -779,26 +784,26 @@ include('./php/seguridad_general.php');
                                           <ul id="switcher-content-a-fade" class="uk-switcher uk-margin">
                                             <li>
                                               <div class="uk-width-1-1"> 
-                                                <label>&nbsp;Largo(cm) <span class="req"> * </span> </label>
+                                                <label><span class="req"> * </span>&nbsp;Largo(cm)</label>
                                                 <br/>
                                                 <input type="number" min="0" name="alta_clasifcateg_cuadrado_largo_producto_linea" id="alta_clasifcategproduct_cuadrado_largo_producto_linea" class="md-input" />
                                               </div>
                                               <div class="uk-width-1-1"> 
-                                                <label> &nbsp;Ancho(cm) <span class="req"> * </span> </label>
+                                                <label><span class="req"> * </span>&nbsp;Ancho(cm)</label>
                                                 <br/>
                                                 <input type="number" min="0" name="alta_clasifcateg_cuadrado_ancho_producto_linea" id="alta_clasifcategproduct_cuadrado_ancho_producto_linea" class="md-input" />
                                               </div>
                                             </li>
                                             <li>
                                               <div class="uk-width-1-1">
-                                                <label> &nbsp;Diámetro(cm) <span class="req"> * </span> </label>
+                                                <label><span class="req"> * </span>&nbsp;Diámetro(cm)</label>
                                                 <br/>
                                                 <input type="number" min="0" name="alta_clasifcateg_circular_diametro_producto_linea" id="alta_clasifcategproduct_circular_diametro_producto_linea" class="md-input" />
                                               </div>
                                             </li>
                                             <li>
                                               <div class="uk-width-1-1">
-                                                <label> &nbsp;Número de piezas <span class="req"> * </span> </label>
+                                                <label><span class="req"> * </span>&nbsp;Número de piezas</label>
                                                 <br/>
                                                 <input type="number" min="0" name="alta_clasifcateg_piezas_producto_linea" id="alta_clasifcategproduct_piezas_producto_linea" class="md-input" />
                                               </div>
@@ -814,15 +819,15 @@ include('./php/seguridad_general.php');
                                           <h5 class="heading_c uk-margin-small-bottom">Otros Detalles</h5>
                                         </div>
                                         <div class="uk-width-large-1-1"><br/>
-                                          <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Dias en Elaborar <span class="req"> * </span></label>
+                                          <label><i class="uk-icon-calendar "></i><span class="req"> * </span>&nbsp;Días en elaborar </label><br/>
                                           <input type="number" class="md-input" min="0" name="alta_detalle_diasElborar_producto_linea" id="alta_detalle_diasElborar_producto_linea"  />
                                         </div>
                                         <div class="uk-width-large-1-1"><br/>
-                                          <label class="uk-h6"><i class="uk-icon-usd"></i>&nbsp;Precio <span class="req"> * </span></label>
+                                          <label><i class="uk-icon-usd"></i><span class="req"> * </span>&nbsp;Precio</label><br/>
                                           <input type="number" class="md-input" min="0" name="alta_detalle_precioreal_producto_linea" id="alta_detalle_precioreal_producto_linea" />
                                         </div>
                                         <div class="uk-width-large-1-1"><br/>
-                                          <label class="uk-h6"><i class="uk-icon-cubes"></i>&nbsp;Stock <span class="req"> * </span></label>
+                                          <label><i class="uk-icon-cubes"></i><span class="req"> * </span>&nbsp;Stock</label><br/>
                                           <input type="number" class="md-input" min="0" name="alta_detalle_stock_producto_linea" id="alta_detalle_stock_producto_linea" />
                                         </div>
                                       </div>
@@ -838,7 +843,7 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button"  class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button> 
+                    <button type="button"  class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>
@@ -855,7 +860,7 @@ include('./php/seguridad_general.php');
                       <i class="material-icons" data-uk-tooltip="{pos:'top'}">
                         &#xE254;
                       </i>
-                      &nbsp;&nbsp;Detalles Especificos de Producto
+                      &nbsp;&nbsp;Detalles Específicos de Producto
                     </h3>
                   </div>
                   <!--<form action="" class="uk-form-large" id="product_edit_form">-->
@@ -867,11 +872,15 @@ include('./php/seguridad_general.php');
                             <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                               <div class="uk-width">
                                 <div class="uk-form-row">
-                                  <label for="product_edit_name_control">                                    
+                                  <label for="product_edit_name_control"> 
+                                    Solo lectura                                   
                                   </label>
-                                  <input type="text" name="modificar_nombre_producto_linea" id="modificar_nombre_producto_linea" class="md-input" readonly />
+                                  <br/>
+                                  <input type="text" name="modificar_nombre_producto_linea" id="modificar_nombre_producto_linea" class="md-input md-bg-grey-300" readonly />
                                   <input type="hidden" name="modificar_id_producto_linea" id="modificar_id_producto_linea" class="md-input" readonly />
                                   <input type="hidden" name="modificar_id_productoDetalle_linea" id="modificar_id_productoDetalle_linea" class="md-input" readonly />
+                                </div>
+                                <div class="uk-form-row">
                                   <div class="uk-float-right" id="div_checkbox_modificar_activado_producto_linea" name="div_checkbox_modificar_activado_producto_linea">
                                     <input type="checkbox" name="modificar_activado_producto_linea" id="modificar_activado_producto_linea" />
                                   </div>
@@ -879,22 +888,64 @@ include('./php/seguridad_general.php');
                                     Activo
                                   </label>                                  
                                   <br/>
-                                  <label for="product_edit_memory_control" class="uk-form-label">
-                                    Caract. Especifica
+                                </div>
+                                <div class="uk-form-row">
+                                  <label><!--class="uk-form-label" for="product_edit_memory_control"-->
                                     <span class="req"> * </span>
-                                  </label>
+                                    Caract. Específica                                    
+                                  </label><br/>
                                   <select id="modificar_especificingredientes_producto_linea" name="modificar_especificingredientes_producto_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                     <option value="" disabled selected hidden></option>
                                   </select>
+                                  <br/>
+                                </div>
+                                <div class="uk-form-row">
+                                  <!--<div class="uk-input-group">-->
+                                    <h5 class="heading_c uk-margin-bottom" id="modificar_forma_producto_linea_titulo">Forma del producto (elegir solo uno)</h5>
+                                    <ul id="modificar_forma_producto" class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#modificar_switcher-content-a-fade', animation: 'fade'}">
+                                      <li id="modificar_tab_cuadrado" class="uk-active"> <a href="#"> Cuadrado </a> </li>
+                                      <li id="modificar_tab_circulo"> <a href="#"> Circular </a> </li>
+                                      <li id="modificar_tab_piezas"> <a href="#"> Piezas </a> </li>
+                                    </ul>
+                                    <ul id="modificar_switcher-content-a-fade" class="uk-switcher uk-margin">
+                                      <li>
+                                        <div class="uk-width-1-1"> 
+                                          <label><span class="req"> * </span>&nbsp;Largo(cm)</label>
+                                          <br/>
+                                          <input type="number" min="0" name="modificar_clasifcategproduct_cuadrado_largo_producto_linea" id="modificar_clasifcategproduct_cuadrado_largo_producto_linea" class="md-input" />
+                                        </div>
+                                        <div class="uk-width-1-1"> 
+                                          <label><span class="req"> * </span>&nbsp;Ancho(cm)</label>
+                                          <br/>
+                                          <input type="number" min="0" name="modificar_clasifcategproduct_cuadrado_ancho_producto_linea" id="modificar_clasifcategproduct_cuadrado_ancho_producto_linea" class="md-input" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div class="uk-width-1-1">
+                                          <label><span class="req"> * </span>&nbsp;Diámetro(cm)</label>
+                                          <br/>
+                                          <input type="number" min="0" name="modificar_clasifcategproduct_circular_diametro_producto_linea" id="modificar_clasifcategproduct_circular_diametro_producto_linea" class="md-input" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div class="uk-width-1-1">
+                                          <label><span class="req"> * </span>&nbsp;Número de piezas</label>
+                                          <br/>
+                                          <input type="number" min="0" name="modificar_clasifcategproduct_piezas_producto_linea" id="modificar_clasifcategproduct_piezas_producto_linea" class="md-input" />
+                                        </div>
+                                      </li>
+                                    </ul>
+                                    <br/>
+                                  <!--</div>-->
                                 </div>
                                 <div class="uk-form-row">
                                   <div class="uk-input-group">
                                     <span class="uk-input-group-addon">
                                       <i class="uk-icon-calendar"></i>
                                     </span>
-                                    <label for="product_edit_quantity_control">                                      
-                                      Días de Elaboración
-                                      <span class="req"> * </span>                                 
+                                    <label for="product_edit_quantity_control">           
+                                      <span class="req"> * </span>                          
+                                      Días de Elaboración                                                        
                                     </label>
                                     <br/>
                                     <input type="number" min="0" class="md-input" name="modificar_detalle_diasElborar_producto_linea" id="modificar_detalle_diasElborar_producto_linea"  />
@@ -906,8 +957,8 @@ include('./php/seguridad_general.php');
                                       <i class="uk-icon-usd"></i>
                                     </span>
                                     <label for="product_edit_quantity_control">
-                                      Precio
                                       <span class="req"> * </span>
+                                      Precio                                      
                                     </label>
                                     <br/>
                                     <input type="number" min="0" class="md-input" name="modificar_detalle_precio_producto_linea" id="modificar_detalle_precio_producto_linea"  />
@@ -916,55 +967,17 @@ include('./php/seguridad_general.php');
                                 <div class="uk-form-row">
                                   <div class="uk-input-group">
                                     <span class="uk-input-group-addon">
-                                      <i class="uk-icon-cubes ">                                        
-                                      </i>
+                                      <i class="uk-icon-cubes"></i>
                                     </span>
                                     <label for="product_edit_quantity_control">
-                                      Stock &nbsp;&nbsp;
                                       <span class="req"> * </span>
-                                    </label>
+                                      Stock                                       
+                                    </label>                                  
                                     <br/>
                                     <input type="number" min="0" class="md-input" name="modificar_detalle_stock_producto_linea" id="modificar_detalle_stock_producto_linea" />
-                                    <br/>
-                                    <br/>
-                                          <h5 class="heading_c uk-margin-bottom" id="modificar_forma_producto_linea_titulo">Forma del producto (elegir solo uno)<span class="req"> * </span></h5>
-
-                                          <ul id="modificar_forma_producto" class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#modificar_switcher-content-a-fade', animation: 'fade'}">
-                                            <li id="modificar_tab_cuadrado" class="uk-active"> <a href="#"> Cuadrado </a> </li>
-                                            <li id="modificar_tab_circulo"> <a href="#"> Circular </a> </li>
-                                            <li id="modificar_tab_piezas"> <a href="#"> Piezas </a> </li>
-                                          </ul>
-                                          <ul id="modificar_switcher-content-a-fade" class="uk-switcher uk-margin">
-                                            <li>
-                                              <div class="uk-width-1-1"> 
-                                                <label>&nbsp;Largo(cm) <span class="req"> * </span> </label>
-                                                <br/>
-                                                <input type="number" min="0" name="modificar_clasifcategproduct_cuadrado_largo_producto_linea" id="modificar_clasifcategproduct_cuadrado_largo_producto_linea" class="md-input" />
-                                              </div>
-                                              <div class="uk-width-1-1"> 
-                                                <label> &nbsp;Ancho(cm) <span class="req"> * </span> </label>
-                                                <br/>
-                                                <input type="number" min="0" name="modificar_clasifcategproduct_cuadrado_ancho_producto_linea" id="modificar_clasifcategproduct_cuadrado_ancho_producto_linea" class="md-input" />
-                                              </div>
-                                            </li>
-                                            <li>
-                                              <div class="uk-width-1-1">
-                                                <label> &nbsp;Diámetro(cm) <span class="req"> * </span> </label>
-                                                <br/>
-                                                <input type="number" min="0" name="modificar_clasifcategproduct_circular_diametro_producto_linea" id="modificar_clasifcategproduct_circular_diametro_producto_linea" class="md-input" />
-                                              </div>
-                                            </li>
-                                            <li>
-                                              <div class="uk-width-1-1">
-                                                <label> &nbsp;Número de piezas <span class="req"> * </span> </label>
-                                                <br/>
-                                                <input type="number" min="0" name="modificar_clasifcategproduct_piezas_producto_linea" id="modificar_clasifcategproduct_piezas_producto_linea" class="md-input" />
-                                              </div>
-                                            </li>
-                                          </ul>
-                                      <br/>
                                   </div>
                                 </div>
+                                
                               </div>                              
                             </div>
                           </div>
@@ -978,7 +991,7 @@ include('./php/seguridad_general.php');
                       Modif. Datos General
                     </button>
                     <!-- Boton para aceptar la actualizar de las modificaciones de Datos especificos de un Producto -->
-                    <button type="button" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?',  function(){ validarFormulario('form_modificar_productos_linea_detalle'); });">
+                    <button type="button" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar los Cambios?',  function(){ validarFormulario('form_modificar_productos_linea_detalle'); });">
                       Actualizar
                     </button>
                   </div>
@@ -1011,12 +1024,12 @@ include('./php/seguridad_general.php');
                             <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                               <div class="uk-width-large-1-1">
                                 <div class="uk-form-row">
-                                  <label for="product_edit_name_control">Nombre de Producto<span class="req"> * </span></label>
+                                  <label for="product_edit_name_control"><span class="req"> * </span>Nombre de producto</label>
                                   <input type="text" class="md-input" id="modificar_nombre_producto_linea_general" name="modificar_nombre_producto_linea_general" value="Nombre Producto "/>
                                 </div>
                                 <div class="uk-form-row">
                                   <label for="product_edit_memory_control" class="uk-form-label">
-                                    Categoria del Producto<span class="req"> * </span>
+                                    <span class="req"> * </span>Categoría del producto
                                   </label>
                                   <select id="modificar_categoria_producto_linea_general" name="modificar_categoria_producto_linea_general" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                     <option value="" disabled selected hidden></option>
@@ -1024,26 +1037,29 @@ include('./php/seguridad_general.php');
                                 </div>
                                 <div class="uk-form-row">
                                   <label for="product_edit_memory_control" class="uk-form-label">
-                                    Clasificación<span class="req"> * </span>
+                                    <span class="req"> * </span>Clasificación
                                   </label>
                                   <select id="modificar_clasificacion_producto_linea_general" name="modificar_clasificacion_producto_linea_general" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                     <option value="" disabled selected hidden></option>
                                   </select>
                                 </div>
+                                <!--
                                 <div class="uk-form-row">
                                   <label for="product_edit_manufacturer_control">Activo</label>
                                   <div class="uk-float-right">
                                     <input type="checkbox" name="modificar_activado_producto_linea_general" id="modificar_activado_producto_linea_general" />
                                   </div>
                                 </div>
+                                -->
+                              <!--
                               </div>
-                              <div class="uk-width-large-1-1">
+                              <div class="uk-width-large-1-1">-->
                                 <div class="uk-form-row">
-                                  <label for="product_edit_description_control">Descripción<span class="req"> * </span></label><br/>
+                                  <label for="product_edit_description_control"><span class="req"> * </span>Descripción</label><br/>
                                   <textarea class="md-input" name="modificar_descripcion_producto_linea_general" id="modificar_descripcion_producto_linea_general" cols="10" rows="1"></textarea>
-                                  <br/>
-                                  <label for="product_edit_description_control">Ingredientes<span class="req"> * </span></label><br/>
-                                  
+                                </div>
+                                <div class="uk-form-row">
+                                  <label for="product_edit_description_control"><span class="req"> * </span>Ingredientes</label><br/>                                  
                                   <textarea class="md-input" name="modificar_ingredientes_producto_linea_general" id="modificar_ingredientes_producto_linea_general" cols="10" rows="1"></textarea>
                                 </div>
                               </div>
@@ -1107,7 +1123,7 @@ include('./php/seguridad_general.php');
                         <!-- Boton para eliminar un Producto en su totalidad-->
                       <!--<button type="button" class="md-btn md-btn-flat" onclick="UIkit.modal.confirm('?Elimianr el Producto?', function(){ UIkit.modal.alert('Eliminado!'); });">Eliminar</button>-->
                       <!-- Boton para actualizar las modificaciones de Datos Generales de un Producto -->
-                      <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar los cambios?', function(){ validarFormulario('form_modificar_productos_linea_general') });">Actualizar </button>
+                      <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar los Cambios?', function(){ validarFormulario('form_modificar_productos_linea_general') });">Actualizar </button>
                     </div>
                   </form>
                 </div>
@@ -1120,7 +1136,7 @@ include('./php/seguridad_general.php');
               <hr>
             </div>
             <div id="productoscotizador">
-              <h3 class="heading_b uk-margin-bottom"> Productos en Cotizador </h3>
+              <h3 class="heading_b uk-margin-bottom"> Productos de Cotizador </h3>
               <div id="productoscotizadorPlantilla" class="uk-grid uk-grid-medium uk-grid-width-medium-1-3 uk-grid-width-large-1-4" data-uk-grid-margin data-uk-grid-match="{target:'.md-card-content'}">
               </div>
               <!--/////////////////////////////////// -->
@@ -1154,7 +1170,7 @@ include('./php/seguridad_general.php');
                 <div class="uk-modal-dialog uk-modal-dialog-large">
                   <button type="button" class="uk-modal-close uk-close"></button>
                   <div class="uk-modal-header">
-                    <h3 class="uk-modal-title"><i class="material-icons" data-uk-tooltip="{pos:'top'}">&#xE148;</i>&nbsp;&nbsp;Nuevo Producto en Cotizador</h3>
+                    <h3 class="uk-modal-title"><i class="material-icons" data-uk-tooltip="{pos:'top'}">&#xE148;</i>&nbsp;&nbsp;Nuevo Producto de Cotizador</h3>
                   </div>
                   <div class="md-card">
                     <div class="md-card-content">
@@ -1167,7 +1183,7 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label> Nombre del Producto <span class="req"> * </span> </label> <br/>
+                                      <label><span class="req"> * </span>Nombre del producto</label> <br/>
                                       <input type="text" name="alta_nombre_producto_cotizador" id="alta_nombre_producto_cotizador" class="md-input" />
                                     </div> 
                                   </div>
@@ -1176,7 +1192,7 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label for="wizard_address"> Descripción <span class="req"> * </span> </label> <br/>
+                                      <label><span class="req"> * </span>Descripción</label> <br/>
                                       <textarea class="md-input" name="alta_descripcion_producto_cotizador" id="alta_descripcion_producto_cotizador" cols="30" rows="1"> </textarea>
                                     </div>                                    
                                   </div>
@@ -1185,7 +1201,8 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                      <div id="ingredientesCheck" class="uk-width-large-1-1">
-                                      <h5 class="heading_c uk-margin-small-bottom">Ingredientes Importantes <span class="req"> * </span> </h5>
+                                      <!--<h5 class="heading_c uk-margin-small-bottom"><span class="req"> * </span>Ingredientes importantes</h5>-->
+                                      <label><span class="req"> * </span>Ingredientes importantes</label>
                                       <textarea class="md-input" name="alta_ingredientes_producto_cotizador" id="alta_ingredientes_producto_cotizador" cols="30" rows="1"></textarea>
                                      </div>
                                   </div>
@@ -1197,7 +1214,7 @@ include('./php/seguridad_general.php');
                                     <div class="uk-width-large-1-1">
                                     </div>
                                     <div class="uk-width-large-1-1"><br/>
-                                      <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Dias en Elaborar <span class="req"> * </span></label>
+                                      <label><i class="uk-icon-calendar "></i><span class="req"> * </span>&nbsp;Días en Elaborar</label><br/>
                                       <input type="number" min="0" class="md-input" name="alta_detalle_diasElborar_producto_cotizador" id="alta_detalle_diasElborar_producto_cotizador"  />
                                     </div>
                                   </div>
@@ -1223,17 +1240,18 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid">
                                     <div class="uk-width-medium-1-1">
-                                      <h5 class="heading_c uk-margin-small-bottom">Tipo de evento <span class="req"> * </span></h5>
+                                      <!--<h5 class="heading_c uk-margin-small-bottom"><span class="req"> * </span>Tipo de evento</h5>-->
+                                      <label for="product_edit_memory_control" class="uk-form-label"><span class="req"> * </span>Evento</label>
                                     </div>
                                     <div class="uk-width-medium-1-1 ">
                                       <div class="uk-input-group">
                                         <span class="uk-input-group-addon"> <i class="uk-icon-chevron-circle-right"> </i> </span>
-                                        <div class="parsley-row">
-                                          <h5 class="heading_c uk-margin-small-bottom">Evento</h5>
+                                        <!--<div class="parsley-row">-->
+                                          <!--<label for="product_edit_memory_control" class="uk-form-label"><span class="req"> * </span>Evento</label>-->
                                           <select id="alta_evento_producto_cotizador" name="alta_evento_producto_cotizador" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                             <option value="" disabled selected hidden></option>
                                           </select>
-                                        </div>
+                                        <!--</div>-->
                                       </div>        
                                     </div>
                                   </div>
@@ -1241,14 +1259,17 @@ include('./php/seguridad_general.php');
                                 </li>
                                 
                                 <li>
-                                  <h4 class="heading_c uk-margin-small-bottom">Fotografías <span class="req"> * </span> </h4>
+                                  <h4 class="heading_c uk-margin-small-bottom">Fotografías</h4>
                                   <div class="uk-grid" data-uk-grid-margin>
                                     <div class="uk-width-medium-1-3">
                                       <div class="md-card">
                                         <div class="md-card-content">
+                                          <label id="alta_srcimg1_producto_cotizador_titulo"><span class="req"> * </span>Fotografía 1</label>
+                                          <!--
                                           <h5 id="alta_srcimg1_producto_cotizador_titulo">
                                               Fotografía 1
                                           </h5>
+                                          -->
                                           <input type="file" id="alta_srcimg1_producto_cotizador" name="srcimg1_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg1_producto_cotizadorBD" name="srcimg1_productoBD" />
                                         </div>
@@ -1257,9 +1278,12 @@ include('./php/seguridad_general.php');
                                     <div class="uk-width-medium-1-3">
                                       <div class="md-card">
                                         <div class="md-card-content">
+                                          <label id="alta_srcimg2_producto_cotizador_titulo"><span class="req"> * </span>Fotografía 2</label>
+                                          <!--
                                           <h5 id="alta_srcimg2_producto_cotizador_titulo">
                                               Fotografía 2
                                           </h5>
+                                          -->
                                           <input type="file" id="alta_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg2_producto_cotizadorBD" name="srcimg2_productoBD" />
                                         </div>
@@ -1268,9 +1292,12 @@ include('./php/seguridad_general.php');
                                     <div class="uk-width-medium-1-3">
                                       <div class="md-card">
                                         <div class="md-card-content">
+                                          <label id="alta_srcimg3_producto_cotizador_titulo"><span class="req"> * </span>Fotografía 3</label>
+                                          <!--
                                           <h5 id="alta_srcimg3_producto_cotizador_titulo">
                                               Fotografía 3
                                           </h5>
+                                          -->
                                           <input type="file" id="alta_srcimg3_producto_cotizador" name="srcimg3_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg3_producto_cotizadorBD" name="srcimg3_productoBD" />
                                         </div>
@@ -1287,7 +1314,7 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_cotizador') });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_cotizador') });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1298,7 +1325,7 @@ include('./php/seguridad_general.php');
                 <div class="uk-modal-dialog uk-modal-dialog-large">
                   <button type="button" class="uk-modal-close uk-close"></button>
                   <div class="uk-modal-header">
-                    <h3 class="uk-modal-title"><i class="material-icons" data-uk-tooltip="{pos:'top'}">&#xE148;</i>&nbsp;&nbsp;Modificar Producto en Cotizador</h3>
+                    <h3 class="uk-modal-title"><i class="material-icons" data-uk-tooltip="{pos:'top'}">&#xE148;</i>&nbsp;&nbsp;Modificar Producto de Cotizador</h3>
                   </div>
                   <div class="md-card">
                     <div class="md-card-content">
@@ -1313,7 +1340,7 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label> Nombre del Producto <span class="req"> * </span> </label> <br/>
+                                      <label><span class="req"> * </span>Nombre del producto</label> <br/>
                                       <input type="text" name="modificar_nombre_producto_cotizador" id="modificar_nombre_producto_cotizador" class="md-input" />
                                     </div> 
                                   </div>
@@ -1322,7 +1349,7 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label for="wizard_address"> Descripción <span class="req"> * </span> </label> <br/>
+                                      <label><span class="req"> * </span>Descripción</label> <br/>
                                       <textarea class="md-input" name="modificar_descripcion_producto_cotizador" id="modificar_descripcion_producto_cotizador" cols="30" rows="1"> </textarea>
                                     </div>                                    
                                   </div>
@@ -1331,7 +1358,8 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                      <div id="ingredientesCheck" class="uk-width-large-1-1">
-                                      <h5 class="heading_c uk-margin-small-bottom">Ingredientes Importantes </h5>
+                                      <!--<h5 class="heading_c uk-margin-small-bottom">Ingredientes importantes </h5>-->
+                                      <label><span class="req"> * </span>Ingredientes importantes</label> <br/>
                                       <textarea class="md-input" name="modificar_ingredientes_producto_cotizador" id="modificar_ingredientes_producto_cotizador" cols="30" rows="1"></textarea>
                                      </div>
                                   </div>
@@ -1339,8 +1367,8 @@ include('./php/seguridad_general.php');
                                 </li>
                                 <li>
                                   <div class="uk-grid">
-                                    <div class="uk-width-large-1-1"><br/>
-                                      <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Dias en Elaborar</label>
+                                    <div class="uk-width-large-1-1">
+                                      <label><i class="uk-icon-calendar "></i><span class="req"> * </span>&nbsp;Días en Elaborar</label>
                                       <br/>
                                       <input type="number" min="0" class="md-input" name="modificar_detalle_diasElborar_producto_cotizador" id="modificar_detalle_diasElborar_producto_cotizador"  />
                                     </div>
@@ -1350,13 +1378,13 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid">
                                     <div class="uk-width-medium-1-1">
-                                      <h5 class="heading_c uk-margin-small-bottom">Tipo de evento</h5>
+                                      <h5 class="heading_c uk-margin-small-bottom"><span class="req"> * </span>Tipo de evento</h5>
                                     </div>
                                     <div class="uk-width-medium-1-1 ">
                                       <div class="uk-input-group">
                                         <span class="uk-input-group-addon"> <i class="uk-icon-chevron-circle-right"> </i> </span>
                                         <div class="parsley-row">
-                                          <h5 class="heading_c uk-margin-small-bottom">Evento</h5>
+                                          <!--<h5 class="heading_c uk-margin-small-bottom">Evento</h5>-->
                                           <select id="modificar_evento_producto_cotizador" name="modificar_evento_producto_cotizador" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
                                             <option value="" disabled selected hidden></option>
                                           </select>
@@ -1403,9 +1431,12 @@ include('./php/seguridad_general.php');
                                         <div class="uk-width-medium-1-3">
                                           <div class="md-card">
                                             <div class="md-card-content">
+                                              <label>Fotografía 1</label>
+                                              <!--
                                               <h5>
                                                   Fotografía 1
                                               </h5>
+                                              -->
                                               <input type="file" id="modificar_srcimg1_producto_cotizador" name="srcimg1_producto" class="dropify" data-max-file-size="20000K"/>
                                               <input type="hidden" id="modificar_srcimg1_producto_cotizadorBD" name="srcimg1_productoBD" />
                                             </div>
@@ -1414,9 +1445,12 @@ include('./php/seguridad_general.php');
                                         <div class="uk-width-medium-1-3">
                                           <div class="md-card">
                                             <div class="md-card-content">
+                                              <label>Fotografía 2</label>
+                                              <!--
                                               <h5>
                                                   Fotografía 2
                                               </h5>
+                                              -->
                                               <input type="file" id="modificar_srcimg2_producto_cotizador" name="srcimg2_producto" class="dropify" data-max-file-size="20000K" />
                                               <input type="hidden" id="modificar_srcimg2_producto_cotizadorBD" name="srcimg2_productoBD" />
                                             </div>
@@ -1425,9 +1459,12 @@ include('./php/seguridad_general.php');
                                         <div class="uk-width-medium-1-3">
                                           <div class="md-card">
                                             <div class="md-card-content">
+                                              <label>Fotografía 3</label>
+                                              <!--
                                               <h5>
                                                   Fotografía 3
                                               </h5>
+                                              -->
                                               <input type="file" id="modificar_srcimg3_producto_cotizador" name="srcimg3_producto" class="dropify" data-max-file-size="20000K" />
                                               <input type="hidden" id="modificar_srcimg3_producto_cotizadorBD" name="srcimg3_productoBD" />
                                             </div>
@@ -1445,7 +1482,7 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){  validarFormulario('form_modificar_productos_cotizador');  });">Actualziar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar y Actualizar?', function(){  validarFormulario('form_modificar_productos_cotizador');  });">Actualziar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1458,7 +1495,7 @@ include('./php/seguridad_general.php');
               <hr>
             </div>
             <div id="productosComplementario">
-              <h3 class="heading_b uk-margin-bottom"> Productos en Complementario </h3>
+              <h3 class="heading_b uk-margin-bottom"> Productos de Complementario </h3>
               <div id="productosComplementarioPlantilla" class="uk-grid uk-grid-medium uk-grid-width-medium-1-3 uk-grid-width-large-1-4" data-uk-grid-margin data-uk-grid-match="{target:'.md-card-content'}">
               </div>
               <!--/////////////////////////////////// -->
@@ -1505,7 +1542,7 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label> Nombre del Producto <span class="req"> * </span> </label> <br/>
+                                      <label><span class="req"> * </span>Nombre del producto</label> <br/>
                                       <input type="text" name="alta_nombre_producto_Complementario" id="alta_nombre_producto_Complementario" class="md-input" />
                                     </div> 
                                   </div>
@@ -1514,7 +1551,7 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label for="wizard_address"> Descripción <span class="req"> * </span> </label> <br/>
+                                      <label for="wizard_address"><span class="req"> * </span>Descripción</label> <br/>
                                       <textarea class="md-input" name="alta_descripcion_producto_Complementario" id="alta_descripcion_producto_Complementario" cols="30" rows="1"> </textarea>
                                     </div>                                    
                                   </div>
@@ -1523,13 +1560,23 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label> Precio <span class="req"> * </span> </label> <br/>
+                                      <!--<span class="uk-input-group-addon">                                      
+                                      <i class="uk-icon-usd"></i>
+                                    </span>-->
+                                      <label><i class="uk-icon-usd"></i><span class="req"> * </span>Precio</label> <br/>
                                       <input type="number" min="0" name="alta_precioreal_producto_Complementario" id="alta_precioreal_producto_Complementario" class="md-input" />
                                     </div> 
                                   </div>
                                   <br/>
                                 </li>                                
-                                
+                                <li>
+                                  <div class="uk-grid">
+                                    <div class="uk-width-large-1-1"><br/>
+                                      <label><i class="uk-icon-cubes"></i><span class="req"> * </span>&nbsp;Stock</label><br/>
+                                      <input type="number" min="0" class="md-input" name="alta_stock_producto_Complementario" id="alta_stock_producto_Complementario"  />
+                                    </div>
+                                  </div>
+                                </li>
                               </ul>
                             </div>
                             <div class="uk-width-large-1-2">                              
@@ -1544,24 +1591,18 @@ include('./php/seguridad_general.php');
                                     </div>
                                   </div>
                                   <br/>
-                                </li>
-                                <li>
-                                  <div class="uk-grid">
-                                    <div class="uk-width-large-1-1"><br/>
-                                      <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Stock</label><br/>
-                                      <input type="number" min="0" class="md-input" name="alta_stock_producto_Complementario" id="alta_stock_producto_Complementario"  />
-                                    </div>
-                                  </div>
-                                  <br/>
-                                </li>
+                                </li>                                
                                 <li>
                                   <div class="uk-grid" data-uk-grid-margin>
                                     <div class="uk-width-medium-1-1">
                                       <div class="md-card">
                                         <div class="md-card-content">
+                                          <label id="alta_srcimg1_producto_Complementario_titulo"><span class="req"> * </span>Fotografía 1</label>
+                                          <!--
                                           <h5 id="alta_srcimg1_producto_Complementario_titulo">
                                               Fotografía 1
                                           </h5>
+                                          -->
                                           <input type="file" id="alta_srcimg1_producto_Complementario" name="srcimg1_producto" class="dropify" data-max-file-size="20000K" />
                                           <input type="hidden" id="alta_srcimg1_producto_ComplementarioBD" name="srcimg1_productoBD" />
                                         </div>
@@ -1578,7 +1619,7 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_complementario'); });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_complementario'); });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1589,7 +1630,7 @@ include('./php/seguridad_general.php');
                 <div class="uk-modal-dialog uk-modal-dialog-large">
                   <button type="button" class="uk-modal-close uk-close"></button>
                   <div class="uk-modal-header">
-                    <h3 class="uk-modal-title"><i class="material-icons" data-uk-tooltip="{pos:'top'}">&#xE148;</i>&nbsp;&nbsp;Modificar Producto en Complementario</h3>
+                    <h3 class="uk-modal-title"><i class="material-icons" data-uk-tooltip="{pos:'top'}">&#xE148;</i>&nbsp;&nbsp;Modificar Producto de Complementario</h3>
                   </div>
                   <div class="md-card">
                     <div class="md-card-content">
@@ -1604,7 +1645,7 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label> Nombre del Producto <span class="req"> * </span> </label> <br/>
+                                      <label><span class="req"> * </span>Nombre del producto</label> <br/>
                                       <input type="text" name="modificar_nombre_producto_Complementario" id="modificar_nombre_producto_Complementario" class="md-input" />
                                     </div> 
                                   </div>
@@ -1613,7 +1654,7 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label for="wizard_address"> Descripción <span class="req"> * </span> </label> <br/>
+                                      <label for="wizard_address"><span class="req"> * </span>Descripción</label> <br/>
                                       <textarea class="md-input" name="modificar_descripcion_producto_Complementario" id="modificar_descripcion_producto_Complementario" cols="30" rows="1"> </textarea>
                                     </div>                                    
                                   </div>
@@ -1627,7 +1668,7 @@ include('./php/seguridad_general.php');
                                      <div class="uk-width-large-1-1">
                                     </div>
                                     <div class="uk-width-large-1-1"><br/>
-                                      <label class="uk-h6"><i class="uk-icon-calendar "></i>&nbsp;Stock</label><br/>
+                                      <label><i class="uk-icon-cubes"></i><span class="req"> * </span>&nbsp;Stock</label><br/>
                                       <input type="number" min="0" class="md-input" name="modificar_stock_producto_Complementario" id="modificar_stock_producto_Complementario"  />
                                     </div>
                                   </div>
@@ -1636,7 +1677,7 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid ">
                                     <div class="uk-width-large-1-1">
-                                      <label> Precio <span class="req"> * </span> </label> <br/>
+                                      <label><i class="uk-icon-usd"></i><span class="req"> * </span>Precio</label> <br/>
                                       <input type="number" min="0" name="modificar_precio_producto_Complementario" id="modificar_precio_producto_Complementario" class="md-input" />
                                     </div> 
                                   </div>
@@ -1669,7 +1710,7 @@ include('./php/seguridad_general.php');
                                       <div class="md-card">
                                         <div class="md-card-content">
                                           <h5 class="heading_a uk-margin-small-bottom" id="modificar_srcimg1_producto_Complementario_titulo">
-                                              Fotografá 1
+                                              Fotografía 1
                                           </h5>
                                           <input type="file" id="modificar_srcimg1_producto_Complementario" name="srcimg1_producto" class="dropify" data-max-file-size="2000K" />
                                           <input type="hidden" id="modificar_srcimg1_producto_ComplementarioBD" name="srcimg1_productoBD" />
@@ -1687,7 +1728,7 @@ include('./php/seguridad_general.php');
                     </div>
                   </div>
                   <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('Guardar y Actualizar?', function(){ validarFormulario('form_modificar_productos_complementario'); });">Agregar Producto </button> 
+                    <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar y Actualizar?', function(){ validarFormulario('form_modificar_productos_complementario'); });">Agregar Producto </button> 
                   </div>
                 </div>  
               </div>              
@@ -1825,6 +1866,8 @@ var emailproveedor = "mispasteles@gmail.com";
   var idusuarioproveedor=<?php echo $_SESSION['idusuario']; ?>;
   var emailproveedor="<?php echo $_SESSION['usuario']; ?>";
   var solicitadoBy="WEB";
+  var mensaje_error_validacion='¡Atención favor de verificar y completar los campos marcados en rojo!';
+  mensajeEliminacion="'¿Realmente deseas eliminar el producto?'";
   var arregloInfoUnProducto=[];
   var arregloInfoTodosProducto=[];
   var arregloInfoUnProductoCotizador=[];
@@ -2286,7 +2329,7 @@ $( window ).ready(function()
       else
       {
         UIkit.modal("#popup_spinner_registrando_producto").hide();
-        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!'+mensajeErrorProductoLinea);
+        UIkit.modal.alert(mensaje_error_validacion);
 
       }
       //registrarProductoLinea();
@@ -2459,7 +2502,7 @@ $( window ).ready(function()
       else
       {
         UIkit.modal("#popup_spinner_modificando_producto").hide();
-        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+        UIkit.modal.alert(mensaje_error_validacion);
       }
        
     }
@@ -2671,7 +2714,7 @@ $( window ).ready(function()
       else
       {
         UIkit.modal("#popup_spinner_modificando_producto").hide();
-        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+        UIkit.modal.alert(mensaje_error_validacion);
       }       
     }
     else if(formularioAValidar=='form_alta_productos_cotizador')
@@ -2763,7 +2806,7 @@ $( window ).ready(function()
       else
       {
         UIkit.modal("#popup_spinner_registrando_producto").hide();
-        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+        UIkit.modal.alert(mensaje_error_validacion);
       }       
     }
     else if(formularioAValidar=='form_modificar_productos_cotizador')
@@ -2863,7 +2906,7 @@ $( window ).ready(function()
       else
       {
         UIkit.modal("#popup_spinner_modificando_producto").hide();
-        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+        UIkit.modal.alert(mensaje_error_validacion);
       }       
     }
     else if(formularioAValidar=='form_alta_productos_complementario')
@@ -2942,7 +2985,7 @@ $( window ).ready(function()
       else
       {
         UIkit.modal("#popup_spinner_registrando_producto").hide();
-        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+        UIkit.modal.alert(mensaje_error_validacion);
       }       
     }
     else if(formularioAValidar=='form_modificar_productos_complementario')
@@ -3027,7 +3070,7 @@ $( window ).ready(function()
       else
       {
         UIkit.modal("#popup_spinner_modificando_producto").hide();
-        UIkit.modal.alert('Atención favor de verificar y completar los campos marcados en rojo!');
+        UIkit.modal.alert(mensaje_error_validacion);
       }       
     }
   
@@ -3479,19 +3522,19 @@ $( window ).ready(function()
    */
   function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado,nombreIngrediente){
     //nombre = nombre.replace(' ', '_');
-    mensajeEliminacion="'Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tama? : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Especifica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'";
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Específica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
     nombre = nombre.replace(' ', '_');
-    mensajeEliminacion="'Realmente deseas eliminar el producto?'";
+    //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'";
     ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoCotizador'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick="UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoCotizador('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador,bgclose:false,modal:false,modal:false}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function productosPlantillaComplementario(idexArreglo,idProducto,nombre,activado,srcimgComplementario){
     nombre = nombre.replace(' ', '_');
-    mensajeEliminacion="'Realmente deseas eliminar el producto?'";
+    //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'";
     ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoComplentario'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoComplementario'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  <img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario,bgclose:false,modal:false,modal:false}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
@@ -4112,10 +4155,12 @@ $( window ).ready(function()
     //DATOS GENERALES
     $('#modificar_id_producto_linea_general').val(idProducto);
     //IMAGENES
+    /*
     if(arregloInfoTodosProducto[idexArreglo][15]==0)
       $('#modificar_activado_producto_linea_general').prop('checked', false);
     else if(arregloInfoTodosProducto[idexArreglo][15]==1)
       $('#modificar_activado_producto_linea_general').prop('checked', true);
+    */
     $.each(arregloImagenesTodosProducto, function(i,item){
       if(arregloImagenesTodosProducto[i][0].indexOf(idProducto)===0)
       {
@@ -4333,11 +4378,14 @@ $( window ).ready(function()
     ingredientes=$("#modificar_ingredientes_producto_linea_general").val();
     seo=$('#modificar_nombre_producto_linea_general').val().replace(" ", '');
     promcalif=5;
+    /*
     activado=$("#modificar_activado_producto_linea_general").is(':checked');
     if(activado)
       activado=1;
     else
       activado=0;
+    */
+    activado=1;
     //alert('activado::'+activado); 
     //idtblproveedor=1;
     categoria=$("#modificar_categoria_producto_linea_general").val();
