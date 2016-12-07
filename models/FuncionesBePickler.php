@@ -5018,9 +5018,9 @@ class FuncionesBePickler{
 ///// FUNCIONES REFRENTE A TABLA tblcarritoproductcotizador (donde se guardan las cotizaciones de los productos del cotizador) 
     
     /*Insertar un registro en tblcarritoproductcotizador*/
-	 public static function setTblcarritoproductcotizador($numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$costotienda,$costodomicilio,$emailcreo){
+	 public static function setTblcarritoproductcotizador($numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$costotienda,$costodomicilio,$emailcreo, $idtblmotivocotizacion){
         
-        $insert ="INSERT INTO tblcarritoproductcotizador (tblcarritoproductcotizador_numpersonas,tblcarritoproductcotizador_fchentrega,tblcarritoproductcotizador_srcimg,tblordencotizador_idtblordencotizador,tblproductcotizador_idtblproductcotizador,tblcarritoproductcotizador_costotienda,tblcarritoproductcotizador_costodomicilio,tblcarritoproductcotizador_fchmodificacion,tblcarritoproductcotizador_fchcreacion,tblcarritoproductcotizador_emailusuacreo,tblcarritoproductcotizador_emailusuamodifico) VALUES (?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
+        $insert ="INSERT INTO tblcarritoproductcotizador (tblcarritoproductcotizador_numpersonas,tblcarritoproductcotizador_fchentrega,tblcarritoproductcotizador_srcimg,tblordencotizador_idtblordencotizador,tblproductcotizador_idtblproductcotizador,tblcarritoproductcotizador_costotienda,tblcarritoproductcotizador_costodomicilio,tblcarritoproductcotizador_fchmodificacion,tblcarritoproductcotizador_fchcreacion,tblcarritoproductcotizador_emailusuacreo,tblcarritoproductcotizador_emailusuamodifico, tblmotivocotizacion_idtblmotivocotizacion) VALUES (?,?,?,?,?,?,?,NOW(),NOW(),?,?,?)"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -5033,12 +5033,14 @@ class FuncionesBePickler{
 			$resultado->bindParam(7,$costodomicilio,PDO::PARAM_STR);
 			$resultado->bindParam(8,$emailcreo,PDO::PARAM_STR);
 			$resultado->bindParam(9,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(10,$idtblmotivocotizacion,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
 			return false;
 		}
     }
+    
     
     /* Verifica que no exista un registro en tblcarritoproductcotizador */
     public static function setCheckTblcarritoproductcotizador($idtblordencotizador,$idtblproductcotizador){
@@ -5057,9 +5059,9 @@ class FuncionesBePickler{
     }
     
      /*Actualiza un registro en tblcarritoproductcotizador*/
-	 public static function setUpdateTblcarritoproductcotizador($idtblcarritoproductcotizador,$numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$costotienda,$costodomicilio,$emailmodifico){
+	 public static function setUpdateTblcarritoproductcotizador($idtblcarritoproductcotizador,$numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$costotienda,$costodomicilio,$emailmodifico,$idtblmotivocotizacion){
         
-        $update ="UPDATE tblcarritoproductcotizador SET tblcarritoproductcotizador_numpersonas = ? , tblcarritoproductcotizador_fchentrega = ?,tblcarritoproductcotizador_srcimg = ?,tblordencotizador_idtblordencotizador= ? ,tblproductcotizador_idtblproductcotizador = ?,tblcarritoproductcotizador_costotienda = ?,tblcarritoproductcotizador_costodomicilio = ?,tblcarritoproductcotizador_fchmodificacion= NOW(),tblcarritoproductcotizador_emailusuamodifico = ? WHERE idtblcarritoproductcotizador = ?"; 
+        $update ="UPDATE tblcarritoproductcotizador SET tblcarritoproductcotizador_numpersonas = ? , tblcarritoproductcotizador_fchentrega = ?,tblcarritoproductcotizador_srcimg = ?,tblordencotizador_idtblordencotizador= ? ,tblproductcotizador_idtblproductcotizador = ?,tblcarritoproductcotizador_costotienda = ?,tblcarritoproductcotizador_costodomicilio = ?,tblcarritoproductcotizador_fchmodificacion= NOW(),tblcarritoproductcotizador_emailusuamodifico = ? , tblmotivocotizacion_idtblmotivocotizacion = ? WHERE idtblcarritoproductcotizador = ?"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
@@ -5071,7 +5073,8 @@ class FuncionesBePickler{
 			$resultado->bindParam(6,$costotienda,PDO::PARAM_STR);
 			$resultado->bindParam(7,$costodomicilio,PDO::PARAM_STR);			
 			$resultado->bindParam(8,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(9,$idtblcarritoproductcotizador,PDO::PARAM_INT);
+			$resultado->bindParam(9,$idtblmotivocotizacion,PDO::PARAM_INT);
+			$resultado->bindParam(10,$idtblcarritoproductcotizador,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
@@ -7061,9 +7064,9 @@ class FuncionesBePickler{
     }
 
     /*Insertar un registro en tblcostocotizacionproductnuevo*/
-	 public static function setTblcostocotizacionproductnuevo($costotienda,$costodomicilio,$idtblcarritoproductnuevcotiza,$idtblproveedor,$emailcreo){
+	 public static function setTblcostocotizacionproductnuevo($costotienda,$costodomicilio,$idtblcarritoproductnuevcotiza,$idtblproveedor,$emailcreo,$idtblmotivocotizacion){
         
-        $insert ="INSERT INTO tblcostocotizacionproductnuevo (tblcostocotizacionproductnuevo_costotienda,tblcostocotizacionproductnuevo_costodomicilio,tblcostocotizacionproductnuevo_fchmodificacion,tblcostocotizacionproductnuevo_fchcreacion,tblcostocotizacionproductnuevo_emailusuacreo,tblcostocotizacionproductnuevo_emailusuamodifico,tblcarritoproductnuevcotiza_idtblcarritoproductnuevcotiza,tblproveedor_idtblproveedor) VALUES (?,?,NOW(),NOW(),?,?,?,?)"; 
+        $insert ="INSERT INTO tblcostocotizacionproductnuevo (tblcostocotizacionproductnuevo_costotienda,tblcostocotizacionproductnuevo_costodomicilio,tblcostocotizacionproductnuevo_fchmodificacion,tblcostocotizacionproductnuevo_fchcreacion,tblcostocotizacionproductnuevo_emailusuacreo,tblcostocotizacionproductnuevo_emailusuamodifico,tblcarritoproductnuevcotiza_idtblcarritoproductnuevcotiza,tblproveedor_idtblproveedor, tblmotivocotizacion_idtblmotivocotizacion) VALUES (?,?,NOW(),NOW(),?,?,?,?,?)"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -7073,6 +7076,7 @@ class FuncionesBePickler{
 			$resultado->bindParam(4,$emailcreo,PDO::PARAM_STR);
 			$resultado->bindParam(5,$idtblcarritoproductnuevcotiza,PDO::PARAM_INT);
 			$resultado->bindParam(6,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(7,$idtblmotivocotizacion,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
@@ -7202,6 +7206,37 @@ class FuncionesBePickler{
 			return false;
 		}
     }
+
+ //FUNCIONES DE tblmotivocotizacion
+	public static function getTblmotivocotizacion($idtblmotivocotizacion){
+	    
+		$consulta = " SELECT * FROM tblmotivocotizacion WHERE idtblmotivocotizacion = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblmotivocotizacion,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	} 
+
+
+	public static function getAllTblmotivocotizacion(){
+	    
+		$consulta = " SELECT * FROM tblmotivocotizacion";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	} 
 
     /*Funcion para contar las ordenes hechas en el año */
     public static function getNumeroOrdenes($idtblproveedor){
@@ -7357,7 +7392,29 @@ class FuncionesBePickler{
 		} catch(PDOException $e){
 			return false;
 		}
-	}  
+	}
+
+	/* Funcion para obtener las ordenes de cotizaciones de proveedor por producto*/
+    public static function getTblordenescotizadorByTblcarritocotizador($idtblordencotizador, $idtblcarritoproductcotizador){
+        
+	$consulta = "SELECT * FROM tblordencotizador TOC
+		   INNER JOIN tblcarritoproductcotizador TCPC ON TCPC.tblordencotizador_idtblordencotizador = TOC.idtblordencotizador
+		   INNER JOIN tblproductcotizador TPC ON TCPC.tblproductcotizador_idtblproductcotizador = TPC.idtblproductcotizador
+		   INNER JOIN tblevento TE ON TPC.tblevento_idtblevento = TE.idtblevento  
+		     WHERE TOC.idtblordencotizador= ? AND TCPC.idtblcarritoproductcotizador = ?";
+
+        try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencotizador,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblcarritoproductcotizador,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+  
 
     /*Funcion para obtener todos los paises dependiendo de un pais */
     public static function getTblciudadByTblpais($idtblpais){
