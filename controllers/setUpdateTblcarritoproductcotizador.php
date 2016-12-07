@@ -17,6 +17,7 @@ $idtblproductcotizador       = '';
 $costotienda = '';
 $costodomicilio = '';
 $emailmodifico  = '';
+$idtblmotivocotizacion = '';
 $resultado         = '';
 /**
  * Validamos que el array $_POST no es null.
@@ -33,10 +34,11 @@ if (!empty($_POST)){
     $costotienda                     = $_POST['costotienda'];
     $costodomicilio                  = $_POST['costodomicilio'];    
     $emailmodifico                   = $_POST['emailmodifico'];
+    $idtblmotivocotizacion           = $_POST['idtblmotivocotizacion'];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setUpdateTblcarritoproductcotizador($idtblcarritoproductcotizador,$numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$costotienda,$costodomicilio,$emailmodifico);
+    $resultado = FuncionesBePickler::setUpdateTblcarritoproductcotizador($idtblcarritoproductcotizador,$numpersonas,$fchentrega,$srcimgproducto,$idtblordencotizador,$idtblproductcotizador,$costotienda,$costodomicilio,$emailmodifico,$idtblmotivocotizacion);
 
     if($resultado)
     {
