@@ -1762,48 +1762,183 @@ include('./php/seguridad_general.php');
             <!-- end Contenido de Item de Producto en Cotizador -->
         </div>
         <!-- FIN MIGUEL HTML -->
-        <div id="contenido_Cotizador"><!-- Contenido de Pestaña Cotizador -->
+      <div id="contenido_Cotizador"><!-- Contenido de Pestaña Cotizador -->
           <h3 class="heading_b uk-margin-bottom"> Cotizaciones De Productos  </h3>
           <div class="md-card uk-margin-medium-bottom">
            <div class="md-card-content">
             <div class="uk-overflow-container">
-              <table class="uk-table uk-table-nowrap uk-table-hover" id="tblordenespendiente">
+              <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair" id="tbl_ordenesCotizador">
                <thead>
-                 <tr >
+                 <tr>
                    <th class="uk-width-1-10 uk-text-center">No. Orden Cotización</th>
                    <th class="uk-width-2-10 uk-text-center">Nombre Producto</th>
                    <th class="uk-width-1-10 uk-text-center">Fecha de Evento</th>
                    <th class="uk-width-1-10 uk-text-center">Tipo de Evento</th>
-                   <th class="uk-width-1-10 uk-text-center">$Costo S. Tienda</th>
-                   <th class="uk-width-1-10 uk-text-center">$Costo S. Domicilio</th>
+                   <th class="uk-width-1-10 uk-text-center">Status</th>
                  </tr>
                </thead>
-               <tbody id="tblcotizacionesproductos" name="tblcotizacionesproductos">
-               </tbody>
+               <tbody id="tblcotizacionesproductos" name="tblcotizacionesproductos"></tbody>
              </table>
            </div>
          </div>
        </div>
-       <div id="ordenesdecotizacionesproductos"></div>
-       <h3 class="heading_b uk-margin-bottom"> Cotizaciones De Productos Nuevos  </h3>
-       <div class="md-card uk-margin-medium-bottom">
-         <div class="md-card-content">
-          <div class="uk-overflow-container">
-           <table class="uk-table uk-table-nowrap uk-table-hover">
-            <thead>
-             <tr>
-              <th class="uk-width-1-10 uk-text-center">No. Orden Cotización</th>
-              <th class="uk-width-1-10 uk-text-center">Fecha de Entrega</th>
-              <th class="uk-width-1-10 uk-text-center">Tipo de Evento</th>
-              <th class="uk-width-1-10 uk-text-center">$Costo S. Tienda</th>
-              <th class="uk-width-1-10 uk-text-center">$Costo S. Domicilio</th>
-            </tr>
+       <div id="ordenesdecotizacionesproductos">
+        <div class="uk-modal" id="popup_ordencotizador">
+         <div class="uk-modal-dialog uk-modal-dialog-large">
+          <button type="button" class="uk-modal-close uk-close"></button>
+          <div class="uk-modal-header">
+           <h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotización</h3>
+          </div>
+          <div class="uk-grid">
+           <div class="uk-width-large-1-2"></div>
+           <div class="uk-width-large-1-2" id="cotizacion_botondeubicacion"></div>
+          </div>
+          <form action="" class="uk-form-stacked" id="datoscotizador">
+           <div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1">
+            <div class="md-card">
+             <div class="md-card-toolbar">
+              <h3 class="md-card-toolbar-heading-text" id="detallecotizador_idordencotizador"></h3>
+             </div>
+             <div class="md-card-content large-padding">
+              <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
+               <div class="uk-width-large-1-2">
+                <h4 class="heading_c uk-margin-small-bottom">Datos de Evento </h4>
+                 <ul class="md-list md-list-addon" id="detallecotizador_datosevento">
+                  <li>
+                   <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8B1;</i></div><div class="md-list-content" id="detallecotizador_tipoevento"></div>
+                  </li>
+                  <li>
+                   <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE916;</i></div><div class="md-list-content" id="detallecotizador_fchevento"></div>
+                  </li>
+                  <li>
+                   <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FB;</i></div><div class="md-list-content" id="detallecotizador_numinvitados"></div>
+                  </li>
+                  <li>
+                   <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7E9;</i></div><div class="md-list-content" id="detallecotizador_nomproducto"></div>
+                  </li>
+                 </ul>
+                 <ul class="uk-grid uk-grid-width-1-2 uk-text-center" data-uk-grid-margin id="imgOrdenCotizador"></ul>
+                </div>
+                <div class="uk-width-large-1-2">
+                 <h4 class="heading_c uk-margin-small-bottom">Información de Cliente </h4>
+                 <div class="uk-form-row">
+                  <ul class="md-list md-list-addon">
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="detallecotizador_nombrecliente"></div>
+                   </li>
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content" id="detallecotizador_email"></div>
+                   </li>
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content" id="detallecotizador_telef"></div>
+                   </li>
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon  material-icons">&#xE55F;</i></div><div class="md-list-content" id="detallecotizador_direccion"></div>
+                   </li><br/>
+                  </ul>
+                  <ul class="md-list md-list-addon" id="detallecotizador_motivoCotización"><li id="motivo"><select name="motivocotizacion" id="motivocotizacion" class="md-input" onChange="activarCamposCostos()"><option value="" disabled selected hidden>Respuesta de Cotización</option></select></li></ul>
+                  <ul class="md-list md-list-addon" id="detallecotizador_costos"></ul>
+                  </div>
+                 </div>
+                </div>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="uk-modal-footer uk-text-right" id="detallecotizador_enviar"></div>
+          </form>
+         </div>
+        </div>
+       </div>
+      <h3 class="heading_b uk-margin-bottom"> Cotizaciones De Productos Nuevos  </h3>
+      <div class="md-card uk-margin-medium-bottom">
+       <div class="md-card-content">
+        <div class="uk-overflow-container">
+         <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair" id="tbl_ordenesCotizadorNuevos">
+          <thead>
+           <tr>
+            <th class="uk-width-1-10 uk-text-center">No. Orden Cotización</th>
+            <th class="uk-width-1-10 uk-text-center">Fecha de Evento</th>
+            <th class="uk-width-1-10 uk-text-center">Tipo de Evento</th>
+            <th class="uk-width-1-10 uk-text-center">Status</th>
+           </tr>
           </thead>
           <tbody id="tblcotizacionesproductosnuevos" name="tblcotizacionesproductosnuevos"></tbody>
-      </table>
-    </div>
+         </table>
+        </div>
+       </div>
+      </div>
+      <div id="ordenesdecotizacionesproductosNuevos">
+       <div class="uk-modal" id="popup_ordencotizadorproductNuevo">
+        <div class="uk-modal-dialog uk-modal-dialog-large"><button type="button" class="uk-modal-close uk-close"></button>
+         <div class="uk-modal-header">
+          <h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotización </h3>
+         </div>
+         <div class="uk-grid">
+          <div class="uk-width-large-1-2"></div>
+          <div  class="uk-width-large-1-2" id="cotizacionnueva_botondeubicacion"></div>
+         </div>
+         <form action="" class="uk-form-stacked" id="formCotizacionNuevo">
+          <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
+           <div class="uk-width-1-1">
+            <div class="md-card">
+             <div class="md-card-toolbar"><h3 class="md-card-toolbar-heading-text" id="detallecotizadorproductnuevo_idordencotizador"></h3>
+             </div>
+              <div class="md-card-content large-padding">
+               <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
+                <div class="uk-width-large-1-2">
+                 <h4 class="heading_c uk-margin-small-bottom">Datos de Evento </h4>
+                  <ul class="md-list md-list-addon">
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8B1;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_tipoevento"></div>
+                   </li>
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE916;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_fchevento"></div>
+                   </li>
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FB;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_numinvitados"></div>
+                   </li>
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7E9;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_nomproducto"></div>
+                   </li>
+                  </ul>
+                  <ul class="uk-grid uk-grid-width-1-2 uk-text-center" data-uk-grid-margin id="imgOrdenCotizadorproductnuevo"></ul>
+                </div>
+                <div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Información de Cliente</h4>
+                 <div class="uk-form-row">
+                  <ul class="md-list md-list-addon" >
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_nombrecliente"></div>
+                   </li>
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_email"></div>
+                   </li>
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_telef"></div>
+                   </li>
+                   <li>
+                    <div class="md-list-addon-element"><i class="md-list-addon-icon  material-icons">&#xE55F;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_direccion"></div>
+                   </li><br/>
+                  </ul>
+                  <ul class="md-list md-list-addon" id="detallecotizador_motivoCotización">
+                   <li id="motivonuevo">
+                     <select name="motivocotizacionNuevo" id="motivocotizacionNuevo" class="md-input" onChange="activarCamposCostosProdNuevo()">
+                      <option value="" disabled selected hidden>Respuesta de Cotización</option></select>
+                    </li>
+                  </ul>
+                  <ul class="md-list md-list-addon" id="detallecotizadorproductnuevo_costos"></ul>
+                </div>
+               </div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="uk-modal-footer uk-text-right" id="detallecotizadorproductnuevo_enviar"></div>
+       </form>
+   </div>
   </div>
-</div>
+  </div>
 </div>
 <div id="contenido_Notificacion">
   <div class="md-card">
@@ -1906,6 +2041,7 @@ $( window ).ready(function()
     llenarDatosCalendario();
     indicadoresIndex();
     mostrarListaOrdenes();
+    selectMotivoCotizacion();
     mostrarCotizaciones();
     mostrarCotizacionesProductosNuevos();
     mostrarNotificaciones();
@@ -5197,6 +5333,20 @@ function inicializarTablas(){
               },
     widgets: ['filter'],});
 
+  $("#tbl_ordenesCotizador").tablesorter({
+    sortList: [[2,0]] ,
+    headers: {1: {sorter: 'digit'} ,
+              2: { sorter: "shortDate", dateFormat: "ddmmyyyy" }
+              },
+    widgets: ['filter'],});
+
+  $("#tbl_ordenesCotizadorNuevos").tablesorter({
+    sortList: [[1,0]] ,
+    headers: {1: {sorter: 'digit'} ,
+              2: { sorter: "shortDate", dateFormat: "ddmmyyyy" }
+              },
+    widgets: ['filter'],});
+
 }
 
 //funcion para mostrar los registros en las tablas de Ordenes
@@ -6220,153 +6370,304 @@ function geocodeResult(results, status) {
 
 //funcion para llenar la tabla de cotizaciones de productos y los pops de cada orden 
 function mostrarCotizaciones(){
+  console.log("COTIZACIONES");
+  idpopup_detalleordencotizador = "'#popup_ordencotizador'";
   $.ajax({
     method: "POST",  
     dataType: "json",  
     url: "./../../controllers/getAllTblordenescotizadorByTblcarritocotizadorByTblproveedor.php",  
     data: {solicitadoBy:solicitadoBy, idtblproveedor:idtblproveedor}})
-  .done(function( msg)
-  { 
-    $.each(msg.datos, function(i,item)
-    {
-      //cambio de formato de fecha 
-      fchentrega= msg.datos[i].tblcarritoproductcotizador_fchentrega;
-      fchentrega = fchentrega.split("-");
-      fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
+    .done(function( msg)
+      { 
+        console.log("SHOW COTIZACIONES");
+        console.log(msg);
+        $.each(msg.datos, function(i,item)
+        {
 
-      idpopup_detalleordencotizador = "'#popup_ordencotizador"+i+"'";
-      popup_ordencotizador= '<div class="uk-modal" id="popup_ordencotizador'+i+'"><div class="uk-modal-dialog uk-modal-dialog-large"><button type="button" class="uk-modal-close uk-close"></button><div class="uk-modal-header"><h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotización </h3></div><div class="uk-grid" ><div class="uk-width-large-1-2"></div><div  class="uk-width-large-1-2" id="cotizacion_botondeubicacion'+i+'"></div></div><form action="" class="uk-form-stacked" id="product_edit_form"><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1"><div class="md-card"><div class="md-card-toolbar"><h3 class="md-card-toolbar-heading-text" id="detallecotizador_idordencotizador'+i+'"></h3></div><div class="md-card-content large-padding"><div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Datos de Evento </h4><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8B1;</i></div><div class="md-list-content" id="detallecotizador_tipoevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE916;</i></div><div class="md-list-content" id="detallecotizador_fchevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FB;</i></div><div class="md-list-content" id="detallecotizador_numinvitados'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7E9;</i></div><div class="md-list-content" id="detallecotizador_nomproducto'+i+'"></div></li></ul><ul class="uk-grid uk-grid-width-1-2 uk-text-center" data-uk-grid-margin id="imgOrdenCotizador'+i+'"></ul></div><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Información de Cliente </h4><div class="uk-form-row"><ul class="md-list md-list-addon" id="detallecotizador_costos'+i+'"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="detallecotizador_nombrecliente'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content" id="detallecotizador_email'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content" id="detallecotizador_telef'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon  material-icons">&#xE55F;</i></div><div class="md-list-content" id="detallecotizador_direccion'+i+'"></div></li><br/></ul></div></div></div></div></div></div></div><div class="uk-modal-footer uk-text-right" id="detallecotizador_enviar'+i+'"></div></form></div></div>'; 
-
-      $("#ordenesdecotizacionesproductos").append(popup_ordencotizador);
-      if(msg.datos[i].tblcarritoproductcotizador_costotienda==null){costotienda='<span class="uk-badge uk-badge-warning">---</span>';}
-      else{costotienda='<span class="uk-badge uk-badge-success">'+(msg.datos[i].tblcarritoproductcotizador_costotienda).toString()+'</span>';}
-      if(msg.datos[i].tblcarritoproductcotizador_costodomicilio==null){costodomicilio='<span class="uk-badge uk-badge-warning">---</span>';}
-      else{costodomicilio='<span class="uk-badge uk-badge-success">'+(msg.datos[i].tblcarritoproductcotizador_costodomicilio).toString()+'</span>';}  
-
-      $("#tblcotizacionesproductos").append(
-        '<tr data-uk-modal="{target:'+idpopup_detalleordencotizador+' ,bgclose:false}" ><td class="uk-text-center">'+msg.datos[i].idtblordencotizador+
+          //cambio de formato de fecha 
+          fchentrega= msg.datos[i].tblcarritoproductcotizador_fchentrega;
+          fchentrega = fchentrega.split("-");
+          fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
+        
+        
+        $("#tblcotizacionesproductos").append(  
+        '<tr data-uk-modal="{target:'+idpopup_detalleordencotizador+' ,bgclose:false}" onclick="detalleCotizacion('+msg.datos[i].idtblordencotizador+','+msg.datos[i].idtblcarritoproductcotizador+')"><td class="uk-text-center">'+msg.datos[i].idtblordencotizador+
         '</td><td class="uk-text-center">'+msg.datos[i].tblproductcotizador_nombre+
         '</td><td class="uk-text-center">'+fchentrega+
         '</td><td class="uk-text-center">'+msg.datos[i].tblevento_nombre+
-        '</td><td class="uk-text-center">'+costotienda+
-        '</td><td class="uk-text-center">'+costodomicilio+'</td></tr>');
+        '</td><td class="uk-text-center"><span  class="uk-text-bold" id="statusCotizacion'+i+'"></span></td></tr>');
+        $("#tbl_ordenesCotizador").trigger('updateAll', [true]);//actualiza tabla
+        statusCotizacion(msg.datos[i].tblmotivocotizacion_idtblmotivocotizacion,i);
+        }); 
+
+         
+
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
+
+}
+
+
+function statusCotizacion(idtblmotivo,x){ //Motivo de Respuesta de Cotización
+  $.ajax({
+    method: "POST",  
+    dataType: "json",  
+    url: "./../../controllers/getTblmotivocotizacion.php",  
+    data: {solicitadoBy:solicitadoBy, idtblmotivocotizacion:idtblmotivo}})
+    .done(function( msg)
+      { 
+        console.log("MotivoCotizacion");
+        console.log(msg);
+        $.each(msg.datos, function(i,item)
+        {  
+          $("#statusCotizacion"+x).text(item.tblmotivocotizacion_motivo);
+          $("#tbl_ordenesCotizador").trigger('updateAll', [true]);//actualiza tabla
+        });
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
+}
+
+
+
+function detalleCotizacion(idtblordencotizador, idtblcarritoproductcotizador){
+
+   $("#detallecotizador_idordencotizador").empty();
+   $("#detallecotizador_tipoevento").empty();
+   $("#detallecotizador_fchevento").empty();
+   $("#detallecotizador_numinvitados").empty();
+   $("#detallecotizador_nomproducto").empty();
+   $("#detallecotizador_nombrecliente").empty();
+   $("#detallecotizador_telef").empty();
+   $("#detallecotizador_email").empty();
+   $("#imgOrdenCotizador").empty();
+   $("#detallecotizador_direccion").empty();
+   $("#cotizacion_botondeubicacion").empty();
+   $("#detallecotizador_costos").empty();
+   $("#detallecotizador_enviar").empty();
+
+   $("#motivocotizacion").removeClass( "md-input-danger" );
+
+  $.ajax({
+    method: "POST",  
+    dataType: "json",  
+    url: "./../../controllers/getTblordenescotizadorByTblcarritocotizador.php",  
+    data: {solicitadoBy:solicitadoBy, idtblordencotizador:idtblordencotizador,idtblcarritoproductcotizador:idtblcarritoproductcotizador}})
+    .done(function( msg1)
+      { 
         
-        detalleOrdenCotizador(msg.datos[i].idtblcarritoproductcotizador,i);
+        console.log("ORDENCOTIZACION Detalle");
+        console.log(msg1);
+       $.each(msg1.datos, function(x,item)
+        { 
+          fchentrega= item.tblcarritoproductcotizador_fchentrega;
+          fchentrega = fchentrega.split("-");
+          fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
+          
+          $("#detallecotizador_idordencotizador").append('# '+item.idtblordencotizador+' Cotización<span style="display:none" id="cotizacion_idtblordencotizacion">'+item.idtblordencotizador+'</span>');
+          $("#detallecotizador_tipoevento").append('<span class="md-list-heading">'+item.tblevento_nombre+'</span><span class="uk-text-small uk-text-muted">Tipo de Evento</span>');
+          $("#detallecotizador_fchevento").append('<span class="md-list-heading" id="cotizacion_fchevento">'+fchentrega+'</span><span class="uk-text-small uk-text-muted">Fecha de Evento</span>');
+          $("#detallecotizador_numinvitados").append('<span class="md-list-heading" id="cotizacion_numpersonas">'+item.tblcarritoproductcotizador_numpersonas+'</span><span class="uk-text-small uk-text-muted"># Número de Invitados</span>');
+          $("#detallecotizador_nomproducto").append('<span class="md-list-heading">'+item.tblproductcotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Producto</span><span style="display:none" id="cotizacion_idproductcotizador">'+item.tblproductcotizador_idtblproductcotizador+'</span>');
+          $("#detallecotizador_nombrecliente").append('<span class="md-list-heading">'+item.tblordencotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Completo</span>');
+          $("#detallecotizador_email").append('<span class="md-list-heading">'+item.tblordencotizador_email+'</span><span class="uk-text-small uk-text-muted">Email</span>');
+          $("#detallecotizador_telef").append('<span class="md-list-heading">'+item.tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Telefono</span>');
 
-    }); 
+          if(item.tblcarritoproductcotizador_srcimg!=null){
+           $("#imgOrdenCotizador").append('<li><img src="./../assests_general/productos/imgcotizadornuevo/'+item.tblcarritoproductcotizador_srcimg+'" alt="" /></li><span style="display:none" id="cotizacion_srimg">'+item.tblcarritoproductcotizador_srcimg+'</span>');
+         }else {
+          $("#imgOrdenCotizador").append('<span style="display:none" id="cotizacion_srimg"></span>');
+         }
 
-})
-.fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-.always(function(){  console.log("always");  });
+         $("#detallecotizador_direccion").append('<span class="md-list-heading" id="dirCompletaCotizacion">'+item.tblordencotizador_pais+", "+item.tblordencotizador_ciudad+", "+item.tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Dirección de Evento</span>');
 
-}
-//funcion para llenar el popup de la orden de prouctos 
-function detalleOrdenCotizador(idcarritocotizador,x){
+         $("#cotizacion_botondeubicacion").append('<button class="md-btn md-btn-primary md-btn-block md-btn-wave-light" type="button" onclick="mapaGeo('+2+','+idmapaCotizaciones+')" data-uk-modal="{target:'+"'#mapa'"+',modal: false,bgclose:false}"> Ubicacion de Entrega en Mapa</button>');
 
-  $.ajax({
-    method: "POST",  
-    dataType: "json",  
-    url: "./../../controllers/getAllTblordenescotizadorByTblcarritocotizadorByTblproveedor.php",  
-    data: {solicitadoBy:solicitadoBy, idtblproveedor:idtblproveedor}})
-  .done(function( msg)
-  {
-    $.each(msg.datos, function(i,item)
-    { 
-      fchentrega= msg.datos[i].tblcarritoproductcotizador_fchentrega;
-      fchentrega = fchentrega.split("-");
-      fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
-
-      if(parseInt(msg.datos[i].idtblcarritoproductcotizador) == parseInt(idcarritocotizador))
-      {
-       $("#detallecotizador_idordencotizador"+x).append('#'+msg.datos[i].idtblordencotizador+' Cotización<span style="display:none" id="cotizacion_idtblordencotizacion'+i+x+'">'+msg.datos[i].idtblordencotizador+'</span>');
-       $("#detallecotizador_tipoevento"+x).append('<span class="md-list-heading">'+msg.datos[i].tblevento_nombre+'</span><span class="uk-text-small uk-text-muted">Tipo de Evento</span>');
-       $("#detallecotizador_fchevento"+x).append('<span class="md-list-heading" id="cotizacion_fchevento'+i+x+'">'+fchentrega+'</span><span class="uk-text-small uk-text-muted">Fecha de Evento</span>');
-       $("#detallecotizador_numinvitados"+x).append('<span class="md-list-heading" id="cotizacion_numpersonas'+i+x+'">'+msg.datos[i].tblcarritoproductcotizador_numpersonas+'</span><span class="uk-text-small uk-text-muted"># Número de Invitados</span>');
-       $("#detallecotizador_nomproducto"+x).append('<span class="md-list-heading">'+msg.datos[i].tblproductcotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Producto</span><span style="display:none" id="cotizacion_idproductcotizador'+i+x+'">'+msg.datos[i].tblproductcotizador_idtblproductcotizador+'</span>');
-       $("#detallecotizador_nombrecliente"+x).append('<span class="md-list-heading">'+msg.datos[i].tblordencotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Completo</span>');
-       $("#detallecotizador_email"+x).append('<span class="md-list-heading">'+ msg.datos[i].tblordencotizador_email+'</span><span class="uk-text-small uk-text-muted">Email</span>');
-       $("#detallecotizador_telef"+x).append('<span class="md-list-heading">'+msg.datos[i].tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Teléfono</span>');
-
-       if(msg.datos[i].tblcarritoproductcotizador_srcimg!=null){//tiene img enviada o no 
-        $("#imgOrdenCotizador"+x).append('<li><img src="./../assests_general/productos/imgcotizadornuevo/'+msg.datos[i].tblcarritoproductcotizador_srcimg+'" alt="" /></li><span style="display:none" id="cotizacion_srimg'+i+x+'">'+msg.datos[i].tblcarritoproductcotizador_srcimg+'</span>');
-       }
-       
-       $("#detallecotizador_direccion"+x).append('<span class="md-list-heading" id="dirCompletaCotizacion'+x+'">'+msg.datos[i].tblordencotizador_pais+", "+msg.datos[i].tblordencotizador_ciudad+", "+msg.datos[i].tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Dirección de Evento</span>');
-       $("#cotizacion_botondeubicacion"+x).append('<button class="md-btn md-btn-primary md-btn-block md-btn-wave-light" type="button" onclick="mapaGeo('+x+','+idmapaCotizaciones+')" data-uk-modal="{target:'+"'#mapa'"+',modal: false,bgclose:false}"> Ubicacion de Entrega en Mapa</button>');
-
-      if(msg.datos[i].tblcarritoproductcotizador_costotienda==null && msg.datos[i].tblcarritoproductcotizador_costodomicilio==null){
-        $("#detallecotizador_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" step="any" class="md-input uk-text-center" placeholder="Precio de Cotización con Entrega en Tienda" id="cotizacion_costotienda'+i+x+'" min="1"/></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" class="md-input uk-text-center" placeholder="Precio de Cotización con Servicio a Domicilio" id="cotizacion_costodomicilio'+i+x+'" min="1" /></div>');
-        $("#detallecotizador_enviar"+x).append('<button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="enviarCotizacion('+msg.datos[i].idtblcarritoproductcotizador+','+i+','+x+')" >Enviar Cotización </button>');
+        if(item.tblmotivocotizacion_idtblmotivocotizacion==1){
+          $("#motivo").show();
+          $("#detallecotizador_costos").append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" step="any" class="md-input uk-text-center" placeholder="Precio de Cotización con Entrega en Tienda" id="cotizacion_costotienda" min="1"/></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" class="md-input uk-text-center" placeholder="Precio de Cotización con Servicio a Domicilio" id="cotizacion_costodomicilio" min="1" /></div>');
+          $("#detallecotizador_costos").hide();
+          $("#detallecotizador_enviar").append('<button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="enviarCotizacion('+idtblcarritoproductcotizador+')" >Enviar Respuesta </button>');
+        
       }else{
-        $("#detallecotizador_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg.datos[i].tblcarritoproductcotizador_costotienda+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio en Tienda</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg.datos[i].tblcarritoproductcotizador_costodomicilio+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio a Domicilio</span></div></li>');}
-      }      
-    });
 
-})
-.fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-.always(function(){  console.log("always");  });
-}
+        $("#motivo").hide();
+        $("#detallecotizador_costos").show();
 
-//funcion para mandar el costo de cada cotizacion de productos 
-function enviarCotizacion(idtblcarritoproductcotizador,i,x){
+        if(parseInt(item.tblcarritoproductcotizador_costotienda)<1 && parseInt(item.tblcarritoproductcotizador_costodomicilio)<1){
 
-  idtblcarritoproductcotizador = idtblcarritoproductcotizador;
-  numpersonas = document.getElementById("cotizacion_numpersonas"+i+x).innerHTML;
-  fchaevento = document.getElementById("cotizacion_fchevento"+i+x).innerHTML;
-  fchaevento = fchaevento.split("/");
-  fchaevento = fchaevento[2]+"-"+fchaevento[1]+"-"+fchaevento[0];
-  srcimg = document.getElementById("cotizacion_srimg"+i+x).innerHTML;
-  idordencotizador= document.getElementById("cotizacion_idtblordencotizacion"+i+x).innerHTML;
-  idproductcotizador= document.getElementById("cotizacion_idproductcotizador"+i+x).innerHTML;
-  costotienda = $("#cotizacion_costotienda"+i+x).val().toString();
-  costodomicilio = $("#cotizacion_costodomicilio"+i+x).val().toString();
-  emailmodif= emailproveedor;
+          $.ajax({
+            method: "POST",  
+            dataType: "json",  
+            url: "./../../controllers/getTblmotivocotizacion.php",  
+            data: {solicitadoBy:solicitadoBy, idtblmotivocotizacion:item.tblmotivocotizacion_idtblmotivocotizacion}})
+            .done(function( msg3)
+              { 
+                console.log("MotivoCotizacion2");
+                console.log(msg3);
+                $.each(msg3.datos, function(i,item)
+                {  
+                  $("#detallecotizador_costos").append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblmotivocotizacion_motivo+'</span><span class="uk-text-small uk-text-muted">Responder</span></div></li>');
+                });
+              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
 
-  //validacion de valores
-  if((costotienda!="")){
-    $("#cotizacion_costotienda"+i+x).removeClass( "md-input-danger" );
-  }else $("#cotizacion_costotienda"+i+x).addClass( "md-input-danger" );
-
-  if((costodomicilio!="")){
-    $("#cotizacion_costodomicilio"+i+x).removeClass( "md-input-danger" );
-  }else $("#cotizacion_costodomicilio"+i+x).addClass( "md-input-danger" );
-
- if((costotienda!="") && (costodomicilio!="")){
-
-UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
-    
-    $.ajax({ //actualiza ek registro con los costos de la cotizacion 
-      method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda, costodomicilio:costodomicilio, emailmodifico:emailmodif}})
-        .done(function(datos){
-           if(parseInt(datos.success)==1){
-           UIkit.modal.alert('Exitoso, Cotizacion Enviada');
-           $("#ordenesdecotizacionesproductos").empty();
-           $("#tblcotizacionesproductos").empty();
-           $("#tblcotizacionesproductosnuevos").empty();
-           mostrarCotizacionesProductosNuevos();
-           mostrarCotizaciones();
-        }else {
-            UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
+        }else{
+          $("#detallecotizador_costos").append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblcarritoproductcotizador_costotienda+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio en Tienda</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblcarritoproductcotizador_costodomicilio+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio a Domicilio</span></div></li>');
         }
-      })
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-      .always(function(){  console.log("always");});
-});
-
- }else UIkit.modal.alert('Ingrese el Precio de la Cotización');
+      }
+    });
+  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
 }
 
-//funcion para llenar la tabla de cotizaciones de productos nuevos y los pops de cada orden 
+function selectMotivoCotizacion(){
+
+   $.ajax({
+    method: "POST",  
+    dataType: "json",  
+    url: "./../../controllers/getAllTblmotivocotizacion.php",  
+    data: {solicitadoBy:solicitadoBy}})
+    .done(function( msg)
+      { 
+        console.log("TIPOSMotivoCotizacion");
+        console.log(msg);
+        $.each(msg.datos, function(i,item)
+        {  
+          if(item.idtblmotivocotizacion!=1){
+            //popdecotizaciondeproducto
+          $("#motivocotizacion").append('<option value="' + item.idtblmotivocotizacion + '">' + item.
+            tblmotivocotizacion_motivo + '</option>');
+          //popdecotizaciondeproductonuevo
+          $("#motivocotizacionNuevo").append('<option value="' + item.idtblmotivocotizacion + '">' + item.tblmotivocotizacion_motivo + '</option>');
+          }
+        });
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
+
+}
+
+function activarCamposCostos(){
+
+  status = $("#motivocotizacion").val();
+  if(status==2){
+    $("#detallecotizador_costos").show();
+  }else {$("#detallecotizador_costos").hide();}
+
+}
+
+function activarCamposCostosProdNuevo(){
+
+  status = $("#motivocotizacionNuevo").val();
+  if(status==2){
+    $("#detallecotizadorproductnuevo_costos").show();
+  }else {$("#detallecotizadorproductnuevo_costos").hide();}
+
+}
+
+function enviarCotizacion(idtblcarritoproductcotizador){
+  console.log("ENVIAR COTIZACIONES");
+
+  $("#motivocotizacion").removeClass( "md-input-danger" );
+
+  status = $("#motivocotizacion").val();
+
+  if(status!="null"){
+    
+    if(status==2){
+        idtblcarritoproductcotizador = idtblcarritoproductcotizador;
+        numpersonas = document.getElementById("cotizacion_numpersonas").innerHTML;
+        fchaevento = document.getElementById("cotizacion_fchevento").innerHTML;
+        fchaevento = fchaevento.split("/");
+        fchaevento = fchaevento[2]+"-"+fchaevento[1]+"-"+fchaevento[0];
+        srcimg = document.getElementById("cotizacion_srimg").innerHTML;
+        idordencotizador= document.getElementById("cotizacion_idtblordencotizacion").innerHTML;
+        idproductcotizador= document.getElementById("cotizacion_idproductcotizador").innerHTML;
+        emailmodif= emailproveedor;
+        costotienda = $("#cotizacion_costotienda").val();
+        costodomicilio = $("#cotizacion_costodomicilio").val();
+         //validacion de valores
+        if((costotienda!="")){
+          $("#cotizacion_costotienda").removeClass( "md-input-danger" );
+        }else $("#cotizacion_costotienda").addClass( "md-input-danger" );
+        if((costodomicilio!="")){
+          $("#cotizacion_costodomicilio").removeClass( "md-input-danger" );
+        }else $("#cotizacion_costodomicilio").addClass( "md-input-danger" );
+
+        if((costotienda!="") || (costodomicilio!="")){
+
+          UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
+
+            $.ajax({ //actualiza el registro con los costos de la cotizacion 
+              method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda, costodomicilio:costodomicilio, emailmodifico:emailmodif,idtblmotivocotizacion:status}})
+                  .done(function(datos){
+                      if(parseInt(datos.success)==1){
+                        UIkit.modal.alert('Exitoso, Cotizacion Enviada');
+                         $('#datoscotizador')[0].reset();
+                          UIkit.modal("#popup_ordencotizador").hide();
+                          $("#tblcotizacionesproductos").empty();
+                          $("#tblcotizacionesproductosnuevos").empty();
+                          mostrarCotizacionesProductosNuevos();
+                          mostrarCotizaciones();
+                      }else {
+                         UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
+                      }
+            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+
+
+           });
+
+        }else{
+          UIkit.modal.alert('Ingrese el Precio de la Cotización de al menos una Servicio');
+        }
+
+    }else{
+
+        idtblcarritoproductcotizador = idtblcarritoproductcotizador;
+        numpersonas = document.getElementById("cotizacion_numpersonas").innerHTML;
+        fchaevento = document.getElementById("cotizacion_fchevento").innerHTML;
+        fchaevento = fchaevento.split("/");
+        fchaevento = fchaevento[2]+"-"+fchaevento[1]+"-"+fchaevento[0];
+        srcimg = document.getElementById("cotizacion_srimg").innerHTML;
+        idordencotizador= document.getElementById("cotizacion_idtblordencotizacion").innerHTML;
+        idproductcotizador= document.getElementById("cotizacion_idproductcotizador").innerHTML;
+        emailmodif= emailproveedor;
+        costotienda=null;
+        costodomicilio=null;
+
+         $.ajax({ //actualiza el registro con los costos de la cotizacion 
+              method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda,costodomicilio:costodomicilio,emailmodifico:emailmodif,idtblmotivocotizacion:status}})
+                  .done(function(datos){
+                      if(parseInt(datos.success)==1){
+                        UIkit.modal.alert('Exitoso, Cotizacion Enviada');
+                         $('#datoscotizador')[0].reset();
+                          UIkit.modal("#popup_ordencotizador").hide();
+                          $("#tblcotizacionesproductos").empty();
+                          $("#tblcotizacionesproductosnuevos").empty();
+                          mostrarCotizacionesProductosNuevos();
+                          mostrarCotizaciones();
+                      }else {
+                         UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
+                      }
+            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+    }
+
+  }else{
+    UIkit.modal.alert('Seleccione una respuesta a Cotización'); 
+    $("#motivocotizacion").addClass( "md-input-danger" );
+  }
+}
+
 function mostrarCotizacionesProductosNuevos(){
+
+  idpopup_detalleordencotizador2 = "'#popup_ordencotizadorproductNuevo'";
+
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getAllTblcarritoproductnuevcotiza2.php",  
-    data: {solicitadoBy:solicitadoBy, idtblproveedor:idtblproveedor}})
-  .done(function( msg)
-  { 
-    $.each(msg.datos, function(i,item)
-    { 
+    url: "./../../controllers/getAlltblcarritoproductnuevcotiza2.php",  
+    data: {solicitadoBy:solicitadoBy}})
+    .done(function( msg)
+    {
+
+      console.log("COTIZACIONES NUEVAS");
+      console.log(msg);
+
+      $.each(msg.datos, function(i,item){ 
 
       idtblcarritoproductnuevocotizador=msg.datos[i].idtblcarritoproductnuevcotiza;
 
@@ -6374,153 +6675,252 @@ function mostrarCotizacionesProductosNuevos(){
       fchentrega = fchentrega.split("-");
       fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
 
-      idpopup_detalleordencotizadorproductnuevo = "'#popup_ordencotizadorproductNuevo"+i+"'";
-      popup_ordencotizadorproductnuevo = '<div class="uk-modal" id="popup_ordencotizadorproductNuevo'+i+'"><div class="uk-modal-dialog uk-modal-dialog-large"><button type="button" class="uk-modal-close uk-close"></button><div class="uk-modal-header"><h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotización </h3></div><div class="uk-grid" ><div class="uk-width-large-1-2"></div><div  class="uk-width-large-1-2" id="cotizacionnueva_botondeubicacion'+i+'"></div></div><form action="" class="uk-form-stacked" id="product_edit_form"><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-1-1"><div class="md-card"><div class="md-card-toolbar"><h3 class="md-card-toolbar-heading-text" id="detallecotizadorproductnuevo_idordencotizador'+i+'"></h3></div><div class="md-card-content large-padding"><div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Datos de Evento </h4><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE8B1;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_tipoevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE916;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_fchevento'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FB;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_numinvitados'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7E9;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_nomproducto'+i+'"></div></li></ul><ul class="uk-grid uk-grid-width-1-2 uk-text-center" data-uk-grid-margin id="imgOrdenCotizadorproductnuevo'+i+'"></ul></div><div class="uk-width-large-1-2"><h4 class="heading_c uk-margin-small-bottom">Información de Cliente </h4><div class="uk-form-row"><ul class="md-list md-list-addon" id="detallecotizadorproductnuevo_costos'+i+'"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_nombrecliente'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_email'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_telef'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon  material-icons">&#xE55F;</i></div><div class="md-list-content" id="detallecotizadorproductnuevo_direccion'+i+'"></div></li><br/></ul></div></div></div></div></div></div></div><div class="uk-modal-footer uk-text-right" id="detallecotizadorproductnuevo_enviar'+i+'"></div></form></div></div>'; 
-
-      $("#ordenesdecotizacionesproductos").append(popup_ordencotizadorproductnuevo);
-
+      
       $("#tblcotizacionesproductosnuevos").append(
-        '<tr data-uk-modal="{target:'+idpopup_detalleordencotizadorproductnuevo+' ,bgclose:false}" ><td class="uk-text-center">'+msg.datos[i].tblordencotizador_idtblordencotizador+
+        '<tr data-uk-modal="{target:'+idpopup_detalleordencotizador2+' ,bgclose:false}" onclick="detalleCtizacionProductNuevo('+msg.datos[i].tblordencotizador_idtblordencotizador+','+msg.datos[i].idtblcarritoproductnuevcotiza+')"><td class="uk-text-center">'+msg.datos[i].tblordencotizador_idtblordencotizador+
         '</td><td class="uk-text-center">'+fchentrega+
         '</td><td class="uk-text-center">'+msg.datos[i].tblcarritoproductnuevcotiza_tipodeevento+
-        '</td><td class="uk-text-center" id="cotizadorproductnuevo_costotienda'+i+'"></td><td class="uk-text-center" id="cotizadorproductnuevo_costodomicilio'+i+'"></td></tr>');
-      $.ajax({
+        '<td class="uk-text-center uk-text-bold" id="statusCotizacionNuevo'+i+'"></td></tr>');
+
+      $("#tbl_ordenesCotizadorNuevos").trigger('updateAll', [true]);//actualiza tabla
+
+      statusCotizacionNuevo(idtblcarritoproductnuevocotizador,i);
+    });
+
+
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+}
+
+function statusCotizacionNuevo(idtblcarritoproductnuevocotizador,x){ //Motivo de Respuesta de Cotización
+
+  console.log("STATAS DE COTIZACION NUEVA  ");
+  $.ajax({
     method: "POST",  
     dataType: "json",  
     url: "./../../controllers/getTblcostocotizacionproductnuevo.php",  
-    data: {solicitadoBy:solicitadoBy,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idtblproveedor}})
-  .done(function( msg2)
-  {
-    if(msg2.success!=0){
-      $("#cotizadorproductnuevo_costotienda"+i).append('<span class="uk-badge uk-badge-success">'+msg2.datos[i].tblcostocotizacionproductnuevo_costotienda+'</span>');
-      $("#cotizadorproductnuevo_costodomicilio"+i).append('<span class="uk-badge uk-badge-success">'+msg2.datos[i].tblcostocotizacionproductnuevo_costodomicilio+'</span>');
-    }else {
-      $("#cotizadorproductnuevo_costotienda"+i).append('<span class="uk-badge uk-badge-warning">---</span>');
-      $("#cotizadorproductnuevo_costodomicilio"+i).append('<span class="uk-badge uk-badge-warning">---</span>');
-    }
-  })
-  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-  .always(function(){  console.log("always");  });
+    data: {solicitadoBy:solicitadoBy, idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idtblproveedor}})
+    .done(function( msg)
+      { 
+        console.log(msg);
+
+        if(msg.success==1){
+
+          $.each(msg.datos, function(i,item)
+        {  
+
+          idtblmotivo2  = item.tblmotivocotizacion_idtblmotivocotizacion;
+          $.ajax({
+              method: "POST",  
+              dataType: "json",  
+              url: "./../../controllers/getTblmotivocotizacion.php",  
+              data: {solicitadoBy:solicitadoBy, idtblmotivocotizacion:idtblmotivo2}})
+                .done(function( msg2)
+              { 
+                console.log(msg2);
+                $.each(msg2.datos, function(z,item2)
+                {  
+                  $("#statusCotizacionNuevo"+x).text(item2.tblmotivocotizacion_motivo);
+                  $("#tbl_ordenesCotizadorNuevos").trigger('updateAll', [true]);//actualiza tabla
+                });
+          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
+
+        });
+
+        }else{
+          $("#statusCotizacionNuevo"+x).text("SIN CONTESTAR");
+        }
         
-       detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,i);
-
-    }); 
-
-})
-.fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-.always(function(){  console.log("always");  });
-
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
 }
 
-//funcion para llenar los pops de las cotizaciones de nuevo productos
-function detalleOrdenCotizadorProductNuevo(idtblcarritoproductnuevocotizador,x){
+
+function detalleCtizacionProductNuevo(idtblordencotizador, idtblcarritoproductnuevocotizador){
+  
+   $("#detallecotizadorproductnuevo_costos").hide();
+   $("#detallecotizadorproductnuevo_costos").empty();
+   $("#detallecotizadorproductnuevo_enviar").empty();
+   $("#detallecotizadorproductnuevo_idordencotizador").empty();
+   $("#detallecotizadorproductnuevo_fchevento").empty();
+   $("#detallecotizadorproductnuevo_tipoevento").empty();
+   $("#detallecotizadorproductnuevo_numinvitados").empty();
+   $("#detallecotizadorproductnuevo_nomproducto").empty();
+   $("#imgOrdenCotizadorproductnuevo").empty();
+   $("#detallecotizadorproductnuevo_nombrecliente").empty();
+   $("#detallecotizadorproductnuevo_email").empty();
+   $("#detallecotizadorproductnuevo_telef").empty();
+   $("#detallecotizadorproductnuevo_direccion").empty();
+   $("#cotizacionnueva_botondeubicacion").empty();
+   $("#motivocotizacionNuevo").removeClass( "md-input-danger" );
+
+  
 
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/gettblcarritoproductnuevcotiza.php",  
+    url: "./../../controllers/getTblcarritoproductnuevcotiza.php",  
     data: {solicitadoBy:solicitadoBy, idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador}})
-  .done(function( msg)
-  { 
-
-    $.each(msg.datos, function(i,item)
-    { 
-      fchentrega=  msg.datos[i].tblcarritoproductnuevcotiza_fchentrega;
-      fchentrega = fchentrega.split("-");
-      fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
-
-      $("#detallecotizadorproductnuevo_idordencotizador"+x).append('#'+msg.datos[i].tblordencotizador_idtblordencotizador+' Cotización');
-      $("#detallecotizadorproductnuevo_fchevento"+x).append('<span class="md-list-heading">'+fchentrega+'</span><span class="uk-text-small uk-text-muted">Fecha de Evento</span>');
-      $("#detallecotizadorproductnuevo_tipoevento"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevcotiza_tipodeevento+'</span><span class="uk-text-small uk-text-muted">Tipo de Evento</span>');
-      $("#detallecotizadorproductnuevo_numinvitados"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevcotiza_numpersonas+'</span><span class="uk-text-small uk-text-muted"># Número de Invitados</span>');
-      $("#detallecotizadorproductnuevo_nomproducto"+x).append('<span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevcotiza_sabores+'</span><span class="uk-text-small uk-text-muted">Sabores</span><span class="md-list-heading">'+msg.datos[i].tblcarritoproductnuevcotiza_comentarios  +'</span><span class="uk-text-small uk-text-muted">Comentarios</span>');
-      $("#imgOrdenCotizadorproductnuevo"+x).append('<div><img src="./../assests_general/productos/imgcotizadornuevo/'+msg.datos[i].tblcarritoproductnuevcotiza_srcimg +'" alt="" /></div>');
-
-      idordencotizadorproductnuevo= msg.datos[i].tblordencotizador_idtblordencotizador;
-       //datos del cliente
-      $.ajax({
-        method: "POST",  
-        dataType: "json",  
-        url: "./../../controllers/getTblordencotizador.php",  
-        data: {solicitadoBy:solicitadoBy,idtblordencotizador:idordencotizadorproductnuevo}})
       .done(function( msg2)
-      {
-        $.each(msg2.datos, function(i,item){
-          $("#detallecotizadorproductnuevo_nombrecliente"+x).append('<span class="md-list-heading">'+msg2.datos[i].tblordencotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Completo</span>');
-          $("#detallecotizadorproductnuevo_email"+x).append('<span class="md-list-heading">'+ msg2.datos[i].tblordencotizador_email+'</span><span class="uk-text-small uk-text-muted">Email</span>');
-          $("#detallecotizadorproductnuevo_telef"+x).append('<span class="md-list-heading">'+msg2.datos[i].tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Teléfono</span>');
-          $("#detallecotizadorproductnuevo_direccion"+x).append('<span class="md-list-heading" id="dirCompletaCotizacionNueva'+x+'">'+msg2.datos[i].tblordencotizador_pais+", "+msg2.datos[i].tblordencotizador_ciudad+", "+msg2.datos[i].tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Dirección de Evento</span>');
-          $("#cotizacionnueva_botondeubicacion"+x).append('<button class="md-btn md-btn-primary md-btn-block md-btn-wave-light" type="button" onclick="mapaGeo('+x+','+idmapaCotizacionesNuevas+')" data-uk-modal="{target:'+"'#mapa'"+',modal: false,bgclose:false}"> Ubicacion de Entrega en Mapa</button>');
+    { 
+      console.log("DETALLE ORDEN COTIZADOR NEUVA ");
+      console.log(msg2);
+      $.each(msg2.datos, function(z,item)
+      {  
 
+        fchentrega=  item.tblcarritoproductnuevcotiza_fchentrega;
+        fchentrega = fchentrega.split("-");
+        fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
+
+       $("#detallecotizadorproductnuevo_idordencotizador").append('#'+item.tblordencotizador_idtblordencotizador+' Cotización');
+       $("#detallecotizadorproductnuevo_fchevento").append('<span class="md-list-heading">'+fchentrega+'</span><span class="uk-text-small uk-text-muted">Fecha de Evento</span>');
+       $("#detallecotizadorproductnuevo_tipoevento").append('<span class="md-list-heading">'+item.tblcarritoproductnuevcotiza_tipodeevento+'</span><span class="uk-text-small uk-text-muted">Tipo de Evento</span>');
+       $("#detallecotizadorproductnuevo_numinvitados").append('<span class="md-list-heading">'+item.tblcarritoproductnuevcotiza_numpersonas+'</span><span class="uk-text-small uk-text-muted"># Número de Invitados</span>');
+       $("#detallecotizadorproductnuevo_nomproducto").append('<span class="md-list-heading">'+item.tblcarritoproductnuevcotiza_sabores+'</span><span class="uk-text-small uk-text-muted">Sabores</span><span class="md-list-heading">'+item.tblcarritoproductnuevcotiza_comentarios  +'</span><span class="uk-text-small uk-text-muted">Comentarios</span>');
+       $("#imgOrdenCotizadorproductnuevo").append('<div><img src="./../assests_general/productos/imgcotizadornuevo/'+item.tblcarritoproductnuevcotiza_srcimg +'" alt="" /></div>');
+      });
+  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
+
+  console.log("datos de cotizacion nueva ");
+  $.ajax({
+      method: "POST",  
+      dataType: "json",  
+      url: "./../../controllers/getTblordencotizador.php",  
+      data: {solicitadoBy:solicitadoBy, idtblordencotizador:idtblordencotizador}})
+        .done(function(msg3)
+      { 
+        console.log(msg3);
+        $.each(msg3.datos, function(x,item2)
+        {  
+          $("#detallecotizadorproductnuevo_nombrecliente").append('<span class="md-list-heading">'+item2.tblordencotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Completo</span>');
+          $("#detallecotizadorproductnuevo_email").append('<span class="md-list-heading">'+item2.tblordencotizador_email+'</span><span class="uk-text-small uk-text-muted">Email</span>');
+          $("#detallecotizadorproductnuevo_telef").append('<span class="md-list-heading">'+item2.tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Telefono</span>');
+          $("#detallecotizadorproductnuevo_direccion").append('<span class="md-list-heading" id="dirCompletaCotizacionNueva">'+item2.tblordencotizador_pais+", "+item2.tblordencotizador_ciudad+", "+item2.tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Dirección de Evento</span>');
+          $("#cotizacionnueva_botondeubicacion").append('<button class="md-btn md-btn-primary md-btn-block md-btn-wave-light" type="button"  data-uk-modal="{target:'+"'#mapa'"+',modal: false,bgclose:false}" onclick="mapaGeo('+3+','+idmapaCotizacionesNuevas+')"> Ubicacion de Entrega en Mapa</button>');
         });
-      })
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-      .always(function(){  console.log("always");  });
+  }).fail(function( jqXHR, textStatus ) {console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){console.log("always");});
 
-      $.ajax({
+
+console.log("datos de status de cotizacion  ");
+  $.ajax({
     method: "POST",  
     dataType: "json",  
     url: "./../../controllers/getTblcostocotizacionproductnuevo.php",  
-    data: {solicitadoBy:solicitadoBy,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idtblproveedor}})
-  .done(function( msg3)
-  {
-    if(msg3.success!=1){
-        $("#detallecotizadorproductnuevo_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" step="any" class="md-input uk-text-center" placeholder="Precio de Cotización con Entrega en Tienda" id="cotizacionnuevo_costotienda'+i+x+'" min="1"/></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" class="md-input uk-text-center" placeholder="Precio de Cotización con Servicio a Domicilio" id="cotizacionnuevo_costodomicilio'+i+x+'" min="1" /></div>');
-        $("#detallecotizadorproductnuevo_enviar"+x).append('<button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="enviarCotizacionProductNuevo('+idtblcarritoproductnuevocotizador+','+i+','+x+')">Enviar Cotización </button>');// 
-    }else {
-      $("#detallecotizadorproductnuevo_costos"+x).append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg3.datos[i].tblcostocotizacionproductnuevo_costotienda+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio en Tienda</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+msg3.datos[i].tblcostocotizacionproductnuevo_costodomicilio+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio a Domicilio</span></div></li>');
-    }
-  })
-  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
-  .always(function(){  console.log("always");  });
-    });
+    data: {solicitadoBy:solicitadoBy, idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idtblproveedor}})
+    .done(function( msg)
+      { 
+        console.log("COSTOS_PRODUCTNUEVO");
+        console.log(msg);
 
- })
- .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
- .always(function(){  console.log("always");  });
-}
+        if(msg.success==1){
+          $.each(msg.datos, function(i,item){  
+             idtblmotivo2  = item.tblmotivocotizacion_idtblmotivocotizacion;
 
-function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador,i,x){
- 
-  idtblcarritoproductnuevocotizador = idtblcarritoproductnuevocotizador;
-  costotienda = $("#cotizacionnuevo_costotienda"+i+x).val().toString();
-  costodomicilio = $("#cotizacionnuevo_costodomicilio"+i+x).val().toString();
-  idproveedor=idtblproveedor;
-  emailcreo= emailproveedor;
+              if(idtblmotivo2==2){
+                $("#motivocotizacionNuevo").hide();
+                $("#detallecotizadorproductnuevo_costos").append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblcostocotizacionproductnuevo_costotienda+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio en Tienda</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblcostocotizacionproductnuevo_costodomicilio+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio a Domicilio</span></div></li>');
+                $("#detallecotizadorproductnuevo_costos").show();
 
-//validacion de valores
-  if((costotienda!="")){
-    $("#cotizacionnuevo_costotienda"+i+x).removeClass( "md-input-danger" );
-  }else $("#cotizacionnuevo_costotienda"+i+x).addClass( "md-input-danger" );
-
-  if((costodomicilio!="")){
-    $("#cotizacionnuevo_costodomicilio"+i+x).removeClass( "md-input-danger" );
-  }else $("#cotizacionnuevo_costodomicilio"+i+x).addClass( "md-input-danger" );
-
- if((costotienda!="") && (costodomicilio!="")){
-
-UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
-   
-    $.ajax({ //ingresa el registro con los costos de la cotizacion 
-      method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo}})
-        .done(function(datos){
-           if(parseInt(datos.success)==1){
-           UIkit.modal.alert('Exitoso, Cotizacion Enviada');
-           $("#ordenesdecotizacionesproductos").empty();
-           $("#tblcotizacionesproductos").empty();
-           $("#tblcotizacionesproductosnuevos").empty();
-           mostrarCotizacionesProductosNuevos();
-           mostrarCotizaciones();
-        }else {
-            UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
+              }else{
+                $.ajax({
+                  method: "POST",  
+                  dataType: "json",  
+                  url: "./../../controllers/getTblmotivocotizacion.php",  
+                  data: {solicitadoBy:solicitadoBy, idtblmotivocotizacion:idtblmotivo2}})
+                    .done(function( msg4)
+                  { 
+                    console.log(msg4);
+                    $.each(msg4.datos, function(z,item4)
+                    {  
+                      $("#motivocotizacionNuevo").hide();
+                       $("#detallecotizadorproductnuevo_costos").append('<li><div class="md-list-addon-element" ><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item4.tblmotivocotizacion_motivo+'</span><span class="uk-text-small uk-text-muted">Costo con Servicio en Tienda</span></div></li>');
+                       $("#detallecotizadorproductnuevo_costos").show();
+                    });
+                }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
+              }
+          });
+        }else{
+          $("#motivocotizacionNuevo").show();
+          $("#detallecotizadorproductnuevo_costos").append('<li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" step="any" class="md-input uk-text-center" placeholder="Precio de Cotización con Entrega en Tienda" id="cotizacionnuevo_costotienda" min="1"/></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><input type="number" class="md-input uk-text-center" placeholder="Precio de Cotización con Servicio a Domicilio" id="cotizacionnuevo_costodomicilio" min="1" /></div>');
+          $("#detallecotizadorproductnuevo_enviar").append('<button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="enviarCotizacionProductNuevo('+idtblcarritoproductnuevocotizador+')">Enviar Respuesta </button>');//
         }
-      })
-      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-      .always(function(){  console.log("always");});
-});
-
- }else UIkit.modal.alert('Ingrese el Precio de la Cotización');
+      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
 }
+
+function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
+  console.log("EnviarResp Cotizador Nuevo");
+ 
+   status = $("#motivocotizacionNuevo").val();
+
+   if(status!="null"){
+    if(status==2){
+       $("#motivocotizacionNuevo").removeClass( "md-input-danger" );
+      costotienda = $("#cotizacionnuevo_costotienda").val();
+      costodomicilio = $("#cotizacionnuevo_costodomicilio").val();
+
+      if((costotienda!="") || (costodomicilio!="")){
+        $("#cotizacionnuevo_costotienda").removeClass( "md-input-danger" );
+        $("#cotizacionnuevo_costodomicilio").removeClass( "md-input-danger" );
+        idproveedor=idtblproveedor;
+        emailcreo= emailproveedor;
+
+        UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
+
+             $.ajax({ //ingresa el registro con los costos de la cotizacion 
+                method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status}})
+                .done(function(datos){
+                  if(parseInt(datos.success)==1){
+                   UIkit.modal.alert('Exitoso, Cotizacion Enviada');
+                   $("#formCotizacionNuevo")[0].reset();   
+                   UIkit.modal("#popup_ordencotizadorproductNuevo").hide();                
+                   $("#tblcotizacionesproductos").empty();
+                   $("#tblcotizacionesproductosnuevos").empty();
+                   mostrarCotizacionesProductosNuevos();
+                   mostrarCotizaciones();
+                  }else{
+                    UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
+                  }
+              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+
+        });
+
+      }else{
+        UIkit.modal.alert('Ingrese el Precio de la Cotización de al menos un Servicio');
+        $("#cotizacionnuevo_costotienda").addClass( "md-input-danger" );
+        $("#cotizacionnuevo_costodomicilio").addClass( "md-input-danger" );
+      }
+
+
+    }else{
+
+      costotienda=null;
+      costodomicilio=null;
+      idproveedor=idtblproveedor;
+      emailcreo= emailproveedor;
+
+      $.ajax({ //ingresa el registro con los costos de la cotizacion 
+                method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status}})
+                .done(function(datos){
+                  if(parseInt(datos.success)==1){
+                   UIkit.modal.alert('Exitoso, Respuesta Enviada');
+                   $("#formCotizacionNuevo")[0].reset();   
+                   UIkit.modal("#popup_ordencotizadorproductNuevo").hide();               
+                   $("#tblcotizacionesproductos").empty();
+                   $("#tblcotizacionesproductosnuevos").empty();
+                   mostrarCotizacionesProductosNuevos();
+                   mostrarCotizaciones();
+                  }else{
+                    UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
+                  }
+              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+
+    }
+
+   }else{
+     UIkit.modal.alert('Seleccione un tipo de Respuesta');
+     $("#motivocotizacionNuevo").addClass( "md-input-danger" );
+   }
+
+}
+
 
 var map;
 function initMap() {
