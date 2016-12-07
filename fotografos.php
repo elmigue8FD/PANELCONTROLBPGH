@@ -3,59 +3,26 @@ include('./php/seguridad_general.php');
 ?>
 <!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> 
+<!--[if gt IE 9]><!-->
 <html lang="en"> <!--<![endif]-->
+ <head>    
+  <?php include("./codigo_general/head.php"); ?>
+ </head>
 
+ <body class=" sidebar_main_open sidebar_main_swipe">
+  <!-- main header -->
+  <header id="header_main">
+    <?php include('./codigo_general/header_main.php'); ?>        
+  </header><!-- main header end -->
 
-  <head>
-      <!--
-      <link rel="stylesheet" href="assets/js/jquery.mobile.custom/jquery.mobile.custom.structure.min.css">
-      <link rel="stylesheet" href="assets/js/jquery.mobile.custom/jquery.mobile.custom.theme.min.css">
-      -->
-      <!--<link rel="stylesheet" href="assets/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">-->
-      <?php include("./codigo_general/head.php"); ?>
-  </head>
-
-
-  <body class=" sidebar_main_open sidebar_main_swipe">
-    <!--Titlo de la seccion de la pagina-->
-    <h1 id="tituloDeLaPagina" hidden>Fotografos</h1>
-    <!-- main header -->
-    <header id="header_main">
-        
-      <?php include('./codigo_general/header_main.php'); ?>
-        
-    </header><!-- main header end -->
-    <!-- main sidebar -->
-    <aside id="sidebar_main">
-        
-      <!-- sidebar_main_header -->
-      <?php include('./codigo_general/sidebar_main_header.php'); ?>
-      <!-- sidebar_main_header end -->
-      
-      <div class="menu_section">
-        <?php include('./codigo_general/menu_section.php'); ?>            
-      </div>
-    </aside><!-- main sidebar end -->
-
-    <!--<div id="top_bar">
-        <div class="md-top-bar">
-            <div class="uk-width-large-8-10 uk-container-center">
-                <div class="md-card-content">
-                    <div class="uk-grid">
-                        <div class="uk-width-1-1">
-                            <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content'}" id="tabs_1">
-                                <li class="uk-active"><a href="#"><font size="2"> Manual </font></a></li>
-                                <li class="named_tab"><a href="#"><font size="2"> Cátalogo </font></a></li>
-                            </ul>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
+  <!-- main sidebar -->
+  <aside id="sidebar_main">
+    <!-- sidebar_main_header -->
+    <?php include('./codigo_general/sidebar_main_header.php'); ?>
+    <div class="menu_section">
+      <?php include('./codigo_general/menu_section.php'); ?>
+    </div>
+  </aside><!-- main sidebar end -->
     <div id="page_content">
       <div id="page_content_inner">
         <!-- DONDESE AGREGAR TODO EL CONTENIDO DE LA PAGINA --> 
@@ -77,196 +44,82 @@ include('./php/seguridad_general.php');
         </div><!-- end SubMenu de INDEX -->
         <div id="tabs_1_content" class="uk-switcher">
           <div id="contenido_Catalogo">
-            <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium uk-sortable sortable-handler hierarchical_show" data-uk-sortable data-uk-grid-margin>
-              <div class="uk-grid" data-uk-grid-margin>
-                <div class="uk-width-medium-1-1">
-                  <div class="md-card">
-                    <div class="md-card-content">
-                      <div class="uk-form-row">
-                        <table data-role="table" class="uk-table uk-text-nowrap">
-                          <thead>
-                            <tr>
-                              <th>Nombre</th>
-                              <th>Contacto</th>
-                              <th>Precio por foto</th>
-                              <th>
-                                Cátalogo
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>Carlos</td>
-                              <td>8-14-58-69</td>
-                              <td>60</td>
-                              <td>
-                                <div class="uk-width-medium-1-1">
-                                  <div class="md-card">
-                                      <div class="md-card-content">
-                                          <div class="uk-slidenav-position" data-uk-slideshow="{animation:'scale'}">
-                                              <ul class="uk-slideshow">
-                                                  <li><img src="assets/img/gallery/Image01.jpg" alt=""></li>
-                                                  <li><img src="assets/img/gallery/Image02.jpg" alt=""></li>
-                                                  <li><img src="assets/img/gallery/Image03.jpg" alt=""></li>
-                                                  <li><img src="assets/img/gallery/Image04.jpg" alt=""></li>
-                                              </ul>
-                                              <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-                                              <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
-                                              <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
-                                                  <li data-uk-slideshow-item="0"><a href=""></a></li>
-                                                  <li data-uk-slideshow-item="1"><a href=""></a></li>
-                                                  <li data-uk-slideshow-item="2"><a href=""></a></li>
-                                                  <li data-uk-slideshow-item="3"><a href=""></a></li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>María</td>
-                              <td>8-69-58-47</td>
-                              <td>70</td>
-                              <td>
-                                <div class="uk-width-medium-1-1">
-                                  <div class="md-card">
-                                      <div class="md-card-content">
-                                          <div class="uk-slidenav-position" data-uk-slideshow="{animation:'scale'}">
-                                              <ul class="uk-slideshow">
-                                                  <li><img src="assets/img/gallery/Image01.jpg" alt=""></li>
-                                                  <li><img src="assets/img/gallery/Image02.jpg" alt=""></li>
-                                                  <li><img src="assets/img/gallery/Image03.jpg" alt=""></li>
-                                                  <li><img src="assets/img/gallery/Image04.jpg" alt=""></li>
-                                              </ul>
-                                              <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-                                              <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
-                                              <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
-                                                  <li data-uk-slideshow-item="0"><a href=""></a></li>
-                                                  <li data-uk-slideshow-item="1"><a href=""></a></li>
-                                                  <li data-uk-slideshow-item="2"><a href=""></a></li>
-                                                  <li data-uk-slideshow-item="3"><a href=""></a></li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Roberto</td>
-                              <td>8-14-36-58</td>
-                              <td>55</td>
-                              <td>
-                                <div class="uk-width-medium-1-1">
-                                  <div class="md-card">
-                                      <div class="md-card-content">
-                                          <div class="uk-slidenav-position" data-uk-slideshow="{animation:'scale'}">
-                                              <ul class="uk-slideshow">
-                                                  <li><img src="assets/img/gallery/Image01.jpg" alt=""></li>
-                                                  <li><img src="assets/img/gallery/Image02.jpg" alt=""></li>
-                                                  <li><img src="assets/img/gallery/Image03.jpg" alt=""></li>
-                                                  <li><img src="assets/img/gallery/Image04.jpg" alt=""></li>
-                                              </ul>
-                                              <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-                                              <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
-                                              <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
-                                                  <li data-uk-slideshow-item="0"><a href=""></a></li>
-                                                  <li data-uk-slideshow-item="1"><a href=""></a></li>
-                                                  <li data-uk-slideshow-item="2"><a href=""></a></li>
-                                                  <li data-uk-slideshow-item="3"><a href=""></a></li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>Denis</td>
-                              <td>8-14-47-58</td>
-                              <td>40</td>
-                              <td>
-                                <div class="uk-width-medium-1-1">
-                                  <div class="md-card">
-                                    <div class="md-card-content">
-                                      <div class="uk-slidenav-position" data-uk-slideshow="{animation:'scale'}">
-                                        <ul class="uk-slideshow">
-                                          <li><img src="assets/img/gallery/Image01.jpg" alt=""></li>
-                                          <li><img src="assets/img/gallery/Image02.jpg" alt=""></li>
-                                          <li><img src="assets/img/gallery/Image03.jpg" alt=""></li>
-                                          <li><img src="assets/img/gallery/Image04.jpg" alt=""></li>
-                                        </ul>
-                                        <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-                                        <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
-                                        <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
-                                          <li data-uk-slideshow-item="0"><a href=""></a></li>
-                                          <li data-uk-slideshow-item="1"><a href=""></a></li>
-                                          <li data-uk-slideshow-item="2"><a href=""></a></li>
-                                          <li data-uk-slideshow-item="3"><a href=""></a></li>
-                                        </ul>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="uk-grid uk-grid-large uk-grid-width-large-1-3 hierarchical_show " data-uk-grid="{target:'md-card-content',gutter: 20}" id="listafotografos" >
+          </div>
+
           </div>
           <div id="contenido_Manual">
-            <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium uk-sortable sortable-handler hierarchical_show" data-uk-sortable data-uk-grid-margin>
-              <div class="uk-grid" data-uk-grid-margin>
-                <div class="uk-width-medium-1-1">
-                  <div class="md-card">
-                    <div class="md-card-content">
-                      <div class="uk-form-row">
-                        <div class="uk-grid" data-uk-grid-margin="">
-                          <div class="uk-width-medium-1-3"></div>
-                          <div class="uk-width-medium-1-3">
-                            <a href="#">Descarga el manual de fotografía</a>
-                          </div>
-                          <div class="uk-width-medium-1-3"></div>
+            <div class="md-card">
+                <div class="md-card-content">
+                    <br><br>
+                    <h3 class="heading_a uk-text-center">
+                        Descarga de Manual de Fotografía 
+                        <span class="sub-heading uk-text-center"><br>Este manual contiene las especificaciones que debe cumplir una fotografía de algun productos que sera publicado en línea.  </span>
+                    </h3>
+                    <div class="uk-grid">
+                      <div class="uk-width-1-1">
+                        <div id="file_upload-drop">
+                          <a class="uk-form-file md-btn md-color-red-300 md-bg-grey-200 md-btn-block md-btn-wave-light waves-effect waves-button waves-light" href="./phps/descargarManualFotografia.php">Click</a>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    </div><br><br>
                 </div>
-              </div>
             </div>
           </div>
         </div>  
       </div>
     </div>
-
-
-    <!-- secondary sidebar -->
-   
-    <!-- secondary sidebar end -->
-
     <!-- CODIGO EN GENERAL -->
    <?php include('./codigo_general/script_common.php'); ?>
-   
+   <script type="text/javascript">
 
-    <!-- page specific plugins           -->
-    <!-- /////////////////////////////// -->
-    <!-- /////////////////////////////// -->
-    <!-- /////////////////////////////// -->
+   //variables de Sesion
+   var idtblciudad=1;
 
-   
-    <!-- DONDE SE AGREGARAN LOS SCRIPTS  -->
-    <!--
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="assets/js/jquery.mobile/jquery.mobile.custom.js"></script>
-    <script src="jquery.mobile.custom/jquery.mobile.custom.min.js"></script>
-    -->
-    <!--<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
-    <!--<script src="assets/js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+   $( window ).ready(function()
+    {
+        mostrarDatosFotografos();
+
+    }); 
+
+   function mostrarDatosFotografos() {
+     
+     $.ajax({ 
+       method: "POST",dataType: "json",url: "./../../controllers/getAllTblfotografobyTblciudad.php", data: {solicitadoBy:solicitadoBy,idtblciudad:idtblciudad}})
+            .done(function(msg){
+                 console.log(msg);
+
+                 $.each(msg.datos, function(i,item){
+                  
+                  idtblfotografo = item.idtblfotografo;
+                   $("#listafotografos").append('<div data-product-name="P1"><div class="md-card"><div><div><h4 class="uk-text-center">Datos</h4><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_contacto+'</span><span class="uk-text-small uk-text-muted">Contacto</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_preciofoto+'</span><span class="uk-text-small uk-text-muted">Precio por Foto</span></div></li></ul></div><div><h3 class="uk-text-center">Catalogo</h3><div class="uk-grid" id="catalogo2'+i+'"></div></div></div></div></div>');
+
+
+                     cargarCatalogo(idtblfotografo,i);
+                    });
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      .always(function(){  console.log("always");});
+    
+   }
+
+   function cargarCatalogo(idtblfotografo,i){
+
+   // $("#catalogo"+i).empty();
+
+    $.ajax({ //llenar el slider con las fotos 
+       method: "POST",dataType: "json",url: "./../../controllers/getAllTblfotografocatalogobyTblfotografo.php", data: {solicitadoBy:solicitadoBy,idtblfotografo:idtblfotografo}})
+            .done(function(msg2){
+                 console.log(msg2);
+                 $.each(msg2.datos, function(x,item){
+                   $("#catalogo2"+i).append('<div class="uk-width-1-2 uk-container-center"><img src="./assets/img/fotografos/'+item.tblfotografocatalogo_srcimg+'" alt="" /></div>');
+                 });
+
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      .always(function(){  console.log("always");}); 
+   }
+     
+   </script>
   </body>
 </html>
