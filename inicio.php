@@ -2023,6 +2023,11 @@ var emailproveedor = "mispasteles@gmail.com";
   var arregloImagenesUnProductoCotizador=[];
   var arregloImagenesTodosProductoComplementario=[];
   var arregloImagenesUnProductoComplementario=[];
+  //para historico de eliminacion
+  email="<?php echo $_SESSION['usuario']; ?>";
+  nombre="<?php echo $_SESSION['nombre']; ?>";
+  apellido="<?php echo $_SESSION['apellido']; ?>";
+  nivel="<?php echo $_SESSION['nivel']; ?>";
   /*
   FIN VARIABLES MIGUEL
    */
@@ -2152,7 +2157,7 @@ $( window ).ready(function()
       //idtblproveedor='1';
       idtblcategproduc=$('#alta_categoria_producto_linea').val();
       idtblclasifproduct=$('#alta_clasificacion_producto_linea').val();
-      emailcreo='miguel@bepickler.com';
+      //emailcreo='miguel@bepickler.com';
 
       srcimg1=$('#alta_srcimg1_producto_linea').val().replace(/C:\\fakepath\\/i, '');
       srcimg2=$('#alta_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
@@ -3729,14 +3734,15 @@ $( window ).ready(function()
   }
   function activarProducto(checkboxAActivar,idProductoDetalle)
   {
-    emailUsuarioLogin='miguel@bepickler.com22';
+    //emailUsuarioLogin='miguel@bepickler.com22';
+
     if(checkboxAActivar.checked){
       activado=1;       
     }else{
       activado=0;
     }
     //INICIO AJAX ACTIVAR PRODUCTO
-    $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleActivar.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,activado:activado,emailusuamodifico:emailUsuarioLogin}  })
+    $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleActivar.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,activado:activado,emailusuamodifico:emailproveedor}  })
       .done(function( msgTblproductDetalle ) {        
       })
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -3745,14 +3751,14 @@ $( window ).ready(function()
   }
   function activarProductoCotizador(checkboxAActivar,idProducto)
   {
-    emailUsuarioLogin='miguel@bepickler.com22';
+    //emailUsuarioLogin='miguel@bepickler.com22';
     if(checkboxAActivar.checked){
       activado=1;       
     }else{
       activado=0;
     }
     //INICIO AJAX ACTIVAR PRODUCTO
-    $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleActivar.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProducto,activado:activado,emailusuamodifico:emailUsuarioLogin}  })
+    $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleActivar.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProducto,activado:activado,emailusuamodifico:emailproveedor}  })
       .done(function( msgTblproductDetalle ) {        
       })
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleActivar fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -3761,8 +3767,8 @@ $( window ).ready(function()
   }
   function actualizarStockProductoLinea(idProductoDetalle){
     stock=$('#numeric_stockProductoLinea'+idProductoDetalle).val();
-    emailUsuarioLogin='miguel@bepickler.com22';
-    $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleStock.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,stock:stock,emailusuamodifico:emailUsuarioLogin}  })
+    //emailUsuarioLogin='miguel@bepickler.com22';
+    $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleStock.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,stock:stock,emailusuamodifico:emailproveedor}  })
       .done(function( msgTblproductDetalle ) {        
       })
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleStock fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -3782,14 +3788,14 @@ $( window ).ready(function()
     //idtblproveedor='';
     idtblcategproduc='';
     idtblclasifproduct='';
-    emailcreo='';
+    //emailcreo='';
 
     //productoimg
     srcimg1='';
     srcimg2='';
     srcimg3='';
     idtblproducto='';
-    emailcreo='';
+    //emailcreo='';
 
     //productodetalle
     diaselaboracion='';
@@ -3804,7 +3810,7 @@ $( window ).ready(function()
     activado='';
     idtblespecifingrediente='';
     idtblproducto='';
-    emailcreo='';
+    //emailcreo='';
     /*
     ASINGACION DE VALORES
      */
@@ -3818,7 +3824,7 @@ $( window ).ready(function()
     //idtblproveedor='1';
     idtblcategproduc=$('#alta_categoria_producto_linea').val();
     idtblclasifproduct=$('#alta_clasificacion_producto_linea').val();
-    emailcreo='miguel@bepickler.com';
+    //emailcreo='miguel@bepickler.com';
 
     srcimg1=$('#alta_srcimg1_producto_linea').val().replace(/C:\\fakepath\\/i, '');
     srcimg2=$('#alta_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
@@ -3865,12 +3871,12 @@ $( window ).ready(function()
     arreglo.push(idtblproveedor);
     arreglo.push(idtblcategproduc);
     arreglo.push(idtblclasifproduct);
-    arreglo.push(emailcreo);
+    arreglo.push(emailproveedor);
     
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproducto.php",  data: {solicitadoBy:"WEB",nombreproduct:nombreproduct,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:idtblcategproduc,idtblclasifproduct:idtblclasifproduct,emailcreo:emailcreo}  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproducto.php",  data: {solicitadoBy:"WEB",nombreproduct:nombreproduct,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:idtblcategproduc,idtblclasifproduct:idtblclasifproduct,emailcreo:emailproveedor}  })
       .done(function( msgTblProducto ) {
         /////////////////////////////////////////////////////////////////////////
-        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoId.php",  data: {solicitadoBy:"WEB",nombreproduct:nombreproduct,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:idtblcategproduc,idtblclasifproduct:idtblclasifproduct,emailcreo:emailcreo}  })
+        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoId.php",  data: {solicitadoBy:"WEB",nombreproduct:nombreproduct,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:idtblcategproduc,idtblclasifproduct:idtblclasifproduct,emailcreo:emailproveedor}  })
           .done(function( msgTblProductoId ) {
             idtblproducto=msgTblProductoId.datos[0].idtblproducto;
             /////////////////////////////////////////////////////////////////////]
@@ -3881,17 +3887,17 @@ $( window ).ready(function()
             srcimg3='p_'+idtblproducto+'_'+srcimg3;
             //alert('Id unico imagnees srcimg1::'+srcimg1+' srcim2'+srcimg2+' srcimg3'+srcimg3);
             //PARA ONTEBER EL ID MANDAR AL MODAL EL ID DE LAS IMAGNEE JUNTO CON LAS IMAGNES Y DESPUS BTENERLO Y SOLO ASIGANRALO 
-            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproducto:idtblproducto,emailcreo:emailcreo}  })
+            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
               .done(function( msgTblProductoImg1 )
               {
                 //console.log('msgTblProductoImg1.datos::'+msgTblProductoImg1.datos);
                 srcimg1=$('#alta_srcimg1_producto_lineaBD').val(msgTblProductoImg1.datos);
-                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproducto:idtblproducto,emailcreo:emailcreo}  })
+                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
                   .done(function( msgTblProductoImg2 )
                   {
                     //console.log('msgTblProductoImg2.datos::'+msgTblProductoImg2.datos);
                     srcimg2=$('#alta_srcimg2_producto_lineaBD').val(msgTblProductoImg2.datos); 
-                     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproducto:idtblproducto,emailcreo:emailcreo}  })
+                     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
                       .done(function( msgTblProductoImg3 )
                       {
                         //alert('SUBIR LOS ARCHIVOS AL SERVIDOR');
@@ -3944,7 +3950,7 @@ $( window ).ready(function()
               .always(function(){  /*console.log("always");*/ });
            
             //producto detalles
-            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductDetalle.php",  data: {solicitadoBy:"WEB",diaselaboracion:diaselaboracion,stock:stock,precioreal:precioreal,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,piezas:piezas,activado:activado,porciones:porciones,idtblespecificingrediente:idtblespecificingrediente,idtblproducto:idtblproducto,emailcreo:emailcreo}  })
+            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductDetalle.php",  data: {solicitadoBy:"WEB",diaselaboracion:diaselaboracion,stock:stock,precioreal:precioreal,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,piezas:piezas,activado:activado,porciones:porciones,idtblespecificingrediente:idtblespecificingrediente,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
               .done(function( msgTblProductoDetalle )
               {
               })
@@ -3974,13 +3980,13 @@ $( window ).ready(function()
     promcalif='';
     activado='';
     //idtblproveedor='';
-    emailcreo='';
+    //emailcreo='';
     //productoimg
     srcimg1='';
     srcimg2='';
     srcimg3='';
     idtblproducto='';
-    emailcreo=''; 
+    //emailcreo=''; 
     /*
     ASINGACION DE VALORES
      */
@@ -3994,7 +4000,7 @@ $( window ).ready(function()
     //idtblproveedor='1';
     ///////////////////
     idtblevento=$('#alta_evento_producto_cotizador').val();
-    emailcreo='miguel@bepickler.com';
+    //emailcreo='miguel@bepickler.com';
 
     srcimg1=$('#alta_srcimg1_producto_cotizador').val().replace(/C:\\fakepath\\/i, '');
     srcimg2=$('#alta_srcimg2_producto_cotizador').val().replace(/C:\\fakepath\\/i, '');
@@ -4011,15 +4017,15 @@ $( window ).ready(function()
     arreglo.push(activado);
     arreglo.push(idtblevento);
     arreglo.push(idtblproveedor);
-    arreglo.push(emailcreo);
+    arreglo.push(emailproveedor);
      
-    console.log('agergar: nombreproduct::'+nombreproduct+' descripcion::'+descripcion+' ingrediente::'+ingrediente+' promcalif::'+promcalif+' diaselaboracion::'+diaselaboracion+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' idtblevento::'+idtblevento+' emailcreo+::'+emailcreo+' arreglo::'+arreglo.length+' srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3);
+    console.log('agergar: nombreproduct::'+nombreproduct+' descripcion::'+descripcion+' ingrediente::'+ingrediente+' promcalif::'+promcalif+' diaselaboracion::'+diaselaboracion+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' idtblevento::'+idtblevento+' emailcreo+::'+emailproveedor+' arreglo::'+arreglo.length+' srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3);
     
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotizador.php",  data: {solicitadoBy:"WEB",nombreproductcotizador:nombreproduct,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalif, diaselaboracion:diaselaboracion, activado:activado, idtblevento:idtblevento, idtblproveedor:idtblproveedor, emailcreo:emailcreo}  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotizador.php",  data: {solicitadoBy:"WEB",nombreproductcotizador:nombreproduct,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalif, diaselaboracion:diaselaboracion, activado:activado, idtblevento:idtblevento, idtblproveedor:idtblproveedor, emailcreo:emailproveedor}  })
       .done(function( msgTblProducto ) {
         //alert('msgTblProducto::'+msgTblProducto.success);
         /////////////////////////////////////////////////////////////////////////
-        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoCotizadorId.php",  data: {solicitadoBy:"WEB",nombreproductcotizador:nombreproduct,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalif, diaselaboracion:diaselaboracion, activado:activado, idtblevento:idtblevento, idtblproveedor:idtblproveedor, emailcreo:emailcreo}  })
+        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoCotizadorId.php",  data: {solicitadoBy:"WEB",nombreproductcotizador:nombreproduct,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalif, diaselaboracion:diaselaboracion, activado:activado, idtblevento:idtblevento, idtblproveedor:idtblproveedor, emailcreo:emailproveedor}  })
           .done(function( msgTblProductoId ) {
             //alert('msgTblProductoId.datos[0].idtblproductcotizador::'+msgTblProductoId.datos[0].idtblproductcotizador+' otro::'+msgTblProductoId.datos.idtblproductcotizador);
             idtblproductcotizador=msgTblProductoId.datos[0].idtblproductcotizador;
@@ -4032,16 +4038,16 @@ $( window ).ready(function()
             console.log('idtblproductcotizador::'+idtblproductcotizador+' srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3);
             
             //PARA ONTEBER EL ID MANDAR AL MODAL EL ID DE LAS IMAGNEE JUNTO CON LAS IMAGNES Y DESPUS BTENERLO Y SOLO ASIGANRALO 
-            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproductcotizador:idtblproductcotizador,emailcreo:emailcreo}  })
+            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproductcotizador:idtblproductcotizador,emailcreo:emailproveedor}  })
               .done(function( msgTblProductoImg1 )
               {
                 console.log('msgTblProductoImg1.datos::'+msgTblProductoImg1.datos)
                 srcimg1=$('#alta_srcimg1_producto_cotizadorBD').val(msgTblProductoImg1.datos);
-                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproductcotizador:idtblproductcotizador,emailcreo:emailcreo}  })
+                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproductcotizador:idtblproductcotizador,emailcreo:emailproveedor}  })
                   .done(function( msgTblProductoImg2 )
                   {
                     srcimg2=$('#alta_srcimg2_producto_cotizadorBD').val(msgTblProductoImg2.datos); 
-                     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproductcotizador:idtblproductcotizador,emailcreo:emailcreo}  })
+                     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproductcotizador:idtblproductcotizador,emailcreo:emailproveedor}  })
                       .done(function( msgTblProductoImg3 )  
                       {
                         srcimg3=$('#alta_srcimg3_producto_cotizadorBD').val(msgTblProductoImg3.datos);
@@ -4132,7 +4138,7 @@ $( window ).ready(function()
     //SESSION
     //idtblproveedor='1';
     ///////////////////
-    emailcreo='miguel@bepickler.com';
+    //emailcreo='miguel@bepickler.com';
 
     srcimg=$('#alta_srcimg1_producto_Complementario').val().replace(/C:\\fakepath\\/i, '');
     srcimg='p_'+idtblproveedor+'_'+srcimg;
@@ -4148,9 +4154,9 @@ $( window ).ready(function()
     arreglo.push(activado);
     arreglo.push(idtblproveedor);
     arreglo.push(stock);
-    arreglo.push(emailcreo);
+    arreglo.push(emailproveedor);
      
-    console.log('agergar: nombreproduct::'+nombreproduct+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' preciobp::'+preciobp+' emailcreo+::'+emailcreo+' arreglo::'+arreglo.length+' srcimg::'+srcimg);
+    console.log('agergar: nombreproduct::'+nombreproduct+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' preciobp::'+preciobp+' emailcreo+::'+emailproveedor+' arreglo::'+arreglo.length+' srcimg::'+srcimg);
 
     /*
     $solicitadoBy=$_POST["solicitadoBy"];
@@ -4166,13 +4172,13 @@ $( window ).ready(function()
     $emailcreo=$_POST["emailcreo"];
      */
     
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcomplem.php",  data: {solicitadoBy:"WEB",nombreproductcomplem:nombreproduct,descripcion:descripcion,seo:seo,precioreal:precioreal, preciobp:preciobp, srcimg:srcimg, activado:activado, idtblproveedor:idtblproveedor, stock:stock, emailcreo:emailcreo}  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcomplem.php",  data: {solicitadoBy:"WEB",nombreproductcomplem:nombreproduct,descripcion:descripcion,seo:seo,precioreal:precioreal, preciobp:preciobp, srcimg:srcimg, activado:activado, idtblproveedor:idtblproveedor, stock:stock, emailcreo:emailproveedor}  })
       .done(function( msgTblProducto ) 
       {
         console.log('entro al done setTblproductcomplem::'+msgTblProducto);
         
         /////////////////////////////////////////////////////////////////////////
-        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoComplementarioId.php",  data: {solicitadoBy:"WEB",nombreproductcomplem:nombreproduct,descripcion:descripcion,seo:seo,precioreal:precioreal, preciobp:preciobp, srcimg:srcimg, activado:activado, idtblproveedor:idtblproveedor, stock:stock, emailcreo:emailcreo}  })
+        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoComplementarioId.php",  data: {solicitadoBy:"WEB",nombreproductcomplem:nombreproduct,descripcion:descripcion,seo:seo,precioreal:precioreal, preciobp:preciobp, srcimg:srcimg, activado:activado, idtblproveedor:idtblproveedor, stock:stock, emailcreo:emailproveedor}  })
           .done(function( msgTblProductoId ) {
               idtblproductcomplem=msgTblProductoId.datos[0].idtblproductcomplem;
             /////////////////////////////////////////////////////////////////////]
@@ -4183,7 +4189,7 @@ $( window ).ready(function()
             /*
             //ACTUALIZAMOS EL NOMBRE DE LA IMAGEN CON EL ULTIMO FORMATO i_idProducto_p_proveedor_nombreImagen.jpg/gif/etc 
             */
-            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplemImg.php",  data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem, srcimg: srcimg,emailmodifico:emailcreo}  })
+            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplemImg.php",  data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem, srcimg: srcimg,emailmodifico:emailproveedor}  })
               .done(function( msgTblProductoComplementarioImg )
               {
                 //console.log('msgTblProductoComplementarioImg.datos::'+msgTblProductoComplementarioImg.datos)
@@ -4485,9 +4491,9 @@ $( window ).ready(function()
       activado=0;
     idProducto=$("#modificar_id_producto_linea").val();
     especificingredientes=$("#modificar_especificingredientes_producto_linea").val();
-    emailmodifico='miguel@bepickler.com';
+    //emailmodifico='miguel@bepickler.com';
 
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalle.php", data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,diaselaboracion:diasElborar,stock:stock,precioreal:precio,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,porciones:porciones,piezas:piezas,activado:activado,idtblproducto:idProducto, idtblespecifingrediente:especificingredientes ,emailmodifico:emailmodifico }  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalle.php", data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,diaselaboracion:diasElborar,stock:stock,precioreal:precio,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,porciones:porciones,piezas:piezas,activado:activado,idtblproducto:idProducto, idtblespecifingrediente:especificingredientes ,emailmodifico:emailproveedor }  })
     .done(function( msgTblProductoDetalles ) {
       //alert('Elimnaci? Exitosa');
       //$('#productoslineaPlantilla').html("");
@@ -4526,7 +4532,7 @@ $( window ).ready(function()
     //idtblproveedor=1;
     categoria=$("#modificar_categoria_producto_linea_general").val();
     clasificacion=$("#modificar_clasificacion_producto_linea_general").val();
-    emailmodifico='miguel@bepickler.com';
+    //emailmodifico='miguel@bepickler.com';
 
     srcimg1=$("#modificar_srcimg1_producto_linea").val();
     srcimg2=$("#modificar_srcimg2_producto_linea").val();
@@ -4569,17 +4575,17 @@ $( window ).ready(function()
               //alert('SE BORRARON EXITOSAMENTE -> REGISTRAR LA PRIMERA IMAGEN');
               //SE BORRARON EXITOSAMENTE
               //REGISTRAR LA PRIMERA IMAGEN
-              $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",idtblproductimg:idProducto,srcimg:srcimg1,idtblproducto:idProducto,emailcreo:emailmodifico}  })
+              $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",idtblproductimg:idProducto,srcimg:srcimg1,idtblproducto:idProducto,emailcreo:emailproveedor}  })
                 .done(function( msgTblProductoImg1 )
                 {
                   //SE REGISTRO LA PRIMERA IMAGEN
                   //OBTENEMOS EL NOMBRE DE LA UMAGEN Y LA ASIGNAMOS A modificar_srcimg1_producto_lineaBD
                   srcimg1=$('#modificar_srcimg1_producto_lineaBD').val(msgTblProductoImg1.datos);
-                  $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",idtblproductimg:idProducto,srcimg:srcimg2,idtblproducto:idProducto,emailcreo:emailmodifico}  })
+                  $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",idtblproductimg:idProducto,srcimg:srcimg2,idtblproducto:idProducto,emailcreo:emailproveedor}  })
                     .done(function( msgTblProductoImg2 )
                     {
                       srcimg2=$('#modificar_srcimg2_producto_lineaBD').val(msgTblProductoImg2.datos);
-                      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",idtblproductimg:idProducto,srcimg:srcimg3,idtblproducto:idProducto,emailcreo:emailmodifico}  })
+                      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",idtblproductimg:idProducto,srcimg:srcimg3,idtblproducto:idProducto,emailcreo:emailproveedor}  })
                         .done(function( msgTblProductoImg3 )
                         {
                           srcimg3=$('#modificar_srcimg3_producto_lineaBD').val(msgTblProductoImg3.datos);
@@ -4641,9 +4647,9 @@ $( window ).ready(function()
       
     }
     //alert('setUpdateTblproducto::'+activado);
-    console.log('idProducto:'+idProducto+' nombre::'+nombre+' descripcion::'+descripcion+' ingredientes::'+ingredientes+' seo::'+seo+' promcalif::'+promcalif+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' categoria::'+categoria+' clasificacion::'+clasificacion+' emailmodifico::'+emailmodifico);
+    console.log('idProducto:'+idProducto+' nombre::'+nombre+' descripcion::'+descripcion+' ingredientes::'+ingredientes+' seo::'+seo+' promcalif::'+promcalif+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' categoria::'+categoria+' clasificacion::'+clasificacion+' emailmodifico::'+emailproveedor);
     
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproducto.php", data: {solicitadoBy:"WEB",idtblproducto:idProducto,nombreproduct:nombre,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:categoria,idtblclasifproduct:clasificacion,emailmodifico:emailmodifico }  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproducto.php", data: {solicitadoBy:"WEB",idtblproducto:idProducto,nombreproduct:nombre,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:categoria,idtblclasifproduct:clasificacion,emailmodifico:emailproveedor }  })
       .done(function( msgTblProductoGeneral ) {
         //alert('msgTblProductoGeneral'+msgTblProductoGeneral.success);
         $('#productosComplementarioPlantilla').html("");  
@@ -4682,7 +4688,7 @@ $( window ).ready(function()
     //idtblproveedor=1;
     diaselaboracion=$("#modificar_detalle_diasElborar_producto_cotizador").val();
     promcalificacion=5;
-    emailmodifico='miguel@bepickler.com';
+    //emailmodifico='miguel@bepickler.com';
 
     srcimg1=$("#modificar_srcimg1_producto_cotizador").val();
     srcimg2=$("#modificar_srcimg2_producto_cotizador").val();
@@ -4733,16 +4739,16 @@ $( window ).ready(function()
               //SE BORRARON EXITOSAMENTE
               //REGISTRAR LA PRIMERA IMAGEN              
               //alert('datos a envair srcimg1::'+srcimg1+' srcimg2::'+srcimg2+' srcimg3::'+srcimg3+' idtblproductcotizador::'+idProductoCotizador+' emailcreo::'+emailmodifico)
-              $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
+              $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproductcotizador:idProductoCotizador,emailcreo:emailproveedor}  })
                 .done(function( msgTblProductoImg1 )
                 {
                   srcimg1=$('#modificar_srcimg1_producto_cotizadorBD').val(msgTblProductoImg1.datos);
-                  $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
+                  $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproductcotizador:idProductoCotizador,emailcreo:emailproveedor}  })
                     .done(function( msgTblProductoImg2 )
                     {
                       srcimg2=$('#modificar_srcimg2_producto_cotizadorBD').val(msgTblProductoImg2.datos);
                       //alert('msgTblProductoImg2.datos::'+msgTblProductoImg2.datos);
-                      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproductcotizador:idProductoCotizador,emailcreo:emailmodifico}  })
+                      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcotimg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproductcotizador:idProductoCotizador,emailcreo:emailproveedor}  })
                         .done(function( msgTblProductoImg3 )
                         {
                           srcimg3=$('#modificar_srcimg3_producto_cotizadorBD').val(msgTblProductoImg3.datos);
@@ -4812,7 +4818,7 @@ $( window ).ready(function()
     $emailmodifico=$_POST["emailmodifico"];
      */
     
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcotizador.php", data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto,nombreproductcotizador:nombre,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalificacion,diaselaboracion:diaselaboracion,activado:activado,idtblproveedor:idtblproveedor,idtblevento:idtblevento,emailmodifico:emailmodifico }  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcotizador.php", data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto,nombreproductcotizador:nombre,descripcion:descripcion,ingrediente:ingrediente,promcalificacion:promcalificacion,diaselaboracion:diaselaboracion,activado:activado,idtblproveedor:idtblproveedor,idtblevento:idtblevento,emailmodifico:emailproveedor }  })
       .done(function( msgTblProductoDetalles ) {
         //alert('Elimnaci? Exitosa');
         $('#productoscotizadorPlantilla').html("");
@@ -4846,7 +4852,7 @@ $( window ).ready(function()
     idtblproveedor=$("#modificar_idProveedor_producto_Complementario").val();
     stock=$("#modificar_stock_producto_Complementario").val();
     activado=$('#modificar_activado_producto_Complementario').val();
-    emailmodifico='miguel@bepickler.com';
+    //emailmodifico='miguel@bepickler.com';
     //srcimgActual=$("#fotografia_complementario_actual").val();
     srcimgActual=$("#fotografia_complementario_actual").attr("src");
     //alert('srcimgActual::'+srcimgActual);
@@ -4858,7 +4864,6 @@ $( window ).ready(function()
     }else{
       activado=0;
     }
-    //./../assests_general/productos/complementario/i_11_p_1_12.jpg
 
     //obentenso el inptup de la iamgen
     srcimg1=$("#modificar_srcimg1_producto_Complementario").val().replace(/C:\\fakepath\\/i, '');
@@ -4905,8 +4910,8 @@ $( window ).ready(function()
       srcimg1=srcimgActual;
     }    
     
-    console.log('datos para actualizar:: idtblproductcomplem'+idtblproductcomplem+' nombre::'+nombre+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' preciobp::'+preciobp+' srcimg1::'+srcimg1+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' emailmodifico::'+emailmodifico);
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplem.php", data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem,nombreproductcomplem:nombre,descripcion:descripcion,seo:seo,precioreal:precioreal,preciobp:preciobp,srcimg:srcimg1,activado:activado,idtblproveedor:idtblproveedor,stock:stock,emailmodifico:emailmodifico }  })
+    console.log('datos para actualizar:: idtblproductcomplem'+idtblproductcomplem+' nombre::'+nombre+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' preciobp::'+preciobp+' srcimg1::'+srcimg1+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' emailmodifico::'+emailproveedor);
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplem.php", data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem,nombreproductcomplem:nombre,descripcion:descripcion,seo:seo,precioreal:precioreal,preciobp:preciobp,srcimg:srcimg1,activado:activado,idtblproveedor:idtblproveedor,stock:stock,emailmodifico:emailproveedor }  })
       .done(function( msgTblProductoComplementario ) {
         //alert('Elimnaci? Exitosa');
         console.log('setUpdateTblproductcomplem done msgTblProductoComplementario::'+msgTblProductoComplementario.datos);
@@ -4941,10 +4946,6 @@ $( window ).ready(function()
     si existe solo este eliminar el producto (en cascada se elimianr los productos detalle y las imagenes)
     SiNo solo elimianr el producto que esta  seleccionando
     */
-    //$.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductoTblproductoDetalleOfProveedor.php",  data: {solicitadoBy:"WEB",idtblproveedor:"1"}  })
-    
-
-
       /////////////////////////////////////////////////////////
       var arregloIdtblproductimg=[];
       var arregloTblproductimg_srcimg=[];
@@ -4984,17 +4985,17 @@ $( window ).ready(function()
               if(numeroProductosDetalle<=1)
               {
                 //ELIMINAR DESDE EL PRODUCTO
-                console.log('ELIMINAR DESDE EL PRODUCTO');
-                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproducto.php",  data: {solicitadoBy:"WEB",idtblproduct:idProducto}  })
+                console.log('ELIMINAR DESDE EL PRODUCTO'+email+' '+nombre+' '+apellido+' '+nivel);
+                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproducto.php",  data: {solicitadoBy:"WEB",idtblproduct:idProducto, email:email, nombre:nombre, apellido:apellido, nivel:nivel}  })
                   .done(function( msgTblProducto ) {
-                    
+                    console.log(JSON.stringify(msgTblProducto));
                     UIkit.modal.alert('Elimnación Exitosa');
                     //$('#productoslineaPlantilla').html("");
                     //cargarValoresDefault();
                     $('#productosComplementarioPlantilla').html("");
-                                  $('#productoscotizadorPlantilla').html("");
-                                  $('#productoslineaPlantilla').html("");
-                                  cargarValoresDefault();
+                    $('#productoscotizadorPlantilla').html("");
+                    $('#productoslineaPlantilla').html("");
+                    cargarValoresDefault();
                   })
                   .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){   });
@@ -5009,9 +5010,9 @@ $( window ).ready(function()
                     //$('#productoslineaPlantilla').html("");
                     //cargarValoresDefault();
                     $('#productosComplementarioPlantilla').html("");
-                                  $('#productoscotizadorPlantilla').html("");
-                                  $('#productoslineaPlantilla').html("");
-                                  cargarValoresDefault();
+                    $('#productoscotizadorPlantilla').html("");
+                    $('#productoslineaPlantilla').html("");
+                    cargarValoresDefault();
                   })
                   .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductDetalle fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
                   .always(function(){   });
@@ -5026,15 +5027,7 @@ $( window ).ready(function()
         .fail(function( jqXHR, textStatus ) {  console.log("getAllTblproductImgProducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  /*console.log("getAllTblproductImgProducto always");*/ });
 
-        /*
-    }
-    
-    
-    else
-    {
-      alert('nada');
-    }
-    */
+        
   }
   function eliminarProductoCotizador(idtblproductcotizador){
       /*
@@ -5066,8 +5059,6 @@ $( window ).ready(function()
             //alert('//RECORREMOS EL ARREGLO DE LOS ID');
             $.each(arregloIdtblproductimg, function(i,item){
               //SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS
-              //alert('//SOLICITAMOS BORRAR TODOS LOS ARCHIVOS FISICOS');
-              //alert('entro al each i::'+i+' item::'+item+' arregloTblproductimg_srcimg[i]::'+arregloTblproductimg_srcimg[i]);
               
               $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoCotizador.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:arregloTblproductimg_srcimg[i]} })
                 .done(function( datos ){ 
@@ -5082,9 +5073,8 @@ $( window ).ready(function()
           //
           //ELIMINAR DESDE EL PRODUCTO COTIZADOR
           console.log('ELIMINAR DESDE EL PRODUCTO');
-          //alert('setDeleteTblproductcotizador idtblproductcotizador::'+idtblproductcotizador)
           
-          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcotizador.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idtblproductcotizador}  })
+          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcotizador.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idtblproductcotizador, email:email, nombre:nombre, apellido:apellido, nivel:nivel}  })
             .done(function( msgTblProducto ) {
               UIkit.modal.alert('Elimnación Exitosa');
               //$('#productoslineaPlantilla').html("");
@@ -5104,39 +5094,44 @@ $( window ).ready(function()
     
   }
   function eliminarProductoComplementario(idProducto){
-    //UIkit.modal.confirm('Realmente deseas eliminar el producto Complementario?', function(){  respuesta=true;  });
-    //if (respuesta == true) {
-      //srcimgActual=$("#fotografia_complementario_actual").val();
       srcimgActual=$("#imagenPortadaProductoComplementario"+idProducto).attr("src");
       srcimgActual=srcimgActual.replace('./../assests_general/productos/complementario/', '');
 
       //borramos la actual file de la fotografia del servidor
+      
       $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoComplementario.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:srcimgActual} })
         .done(function( datos ){
           console.log('setDeleteFileImgProductoComplementario datos::'+datos.datos);
+          
 
-          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcomplem.php",  data: {solicitadoBy:"WEB",idtblproductcomplem:idProducto}  })
+          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcomplem.php",  data: {
+            solicitadoBy:"WEB",
+            idtblproductcomplem:idProducto,
+            email:email,
+            nombre:nombre,
+            apellido:apellido,
+            nivel:nivel}  })
             .done(function( msgTblProductoComplementario ) {
+              console.log('msgTblProductoComplementario::'+JSON.stringify(msgTblProductoComplementario, null, 4))
+              
               UIkit.modal.alert('Elimnación Exitosa');
               $('#productoslineaPlantilla').html("");
               $('#productoscotizadorPlantilla').html("");
               $('#productosComplementarioPlantilla').html("");
               cargarValoresDefault();
+              
             })
             .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){   });
-
+        
         })
         .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
         .always(function(){  
         //console.log("setDeleteFileImgProductoCotizador  always");
          });
+        
 
-      /*
-    }else{
-      alert('no hacer nada');
-    }
-    */
+      
   }
   /*
   FIN FUNCIONES MIGUEL

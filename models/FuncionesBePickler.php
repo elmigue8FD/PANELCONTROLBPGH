@@ -2119,6 +2119,8 @@ class FuncionesBePickler{
 		}
 	}
 
+	
+
 
 ///// FUNCIONES REFRENTE A TABLA tblentregaproducto ///////
 	
@@ -2296,7 +2298,49 @@ class FuncionesBePickler{
 	
 	
 	///// FUNCIONES REFRENTE A TABLA tblhistoricoelimi ///////
-	
+	public static function tblhistoricodeelimi($email,$nombre,$apellido,$nivel,$tabla,$registro,$idRegistro,$fchcreacion,$emailusuacreo,$emailusuaelimino){
+
+	 	//??OBTENER TODO EL REGISTRO QUE SE VA A ELIMINAR
+	 	/*
+	 	$consulta = "SELECT * FROM $tabla WHERE $nombreIdRegistro = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idRegistro,PDO::PARAM_INT);
+			$resultado->execute();
+			$registroCompleto= $resultado->fetchAll(PDO::FETCH_ASSOC);
+			foreach ($resultado as $row) {
+		    	$row["Id"];
+		    }
+
+		} catch(PDOException $e){
+			return false;
+		}
+		*/
+	 	
+	 	//
+        
+        $insert ="INSERT INTO tblhistoricodeelimi (tblhistoricodeelimi_email,tblhistoricodeelimi_nombre,tblhistoricodeelimi_apellido,tblhistoricodeelimi_nivel,tblhistoricodeelimi_tabla,tblhistoricodeelimi_registro,tblhistoricodeelimi_idRegistro,tblhistoricodeelimi_fchcreacion,tblhistoricodeelimi_fchelimino,tblhistoricodeelimi_emailusuacreo,tblhistoricodeelimi_emailusuaelimino) VALUES (?,?,?,?,?,?,?,?,NOW(),?,?)"; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$email,PDO::PARAM_STR);
+			$resultado->bindParam(2,$nombre,PDO::PARAM_STR);
+			$resultado->bindParam(3,$apellido,PDO::PARAM_STR);
+			$resultado->bindParam(4,$nivel,PDO::PARAM_STR);
+			$resultado->bindParam(5,$tabla,PDO::PARAM_STR);
+			$resultado->bindParam(6,$registro,PDO::PARAM_STR);
+			$resultado->bindParam(7,$idRegistro,PDO::PARAM_INT);
+			$resultado->bindParam(8,$fchcreacion,PDO::PARAM_STR);
+			$resultado->bindParam(9,$emailusuacreo,PDO::PARAM_STR);
+			$resultado->bindParam(10,$emailusuaelimino,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
 	
 	
 	
