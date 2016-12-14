@@ -36,13 +36,20 @@ if (!empty($_POST)){
     $emailmodifico                   = $_POST['emailmodifico'];
     $idtblmotivocotizacion           = $_POST['idtblmotivocotizacion'];
 
-    $emailmodifico                   =$_POST['emailmodifico'];
+    /*
     $nombreproveedor                 =$_POST['nombreproveedor'];
     $apellido                        =$_POST['apellido'];
     $nivel                           =$_POST['nivel'];
-
     $tabla='Tblcarritoproductcotizador';
-
+    */
+    
+    
+    $nombreproveedor="nombre";
+    $apellido="apellido";
+    $nivel="1";
+    $tabla='Tblcarritoproductcotizador';
+    
+    /*
     //OBTENEMOS TODOS DEL REGISTRO ANTERIOR
     $resultadoRegistroAnterior = getTblcarritoproductcotizador($idtblcarritoproductcotizador);
     //SI EL RESULTADO ES EXITOSO SEGUIMOS CON EL PASO DE EXTRACCION DE DATOS
@@ -71,10 +78,12 @@ if (!empty($_POST)){
         //SI NO OBTIENE LOS DATOS ASIGNAMOS LAS VARIBLES CON UN MENSAJE DE ERROR PARA QUE NO ESTEN VACIAS
         $registroAnterior="error en la consuta";
     }
-
-     $registroActual=$idtblcarritoproductcotizador.' '.$numpersonas.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega;
+    */
+    $registroAnterior="registroAnterior";
+     $registroActual=$idtblcarritoproductcotizador.' '.$numpersonas.' '.$fchentrega.' '.$srcimgproducto.' '.$idtblordencotizador.' '.$idtblproductcotizador.' '.$costotienda.' '.$costodomicilio.' '.$emailmodifico.' '.$idtblmotivocotizacion;
 
      $resultadoHistoricoModificacion = FuncionesBePickler::setTblhistoricodemodifi($emailmodifico,$nombreproveedor,$apellido,$nivel,$tabla,$registroAnterior,$registroActual);
+     
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
