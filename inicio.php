@@ -5349,7 +5349,7 @@ function mostrarListaOrdenes(){
   
   //inicializa las tablas para poder realizar filtros 
   inicializarTablas();
-
+alert('mostrarListaOrdenes');
 //AJAX encargado de solicitar las ordenes del proveedor  
     $.ajax({
       method: "POST",  
@@ -5357,8 +5357,9 @@ function mostrarListaOrdenes(){
       url: "./../../controllers/getAllTblordencompraByTbldatosenvio.php",  
       data: {solicitadoBy:solicitadoBy, idproveedor:idtblproveedor}  })
     .done(function( msg ) {
+      alert('done getAllTblordencompraByTbldatosenvio');
       $.each(msg.datos, function(i,item){   
-        
+        alert('getAllTblordencompraByTbldatosenvio');
         idtblordencompra = item.idtblordencompra;//id de la orden
 
         $.ajax({//Checar para ver si existe un registro de tblentregaprodruct
@@ -5957,6 +5958,7 @@ function marcarordenEntregada(){
     }
 
 
+
     $.ajax({ //registrar de tblentregaproduct 
       method: "POST",
       dataType: "json",  
@@ -6214,7 +6216,7 @@ function marcarordenEntregadaModif(){
     $.ajax({ //registrar de tblentregaproduct 
       method: "POST",  
       url: "./../../controllers/setUpdateTblentregaproducto.php",  
-      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodifico:email, apellido:apellido, nivel:nivel}})
       .done(function(datos){
         if(parseInt(datos.success)==1){
         // si se guarda con exito se guardan las imagenes
