@@ -79,7 +79,7 @@ if (!empty($_POST)){
         $emailusuacreo="error en la consuta";
     }
 
-    $registroActual=$nombreproveedor.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega.' '.$fchentrega;
+    $registroActual=$nombreproveedor.' '.$fchentrega.' '.$numproductpedidos.' '.$numproductentregados.' '.$status.' '.$fchpagoproveedor.' '.$srcimg1.' '.$srcimg2.' '.$emailmodifico.' '.$idtblordencompra.' '.$idtblproveedor;
     
     $resultadoHistoricoModificacion = FuncionesBePickler::setTblhistoricodemodifi($emailmodifico,$nombreproveedor,$apellido,$nivel,$tabla,$registroAnterior,$registroActual);
 
