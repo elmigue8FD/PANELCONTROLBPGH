@@ -5349,7 +5349,7 @@ function mostrarListaOrdenes(){
   
   //inicializa las tablas para poder realizar filtros 
   inicializarTablas();
-alert('mostrarListaOrdenes');
+//alert('mostrarListaOrdenes');
 //AJAX encargado de solicitar las ordenes del proveedor  
     $.ajax({
       method: "POST",  
@@ -5357,9 +5357,9 @@ alert('mostrarListaOrdenes');
       url: "./../../controllers/getAllTblordencompraByTbldatosenvio.php",  
       data: {solicitadoBy:solicitadoBy, idproveedor:idtblproveedor}  })
     .done(function( msg ) {
-      alert('done getAllTblordencompraByTbldatosenvio');
+      //alert('done getAllTblordencompraByTbldatosenvio');
       $.each(msg.datos, function(i,item){   
-        alert('getAllTblordencompraByTbldatosenvio');
+        //alert('getAllTblordencompraByTbldatosenvio');
         idtblordencompra = item.idtblordencompra;//id de la orden
 
         $.ajax({//Checar para ver si existe un registro de tblentregaprodruct
