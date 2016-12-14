@@ -74,13 +74,11 @@ if (!empty($_POST)){
     }else
     {
         //SI NO OBTIENE LOS DATOS ASIGNAMOS LAS VARIBLES CON UN MENSAJE DE ERROR PARA QUE NO ESTEN VACIAS
-        $registro="error en la consuta";
-        $fchcreacion="error en la consuta";
-        $emailusuacreo="error en la consuta";
+        $registroAnterior="error en la consuta";
     }
 
     $registroActual=$nombreproveedor.' '.$fchentrega.' '.$numproductpedidos.' '.$numproductentregados.' '.$status.' '.$fchpagoproveedor.' '.$srcimg1.' '.$srcimg2.' '.$emailmodifico.' '.$idtblordencompra.' '.$idtblproveedor;
-    
+
     $resultadoHistoricoModificacion = FuncionesBePickler::setTblhistoricodemodifi($emailmodifico,$nombreproveedor,$apellido,$nivel,$tabla,$registroAnterior,$registroActual);
 
 

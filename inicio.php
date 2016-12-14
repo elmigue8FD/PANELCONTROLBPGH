@@ -6590,7 +6590,7 @@ function enviarCotizacion(idtblcarritoproductcotizador){
           UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
 
             $.ajax({ //actualiza el registro con los costos de la cotizacion 
-              method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda, costodomicilio:costodomicilio, emailmodifico:emailmodif,idtblmotivocotizacion:status}})
+              method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda, costodomicilio:costodomicilio, emailmodifico:emailmodif,idtblmotivocotizacion:status, emailmodifico:email, nombreproveedor:nombre, apellido:apellido, nivel:nivel}})
                   .done(function(datos){
                       if(parseInt(datos.success)==1){
                         UIkit.modal.alert('Exitoso, Cotizacion Enviada');
