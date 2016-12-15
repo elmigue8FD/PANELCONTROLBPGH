@@ -2345,7 +2345,25 @@ class FuncionesBePickler{
 	
 	
 	///// FUNCIONES REFRENTE A TABLA tblhistoricomodifi ///////
-	
+	public static function setTblhistoricodemodifi($email,$nombre,$apellido,$nivel,$tabla,$registroAnterior,$registroActual){
+        
+        $insert ="INSERT INTO tblhistoricodeelimi (tblhistoricodemodifi_emailusuario, tblhistoricodemodifi_nombre, tblhistoricodemodifi_apellido, tblhistoricodemodifi_nivel, tblhistoricodemodifi_tabla, tblhistoricodemodifi_fecha, tblhistoricodemodifi_registroanterior, tblhistoricodemodifi_registroactual) VALUES (?,?,?,?,?,NOW(),?,?)"; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$email,PDO::PARAM_STR);
+			$resultado->bindParam(2,$nombre,PDO::PARAM_STR);
+			$resultado->bindParam(3,$apellido,PDO::PARAM_STR);
+			$resultado->bindParam(4,$nivel,PDO::PARAM_STR);
+			$resultado->bindParam(5,$tabla,PDO::PARAM_STR);
+			$resultado->bindParam(6,$registroAnterior,PDO::PARAM_STR);
+			$resultado->bindParam(7,$registroActual,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
 	
 	
 
@@ -7487,10 +7505,13 @@ class FuncionesBePickler{
     /*Consulta las Colonias (depende de la ciudad, el tipo de servicio y los dias de pedido)*/
     public static function getTblcoloniaByTblproveedor($idtblciudad,$idtbltipodeservicio,$fechapedido,$codipost){
 
+<<<<<<< HEAD
     	$zona = new DateTimeZone('America/Monterrey');
         
         
 
+=======
+>>>>>>> origin/master
     	date_default_timezone_set("America/Monterrey");
         $activado=1;
         $fechapedidoingresada = new DateTime($fechapedido);
@@ -7505,8 +7526,11 @@ class FuncionesBePickler{
         $tipodeservicioCompleto=3;
         
 
+        
+
        if($fechapedidoingresada == $fechahoy)
        { 
+       	
             $tipodepedido= 1; //pedidoparahoy
             $stock=1;
        	}else
@@ -7517,7 +7541,7 @@ class FuncionesBePickler{
         
         
         if($idtbltipodeservicio==1){ //Entrega en Pasteleria
-            $consulta = "SELECT TC.* FROM tblcolonia TC
+                    $consulta = "SELECT TC.* FROM tblcolonia TC
 				                        INNER JOIN tblproveedor TP ON TC.idtblcolonia = TP.tblcolonia_idtblcolonia 
 				                        INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
 				                        INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto 
@@ -7529,7 +7553,11 @@ class FuncionesBePickler{
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ? 
                 				         AND TPRD.tblproducto_activado = ?
+<<<<<<< HEAD
                 				         AND TPRD.tblproductodetalle_stock >= ?
+=======
+                				         AND TPRD.tblproductdetalle_stock >= ?
+>>>>>>> origin/master
                 				         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                          AND TDS.tbldiasemana_dia = ?
                 					GROUP BY TC.idtblcolonia";
@@ -7569,7 +7597,11 @@ class FuncionesBePickler{
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ?
                 				         AND TPRD.tblproducto_activado = ?
+<<<<<<< HEAD
                 				         AND TPRD.tblproductodetalle_stock >= ?
+=======
+                				         AND TPRD.tblproductdetalle_stock >= ?
+>>>>>>> origin/master
                 				         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                 				         AND TDS.tbldiasemana_dia = ?
 				                         AND TC.tblcolonia_codipost = ?
