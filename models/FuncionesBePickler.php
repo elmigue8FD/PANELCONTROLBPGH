@@ -7505,13 +7505,6 @@ class FuncionesBePickler{
     /*Consulta las Colonias (depende de la ciudad, el tipo de servicio y los dias de pedido)*/
     public static function getTblcoloniaByTblproveedor($idtblciudad,$idtbltipodeservicio,$fechapedido,$codipost){
 
-<<<<<<< HEAD
-    	$zona = new DateTimeZone('America/Monterrey');
-        
-        
-
-=======
->>>>>>> origin/master
     	date_default_timezone_set("America/Monterrey");
         $activado=1;
         $fechapedidoingresada = new DateTime($fechapedido);
@@ -7526,11 +7519,8 @@ class FuncionesBePickler{
         $tipodeservicioCompleto=3;
         
 
-        
-
        if($fechapedidoingresada == $fechahoy)
        { 
-       	
             $tipodepedido= 1; //pedidoparahoy
             $stock=1;
        	}else
@@ -7541,23 +7531,19 @@ class FuncionesBePickler{
         
         
         if($idtbltipodeservicio==1){ //Entrega en Pasteleria
-                    $consulta = "SELECT TC.* FROM tblcolonia TC
+            $consulta = "SELECT TC.* FROM tblcolonia TC
 				                        INNER JOIN tblproveedor TP ON TC.idtblcolonia = TP.tblcolonia_idtblcolonia 
 				                        INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
 				                        INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto 
                                         INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
                                         INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
 			                        WHERE TC.tblciudad_idtblciudad = ?			 
-                			             AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-                				         AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )
+                			            /* AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
+                				         AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )*/
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ? 
                 				         AND TPRD.tblproducto_activado = ?
-<<<<<<< HEAD
                 				         AND TPRD.tblproductodetalle_stock >= ?
-=======
-                				         AND TPRD.tblproductdetalle_stock >= ?
->>>>>>> origin/master
                 				         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                          AND TDS.tbldiasemana_dia = ?
                 					GROUP BY TC.idtblcolonia";
@@ -7565,16 +7551,16 @@ class FuncionesBePickler{
 			try{
 			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
 			    $resultado->bindParam(1,$idtblciudad,PDO::PARAM_INT);
-			    $resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
+			    /*$resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
 			    $resultado->bindParam(3,$tipodeservicioCompleto,PDO::PARAM_INT);
 			    $resultado->bindParam(4,$tipodepedido,PDO::PARAM_INT);
-			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);
-			    $resultado->bindParam(6,$activado,PDO::PARAM_INT);
-			    $resultado->bindParam(7,$activado,PDO::PARAM_INT);
-			    $resultado->bindParam(8,$activado,PDO::PARAM_INT);
-			    $resultado->bindParam(9,$stock,PDO::PARAM_INT);
-			    $resultado->bindParam(10,$diasMinimos,PDO::PARAM_INT);
-			    $resultado->bindParam(11,$diasemana,PDO::PARAM_STR);
+			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);*/
+			    $resultado->bindParam(2,$activado,PDO::PARAM_INT);
+			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
+			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+			    $resultado->bindParam(5,$stock,PDO::PARAM_INT);
+			    $resultado->bindParam(6,$diasMinimos,PDO::PARAM_INT);
+			    $resultado->bindParam(7,$diasemana,PDO::PARAM_STR);
 			    $resultado->execute();
 			    return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
 			    } catch(PDOException $e){
@@ -7592,16 +7578,12 @@ class FuncionesBePickler{
                                         INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana 
 			                        WHERE TC.tblciudad_idtblciudad = ?
 										 AND TC.idtblcolonia = TCPS.tblcolonia_idtblcolonia	
-                			             AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-                				         AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )
+                			             /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
+                				         AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )*/
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ?
                 				         AND TPRD.tblproducto_activado = ?
-<<<<<<< HEAD
                 				         AND TPRD.tblproductodetalle_stock >= ?
-=======
-                				         AND TPRD.tblproductdetalle_stock >= ?
->>>>>>> origin/master
                 				         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                 				         AND TDS.tbldiasemana_dia = ?
 				                         AND TC.tblcolonia_codipost = ?
@@ -7610,17 +7592,17 @@ class FuncionesBePickler{
 			try{
 			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
 			    $resultado->bindParam(1,$idtblciudad,PDO::PARAM_INT);
-			    $resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
+			   /* $resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
 			    $resultado->bindParam(3,$tipodeservicioCompleto,PDO::PARAM_INT);
 			    $resultado->bindParam(4,$tipodepedido,PDO::PARAM_INT);
-			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);
-			    $resultado->bindParam(6,$activado,PDO::PARAM_INT);
-			    $resultado->bindParam(7,$activado,PDO::PARAM_INT);
-			    $resultado->bindParam(8,$activado,PDO::PARAM_INT);
-			    $resultado->bindParam(9,$stock,PDO::PARAM_INT);
-			    $resultado->bindParam(10,$diasMinimos,PDO::PARAM_INT);
-			    $resultado->bindParam(11,$diasemana,PDO::PARAM_STR);
-			    $resultado->bindParam(12,$codipost,PDO::PARAM_INT);
+			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);*/
+			    $resultado->bindParam(2,$activado,PDO::PARAM_INT);
+			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
+			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+			    $resultado->bindParam(5,$stock,PDO::PARAM_INT);
+			    $resultado->bindParam(6,$diasMinimos,PDO::PARAM_INT);
+			    $resultado->bindParam(7,$diasemana,PDO::PARAM_STR);
+			    $resultado->bindParam(8,$codipost,PDO::PARAM_INT);
 			    $resultado->execute();
 			    return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
 			} catch(PDOException $e){
@@ -7631,22 +7613,22 @@ class FuncionesBePickler{
     
     /*Consulta las Horas (depende de la colona, el tipo de servicio y los dias de pedido)*/
     public static function getTblhorasByTblProveedor($idtblcolonia,$idtbltipodeservicio,$fechapedido){
-        
+                
+        date_default_timezone_set("America/Monterrey");
         $activado=1;
-        
         $fechapedidoingresada = new DateTime($fechapedido);
-        $fechahoy = new DateTime("now");
+        $fechahoy = new DateTime(date("d-m-Y"));
         $interval= $fechahoy->diff($fechapedidoingresada);
   		$diasMinimos= $interval->format('%d');
   		
-        $diasemana= $fechapedidoingresada->format('l');
+  		$diasemana= $fechapedidoingresada->format('l');
   		
   		$tipopedidoCompleto=3;
         $tipodeservicioCompleto=3;
         
-        $timefinal = date("H:i");
+        $timefinal = date("H:i:s");
 	    $nuevotime = strtotime('+1 hour', strtotime($timefinal));
-		$nuevotime = date("H:i", $nuevotime);
+		$nuevotime = date("H:i:s", $nuevotime);
         
         
        if($fechapedidoingresada == $fechahoy){ 
@@ -7656,44 +7638,50 @@ class FuncionesBePickler{
        		$tipodepedido= 2; //pedidoparaotrodia
        		$stock=0;
        	}
-       	
+
+           	
        	
        	if($idtbltipodeservicio==1){ //Entrega en Pasteleria 
        	
        	    if($tipodepedido==1){ // Caso para hoy (Regresa las horas entre el horario de las pastelerias mayores a la hora actual)
        	        
        	        $consulta = " SELECT THs.* FROM tblhora THs , tblproveedor TP  
-                                    		  INNER JOIN tblhrsprovtienda TTP ON TTP.tblproveedor_idtblproveedor = TP.idtblproveedor	
-                                    		  INNER JOIN tblhraabre TA ON TTP.tblhraabre_idtblhraabre = TA.idtblhraabre
-                                              INNER JOIN tblhracierra TC ON TTP.tblhracierra_idtblhracierra = TC.idtblhracierra
-                                              INNER JOIN tblcolonia TCL ON TP.tblcolonia_idtblcolonia = TCL.idtblcolonia 
-                                    		  INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
-                                    		  INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto
-                                              INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
-                                              INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana 
-                                            WHERE THs.tblhora_hora > CAST( ? AS TIME)
-                                              AND TCL.idtblcolonia = ?    
-                                              AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-                    				          AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )
-                    				          AND TP.tblproveedor_activado = ?
-                    				          AND TPR.tblproducto_activado = ? 
-                    				          AND TPRD.tblproductodetalle_stock >= ?
-                    				          AND TPRD.tblproductdetalle_diaselaboracion >= ?
-                    				          AND TDS.tbldiasemana_dia = ?
-                                            GROUP BY THs.tblhora_hora";
+        		  INNER JOIN tblhrsprovtienda TTP ON TTP.tblproveedor_idtblproveedor = TP.idtblproveedor	
+        		  INNER JOIN tblhraabre TA ON TTP.tblhraabre_idtblhraabre = TA.idtblhraabre
+                  INNER JOIN tblhracierra TC ON TTP.tblhracierra_idtblhracierra = TC.idtblhracierra
+                  INNER JOIN tblcolonia TCL ON TP.tblcolonia_idtblcolonia = TCL.idtblcolonia 
+        		  INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
+        		  INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto
+                  INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
+                  INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
+                  INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora
+                  INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora 
+                WHERE THs.tblhora_hora > CAST( ? AS TIME)
+                  AND THs.tblhora_hora BETWEEN THa.tblhora_hora AND THc.tblhora_hora
+                  AND TCL.idtblcolonia = ?    
+                  /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
+		          AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )*/
+		          AND TP.tblproveedor_activado = ?
+		          AND TPR.tblproducto_activado = ? 
+	              AND TPRD.tblproducto_activado = ?		          
+		          AND TPRD.tblproductodetalle_stock >= ?
+		          AND TPRD.tblproductdetalle_diaselaboracion <= ?
+		          AND TDS.tbldiasemana_dia = ?
+                GROUP BY THs.tblhora_hora ASC";
                 try{
     			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
     			    $resultado->bindParam(1,$nuevotime,PDO::PARAM_STR);
     			    $resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
-    			    $resultado->bindParam(3,$idtbltipodeservicio,PDO::PARAM_INT);
+    			   /* $resultado->bindParam(3,$idtbltipodeservicio,PDO::PARAM_INT);
     			    $resultado->bindParam(4,$tipodeservicioCompleto,PDO::PARAM_INT);
     			    $resultado->bindParam(5,$tipodepedido,PDO::PARAM_INT);
-    			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);
-    			    $resultado->bindParam(6,$activado,PDO::PARAM_INT);
-    			    $resultado->bindParam(7,$activado,PDO::PARAM_INT);
-    			    $resultado->bindParam(8,$stock,PDO::PARAM_INT);
-    			    $resultado->bindParam(9,$diasMinimos,PDO::PARAM_INT);
-    			    $resultado->bindParam(10,$diasemana,PDO::PARAM_STR);
+    			    $resultado->bindParam(6,$tipopedidoCompleto,PDO::PARAM_INT);*/
+    			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
+    			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+    			    $resultado->bindParam(5,$activado,PDO::PARAM_INT);
+    			    $resultado->bindParam(6,$stock,PDO::PARAM_INT);
+    			    $resultado->bindParam(7,$diasMinimos,PDO::PARAM_INT);
+    			    $resultado->bindParam(8,$diasemana,PDO::PARAM_STR);
     			    $resultado->execute();
     			    return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
 			       } catch(PDOException $e){
@@ -7705,35 +7693,40 @@ class FuncionesBePickler{
        	    }else {// Caso para otro día (Regresa las horas entre el horario de las pastelerias)
        	    
        	            $consulta = " SELECT THs.* FROM tblhora THs , tblproveedor TP  
-                                    		  INNER JOIN tblhrsprovtienda TTP ON TTP.tblproveedor_idtblproveedor = TP.idtblproveedor	
-                                    		  INNER JOIN tblhraabre TA ON TTP.tblhraabre_idtblhraabre = TA.idtblhraabre
-                                              INNER JOIN tblhracierra TC ON TTP.tblhracierra_idtblhracierra = TC.idtblhracierra
-                                              INNER JOIN tblcolonia TCL ON TP.tblcolonia_idtblcolonia = TCL.idtblcolonia 
-                                    		  INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
-                                    		  INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto
-                                              INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
-                                              INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana  
-                                            WHERE  TCL.idtblcolonia = ?    
-                                              AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-                    				          AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )
-                    				          AND TP.tblproveedor_activado = ?
-                    				          AND TPR.tblproducto_activado = ? 
-                    				          AND TPRD.tblproductodetalle_stock >= ?
-                    				          AND TPRD.tblproductdetalle_diaselaboracion >= ?
-                    				          AND TDS.tbldiasemana_dia = ?
-                                            GROUP BY THs.tblhora_hora";
+	        		  INNER JOIN tblhrsprovtienda TTP ON TTP.tblproveedor_idtblproveedor = TP.idtblproveedor
+	        		  INNER JOIN tblhraabre TA ON TTP.tblhraabre_idtblhraabre = TA.idtblhraabre
+	                  INNER JOIN tblhracierra TC ON TTP.tblhracierra_idtblhracierra = TC.idtblhracierra
+	                  INNER JOIN tblcolonia TCL ON TP.tblcolonia_idtblcolonia = TCL.idtblcolonia 
+	        		  INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
+	        		  INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto
+	                  INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
+	                  INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
+                  	  INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora
+                  	  INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora 
+	                WHERE  TCL.idtblcolonia = ?    
+	                  /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
+			          AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )*/
+			          AND TP.tblproveedor_activado = ?
+			          AND TPR.tblproducto_activado = ? 
+			          AND TPRD.tblproducto_activado = ?
+			          AND TPRD.tblproductodetalle_stock >= ?
+			          AND TPRD.tblproductdetalle_diaselaboracion <= ?
+			          AND TDS.tbldiasemana_dia = ?
+			          AND THs.tblhora_hora BETWEEN THa.tblhora_hora AND THc.tblhora_hora
+	                GROUP BY THs.tblhora_hora ASC";
                 try{
     			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
     			    $resultado->bindParam(1,$idtblcolonia,PDO::PARAM_INT);
-    			    $resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
+    			    /*$resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
     			    $resultado->bindParam(3,$tipodeservicioCompleto,PDO::PARAM_INT);
     			    $resultado->bindParam(4,$tipodepedido,PDO::PARAM_INT);
-    			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);
-    			    $resultado->bindParam(6,$activado,PDO::PARAM_INT);
-    			    $resultado->bindParam(7,$activado,PDO::PARAM_INT);
-    			    $resultado->bindParam(8,$stock,PDO::PARAM_INT);
-    			    $resultado->bindParam(9,$diasMinimos,PDO::PARAM_INT);
-    			    $resultado->bindParam(10,$diasemana,PDO::PARAM_STR);
+    			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);*/
+    			    $resultado->bindParam(2,$activado,PDO::PARAM_INT);
+    			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
+    			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+    			    $resultado->bindParam(5,$stock,PDO::PARAM_INT);
+    			    $resultado->bindParam(6,$diasMinimos,PDO::PARAM_INT);
+    			    $resultado->bindParam(7,$diasemana,PDO::PARAM_STR);
     			    $resultado->execute();
     			    return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
 			       } catch(PDOException $e){
@@ -7748,36 +7741,38 @@ class FuncionesBePickler{
             
             
                     $consulta= "SELECT THs.*  FROM tblhora THs  
-                                    			  INNER JOIN tblhrsprovdom THPS ON THs.idtblhora = THPS.tblhora_idtblhora
-                                                  INNER JOIN tblproveedor TP ON THPS.tblproveedor_idtblproveedor = TP.idtblproveedor
-                                                  INNER JOIN tblcoloniaprovservicio TCPS ON TCPS.tblproveedor_idtblproveedor = TP.idtblproveedor
-                                                  INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
-                                    			  INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto
-                                                  INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
-                                                  INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana  
-                                              WHERE THs.tblhora_hora > CAST(? AS TIME)
-                                                AND TCPS.tblcolonia_idtblcolonia = ?
-                                                AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-                    				            AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? ) 
-                    				            AND TP.tblproveedor_activado = ?
-                    				            AND TPR.tblproducto_activado = ? 
-                    				            AND TPRD.tblproductodetalle_stock >= ?
-                    				            AND TPRD.tblproductdetalle_diaselaboracion >= ?
-                    				            AND TDS.tbldiasemana_dia = ?
-			                                  GROUP BY THs.tblhora_hora";
+	    			  INNER JOIN tblhrsprovdom THPS ON THs.idtblhora = THPS.tblhora_idtblhora
+	                  INNER JOIN tblproveedor TP ON THPS.tblproveedor_idtblproveedor = TP.idtblproveedor
+	                  INNER JOIN tblcoloniaprovservicio TCPS ON TCPS.tblproveedor_idtblproveedor = TP.idtblproveedor
+	                  INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
+	    			  INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto
+	                  INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
+	                  INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana  
+	              WHERE THs.tblhora_hora > CAST(? AS TIME)
+	                AND TCPS.tblcolonia_idtblcolonia = ?
+	                /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
+		            AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? ) */
+		            AND TP.tblproveedor_activado = ?
+		            AND TPR.tblproducto_activado = ? 
+		            AND TPRD.tblproducto_activado = ?
+		            AND TPRD.tblproductodetalle_stock >= ?
+		            AND TPRD.tblproductdetalle_diaselaboracion <= ?
+		            AND TDS.tbldiasemana_dia = ?
+	              GROUP BY THs.tblhora_hora ASC ";
 			         try{
         			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
         			    $resultado->bindParam(1,$nuevotime,PDO::PARAM_STR);
         			    $resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
-        			    $resultado->bindParam(3,$idtbltipodeservicio,PDO::PARAM_INT);
+        			    /*$resultado->bindParam(3,$idtbltipodeservicio,PDO::PARAM_INT);
         			    $resultado->bindParam(4,$tipodeservicioCompleto,PDO::PARAM_INT);
         			    $resultado->bindParam(5,$tipodepedido,PDO::PARAM_INT);
-        			    $resultado->bindParam(6,$tipopedidoCompleto,PDO::PARAM_INT);
-        			    $resultado->bindParam(7,$activado,PDO::PARAM_INT);
-        			    $resultado->bindParam(8,$activado,PDO::PARAM_INT);
-        			    $resultado->bindParam(9,$stock,PDO::PARAM_INT);
-        			    $resultado->bindParam(10,$diasMinimos,PDO::PARAM_INT);
-        			    $resultado->bindParam(11,$diasemana,PDO::PARAM_STR);
+        			    $resultado->bindParam(6,$tipopedidoCompleto,PDO::PARAM_INT);*/
+        			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
+        			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+        			    $resultado->bindParam(5,$activado,PDO::PARAM_INT);
+        			    $resultado->bindParam(6,$stock,PDO::PARAM_INT);
+        			    $resultado->bindParam(7,$diasMinimos,PDO::PARAM_INT);
+        			    $resultado->bindParam(8,$diasemana,PDO::PARAM_STR);
         			    $resultado->execute();
         			    return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
 			       } catch(PDOException $e){
@@ -7796,26 +7791,28 @@ class FuncionesBePickler{
                                                   INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
                                                   INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana  
                                               WHERE TCPS.tblcolonia_idtblcolonia = ?
-                                                AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-                    				            AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )  
+                                                /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
+                    				            AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )  */
                     				            AND TP.tblproveedor_activado = ?
-                    				            AND TPR.tblproducto_activado = ? 
+                    				            AND TPR.tblproducto_activado = ?
+                    				            AND TPRD.tblproducto_activado = ?
                     				            AND TPRD.tblproductodetalle_stock >= ?
-                    				            AND TPRD.tblproductdetalle_diaselaboracion >= ?
+                    				            AND TPRD.tblproductdetalle_diaselaboracion <= ?
                     				            AND TDS.tbldiasemana_dia = ?
 			                                  GROUP BY THs.tblhora_hora";
 			         try{
         			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
         			    $resultado->bindParam(1,$idtblcolonia,PDO::PARAM_INT);
-        			    $resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
+        			    /*$resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
         			    $resultado->bindParam(3,$tipodeservicioCompleto,PDO::PARAM_INT);
         			    $resultado->bindParam(4,$tipodepedido,PDO::PARAM_INT);
-        			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);
-        			    $resultado->bindParam(6,$activado,PDO::PARAM_INT);
-        			    $resultado->bindParam(7,$activado,PDO::PARAM_INT);
-        			    $resultado->bindParam(8,$stock,PDO::PARAM_INT);
-        			    $resultado->bindParam(9,$diasMinimos,PDO::PARAM_INT);
-        			    $resultado->bindParam(10,$diasemana,PDO::PARAM_STR);
+        			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);*/
+        			    $resultado->bindParam(2,$activado,PDO::PARAM_INT);
+        			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
+        			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+        			    $resultado->bindParam(5,$stock,PDO::PARAM_INT);
+        			    $resultado->bindParam(6,$diasMinimos,PDO::PARAM_INT);
+        			    $resultado->bindParam(7,$diasemana,PDO::PARAM_STR);
         			    $resultado->execute();
         			    return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
 			       } catch(PDOException $e){
