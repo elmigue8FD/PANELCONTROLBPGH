@@ -7543,7 +7543,7 @@ class FuncionesBePickler{
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ? 
                 				         AND TPRD.tblproducto_activado = ?
-                				         AND TPRD.tblproductodetalle_stock >= ?
+                				         AND TPRD.tblproductdetalle_stock >= ?
                 				         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                          AND TDS.tbldiasemana_dia = ?
                 					GROUP BY TC.idtblcolonia";
@@ -7583,7 +7583,7 @@ class FuncionesBePickler{
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ?
                 				         AND TPRD.tblproducto_activado = ?
-                				         AND TPRD.tblproductodetalle_stock >= ?
+                				         AND TPRD.tblproductdetalle_stock >= ?
                 				         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                 				         AND TDS.tbldiasemana_dia = ?
 				                         AND TC.tblcolonia_codipost = ?
@@ -7664,7 +7664,7 @@ class FuncionesBePickler{
 		          AND TP.tblproveedor_activado = ?
 		          AND TPR.tblproducto_activado = ? 
 	              AND TPRD.tblproducto_activado = ?		          
-		          AND TPRD.tblproductodetalle_stock >= ?
+		          AND TPRD.tblproductdetalle_stock >= ?
 		          AND TPRD.tblproductdetalle_diaselaboracion <= ?
 		          AND TDS.tbldiasemana_dia = ?
                 GROUP BY THs.tblhora_hora ASC";
@@ -7709,7 +7709,7 @@ class FuncionesBePickler{
 			          AND TP.tblproveedor_activado = ?
 			          AND TPR.tblproducto_activado = ? 
 			          AND TPRD.tblproducto_activado = ?
-			          AND TPRD.tblproductodetalle_stock >= ?
+			          AND TPRD.tblproductdetalle_stock >= ?
 			          AND TPRD.tblproductdetalle_diaselaboracion <= ?
 			          AND TDS.tbldiasemana_dia = ?
 			          AND THs.tblhora_hora BETWEEN THa.tblhora_hora AND THc.tblhora_hora
@@ -7755,7 +7755,7 @@ class FuncionesBePickler{
 		            AND TP.tblproveedor_activado = ?
 		            AND TPR.tblproducto_activado = ? 
 		            AND TPRD.tblproducto_activado = ?
-		            AND TPRD.tblproductodetalle_stock >= ?
+		            AND TPRD.tblproductdetalle_stock >= ?
 		            AND TPRD.tblproductdetalle_diaselaboracion <= ?
 		            AND TDS.tbldiasemana_dia = ?
 	              GROUP BY THs.tblhora_hora ASC ";
@@ -7796,7 +7796,7 @@ class FuncionesBePickler{
                     				            AND TP.tblproveedor_activado = ?
                     				            AND TPR.tblproducto_activado = ?
                     				            AND TPRD.tblproducto_activado = ?
-                    				            AND TPRD.tblproductodetalle_stock >= ?
+                    				            AND TPRD.tblproductdetalle_stock >= ?
                     				            AND TPRD.tblproductdetalle_diaselaboracion <= ?
                     				            AND TDS.tbldiasemana_dia = ?
 			                                  GROUP BY THs.tblhora_hora";
