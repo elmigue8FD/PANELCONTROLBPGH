@@ -7537,9 +7537,7 @@ class FuncionesBePickler{
 				                        INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto 
                                         INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
                                         INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
-			                        WHERE TC.tblciudad_idtblciudad = ?			 
-                			            /* AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-                				         AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )*/
+			                        WHERE TC.tblciudad_idtblciudad = ?		
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ? 
                 				         AND TPRD.tblproducto_activado = ?
@@ -7551,10 +7549,6 @@ class FuncionesBePickler{
 			try{
 			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
 			    $resultado->bindParam(1,$idtblciudad,PDO::PARAM_INT);
-			    /*$resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
-			    $resultado->bindParam(3,$tipodeservicioCompleto,PDO::PARAM_INT);
-			    $resultado->bindParam(4,$tipodepedido,PDO::PARAM_INT);
-			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);*/
 			    $resultado->bindParam(2,$activado,PDO::PARAM_INT);
 			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
 			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
@@ -7578,8 +7572,6 @@ class FuncionesBePickler{
                                         INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana 
 			                        WHERE TC.tblciudad_idtblciudad = ?
 										 AND TC.idtblcolonia = TCPS.tblcolonia_idtblcolonia	
-                			             /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-                				         AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )*/
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ?
                 				         AND TPRD.tblproducto_activado = ?
@@ -7592,10 +7584,6 @@ class FuncionesBePickler{
 			try{
 			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
 			    $resultado->bindParam(1,$idtblciudad,PDO::PARAM_INT);
-			   /* $resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
-			    $resultado->bindParam(3,$tipodeservicioCompleto,PDO::PARAM_INT);
-			    $resultado->bindParam(4,$tipodepedido,PDO::PARAM_INT);
-			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);*/
 			    $resultado->bindParam(2,$activado,PDO::PARAM_INT);
 			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
 			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
@@ -7659,8 +7647,6 @@ class FuncionesBePickler{
                 WHERE THs.tblhora_hora > CAST( ? AS TIME)
                   AND THs.tblhora_hora BETWEEN THa.tblhora_hora AND THc.tblhora_hora
                   AND TCL.idtblcolonia = ?    
-                  /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-		          AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )*/
 		          AND TP.tblproveedor_activado = ?
 		          AND TPR.tblproducto_activado = ? 
 	              AND TPRD.tblproducto_activado = ?		          
@@ -7672,10 +7658,6 @@ class FuncionesBePickler{
     			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
     			    $resultado->bindParam(1,$nuevotime,PDO::PARAM_STR);
     			    $resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
-    			   /* $resultado->bindParam(3,$idtbltipodeservicio,PDO::PARAM_INT);
-    			    $resultado->bindParam(4,$tipodeservicioCompleto,PDO::PARAM_INT);
-    			    $resultado->bindParam(5,$tipodepedido,PDO::PARAM_INT);
-    			    $resultado->bindParam(6,$tipopedidoCompleto,PDO::PARAM_INT);*/
     			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
     			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
     			    $resultado->bindParam(5,$activado,PDO::PARAM_INT);
@@ -7704,8 +7686,6 @@ class FuncionesBePickler{
                   	  INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora
                   	  INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora 
 	                WHERE  TCL.idtblcolonia = ?    
-	                  /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-			          AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )*/
 			          AND TP.tblproveedor_activado = ?
 			          AND TPR.tblproducto_activado = ? 
 			          AND TPRD.tblproducto_activado = ?
@@ -7717,10 +7697,6 @@ class FuncionesBePickler{
                 try{
     			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
     			    $resultado->bindParam(1,$idtblcolonia,PDO::PARAM_INT);
-    			    /*$resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
-    			    $resultado->bindParam(3,$tipodeservicioCompleto,PDO::PARAM_INT);
-    			    $resultado->bindParam(4,$tipodepedido,PDO::PARAM_INT);
-    			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);*/
     			    $resultado->bindParam(2,$activado,PDO::PARAM_INT);
     			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
     			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
@@ -7750,8 +7726,6 @@ class FuncionesBePickler{
 	                  INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana  
 	              WHERE THs.tblhora_hora > CAST(? AS TIME)
 	                AND TCPS.tblcolonia_idtblcolonia = ?
-	                /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-		            AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? ) */
 		            AND TP.tblproveedor_activado = ?
 		            AND TPR.tblproducto_activado = ? 
 		            AND TPRD.tblproducto_activado = ?
@@ -7763,10 +7737,6 @@ class FuncionesBePickler{
         			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
         			    $resultado->bindParam(1,$nuevotime,PDO::PARAM_STR);
         			    $resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
-        			    /*$resultado->bindParam(3,$idtbltipodeservicio,PDO::PARAM_INT);
-        			    $resultado->bindParam(4,$tipodeservicioCompleto,PDO::PARAM_INT);
-        			    $resultado->bindParam(5,$tipodepedido,PDO::PARAM_INT);
-        			    $resultado->bindParam(6,$tipopedidoCompleto,PDO::PARAM_INT);*/
         			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
         			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
         			    $resultado->bindParam(5,$activado,PDO::PARAM_INT);
@@ -7791,8 +7761,6 @@ class FuncionesBePickler{
                                                   INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
                                                   INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana  
                                               WHERE TCPS.tblcolonia_idtblcolonia = ?
-                                                /*AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?) 
-                    				            AND (TP.tbltipopedido_idtbltipopedido = ? OR TP.tbltipopedido_idtbltipopedido = ? )  */
                     				            AND TP.tblproveedor_activado = ?
                     				            AND TPR.tblproducto_activado = ?
                     				            AND TPRD.tblproducto_activado = ?
@@ -7803,10 +7771,6 @@ class FuncionesBePickler{
 			         try{
         			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
         			    $resultado->bindParam(1,$idtblcolonia,PDO::PARAM_INT);
-        			    /*$resultado->bindParam(2,$idtbltipodeservicio,PDO::PARAM_INT);
-        			    $resultado->bindParam(3,$tipodeservicioCompleto,PDO::PARAM_INT);
-        			    $resultado->bindParam(4,$tipodepedido,PDO::PARAM_INT);
-        			    $resultado->bindParam(5,$tipopedidoCompleto,PDO::PARAM_INT);*/
         			    $resultado->bindParam(2,$activado,PDO::PARAM_INT);
         			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
         			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
