@@ -3463,8 +3463,8 @@ $( window ).ready(function()
                 if(i==0)
                 $('#div_imagenPortadaProductoLinea'+tblproductimg_idproducto).append('<img name="imagenPortadaProductoLinea'+tblproductimg_idproducto+'" class="md-card-head-img" src="./../assests_general/productos/default-img.gif" alt=""/>');  
                 
-                //LANZAMOS LA PRIMERA IMAGEN DEL PRODUCTO
-                if(i==0)                              
+                //LANZAMOS LA SEGUNDA IMAGEN DEL PRODUCTO
+                if(i==1&&i<2)
                   $("[name="+imgSrcProductoLinea+"]").attr("src",productoImagen);
                 //if(i==0)
                   //alert('imgSrcProductoLinea::'+imgSrcProductoLinea+' productoImagen::'+productoImagen);
@@ -3506,10 +3506,6 @@ $( window ).ready(function()
 
             arregloMostrarimagenCotizador.push(idProductoCotizador);
 
-            //console.log('final indexArreglo::'+indexArregloCotizador+' idProducto::'+idProductoCotizador+' nombre::'+nombreCotizador+' descripcion::'+descripcionCotizador+' ingrediente::'+ingredienteCotizador+' promcalificacion::'+promcalificacionCotizador+' diaselaboracion::'+diaselaboracionCotizador+' activo::'+activadoCotizador+' idtblevento::'+idtbleventoCotizador+' idtblproveedor::'+idtblproveedorCotizador);
-                                
-            //arregloMostrarimagen.push(idProducto);
-
             //TBLPRODUCTOCOTIZADOR
             
             arregloInfoUnProductoCotizador.push(idProductoCotizador);
@@ -3520,10 +3516,8 @@ $( window ).ready(function()
             arregloInfoUnProductoCotizador.push(diaselaboracionCotizador);
             arregloInfoUnProductoCotizador.push(activadoCotizador);
             arregloInfoUnProductoCotizador.push(idtbleventoCotizador);
-            arregloInfoUnProductoCotizador.push(idtblproveedorCotizador);
-            
+            arregloInfoUnProductoCotizador.push(idtblproveedorCotizador);      
 
-            
             //SE AGREGA AL ARREGLO QUE TANDRA A TODOS LOS PRODUCTOS Y LIMPIAMOS EL ARREGLO arregloInfoUnProducto PARA EL SIGUIENTE PRODUCTO
             arregloInfoTodosProductoCotizador.push(arregloInfoUnProductoCotizador);
             arregloInfoUnProductoCotizador=[];
@@ -3567,10 +3561,10 @@ $( window ).ready(function()
                   if(i==0)
                   {
                   $('#div_imagenPortadaProductoCotizador'+tblproductcotizador_idtblproductcotizador).append('<img name="imagenPortadaProductoCotizador'+tblproductcotizador_idtblproductcotizador+'" class="md-card-head-img" src="./../assests_general/productos/default-img.gif" alt=""/>');
-                   //alert('cotizador img i::'+i+' item::'+item+' tblproductcotizador_idtblproductcotizador::'+tblproductcotizador_idtblproductcotizador);
                  }
-                  //LANZAMOS LA PRIMERA IMAGEN DEL PRODUCTO
-                  if(i==0)                              
+                 console.log('imagen producto cotizador->i::'+i+' item::'+item);
+                  //LANZAMOS LA SEGUNDA IMAGEN DEL PRODUCTO
+                  if(i==1&&i<2)
                     $("[name="+imgSrcProductoCotizador+"]").attr("src",productoCotizadorImagen);
                   
                   //return false;
@@ -3598,7 +3592,7 @@ $( window ).ready(function()
         .done(function( msgTblProductoComplementario ) {
           //console.log('entro a msgTblProductoComplementario');
           
-          if(msgTblProductoComplementario.datos!="Hubo algun error, vuelve a intentarlo WEB")
+        if(msgTblProductoComplementario.datos!="Hubo algun error, vuelve a intentarlo WEB")
         {   
           $.each(msgTblProductoComplementario.datos, function(i,item){
             //console.log('tiene iunfor entro al each');
@@ -3614,13 +3608,8 @@ $( window ).ready(function()
             stockComplementario=msgTblProductoComplementario.datos[i].tblproductcomplem_stock;
 
             arregloMostrarimagenComplementario.push(idProductoComplementario);
-
-            //console.log('final indexArreglo::'+indexArregloComplementario+' idProducto::'+idProductoComplementario+' nombre::'+nombreComplementario+' descripcion::'+descripcionComplementario+' seo::'+seoComplementario+' precioreal::'+precioRealComplementario+' srcimg::'+srcimgComplementario+' activado::'+activadoComplementario+' idtblproveedor::'+idtblproveedorComplementario+' stock::'+stockComplementario);
                                 
-            //arregloMostrarimagen.push(idProducto);
-
-            //TBLPRODUCTOComplementario
-            
+            //TBLPRODUCTOComplementario            
             arregloInfoUnProductoComplementario.push(idProductoComplementario);
             arregloInfoUnProductoComplementario.push(nombreComplementario);
             arregloInfoUnProductoComplementario.push(descripcionComplementario);
@@ -3631,13 +3620,10 @@ $( window ).ready(function()
             arregloInfoUnProductoComplementario.push(idtblproveedorComplementario);
             arregloInfoUnProductoComplementario.push(stockComplementario);
 
-            
             //SE AGREGA AL ARREGLO QUE TANDRA A TODOS LOS PRODUCTOS Y LIMPIAMOS EL ARREGLO arregloInfoUnProducto PARA EL SIGUIENTE PRODUCTO
             arregloInfoTodosProductoComplementario.push(arregloInfoUnProductoComplementario);
             arregloInfoUnProductoComplementario=[];
 
-            
-             
             //productoAcitvadoComplementario=verificarActivoProductoComplementario(idProductoComplementario,activoComplementario);
             nombreCheckBox="product_edit_active_control_prod_Complementario"+idProductoComplementario;   
             productoAcitvado='<input type="checkbox" data-switchery checked name="product_edit_active_control_prod_Complementario" id="'+nombreCheckBox+'" onclick="activarProducto('+nombreCheckBox+','+idProductoComplementario+')"/>';
@@ -3916,7 +3902,7 @@ $( window ).ready(function()
                         $('#productoslineaPlantilla').html("");
                         */
                         $('#altaproducto')[0].reset();
-                        cargarValoresDefault();
+                        //cargarValoresDefault();
                         UIkit.modal("#popup_nuevoproductolinea").hide();
                         
                         
@@ -4056,9 +4042,9 @@ $( window ).ready(function()
                         var formData = new FormData($("#altaproductocotizador")[0]);
                         var ruta = "imagen-ajax.php";
 
-                        UIkit.modal("#popup_nuevoproductocotizador").hide();
                         $('#altaproductocotizador')[0].reset();
-                        cargarValoresDefault();
+                        //cargarValoresDefault();
+                        UIkit.modal("#popup_nuevoproductocotizador").hide();
 
                         $.ajax({  method: "POST",  url: "uploadImgProductoCotizador.php",  data: formData ,contentType: false,
                         processData: false, })
