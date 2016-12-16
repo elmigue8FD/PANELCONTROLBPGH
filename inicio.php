@@ -2026,6 +2026,7 @@ var emailproveedor = "mispasteles@gmail.com";
   //para historico de eliminacion
   email="<?php echo $_SESSION['usuario']; ?>";
   nombre="<?php echo $_SESSION['nombre']; ?>";
+  nombreSesion="<?php echo $_SESSION['nombre']; ?>";
   apellido="<?php echo $_SESSION['apellido']; ?>";
   nivel="<?php echo $_SESSION['nivel']; ?>";
   /*
@@ -6862,7 +6863,7 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
         UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
 
              $.ajax({ //ingresa el registro con los costos de la cotizacion 
-                method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status}})
+                method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
                 .done(function(datos){
                   if(parseInt(datos.success)==1){
                    UIkit.modal.alert('Exitoso, Cotizacion Enviada');
@@ -6894,7 +6895,7 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
       emailcreo= emailproveedor;
 
       $.ajax({ //ingresa el registro con los costos de la cotizacion 
-                method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status}})
+                method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
                 .done(function(datos){
                   if(parseInt(datos.success)==1){
                    UIkit.modal.alert('Exitoso, Respuesta Enviada');

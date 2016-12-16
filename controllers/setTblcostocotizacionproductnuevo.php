@@ -12,7 +12,6 @@ $costotienda = '';
 $costodomicilio= '';
 $idtblcarritoproductnuevocotizador= '';
 $idtblproveedor= '';
-$idtblmotivocotizacion = '';
 $emailcreo= '';
 /**
  * Validamos que el array $_POST no es null.
@@ -24,12 +23,29 @@ if (!empty($_POST)){
     $costodomicilio= $_POST['costodomicilio'];
     $idtblcarritoproductnuevocotizador= $_POST['idtblcarritoproductnuevocotizador'];
     $idtblproveedor= $_POST['idtblproveedor'];
-    $idtblmotivocotizacion= $_POST['idtblmotivocotizacion'];
     $emailcreo= $_POST['emailcreo'];
+    
+    $nombreproveedor=$_POST['nombre'];
+    $apellido=$_POST['apellido'];
+    $nivel=$_POST['nivel'];
+    /*
+    $nombreproveedor="proveedor";
+    $apellido="apellido";
+    $nivel=1;
+    */
+    $emailmodifico=$emailcreo;
+
+    $tabla="Tblcostocotizacionproductnuevo";
+
+    $registroAnterior=$costotienda.' '.$costodomicilio.' '.$idtblcarritoproductnuevocotizador.' '.$idtblproveedor.' '.$emailcreo;
+    $registroActual=$costotienda.' '.$costodomicilio.' '.$idtblcarritoproductnuevocotizador.' '.$idtblproveedor.' '.$emailcreo;
+
+    $resultadoHistoricoModificacion = FuncionesBePickler::setTblhistoricodemodifi($emailmodifico,$nombreproveedor,$apellido,$nivel,$tabla,$registroAnterior,$registroActual);
+
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setTblcostocotizacionproductnuevo($costotienda,$costodomicilio,$idtblcarritoproductnuevocotizador,$idtblproveedor,$emailcreo,$idtblmotivocotizacion);
+    $resultado = FuncionesBePickler::setTblcostocotizacionproductnuevo($costotienda,$costodomicilio,$idtblcarritoproductnuevocotizador,$idtblproveedor,$emailcreo);
 
     if($resultado)
     {

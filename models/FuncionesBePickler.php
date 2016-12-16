@@ -2347,7 +2347,7 @@ class FuncionesBePickler{
 	///// FUNCIONES REFRENTE A TABLA tblhistoricomodifi ///////
 	public static function setTblhistoricodemodifi($email,$nombre,$apellido,$nivel,$tabla,$registroAnterior,$registroActual){
         
-        $insert ="INSERT INTO tblhistoricodeelimi (tblhistoricodemodifi_emailusuario, tblhistoricodemodifi_nombre, tblhistoricodemodifi_apellido, tblhistoricodemodifi_nivel, tblhistoricodemodifi_tabla, tblhistoricodemodifi_fecha, tblhistoricodemodifi_registroanterior, tblhistoricodemodifi_registroactual) VALUES (?,?,?,?,?,NOW(),?,?)"; 
+        $insert ="INSERT INTO tblhistoricodemodifi (tblhistoricodemodifi_emailusuario, tblhistoricodemodifi_nombre, tblhistoricodemodifi_apellido, tblhistoricodemodifi_nivel, tblhistoricodemodifi_tabla, tblhistoricodemodifi_fecha, tblhistoricodemodifi_registroanterior, tblhistoricodemodifi_registroactual) VALUES (?,?,?,?,?,NOW(),?,?)"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
