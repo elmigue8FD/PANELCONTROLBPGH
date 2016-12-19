@@ -53,7 +53,7 @@ if (!empty($_POST)){
             ' ancho:'.$row["tblproductdetalle_ancho"].
             ' porciones:'.$row["tblproductdetalle_porciones"].
             ' pieza:'.$row["tblproductdetalle_piezas"].
-            ' activado:'.$row["tblproducto_activado"].
+            ' activado:'.$row["tblproductdetalle_activado"].
             ' idtblproducto:'.$row["tblproducto_idtblproducto"].
             ' idtblespecificingrediente:'.$row["tblespecificingrediente_idtblespecificingrediente"].
             ' fchmodificacion:'.$row["tblproductdetalle_fchmodificacion"].

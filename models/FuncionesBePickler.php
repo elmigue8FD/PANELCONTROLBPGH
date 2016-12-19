@@ -3743,7 +3743,7 @@ class FuncionesBePickler{
     public static function getAllTblproductoTblproductoDetalleOfProveedor($idtblproveedor){
     	
 		//$consulta="SELECT producto.idtblproducto as idProducto, producto.tblproducto_nombre as nombre, detalle.tblproductdetalle_diaselaboracion as diaselaboracion,detalle.idtblproductdetalle as idProductoDetalle,detalle.tblproductdetalle_stock as stock,detalle.tblproductdetalle_precioreal as precioreal,detalle.tblproductdetalle_diametro as diamentro, detalle.tblproductdetalle_largo as largo, detalle.tblproductdetalle_ancho as ancho, detalle.tblproductdetalle_piezas as piezas, detalle.tblproducto_activado as activado, especificingrediente.tblespecificingrediente_nombre as nombreIngrediente FROM tblproducto as producto INNER JOIN tblproductdetalle as detalle ON producto.idtblproducto=detalle.tblproducto_idtblproducto INNER JOIN tblespecificingrediente as especificingrediente ON detalle.tblespecificingrediente_idtblespecificingrediente=especificingrediente.idtblespecificingrediente WHERE producto.tblproveedor_idtblproveedor=? ORDER BY producto.idtblproducto";
-		$consulta="SELECT producto.idtblproducto as idProducto, producto.tblproducto_nombre as nombre, producto.tblproducto_descripcion as descripcion, producto.tblproducto_ingredientes as ingredientes, producto.tblproducto_seo as seo, producto.tblproducto_activado as activadoGeneral, producto.tblcategproduct_idtblcategproduct as idtblcategproduct, producto.tblclasifproduct_idtblclasifproduct as idtblclasifproduct, detalle.tblproductdetalle_diaselaboracion as diaselaboracion,detalle.idtblproductdetalle as idProductoDetalle,detalle.tblproductdetalle_stock as stock,detalle.tblproductdetalle_precioreal as precioreal,detalle.tblproductdetalle_diametro as diamentro, detalle.tblproductdetalle_largo as largo, detalle.tblproductdetalle_ancho as ancho, detalle.tblproductdetalle_piezas as piezas, detalle.tblproducto_activado as activado, especificingrediente.tblespecificingrediente_nombre as nombreIngrediente FROM tblproducto as producto INNER JOIN tblproductdetalle as detalle ON producto.idtblproducto=detalle.tblproducto_idtblproducto INNER JOIN tblespecificingrediente as especificingrediente ON detalle.tblespecificingrediente_idtblespecificingrediente=especificingrediente.idtblespecificingrediente WHERE producto.tblproveedor_idtblproveedor=? ORDER BY producto.idtblproducto";
+		$consulta="SELECT producto.idtblproducto as idProducto, producto.tblproducto_nombre as nombre, producto.tblproducto_descripcion as descripcion, producto.tblproducto_ingredientes as ingredientes, producto.tblproducto_seo as seo, producto.tblproducto_activado as activadoGeneral, producto.tblcategproduct_idtblcategproduct as idtblcategproduct, producto.tblclasifproduct_idtblclasifproduct as idtblclasifproduct, detalle.tblproductdetalle_diaselaboracion as diaselaboracion,detalle.idtblproductdetalle as idProductoDetalle,detalle.tblproductdetalle_stock as stock,detalle.tblproductdetalle_precioreal as precioreal,detalle.tblproductdetalle_diametro as diamentro, detalle.tblproductdetalle_largo as largo, detalle.tblproductdetalle_ancho as ancho, detalle.tblproductdetalle_piezas as piezas, detalle.tblproductdetalle_activado as activado, especificingrediente.tblespecificingrediente_nombre as nombreIngrediente FROM tblproducto as producto INNER JOIN tblproductdetalle as detalle ON producto.idtblproducto=detalle.tblproducto_idtblproducto INNER JOIN tblespecificingrediente as especificingrediente ON detalle.tblespecificingrediente_idtblespecificingrediente=especificingrediente.idtblespecificingrediente WHERE producto.tblproveedor_idtblproveedor=? ORDER BY producto.idtblproducto";
 		try{
 
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
@@ -3791,7 +3791,7 @@ class FuncionesBePickler{
     /*Insertar un registro en tblproductdetalle*/
 	 public static function setTblproductDetalle($diaselaboracion,$stock,$precioreal,$preciobp,$diametro,$largo,$ancho,$porciones,$piezas,$activado,$idtblproducto,$idtblespecificingrediente,$emailcreo){
         
-        $insert ="INSERT INTO tblproductdetalle (tblproductdetalle_diaselaboracion,tblproductdetalle_stock,tblproductdetalle_precioreal,tblproductdetalle_preciobepickler,tblproductdetalle_diametro,tblproductdetalle_largo,tblproductdetalle_ancho,tblproductdetalle_porciones,tblproductdetalle_piezas,tblproducto_activado,tblproducto_idtblproducto,tblespecificingrediente_idtblespecificingrediente,tblproductdetalle_fchmodificacion,tblproductdetalle_fchcreacion,tblproductdetalle_emailusuacreo,tblproductdetalle_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
+        $insert ="INSERT INTO tblproductdetalle (tblproductdetalle_diaselaboracion,tblproductdetalle_stock,tblproductdetalle_precioreal,tblproductdetalle_preciobepickler,tblproductdetalle_diametro,tblproductdetalle_largo,tblproductdetalle_ancho,tblproductdetalle_porciones,tblproductdetalle_piezas,tblproductdetalle_activado,tblproducto_idtblproducto,tblespecificingrediente_idtblespecificingrediente,tblproductdetalle_fchmodificacion,tblproductdetalle_fchcreacion,tblproductdetalle_emailusuacreo,tblproductdetalle_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -3836,7 +3836,7 @@ class FuncionesBePickler{
     /*Actualizar un registro en tblproductdetalle*/
 	 public static function setUpdateTblproductDetalle($idtblproductdetalle,$diaselaboracion,$stock,$precioreal,$preciobp,$diametro,$largo,$ancho,$porciones,$piezas,$activado,$idtblproducto,$idtblespecifingrediente,$emailmodifico){
 
-	 	$insert="UPDATE tblproductdetalle SET tblproductdetalle_diaselaboracion=?,tblproductdetalle_stock=?,tblproductdetalle_precioreal=?,tblproductdetalle_preciobepickler=?,tblproductdetalle_diametro=?,tblproductdetalle_largo=?,tblproductdetalle_ancho=?,tblproductdetalle_porciones=?,tblproductdetalle_piezas=?,tblproducto_activado=?,tblproducto_idtblproducto=?,tblespecificingrediente_idtblespecificingrediente=?,tblproductdetalle_fchmodificacion=NOW(),tblproductdetalle_emailusuamodifico=? WHERE idtblproductdetalle= ?";
+	 	$insert="UPDATE tblproductdetalle SET tblproductdetalle_diaselaboracion=?,tblproductdetalle_stock=?,tblproductdetalle_precioreal=?,tblproductdetalle_preciobepickler=?,tblproductdetalle_diametro=?,tblproductdetalle_largo=?,tblproductdetalle_ancho=?,tblproductdetalle_porciones=?,tblproductdetalle_piezas=?,tblproductdetalle_activado=?,tblproducto_idtblproducto=?,tblespecificingrediente_idtblespecificingrediente=?,tblproductdetalle_fchmodificacion=NOW(),tblproductdetalle_emailusuamodifico=? WHERE idtblproductdetalle= ?";
         
         //$insert ="UPDATE tblproductdetalle SET tblproductdetalle_diaselaboracion = ?,tblproductdetalle_stock = ?,tblproductdetalle_precioreal = ?,tblproductdetalle_bepickler = ?,tblproductdetalle_diametro = ?,tblproductdetalle_largo = ?,tblproductdetalle_ancho = ?,tblproductdetalle_porciones = ?,tblproductdetalle_piezas = ?,tblproducto_idtblproducto = ?,tblespecificingrediente_idtblespecificingrediente= ? ,tblproductdetalle_fchmodificacion = NOW(),tblproductdetalle_emailusuamodifico = ? WHERE idtblproductdetalle = ? "; 
         
@@ -3866,7 +3866,7 @@ class FuncionesBePickler{
     /*Actualizar un registro en tblproductdetalle*/
 	public static function setUpdateTblproductDetalleActivar($idtblproductdetalle,$activado,$emailmodifico){
         
-    	$insert ="UPDATE tblproductdetalle SET tblproducto_activado = ?,tblproductdetalle_fchmodificacion = NOW(),tblproductdetalle_emailusuamodifico = ? WHERE idtblproductdetalle = ? "; 
+    	$insert ="UPDATE tblproductdetalle SET tblproductdetalle_activado = ?,tblproductdetalle_fchmodificacion = NOW(),tblproductdetalle_emailusuamodifico = ? WHERE idtblproductdetalle = ? "; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -6466,7 +6466,7 @@ class FuncionesBePickler{
     /*Insertar un registro en tblproductcotimg*/
 	 public static function setTblproductcotimg($srcimg,$idtblproductcotizador,$emailcreo){
         
-        $insert ="INSERT INTO tblproductcotimg (tblproductcotimg_srcimg,tblproductcotizador_idtblproductcotizador,tblproductcotimg_fchmodificacion,tblproductcotimg_fchcreacion,tblproductcotimg_emailusuariocreo,tblproductcotimg_emailusuamodifico) VALUES (?,?,NOW(),NOW(),?,?)"; 	
+        $insert ="INSERT INTO tblproductcotimg (tblproductcotimg_srcimg,tblproductcotizador_idtblproductcotizador,tblproductcotimg_fchmodificacion,tblproductcotimg_fchcreacion,tblproductcotimg_emailusuacreo,tblproductcotimg_emailusuamodifico) VALUES (?,?,NOW(),NOW(),?,?)"; 	
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -6484,7 +6484,7 @@ class FuncionesBePickler{
     /*Obtiene el Id un registro de tblproductimg*/
     public static function getTblproductcotimgIdtblproductcotimg($srcimg,$idtblproductcotimg,$emailcreo){
 	    
-		$consulta = "SELECT * FROM tblproductcotimg WHERE tblproductcotimg_srcimg = ? AND tblproductcotizador_idtblproductcotizador = ? AND tblproductcotimg_emailusuariocreo = ? ORDER BY 	idtblproductcotimg DESC LIMIT 1";
+		$consulta = "SELECT * FROM tblproductcotimg WHERE tblproductcotimg_srcimg = ? AND tblproductcotizador_idtblproductcotizador = ? AND tblproductcotimg_emailusuacreo = ? ORDER BY 	idtblproductcotimg DESC LIMIT 1";
 		
 		try{
 
@@ -7540,7 +7540,7 @@ class FuncionesBePickler{
 			                        WHERE TC.tblciudad_idtblciudad = ?		
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ? 
-                				         AND TPRD.tblproducto_activado = ?
+                				         AND TPRD.tblproductdetalle_activado = ?
                 				         AND TPRD.tblproductdetalle_stock >= ?
                 				         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                          AND TDS.tbldiasemana_dia = ?
@@ -7574,7 +7574,7 @@ class FuncionesBePickler{
 										 AND TC.idtblcolonia = TCPS.tblcolonia_idtblcolonia	
                 				         AND TP.tblproveedor_activado = ?
                 				         AND TPR.tblproducto_activado = ?
-                				         AND TPRD.tblproducto_activado = ?
+                				         AND TPRD.tblproductdetalle_activado = ?
                 				         AND TPRD.tblproductdetalle_stock >= ?
                 				         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                 				         AND TDS.tbldiasemana_dia = ?
@@ -7649,7 +7649,7 @@ class FuncionesBePickler{
                   AND TCL.idtblcolonia = ?    
 		          AND TP.tblproveedor_activado = ?
 		          AND TPR.tblproducto_activado = ? 
-	              AND TPRD.tblproducto_activado = ?		          
+	              AND TPRD.tblproductdetalle_activado = ?		          
 		          AND TPRD.tblproductdetalle_stock >= ?
 		          AND TPRD.tblproductdetalle_diaselaboracion <= ?
 		          AND TDS.tbldiasemana_dia = ?
@@ -7688,7 +7688,7 @@ class FuncionesBePickler{
 	                WHERE  TCL.idtblcolonia = ?    
 			          AND TP.tblproveedor_activado = ?
 			          AND TPR.tblproducto_activado = ? 
-			          AND TPRD.tblproducto_activado = ?
+			          AND TPRD.tblproductdetalle_activado = ?
 			          AND TPRD.tblproductdetalle_stock >= ?
 			          AND TPRD.tblproductdetalle_diaselaboracion <= ?
 			          AND TDS.tbldiasemana_dia = ?
@@ -7728,7 +7728,7 @@ class FuncionesBePickler{
 	                AND TCPS.tblcolonia_idtblcolonia = ?
 		            AND TP.tblproveedor_activado = ?
 		            AND TPR.tblproducto_activado = ? 
-		            AND TPRD.tblproducto_activado = ?
+		            AND TPRD.tblproductdetalle_activado = ?
 		            AND TPRD.tblproductdetalle_stock >= ?
 		            AND TPRD.tblproductdetalle_diaselaboracion <= ?
 		            AND TDS.tbldiasemana_dia = ?
@@ -7763,7 +7763,7 @@ class FuncionesBePickler{
                                               WHERE TCPS.tblcolonia_idtblcolonia = ?
                     				            AND TP.tblproveedor_activado = ?
                     				            AND TPR.tblproducto_activado = ?
-                    				            AND TPRD.tblproducto_activado = ?
+                    				            AND TPRD.tblproductdetalle_activado = ?
                     				            AND TPRD.tblproductdetalle_stock >= ?
                     				            AND TPRD.tblproductdetalle_diaselaboracion <= ?
                     				            AND TDS.tbldiasemana_dia = ?
