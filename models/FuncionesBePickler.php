@@ -7829,17 +7829,17 @@ class FuncionesBePickler{
                                              INNER JOIN tblhracierra TC ON THP.tblhracierra_idtblhracierra = TC.idtblhracierra
                                              INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora 
                                              INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora
+                                             INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TPR.idtblproducto
                                              WHERE TP.tblproveedor_activado = ?  
                                              AND TP.tblcolonia_idtblcolonia = ?
-                                             AND (TP.tbltipopedido_idtbltipopedido= ? OR TP.tbltipopedido_idtbltipopedido= ?)
-                                             AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?)
                                              AND TPR.tblproducto_activado = ?
                                              AND TCP.tblcategproduct_activado = ?
                                              AND TCLP.tblclasifproduct_activado = ?
                                              AND TPR.tblcategproduct_idtblcategproduct = ?
                                              AND TPR.tblclasifproduct_idtblclasifproduct= ?
+                                             AND TPRD.tblproductdetalle_activado = ?
                                              AND TPRD.tblproductodetalle_stock >= ?
-                                             AND TPRD.tblproductdetalle_diaselaboracion >= ?
+                                             AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                              AND TPRD.tblespecificingrediente_idtblespecificingrediente = ?
                                              AND TDS.tbldiasemana_dia = ?
                                              AND CAST(? AS TIME ) BETWEEN THa.tblhora_hora AND THc.tblhora_hora
@@ -7848,20 +7848,17 @@ class FuncionesBePickler{
                         $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
                         $resultado->bindParam(1,$activado,PDO::PARAM_INT);
                         $resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
-                        $resultado->bindParam(3,$tipodepedido,PDO::PARAM_INT);
-                        $resultado->bindParam(4,$tipopedidoCompleto,PDO::PARAM_INT);
-                        $resultado->bindParam(5,$idtbltipodeservicio,PDO::PARAM_INT);
-                        $resultado->bindParam(6,$tipodeservicioCompleto,PDO::PARAM_INT);
-                        $resultado->bindParam(7,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(3,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(5,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(6,$idtblcategproduct,PDO::PARAM_INT);
+                        $resultado->bindParam(7,$idtblclasifproduct,PDO::PARAM_INT);
                         $resultado->bindParam(8,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(9,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(10,$idtblcategproduct,PDO::PARAM_INT);
-                        $resultado->bindParam(11,$idtblclasifproduct,PDO::PARAM_INT);
-                        $resultado->bindParam(12,$stock,PDO::PARAM_INT);
-                        $resultado->bindParam(13,$diasMinimos,PDO::PARAM_INT);
-                        $resultado->bindParam(14,$ingrediente,PDO::PARAM_INT);
-                        $resultado->bindParam(15,$diasemana,PDO::PARAMSTRT);
-                        $resultado->bindParam(16,$hora,PDO::PARAM_STR);
+                        $resultado->bindParam(9,$stock,PDO::PARAM_INT);
+                        $resultado->bindParam(10,$diasMinimos,PDO::PARAM_INT);
+                        $resultado->bindParam(11,$ingrediente,PDO::PARAM_INT);
+                        $resultado->bindParam(12,$diasemana,PDO::PARAMSTRT);
+                        $resultado->bindParam(13,$hora,PDO::PARAM_STR);
                         $resultado->execute();
                         return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
                    } catch(PDOException $e){
@@ -7881,9 +7878,8 @@ class FuncionesBePickler{
                                          INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
                                          INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
                                          INNER JOIN tblhora TH ON TH.idtblhora = THS.tblhora_idtblhora
+                                         INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TPR.idtblproducto
                                       WHERE TP.tblproveedor_activado = ?  
-                                         AND (TP.tbltipopedido_idtbltipopedido= ? OR TP.tbltipopedido_idtbltipopedido= ?)
-                                         AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?)
                                          AND TCPS.tblcolonia_idtblcolonia=?
                                          AND TH.tblhora_hora = ?
                                          AND TPR.tblproducto_activado = ?
@@ -7891,29 +7887,27 @@ class FuncionesBePickler{
                                          AND TCLP.tblclasifproduct_activado = ?
                                          AND TPR.tblcategproduct_idtblcategproduct = ?
                                          AND TPR.tblclasifproduct_idtblclasifproduct= ?             
+                                         AND TPRD.tblproductodetalle_activado = ?
                                          AND TPRD.tblproductodetalle_stock >= ?
-                                         AND TPRD.tblproductdetalle_diaselaboracion >= ?
+                                         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                          AND TPRD.tblespecificingrediente_idtblespecificingrediente = ?
                                          AND TDS.tbldiasemana_dia = ?
                                        GROUP BY TPR.idtblproducto";
             try{
                         $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
                         $resultado->bindParam(1,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(2,$tipodepedido,PDO::PARAM_INT);
-                        $resultado->bindParam(3,$tipopedidoCompleto,PDO::PARAM_INT);
-                        $resultado->bindParam(4,$idtbltipodeservicio,PDO::PARAM_INT);
-                        $resultado->bindParam(5,$tipodeservicioCompleto,PDO::PARAM_INT);
-                        $resultado->bindParam(6,$idtblcolonia,PDO::PARAM_INT);
-                        $resultado->bindParam(7,$hora,PDO::PARAM_STR);
-                        $resultado->bindParam(8,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
+                        $resultado->bindParam(3,$hora,PDO::PARAM_STR);
+                        $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(5,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(6,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(7,$idtblcategproduct,PDO::PARAM_INT);
+                        $resultado->bindParam(8,$idtblclasifproduct,PDO::PARAM_INT);
                         $resultado->bindParam(9,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(10,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(11,$idtblcategproduct,PDO::PARAM_INT);
-                        $resultado->bindParam(12,$idtblclasifproduct,PDO::PARAM_INT);
-                        $resultado->bindParam(13,$stock,PDO::PARAM_INT);
-                        $resultado->bindParam(14,$diasMinimos,PDO::PARAM_INT);
-                        $resultado->bindParam(15,$ingrediente,PDO::PARAM_INT);
-                        $resultado->bindParam(16,$diasemana,PDO::PARAM_STRT);
+                        $resultado->bindParam(10,$stock,PDO::PARAM_INT);
+                        $resultado->bindParam(11,$diasMinimos,PDO::PARAM_INT);
+                        $resultado->bindParam(12,$ingrediente,PDO::PARAM_INT);
+                        $resultado->bindParam(13,$diasemana,PDO::PARAM_STRT);
                         $resultado->execute();
                         return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
                    } catch(PDOException $e){
@@ -7924,7 +7918,7 @@ class FuncionesBePickler{
         
     }
     
-    
+    //obtiene los productos todos sin el ingrediente especifico 
     public static function getTblproductoByFiltrosAll($idtblcolonia,$idtbltipodeservicio,$fechapedido,$hora,$idtblcategproduct,$idtblclasifproduct){
         
         $activado=1;
@@ -7951,49 +7945,46 @@ class FuncionesBePickler{
         
         if($idtbltipodeservicio==1){ //Entrega en Pasteleria
             
-            $consulta = "SELECT TPR.* FROM tblproducto TPR
-                                             INNER JOIN tblproveedor TP ON TP.idtblproveedor = TPR.tblproveedor_idtblproveedor
-                                             INNER JOIN tblproductdetalle TPRD ON TPRD.tblproducto_idtblproducto = TPR.idtblproducto
-                                             INNER JOIN tblcategproduct TCP ON TCP.idtblcategproduct = TPR.tblcategproduct_idtblcategproduct
-                                             INNER JOIN tblclasifproduct TCLP ON TCLP.idtblclasifproduct = TPR.tblclasifproduct_idtblclasifproduct
-                                             INNER JOIN tblhrsprovtienda THP ON THP.tblproveedor_idtblproveedor = TP.idtblproveedor
-                                             INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
-                                             INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
-                                             INNER JOIN tblhraabre TA ON THP.tblhraabre_idtblhraabre = TA.idtblhraabre
-                                             INNER JOIN tblhracierra TC ON THP.tblhracierra_idtblhracierra = TC.idtblhracierra
-                                             INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora 
-                                             INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora
-                                             WHERE TP.tblproveedor_activado = ?  
-                                             AND TP.tblcolonia_idtblcolonia = ?
-                                             AND (TP.tbltipopedido_idtbltipopedido= ? OR TP.tbltipopedido_idtbltipopedido= ?)
-                                             AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?)
-                                             AND TPR.tblproducto_activado = ?
-                                             AND TCP.tblcategproduct_activado = ?
-                                             AND TCLP.tblclasifproduct_activado = ?
-                                             AND TPR.tblcategproduct_idtblcategproduct = ?
-                                             AND TPR.tblclasifproduct_idtblclasifproduct= ?
-                                             AND TPRD.tblproductodetalle_stock >= ?
-                                             AND TPRD.tblproductdetalle_diaselaboracion >= ?
-                                             AND TDS.tbldiasemana_dia = ?
-                                             AND CAST(? AS TIME ) BETWEEN THa.tblhora_hora AND THc.tblhora_hora
-                                             GROUP BY TPR.idtblproducto";
+            $consulta = "SELECT TPR.*, TPR.* FROM tblproducto TPR
+             INNER JOIN tblproveedor TP ON TP.idtblproveedor = TPR.tblproveedor_idtblproveedor
+             INNER JOIN tblproductdetalle TPRD ON TPRD.tblproducto_idtblproducto = TPR.idtblproducto
+             INNER JOIN tblcategproduct TCP ON TCP.idtblcategproduct = TPR.tblcategproduct_idtblcategproduct
+             INNER JOIN tblclasifproduct TCLP ON TCLP.idtblclasifproduct = TPR.tblclasifproduct_idtblclasifproduct
+             INNER JOIN tblhrsprovtienda THP ON THP.tblproveedor_idtblproveedor = TP.idtblproveedor
+             INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
+             INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
+             INNER JOIN tblhraabre TA ON THP.tblhraabre_idtblhraabre = TA.idtblhraabre
+             INNER JOIN tblhracierra TC ON THP.tblhracierra_idtblhracierra = TC.idtblhracierra
+             INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora 
+             INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora
+             INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TPR.idtblproducto
+             WHERE TP.tblproveedor_activado = ?  
+	             AND TP.tblcolonia_idtblcolonia = ?
+	             AND TPR.tblproducto_activado = ?
+	             AND TCP.tblcategproduct_activado = ?
+	             AND TCLP.tblclasifproduct_activado = ?
+	             AND TPR.tblcategproduct_idtblcategproduct = ?
+	             AND TPR.tblclasifproduct_idtblclasifproduct= ?
+	             AND TPRD.tblproductodetalle_activado = ?
+	             AND TPRD.tblproductodetalle_stock >= ?
+	             AND TPRD.tblproductdetalle_diaselaboracion <= ?
+	             AND TDS.tbldiasemana_dia = ?
+	             AND CAST(? AS TIME ) BETWEEN THa.tblhora_hora AND THc.tblhora_hora
+	             GROUP BY TPR.idtblproducto";
             try{
                         $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
                         $resultado->bindParam(1,$activado,PDO::PARAM_INT);
                         $resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
-                        $resultado->bindParam(3,$tipodepedido,PDO::PARAM_INT);
-                        $resultado->bindParam(4,$tipopedidoCompleto,PDO::PARAM_INT);
-                        $resultado->bindParam(5,$idtbltipodeservicio,PDO::PARAM_INT);
-                        $resultado->bindParam(6,$tipodeservicioCompleto,PDO::PARAM_INT);
-                        $resultado->bindParam(7,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(3,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(5,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(6,$idtblcategproduct,PDO::PARAM_INT);
+                        $resultado->bindParam(7,$idtblclasifproduct,PDO::PARAM_INT);
                         $resultado->bindParam(8,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(9,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(10,$idtblcategproduct,PDO::PARAM_INT);
-                        $resultado->bindParam(11,$idtblclasifproduct,PDO::PARAM_INT);
-                        $resultado->bindParam(12,$stock,PDO::PARAM_INT);
-                        $resultado->bindParam(13,$diasMinimos,PDO::PARAM_INT);
-                        $resultado->bindParam(14,$diasemana,PDO::PARAMSTRT);
-                        $resultado->bindParam(15,$hora,PDO::PARAM_STR);
+                        $resultado->bindParam(9,$stock,PDO::PARAM_INT);
+                        $resultado->bindParam(10,$diasMinimos,PDO::PARAM_INT);
+                        $resultado->bindParam(11,$diasemana,PDO::PARAMSTRT);
+                        $resultado->bindParam(12,$hora,PDO::PARAM_STR);
                         $resultado->execute();
                         return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
                    } catch(PDOException $e){
@@ -8013,37 +8004,34 @@ class FuncionesBePickler{
                                          INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
                                          INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
                                          INNER JOIN tblhora TH ON TH.idtblhora = THS.tblhora_idtblhora
-                                      WHERE TP.tblproveedor_activado = ?  
-                                         AND (TP.tbltipopedido_idtbltipopedido= ? OR TP.tbltipopedido_idtbltipopedido= ?)
-                                         AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ?)
+                                         INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TP.idtblproducto
+                                      WHERE TP.tblproveedor_activado = ? 
                                          AND TCPS.tblcolonia_idtblcolonia=?
                                          AND TH.tblhora_hora = ?
                                          AND TPR.tblproducto_activado = ?
                                          AND TCP.tblcategproduct_activado = ?
                                          AND TCLP.tblclasifproduct_activado = ?
                                          AND TPR.tblcategproduct_idtblcategproduct = ?
-                                         AND TPR.tblclasifproduct_idtblclasifproduct= ?             
+                                         AND TPR.tblclasifproduct_idtblclasifproduct= ?
+                                         AND TPRD.tblproductodetalle_activado = ?
                                          AND TPRD.tblproductodetalle_stock >= ?
-                                         AND TPRD.tblproductdetalle_diaselaboracion >= ?
+                                         AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                          AND TDS.tbldiasemana_dia = ?
                                        GROUP BY TPR.idtblproducto";
             try{
                         $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
                         $resultado->bindParam(1,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(2,$tipodepedido,PDO::PARAM_INT);
-                        $resultado->bindParam(3,$tipopedidoCompleto,PDO::PARAM_INT);
-                        $resultado->bindParam(4,$idtbltipodeservicio,PDO::PARAM_INT);
-                        $resultado->bindParam(5,$tipodeservicioCompleto,PDO::PARAM_INT);
-                        $resultado->bindParam(6,$idtblcolonia,PDO::PARAM_INT);
-                        $resultado->bindParam(7,$hora,PDO::PARAM_STR);
-                        $resultado->bindParam(8,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
+                        $resultado->bindParam(3,$hora,PDO::PARAM_STR);
+                        $resultado->bindParam(4,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(5,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(6,$activado,PDO::PARAM_INT);
+                        $resultado->bindParam(7,$idtblcategproduct,PDO::PARAM_INT);
+                        $resultado->bindParam(8,$idtblclasifproduct,PDO::PARAM_INT);
                         $resultado->bindParam(9,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(10,$activado,PDO::PARAM_INT);
-                        $resultado->bindParam(11,$idtblcategproduct,PDO::PARAM_INT);
-                        $resultado->bindParam(12,$idtblclasifproduct,PDO::PARAM_INT);
-                        $resultado->bindParam(13,$stock,PDO::PARAM_INT);
-                        $resultado->bindParam(14,$diasMinimos,PDO::PARAM_INT);
-                        $resultado->bindParam(15,$diasemana,PDO::PARAM_STRT);
+                        $resultado->bindParam(10,$stock,PDO::PARAM_INT);
+                        $resultado->bindParam(11,$diasMinimos,PDO::PARAM_INT);
+                        $resultado->bindParam(12,$diasemana,PDO::PARAM_STRT);
                         $resultado->execute();
                         return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
                    } catch(PDOException $e){
