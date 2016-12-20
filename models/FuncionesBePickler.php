@@ -7795,7 +7795,7 @@ class FuncionesBePickler{
         
         $activado=1;
         
-        $fechapedidoingresada = new DateTime($fechapeidido);
+        $fechapedidoingresada = new DateTime($fechapedido);
         $fechahoy = new DateTime("now");
         $interval= $fechahoy->diff($fechapedidoingresada);
         $diasMinimos= $interval->format('%d');
@@ -7817,7 +7817,7 @@ class FuncionesBePickler{
         
         if($idtbltipodeservicio==1){ //Entrega en Pasteleria
             
-            $consulta = "SELECT TPR.* FROM tblproducto TPR
+            $consulta = "SELECT TPR.*, TPI.* FROM tblproducto TPR
                                              INNER JOIN tblproveedor TP ON TP.idtblproveedor = TPR.tblproveedor_idtblproveedor
                                              INNER JOIN tblproductdetalle TPRD ON TPRD.tblproducto_idtblproducto = TPR.idtblproducto
                                              INNER JOIN tblcategproduct TCP ON TCP.idtblcategproduct = TPR.tblcategproduct_idtblcategproduct
@@ -7838,7 +7838,7 @@ class FuncionesBePickler{
                                              AND TPR.tblcategproduct_idtblcategproduct = ?
                                              AND TPR.tblclasifproduct_idtblclasifproduct= ?
                                              AND TPRD.tblproductdetalle_activado = ?
-                                             AND TPRD.tblproductodetalle_stock >= ?
+                                             AND TPRD.tblproductdetalle_stock >= ?
                                              AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                              AND TPRD.tblespecificingrediente_idtblespecificingrediente = ?
                                              AND TDS.tbldiasemana_dia = ?
@@ -7857,7 +7857,7 @@ class FuncionesBePickler{
                         $resultado->bindParam(9,$stock,PDO::PARAM_INT);
                         $resultado->bindParam(10,$diasMinimos,PDO::PARAM_INT);
                         $resultado->bindParam(11,$ingrediente,PDO::PARAM_INT);
-                        $resultado->bindParam(12,$diasemana,PDO::PARAMSTRT);
+                        $resultado->bindParam(12,$diasemana,PDO::PARAM_STR);
                         $resultado->bindParam(13,$hora,PDO::PARAM_STR);
                         $resultado->execute();
                         return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
@@ -7868,7 +7868,7 @@ class FuncionesBePickler{
         } else{//Entrega en Domicilio
         
         
-             $consulta="SELECT TPR.* FROM tblproducto TPR
+             $consulta="SELECT TPR.*, PRI.* FROM tblproducto TPR
                                          INNER JOIN tblproveedor TP ON TP.idtblproveedor = TPR.tblproveedor_idtblproveedor
                                          INNER JOIN tblproductdetalle TPRD ON TPRD.tblproducto_idtblproducto = TPR.idtblproducto
                                          INNER JOIN tblcategproduct TCP ON TCP.idtblcategproduct = TPR.tblcategproduct_idtblcategproduct
@@ -7887,8 +7887,8 @@ class FuncionesBePickler{
                                          AND TCLP.tblclasifproduct_activado = ?
                                          AND TPR.tblcategproduct_idtblcategproduct = ?
                                          AND TPR.tblclasifproduct_idtblclasifproduct= ?             
-                                         AND TPRD.tblproductodetalle_activado = ?
-                                         AND TPRD.tblproductodetalle_stock >= ?
+                                         AND TPRD.tblproductdetalle_activado = ?
+                                         AND TPRD.tblproductdetalle_stock >= ?
                                          AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                          AND TPRD.tblespecificingrediente_idtblespecificingrediente = ?
                                          AND TDS.tbldiasemana_dia = ?
@@ -7907,7 +7907,7 @@ class FuncionesBePickler{
                         $resultado->bindParam(10,$stock,PDO::PARAM_INT);
                         $resultado->bindParam(11,$diasMinimos,PDO::PARAM_INT);
                         $resultado->bindParam(12,$ingrediente,PDO::PARAM_INT);
-                        $resultado->bindParam(13,$diasemana,PDO::PARAM_STRT);
+                        $resultado->bindParam(13,$diasemana,PDO::PARAM_STR);
                         $resultado->execute();
                         return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
                    } catch(PDOException $e){
@@ -7945,7 +7945,7 @@ class FuncionesBePickler{
         
         if($idtbltipodeservicio==1){ //Entrega en Pasteleria
             
-            $consulta = "SELECT TPR.*, TPR.* FROM tblproducto TPR
+            $consulta = "SELECT TPR.*, TPI.* FROM tblproducto TPR
              INNER JOIN tblproveedor TP ON TP.idtblproveedor = TPR.tblproveedor_idtblproveedor
              INNER JOIN tblproductdetalle TPRD ON TPRD.tblproducto_idtblproducto = TPR.idtblproducto
              INNER JOIN tblcategproduct TCP ON TCP.idtblcategproduct = TPR.tblcategproduct_idtblcategproduct
@@ -7965,8 +7965,8 @@ class FuncionesBePickler{
 	             AND TCLP.tblclasifproduct_activado = ?
 	             AND TPR.tblcategproduct_idtblcategproduct = ?
 	             AND TPR.tblclasifproduct_idtblclasifproduct= ?
-	             AND TPRD.tblproductodetalle_activado = ?
-	             AND TPRD.tblproductodetalle_stock >= ?
+	             AND TPRD.tblproductdetalle_activado = ?
+	             AND TPRD.tblproductdetalle_stock >= ?
 	             AND TPRD.tblproductdetalle_diaselaboracion <= ?
 	             AND TDS.tbldiasemana_dia = ?
 	             AND CAST(? AS TIME ) BETWEEN THa.tblhora_hora AND THc.tblhora_hora
@@ -7994,7 +7994,7 @@ class FuncionesBePickler{
         }else{//Entrega en Domicilio
         
         
-             $consulta="SELECT TPR.* FROM tblproducto TPR
+             $consulta="SELECT TPR.*, TPI.* FROM tblproducto TPR
                                          INNER JOIN tblproveedor TP ON TP.idtblproveedor = TPR.tblproveedor_idtblproveedor
                                          INNER JOIN tblproductdetalle TPRD ON TPRD.tblproducto_idtblproducto = TPR.idtblproducto
                                          INNER JOIN tblcategproduct TCP ON TCP.idtblcategproduct = TPR.tblcategproduct_idtblcategproduct
@@ -8004,7 +8004,7 @@ class FuncionesBePickler{
                                          INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
                                          INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
                                          INNER JOIN tblhora TH ON TH.idtblhora = THS.tblhora_idtblhora
-                                         INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TP.idtblproducto
+                                         INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TPR.idtblproducto
                                       WHERE TP.tblproveedor_activado = ? 
                                          AND TCPS.tblcolonia_idtblcolonia=?
                                          AND TH.tblhora_hora = ?
@@ -8013,8 +8013,8 @@ class FuncionesBePickler{
                                          AND TCLP.tblclasifproduct_activado = ?
                                          AND TPR.tblcategproduct_idtblcategproduct = ?
                                          AND TPR.tblclasifproduct_idtblclasifproduct= ?
-                                         AND TPRD.tblproductodetalle_activado = ?
-                                         AND TPRD.tblproductodetalle_stock >= ?
+                                         AND TPRD.tblproductdetalle_activado = ?
+                                         AND TPRD.tblproductdetalle_stock >= ?
                                          AND TPRD.tblproductdetalle_diaselaboracion <= ?
                                          AND TDS.tbldiasemana_dia = ?
                                        GROUP BY TPR.idtblproducto";
