@@ -292,6 +292,10 @@ include('./php/seguridad_general.php');
         var idtblusuarioproveedor=1;
         var emailmodifico='miguel@bepickler.com';
         var emailcreo='miguel@bepickler.com';
+        var idtblproveedor=<?php echo $_SESSION['idtblproveedor']; ?>;
+        var idtblusuarioproveedor=<?php echo $_SESSION['idusuario']; ?>;
+        var emailmodifico="<?php echo $_SESSION['usuario']; ?>";
+        var emailcreo="<?php echo $_SESSION['usuario']; ?>";
       ///////////////////////////////
       //VARIABLES GLOBALES 
       var mensaje_error_validacion='¡Atención favor de verificar y completar los campos marcados en rojo!';
