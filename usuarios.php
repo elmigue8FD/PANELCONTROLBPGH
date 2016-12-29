@@ -154,9 +154,12 @@ include('./php/seguridad_general.php');
   <!--CODIGO FUNCIONALIDAD-->
   <script type="text/javascript">
    //Variables de Sesion
-    var  idtblproveedor = 1;
-    var tblproveedorNombre = "MisPasteles";
-    var emailproveedor = "mispasteles@gmail.com";
+    //var  idtblproveedor = 1;
+    //var tblproveedorNombre = "MisPasteles";
+    //var emailproveedor = "mispasteles@gmail.com";
+    
+    var idtblproveedor = <?php echo $_SESSION['idtblproveedor']; ?>;
+    var emailproveedor="<?php echo $_SESSION['usuario']; ?>";
 
   $( window ).ready(function()
     {
