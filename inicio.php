@@ -7019,7 +7019,7 @@ function mostrarCotizacionesProductosNuevos(){
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getAlltblcarritoproductnuevcotiza2.php",  
+    url: "./../../controllers/getAllTblcarritoproductnuevcotiza2.php",  
     data: {solicitadoBy:solicitadoBy}})
     .done(function( msg)
     {
@@ -7339,55 +7339,52 @@ function notifi(idredireccion, idtblnotificacionvista){
     case 2: notificacionVista(idtblnotificacionvista);
             $("#tblnotificacion").empty();
             setTimeout(mostrarNotificaciones, 1000);
-            UIkit.switcher('#tabs_1').show(0);
+            UIkit.switcher('#tabs_1').show(0);//Tab: INDEX (Inicio)
     break;
     case 3: notificacionVista(idtblnotificacionvista);
             $("#tblnotificacion").empty();
             setTimeout(mostrarNotificaciones, 1000);
-            UIkit.switcher('#tabs_1').show(1);
+            UIkit.switcher('#tabs_1').show(1);//TAB: Ordenes
     break;
     case 4: notificacionVista(idtblnotificacionvista);
             $("#tblnotificacion").empty();
             setTimeout(mostrarNotificaciones, 1000);
-            UIkit.switcher('#tabs_1').show(2);
+            UIkit.switcher('#tabs_1').show(2);//TAB: Productos
     break;
     case 5: notificacionVista(idtblnotificacionvista);
             $("#tblnotificacion").empty();
             setTimeout(mostrarNotificaciones, 1000);
-            UIkit.switcher('#tabs_1').show(3);
+            UIkit.switcher('#tabs_1').show(3);//TAB: Cotizaciones
     break;
     case 6: notificacionVista(idtblnotificacionvista);
             $("#tblnotificacion").empty();
             setTimeout(mostrarNotificaciones, 1000);
-            UIkit.switcher('#tabs_1').show(4);
+            UIkit.switcher('#tabs_1').show(4);//TAB: Notificaciones
     break;
     case 7: notificacionVista(idtblnotificacionvista);
-            $("#tblnotificacion").empty();
-            setTimeout(mostrarNotificaciones, 1000);
-            UIkit.switcher('#tabs_1').show(5);
+            window.location="perfilTienda.php";//TAB: Perfil Tienda
     break;
     case 8: 
             notificacionVista(idtblnotificacionvista);
-            window.location="perfilTienda.php";
+            window.location="perfilTienda.php";//TAB: Perfil Tienda
     break;
     case 9: notificacionVista(idtblnotificacionvista);
-            window.location="perfilTienda.php";
+            window.location="perfilTienda.php";//TAB: Perfil Tienda
     break;
     case 10: notificacionVista(idtblnotificacionvista);
-             window.location="perfilTienda.php";
+             window.location="fotografos.php";//TAB: Fotografos
     break;
     case 11: notificacionVista(idtblnotificacionvista);
-             window.location="fotografos.php";
+             window.location="usuarios.php";//TAB: Fotografos
     break;
     case 12: notificacionVista(idtblnotificacionvista);
-             window.location="usuarios.php";
+             window.location="./informacionGeneral.php"; //TAB: 
     break;
     case 13: notificacionVista(idtblnotificacionvista);
              window.location="./informacionGeneral.php";
     break;
     default: UIkit.switcher('#tabs_1').show(4);//General queda en Notificaciones
   }
-  
 }
 function notificacionVista(idtblnotificacionvista){
 $.ajax({ 
