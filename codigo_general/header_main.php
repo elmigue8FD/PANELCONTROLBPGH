@@ -30,8 +30,12 @@
                             <a href="#" class="user_action_image"><img class="md-user-image" src="assets/img/avatars/userh.png" alt=""/></a>
                             <div class="uk-dropdown uk-dropdown-small">
                                 <ul class="uk-nav js-uk-prevent">
-                                    <li><a class="md-color-pink-300" href="#" data-uk-modal="{target:'#modal_modificar_usuario',bgclose:false,modal:false,modal:false}" onclick="cargarPerfilUsuario();">Mi Perfil</a></li>
-                                    <li><a class="md-color-pink-300" id="logOut" href="#">Salir</a></li>
+                                    <li>
+                                      <!--<button type="button"  class="md-btn md-btn-flat md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar y Registrar?', function(){ validarFormulario('form_alta_productos_linea');  });">Agregar Producto </button>-->
+                                      <a class="md-color-pink-300" href="#" data-uk-modal="{target:'#modal_modificar_usuario',bgclose:false,modal:false,modal:false}" onclick="cargarPerfilUsuario();">Mi Perfil</a></li>
+                                    <li>
+                                      <a class="md-color-pink-300" id="logOut" href="#">Salir</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -42,6 +46,8 @@
         <div class="uk-width-medium-1-3">
             <div class="uk-modal" id="modal_modificar_usuario" >
                 <div class="uk-modal-dialog">
+                  <button type="button" class="uk-modal-close uk-close">                  
+                  </button>
                     <div class="uk-modal-header">
                         <h3 class="uk-modal-title">Mi Perfil <i class="material-icons" data-uk-tooltip="{pos:'top'}" title="headline tooltip">&#xE8FD;</i></h3>
                     </div>
@@ -96,9 +102,9 @@
                             </div>           
                         </div>
                     </div>
-                    <div class="uk-modal-footer uk-text-right">
-                        <button type="button" class="md-btn md-btn-flat uk-modal-close md-color-pink-300">Close</button>
-                        <button data-uk-modal="{target:'#popup_spinner_modificando_perfil_usuario'}" type="button" class="md-btn md-btn-flat md-btn-flat-primary md-color-pink-300" onclick="UIkit.modal.confirm('Se cerrara sesión para actualizar los cambios desea Guardar y Actualizar?', function(){ validarFormularioPerfilUsuario('form_modificar_perfil_usuario');  });">Actualizar</button>
+                    <div class="uk-modal-footer uk-text-right"><!--class="md-btn md-btn-flat uk-modal-close md-color-pink-300" -->
+                        <button type="button" class="md-btn md-btn-flat md-btn-flat-primary uk-modal-close">Cerrar</button>
+                        <button type="button" class="md-btn md-btn-flat md-btn-flat-primary" data-uk-modal="{target:'#popup_spinner_modificando_perfil_usuario'}" onclick="UIkit.modal.confirm('Se cerrara sesión para actualizar los cambios desea Guardar y Actualizar?', function(){ validarFormularioPerfilUsuario('form_modificar_perfil_usuario');  });">Actualizar</button>
                     </div>
                 </div>
             </div>
