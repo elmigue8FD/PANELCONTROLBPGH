@@ -129,19 +129,19 @@ include('./php/seguridad_general.php');
                           </div>
                           <div class="uk-width-medium-1-4">
                             <label>Productos de línea</label><br/>
-                            <input type="text" id="modificar_productos_linea_perfilTienda" name="modificar_productos_linea_perfilTienda" class="md-input" readonly />
+                            <input type="text" id="modificar_productos_linea_perfilTienda" name="modificar_productos_linea_perfilTienda" class="md-input md-bg-grey-300" readonly />
                           </div>
                           <div class="uk-width-medium-1-4">
                             <label>Productos complemetarios</label><br/>
-                            <input type="text" id="modificar_productos_complementario_perfilTienda" name="modificar_productos_complementario_perfilTienda" class="md-input" readonly />
+                            <input type="text" id="modificar_productos_complementario_perfilTienda" name="modificar_productos_complementario_perfilTienda" class="md-input md-bg-grey-300" readonly />
                           </div>
                           <div class="uk-width-medium-1-4">
                             <label>Productos de cotizador</label><br/>
-                            <input type="text" id="modificar_productos_cotizador_perfilTienda" name="modificar_productos_cotizador_perfilTienda" class="md-input" readonly />
+                            <input type="text" id="modificar_productos_cotizador_perfilTienda" name="modificar_productos_cotizador_perfilTienda" class="md-input md-bg-grey-300" readonly />
                           </div>
                           <div class="uk-width-medium-1-4">
                             <label>Paquete</label><br/>
-                            <input type="text" id="modificar_paquete_perfilTienda" name="modificar_paquete_perfilTienda" class="md-input" value="" readonly />
+                            <input type="text" id="modificar_paquete_perfilTienda" name="modificar_paquete_perfilTienda" class="md-input md-bg-grey-300" value="" readonly />
                           </div>                                
                         </div>
                         <hr class="uk-grid-divider">
@@ -832,10 +832,41 @@ include('./php/seguridad_general.php');
 
               //MOSTRAR DIAS DISPONIBLES            
             $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTbldiasemana.php",  data: {solicitadoBy:"WEB"}  })
-              .done(function( msgTbldiasemana ) { 
+              .done(function( msgTbldiasemana ) {
+                //alert('done msgTbldiasemana+'+JSON.stringify(msgTbldiasemana, null, 4)); 
                 $.each(msgTbldiasemana.datos, function(i,item){ 
                   //console.log('msgTbldiasemana.idtbldiasemana::'+msgTbldiasemana.datos[i].idtbldiasemana+' tbldiasemana_dia::'+msgTbldiasemana.datos[i].tbldiasemana_dia);
-                  $("#modificar_dias_servicio").append('<span class="icheck-inline"> <input type="checkbox" name="dia_i_'+i+'" id="dia_i_'+msgTbldiasemana.datos[i].idtbldiasemana+'" value="'+msgTbldiasemana.datos[i].idtbldiasemana+'" data-md-icheck /> <label for="checkbox_demo_inline_1" class="inline-label">'+msgTbldiasemana.datos[i].tbldiasemana_dia+'</label> </span>');
+                  dia=msgTbldiasemana.datos[i].tbldiasemana_dia;
+                  dia=dia.toUpperCase();
+                  diaSpanish='';
+                  console.log('dia::'+dia);
+                  switch(dia) {
+                    case "MONDAY":
+                      diaSpanish='Lunes';
+                      break;
+                    case "TUESDAY":
+                      diaSpanish='Martes';
+                      break;
+                    case "WEDNESDAY":
+                      diaSpanish='Miercoles';
+                      break;
+                    case "THURSDAY":
+                      diaSpanish='Jueves';
+                      break;
+                    case "FRIDAY":
+                      diaSpanish='Viernes';
+                      break;
+                    case "SATURDAY":
+                      diaSpanish='Sabado';
+                      break;
+                    case "SUNDAY":
+                      diaSpanish='Domingo';
+                      break;
+                    default:
+                        diaSpanish='Vacio';
+                  }
+                  console.log('diaSpanish::'+diaSpanish);
+                  $("#modificar_dias_servicio").append('<span class="icheck-inline"> <input type="checkbox" name="dia_i_'+i+'" id="dia_i_'+msgTbldiasemana.datos[i].idtbldiasemana+'" value="'+msgTbldiasemana.datos[i].idtbldiasemana+'" data-md-icheck /> <label for="checkbox_demo_inline_1" class="inline-label">'+ diaSpanish+'</label> </span>');
                   contadorDias=i;
                   habilitadosDiasServicio=true;
                   //////////////////////////////
