@@ -64,7 +64,7 @@ include('./php/seguridad_general.php');
         </div><!-- end SubMenu de INDEX -->
         <div id="tabs_1_content" class="uk-switcher">
           <div id="contenido_Datos"><!-- Contenido de Pestaña Datos -->              
-            <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium uk-sortable sortable-handler hierarchical_show" data-uk-sortable data-uk-grid-margin>
+            <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium hierarchical_show" data-uk-grid-margin>
               <div class="uk-grid" data-uk-grid-margin>
                 <div class="uk-width-medium-1-1">
                   <div class="md-card">
@@ -162,7 +162,7 @@ include('./php/seguridad_general.php');
             </div>
           </div>
           <div id="contenido_Servicios"><!-- Contenido de Pestaña Datos -->              
-            <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium uk-sortable sortable-handler hierarchical_show" data-uk-sortable data-uk-grid-margin>                  
+            <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium hierarchical_show" data-uk-grid-margin>                  
               <div class="uk-grid" data-uk-grid-margin>
                 <div class="uk-width-medium-1-1">
                   <div class="md-card">
