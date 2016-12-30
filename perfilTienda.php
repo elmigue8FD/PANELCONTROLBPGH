@@ -180,11 +180,11 @@ include('./php/seguridad_general.php');
                             </div>
                             <div class="uk-width-medium-1-2">
                               <label>Pedidos habilitados</label><br/>
-                              <input id="pedidosHabilitados" type="text" class="md-input" readonly/>
+                              <input id="pedidosHabilitados" type="text" class="md-input md-bg-grey-300" readonly/>
                             </div>
                             <div class="uk-width-medium-1-2">
                               <label>Entregas habilitadas</label><br/>
-                              <input id="serviciosHabilitados" type="text" class="md-input" readonly/>
+                              <input id="serviciosHabilitados" type="text" class="md-input md-bg-grey-300" readonly/>
                             </div>
                           <div class="uk-width-large-1-1">
                             <br/>
