@@ -14,39 +14,39 @@ $fechapedido= '';
 $hora= '';
 $idtblcategproduct= '';
 $idtblclasifproduct= '';
-$gluten= '';
+$ingrediente= '';
 $resultado='';
 /**
  * Validamos que el array $_POST no es null.
  */
 if (!empty($_POST)){
 
-	$solicitadoBy=$_POST["solicitadoBy"];
+    $solicitadoBy=$_POST["solicitadoBy"];
     $idtblcolonia=$_POST["idtblcolonia"];
     $idtbltipodeservicio=$_POST["idtbltipodeservicio"];
     $fechapedido=$_POST["fechapedido"];
     $hora=$_POST["hora"];
     $idtblcategproduct=$_POST["idtblcategproduct"];
     $idtblclasifproduct=$_POST["idtblclasifproduct"];
-    $gluten=$_POST["gluten"];
+    $ingrediente=$_POST["ingrediente"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::getTblproductoByFiltros($idtblcolonia,$idtbltipodeservicio,$fechapedido,$hora,$idtblcategproduct,$idtblclasifproduct,$gluten);
+    $resultado = FuncionesBePickler::getTblproductoByFiltros($idtblcolonia,$idtbltipodeservicio,$fechapedido,$hora,$idtblcategproduct,$idtblclasifproduct,$ingrediente);
 
     if($resultado)
     {
         /**
          * Si es éxitos le mandamos los resultados a quien lo solicito.
          */
-    	InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
+        InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
 
     }else
     {
         /**
          * Si fallo manda a la función de fallo a quien lo solicito.
          */
-    	InfoSolicitadaBy::sinDatos($solicitadoBy);
+        InfoSolicitadaBy::sinDatos($solicitadoBy);
     }
 }
 /**
@@ -59,6 +59,6 @@ unset($fechapedido);
 unset($hora);
 unset($idtblcategproduct);
 unset($idtblclasifproduct);
-unset($gluten);
+unset($ingrediente);
 unset($resultado);
 ?>
