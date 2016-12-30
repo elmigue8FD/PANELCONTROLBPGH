@@ -850,7 +850,158 @@ include('./php/seguridad_general.php');
               <!--data-uk-modal="{target:'#popup_spinner_registrando_producto'}"-->
               <!--/////////////////////////////////// -->
               <!--/////////////////////////////////// -->              
-              <!-- PopUp para modificaci? de Datos Especificos de un Producto -->
+              <!-- PopUp para alta de Producto Detalle-->
+              <div class="uk-modal" id="popup_nuevoproductodetallelinea">
+                <div class="uk-modal-dialog ">
+                  <button type="button" class="uk-modal-close uk-close">                    
+                  </button>
+                  <div class="uk-modal-header">
+                    <h3 class="uk-modal-title">
+                      <i class="material-icons" data-uk-tooltip="{pos:'top'}">
+                        &#xE254;
+                      </i>
+                      &nbsp;&nbsp;Alta Producto Detalle
+                    </h3>
+                  </div>
+                  <!--<form action="" class="uk-form-large" id="product_edit_form">-->
+                  <form action="" class="uk-form-large" id="formAltaProductoDetalleLinea">
+                    <div class="uk-grid uk-grid-medium" data-uk-grid-margin >
+                      <div class="uk-width">
+                        <div class="md-card">
+                          <div class="md-card-content large-padding">
+                            <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
+                              <div class="uk-width">
+                                <div class="uk-form-row">
+                                  <label for="product_edit_name_control"> 
+                                    Solo lectura                                   
+                                  </label>
+                                  <br/>
+                                  <input type="text" name="alta_nombre_producto_detalle_linea" id="alta_nombre_producto_detalle_linea" class="md-input md-bg-grey-300" readonly />
+                                  <input type="hidden" name="alta_id_producto_detalle_linea" id="alta_id_producto_detalle_linea" class="md-input" readonly />
+                                  <input type="hidden" name="alta_id_productoDetalle_detalle_linea" id="alta_id_productoDetalle_detalle_linea" class="md-input" readonly />
+                                </div>
+                                <div class="uk-form-row">
+                                  <div class="uk-float-right" id="div_checkbox_alta_activado_producto_detalle_linea" name="div_checkbox_alta_activado_producto_detalle_linea">
+                                    <input type="checkbox" name="alta_activado_producto_detalle_linea" id="modificar_activado_producto_detalle_linea" />
+                                  </div>
+                                  <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">
+                                    Activo
+                                  </label>                                  
+                                  <br/>
+                                </div>
+                                <div class="uk-form-row">
+                                  <label><!--class="uk-form-label" for="product_edit_memory_control"-->
+                                    <span class="req"> * </span>
+                                    Caract. Específica                                    
+                                  </label><br/>
+                                  <select id="alta_especificingredientes_producto_detalle_linea" name="alta_especificingredientes_producto_detalle_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
+                                    <option value="" disabled selected hidden></option>
+                                  </select>
+                                  <br/>
+                                </div>
+                                <div class="uk-form-row">
+                                  <!--<div class="uk-input-group">-->
+                                    <h5 class="heading_c uk-margin-bottom" id="alta_forma_producto_linea_detalle_titulo"><span class="req"> * </span>Forma del producto (elegir solo uno)</h5>
+                                    <ul id="alta_forma_producto_detalle" class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#alta_switcher-content-a-fade', animation: 'fade'}">
+                                      <li id="alta_tab_cuadrado_detalle" class="uk-active"> <a href="#"> Cuadrado </a> </li>
+                                      <li id="alta_tab_circulo_detalle"> <a href="#"> Circular </a> </li>
+                                      <li id="alta_tab_piezas_detalle"> <a href="#"> Piezas </a> </li>
+                                    </ul>
+                                    <ul id="alta_switcher-content-a-fade" class="uk-switcher uk-margin">
+                                      <li>
+                                        <div class="uk-width-1-1"> 
+                                          <label>&nbsp;Largo(cm)</label>
+                                          <br/>
+                                          <input type="number" min="0" name="alta_clasifcategproduct_cuadrado_largo_producto_detalle_linea" id="alta_clasifcategproduct_cuadrado_largo_producto_detalle_linea" class="md-input" />
+                                        </div>
+                                        <div class="uk-width-1-1"> 
+                                          <label>&nbsp;Ancho(cm)</label>
+                                          <br/>
+                                          <input type="number" min="0" name="alta_clasifcategproduct_cuadrado_ancho_producto_detalle_linea" id="alta_clasifcategproduct_cuadrado_ancho_producto_detalle_linea" class="md-input" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div class="uk-width-1-1">
+                                          <label>&nbsp;Diámetro(cm)</label>
+                                          <br/>
+                                          <input type="number" min="0" name="alta_clasifcategproduct_circular_diametro_producto_detalle_linea" id="alta_clasifcategproduct_circular_diametro_producto_detalle_linea" class="md-input" />
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div class="uk-width-1-1">
+                                          <label>&nbsp;Número de piezas</label>
+                                          <br/>
+                                          <input type="number" min="0" name="alta_clasifcategproduct_piezas_producto_detalle_linea" id="alta_clasifcategproduct_piezas_producto_detalle_linea" class="md-input" />
+                                        </div>
+                                      </li>
+                                    </ul>
+                                    <br/>
+                                  <!--</div>-->
+                                </div>
+                                <div class="uk-form-row">
+                                  <div class="uk-input-group">
+                                    <span class="uk-input-group-addon">
+                                      <i class="uk-icon-calendar"></i>
+                                    </span>
+                                    <label for="product_edit_quantity_control">           
+                                      <span class="req"> * </span>                          
+                                      Días de Elaboración                                                        
+                                    </label>
+                                    <br/>
+                                    <input type="number" min="0" class="md-input" name="alta_detalle_diasElborar_producto_detalle_linea" id="alta_detalle_diasElborar_producto_detalle_linea"  />
+                                  </div>
+                                </div>
+                                <div class="uk-form-row">
+                                  <div class="uk-input-group">
+                                    <span class="uk-input-group-addon">                                      
+                                      <i class="uk-icon-usd"></i>
+                                    </span>
+                                    <label for="product_edit_quantity_control">
+                                      <span class="req"> * </span>
+                                      Precio                                      
+                                    </label>
+                                    <br/>
+                                    <input type="number" min="0" class="md-input" name="alta_detalle_precio_producto_detalle_linea" id="alta_detalle_precio_producto_detalle_linea"  />
+                                  </div>
+                                </div>
+                                <div class="uk-form-row">
+                                  <div class="uk-input-group">
+                                    <span class="uk-input-group-addon">
+                                      <i class="uk-icon-cubes"></i>
+                                    </span>
+                                    <label for="product_edit_quantity_control">
+                                      <span class="req"> * </span>
+                                      Stock                                       
+                                    </label>                                  
+                                    <br/>
+                                    <input type="number" min="0" class="md-input" name="alta_detalle_stock_producto_detalle_linea" id="alta_detalle_stock_producto_detalle_linea" />
+                                  </div>
+                                </div>
+                                
+                              </div>                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="uk-modal-footer uk-text-right">
+                    <!-- Boton  para abrir el PopUp de modificaci? de Datos Generales de un Producto -->
+                    <!--<button type="button" class="md-btn md-btn-flat md-btn-small" data-uk-modal="{target:'#popup_modificarproductolineageneral',bgclose:false,modal:false,modal:false}">
+                      Modif. Datos General
+                    </button>-->
+                    <!-- Boton para aceptar la actualizar de las modificaciones de Datos especificos de un Producto -->
+                    <button type="button" class="md-btn md-btn-flat md-btn-small md-btn-flat-primary" onclick="UIkit.modal.confirm('¿Desea Guardar los Cambios?',  function(){ validarFormulario('form_alta_productos_linea_detalle'); });">
+                      AGREGAR PRODUCTO
+                    </button>
+                  </div>
+                </div>   
+              </div>
+              <!--</div>-->
+              <!--</div>-->
+              <!--end PopUp para alta de Producto Detalle--> 
+              <!--/////////////////////////////////// -->              
+              <!-- PopUp para modificación de Datos Especificos de un Producto -->
               <div class="uk-modal" id="popup_modificarproductolinea">
                 <div class="uk-modal-dialog ">
                   <button type="button" class="uk-modal-close uk-close">                    
@@ -2476,6 +2627,101 @@ $( window ).ready(function()
       }
       //registrarProductoLinea();
     }
+    else if(formularioAValidar=='form_alta_productos_linea_detalle')
+    {
+      /*
+      VARIABLES
+      */
+      boolError=false;
+      boolErrorPorciones=false;
+      boolErrorDiasElaboracion=false;
+      boolErrorStock=false;
+      boolErrorPrecioReal=false;
+      boolErrorEspecifIngrediente=false;
+      //productodetalle
+      diaselaboracion='';
+      stock='';
+      precioreal='';
+      preciobp='';
+      diametro='';
+      largo='';
+      ancho='';
+      porciones='';
+      piezas='';
+      idtblespecifingrediente='';
+      ///////////////////////////////
+      //OBTENEMOS LOS DATOS
+      diaselaboracion=$('#alta_detalle_diasElborar_producto_detalle_linea').val();
+      stock=$('#alta_detalle_stock_producto_detalle_linea').val();
+      precioreal=$('#alta_detalle_precio_producto_detalle_linea').val();
+      preciobp=precioreal;
+      diametro=$('#alta_clasifcategproduct_circular_diametro_producto_detalle_linea').val();
+      largo=$('#alta_clasifcategproduct_cuadrado_largo_producto_detalle_linea').val();
+      ancho=$('#alta_clasifcategproduct_cuadrado_ancho_producto_detalle_linea').val();
+      piezas=$('#alta_clasifcategproduct_piezas_producto_detalle_linea').val();
+      activado=1;
+      idtblespecifingrediente=$('#alta_especificingredientes_producto_detalle_linea').val();
+      if(idtblespecifingrediente==null)
+        idtblespecifingrediente='';
+      if(diametro!=''){
+        porciones=Math.round((Math.PI*diametro)/2);
+        largo='';
+        ancho='';
+        piezas='';
+      }
+      else if(largo!=''&&ancho!=''){
+        porciones=largo*ancho/2*5;
+        diametro='';
+        piezas='';
+      }
+      else if(piezas!=''){
+        porciones=piezas;
+        largo='';
+        ancho='';
+        diametro='';
+      }
+      //console.log('datos porciones::'+porciones+' idtblespecificingrediente::'+idtblespecifingrediente);
+      /////////////////////////DATOS GENERALES/////////////////////////
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorDiasElaboracion=validarCamposNumericos(diaselaboracion);      
+      if(boolErrorDiasElaboracion){ $( "#alta_detalle_diasElborar_producto_detalle_linea" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_detalle_diasElborar_producto_detalle_linea" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorStock=validarCamposNumericos(stock);      
+      if(boolErrorStock){ $( "#alta_detalle_stock_producto_detalle_linea" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_detalle_stock_producto_detalle_linea" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorPrecioReal=validarCamposNumericos(precioreal);      
+      if(boolErrorPrecioReal){ $( "#alta_detalle_precio_producto_detalle_linea" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_detalle_precio_producto_detalle_linea" ).removeClass( "md-input-danger" ); }
+      //nombreproduct -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorPorciones=validarCamposNumericos(porciones);
+      if(boolErrorPorciones){ $( "#alta_forma_producto_linea_detalle_titulo" ).css('color','red'); boolError=true; }
+      else{ $( "#alta_forma_producto_linea_detalle_titulo" ).css('color','black'); }
+      //nombreproduct -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorEspecifIngrediente=validarCamposSelect(idtblespecifingrediente);      
+      if(boolErrorEspecifIngrediente){ $( "#alta_especificingredientes_producto_detalle_linea" ).addClass( "md-input-danger" ); boolError=true; }
+      else{ $( "#alta_especificingredientes_producto_detalle_linea" ).removeClass( "md-input-danger" ); }
+      ///////////////////////////////////////////////////////////////////////////   
+      //console.log('boolErrorPorciones::'+boolErrorPorciones+' boolErrorEspecifIngrediente::'+boolErrorEspecifIngrediente+' boolError::'+boolError);   
+      if(!boolError)
+      {
+        //console.log('registrar producto cotizador');
+        UIkit.modal("#popup_spinner_registrando_producto").show();
+        registrarProductoDetalleLinea();     
+      }
+      else
+      {
+        UIkit.modal("#popup_spinner_registrando_producto").hide();
+        UIkit.modal.alert(mensaje_error_validacion);
+      }
+
+    }
     else if(formularioAValidar=='form_modificar_productos_linea_detalle')
     {
        /*
@@ -2920,7 +3166,7 @@ $( window ).ready(function()
       else{ $( "#alta_detalle_diasElborar_producto_cotizador" ).removeClass( "md-input-danger" ); }
       //nombreproduct -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
-      boolErrorEvento=validarCamposSelect(evento);      
+      boolErrorEvento=validarCamposSelect(evento);     
       if(boolErrorEvento){ $( "#alta_evento_producto_cotizador" ).addClass( "md-input-danger" ); boolError=true; }
       else{ $( "#alta_evento_producto_cotizador" ).removeClass( "md-input-danger" ); }
       ///////////////////////////////////////////////////////////////////////////
@@ -3238,10 +3484,10 @@ $( window ).ready(function()
     if(numero=='')
       boolErrorNumero=true;
     //VALIDAR RANGO DE DATOS ACEPTABLES
-    if(numero<0)
+    if(numero<0||boolErrorNumero)
       boolErrorNumero=true;
     //VALIDAR CAMPOS NO SON NUMEROS
-    if(!$.isNumeric(numero))
+    if(!$.isNumeric(numero)||boolErrorNumero)
       boolErrorNumero=true;
     return boolErrorNumero;
   }
@@ -3276,6 +3522,7 @@ $( window ).ready(function()
     $("#alta_categoria_producto_cotizador").empty();
 
     $("#alta_especificingredientes_producto_linea").empty();
+    $("#alta_especificingredientes_producto_detalle_linea").empty();
     $("#alta_especificingredientes_producto_cotizador").empty();
 
     //cotizador
@@ -3286,6 +3533,7 @@ $( window ).ready(function()
     $("#alta_categoria_producto_linea").append('<option value=""></option>');
     $("#alta_categoria_producto_cotizador").append('<option value=""></option>');
     $("#alta_especificingredientes_producto_linea").append('<option value=""></option>');
+    $("#alta_especificingredientes_producto_detalle_linea").append('<option value=""></option>');
     $("#alta_especificingredientes_producto_cotizador").append('<option value=""></option>');
     $("#alta_evento_producto_cotizador").append('<option value=""></option>');
 
@@ -3311,8 +3559,11 @@ $( window ).ready(function()
     // mostar las especific de ingredeinte disponibles
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblespecificingrediente.php",  data: {solicitadoBy:"WEB"}  })
       .done(function( msg ) {  
-        $.each(msg.datos, function(i,item){          
+        $.each(msg.datos, function(i,item){
+          //AGREGAMOS LAS OPCIONES DE ESPEFICICACION DE INGREDIENTE PARA ALTA DE PRODUCTO EN LINEA          
           $("#alta_especificingredientes_producto_linea").append('<option value="'+msg.datos[i].idtblespecificingrediente+'">'+msg.datos[i].tblespecificingrediente_nombre+'</option>');
+          //AGREGAMOS LAS OPCIONES DE ESPEFICICACION DE INGREDIENTE PARA ALTA DE PRODUCTO DETALLE EN LINEA  
+          $("#alta_especificingredientes_producto_detalle_linea").append('<option value="'+msg.datos[i].idtblespecificingrediente+'">'+msg.datos[i].tblespecificingrediente_nombre+'</option>');
           arregloEspecifiIngredientesId.push(msg.datos[i].idtblespecificingrediente);
           arregloEspecifiIngredientesNombre.push(msg.datos[i].tblespecificingrediente_nombre);  
         });        
@@ -3360,6 +3611,7 @@ $( window ).ready(function()
     popup_modificarproductoComplementario="#popup_modificarproductoComplementario";
     popup_productEliminar="#popup_productEliminar";
     popup_nuevoproductolinea="#popup_nuevoproductolinea";
+    popup_nuevoproductodetallelinea="#popup_nuevoproductodetallelinea";
     popup_nuevoproductocotizador="#popup_nuevoproductocotizador";
     popup_nuevoproductoComplementario="#popup_nuevoproductoComplementario";
     PRODUCTOSIMGSRC="./../assests_general/productos/linea/";
@@ -3374,71 +3626,71 @@ $( window ).ready(function()
         
         if(msgTblProductoYDetalles.datos!="Hubo algun error, vuelve a intentarlo WEB")
         {
-        $.each(msgTblProductoYDetalles.datos, function(i,item){
-          idexArreglo=i;
-          idProducto=msgTblProductoYDetalles.datos[i].idProducto;
-          nombre=msgTblProductoYDetalles.datos[i].nombre;
-          //alert('mostrar liena nombre::'+nombre);
-          descripcion=msgTblProductoYDetalles.datos[i].descripcion;
-          ingredientes=msgTblProductoYDetalles.datos[i].ingredientes;
-          seo=msgTblProductoYDetalles.datos[i].seo;
-          activadoGeneral=msgTblProductoYDetalles.datos[i].activadoGeneral;
-          idtblcategproduct=msgTblProductoYDetalles.datos[i].idtblcategproduct;
-          idtblclasifproduct=msgTblProductoYDetalles.datos[i].idtblclasifproduct;
+          $.each(msgTblProductoYDetalles.datos, function(i,item){
+            idexArreglo=i;
+            idProducto=msgTblProductoYDetalles.datos[i].idProducto;
+            nombre=msgTblProductoYDetalles.datos[i].nombre;
+            //alert('mostrar liena nombre::'+nombre);
+            descripcion=msgTblProductoYDetalles.datos[i].descripcion;
+            ingredientes=msgTblProductoYDetalles.datos[i].ingredientes;
+            seo=msgTblProductoYDetalles.datos[i].seo;
+            activadoGeneral=msgTblProductoYDetalles.datos[i].activadoGeneral;
+            idtblcategproduct=msgTblProductoYDetalles.datos[i].idtblcategproduct;
+            idtblclasifproduct=msgTblProductoYDetalles.datos[i].idtblclasifproduct;
 
-          idProductoDetalle=msgTblProductoYDetalles.datos[i].idProductoDetalle;
-          diasElaboracion=msgTblProductoYDetalles.datos[i].diaselaboracion;
-          stock=msgTblProductoYDetalles.datos[i].stock;
-          precioreal=msgTblProductoYDetalles.datos[i].precioreal;
-          diamentro=msgTblProductoYDetalles.datos[i].diamentro;
-          largo=msgTblProductoYDetalles.datos[i].largo;
-          ancho=msgTblProductoYDetalles.datos[i].ancho;
-          piezas=msgTblProductoYDetalles.datos[i].piezas;
-          activado =msgTblProductoYDetalles.datos[i].activado;
-          nombreIngrediente=msgTblProductoYDetalles.datos[i].nombreIngrediente          
-          arregloMostrarimagen.push(idProducto);
+            idProductoDetalle=msgTblProductoYDetalles.datos[i].idProductoDetalle;
+            diasElaboracion=msgTblProductoYDetalles.datos[i].diaselaboracion;
+            stock=msgTblProductoYDetalles.datos[i].stock;
+            precioreal=msgTblProductoYDetalles.datos[i].precioreal;
+            diamentro=msgTblProductoYDetalles.datos[i].diamentro;
+            largo=msgTblProductoYDetalles.datos[i].largo;
+            ancho=msgTblProductoYDetalles.datos[i].ancho;
+            piezas=msgTblProductoYDetalles.datos[i].piezas;
+            activado =msgTblProductoYDetalles.datos[i].activado;
+            nombreIngrediente=msgTblProductoYDetalles.datos[i].nombreIngrediente;
+            //SI EN EL ARREGLO NO ESTA YA EL ID DEL PRODUCTO LO AÑADIMOS AL ARREGLO
+            if($.inArray(idProducto,arregloMostrarimagen)==-1)          
+              arregloMostrarimagen.push(idProducto);
 
-          //TBLPRODUCTODETALLE
-          arregloInfoUnProducto.push(idProducto);
-          arregloInfoUnProducto.push(nombre);
-          arregloInfoUnProducto.push(idProductoDetalle);
-          arregloInfoUnProducto.push(diasElaboracion);          
-          arregloInfoUnProducto.push(stock);
-          arregloInfoUnProducto.push(precioreal);
-          arregloInfoUnProducto.push(diamentro);
-          arregloInfoUnProducto.push(largo);
-          arregloInfoUnProducto.push(ancho);
-          arregloInfoUnProducto.push(piezas);
-          arregloInfoUnProducto.push(activado);
-          arregloInfoUnProducto.push(nombreIngrediente);
+            //TBLPRODUCTODETALLE
+            arregloInfoUnProducto.push(idProducto);
+            arregloInfoUnProducto.push(nombre);
+            arregloInfoUnProducto.push(idProductoDetalle);
+            arregloInfoUnProducto.push(diasElaboracion);          
+            arregloInfoUnProducto.push(stock);
+            arregloInfoUnProducto.push(precioreal);
+            arregloInfoUnProducto.push(diamentro);
+            arregloInfoUnProducto.push(largo);
+            arregloInfoUnProducto.push(ancho);
+            arregloInfoUnProducto.push(piezas);
+            arregloInfoUnProducto.push(activado);
+            arregloInfoUnProducto.push(nombreIngrediente);
 
-          //TBLPRODUCTO
-          arregloInfoUnProducto.push(descripcion);
-          arregloInfoUnProducto.push(ingredientes);
-          arregloInfoUnProducto.push(seo);
-          arregloInfoUnProducto.push(activadoGeneral);
-          arregloInfoUnProducto.push(idtblcategproduct);
-          arregloInfoUnProducto.push(idtblclasifproduct);
+            //TBLPRODUCTO
+            arregloInfoUnProducto.push(descripcion);
+            arregloInfoUnProducto.push(ingredientes);
+            arregloInfoUnProducto.push(seo);
+            arregloInfoUnProducto.push(activadoGeneral);
+            arregloInfoUnProducto.push(idtblcategproduct);
+            arregloInfoUnProducto.push(idtblclasifproduct);
 
-          //SE AGREGA AL ARREGLO QUE TANDRA A TODOS LOS PRODUCTOS Y LIMPIAMOS EL ARREGLO arregloInfoUnProducto PARA EL SIGUIENTE PRODUCTO
-          arregloInfoTodosProducto.push(arregloInfoUnProducto);
-          arregloInfoUnProducto=[];
+            //SE AGREGA AL ARREGLO QUE TANDRA A TODOS LOS PRODUCTOS Y LIMPIAMOS EL ARREGLO arregloInfoUnProducto PARA EL SIGUIENTE PRODUCTO
+            arregloInfoTodosProducto.push(arregloInfoUnProducto);
+            arregloInfoUnProducto=[];
 
-          if(diamentro!=null)
-            productdetalle_size=diamentro+' diametro';
-          else if(largo!=null)
-            productdetalle_size=largo+" x "+ancho+' largo/ancho';
-          else if(piezas!="")
-            productdetalle_size=piezas+' piezas';
-          productoAcitvado=verificarActivoProducto(idProductoDetalle,activado);
-          //alert('parametro nombre::'+nombre) 
-          ProductoJS=productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,productoAcitvado,nombreIngrediente);
-          //LANZA LA PLANTILLA AL DOM
-          $("#productoslineaPlantilla").append(ProductoJS);
-          
-
-        });
-    }
+            if(diamentro!=null)
+              productdetalle_size=diamentro+' diametro';
+            else if(largo!=null)
+              productdetalle_size=largo+" x "+ancho+' largo/ancho';
+            else if(piezas!="")
+              productdetalle_size=piezas+' piezas';
+            productoAcitvado=verificarActivoProducto(idProductoDetalle,activado);
+            //alert('parametro nombre::'+nombre) 
+            ProductoJS=productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,productoAcitvado,nombreIngrediente);
+            //LANZA LA PLANTILLA AL DOM
+            $("#productoslineaPlantilla").append(ProductoJS);
+          });
+        }
         boton_nuevoproductolinea=agregarProductoPlantilla(); 
         $("#productoslineaPlantilla").append(boton_nuevoproductolinea);
         arregloMostrarimagen.forEach(function (item, index, array) {
@@ -3458,13 +3710,17 @@ $( window ).ready(function()
                 arregloImagenesUnProducto.push(productoImagen);
 
                 //QUITAR EL ICONO DE CARGANDO
-                $('#load_imagenPortadaProductoLinea'+tblproductimg_idproducto).remove();
+                //$('#load_imagenPortadaProductoLinea'+tblproductimg_idproducto).remove();
+                $("[name=load_imagenPortadaProductoLinea"+tblproductimg_idproducto+"]").remove();
+                
+
                 //CARGANDO EL ELEMNT DE IMAGEN Y CARGAR LA IMAGEN DEFAULT
                 if(i==0)
-                $('#div_imagenPortadaProductoLinea'+tblproductimg_idproducto).append('<img name="imagenPortadaProductoLinea'+tblproductimg_idproducto+'" class="md-card-head-img" src="./../assests_general/productos/default-img.gif" alt=""/>');  
+                $("[name=div_imagenPortadaProductoLinea"+tblproductimg_idproducto+"]").append('<img name="imagenPortadaProductoLinea'+tblproductimg_idproducto+'" class="md-card-head-img" src="./../assests_general/productos/default-img.gif" alt=""/>');  
+                //$('#div_imagenPortadaProductoLinea'+tblproductimg_idproducto).append('<img name="imagenPortadaProductoLinea'+tblproductimg_idproducto+'" class="md-card-head-img" src="./../assests_general/productos/default-img.gif" alt=""/>');  
                 
                 //LANZAMOS LA SEGUNDA IMAGEN DEL PRODUCTO
-                if(i==1&&i<2)
+                if(i==1)
                   $("[name="+imgSrcProductoLinea+"]").attr("src",productoImagen);
                 //if(i==0)
                   //alert('imgSrcProductoLinea::'+imgSrcProductoLinea+' productoImagen::'+productoImagen);
@@ -3650,8 +3906,8 @@ $( window ).ready(function()
    */
   function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado,nombreIngrediente){
     //nombre = nombre.replace(' ', '_');
-    //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Específica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'"; id="div_imagenPortadaProductoLinea'+idProducto+'"
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img">  <div class="uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top md-fab md-fab-small md-fab-accent" data-uk-modal="{target:popup_nuevoproductodetallelinea,bgclose:false,modal:false,modal:false}" style="z-index: 1;" onclick="altaProductoDetalleLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')" > <i class="material-icons">&#xE145;</i> </div>  <div name="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i name="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Específica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li> <div class="md-card-content"> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
@@ -3953,6 +4209,86 @@ $( window ).ready(function()
       .always(function(){  /*console.log("always");*/ });
       
   }
+  function registrarProductoDetalleLinea(){  
+    /*
+    VARIABLES
+     */
+    //tblproducto
+    activado='';
+    //productodetalle
+    diaselaboracion='';
+    stock='';
+    precioreal='';
+    preciobp='';
+    diametro='';
+    largo='';
+    ancho='';
+    porciones='';
+    piezas='';
+    activado='';
+    idtblespecifingrediente='';
+    idtblproducto='';
+    /*
+    ASINGACION DE VALORES
+     */    
+    idtblproducto=$('#alta_id_producto_detalle_linea').val();
+    activado=$('#alta_activado_producto_detalle_linea').val();
+    //if(activado=='on'){activado=1;}
+    activado=$("#alta_activado_producto_detalle_linea").is(':checked');
+    //alert('activado::'+activado);
+    if(activado)
+      activado=1;
+    else
+      activado=0;
+    diaselaboracion=$('#alta_detalle_diasElborar_producto_detalle_linea').val();
+    stock=$('#alta_detalle_stock_producto_detalle_linea').val();
+    precioreal=$('#alta_detalle_precio_producto_detalle_linea').val();
+    preciobp=precioreal;
+    diametro=$('#alta_clasifcategproduct_circular_diametro_producto_detalle_linea').val();
+    largo=$('#alta_clasifcategproduct_cuadrado_largo_producto_detalle_linea').val();
+    ancho=$('#alta_clasifcategproduct_cuadrado_ancho_producto_detalle_linea').val();
+    piezas=$('#alta_clasifcategproduct_piezas_producto_detalle_linea').val();
+    //activado=1;
+    idtblespecificingrediente=$('#alta_especificingredientes_producto_detalle_linea').val();
+    if(diametro!=''){
+      porciones=Math.round((Math.PI*diametro)/2);
+      largo='';
+      ancho='';
+      piezas='';
+    }
+    else if(largo!=''&&ancho!=''){
+      porciones=largo*ancho/2*5;
+      diametro='';
+      piezas='';
+    }
+    else if(piezas!=''){
+      porciones=piezas;
+      largo='';
+      ancho='';
+      diametro='';
+    }    
+    /////////////////////////////////////////////////////////////////////////       
+    $('#formAltaProductoDetalleLinea')[0].reset();
+                        //cargarValoresDefault();
+                        UIkit.modal("#popup_nuevoproductodetallelinea").hide();
+    //PRODUCTO DETALLES
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductDetalle.php",  data: {solicitadoBy:"WEB",diaselaboracion:diaselaboracion,stock:stock,precioreal:precioreal,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,piezas:piezas,activado:activado,porciones:porciones,idtblespecificingrediente:idtblespecificingrediente,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
+    .done(function( msgTblProductoDetalle )
+    {
+      //alert('done uploadImgProductoLinea datos::'+datos);
+                            //$('#productoslineaPlantilla').html("");
+                            $('#productosComplementarioPlantilla').html("");
+                            $('#productoscotizadorPlantilla').html("");
+                            $('#productoslineaPlantilla').html("");
+                            //$('#altaproducto')[0].reset();
+                            cargarValoresDefault();
+                            UIkit.modal("#popup_spinner_registrando_producto").hide();
+                            UIkit.modal.alert('Producto Registrado');
+    })
+    .fail(function( jqXHR, textStatus ) {  console.log("setTblproductDetalle fail detalle jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+    .always(function(){  /*console.log("always");*/ });
+    /////////////////////////////////////////////////////////////////////
+  }
   //funcion agregar producto cotizador
   function registrarProductoCotizador(){  
     /*
@@ -4120,6 +4456,11 @@ $( window ).ready(function()
     seo=$('#alta_nombre_producto_Complementario').val().replace(" ", '');;
     precioreal=$('#alta_precioreal_producto_Complementario').val();
     preciobp=precioreal;
+    //alert('precio::'+preciobp);
+    preciobp=parseInt(precioreal)+parseInt(Math.round(parseInt((precioreal*0.045+4)*1.16)+0.005,2));
+    //alert('precio::'+preciobp);
+    preciobp=Math.round(parseInt(preciobp)+0.55,0);//el precio que esta en bepickler
+    //alert('precio::'+preciobp);
     activado=$('#alta_activado_producto_cotizador').val();
     if(activado=='on'){activado=1;}
     //SESSION
@@ -4226,6 +4567,42 @@ $( window ).ready(function()
         //console.log("always");
        });
      
+  }
+  //FUNCION altaProductoDetalleLinea(idexArreglo,idProducto,idProductoDetalle,nombre)
+  function altaProductoDetalleLinea(idexArreglo,idProducto,idProductoDetalle,nombre){
+    /**
+     //TBLPRODUCTODETALLE
+        0  arregloInfoUnProducto.push(idProducto);
+        1  arregloInfoUnProducto.push(nombre);
+        2  arregloInfoUnProducto.push(idProductoDetalle);
+        3  arregloInfoUnProducto.push(diasElaboracion);          
+        4  arregloInfoUnProducto.push(stock);
+        5  arregloInfoUnProducto.push(precioreal);
+        6  arregloInfoUnProducto.push(diamentro);
+        7  arregloInfoUnProducto.push(largo);
+        8  arregloInfoUnProducto.push(ancho);
+        9  arregloInfoUnProducto.push(piezas);
+        10  arregloInfoUnProducto.push(activado);
+        11  arregloInfoUnProducto.push(nombreIngrediente);
+
+          //TBLPRODUCTO
+        12  arregloInfoUnProducto.push(descripcion);
+        13  arregloInfoUnProducto.push(ingredientes);
+        14  arregloInfoUnProducto.push(seo);
+        15  arregloInfoUnProducto.push(activadoGeneral);
+        16  arregloInfoUnProducto.push(idtblcategproduct);
+        17  arregloInfoUnProducto.push(idtblclasifproduct);
+     */
+    //LIMPIAMOS LOS ELEMENTOS PARA AGREGAR LOS DE ESTE PRODUCTO ESPECIFICOS
+     //LIMPIAMOS LOS ELEMENTOS PARA AGREGAR LOS DE ESTE PRODUCTO GENERALES
+
+    $('#alta_id_producto_detalle_linea').val(idProducto);
+    //$('#modificar_id_productoDetalle_linea').val(idProductoDetalle);
+    //$('#alta_id_productoDetalle_detalle_linea').val(idProductoDetalle);
+    //$('#modificar_nombre_producto_linea').val(arregloInfoTodosProducto[idexArreglo][1]);
+    $('#alta_nombre_producto_detalle_linea').val(arregloInfoTodosProducto[idexArreglo][1]);
+    //CREAMOS LAS OPCIONES PARA INGREDIENTES Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
+    //DATOS GENERALES
   }
   //function modificarProductoLinea(idProducto,idProductoDetalle,nombre,stock,productdetalle_size){
   function modificarProductoLinea(idexArreglo,idProducto,idProductoDetalle,nombre){
@@ -4913,6 +5290,8 @@ $( window ).ready(function()
           UIkit.modal("#popup_spinner_modificando_producto").hide();
           UIkit.modal.alert('Producto Complementario Actualizado');
           cargarValoresDefault();
+        }else{
+          console.log('se va a subir imagen');
         }
       })
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -5090,8 +5469,13 @@ $( window ).ready(function()
         .done(function( datos ){
           console.log('setDeleteFileImgProductoComplementario datos::'+datos.datos);
           
-
-          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcomplem.php",  data: {
+        })
+        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+        .always(function(){  
+        //console.log("setDeleteFileImgProductoCotizador  always");
+         });
+        
+      $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductcomplem.php",  data: {
             solicitadoBy:"WEB",
             idtblproductcomplem:idProducto,
             email:email,
@@ -5110,14 +5494,6 @@ $( window ).ready(function()
             })
             .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductcomplem fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
             .always(function(){   });
-        
-        })
-        .fail(function( jqXHR, textStatus ) {  console.log("setDeleteFileImgProductoCotizador  fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-        .always(function(){  
-        //console.log("setDeleteFileImgProductoCotizador  always");
-         });
-        
-
       
   }
   /*
