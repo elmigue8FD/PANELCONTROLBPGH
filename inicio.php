@@ -777,9 +777,9 @@ include('./php/seguridad_general.php');
                                         <div class="uk-width-medium-1-1">
                                           <h5 class="heading_c uk-margin-bottom" id="alta_forma_producto_linea_titulo">Forma del producto (elegir solo uno)</h5>
                                           <ul id="forma_producto" class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#switcher-content-a-fade', animation: 'fade'}">
-                                            <li class="uk-active"> <a href="#"> Cuadrado </a> </li>
-                                            <li> <a href="#"> Circular </a> </li>
-                                            <li> <a href="#"> Piezas </a> </li>
+                                            <li class="uk-active" onclick="activarModificarFormaProductoLinea('cuadrado');"> <a href="#"> Cuadrado </a> </li>
+                                            <li> <a href="#" onclick="activarModificarFormaProductoLinea('circular');"> Circular </a> </li>
+                                            <li> <a href="#" onclick="activarModificarFormaProductoLinea('piezas');"> Piezas </a> </li>
                                           </ul>
                                           <ul id="switcher-content-a-fade" class="uk-switcher uk-margin">
                                             <li>
@@ -853,7 +853,7 @@ include('./php/seguridad_general.php');
               <!-- PopUp para alta de Producto Detalle-->
               <div class="uk-modal" id="popup_nuevoproductodetallelinea">
                 <div class="uk-modal-dialog ">
-                  <button type="button" class="uk-modal-close uk-close">                    
+                  <button type="button" class="uk-modal-close uk-close" onclick="">                    
                   </button>
                   <div class="uk-modal-header">
                     <h3 class="uk-modal-title">
@@ -882,7 +882,7 @@ include('./php/seguridad_general.php');
                                 </div>
                                 <div class="uk-form-row">
                                   <div class="uk-float-right" id="div_checkbox_alta_activado_producto_detalle_linea" name="div_checkbox_alta_activado_producto_detalle_linea">
-                                    <input type="checkbox" name="alta_activado_producto_detalle_linea" id="modificar_activado_producto_detalle_linea" />
+                                    <input type="checkbox" name="alta_activado_producto_detalle_linea" id="alta_activado_producto_detalle_linea" />
                                   </div>
                                   <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">
                                     Activo
@@ -903,9 +903,9 @@ include('./php/seguridad_general.php');
                                   <!--<div class="uk-input-group">-->
                                     <h5 class="heading_c uk-margin-bottom" id="alta_forma_producto_linea_detalle_titulo"><span class="req"> * </span>Forma del producto (elegir solo uno)</h5>
                                     <ul id="alta_forma_producto_detalle" class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#alta_switcher-content-a-fade', animation: 'fade'}">
-                                      <li id="alta_tab_cuadrado_detalle" class="uk-active"> <a href="#"> Cuadrado </a> </li>
-                                      <li id="alta_tab_circulo_detalle"> <a href="#"> Circular </a> </li>
-                                      <li id="alta_tab_piezas_detalle"> <a href="#"> Piezas </a> </li>
+                                      <li id="alta_tab_cuadrado_detalle" class="uk-active"> <a href="#" onclick="activarModificarFormaProductoLinea('cuadrado');"> Cuadrado </a> </li>
+                                      <li id="alta_tab_circulo_detalle"> <a href="#" onclick="activarModificarFormaProductoLinea('circular');"> Circular </a> </li>
+                                      <li id="alta_tab_piezas_detalle"> <a href="#" onclick="activarModificarFormaProductoLinea('piezas');"> Piezas </a> </li>
                                     </ul>
                                     <ul id="alta_switcher-content-a-fade" class="uk-switcher uk-margin">
                                       <li>
@@ -1054,9 +1054,9 @@ include('./php/seguridad_general.php');
                                   <!--<div class="uk-input-group">-->
                                     <h5 class="heading_c uk-margin-bottom" id="modificar_forma_producto_linea_titulo">Forma del producto (elegir solo uno)</h5>
                                     <ul id="modificar_forma_producto" class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#modificar_switcher-content-a-fade', animation: 'fade'}">
-                                      <li id="modificar_tab_cuadrado" class="uk-active"> <a href="#"> Cuadrado </a> </li>
-                                      <li id="modificar_tab_circulo"> <a href="#"> Circular </a> </li>
-                                      <li id="modificar_tab_piezas"> <a href="#"> Piezas </a> </li>
+                                      <li id="modificar_tab_cuadrado" class=""> <a href="#" onclick="activarModificarFormaProductoLinea('cuadrado');"> Cuadrado </a> </li>
+                                      <li id="modificar_tab_circulo" class=""> <a href="#" onclick="activarModificarFormaProductoLinea('circular');"> Circular </a> </li>
+                                      <li id="modificar_tab_piezas" class=""> <a href="#" onclick="activarModificarFormaProductoLinea('piezas');"> Piezas </a> </li>
                                     </ul>
                                     <ul id="modificar_switcher-content-a-fade" class="uk-switcher uk-margin">
                                       <li>
@@ -2154,6 +2154,7 @@ var emailproveedor = "mispasteles@gmail.com";
   var solicitadoBy="WEB";
   var mensaje_error_validacion='¡Atención favor de verificar y completar los campos marcados en rojo!';
   mensajeEliminacion="'¿Realmente deseas eliminar el producto?'";
+  var modificar_forma_producto_linea_elegido='';
   var arregloInfoUnProducto=[];
   var arregloInfoTodosProducto=[];
   var arregloInfoUnProductoCotizador=[];
@@ -2235,6 +2236,64 @@ $( window ).ready(function()
   /*
   COMIENZA FUNCIONES MIGUEL
    */
+  function activarModificarFormaProductoLinea(activaForma)
+  {
+    
+    if(activaForma=='cuadrado')
+    {
+      modificar_forma_producto_linea_elegido='cuadrado';
+    }else if(activaForma=='circular')
+    {
+      modificar_forma_producto_linea_elegido='circular';
+    }else if(activaForma=='piezas')
+    {
+      modificar_forma_producto_linea_elegido='piezas';
+    }
+    //alert('forma es::'+activaForma+' variable::'+modificar_forma_producto_linea_elegido);
+  }
+  function validarFormaProductoLinea(diametro,largo,ancho,piezas)
+  {
+    alert('bool::'+modificar_forma_producto_linea_elegido+' diametro::'+diametro+' largo::'+largo+' ancho::'+ancho+' piezas::'+piezas);
+    if(modificar_forma_producto_linea_elegido=='')
+    {
+      if(diametro!=''){
+        porciones=Math.round((Math.PI*diametro)/2);
+        largo='';
+        ancho='';
+        piezas='';
+      }
+      else if(largo!=''&&ancho!=''){
+        porciones=largo*ancho/2*5;
+        diametro='';
+        piezas='';
+      }
+      else if(piezas!=''){
+        porciones=piezas;
+        largo='';
+        ancho='';
+        diametro='';
+      }
+    }else if(modificar_forma_producto_linea_elegido=='cuadrado')
+    {
+      porciones=largo*ancho/2*5;
+      diametro='';
+      piezas='';
+    }else if(modificar_forma_producto_linea_elegido=='circular')
+    {
+      porciones=Math.round((Math.PI*diametro)/2);
+      largo='';
+      ancho='';
+      piezas='';
+    }else if(modificar_forma_producto_linea_elegido=='piezas')
+    {
+      porciones=piezas;
+      largo='';
+      ancho='';
+      diametro='';
+    }
+    alert('bool::'+modificar_forma_producto_linea_elegido+' diametro::'+diametro+' largo::'+largo+' ancho::'+ancho+' piezas::'+piezas+' porciones::'+porciones);
+    return porciones;
+  }
   /**
    * FUNCION USADA PARA VALIDAR LOS FORMULARIOS DE INICIO->PRODCUTOS Y PERFIL DE TIENDA
    * @param  {[STRING]} formularioAValidar [NOMBRE DEL FORMULARIO A VALIDAR]
@@ -2329,23 +2388,8 @@ $( window ).ready(function()
       piezas=$('#alta_clasifcategproduct_piezas_producto_linea').val();
       activado=1;
       idtblespecificingrediente=$('#alta_especificingredientes_producto_linea').val();
-      if(diametro!=''){
-        porciones=Math.round((Math.PI*diametro)/2);
-        largo='';
-        ancho='';
-        piezas='';
-      }
-      else if(largo!=''&&ancho!=''){
-        porciones=largo*ancho/2*5;
-        diametro='';
-        piezas='';
-      }
-      else if(piezas!=''){
-        porciones=piezas;
-        largo='';
-        ancho='';
-        diametro='';
-      }
+
+      porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
       /////////////////////////DATOS GENERALES/////////////////////////
       //nombreproduct -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
@@ -2663,23 +2707,7 @@ $( window ).ready(function()
       idtblespecifingrediente=$('#alta_especificingredientes_producto_detalle_linea').val();
       if(idtblespecifingrediente==null)
         idtblespecifingrediente='';
-      if(diametro!=''){
-        porciones=Math.round((Math.PI*diametro)/2);
-        largo='';
-        ancho='';
-        piezas='';
-      }
-      else if(largo!=''&&ancho!=''){
-        porciones=largo*ancho/2*5;
-        diametro='';
-        piezas='';
-      }
-      else if(piezas!=''){
-        porciones=piezas;
-        largo='';
-        ancho='';
-        diametro='';
-      }
+      porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
       //console.log('datos porciones::'+porciones+' idtblespecificingrediente::'+idtblespecifingrediente);
       /////////////////////////DATOS GENERALES/////////////////////////
       //nombreproduct -> String
@@ -2756,23 +2784,7 @@ $( window ).ready(function()
       piezas=$('#modificar_clasifcategproduct_piezas_producto_linea').val();
       activado=1;
       idtblespecificingrediente=$('#modificar_especificingredientes_producto_linea').val();
-      if(diametro!=''){
-        porciones=Math.round((Math.PI*diametro)/2);
-        largo='';
-        ancho='';
-        piezas='';
-      }
-      else if(largo!=''&&ancho!=''){
-        porciones=largo*ancho/2*5;
-        diametro='';
-        piezas='';
-      }
-      else if(piezas!=''){
-        porciones=piezas;
-        largo='';
-        ancho='';
-        diametro='';
-      }
+      porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
       //////////////////////////////////////////////////////////////////////////////
       ////////////////////////////DATOS DETALLES///////////////////////////////
       //diaselaboracion -> Number
@@ -3906,20 +3918,20 @@ $( window ).ready(function()
    */
   function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado,nombreIngrediente){
     //nombre = nombre.replace(' ', '_');
-    //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'"; id="div_imagenPortadaProductoLinea'+idProducto+'"
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img">  <div class="uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top md-fab md-fab-small md-fab-accent" data-uk-modal="{target:popup_nuevoproductodetallelinea,bgclose:false,modal:false,modal:false}" style="z-index: 1;" onclick="altaProductoDetalleLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')" > <i class="material-icons">&#xE145;</i> </div>  <div name="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i name="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Específica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li> <div class="md-card-content"> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'"; id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-content"
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img">  <div class="uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top md-fab md-fab-small md-fab-accent" data-uk-modal="{target:popup_nuevoproductodetallelinea,bgclose:false,modal:false,modal:false}" style="z-index: 1;" onclick="altaProductoDetalleLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')" > <i class="material-icons">&#xE145;</i> </div>  <div name="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i name="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Específica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li> <div class="uk-grid"> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button></div>  <div class="uk-width-1-2"><button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div> </div> </li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
     nombre = nombre.replace(' ', '_');
     //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoCotizador'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick="UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoCotizador('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador,bgclose:false,modal:false,modal:false}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoCotizador'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div class="uk-grid"> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" onclick="UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoCotizador('+idProducto+'); }); ">Eliminar</button></div> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador,bgclose:false,modal:false,modal:false}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div> </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function productosPlantillaComplementario(idexArreglo,idProducto,nombre,activado,srcimgComplementario){
     nombre = nombre.replace(' ', '_');
     //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoComplentario'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoComplementario'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  <img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button>  <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario,bgclose:false,modal:false,modal:false}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoComplentario'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoComplementario'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  <img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div class="uk-grid"> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button></div>  <div class="uk-width-1-2"><button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario,bgclose:false,modal:false,modal:false}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div> </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function llamarFuncion(idProducto){
@@ -4232,7 +4244,7 @@ $( window ).ready(function()
     ASINGACION DE VALORES
      */    
     idtblproducto=$('#alta_id_producto_detalle_linea').val();
-    activado=$('#alta_activado_producto_detalle_linea').val();
+    //activado=$('#alta_activado_producto_detalle_linea').val();
     //if(activado=='on'){activado=1;}
     activado=$("#alta_activado_producto_detalle_linea").is(':checked');
     //alert('activado::'+activado);
@@ -4240,6 +4252,8 @@ $( window ).ready(function()
       activado=1;
     else
       activado=0;
+
+
     diaselaboracion=$('#alta_detalle_diasElborar_producto_detalle_linea').val();
     stock=$('#alta_detalle_stock_producto_detalle_linea').val();
     precioreal=$('#alta_detalle_precio_producto_detalle_linea').val();
@@ -4570,32 +4584,17 @@ $( window ).ready(function()
   }
   //FUNCION altaProductoDetalleLinea(idexArreglo,idProducto,idProductoDetalle,nombre)
   function altaProductoDetalleLinea(idexArreglo,idProducto,idProductoDetalle,nombre){
-    /**
-     //TBLPRODUCTODETALLE
-        0  arregloInfoUnProducto.push(idProducto);
-        1  arregloInfoUnProducto.push(nombre);
-        2  arregloInfoUnProducto.push(idProductoDetalle);
-        3  arregloInfoUnProducto.push(diasElaboracion);          
-        4  arregloInfoUnProducto.push(stock);
-        5  arregloInfoUnProducto.push(precioreal);
-        6  arregloInfoUnProducto.push(diamentro);
-        7  arregloInfoUnProducto.push(largo);
-        8  arregloInfoUnProducto.push(ancho);
-        9  arregloInfoUnProducto.push(piezas);
-        10  arregloInfoUnProducto.push(activado);
-        11  arregloInfoUnProducto.push(nombreIngrediente);
-
-          //TBLPRODUCTO
-        12  arregloInfoUnProducto.push(descripcion);
-        13  arregloInfoUnProducto.push(ingredientes);
-        14  arregloInfoUnProducto.push(seo);
-        15  arregloInfoUnProducto.push(activadoGeneral);
-        16  arregloInfoUnProducto.push(idtblcategproduct);
-        17  arregloInfoUnProducto.push(idtblclasifproduct);
-     */
-    //LIMPIAMOS LOS ELEMENTOS PARA AGREGAR LOS DE ESTE PRODUCTO ESPECIFICOS
-     //LIMPIAMOS LOS ELEMENTOS PARA AGREGAR LOS DE ESTE PRODUCTO GENERALES
-
+    
+    //LIMPIAMOS LOS ELEMENTOS DEL FORMULARIO
+    
+    $("#alta_especificingredientes_producto_detalle_linea").prop('selectedIndex',0);
+    $("#alta_clasifcategproduct_cuadrado_largo_producto_detalle_linea").val("");
+    $("#alta_clasifcategproduct_cuadrado_ancho_producto_detalle_linea").val("");
+    $("#alta_clasifcategproduct_circular_diametro_producto_detalle_linea").val("");
+    $("#alta_clasifcategproduct_piezas_producto_detalle_linea").val("");
+    $("#alta_detalle_diasElborar_producto_detalle_linea").val("");
+    $("#alta_detalle_precio_producto_detalle_linea").val("");
+    $("#alta_detalle_stock_producto_detalle_linea").val("");
     $('#alta_id_producto_detalle_linea').val(idProducto);
     //$('#modificar_id_productoDetalle_linea').val(idProductoDetalle);
     //$('#alta_id_productoDetalle_detalle_linea').val(idProductoDetalle);
@@ -4638,18 +4637,42 @@ $( window ).ready(function()
 
     $('#modificar_id_producto_linea').val(idProducto);
     $('#modificar_id_productoDetalle_linea').val(idProductoDetalle);
+
+    /*
     if(arregloInfoTodosProducto[idexArreglo][10]==0)
       $('#modificar_activado_producto_linea').prop('checked', false);
     else if(arregloInfoTodosProducto[idexArreglo][10]==1)
       $('#modificar_activado_producto_linea').prop('checked', true);
+    */
+
+    if($("#product_edit_active_control_prod_linea"+idProductoDetalle).is(':checked'))
+      $('#modificar_activado_producto_linea').prop('checked', true);
+    else
+      $('#modificar_activado_producto_linea').prop('checked', false);
+
     $('#modificar_nombre_producto_linea').val(arregloInfoTodosProducto[idexArreglo][1]);
     $('#modificar_detalle_diasElborar_producto_linea').val(arregloInfoTodosProducto[idexArreglo][3]);
     $('#modificar_detalle_precio_producto_linea').val(arregloInfoTodosProducto[idexArreglo][5]);
-    $('#modificar_detalle_stock_producto_linea').val(arregloInfoTodosProducto[idexArreglo][4]);    //dimenciones
+    //$('#modificar_detalle_stock_producto_linea').val(arregloInfoTodosProducto[idexArreglo][4]);    //dimenciones
+    $('#modificar_detalle_stock_producto_linea').val($('#numeric_stockProductoLinea'+idProductoDetalle).val());    //dimenciones numeric_stockProductoLinea6
     $('#modificar_clasifcategproduct_cuadrado_largo_producto_linea').val(arregloInfoTodosProducto[idexArreglo][7]);    
     $('#modificar_clasifcategproduct_cuadrado_ancho_producto_linea').val(arregloInfoTodosProducto[idexArreglo][8]);
     $('#modificar_clasifcategproduct_circular_diametro_producto_linea').val(arregloInfoTodosProducto[idexArreglo][6]);
     $('#modificar_clasifcategproduct_piezas_producto_linea').val(arregloInfoTodosProducto[idexArreglo][9]);
+    //DEPENDE DE EL TAMAÑO DEL PRODUCTO MUESTRA EL CAMPO
+    if(arregloInfoTodosProducto[idexArreglo][7]!=null&&arregloInfoTodosProducto[idexArreglo][8]!=null)
+    {
+      UIkit.switcher('#modificar_forma_producto').show(0);
+    }else if(arregloInfoTodosProducto[idexArreglo][6]!=null)
+    {
+      $("#modificar_tab_circulo").addClass("uk-active");
+      UIkit.switcher('#modificar_forma_producto').show(1);
+    }else if(arregloInfoTodosProducto[idexArreglo][9]!=null)
+    {
+      UIkit.switcher('#modificar_forma_producto').show(2);
+    }
+
+
 
     //CREAMOS LAS OPCIONES PARA INGREDIENTES Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
     $.each(arregloEspecifiIngredientesId, function(i,item){
@@ -4829,23 +4852,9 @@ $( window ).ready(function()
     diametro=$("#modificar_clasifcategproduct_circular_diametro_producto_linea").val();
     largo=$("#modificar_clasifcategproduct_cuadrado_largo_producto_linea").val();
     ancho=$("#modificar_clasifcategproduct_cuadrado_ancho_producto_linea").val();
-    if(diametro!=''){
-      porciones=Math.round((Math.PI*diametro)/2);
-      largo='';
-      ancho='';
-      piezas='';
-    }
-    else if(largo!=''&&ancho!=''){
-      porciones=largo*ancho/2*5;
-      diametro='';
-      piezas='';
-    }
-    else if(piezas!=''){
-      porciones=piezas;
-      largo='';
-      ancho='';
-      diametro='';
-    }
+    //SI NO SE AH MODIFICAR LA FORMA SE TOMA NORMAL SI SE CAMBIO SE TOMA LA ULTIMA FORMA
+    porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
+    //alert('forma::'+modificar_forma_producto_linea_elegido);
     piezas=$("#modificar_clasifcategproduct_piezas_producto_linea").val();
     activado=$("#modificar_activado_producto_linea").is(':checked');
     //alert('activado::'+activado);
@@ -5369,10 +5378,11 @@ $( window ).ready(function()
               else if(numeroProductosDetalle>1)
               {
                 //ELIMINAR SOLO ESTE PRODUCTO DETALLE
-                console.log('ELIMINAR SOLO ESTE PRODUCTO DETALLE');
-                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductDetalle.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle}  })
+                console.log('ELIMINAR SOLO ESTE PRODUCTO DETALLE::'+idProductoDetalle);
+                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteTblproductDetalle.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle, email:email, nombre:nombre, apellido:apellido, nivel:nivel}  })
                   .done(function( msgTblProductoDetalles ) {
-                    alert('Elimnaci? Exitosa');
+                    //alert('Elimnaci? Exitosa');
+                    UIkit.modal.alert('Elimnación Exitosa');
                     //$('#productoslineaPlantilla').html("");
                     //cargarValoresDefault();
                     $('#productosComplementarioPlantilla').html("");
