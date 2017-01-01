@@ -15,7 +15,7 @@ include('./php/seguridad_general.php');
   </head>
 
 
-  <body class=" sidebar_main_open sidebar_main_swipe" onload="inicializa(22.1510387,-100.9809202);">
+  <body class=" sidebar_main_open sidebar_main_swipe">
   
     <!--Titlo de la seccion de la pagina-->
     <h1 id="tituloDeLaPagina" hidden>PerfilTienda</h1>
@@ -1133,7 +1133,7 @@ include('./php/seguridad_general.php');
                     console.log(msg)
                    $.each(msg.datos, function(i,item)
                     {
-                      direccion= msg.datos[i].tblpais_nombre+","+msg.datos[i].tblciudad_nombre+","+msg.datos[i].tblproveedor_direccion+","+msg.datos[i].tblcolonia_nombre;
+                      direccion= msg.datos[i].tblpais_nombre+","+msg.datos[i].tblciudad_nombre+","+msg.datos[i].tblproveedor_direccion;
                       nombrePasteleriaMapa = msg.datos[i].tblproveedor_nombre;
                     });
                     console.log("DIRECCIONCONCATENADA"+direccion);
