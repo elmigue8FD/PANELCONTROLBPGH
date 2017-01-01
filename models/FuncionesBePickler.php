@@ -7500,6 +7500,29 @@ class FuncionesBePickler{
 			return false;
 		}
     }
+
+    /*Funcion Especifica para obtener la direccion del proveedor */
+    public static function getTblproveedordireccion($idtblproveedor){
+
+    	$consulta = "SELECT TPR.tblproveedor_nombre,TPR.tblproveedor_direccion, TCL.tblcolonia_nombre , TC.tblciudad_nombre,TP.tblpais_nombre FROM tblproveedor TPR
+				INNER JOIN tblcolonia TCL on TPR.tblcolonia_idtblcolonia = TCL.idtblcolonia
+    			INNER JOIN tblciudad TC on TCL.tblciudad_idtblciudad = TC.idtblciudad
+    			INNER JOIN tblpais TP on TC.tblpais_idtblpais = TP.idtblpais
+    			WHERE TPR.idtblproveedor = ?";
+        
+        try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+
+    }
+
+
     
     
     /*Consulta las Colonias (depende de la ciudad, el tipo de servicio y los dias de pedido)*/
