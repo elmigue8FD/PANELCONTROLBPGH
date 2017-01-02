@@ -32,7 +32,7 @@ include('./php/seguridad_general.php');
               <div class="md-card-content">
                 <div class="uk-grid">
                   <div class="uk-width-1-1">
-                    <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content'}" id="tabs_1">
+                    <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content',, swiping:false }" id="tabs_1">
                       <li class="uk-active"><a href="#"><font size="3"> Catálogo </font></a></li>
                       <li class="named_tab"><a href="#"><font size="3"> Manual </font></a></li>
                     </ul>
@@ -59,7 +59,7 @@ include('./php/seguridad_general.php');
                     <div class="uk-grid">
                       <div class="uk-width-1-1">
                         <div id="file_upload-drop">
-                          <a class="uk-form-file md-btn md-color-red-300 md-bg-grey-200 md-btn-block md-btn-wave-light waves-effect waves-button waves-light" href="./phps/descargarManualFotografia.php">Click</a>
+                          <a class="uk-form-file md-btn md-btn-flat md-btn-flat-primary md-btn-block md-btn-wave-light waves-effect waves-button waves-light" href="./phps/descargarManualFotografia.php">Click</a>
                         </div>
                       </div>
                     </div><br><br>
@@ -92,7 +92,8 @@ include('./php/seguridad_general.php');
                  $.each(msg.datos, function(i,item){
                   
                   idtblfotografo = item.idtblfotografo;
-                   $("#listafotografos").append('<div data-product-name="P1"><div class="md-card"><div><div><h4 class="uk-text-center">Datos</h4><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_contacto+'</span><span class="uk-text-small uk-text-muted">Contacto</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_preciofoto+'</span><span class="uk-text-small uk-text-muted">Precio por Foto</span></div></li></ul></div><div><h3 class="uk-text-center">Catalogo</h3><div class="uk-grid" id="catalogo2'+i+'"></div></div></div></div></div>');
+                  
+                   $("#listafotografos").append('<div data-product-name="P1"><div  class="md-card"><div class="md-card-head md-bg-grey-400"><div class="uk-text-center"><img class="md-card-head-avatar" src="./assets/img/avatars/fotografologo2.png" /></div><h3 class=" uk-text-center md-color-white">'+item.tblfotografo_nombre+'</h3></div><div class="md-card-content"><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_contacto+'</span><span class="uk-text-small uk-text-muted">Contacto</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_preciofoto+'</span><span class="uk-text-small uk-text-muted">Precio por Foto</span></div></li></ul></div><div><h4 class="uk-text-center">C a t á l o g o </h4><div class="uk-grid" id="catalogo2'+i+'"></div></div></div></div>');
 
 
                      cargarCatalogo(idtblfotografo,i);
