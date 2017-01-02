@@ -132,6 +132,7 @@
 //Variables de Sesion
 var idtblproveedor = 1;
 var solicitadoBy="WEB";
+idtblproveedor = <?php echo $_SESSION['idtblproveedor']; ?>
 
 $(document).ready(function()
 {
