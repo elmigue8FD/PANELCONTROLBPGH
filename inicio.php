@@ -38,12 +38,12 @@ include('./php/seguridad_general.php');
             <div class="md-card-content">
               <div class="uk-grid">
                 <div class="uk-width-1-1">
-                  <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content'}" id="tabs_1">
-                    <li class="named_tab" id="inicio"><a href="" ><font size="3"> Inicio </font></a></li>
-                    <li class="named_tab" id="ordenes"><a href="" ><font size="3"> Ordenes </font></a></li>
-                    <li class="named_tab" id="productos"><a href="" ><font size="3"> Productos </font></a></li>
-                    <li class="named_tab" id="cotizaciones"><a href="" ><font size="3"> Cotizaciones </font></a></li>
-                    <li class="named_tab" id="notif"><a href="" ><font size="3"> Notificaciones </font></a></li>
+                  <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content', swiping:false}" id="tabs_1">
+                    <li class="named_tab" id="inicio"><a href="#" ><font size="3"> Inicio </font></a></li>
+                    <li class="named_tab" id="ordenes"><a href="#" ><font size="3"> Ordenes </font></a></li>
+                    <li class="named_tab" id="productos"><a href="#" ><font size="3"> Productos </font></a></li>
+                    <li class="named_tab" id="cotizaciones"><a href="#" ><font size="3"> Cotizaciones </font></a></li>
+                    <li class="named_tab" id="notif"><a href="#" ><font size="3"> Notificaciones </font></a></li>
                   </ul>
                 </div>
               </div>
@@ -158,10 +158,19 @@ include('./php/seguridad_general.php');
           </div>
          </div>
         </div>
-        <div id="ordenes_add"><!--POP DETALLE DE ORDEN-->
+        <div id="ordenes_add">
+        <!--POPUP REGISTRANDO-->
+              <div class="uk-modal" id="popup_spinner_registrandoOrdenCot">
+                <div class="uk-modal-dialog">                  
+                  <div class="uk-modal-spinner"></div>
+                  <br>
+                  <h4 class="uk-text-center"> Espere un momento </h4>
+                </div>
+              </div>
+        <!--POP DETALLE DE ORDEN-->
           <div class="uk-modal" id="detalleOrdenPendiente">
            <div class="uk-modal-dialog uk-modal-dialog-large">
-            <button type="button" class="uk-modal-close uk-close"></button>
+            <button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
             <div class="uk-modal-header">
              <h3 class="uk-modal-title"><i class="material-icons" >&#xE878;</i>&nbsp;Detalle de Orden </h3>
             </div>
@@ -330,7 +339,7 @@ include('./php/seguridad_general.php');
         </div>
         <div id="marcarorden_add"><!--POP MARCAR ORDEN-->
           <div id="popup_marcarorden" class="uk-modal"><div class="uk-modal-dialog">
-           <button type="button" class="uk-modal-close uk-close"></button>
+           <button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
             <div class="uk-modal-header">
              <h3 class="uk-modal-title"><i class="uk-icon-check-circle-o uk-icon-small"></i>&nbsp;Datos de Entrega</h3>
             </div>
@@ -446,7 +455,7 @@ include('./php/seguridad_general.php');
           </div>
           <!--MODIFICAR LA ORDEN DE ENTREGA -->  
           <div id="popupmodif_marcarorden" class="uk-modal"><div class="uk-modal-dialog">
-           <button type="button" class="uk-modal-close uk-close"></button>
+           <button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
             <div class="uk-modal-header">
              <h3 class="uk-modal-title"><i class="uk-icon-check-circle-o uk-icon-small"></i>&nbsp;Datos de Entrega</h3>
             </div>
@@ -1936,7 +1945,7 @@ include('./php/seguridad_general.php');
        <div id="ordenesdecotizacionesproductos">
         <div class="uk-modal" id="popup_ordencotizador">
          <div class="uk-modal-dialog uk-modal-dialog-large">
-          <button type="button" class="uk-modal-close uk-close"></button>
+          <button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
           <div class="uk-modal-header">
            <h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotización</h3>
           </div>
@@ -2020,8 +2029,16 @@ include('./php/seguridad_general.php');
        </div>
       </div>
       <div id="ordenesdecotizacionesproductosNuevos">
+      <!--POPUP REGISTRANDO-->
+              <div class="uk-modal" id="popup_spinner_registrandoCot2" data-uk-modal="{center:true,bgclose:false}">
+                <div class="uk-modal-dialog">                  
+                  <div class="uk-modal-spinner"></div>
+                  <br>
+                  <h4 class="uk-text-center"> Espere un momento </h4>
+                </div>
+              </div>
        <div class="uk-modal" id="popup_ordencotizadorproductNuevo">
-        <div class="uk-modal-dialog uk-modal-dialog-large"><button type="button" class="uk-modal-close uk-close"></button>
+        <div class="uk-modal-dialog uk-modal-dialog-large"><button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
          <div class="uk-modal-header">
           <h3 class="uk-modal-title"><i class="material-icons">&#xE878;</i>Detalle de Cotización </h3>
          </div>
@@ -2110,7 +2127,7 @@ include('./php/seguridad_general.php');
     </div>
     <div class="uk-modal" id="mapa"><!--Mapa-->
      <div class="uk-modal-dialog">
-      <button type="button" class="uk-modal-close uk-close"></button>
+      <button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
        <div class="uk-modal-header">
         <h4 class="md-card-toolbar-heading-text" id="direccionMapa"></h4>
        </div>  
@@ -5702,14 +5719,14 @@ function inicializarTablas(){
     widgets: ['filter'],});
 
   $("#tbl_ordenesCotizador").tablesorter({
-    sortList: [[2,0]] ,
+    sortList: [[2,0],[4,1]], 
     headers: {1: {sorter: 'digit'} ,
               2: { sorter: "shortDate", dateFormat: "ddmmyyyy" }
               },
     widgets: ['filter'],});
 
   $("#tbl_ordenesCotizadorNuevos").tablesorter({
-    sortList: [[1,0]] ,
+    sortList: [[1,0],[3,1]],
     headers: {1: {sorter: 'digit'} ,
               2: { sorter: "shortDate", dateFormat: "ddmmyyyy" }
               },
@@ -5756,7 +5773,7 @@ function mostrarListaOrdenes(){
                     
                     //se añade a la tabla Ordenes Pendiente la fila con los campos  
                     $("#tblordenespendiente_item").append(
-                      '<tr data-uk-modal="{target:'+"'#detalleOrdenPendiente'"+', bgclose:false,modal:false, }" onclick="datosDetalleOrden('+msg.datos[i].idtblordencompra+','+tabla_OrdenesPendiente+')"><td class="uk-text-center">'+msg.datos[i].idtblordencompra+
+                      '<tr data-uk-modal="{target:'+"'#detalleOrdenPendiente'"+', bgclose:false,modal:false }" onclick="datosDetalleOrden('+msg.datos[i].idtblordencompra+','+tabla_OrdenesPendiente+')"><td class="uk-text-center">'+msg.datos[i].idtblordencompra+
                       '</td><td class="uk-text-center">'+fchagendado+
                       '</td></tr>');
                     $("#tbl_ordenespendiente").trigger('updateAll', [true]);//actualiza tabla
@@ -5768,7 +5785,7 @@ function mostrarListaOrdenes(){
                   fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
                   //se añade a la tabla Ordenes Hostorial la fila con los campos  
                   $("#tblordeneshistorial_item").append(
-                  '<tr data-uk-modal="{target:'+"'#detalleOrdenPendiente'"+', bgclose:false,modal:false, }" onclick="datosDetalleOrden('+msg.datos[i].idtblordencompra+','+tabla_OrdenesHistorial+')"><td class="uk-text-center">'+msg.datos[i].idtblordencompra+
+                  '<tr data-uk-modal="{target:'+"'#detalleOrdenPendiente'"+', bgclose:false,modal:false }" onclick="datosDetalleOrden('+msg.datos[i].idtblordencompra+','+tabla_OrdenesHistorial+')"><td class="uk-text-center">'+msg.datos[i].idtblordencompra+
                   '</td><td class="uk-text-center">$<span name="totaltabla'+i+'" id="totaltabla'+i+'"></span</td><td class="uk-text-center">'+fchpagoproveedor+'</td><td class="uk-text-center" id="tblstatusdeposito'+i+'"></td></tr>');
                   
 
@@ -6305,6 +6322,10 @@ function marcarordenEntregada(){
  //si cumple la validacion 
  if(boleanVerificacionComplementarios && boleanVerificacionProductos && boleanStatus && boleanDescripcioStatus){
 
+  UIkit.modal("#popup_spinner_registrandoOrdenCot").show();
+  UIkit.modal("#popup_marcarorden").hide();
+  UIkit.modal("#detalleOrdenPendiente").hide();
+
 
   srcimg1=$("#img1Productv1").val().replace(/C:\\fakepath\\/i, '');
   srcimg1='Evid1_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimg1;
@@ -6354,8 +6375,8 @@ function marcarordenEntregada(){
                           .done(function(datos){
 
                             if(datos=="success"){
-                              UIkit.modal("#popup_marcarorden").hide();
-                              UIkit.modal("#detalleOrdenPendiente").hide();
+
+                              UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
                               UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
 
                               $("#tblordenes_item").empty();
@@ -6376,7 +6397,7 @@ function marcarordenEntregada(){
                                  data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
                                 .done(function(msg7) {   
                                  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-
+                                UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
                                 UIkit.modal.alert(datos);
 
                             }
@@ -6390,6 +6411,7 @@ function marcarordenEntregada(){
                         .done(function(msg7) {   
                          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                         
+                        UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
                         UIkit.modal.alert('Error, Vuelva Intenarlo.');
                         
 
@@ -6399,8 +6421,7 @@ function marcarordenEntregada(){
 
                   }else{//si no hay lanza msj
 
-                    UIkit.modal("#popup_marcarorden").hide();
-                    UIkit.modal("#detalleOrdenPendiente").hide();
+                    UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
                     UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
 
                     $("#tblordenes_item").empty();
@@ -6418,6 +6439,7 @@ function marcarordenEntregada(){
                 }
             }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
         }else{
+         UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
          UIkit.modal.alert('Error Vuelva Intentarlo');
         }
         
@@ -6585,6 +6607,10 @@ function marcarordenEntregadaModif(){
       
     }
 
+    UIkit.modal("#popupmodif_marcarorden").hide();
+    UIkit.modal("#detalleOrdenPendiente").hide();
+    UIkit.modal("#popup_spinner_registrandoOrdenCot").show();
+
 
     $.ajax({ //registrar de tblentregaproduct 
       method: "POST",  
@@ -6606,8 +6632,7 @@ function marcarordenEntregadaModif(){
                          $.ajax({ method: "POST", url: './phps/uploadImgEvidenciasComplementarios.php', data: formDataCModif ,contentType: false,processData: false,})
                           .done(function(datos){
                             if(datos=="success"){
-                             UIkit.modal("#popupmodif_marcarorden").hide();
-                              UIkit.modal("#detalleOrdenPendiente").hide();
+                              UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
                               UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
 
                               $("#tblordenes_item").empty();
@@ -6630,7 +6655,7 @@ function marcarordenEntregadaModif(){
                           data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                           .done(function(msg7) {   
                            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-
+                                UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
                                 UIkit.modal.alert(datos);
 
                             }
@@ -6644,8 +6669,9 @@ function marcarordenEntregadaModif(){
                           data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                           .done(function(msg7) {   
                            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-                              
-                        UIkit.modal.alert('Error, Vuelva Intenarlo.');
+                            
+                            UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
+                            UIkit.modal.alert('Error, Vuelva Intenarlo.');
                         
 
                        }
@@ -6654,8 +6680,7 @@ function marcarordenEntregadaModif(){
 
                   }else{//si no hay lanza msj
 
-                    UIkit.modal("#popupmodif_marcarorden").hide();
-                    UIkit.modal("#detalleOrdenPendiente").hide();
+                    UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
                     UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
 
                     $("#tblordenes_item").empty();
@@ -6670,10 +6695,13 @@ function marcarordenEntregadaModif(){
                     data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
                     .done(function(msg7) {   
                      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+
+                    UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
                     UIkit.modal.alert(datos);
                 }
             }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
         }else{
+         UIkit.modal("#popup_spinner_registrandoOrdenCot").hide(); 
          UIkit.modal.alert('Error Vuelva Intentarlo');
         }
         
@@ -6705,8 +6733,8 @@ function mapaGeo(x,id){
  if(id==1){
   direccionCompleta = document.getElementById("dirCompletaOrden").innerHTML;
  }else if (id==2){
-  direccionCompleta = document.getElementById("dirCompletaCotizacion"+x).innerHTML;
-}else {direccionCompleta = document.getElementById("dirCompletaCotizacionNueva"+x).innerHTML;}
+  direccionCompleta = document.getElementById("dirCompletaCotizacion").innerHTML;
+}else {direccionCompleta = document.getElementById("dirCompletaCotizacionNueva").innerHTML;}
  
  $("#direccionMapa").empty();
  $("#direccionMapa").append('<span>'+direccionCompleta+'</span>');                    
@@ -6761,7 +6789,7 @@ function mostrarCotizaciones(){
         
         
         $("#tblcotizacionesproductos").append(  
-        '<tr data-uk-modal="{target:'+idpopup_detalleordencotizador+' ,bgclose:false}" onclick="detalleCotizacion('+msg.datos[i].idtblordencotizador+','+msg.datos[i].idtblcarritoproductcotizador+')"><td class="uk-text-center">'+msg.datos[i].idtblordencotizador+
+        '<tr data-uk-modal="{target:'+idpopup_detalleordencotizador+' ,bgclose:false,modal:false}" onclick="detalleCotizacion('+msg.datos[i].idtblordencotizador+','+msg.datos[i].idtblcarritoproductcotizador+')"><td class="uk-text-center">'+msg.datos[i].idtblordencotizador+
         '</td><td class="uk-text-center">'+msg.datos[i].tblproductcotizador_nombre+
         '</td><td class="uk-text-center">'+fchentrega+
         '</td><td class="uk-text-center">'+msg.datos[i].tblevento_nombre+
@@ -6789,7 +6817,10 @@ function statusCotizacion(idtblmotivo,x){ //Motivo de Respuesta de Cotización
         console.log(msg);
         $.each(msg.datos, function(i,item)
         {  
-          $("#statusCotizacion"+x).text(item.tblmotivocotizacion_motivo);
+          if(item.idtblmotivocotizacion==2){
+              $("#statusCotizacion"+x).text("Enviada");
+          }else{$("#statusCotizacion"+x).text(item.tblmotivocotizacion_motivo);}
+
           $("#tbl_ordenesCotizador").trigger('updateAll', [true]);//actualiza tabla
         });
       }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
@@ -6962,18 +6993,22 @@ function enviarCotizacion(idtblcarritoproductcotizador){
 
           UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
 
+            UIkit.modal("#popup_ordencotizador").hide();
+            UIkit.modal("#popup_spinner_registrandoCot2").show();
+
             $.ajax({ //actualiza el registro con los costos de la cotizacion 
               method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda, costodomicilio:costodomicilio, emailmodifico:emailmodif,idtblmotivocotizacion:status}})
                   .done(function(datos){
                       if(parseInt(datos.success)==1){
+                        UIkit.modal("#popup_spinner_registrandoCot2").hide();
                         UIkit.modal.alert('Exitoso, Cotizacion Enviada');
                          $('#datoscotizador')[0].reset();
-                          UIkit.modal("#popup_ordencotizador").hide();
                           $("#tblcotizacionesproductos").empty();
                           $("#tblcotizacionesproductosnuevos").empty();
                           mostrarCotizacionesProductosNuevos();
                           mostrarCotizaciones();
                       }else {
+                        UIkit.modal("#popup_spinner_registrandoCot2").hide();
                          UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
                       }
             }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
@@ -6999,13 +7034,16 @@ function enviarCotizacion(idtblcarritoproductcotizador){
         costotienda=null;
         costodomicilio=null;
 
+         UIkit.modal("#popup_ordencotizador").hide();
+        UIkit.modal("#popup_spinner_registrandoCot2").show();
+
          $.ajax({ //actualiza el registro con los costos de la cotizacion 
               method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda,costodomicilio:costodomicilio,emailmodifico:emailmodif,idtblmotivocotizacion:status, nombreproveedor:nombre, apellido:apellido, nivel:nivel}})
                   .done(function(datos){
                       if(parseInt(datos.success)==1){
+                        UIkit.modal("#popup_spinner_registrandoCot2").show();
                         UIkit.modal.alert('Exitoso, Cotizacion Enviada');
                          $('#datoscotizador')[0].reset();
-                          UIkit.modal("#popup_ordencotizador").hide();
                           $("#tblcotizacionesproductos").empty();
                           $("#tblcotizacionesproductosnuevos").empty();
                           mostrarCotizacionesProductosNuevos();
@@ -7047,7 +7085,7 @@ function mostrarCotizacionesProductosNuevos(){
 
       
       $("#tblcotizacionesproductosnuevos").append(
-        '<tr data-uk-modal="{target:'+idpopup_detalleordencotizador2+' ,bgclose:false}" onclick="detalleCtizacionProductNuevo('+msg.datos[i].tblordencotizador_idtblordencotizador+','+msg.datos[i].idtblcarritoproductnuevcotiza+')"><td class="uk-text-center">'+msg.datos[i].tblordencotizador_idtblordencotizador+
+        '<tr data-uk-modal="{target:'+idpopup_detalleordencotizador2+' ,bgclose:false,modal:false}" onclick="detalleCtizacionProductNuevo('+msg.datos[i].tblordencotizador_idtblordencotizador+','+msg.datos[i].idtblcarritoproductnuevcotiza+')"><td class="uk-text-center">'+msg.datos[i].tblordencotizador_idtblordencotizador+
         '</td><td class="uk-text-center">'+fchentrega+
         '</td><td class="uk-text-center">'+msg.datos[i].tblcarritoproductnuevcotiza_tipodeevento+
         '<td class="uk-text-center uk-text-bold" id="statusCotizacionNuevo'+i+'"></td></tr>');
@@ -7089,7 +7127,10 @@ function statusCotizacionNuevo(idtblcarritoproductnuevocotizador,x){ //Motivo de
                 console.log(msg2);
                 $.each(msg2.datos, function(z,item2)
                 {  
-                  $("#statusCotizacionNuevo"+x).text(item2.tblmotivocotizacion_motivo);
+                  if(item2.idtblmotivocotizacion==2){
+                    $("#statusCotizacionNuevo"+x).text('Enviada');
+                  }else{$("#statusCotizacionNuevo"+x).text(item2.tblmotivocotizacion_motivo);}
+                  
                   $("#tbl_ordenesCotizadorNuevos").trigger('updateAll', [true]);//actualiza tabla
                 });
           }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
@@ -7097,10 +7138,13 @@ function statusCotizacionNuevo(idtblcarritoproductnuevocotizador,x){ //Motivo de
         });
 
         }else{
-          $("#statusCotizacionNuevo"+x).text("SIN CONTESTAR");
+          $("#statusCotizacionNuevo"+x).text("Sin Contestar");
+           $("#tbl_ordenesCotizadorNuevos").trigger('updateAll', [true]);//actualiza tabla
         }
         
       }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
+
+     $("#tbl_ordenesCotizadorNuevos").trigger('updateAll', [true]);//actualiza tabla
 }
 
 
@@ -7234,18 +7278,22 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
 
         UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
 
+              UIkit.modal("#popup_ordencotizadorproductNuevo").hide();
+              UIkit.modal("#popup_spinner_registrandoCot2").show();
+
              $.ajax({ //ingresa el registro con los costos de la cotizacion 
                 method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
                 .done(function(datos){
                   if(parseInt(datos.success)==1){
-                   UIkit.modal.alert('Exitoso, Cotizacion Enviada');
+                    UIkit.modal("#popup_spinner_registrandoCot2").show();
+                    UIkit.modal.alert('Exitoso, Cotizacion Enviada');
                    $("#formCotizacionNuevo")[0].reset();   
-                   UIkit.modal("#popup_ordencotizadorproductNuevo").hide();                
                    $("#tblcotizacionesproductos").empty();
                    $("#tblcotizacionesproductosnuevos").empty();
                    mostrarCotizacionesProductosNuevos();
                    mostrarCotizaciones();
                   }else{
+                    UIkit.modal("#popup_spinner_registrandoCot2").show();
                     UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
                   }
               }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
@@ -7266,13 +7314,16 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
       idproveedor=idtblproveedor;
       emailcreo= emailproveedor;
 
+      UIkit.modal("#popup_ordencotizadorproductNuevo").hide();
+      UIkit.modal("#popup_spinner_registrandoCot2").show();
+
       $.ajax({ //ingresa el registro con los costos de la cotizacion 
                 method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
                 .done(function(datos){
                   if(parseInt(datos.success)==1){
+                   UIkit.modal("#popup_spinner_registrandoCot2").show();
                    UIkit.modal.alert('Exitoso, Respuesta Enviada');
-                   $("#formCotizacionNuevo")[0].reset();   
-                   UIkit.modal("#popup_ordencotizadorproductNuevo").hide();               
+                   $("#formCotizacionNuevo")[0].reset();                
                    $("#tblcotizacionesproductos").empty();
                    $("#tblcotizacionesproductosnuevos").empty();
                    mostrarCotizacionesProductosNuevos();
