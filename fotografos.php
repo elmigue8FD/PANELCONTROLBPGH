@@ -94,7 +94,7 @@ include('./php/seguridad_general.php');
                   idtblfotografo = item.idtblfotografo;
                   
                    $("#listafotografos").append('<div data-product-name="P1"><div  class="md-card"><div class="md-card-head md-bg-grey-400"><div class="uk-text-center"><img class="md-card-head-avatar" src="./assets/img/avatars/fotografologo2.png" /></div><h3 class=" uk-text-center md-color-white">'+item.tblfotografo_nombre+'</h3></div><div class="md-card-content"><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_contacto+'</span><span class="uk-text-small uk-text-muted">Contacto</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE263;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblfotografo_preciofoto+'</span><span class="uk-text-small uk-text-muted">Precio por Foto</span></div></li></ul></div><div><h4 class="uk-text-center">C a t á l o g o </h4><div class="uk-grid" id="catalogo2'+i+'"></div></div></div></div>');
-
+                    document.getElementById('catalogo2'+i).style.display = 'none';
 
                      cargarCatalogo(idtblfotografo,i);
                     });
@@ -115,7 +115,7 @@ include('./php/seguridad_general.php');
                  $.each(msg2.datos, function(x,item){
                    $("#catalogo2"+i).append('<div class="uk-width-1-2 uk-container-center"><img src="./assets/img/fotografos/'+item.tblfotografocatalogo_srcimg+'" alt="" /></div>');
                  });
-
+                document.getElementById('catalogo2'+i).style.display = 'block'; 
               })
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
       .always(function(){  console.log("always");}); 
