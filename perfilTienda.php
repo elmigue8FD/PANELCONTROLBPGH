@@ -46,7 +46,7 @@ include('./php/seguridad_general.php');
               <div class="md-card-content">
                 <div class="uk-grid">
                   <div class="uk-width-1-1">
-                    <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content'}" id="tabs_1">
+                    <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content', swiping:false}" id="tabs_1">
                       <li class="uk-active"><a href="#"><font size="3"> Datos </font></a></li>
                       <li class="named_tab" onclick="getDireccionProveedor()"><a href="#"><font size="3"> Servicios </font></a></li>
                       <!--<li class="named_tab"><a href="#"><font size="3"> Paquete </font></a></li>-->
