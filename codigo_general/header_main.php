@@ -154,7 +154,7 @@ function numeroNotificacion(){
             $.each(notif.datos, function(i,item){
               if(parseInt(notif.datos[i].tblnotificacionvista_status)!=1){
                 numNotificaciones= numNotificaciones+1;
-                $("#listanotificaciones").append('<li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons md-color-grey-700">&#xE88F;</i></div><div class="md-list-content"><span class="md-list-heading "><a class="md-color-red-300" href="./index.php">'+notif.datos[i].tblnotificacion_asunto+'</a></span><span class="uk-text-small uk-text-muted">'+notif.datos[i].tblnotificacion_mensaje+'</span></div></li>'); 
+                $("#listanotificaciones").append('<li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons md-color-grey-700">&#xE88F;</i></div><div class="md-list-content"><span class="md-list-heading "><a class="md-color-red-300" href="#">'+notif.datos[i].tblnotificacion_asunto+'</a></span><span class="uk-text-small uk-text-muted">'+notif.datos[i].tblnotificacion_mensaje+'</span></div></li>'); 
               }else{numNotificaciones= numNotificaciones}
 
           });
