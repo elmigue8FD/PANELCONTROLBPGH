@@ -7041,7 +7041,7 @@ function enviarCotizacion(idtblcarritoproductcotizador){
               method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda,costodomicilio:costodomicilio,emailmodifico:emailmodif,idtblmotivocotizacion:status, nombreproveedor:nombre, apellido:apellido, nivel:nivel}})
                   .done(function(datos){
                       if(parseInt(datos.success)==1){
-                        UIkit.modal("#popup_spinner_registrandoCot2").show();
+                        UIkit.modal("#popup_spinner_registrandoCot2").hide();
                         UIkit.modal.alert('Exitoso, Cotizacion Enviada');
                          $('#datoscotizador')[0].reset();
                           $("#tblcotizacionesproductos").empty();
@@ -7285,7 +7285,7 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
                 method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
                 .done(function(datos){
                   if(parseInt(datos.success)==1){
-                    UIkit.modal("#popup_spinner_registrandoCot2").show();
+                    UIkit.modal("#popup_spinner_registrandoCot2").hide();
                     UIkit.modal.alert('Exitoso, Cotizacion Enviada');
                    $("#formCotizacionNuevo")[0].reset();   
                    $("#tblcotizacionesproductos").empty();
@@ -7293,7 +7293,7 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
                    mostrarCotizacionesProductosNuevos();
                    mostrarCotizaciones();
                   }else{
-                    UIkit.modal("#popup_spinner_registrandoCot2").show();
+                    UIkit.modal("#popup_spinner_registrandoCot2").hide();
                     UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
                   }
               }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
@@ -7321,7 +7321,7 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
                 method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
                 .done(function(datos){
                   if(parseInt(datos.success)==1){
-                   UIkit.modal("#popup_spinner_registrandoCot2").show();
+                   UIkit.modal("#popup_spinner_registrandoCot2").hide();
                    UIkit.modal.alert('Exitoso, Respuesta Enviada');
                    $("#formCotizacionNuevo")[0].reset();                
                    $("#tblcotizacionesproductos").empty();
@@ -7329,6 +7329,7 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
                    mostrarCotizacionesProductosNuevos();
                    mostrarCotizaciones();
                   }else{
+                    UIkit.modal("#popup_spinner_registrandoCot2").hide();
                     UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
                   }
               }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
