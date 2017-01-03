@@ -6613,7 +6613,8 @@ function marcarordenEntregadaModif(){
 
 
     $.ajax({ //registrar de tblentregaproduct 
-      method: "POST",  
+      method: "POST", 
+      dataType: "json",  
       url: "./../../controllers/setUpdateTblentregaproducto.php",  
       data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodifico:email, apellido:apellido, nivel:nivel}})
       .done(function(datos){
