@@ -5552,7 +5552,7 @@ function cargaCalendario(){
      header: {
           left: 'today',
           center: 'title',
-          right: 'month,agendaWeek,agendaDay prev,next'
+          right: 'month,agendaDay prev,next'
       },
       buttonIcons: {
           prev: 'md-left-single-arrow',
