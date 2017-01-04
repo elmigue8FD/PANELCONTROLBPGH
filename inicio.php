@@ -7326,7 +7326,7 @@ if(status!="null"){
 
 
                                      $.ajax({ //ingresa el registro con los costos de la cotizacion 
-                                        method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status}})
+                                        method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
                                         .done(function(datos){
                                           if(parseInt(datos.success)==1){
                                            UIkit.modal("#popup_spinner_registrandoCot2").hide();
@@ -7362,7 +7362,7 @@ if(status!="null"){
                               UIkit.modal("#popup_spinner_registrandoCot2", {bgclose: false}).show();
 
                               $.ajax({ //ingresa el registro con los costos de la cotizacion 
-                                        method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status}})
+                                        method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
                                         .done(function(datos){
                                           if(parseInt(datos.success)==1){
 
