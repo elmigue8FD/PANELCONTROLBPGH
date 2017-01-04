@@ -655,10 +655,10 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid">
                                     <div class="uk-width-large-1-1">
-                                      <div class="uk-float-right">
-                                        <input type="checkbox" data-switchery checked name="alta_activado_producto_linea" id="alta_activado_producto_linea" />
+                                      <div class="uk-float-right"><!--data-switchery-->
+                                        <input type="checkbox"  checked name="alta_activado_producto_linea" id="alta_activado_producto_linea" />
                                       </div>
-                                      <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activado</label>
+                                      <label class="uk-display-block uk-margin-small-top uk-text-bold" for="product_edit_active_control">Activado</label>
                                     </div>
                                     <!--
                                     <div class="uk-width-medium-1-1 ">
@@ -893,8 +893,8 @@ include('./php/seguridad_general.php');
                                   <div class="uk-float-right" id="div_checkbox_alta_activado_producto_detalle_linea" name="div_checkbox_alta_activado_producto_detalle_linea">
                                     <input type="checkbox" name="alta_activado_producto_detalle_linea" id="alta_activado_producto_detalle_linea" />
                                   </div>
-                                  <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">
-                                    Activo
+                                  <label class="uk-display-block uk-margin-small-top uk-text-bold" for="product_edit_active_control">
+                                    Activado
                                   </label>                                  
                                   <br/>
                                 </div>
@@ -1044,8 +1044,8 @@ include('./php/seguridad_general.php');
                                   <div class="uk-float-right" id="div_checkbox_modificar_activado_producto_linea" name="div_checkbox_modificar_activado_producto_linea">
                                     <input type="checkbox" name="modificar_activado_producto_linea" id="modificar_activado_producto_linea" />
                                   </div>
-                                  <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">
-                                    Activo
+                                  <label class="uk-display-block uk-margin-small-top uk-text-bold" for="product_edit_active_control">
+                                    Activado
                                   </label>                                  
                                   <br/>
                                 </div>
@@ -1389,10 +1389,10 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid">
                                     <div class="uk-width-large-1-1">
-                                      <div class="uk-float-right">
-                                        <input type="checkbox" data-switchery checked name="alta_activado_producto_cotizador" id="alta_activado_producto_cotizador" />
+                                      <div class="uk-float-right"><!--data-switchery-->
+                                        <input type="checkbox" checked name="alta_activado_producto_cotizador" id="alta_activado_producto_cotizador" />
                                       </div>
-                                      <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activado</label>
+                                      <label class="uk-display-block uk-margin-small-top uk-text-bold" for="product_edit_active_control">Activado</label>
                                     </div>
                                   </div>
                                   <br/>
@@ -1563,10 +1563,10 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid">
                                     <div class="uk-width-large-1-1">
-                                      <div class="uk-float-right">
-                                        <input type="checkbox" data-switchery checked name="modificar_activado_producto_cotizador" id="modificar_activado_producto_cotizador" />
+                                      <div class="uk-float-right"><!--data-switchery-->
+                                        <input type="checkbox" checked name="modificar_activado_producto_cotizador" id="modificar_activado_producto_cotizador" />
                                       </div>
-                                      <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activado</label>
+                                      <label class="uk-display-block uk-margin-small-top uk-text-bold" for="product_edit_active_control">Activado</label>
                                     </div>
                                   </div>
                                   <br/>
@@ -1744,10 +1744,10 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid">
                                     <div class="uk-width-large-1-1">
-                                      <div class="uk-float-right">
-                                        <input type="checkbox" data-switchery checked name="alta_activado_producto_Complementario" id="alta_activado_producto_Complementario" />
+                                      <div class="uk-float-right"><!--data-switchery-->
+                                        <input type="checkbox" checked name="alta_activado_producto_Complementario" id="alta_activado_producto_Complementario" />
                                       </div>
-                                      <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activado</label>
+                                      <label class="uk-display-block uk-margin-small-top uk-text-bold" for="product_edit_active_control">Activado</label>
                                     </div>
                                   </div>
                                   <br/>
@@ -1850,10 +1850,10 @@ include('./php/seguridad_general.php');
                                 <li>
                                   <div class="uk-grid">
                                     <div class="uk-width-large-1-1">
-                                      <div class="uk-float-right">
-                                        <input type="checkbox" data-switchery checked name="modificar_activado_producto_Complementario" id="modificar_activado_producto_Complementario" />
+                                      <div class="uk-float-right"><!--data-switchery-->
+                                        <input type="checkbox" checked name="modificar_activado_producto_Complementario" id="modificar_activado_producto_Complementario" />
                                       </div>
-                                      <label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activado</label>
+                                      <label class="uk-display-block uk-margin-small-top uk-text-bold" for="product_edit_active_control">Activado</label>
                                     </div>
                                   </div>
                                   <br/>
@@ -1898,16 +1898,17 @@ include('./php/seguridad_general.php');
               <div class="uk-modal" id="popup_spinner_registrando_producto">
                 <div class="uk-modal-dialog">                  
                   <div class="uk-modal-spinner"></div>
-                  <h4> Espere miestras se registra </h4>
+                  <h4> Espere minestras se registra </h4>
                 </div>
               </div>
               <!--POPUP MODIFICANDO-->
               <div class="uk-modal" id="popup_spinner_modificando_producto">
                 <div class="uk-modal-dialog">                  
                   <div class="uk-modal-spinner"></div>
-                  <h4> Espere miestras se actualiza </h4>
+                  <h4> Espere minestras se actualiza </h4>
                 </div>
               </div>
+               <!--POPUP MODIFICANDO-->
               <div class="uk-modal" id="popup_spinner_eliminando_producto">
                 <div class="uk-modal-dialog">                  
                   <div class="uk-modal-spinner"></div>
@@ -2386,12 +2387,18 @@ $( window ).ready(function()
 
       seo=$('#alta_nombre_producto_linea').val().replace(" ", '');
       promcalif='5';
-      activado=$('#alta_activado_producto_linea').val();
-      if(activado=='on'){activado=1;}
+      //activado=$('#alta_activado_producto_linea').val();
+      //if(activado=='on'){activado=1;}
+      activado=$("#alta_activado_producto_linea").is(':checked');
+      if(activado)
+      activado=1;
+      else
+      activado=0;
+
       //idtblproveedor='1';
       idtblcategproduc=$('#alta_categoria_producto_linea').val();
       idtblclasifproduct=$('#alta_clasificacion_producto_linea').val();
-      //emailcreo='miguel@bepickler.com';
+      
 
       srcimg1=$('#alta_srcimg1_producto_linea').val().replace(/C:\\fakepath\\/i, '');
       srcimg2=$('#alta_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
@@ -2683,7 +2690,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('registrarProductoLinea');
-        UIkit.modal("#popup_spinner_registrando_producto").show();
+        UIkit.modal("#popup_spinner_registrando_producto", {bgclose: false}).show();
         registrarProductoLinea();
       }
       else
@@ -2763,7 +2770,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         //console.log('registrar producto cotizador');
-        UIkit.modal("#popup_spinner_registrando_producto").show();
+        UIkit.modal("#popup_spinner_registrando_producto",{bgclose: false}).show();
         registrarProductoDetalleLinea();     
       }
       else
@@ -2919,7 +2926,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('actualizarProductoDetalle');
-        UIkit.modal("#popup_spinner_modificando_producto").show();
+        UIkit.modal("#popup_spinner_modificando_producto",{bgclose: false}).show();
         actualizarProductoDetalle();      
       }
       else
@@ -3131,7 +3138,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         //console.log('actualizarProductoGeneral');
-        UIkit.modal("#popup_spinner_modificando_producto").show();
+        UIkit.modal("#popup_spinner_modificando_producto",{bgclose: false}).show();
         actualizarProductoGeneral();      
       }
       else
@@ -3223,7 +3230,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         //console.log('registrar producto cotizador');
-        UIkit.modal("#popup_spinner_registrando_producto").show();
+        UIkit.modal("#popup_spinner_registrando_producto",{bgclose: false}).show();
         registrarProductoCotizador();      
       }
       else
@@ -3323,7 +3330,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         //console.log('actualizarProducto cotizador');
-        UIkit.modal("#popup_spinner_modificando_producto").show();
+        UIkit.modal("#popup_spinner_modificando_producto",{bgclose: false}).show();
         actualizarProductoCotizador();      
       }
       else
@@ -3402,7 +3409,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('registrar producto complementario');
-        UIkit.modal("#popup_spinner_registrando_producto").show();
+        UIkit.modal("#popup_spinner_registrando_producto",{bgclose: false}).show();
         registrarProductoComplementario();      
       }
       else
@@ -3487,7 +3494,7 @@ $( window ).ready(function()
       if(!boolError)
       {
         console.log('actualizar producto complementario');
-         UIkit.modal("#popup_spinner_modificando_producto").show();
+         UIkit.modal("#popup_spinner_modificando_producto",{bgclose: false}).show();
         actualizarProductoComplementario();      
       }
       else
@@ -3919,7 +3926,7 @@ $( window ).ready(function()
             nombreCheckBox="product_edit_active_control_prod_Complementario"+idProductoComplementario;   
             productoAcitvado='<input type="checkbox" data-switchery checked name="product_edit_active_control_prod_Complementario" id="'+nombreCheckBox+'" onclick="activarProducto('+nombreCheckBox+','+idProductoComplementario+')"/>';
             productoAcitvadoComplementario=productoAcitvado
-            ProductoJS=productosPlantillaComplementario(indexArregloComplementario,idProductoComplementario,nombreComplementario,activadoComplementario,srcimgComplementario);
+            ProductoJS=productosPlantillaComplementario(indexArregloComplementario,idProductoComplementario,nombreComplementario,stockComplementario, activadoComplementario,srcimgComplementario);
             //LANZA LA PLANTILLA AL DOM
             $("#productosComplementarioPlantilla").append(ProductoJS);
             //QUITAR EL ICONO DE CARGANDO
@@ -3942,7 +3949,7 @@ $( window ).ready(function()
   function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado,nombreIngrediente){
     //nombre = nombre.replace(' ', '_');
     //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'"; id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-content"
-    ProductoJS='<div data-product-name="P2" class="productos"><div class="md-card md-card-hover-img">  <div class="uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top md-fab md-fab-small md-fab-accent" data-uk-modal="{target:popup_nuevoproductodetallelinea,bgclose:false,modal:false,modal:false}" style="z-index: 1;" onclick="altaProductoDetalleLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')" > <i class="material-icons">&#xE145;</i> </div>  <div name="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i name="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-muted">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Específica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-muted">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li> <div class="uk-grid"> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button></div>  <div class="uk-width-1-2"><button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div> </div> </li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2" class="productos"><div class="md-card md-card-hover-img">  <div class="uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top md-fab md-fab-small md-fab-accent" data-uk-modal="{target:popup_nuevoproductodetallelinea,bgclose:false,modal:false,modal:false}" style="z-index: 1;" onclick="altaProductoDetalleLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')" > <i class="material-icons">&#xE145;</i> </div>  <div name="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i name="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-bold">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Específica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-bold">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading uk-text-bold">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li> <div class="uk-grid"> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button></div>  <div class="uk-width-1-2"><button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div> </div> </li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
@@ -3951,10 +3958,11 @@ $( window ).ready(function()
     ProductoJS='<div data-product-name="P2" class="productos"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoCotizador'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoCotizador'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div class="uk-grid"> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" onclick="UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoCotizador('+idProducto+'); }); ">Eliminar</button></div> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductocotizador,bgclose:false,modal:false,modal:false}" onclick="modificarProductoCotizaor('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div> </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
-  function productosPlantillaComplementario(idexArreglo,idProducto,nombre,activado,srcimgComplementario){
+  function productosPlantillaComplementario(idexArreglo,idProducto,nombre,stock,activado,srcimgComplementario){
     nombre = nombre.replace(' ', '_');
+    //stock=99;
     //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'";
-    ProductoJS='<div data-product-name="P2" class="productos"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoComplentario'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoComplementario'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  <img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>  <li><div class="uk-grid"> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button></div>  <div class="uk-width-1-2"><button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario,bgclose:false,modal:false,modal:false}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div> </div></li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2" class="productos"><div class="md-card md-card-hover-img"><div id="div_imagenPortadaProductoComplentario'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i id="load_imagenPortadaProductoComplementario'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  <img id="imagenPortadaProductoComplementario'+idProducto+'" name="imagenPortadaProductoComplementario'+idProducto+'" class="md-card-head-img" src="./../assests_general/productos/complementario/'+srcimgComplementario+'" alt=""/></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProducto+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li>    <li><div class="md-list-content-horizontal"> <label class="md-list-heading uk-text-bold">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoComplementario'+idProducto+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoComplementario('+idProducto+')" onclick="actualizarStockProductoComplementario('+idProducto+')"/></div> </div></li>    <li><div class="uk-grid"> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoComplementario('+idProducto+'); }); ">Eliminar</button></div>  <div class="uk-width-1-2"><button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductoComplementario,bgclose:false,modal:false,modal:false}" onclick="modificarProductoComplementario('+idexArreglo+','+idProducto+','+idProducto+')">Modificar</button>   </div> </div></li>      </ul></div></div></div>';  
       return ProductoJS
   }
   function llamarFuncion(idProducto){
@@ -4012,7 +4020,6 @@ $( window ).ready(function()
   }
   function activarProducto(checkboxAActivar,idProductoDetalle)
   {
-    //emailUsuarioLogin='miguel@bepickler.com22';
 
     if(checkboxAActivar.checked){
       activado=1;       
@@ -4029,7 +4036,6 @@ $( window ).ready(function()
   }
   function activarProductoCotizador(checkboxAActivar,idProducto)
   {
-    //emailUsuarioLogin='miguel@bepickler.com22';
     if(checkboxAActivar.checked){
       activado=1;       
     }else{
@@ -4045,9 +4051,18 @@ $( window ).ready(function()
   }
   function actualizarStockProductoLinea(idProductoDetalle){
     stock=$('#numeric_stockProductoLinea'+idProductoDetalle).val();
-    //emailUsuarioLogin='miguel@bepickler.com22';
     $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalleStock.php",  data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,stock:stock,emailusuamodifico:emailproveedor}  })
       .done(function( msgTblproductDetalle ) {        
+      })
+      .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleStock fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+      .always(function(){  /*console.log("always");*/ });
+  }
+  function actualizarStockProductoComplementario(idProducto){
+    stock=$('#numeric_stockProductoComplementario'+idProducto).val();
+    console.log('actualizarStockProductoComplementario');
+    $.ajax({  method: "POST", dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplemStock.php",  data: {solicitadoBy:"WEB",idtblproductcomplem:idProducto,stock:stock,emailusuamodifico:emailproveedor}  })
+      .done(function( msgTblproductDetalle ) { 
+        console.log('resultado::'+JSON.stringify(msgTblproductDetalle, null, 4));       
       })
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleStock fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
@@ -4097,12 +4112,18 @@ $( window ).ready(function()
     ingredientes=$('#alta_ingredientes_producto_linea').val();
     seo=$('#alta_nombre_producto_linea').val().replace(" ", '');
     promcalif='5';
-    activado=$('#alta_activado_producto_linea').val();
-    if(activado=='on'){activado=1;}
+    
+    //activado=$('#alta_activado_producto_linea').val();
+    //if(activado=='on'){activado=1;}
+    //
+    activado=$("#alta_activado_producto_linea").is(':checked');
+    if(activado)
+      activado=1;
+    else
+      activado=0;
     //idtblproveedor='1';
     idtblcategproduc=$('#alta_categoria_producto_linea').val();
     idtblclasifproduct=$('#alta_clasificacion_producto_linea').val();
-    //emailcreo='miguel@bepickler.com';
 
     srcimg1=$('#alta_srcimg1_producto_linea').val().replace(/C:\\fakepath\\/i, '');
     srcimg2=$('#alta_srcimg2_producto_linea').val().replace(/C:\\fakepath\\/i, '');
@@ -4119,7 +4140,6 @@ $( window ).ready(function()
     largo=$('#alta_clasifcategproduct_cuadrado_largo_producto_linea').val();
     ancho=$('#alta_clasifcategproduct_cuadrado_ancho_producto_linea').val();
     piezas=$('#alta_clasifcategproduct_piezas_producto_linea').val();
-    activado=1;
     idtblespecificingrediente=$('#alta_especificingredientes_producto_linea').val();
     if(diametro!=''){
       porciones=Math.round((Math.PI*diametro)/2);
@@ -4360,7 +4380,6 @@ $( window ).ready(function()
     //idtblproveedor='1';
     ///////////////////
     idtblevento=$('#alta_evento_producto_cotizador').val();
-    //emailcreo='miguel@bepickler.com';
 
     srcimg1=$('#alta_srcimg1_producto_cotizador').val().replace(/C:\\fakepath\\/i, '');
     srcimg2=$('#alta_srcimg2_producto_cotizador').val().replace(/C:\\fakepath\\/i, '');
@@ -4503,7 +4522,6 @@ $( window ).ready(function()
     //SESSION
     //idtblproveedor='1';
     ///////////////////
-    //emailcreo='miguel@bepickler.com';
 
     srcimg=$('#alta_srcimg1_producto_Complementario').val().replace(/C:\\fakepath\\/i, '');
     srcimg='p_'+idtblproveedor+'_'+srcimg;
@@ -4857,6 +4875,8 @@ $( window ).ready(function()
     $("#modificar_idProveedor_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][7]);
 
     $("#modificar_stock_producto_Complementario").val(arregloInfoTodosProductoComplementario[idexArreglo][8]);
+
+    $("#modificar_stock_producto_Complementario").val($("#numeric_stockProductoComplementario"+idtblproductcomplementario).val());
     
     $("#modificar_galeria_producto_Complementario").append('<div class="uk-width-medium-1-3"><div class="md-card"><div class="md-card-content" > <img id="fotografia_complementario_actual" name="fotografia_complementario_actual" class="" src="./../assests_general/productos/complementario/'+arregloInfoTodosProductoComplementario[idexArreglo][5]+'" alt=""></div></div></div>');
 
@@ -4887,7 +4907,6 @@ $( window ).ready(function()
       activado=0;
     idProducto=$("#modificar_id_producto_linea").val();
     especificingredientes=$("#modificar_especificingredientes_producto_linea").val();
-    //emailmodifico='miguel@bepickler.com';
 
     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalle.php", data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,diaselaboracion:diasElborar,stock:stock,precioreal:precio,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,porciones:porciones,piezas:piezas,activado:activado,idtblproducto:idProducto, idtblespecifingrediente:especificingredientes ,emailmodifico:emailproveedor }  })
     .done(function( msgTblProductoDetalles ) {
@@ -4928,7 +4947,6 @@ $( window ).ready(function()
     //idtblproveedor=1;
     categoria=$("#modificar_categoria_producto_linea_general").val();
     clasificacion=$("#modificar_clasificacion_producto_linea_general").val();
-    //emailmodifico='miguel@bepickler.com';
 
     srcimg1=$("#modificar_srcimg1_producto_linea").val();
     srcimg2=$("#modificar_srcimg2_producto_linea").val();
@@ -5084,7 +5102,6 @@ $( window ).ready(function()
     //idtblproveedor=1;
     diaselaboracion=$("#modificar_detalle_diasElborar_producto_cotizador").val();
     promcalificacion=5;
-    //emailmodifico='miguel@bepickler.com';
 
     srcimg1=$("#modificar_srcimg1_producto_cotizador").val();
     srcimg2=$("#modificar_srcimg2_producto_cotizador").val();
@@ -5248,7 +5265,6 @@ $( window ).ready(function()
     idtblproveedor=$("#modificar_idProveedor_producto_Complementario").val();
     stock=$("#modificar_stock_producto_Complementario").val();
     activado=$('#modificar_activado_producto_Complementario').val();
-    //emailmodifico='miguel@bepickler.com';
     //srcimgActual=$("#fotografia_complementario_actual").val();
     srcimgActual=$("#fotografia_complementario_actual").attr("src");
     //alert('srcimgActual::'+srcimgActual);
@@ -5432,7 +5448,7 @@ $( window ).ready(function()
         
   }
   function eliminarProductoCotizador(idtblproductcotizador){
-    UIkit.modal("#popup_spinner_eliminando_producto", {bgclose: false}).show();
+      UIkit.modal("#popup_spinner_eliminando_producto", {bgclose: false}).show();
       /*
       Recibir el id del producto general tblproducto
       ver cuantos productos detalles existe de este producto
