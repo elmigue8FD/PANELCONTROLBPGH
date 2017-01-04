@@ -449,7 +449,7 @@ include('./php/seguridad_general.php');
              </form>
             </div>
             <div class="uk-modal-footer"><!-- -->
-             <button class="md-btn md-color-red-300 md-bg-grey-200 md-btn-block md-btn-wave-light waves-effect waves-button waves-light" type="button" onclick=marcarordenEntregada()>Enviar</button>
+             <button class="md-btn md-btn-block md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" type="button" onclick=marcarordenEntregada()>Enviar</button>
             </div>
            </div>
           </div>
@@ -562,7 +562,7 @@ include('./php/seguridad_general.php');
              </form>
             </div>
             <div class="uk-modal-footer"><!-- -->
-             <button class="md-btn md-color-red-300 md-bg-grey-200 md-btn-block md-btn-wave-light waves-effect waves-button waves-light" type="button" onclick="marcarordenEntregadaModif()"> Modificar </button>
+             <button class="md-btn md-btn-block md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" type="button" onclick="marcarordenEntregadaModif()"> Modificar </button>
             </div>
            </div>
           </div>
