@@ -7163,6 +7163,23 @@ class FuncionesBePickler{
 		}
 	}
 
+	/*Verifica si existe un registro en tblcostocotizacionproductnuevo  */
+    public static function setCheckTblcostocotizacionproductnuevo($idtblcarritoproductnuevcotiza,$idtblproveedor){
+        
+        $check = "SELECT COUNT(*) FROM tblcostocotizacionproductnuevo WHERE tblcarritoproductnuevcotiza_idtblcarritoproductnuevcotiza = ? AND tblproveedor_idtblproveedor= ?";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$idtblcarritoproductnuevcotiza,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchColumn(0); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+        
+    }
+
 	/*Insertar un registro en tblnotificacion*/
 	public static function setTblnotificacion($tipo,$asunto,$mensaje,$emisor,$emailcreo,$idredireccion){
         
