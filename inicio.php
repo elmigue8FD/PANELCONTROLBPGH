@@ -5569,7 +5569,7 @@ function cargaCalendario(){
       aspectRatio: 2.1,
       defaultDate: moment(),
       eventLimit: true,
-      timeFormat: 'H(:mm)',
+      timeFormat: 'HH:mm',
       events: "./assets/calendariojson/"+nombrearchivo,
       eventClick: function(calEvent, jsEvent, view) {
         if(calEvent.tipo==1){
