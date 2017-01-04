@@ -121,11 +121,7 @@ include('./php/seguridad_general.php');
          </div>
          <div class="uk-form-row">
             <span class="md-color-grey-500">* Password</span>
-            <input type="password" class="md-input" name="usuariopasswdmodif" id="usuariopasswdmodif" />
-         </div>
-         <div class="uk-form-row">
-            <span class="md-color-grey-500">* Repetir Password</span>
-            <input type="password" class="md-input" name="usuariopasswd2modif" id="usuariopasswd2modif" />
+            <input type="text" class="md-input" name="usuariopasswdmodif" id="usuariopasswdmodif" />
          </div>
          <div class="uk-form-row uk-width-medium-1-1">
            <select id="select_accesomodif" class="md-input"></select>
@@ -314,6 +310,7 @@ include('./php/seguridad_general.php');
                   }else {
                     $("#switch_activadomodif").prop("checked", false);
                   }
+                  $("#usuariopasswdmodif").val(item.tblusuarioproveedor_password);
                   $("#select_accesomodif").val(item.tblniveleacceso_idtblniveleacceso);
                   $("#idusuario").text(item.idtblusuarioproveedor);
                  })
@@ -331,7 +328,6 @@ include('./php/seguridad_general.php');
     usuarioemailmodif= $("#usuarioemailmodif").val();
     usuariocelularmodif=$("#usuariocelularmodif").val();
     usuariopasswdmodif=$("#usuariopasswdmodif").val();
-    usuariopasswd2modif=$("#usuariopasswd2modif").val();
     activadomodif =$("#switch_activadomodif").prop('checked');
     idnivelaccesomodif=$("#select_accesomodif").val();
 
@@ -343,13 +339,10 @@ include('./php/seguridad_general.php');
     if(usuarionombremodif!="" && usuarioapellidomodif!="" && usuarioemailmodif!="" && usuariocelularmodif!="" && usuariopasswdmodif!="" && idnivelaccesomodif!=null){
      
        //valida la direccion de correo es correcta y el passwd no tenga espacios vacios
-       if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(usuarioemailmodif)) || (/^\s+$/.test(usuariopasswdmodif)) || (/^\s+$/.test(usuariopasswd2modif))){
+       if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(usuarioemailmodif)) || (/^\s+$/.test(usuariopasswdmodif)) ){
             UIkit.modal.alert('Verifique la direccion de correo electronico (ejemplo@ejemplo.com) y/o ingrese un password correcto');
           }else{
 
-            if(usuariopasswdmodif!=usuariopasswd2modif){
-              UIkit.modal.alert('Los Password no son identicos, intentalo de nuevo');
-            }else {
             UIkit.modal.confirm("Si los datos del usuario son correctos, presione Ok", function(){ 
             $.ajax({ 
                    method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblusuarioproveedor.php", data:{solicitadoBy:solicitadoBy,idtblusuarioproveedor:idusuario,nombreproveedor:usuarionombremodif,apellidoproveedor:usuarioapellidomodif,emailproveedor:usuarioemailmodif,activado:activadomodif,celularproveedor:usuariocelularmodif,idtblproveedor:idtblproveedor,idtblnivelacceso:idnivelaccesomodif,password:usuariopasswdmodif,emailmodifico:emailproveedor}})
@@ -367,7 +360,7 @@ include('./php/seguridad_general.php');
                   .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
                   .always(function(){  console.log("always");});
             });  
-           }
+           
         }
     } else UIkit.modal.alert('Es necesario completar los campos obligatorios (*)');
 
