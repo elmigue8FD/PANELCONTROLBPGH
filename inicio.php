@@ -6652,7 +6652,7 @@ function marcarordenEntregadaModif(){
       method: "POST", 
       dataType: "json",  
       url: "./../../controllers/setUpdateTblentregaproducto.php",  
-      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodifico:email, apellido:apellido, nivel:nivel}})
+      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
       .done(function(datos){
         if(parseInt(datos.success)==1){
         // si se guarda con exito se guardan las imagenes
@@ -6689,7 +6689,7 @@ function marcarordenEntregadaModif(){
                               //elimina el registro en tblentregaproduct
                               $.ajax({method: "POST", dataType: "json", 
                           url: "./../../controllers/setUpdateTblentregaproducto.php",
-                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
                           .done(function(msg7) {   
                            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                                 UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
@@ -6703,7 +6703,7 @@ function marcarordenEntregadaModif(){
                           //si no se guarda correctamente el registro de complementarios elimina el registro de productos
                         $.ajax({method: "POST", dataType: "json", 
                           url: "./../../controllers/setUpdateTblentregaproducto.php",
-                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
                           .done(function(msg7) {   
                            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                             
@@ -6729,7 +6729,7 @@ function marcarordenEntregadaModif(){
                 }else{//sin exito el guardar las fotos, elimina el registro de tblentregaproducet
                    $.ajax({method: "POST", dataType: "json", 
                     url: "./../../controllers/setUpdateTblentregaproducto.php",
-                    data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                    data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
                     .done(function(msg7) {   
                      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
