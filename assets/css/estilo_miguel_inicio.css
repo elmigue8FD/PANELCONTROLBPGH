@@ -2,6 +2,22 @@
 	margin-left: 25px;
 	margin-top: 25px;
 }
+.productosLinea {
+	margin-top: 25px;
+}
 .uk-grid-medium+.uk-grid-medium, .uk-grid-medium>*>.uk-panel+.uk-panel, .uk-grid-medium>.uk-grid-margin {
 	margin-top: 25px;
+}
+.productosLinea {
+	margin-top: 25px;
+}
+@media screen and (max-width: 504px){
+	.fc-agendaWeek-button .fc-button .fc-state-default{
+		visibility: hidden;
+	}
+}
+@media screen and (min-width: 505px){
+	.fc-agendaWeek-button .fc-button .fc-state-default{
+		visibility: visible;
+	}
 }
