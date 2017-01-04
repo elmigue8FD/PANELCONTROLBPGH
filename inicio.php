@@ -1908,6 +1908,12 @@ include('./php/seguridad_general.php');
                   <h4> Espere miestras se actualiza </h4>
                 </div>
               </div>
+              <div class="uk-modal" id="popup_spinner_eliminando_producto">
+                <div class="uk-modal-dialog">                  
+                  <div class="uk-modal-spinner"></div>
+                  <h4> Espere minestras se elimina </h4>
+                </div>
+              </div>
             </div>
             <!-- end Contenido de Item de Producto -->
             <!--///////////////////////////////////////////////////////////// -->
@@ -5329,6 +5335,7 @@ $( window ).ready(function()
 
   //function confirmacionEliminarProductoLinea(){}
   function eliminarProductoLinea(idProducto,idProductoDetalle){
+    UIkit.modal("#popup_spinner_eliminando_producto", {bgclose: false}).show();
     //if (respuesta == true) {
     numeroProductosDetalle='';
     /*
@@ -5387,6 +5394,7 @@ $( window ).ready(function()
                     $('#productosComplementarioPlantilla').html("");
                     $('#productoscotizadorPlantilla').html("");
                     $('#productoslineaPlantilla').html("");
+                    UIkit.modal("#popup_spinner_eliminando_producto").hide();
                     cargarValoresDefault();
                   })
                   .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -5405,6 +5413,7 @@ $( window ).ready(function()
                     $('#productosComplementarioPlantilla').html("");
                     $('#productoscotizadorPlantilla').html("");
                     $('#productoslineaPlantilla').html("");
+                    UIkit.modal("#popup_spinner_eliminando_producto").hide();
                     cargarValoresDefault();
                   })
                   .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproductDetalle fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -5423,6 +5432,7 @@ $( window ).ready(function()
         
   }
   function eliminarProductoCotizador(idtblproductcotizador){
+    UIkit.modal("#popup_spinner_eliminando_producto", {bgclose: false}).show();
       /*
       Recibir el id del producto general tblproducto
       ver cuantos productos detalles existe de este producto
@@ -5475,6 +5485,7 @@ $( window ).ready(function()
               $('#productosComplementarioPlantilla').html("");
               $('#productoscotizadorPlantilla').html("");
               $('#productoslineaPlantilla').html("");
+              UIkit.modal("#popup_spinner_eliminando_producto").hide();
               cargarValoresDefault();
             })
             .fail(function( jqXHR, textStatus ) {  console.log("setDeleteTblproducto fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -5487,6 +5498,7 @@ $( window ).ready(function()
     
   }
   function eliminarProductoComplementario(idProducto){
+    UIkit.modal("#popup_spinner_eliminando_producto", {bgclose: false}).show();
       srcimgActual=$("#imagenPortadaProductoComplementario"+idProducto).attr("src");
       srcimgActual=srcimgActual.replace('./../assests_general/productos/complementario/', '');
 
@@ -5516,6 +5528,7 @@ $( window ).ready(function()
               $('#productoslineaPlantilla').html("");
               $('#productoscotizadorPlantilla').html("");
               $('#productosComplementarioPlantilla').html("");
+              UIkit.modal("#popup_spinner_eliminando_producto").hide();
               cargarValoresDefault();
               
             })
