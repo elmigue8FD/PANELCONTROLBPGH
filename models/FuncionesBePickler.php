@@ -3404,6 +3404,23 @@ class FuncionesBePickler{
 			return false;
 		}
     }
+
+    /*Actualizar un stock en tblproductcomplem*/
+	 public static function setUpdateTblproductcomplemStock($idtblproductcomplem,$stock,$emailusuamodifico){
+        
+        $insert ="UPDATE tblproductcomplem SET tblproductcomplem_stock = ?,tblproductcomplem_fchmodificacion = NOW(),tblproductcomplem_emailusuamodifico = ? WHERE idtblproductcomplem = ? "; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$stock,PDO::PARAM_INT);
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idtblproductcomplem,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
     
     /*Obtiene un registro de tblproductcomplem*/
     public static function getTblproductcomplem($idtblproductcomplem){
@@ -7162,6 +7179,23 @@ class FuncionesBePickler{
 			return false;
 		}
 	}
+
+	/*Verifica si existe un registro en tblcostocotizacionproductnuevo  */
+    public static function setCheckTblcostocotizacionproductnuevo($idtblcarritoproductnuevcotiza,$idtblproveedor){
+        
+        $check = "SELECT COUNT(*) FROM tblcostocotizacionproductnuevo WHERE tblcarritoproductnuevcotiza_idtblcarritoproductnuevcotiza = ? AND tblproveedor_idtblproveedor= ?";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$idtblcarritoproductnuevcotiza,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchColumn(0); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+        
+    }
 
 	/*Insertar un registro en tblnotificacion*/
 	public static function setTblnotificacion($tipo,$asunto,$mensaje,$emisor,$emailcreo,$idredireccion){

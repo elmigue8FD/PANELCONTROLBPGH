@@ -2037,7 +2037,7 @@ include('./php/seguridad_general.php');
       </div>
       <div id="ordenesdecotizacionesproductosNuevos">
       <!--POPUP REGISTRANDO-->
-              <div class="uk-modal" id="popup_spinner_registrandoCot2" data-uk-modal="{center:true,bgclose:false}">
+              <div class="uk-modal" id="popup_spinner_registrandoCot2">
                 <div class="uk-modal-dialog">                  
                   <div class="uk-modal-spinner"></div>
                   <br>
@@ -6302,12 +6302,16 @@ function marcarordenEntregada(){
     $("#evidencia2Producto").css('color','red');
   }
 
+
   //se verifica la descripcion si esta activa 
   if($("#li_descripcionPendiente").is(':visible')){
      descripcionPen = $("#descripcionpendiente").val();
     if(descripcionPen!="" && !(/^\s+$/.test(descripcionPen)) ){
       boleanDescripcioStatus=true; 
-    }else {boleanStatus=false;}
+      $("#descripcionpendiente").removeClass("md-input-danger");
+    }else {boleanStatus=false;
+      $("#descripcionpendiente").addClass("md-input-danger");
+    }
   }else{
     boleanDescripcioStatus=true;
     descripcionPen="";
@@ -6334,6 +6338,7 @@ function marcarordenEntregada(){
     boleanComplementarios=false;
   }
 
+  
   if(($("#img1Productv1").val()!="") && ($("#img2Productv1").val()!="")){
   //se valida que tenga datos los campos del formulario productos
     boleanVerificacionProductos = true;
@@ -6345,135 +6350,153 @@ function marcarordenEntregada(){
      }else 
      boleanVerificacionComplementarios = false;
    }else boleanVerificacionComplementarios = true;
- }else boleanVerificacionProductos = false;
+ }else{
+  boleanVerificacionProductos = false;
+} 
 
 
  //si cumple la validacion 
  if(boleanVerificacionComplementarios && boleanVerificacionProductos && boleanStatus && boleanDescripcioStatus){
 
-  UIkit.modal("#popup_spinner_registrandoOrdenCot").show();
+  UIkit.modal("#popup_spinner_registrandoOrdenCot", {bgclose: false}).show();
   UIkit.modal("#popup_marcarorden").hide();
   UIkit.modal("#detalleOrdenPendiente").hide();
 
 
-  srcimg1=$("#img1Productv1").val().replace(/C:\\fakepath\\/i, '');
-  srcimg1='Evid1_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimg1;
-  srcimg2=$("#img2Productv1").val().replace(/C:\\fakepath\\/i, '');
-  srcimg2='Evid2_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimg2;
-  var formData = new FormData($("#formevidenciaProductos")[0]);
-  formData.append("version", 'v1');
-  formData.append("img1Product", srcimg1);
-  formData.append("img2Product", srcimg2);
+  $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setCheckTblentregaproducto.php",  
+    data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
+      .done(function(msgEntregaproducto) {   
 
-    if(boleanComplementarios){//datos productos complementarios 
+        if(msgEntregaproducto.success==0){
+          
+            srcimg1=$("#img1Productv1").val().replace(/C:\\fakepath\\/i, '');
+            srcimg1='Evid1_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimg1;
+            srcimg2=$("#img2Productv1").val().replace(/C:\\fakepath\\/i, '');
+            srcimg2='Evid2_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimg2;
+            var formData = new FormData($("#formevidenciaProductos")[0]);
+            formData.append("version", 'v1');
+            formData.append("img1Product", srcimg1);
+            formData.append("img2Product", srcimg2);
 
-      srcimgComplem1=$("#img1Complemv1").val().replace(/C:\\fakepath\\/i, '');
-      srcimgComplem1='Evidimg1Complem1_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimgComplem1;
+            if(boleanComplementarios){//datos productos complementarios 
+              srcimgComplem1=$("#img1Complemv1").val().replace(/C:\\fakepath\\/i, '');
+              srcimgComplem1='Evidimg1Complem1_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimgComplem1;
 
-      srcimgComplem2=$("#img2Complemv1").val().replace(/C:\\fakepath\\/i, '');
-      srcimgComplem2='Evidimg1Complem2_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimgComplem2;
+              srcimgComplem2=$("#img2Complemv1").val().replace(/C:\\fakepath\\/i, '');
+              srcimgComplem2='Evidimg1Complem2_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimgComplem2;
 
-      var formDataC = new FormData($("#formevidenciaComplem")[0]);
-      formDataC.append("version", 'v1');
-      formDataC.append("img1ProductComple", srcimgComplem1);
-      formDataC.append("img2ProductComple", srcimgComplem2); 
-      
-    }
+              var formDataC = new FormData($("#formevidenciaComplem")[0]);
+              formDataC.append("version", 'v1');
+              formDataC.append("img1ProductComple", srcimgComplem1);
+              formDataC.append("img2ProductComple", srcimgComplem2);
 
+             }
 
+            $.ajax({ //registrar de tblentregaproduct 
+              method: "POST",
+              dataType: "json",   
+              url: "./../../controllers/setTblentregaproducto.php",  
+              data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status, descripcion:descripcionPen,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+              .done(function( datos ){
+                console.log(datos);
+                if(parseInt(datos.success)==1){
+                // si se guarda con exito se guardan las imagenes
+                    $.ajax({ method: "POST", url: './phps/uploadImgEvidencias.php', data: formData,contentType: false,processData: false,})
+                    .done(function(datos){//img guardadas con exito
+                        if(datos=="success"){
+                          if(boleanComplementarios){//existen productos complementarios
+                             $.ajax({ //actualiza el registro de tblentregaproduct 
+                              method: "POST",dataType: "json",url: "./../../controllers/setTblentregacomplem.php", data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductoscomplem,numproductentregados:numproductosentregadoscomplem,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimgComplem1,srcimg2:srcimgComplem2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                            .done(function( datos ){
+                               if(parseInt(datos.success)==1){
+                                 //si el registro de complementarios es exitoso entonces guarda las imagenes
+                                 $.ajax({ method: "POST",url: './phps/uploadImgEvidenciasComplementarios.php', data: formDataC ,contentType: false,processData: false,})
+                                  .done(function(datos){
+                                    if(datos=="success"){
+                                      UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();              
+                                      UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
 
-    $.ajax({ //registrar de tblentregaproduct 
-      method: "POST",
-      dataType: "json",  
-      url: "./../../controllers/setTblentregaproducto.php",  
-      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status, descripcion:descripcionPen,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
-      .done(function( datos ){
-        console.log(datos);
-        console.log(datos.success);
-        if(datos.success==1){// si se guarda con exito se guardan las imagenes
-            $.ajax({ method: "POST", url: './phps/uploadImgEvidencias.php', data: formData,contentType: false,processData: false,})
-            .done(function(datos){//img guardadas con exito
-                if(datos=="success"){
-                  if(boleanComplementarios){//existen productos complementarios
-                     $.ajax({ //actualiza el registro de tblentregaproduct 
-                      method: "POST",dataType: "json",url: "./../../controllers/setTblentregacomplem.php", data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductoscomplem,numproductentregados:numproductosentregadoscomplem,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimgComplem1,srcimg2:srcimgComplem2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
-                    .done(function( datos ){
-                       if(parseInt(datos.success)==1){
-                         //si el registro de complementarios es exitoso entonces guarda las imagenes
-                         $.ajax({ method: "POST", url: './phps/uploadImgEvidenciasComplementarios.php', data: formDataC ,contentType: false,processData: false,})
-                          .done(function(datos){
+                                      $("#tblordenes_item").empty();
+                                      $("#tblordenespendiente_item").empty();
+                                      $("#tblordeneshistorial_item").empty();
+                                      mostrarListaOrdenes();
 
-                            if(datos=="success"){
+                                    }else{    
 
-                              UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-                              UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
+                                      //elimina el registro en tblentregaproductcomplem
+                                      $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregacomplem.php",  
+                                         data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
+                                        .done(function(msg7) {   
+                                         }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
-                              $("#tblordenes_item").empty();
-                              $("#tblordenespendiente_item").empty();
-                              $("#tblordeneshistorial_item").empty();
-                              mostrarListaOrdenes();
+                                      //elimina el registro en tblentregaproduct
+                                      $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
+                                         data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
+                                        .done(function(msg7) {   
+                                         }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
-                            }else{    
+                                        UIkit.modal("#popup_spinner_registrandoOrdenCot").hide(); 
+                                        UIkit.modal.alert(datos);
 
-                              //elimina el registro en tblentregaproductcomplem
-                              $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregacomplem.php",  
+                                    }
+
+                                  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+
+                               }else {
+                                  //si no se guarda correctamente el registro de complementarios elimina el registro de productos
+                                $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
                                  data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
                                 .done(function(msg7) {   
                                  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
-                              //elimina el registro en tblentregaproduct
-                              $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
-                                 data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
-                                .done(function(msg7) {   
-                                 }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-                                UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-                                UIkit.modal.alert(datos);
+                                UIkit.modal("#popup_spinner_registrandoOrdenCot").hide(); 
+                                UIkit.modal.alert('Error, Vuelva Intenarlo.');
+                                
 
-                            }
+                               }
 
-                          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+                            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
 
-                       }else {
-                          //si no se guarda correctamente el registro de complementarios elimina el registro de productos
-                        $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
-                         data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
-                        .done(function(msg7) {   
-                         }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-                        
-                        UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-                        UIkit.modal.alert('Error, Vuelva Intenarlo.');
-                        
+                          }else{//si no hay lanza msj
 
-                       }
+                            UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
+                            
+                            UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
 
-                    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
-
-                  }else{//si no hay lanza msj
-
-                    UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-                    UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
-
-                    $("#tblordenes_item").empty();
-                    $("#tblordenespendiente_item").empty();
-                    $("#tblordeneshistorial_item").empty();
-                    mostrarListaOrdenes();
-                    
-                  }
-                }else{//sin exito el guardar las fotos, elimina el registro de tblentregaproducet
-                   $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
-                     data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
-                    .done(function(msg7) {   
-                     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-                    UIkit.modal.alert(datos);
+                            $("#tblordenes_item").empty();
+                            $("#tblordenespendiente_item").empty();
+                            $("#tblordeneshistorial_item").empty();
+                            mostrarListaOrdenes();
+                            
+                          }
+                        }else{//sin exito el guardar las fotos, elimina el registro de tblentregaproducet
+                           $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
+                             data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
+                            .done(function(msg7) {   
+                             }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                            UIkit.modal.alert(datos);
+                        }
+                    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
+                }else{
+                 UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();  
+                 UIkit.modal.alert('Error Vuelva Intentarlo');
                 }
-            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
-        }else{
-         UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-         UIkit.modal.alert('Error Vuelva Intentarlo');
-        }
-        
+                
 
-      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
+              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
+
+
+        }else if(msgEntregaproducto.success==1){
+          UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
+          UIkit.modal.alert('Orden No. '+idorden+' fue marcada con status diferente, cargue de nuevo la página. ');
+        }else{
+          UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
+          UIkit.modal.alert("Error Vuelva Intentarlo");
+        }
+
+        
+        }).fail(function( jqXHR, textStatus ) {  console.log(" setCheckTblentregaproducto fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+
 
  }else{UIkit.modal.alert('Verifique la Información o Complete los campos requeridos'); }
 
@@ -6638,14 +6661,14 @@ function marcarordenEntregadaModif(){
 
     UIkit.modal("#popupmodif_marcarorden").hide();
     UIkit.modal("#detalleOrdenPendiente").hide();
-    UIkit.modal("#popup_spinner_registrandoOrdenCot").show();
+    UIkit.modal("#popup_spinner_registrandoOrdenCot", {bgclose: false}).show();
 
 
     $.ajax({ //registrar de tblentregaproduct 
       method: "POST", 
       dataType: "json",  
       url: "./../../controllers/setUpdateTblentregaproducto.php",  
-      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodifico:email, apellido:apellido, nivel:nivel}})
+      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
       .done(function(datos){
         if(parseInt(datos.success)==1){
         // si se guarda con exito se guardan las imagenes
@@ -6682,7 +6705,7 @@ function marcarordenEntregadaModif(){
                               //elimina el registro en tblentregaproduct
                               $.ajax({method: "POST", dataType: "json", 
                           url: "./../../controllers/setUpdateTblentregaproducto.php",
-                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
                           .done(function(msg7) {   
                            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                                 UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
@@ -6696,7 +6719,7 @@ function marcarordenEntregadaModif(){
                           //si no se guarda correctamente el registro de complementarios elimina el registro de productos
                         $.ajax({method: "POST", dataType: "json", 
                           url: "./../../controllers/setUpdateTblentregaproducto.php",
-                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
                           .done(function(msg7) {   
                            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                             
@@ -6722,7 +6745,7 @@ function marcarordenEntregadaModif(){
                 }else{//sin exito el guardar las fotos, elimina el registro de tblentregaproducet
                    $.ajax({method: "POST", dataType: "json", 
                     url: "./../../controllers/setUpdateTblentregaproducto.php",
-                    data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+                    data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
                     .done(function(msg7) {   
                      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
@@ -7024,7 +7047,7 @@ function enviarCotizacion(idtblcarritoproductcotizador){
           UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
 
             UIkit.modal("#popup_ordencotizador").hide();
-            UIkit.modal("#popup_spinner_registrandoCot2").show();
+            UIkit.modal("#popup_spinner_registrandoCot2", {bgclose: false}).show();
 
             $.ajax({ //actualiza el registro con los costos de la cotizacion 
               method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda, costodomicilio:costodomicilio, emailmodifico:emailmodif,idtblmotivocotizacion:status}})
@@ -7065,7 +7088,7 @@ function enviarCotizacion(idtblcarritoproductcotizador){
         costodomicilio=null;
 
          UIkit.modal("#popup_ordencotizador").hide();
-        UIkit.modal("#popup_spinner_registrandoCot2").show();
+        UIkit.modal("#popup_spinner_registrandoCot2", {bgclose: false}).show();
 
          $.ajax({ //actualiza el registro con los costos de la cotizacion 
               method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcarritoproductcotizador.php", data: {solicitadoBy:solicitadoBy, idtblcarritoproductcotizador:idtblcarritoproductcotizador, numpersonas:numpersonas,fchentrega:fchaevento, srcimgproducto:srcimg, idtblordencotizador:idordencotizador, idtblproductcotizador:idproductcotizador, costotienda:costotienda,costodomicilio:costodomicilio,emailmodifico:emailmodif,idtblmotivocotizacion:status, nombreproveedor:nombre, apellido:apellido, nivel:nivel}})
@@ -7293,79 +7316,98 @@ function enviarCotizacionProductNuevo(idtblcarritoproductnuevocotizador){
   console.log("EnviarResp Cotizador Nuevo");
  
    status = $("#motivocotizacionNuevo").val();
+   idproveedor=idtblproveedor;
+if(status!="null"){
 
-   if(status!="null"){
-    if(status==2){
-       $("#motivocotizacionNuevo").removeClass( "md-input-danger" );
-      costotienda = $("#cotizacionnuevo_costotienda").val();
-      costodomicilio = $("#cotizacionnuevo_costodomicilio").val();
+   $.ajax({ method: "POST", dataType: "json", url: "./../../controllers/setCheckTblcostocotizacionproductnuevo.php",  
+          data: {solicitadoBy:solicitadoBy, idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor}})
+            .done(function( msgCotizacionnuevo){ 
+                    console.log(msgCotizacionnuevo);
+                    if(msgCotizacionnuevo.success==0){
+                        if(status==2){
+                               $("#motivocotizacionNuevo").removeClass( "md-input-danger" );
+                              costotienda = $("#cotizacionnuevo_costotienda").val();
+                              costodomicilio = $("#cotizacionnuevo_costodomicilio").val();
 
-      if((costotienda!="") || (costodomicilio!="")){
-        $("#cotizacionnuevo_costotienda").removeClass( "md-input-danger" );
-        $("#cotizacionnuevo_costodomicilio").removeClass( "md-input-danger" );
-        idproveedor=idtblproveedor;
-        emailcreo= emailproveedor;
+                              if((costotienda!="") || (costodomicilio!="")){
+                                $("#cotizacionnuevo_costotienda").removeClass( "md-input-danger" );
+                                $("#cotizacionnuevo_costodomicilio").removeClass( "md-input-danger" );
+                                idproveedor=idtblproveedor;
+                                emailcreo= emailproveedor;
 
-        UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
+                                UIkit.modal.confirm("* Precio con Servicio en Tienda: $"+costotienda+"<br/>* Precio con Servicio a Domicilio: $"+costodomicilio+"<br/><br/> Si los precios de la cotizacion son correctos presione Ok", function(){
 
-              UIkit.modal("#popup_ordencotizadorproductNuevo").hide();
-              UIkit.modal("#popup_spinner_registrandoCot2").show();
-
-             $.ajax({ //ingresa el registro con los costos de la cotizacion 
-                method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
-                .done(function(datos){
-                  if(parseInt(datos.success)==1){
-                    UIkit.modal("#popup_spinner_registrandoCot2").hide();
-                    UIkit.modal.alert('Exitoso, Cotizacion Enviada');
-                   $("#formCotizacionNuevo")[0].reset();   
-                   $("#tblcotizacionesproductos").empty();
-                   $("#tblcotizacionesproductosnuevos").empty();
-                   mostrarCotizacionesProductosNuevos();
-                   mostrarCotizaciones();
-                  }else{
-                    UIkit.modal("#popup_spinner_registrandoCot2").hide();
-                    UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
-                  }
-              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
-
-        });
-
-      }else{
-        UIkit.modal.alert('Ingrese el Precio de la Cotización de al menos un Servicio');
-        $("#cotizacionnuevo_costotienda").addClass( "md-input-danger" );
-        $("#cotizacionnuevo_costodomicilio").addClass( "md-input-danger" );
-      }
+                                    UIkit.modal("#popup_ordencotizadorproductNuevo").hide();
+                                    UIkit.modal("#popup_spinner_registrandoCot2", {bgclose: false}).show();
 
 
-    }else{
+                                     $.ajax({ //ingresa el registro con los costos de la cotizacion 
+                                        method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
+                                        .done(function(datos){
+                                          if(parseInt(datos.success)==1){
+                                           UIkit.modal("#popup_spinner_registrandoCot2").hide();
+                                           UIkit.modal.alert('Exitoso, Cotizacion Enviada');
+                                           $("#formCotizacionNuevo")[0].reset();                                      
+                                           $("#tblcotizacionesproductos").empty();
+                                           $("#tblcotizacionesproductosnuevos").empty();
+                                           mostrarCotizacionesProductosNuevos();
+                                           mostrarCotizaciones();
+                                          }else{
+                                            UIkit.modal("#popup_spinner_registrandoCot2").hide();
+                                            UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
+                                          }
+                                      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
 
-      costotienda=null;
-      costodomicilio=null;
-      idproveedor=idtblproveedor;
-      emailcreo= emailproveedor;
+                                });
 
-      UIkit.modal("#popup_ordencotizadorproductNuevo").hide();
-      UIkit.modal("#popup_spinner_registrandoCot2").show();
+                              }else{
+                                UIkit.modal.alert('Ingrese el Precio de la Cotización de al menos un Servicio');
+                                $("#cotizacionnuevo_costotienda").addClass( "md-input-danger" );
+                                $("#cotizacionnuevo_costodomicilio").addClass( "md-input-danger" );
+                              }
 
-      $.ajax({ //ingresa el registro con los costos de la cotizacion 
-                method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
-                .done(function(datos){
-                  if(parseInt(datos.success)==1){
-                   UIkit.modal("#popup_spinner_registrandoCot2").hide();
-                   UIkit.modal.alert('Exitoso, Respuesta Enviada');
-                   $("#formCotizacionNuevo")[0].reset();                
-                   $("#tblcotizacionesproductos").empty();
-                   $("#tblcotizacionesproductosnuevos").empty();
-                   mostrarCotizacionesProductosNuevos();
-                   mostrarCotizaciones();
-                  }else{
-                    UIkit.modal("#popup_spinner_registrandoCot2").hide();
-                    UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
-                  }
-              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
 
-    }
+                            }else{
 
+                              costotienda=null;
+                              costodomicilio=null;
+                              idproveedor=idtblproveedor;
+                              emailcreo= emailproveedor;
+                              
+                              UIkit.modal("#popup_ordencotizadorproductNuevo").hide();
+                              UIkit.modal("#popup_spinner_registrandoCot2", {bgclose: false}).show();
+
+                              $.ajax({ //ingresa el registro con los costos de la cotizacion 
+                                        method: "POST",dataType: "json",url: "./../../controllers/setTblcostocotizacionproductnuevo.php", data: {solicitadoBy:solicitadoBy,costotienda:costotienda,costodomicilio:costodomicilio,idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idproveedor,emailcreo:emailcreo, idtblmotivocotizacion:status, nombre:nombreSesion, apellido:apellido, nivel:nivel}})
+                                        .done(function(datos){
+                                          if(parseInt(datos.success)==1){
+
+                                           UIkit.modal("#popup_spinner_registrandoCot2").hide();  
+                                           UIkit.modal.alert('Exitoso, Respuesta Enviada');
+                                           $("#formCotizacionNuevo")[0].reset();   
+                                                  
+                                           $("#tblcotizacionesproductos").empty();
+                                           $("#tblcotizacionesproductosnuevos").empty();
+                                           mostrarCotizacionesProductosNuevos();
+                                           mostrarCotizaciones();
+                                          }else{
+                                            UIkit.modal("#popup_spinner_registrandoCot2").hide();  
+                                            UIkit.modal.alert('Error Vuelva Intenetarlo mas Tarde');         
+                                          }
+                                      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
+
+                            }
+
+                    }else if(msgCotizacionnuevo.success==1){
+                        UIkit.modal("#popup_ordencotizadorproductNuevo").hide();
+                        UIkit.modal.alert("Cotización respondida con anterioridad, recargue la página");
+                    }else{
+                      UIkit.modal("#popup_ordencotizadorproductNuevo").hide();
+                      UIkit.modal.alert("Error Vuelva Intenarlo");
+                    }
+
+
+                }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");});
    }else{
      UIkit.modal.alert('Seleccione un tipo de Respuesta');
      $("#motivocotizacionNuevo").addClass( "md-input-danger" );

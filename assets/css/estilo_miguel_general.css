@@ -15,9 +15,17 @@
         color: #ffffff;
       }
       .md-btn-flat{
-        background-color: #dd5465;
+        background: #dd5465;
         color: #ffffff;
       }
+
+  .md-fab{
+    background: #dd5465;
+  color: #ffffff;
+  }
+  .md-fab>i{
+  color: #ffffff;
+  }
       a{
         color: #dd5465;
       }
