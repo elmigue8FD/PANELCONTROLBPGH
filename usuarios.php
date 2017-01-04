@@ -88,7 +88,7 @@ include('./php/seguridad_general.php');
         </div>
        </div>
        <!--POPUP DE MODIFICAR USUARIO-->
-       <div class="uk-modal" id="modal_modificar_usuario" >
+       <div class="uk-modal" id="modal_modificar_usuario2" >
        <div class="uk-modal-dialog">
        <button type="button" class="uk-modal-close uk-close"></button>
         <div class="uk-modal-header">
@@ -121,11 +121,7 @@ include('./php/seguridad_general.php');
          </div>
          <div class="uk-form-row">
             <span class="md-color-grey-500">* Password</span>
-            <input type="password" class="md-input" name="usuariopasswdmodif" id="usuariopasswdmodif" />
-         </div>
-         <div class="uk-form-row">
-            <span class="md-color-grey-500">* Repetir Password</span>
-            <input type="password" class="md-input" name="usuariopasswd2modif" id="usuariopasswd2modif" />
+            <input type="text" class="md-input" name="usuariopasswdmodif" id="usuariopasswdmodif" />
          </div>
          <div class="uk-form-row uk-width-medium-1-1">
            <select id="select_accesomodif" class="md-input"></select>
@@ -134,7 +130,7 @@ include('./php/seguridad_general.php');
         </div>          
         </div>
         <div class="uk-modal-footer uk-text-right">
-          <button type="button" class="md-btn md-btn-flat md-btn md-color-red-300" onclick="modificarUsuario()">Actualizar Datos</button>
+          <button type="button" class="md-btn md-btn-flat md-btn-flat-primary"  onclick="modificarUsuario()">Actualizar Datos</button>
         </div>
         </div>
        </div>
@@ -195,7 +191,11 @@ include('./php/seguridad_general.php');
              $.each(msg.datos, function(i,item){
                 idnivelacceso = item.tblniveleacceso_idtblniveleacceso;
 
-                $("#listaUsuarios").append('<div data-product-name="P1"><div  class="md-card"><div class="md-card-head md-bg-grey-400"><div class="uk-text-center"><img class="md-card-head-avatar" src="./assets/img/avatars/users.png" /></div><h3 class=" uk-text-center md-color-white">'+item.tblusuarioproveedor_nombre+" "+item.tblusuarioproveedor_apellido+'</h3></div><div class="md-card-content"><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="acceso'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblusuarioproveedor_email+'</span><span class="uk-text-small uk-text-muted">Email</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblusuarioproveedor_celular+'</span><span class="uk-text-small uk-text-muted">Celular</span></div></li><li><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="eliminarUsuario('+item.idtblusuarioproveedor+')">Eliminar</button></div><div class="uk-width-large-1-2"><button type="button" class="md-btn md-btn-flat md-btn-flat-primary" data-uk-modal="{target:'+"'#modal_modificar_usuario'"+'}" onclick="datosmodificarUsuario('+item.idtblusuarioproveedor+')">Modificar</button></div></div></li></ul></div></div></div>');
+                $("#listaUsuarios").append('<div data-product-name="P1"><div  class="md-card"><div class="md-card-head md-bg-grey-400"><div class="uk-text-center"><img class="md-card-head-avatar" src="./assets/img/avatars/users.png" /></div><h3 class=" uk-text-center md-color-white">'+item.tblusuarioproveedor_nombre+" "+item.tblusuarioproveedor_apellido+'</h3></div><div class="md-card-content"><ul class="md-list md-list-addon"><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE7FD;</i></div><div class="md-list-content" id="acceso'+i+'"></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE158;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblusuarioproveedor_email+'</span><span class="uk-text-small uk-text-muted">Email</span></div></li><li><div class="md-list-addon-element"><i class="md-list-addon-icon material-icons">&#xE0CD;</i></div><div class="md-list-content"><span class="md-list-heading">'+item.tblusuarioproveedor_celular+'</span><span class="uk-text-small uk-text-muted">Celular</span></div></li><li><div class="uk-grid uk-grid-medium" data-uk-grid-margin><div class="uk-width-large-1-2"><button type="button" class="md-btn md-btn-flat md-btn-flat-primary" onclick="eliminarUsuario('+item.idtblusuarioproveedor+')" id="botonEliminar'+i+'">Eliminar</button></div><div class="uk-width-large-1-2"><button type="button" class="md-btn md-btn-flat md-btn-flat-primary" data-uk-modal="{target:'+"'#modal_modificar_usuario2'"+'}" onclick="datosmodificarUsuario('+item.idtblusuarioproveedor+')">Modificar</button></div></div></li></ul></div></div></div>');
+
+                if(emailproveedor==item.tblusuarioproveedor_email){
+                  document.getElementById('botonEliminar'+i).style.display = 'none';
+                }
 
                 $.ajax({ 
                    method: "POST",dataType: "json",url: "./../../controllers/getTblnivelacceso.php", data: {solicitadoBy:solicitadoBy,idnivelacceso:idnivelacceso}})
@@ -310,6 +310,7 @@ include('./php/seguridad_general.php');
                   }else {
                     $("#switch_activadomodif").prop("checked", false);
                   }
+                  $("#usuariopasswdmodif").val(item.tblusuarioproveedor_password);
                   $("#select_accesomodif").val(item.tblniveleacceso_idtblniveleacceso);
                   $("#idusuario").text(item.idtblusuarioproveedor);
                  })
@@ -327,7 +328,6 @@ include('./php/seguridad_general.php');
     usuarioemailmodif= $("#usuarioemailmodif").val();
     usuariocelularmodif=$("#usuariocelularmodif").val();
     usuariopasswdmodif=$("#usuariopasswdmodif").val();
-    usuariopasswd2modif=$("#usuariopasswd2modif").val();
     activadomodif =$("#switch_activadomodif").prop('checked');
     idnivelaccesomodif=$("#select_accesomodif").val();
 
@@ -339,19 +339,16 @@ include('./php/seguridad_general.php');
     if(usuarionombremodif!="" && usuarioapellidomodif!="" && usuarioemailmodif!="" && usuariocelularmodif!="" && usuariopasswdmodif!="" && idnivelaccesomodif!=null){
      
        //valida la direccion de correo es correcta y el passwd no tenga espacios vacios
-       if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(usuarioemailmodif)) || (/^\s+$/.test(usuariopasswdmodif)) || (/^\s+$/.test(usuariopasswd2modif))){
+       if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(usuarioemailmodif)) || (/^\s+$/.test(usuariopasswdmodif)) ){
             UIkit.modal.alert('Verifique la direccion de correo electronico (ejemplo@ejemplo.com) y/o ingrese un password correcto');
           }else{
 
-            if(usuariopasswdmodif!=usuariopasswd2modif){
-              UIkit.modal.alert('Los Password no son identicos, intentalo de nuevo');
-            }else {
             UIkit.modal.confirm("Si los datos del usuario son correctos, presione Ok", function(){ 
             $.ajax({ 
                    method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblusuarioproveedor.php", data:{solicitadoBy:solicitadoBy,idtblusuarioproveedor:idusuario,nombreproveedor:usuarionombremodif,apellidoproveedor:usuarioapellidomodif,emailproveedor:usuarioemailmodif,activado:activadomodif,celularproveedor:usuariocelularmodif,idtblproveedor:idtblproveedor,idtblnivelacceso:idnivelaccesomodif,password:usuariopasswdmodif,emailmodifico:emailproveedor}})
                         .done(function(msg){
                             if(parseInt(msg.success)==1){
-                              UIkit.modal("#modal_modificar_usuario").hide();
+                              UIkit.modal("#modal_modificar_usuario2").hide();
                               $('#form_modificar_usuario')[0].reset();
                               UIkit.modal.alert('Usuario Modificado con éxito');
                               $('#listaUsuarios').empty();
@@ -363,7 +360,7 @@ include('./php/seguridad_general.php');
                   .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
                   .always(function(){  console.log("always");});
             });  
-           }
+           
         }
     } else UIkit.modal.alert('Es necesario completar los campos obligatorios (*)');
 

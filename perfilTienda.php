@@ -12,15 +12,10 @@ include('./php/seguridad_general.php');
     <link rel="stylesheet" href="bower_components/kendo-ui/styles/kendo.common-material.min.css"/>
     <link rel="stylesheet" href="bower_components/kendo-ui/styles/kendo.material.min.css" id="kendoCSS"/>
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-    <script src="../css/js/jquery.js" ></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDjeDznrCqVmUmnPkqY34STkSMsV2RvFok" type="text/javascript"></script>
-    <script type="text/javascript" src="./../js/scripts/funciones_mapa.js"></script>
-    <script type="text/javascript" src="./../js/scripts/fusion_map_obj_v3.js"></script>
-    <script type="text/javascript" src="http://mapas.inegi.org.mx/earth_map/query?request=Json&var=geeServerDefs"></script>
   </head>
 
 
-  <body class=" sidebar_main_open sidebar_main_swipe" onload="inicializa(22.1510387,-100.9809202);">
+  <body class=" sidebar_main_open sidebar_main_swipe">
   
     <!--Titlo de la seccion de la pagina-->
     <h1 id="tituloDeLaPagina" hidden>PerfilTienda</h1>
@@ -51,9 +46,9 @@ include('./php/seguridad_general.php');
               <div class="md-card-content">
                 <div class="uk-grid">
                   <div class="uk-width-1-1">
-                    <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content'}" id="tabs_1">
+                    <ul class="uk-tab" data-uk-tab="{connect:'#tabs_1_content', swiping:false}" id="tabs_1">
                       <li class="uk-active"><a href="#"><font size="3"> Datos </font></a></li>
-                      <li class="named_tab"><a href="#"><font size="3"> Servicios </font></a></li>
+                      <li class="named_tab" onclick="getDireccionProveedor()"><a href="#"><font size="3"> Servicios </font></a></li>
                       <!--<li class="named_tab"><a href="#"><font size="3"> Paquete </font></a></li>-->
                     </ul>
                   </div>
@@ -262,7 +257,7 @@ include('./php/seguridad_general.php');
                           </div>
                           <div class="uk-width-medium-1-1">                                	
                             <h3>Mapa Guía</h3>
-                            <div id="map_canvas" style="height:290px; width:100%;"></div>
+                            <div id="gmapa" class="gmap" style="width:100%;height:400px;"></div>
                           </div>
                           <div class="uk-width-medium-1-1 uk-text-right">
                             <!--0<button class="md-btn md-btn-success" type="button" data-uk-button>Guardar Cambios</button>-->
@@ -1118,7 +1113,74 @@ include('./php/seguridad_general.php');
             //console.log("always");
           }); 
       }      
+    var map;
+    var mapOptions ;
+    var direccionCompleta;
+    var nombrePasteleriaMapa;
+    
+    function initMapa() {
+      mapOptions = {
+      center: new google.maps.LatLng(22.127622, -100.973),
+      zoom: 5,
+      mapTypeId: google.maps.MapTypeId.ROADMAP};
+      map = new google.maps.Map(document.getElementById("gmapa"),mapOptions);
+    }
+    
+    function getDireccionProveedor(){
+      var direccion;
+       $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproveedordireccion.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
+                  .done(function( msg) { 
+                    console.log(msg)
+                   $.each(msg.datos, function(i,item)
+                    {
+                      direccion= msg.datos[i].tblpais_nombre+","+msg.datos[i].tblciudad_nombre+","+msg.datos[i].tblproveedor_direccion;
+                      nombrePasteleriaMapa = msg.datos[i].tblproveedor_nombre;
+                    });
+                    console.log("DIRECCIONCONCATENADA"+direccion);
+                    mapaGeo(direccion);
+                  })
+                  .fail(function( jqXHR, textStatus ) {  console.log("getTblproveedordireccion fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                  .always(function(){  
+                    //console.log("always");
+                  });       
+    }
+    
+    function mapaGeo(direccion){
+       var geocoder = new google.maps.Geocoder();
+       direccionCompleta = direccion;                    
+       geocoder.geocode({ 'address': direccionCompleta}, geocodeResult);
+    }
+
+    //funcion necesaria para procesar el resultado del mapa 
+    function geocodeResult(results, status) {
+    // Verificamos el estatus
+    if (status == 'OK') {
+        // Si hay resultados encontrados, centramos y repintamos el mapa
+         mapOptions = {
+          center: results[0].geometry.location,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          zoom: 5
+        };
+        map = new google.maps.Map($("#gmapa").get(0), mapOptions);
+        // fitBounds acercar el mapa con el zoom adecuado de acuerdo a lo buscado
+        map.fitBounds(results[0].geometry.viewport);
+        // Dibujamos un marcador con la ubicación del primer resultado obtenido
+        var markerOptions = { position: results[0].geometry.location}
+        var marker = new google.maps.Marker(markerOptions);
+        marker.setMap(map);
+         var popup = new google.maps.InfoWindow({
+        content:' "'+nombrePasteleriaMapa+' "'});
+       popup.open(map, marker); 
+      } else {
+        // En caso de no haber resultados o que haya ocurrido un error
+        // lanzamos un mensaje con el error
+       // UIkit.modal.alert('Busqueda Fallida'); 
+      }
+    }
+
+
     </script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjeDznrCqVmUmnPkqY34STkSMsV2RvFok&sensor=false&callback=initMapa" ></script>
 
       <!-- page specific plugins           -->
       <!-- ionrangeslider -->

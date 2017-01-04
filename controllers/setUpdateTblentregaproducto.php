@@ -44,7 +44,7 @@ if (!empty($_POST)){
 
     $tabla='Tblentregaproducto';
 
-    //OBTENEMOS TODOS DEL REGISTRO ANTERIOR
+    /*OBTENEMOS TODOS DEL REGISTRO ANTERIOR
     $resultadoRegistroAnterior = getTblentregaproducto($idtblordencompra,$idtblproveedor);
     //SI EL RESULTADO ES EXITOSO SEGUIMOS CON EL PASO DE EXTRACCION DE DATOS
     if($resultadoRegistroAnterior)
@@ -81,7 +81,7 @@ if (!empty($_POST)){
 
     $resultadoHistoricoModificacion = FuncionesBePickler::setTblhistoricodemodifi($emailmodifico,$nombreproveedor,$apellido,$nivel,$tabla,$registroAnterior,$registroActual);
 
-
+*/
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
