@@ -7,7 +7,7 @@ require './InfoSolicitadaBy.php';
 /**
  * Variables Utilizadas
  */
-$idtblproveedor= '';
+$solicitadoBy= '';
 $resultado= '';
 $nombrearchivo='';
 $json_string='';
@@ -19,7 +19,7 @@ $arrayCompleto='';
  */
 if (!empty($_POST)){
 
-    $idtblproveedor = $_POST["idtblproveedor"];
+    $idtblproveedor=$_POST["idtblproveedor"];
 
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
@@ -33,10 +33,13 @@ if (!empty($_POST)){
     if($resultadoOrdenes)
     {   //se recorerá el resultado de la consulta para rescatar la ordenes 
         foreach( $resultadoOrdenes as $rowOrden ){ 
+            $fechaorden= $rowOrden['tbldatosenvio_fchagendado'].' '.$rowOrden['tbldatosenvio_horaagendado'];
+             //$fechaorden= '2016-11-16 09:31:11';
+        
             $arrayO = [
                 "title" => 'Orden No.'.$rowOrden['idtblordencompra'],
-                "start" => $rowOrden['tbldatosenvio_fchagendado'],
-                "color" => '#FA8072',
+                "start" => $fechaorden,
+                "color" => '#C51162',
                 "tipo" => '1'
                 ];  
             array_push($arrayCompleto,$arrayO);
@@ -49,7 +52,7 @@ if (!empty($_POST)){
             $arrayC = [
                 "title" => 'Cotización No.'.$rowCotizador['idtblordencotizador'],
                 "start" => $rowCotizador['tblordencotizador_fchcreacion'],
-                "color" => '#FA8072',
+                "color" => '#E040FB',
                 "tipo" => '2'];  
             array_push($arrayCompleto,$arrayC);
         } 
@@ -60,7 +63,7 @@ if (!empty($_POST)){
             $arrayCN = [
                 "title" => 'Cotización No.'.$rowCotizadorN['idtblordencotizador'],
                 "start" => $rowCotizadorN['tblordencotizador_fchcreacion'],
-                "color" => '#FA8072',
+                "color" => '#E040FB',
                 "tipo" => '2'];  
             array_push($arrayCompleto,$arrayCN);
         } 
@@ -72,9 +75,6 @@ if (!empty($_POST)){
     $nombrearchivo= 'calendarioproveedor_'.$idtblproveedor.'.json';
     $file = "./../views/PANELCONTROL/assets/calendariojson/".$nombrearchivo;
     file_put_contents($file, $json_string);
-    
-    echo  json_encode($arrayCompleto);
-
 }
 /**
  * Desctruimos las variables para liberar memoria
