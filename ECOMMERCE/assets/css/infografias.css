@@ -1,0 +1,449 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+#sectioninfo {
+	background-color: #FFFFFF;
+	display: inline;
+	float: left;
+	padding-top: 70px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 51px;
+	width: 100%;
+	font-family: "Century Gothic";
+	max-width: 100%;
+}
+
+
+#sec-info, #txtquienessomos {
+	background-color: #FFFFFF;
+	display: inline;
+	float: left;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 11px;
+	width: 100%;
+	font-family: "Century Gothic";
+	max-width: 100%;
+}
+#infografias, #infografiasequipo{
+	width: 100%;
+	font-family: "Century Gothic";
+	max-width: 100%;
+	display: inline-block;
+	}
+	
+#textoinfo{
+	width:100%;
+	margin-bottom:50px;
+	text-align:center;
+	font-family:"Century Gothic";
+}
+#textoinfo h7{
+	font-family: "Century Gothic";
+	font-size: 44px;
+	font-weight: bold;
+	color: #666666;
+	margin-bottom: 50px;
+	text-align: center;
+	margin-top: 0px;
+	
+}
+
+#infografias h10,
+#infografiasequipo h10{
+	font-family:"Century Gothic";
+	font-size:18px;
+	color:#000000;
+	display:block;
+	font-weight:bold;}
+	
+#infografias h11,
+#infografiasequipo h11{
+	color: rgba(173,173,173,1.00);
+	font-size:18px;}
+	
+	
+	.info1{
+	width: 33%;
+	float: left;
+	text-align: center;
+	max-width: 33%;
+}
+	
+	.info2{
+	width: 33%;
+	max-width: 33%;
+	float: left;
+	text-align: center;
+} .info2 h10{padding-left:30px;}
+	
+	.info3{
+	width: 33%;
+	float: left;
+	max-width: 33%;
+	text-align: center;
+} .info3 h10{padding-left:30px;}
+
+
+
+
+
+ 
+/*descarga nuestra app=========================================================*/
+
+
+#app{
+	width: 100%;
+	display: inline;
+	float: left;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 1px;
+	max-width: 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	}
+
+#app img{
+	width:100%;
+	max-width:100%;}
+	
+	
+	
+/*----------------------------------------------------conviertete en proveedor--------------------------------*/
+
+
+
+	
+	.info4{
+	width: 33%;
+	float: left;
+	text-align: center;
+	max-width: 33%;
+}
+
+	.info4 h10 { padding-left:13px;}
+	
+	.info5{
+	width: 33%;
+	max-width: 33%;
+	float: left;
+	text-align: center;
+} .info5 h10{}
+	
+	.info6{
+	width: 33%;
+	float: left;
+	max-width: 33%;
+	text-align: center;
+} .info6 h10{}
+
+
+/*--------------------------------seccion newsletter-----------------------------------------*/
+
+
+
+#newsletter{
+	width: 100%;
+	display: inline;
+	float: left;
+	padding-top: 100px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 100px;
+	max-width: 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	background-image: url(../img/newsletter/Bepickler-Home-4_28.jpg);
+	margin-bottom: 0px;
+	background-color:#FFFFFF;
+	}
+
+	
+#newsletter h2{
+	width: 100%;
+	font-family:"Century Gothic";
+	padding-left:80px;
+	color:#FFFFFF;
+	}
+	
+#boxnews {
+	margin-left:5%;
+	margin-top:2%;
+	width:20%;}
+	
+#enviarnews{
+	width: 6%;
+	margin-left: 2%;
+	text-align: center;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+	
+/*--------------------------------------------------medias-----------------------------------------------------------*/
+
+@media (max-width: 800px) {
+	#boxnews{
+		margin-left:15%;
+		width:40%;
+	}	
+	
+	#enviarnews{
+	width: 18%;
+}
+	
+	#infografiasequipo h10{ font-size:10px;}
+}
+
+
+@media (max-width: 426px) {
+	#infografias h10{
+	font-family: "Century Gothic";
+	font-size: 16px;
+	color: #000000;
+	font-weight: normal;
+	padding-left: 100px;
+	width: 320px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom:15px;
+}
+	
+	#textoinfo h7{
+		font-size:26px;}
+	
+
+	#sectioninfo{
+	text-align:center;
+	display: block;
+	width: 100%;
+}
+
+#infografias{width:100%;}
+
+	.info1, .info2, .info3, .info4, .info5, .info6 {
+	width: 100%;
+	float: none;
+}
+
+#info1{ width: 100%;}
+	
+	.info2 img,
+	.info3 img,
+	.info4 img{
+	width: 150px;
+	margin-left: 90%;
+	
+}
+
+.info5 img{
+	width: 150px;
+	margin-left: 97%;}
+
+
+.info6 img{
+	width: 150px;
+	margin-left: 103%;}
+
+
+.info1 img{ margin-left:100%; width: 150px;}
+		
+	
+#sec-info{display:block; text-align:center;}	
+	
+	#infografiasequipo{
+		padding-left:5%;
+		display:block;
+		text-align:center;
+		width:100%;}
+		
+	
+	
+	
+	#jose, #fco, #misael, #miguel{
+	width: 100%;
+	float: none;
+	margin-left: 0%;
+	margin-top: 20%;
+	padding-left: 10px;
+	font-size: 22px;
+}
+
+ #jose img, #fco img, #misael img, #miguel img{ width:300px; margin-left:30%;}
+ #jose h10, #fco h10, #misael h10, #miguel h10{ margin-left:70%; font-size:28px; display:block; width:250px;}
+ #jose h11, #fco h11, #misael h11, #miguel h11{ font-size:32px; margin-left:90%; padding-left:90%;}
+	
+	
+}
+
+
+
+@media (max-width: 376px) {
+	#infografias h10{
+	font-family: "Century Gothic";
+	font-size: 16px;
+	color: #000000;
+	font-weight: normal;
+	padding-left: 55px;
+	width: 320px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom:15px;
+}
+	
+	#textoinfo h7{
+		font-size:20px;}
+	
+
+	#sectioninfo{
+	text-align:center;
+	display: block;
+	width: 100%;
+}
+
+#infografias{width:100%;}
+
+	.info1, .info2, .info3, .info4, .info5, .info6 {
+	width: 100%;
+	float: none;
+}
+
+#info1{ width: 100%;}
+	
+	.info2 img,
+	.info3 img,
+	.info4 img{
+	width: 150px;
+	margin-left: 82%;
+	
+}
+
+.info5 img{
+	width: 150px;
+	margin-left: 90%;}
+
+
+.info6 img{
+	width: 150px;
+	margin-left: 99%;}
+
+
+.info1 img{ margin-left:95%; width: 150px;}
+		
+	
+	
+	#infografiasequipo{
+		padding-left:7%;}
+	
+	
+	
+	#sec-info{display:block; text-align:center;}	
+	
+	#infografiasequipo{
+		padding-left:5%;
+		display:block;
+		text-align:center;
+		width:100%;}
+		
+	
+	
+	
+	#jose, #fco, #misael, #miguel{
+	width: 100%;
+	float: none;
+	margin-left: 0%;
+	margin-top: 20%;
+	padding-left: 10px;
+	font-size: 22px;
+}
+
+ #jose img, #fco img, #misael img, #miguel img{ width:200px; margin-left:80%;}
+ #jose h10, #fco h10, #misael h10, #miguel h10{ margin-left:50%; font-size:16px; display:block; width:250px;}
+ #jose h11, #fco h11, #misael h11, #miguel h11{ font-size:22px; margin-left:100%; padding-left:100%;}
+	
+	
+}
+@media (max-width: 320px) {
+	
+	#infografias h10{
+	font-family: "Century Gothic";
+	font-size: 16px;
+	color: #000000;
+	font-weight: normal;
+	padding-left: 60px;
+	width: 250px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom:15px;
+}
+	
+	#textoinfo h7{
+		font-size:20px;}
+	
+
+	#sectioninfo{
+	text-align:center;
+	display: block;
+	width: 100%;
+}
+
+#infografias{width:100%;}
+
+	.info1, .info2, .info3, .info4, .info5, .info6 {
+	width: 100%;
+	float: none;
+}
+
+#info1{ width: 100%;}
+	
+	.info2 img,
+	.info3 img,
+	.info4 img{
+	width: 150px;
+	margin-left: 67%;
+	
+}
+
+.info5 img{
+	width: 150px;
+	margin-left: 75%;}
+
+
+.info6 img{
+	width: 150px;
+	margin-left: 83%;}
+
+
+.info1 img{ margin-left:80%; width: 150px;}
+		
+		
+	#sec-info{display:block; text-align:center;}	
+	
+	#infografiasequipo{
+		padding-left:5%;
+		display:block;
+		text-align:center;
+		width:100%;}
+		
+	
+	
+	
+	#jose, #fco, #misael, #miguel{
+	width: 100%;
+	float: none;
+	margin-left: 0%;
+	margin-top: 20%;
+	padding-left: 10px;
+	font-size: 22px;
+}
+
+ #jose img, #fco img, #misael img, #miguel img{ width:200px; margin-left:50%;}
+ #jose h10, #fco h10, #misael h10, #miguel h10{ margin-left:0px; font-size:16px; display:block; width:250px;}
+ #jose h11, #fco h11, #misael h11, #miguel h11{ font-size:22px; margin-left:90%; padding-left:90%;}
+}

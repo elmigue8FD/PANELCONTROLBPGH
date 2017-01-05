@@ -1,0 +1,1081 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*seccion aviso de privacidad*/
+#sectionaviso {
+	background-color: #FFFFFF;
+	display: inline;
+	float: left;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 51px;
+	width: 100%;
+	font-family: "Century Gothic";
+	max-width: 100%;
+}
+
+#containertxt{
+	font-family: "Century Gothic";
+	padding-left: 150px;
+	padding-top: 50px;
+	padding-bottom: 25px;
+	padding-right: 50px;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+		
+	}
+	
+#containertxtsomos{
+	font-family: "Century Gothic";
+	padding-left: 50px;
+	padding-top: 0px;
+	padding-bottom: 25px;
+	padding-right: 50px;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+		
+	}
+	 
+
+#containertxt h1{
+	color: rgba(255,77,120,1.00);
+	font-size: 32px;
+	font-weight: bold;
+	padding-bottom: 30px;
+	margin-left: -116px;
+	width: 100%;
+	padding-top: 10%;
+	line-height: 40px;
+}
+
+
+#containertxtsomos h1{
+	color: rgba(255,77,120,1.00);
+	font-size: 32px;
+	font-weight: bold;
+	padding-bottom: 30px;
+	margin-left: 16px;
+	width: 100%;
+	padding-top: 5%;
+	line-height: 40px;
+}
+
+#containertxtsomos p{ padding-left:0px; margin-left:0px;}
+
+#containerfacturatxt {
+	font-family: "Century Gothic";
+	padding-left: 150px;
+	padding-top: 20px;
+	padding-bottom: 25px;
+	padding-right: 50px;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+		
+	}
+
+#containerfacturatxt h1{
+	font-size: 32px;
+	font-weight: bold;
+	padding-bottom: 20px;
+	margin-left: -116px;
+	width: 100%;
+	padding-top: 1%;
+	line-height: 30px;
+	color:#FF4D78;
+
+}
+
+
+	
+
+	
+#containertxt h2{
+	font-size: 20px;
+	padding-bottom: 30px;
+	padding-top: 30px;
+	color: rgba(0,0,0,1.00);
+	}
+
+#containertxt p{
+	color: rgba(0,0,0,1.00);
+	}	
+	
+#containertxt a{
+	color: rgba(0,0,0,1.00);
+	}
+
+
+/*estilos para banner para seccion quienes somos*/
+#bannersomos{
+	width: 100%;
+	display: inline;
+	float: left;
+	margin-top:10%;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	max-width: 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	}
+
+
+#bannersomos img{
+	width: 100%;
+	max-width: 100%;
+	max-height: none;
+	margin-bottom: -100px;
+}
+
+#bannerunete{
+	width: 100%;
+	display: inline;
+	float: left;
+	margin-top:0%;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	max-width: 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	}
+
+#bannerunete img{
+	width:100%;
+	max-width:100%;
+	margin-bottom:0px;
+}
+
+
+#bannerlisvac{
+	width: 100%;
+	display: inline;
+	float: left;
+	margin-top:0%;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	max-width: 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	}
+
+#bannerlistavac img{
+	width:100%;
+	max-width:100%;
+	max-height:10%;
+	margin-bottom:-50px;
+}
+
+#bannerpuesto{
+	width: 100%;
+	display: inline;
+	float: left;
+	margin-top:10%;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	max-width: 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	}
+
+#bannerpuesto img{
+	width:100%;
+	max-width:100%;
+}
+
+
+/*-----------------------------------------------------estilos para seccion de equipo-----------------------------------------------*/
+
+#jose{
+	width:25%;
+	float:left;
+	text-align:center;
+	max-width:22%} #jose img{ width:70%;}
+
+#fco{
+	width:25%;
+	float:left;
+	text-align:center;
+	max-width:22%} #fco img{ width:70%;}
+
+#misael{
+	width:25%;
+	float:left;
+	text-align:center;
+	max-width:22%} #misael img{ width:70%;}
+	
+#miguel{
+	width:25%;
+	float:left;
+	text-align:center;
+	max-width:22%} #miguel img{width:70%;}
+	
+#infografiasequipo {
+	padding-left:100px;
+
+}
+
+
+
+
+
+/*----------------------------------------------comienza seccion de eventos y notiticas------------------------------------------*/
+
+.yearevent {
+	font-weight:bold;
+	font-family:"Century Gothic";
+	font-size:24px;
+	margin-top:-25px;}
+
+
+#events {
+	background-color: #FFFFFF;
+	display: inline;
+	float: left;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 0px;
+	width: 100%;
+	font-family: "Century Gothic";
+	max-width: 100%;
+}	
+
+#eventstitle {
+	background-color: #FFFFFF;
+	display: inline;
+	float: left;
+	padding-top: 83px;
+	padding-right: 0;
+	padding-left: 70px;
+	padding-bottom: 0px;
+	width: 100%;
+	font-family: "Century Gothic";
+	max-width: 100%;
+}	
+#containermeses{
+	width:50%;
+	margin-left: 25%;
+	margin-right:25%;
+}
+	
+#eventoslista{
+	width:50%;
+	float:left;
+
+	
+}
+#imgmes {
+	width:50%;
+	float:left;
+	}
+
+
+#eventoslista{
+}
+
+#listames{
+	padding-left:15%;
+	padding-top:15%;
+	}
+
+#listames p{
+	font-weight:bold;
+	font-family:"Century Gothic";
+	font-size:24px;
+	margin-top:-25px;}
+
+#listames li{
+	font-family:"Century Gothic";
+	font-size:16px;
+	}
+
+#imgmes img{
+	width:100%;
+	}
+
+
+
+/* seccion unete a nuerstro equipo, contenedor de texto de valores al centro de la pantalla-------------------------------------- */
+
+#containervalores {
+	background-color: #FFFFFF;
+	display: inline;
+	float: left;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 0px;
+	width: 100%;
+	font-family: "Century Gothic";
+	max-width: 100%;
+}
+
+
+
+#valores{
+	font-family:"Century Gothic";
+	padding-top:50px;
+	padding-bottom:50px;
+	text-align:center;
+	color:rgba(0,0,0,1.00);
+		
+	}
+	
+#valores h1{
+	color:rgba(255,77,120,1.00);
+	font-size:32px;
+	font-weight: bold;
+	padding-bottom:30px;}
+	
+#valores h2{
+	font-size:20px;
+	padding-bottom:30px;
+	padding-top:30px;
+	color:rgba(0,0,0,1.00);}
+	
+#valores p{
+	color:rgba(0,0,0,1.00);}
+
+
+#valores img{
+	width:100%;}
+
+
+#responsivevalores{display:none;}
+
+
+	
+	
+	/*vacantes section*/
+	#vacantes {width:100%; margin-bottom:10%; } 
+	
+
+	#vac1, #vac2, #vac3, #vac4 {width:10%; margin-right:7%; margin-left:7%;float:left; padding:3%;}
+	#vac1, #vac3 {background-color:#FF4D78;}
+	#vac2, #vac4 {background-color:#CCCCCC;}
+	
+	#vac1:hover, #vac3:hover {background-color: #FFA2B8;}
+	#vac2:hover, #vac4:hover {background-color: #E7E7E7;}
+
+
+
+/* The Modal (background) ----------------------------------------------------------------------------------*/
+.modal,
+.modal2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 20;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	overflow: inherit ;
+}
+.modal2{
+	z-index:10;
+	}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 45%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button ---------------------------------------------------------------------*/
+.close,
+.close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.close2:hover,
+.close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+	
+#myBtn,
+#myBtn2,
+#myBtn2b,
+#myBtn2c {
+	}
+
+
+
+
+/*seccion lista de vacantes---------------------------------------------------------------------------------------------*/
+
+
+
+.listavacantes{
+	 margin-left:20%;
+	 text-align:center;
+     min-width: 300px;}
+	 
+.listavacantes td{
+	padding-right: 10px;
+	padding-top: 25px;
+	width: 20%;
+	
+}
+
+.mas{
+	text-decoration:underline;
+	text-align:center;
+	}
+
+
+/*-----------------------------------------------------pop up cv-------------------------------------------------------------*/
+
+.form-controlcv{
+	width:50%;}
+
+#close{
+	width:50%;}
+
+#aplicacioncv{
+	width:10%;
+	float:left;
+	margin-bottom:10%;}
+	
+.resume{
+	width:100%;
+	text-align:center;
+	padding-top:10%;}
+
+
+/*-----------------------------------------------------contacto----------------------------------------------*/
+
+.contactop{
+	
+	font-family:"Century Gothic";}
+
+
+
+/*seccin de FAQs-------------------------------------------------------------------------------------*/
+
+
+
+
+.faq{
+	font-family:"Century Gothic";
+	padding-left: 150px;
+	margin-top:10%;
+	padding-bottom:50px;
+	padding-right:200px;
+	display:inline-block;
+	width:100%;
+	
+		
+	}
+	
+.faq h1{
+	color: rgba(255,77,120,1.00);
+	font-size: 32px;
+	font-weight: bold;
+	padding-bottom: 30px;
+	display: inline;
+	margin-right: 70%;
+}
+	
+.faq h2{
+	font-size:20px;
+	padding-bottom:30px;
+	padding-top:30px;}
+
+.faq p{
+	color:rgba(0,0,0,1.00);}	
+	
+.faq input{
+	width: 200px;
+	border: solid rgba(255,77,120,1.00);
+	display:inline;
+	border-radius:5px;
+	background-image: url(../img/faq/buscador.png);
+	background-repeat: no-repeat;
+    background-position: 170px -2px;
+	background-size:30px
+}
+
+#listafaq{
+	padding-left:100px;
+	display: inline-block;
+	width:100%;
+	background:rgba(216,216,216,1.00);
+}
+
+#listafaq:hover{
+	background: rgba(227,227,227,1.00);}
+
+#imglista{
+	float:left;}
+	
+#nombrelista{
+	float: left;
+	padding-top: 20px;
+	font-family: "Century Gothic";
+	font-size: 24px;
+	}
+	
+#nombrelista h1{
+	color:rgba(0,0,0,1.00);}
+	
+	
+	
+	
+/*seccion de estilo para barras de faqs por categoria====================================efecto ocultar y mostrar*/
+
+
+#faqcatego {
+	background-color: #FFFFFF;
+	display: inline;
+	float: left;
+	padding-top: 10px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 51px;
+	width: 100%;
+	font-family: "Century Gothic";
+	max-width: 100%;
+}
+
+#faqcatego h1{
+	font-weight: normal;
+	font-family: "Century Gothic";
+	font-size: 14px;
+	padding-bottom: 1px;
+	
+	}
+	
+#faqcatego img{}
+#imglista img{width:70%; padding-top:10%;}
+
+/* ocultar mostrar faqs--------------------------------------------------------------- */
+
+
+
+
+#mostrar {
+	padding-left:160px;
+	padding-right:60px;
+    background-color:#f6f6f6;
+    width:100%;
+	text-align:justify;
+	padding-top:20px;
+
+	
+}
+
+#mostrar p{
+	color:rgba(0,0,0,1.00);
+	padding-bottom:40px;}
+
+
+
+
+
+
+
+
+/*-------------------------------------- FAQ mostrar ocultar------------------------------------------------------------------ */
+.collapses,
+.collapses2,
+.collapses3,
+.collapses4,
+.collapses5,
+.collapses6,
+.collapses7,
+.collapses8,
+.collapses9,
+.collapses10,
+.collapsemiubicaion,
+.collapseotrolugar {
+  cursor: pointer;
+  display: block;
+}
+
+
+
+.collapses + input,
+.collapses2 + input,
+.collapses3 + input,
+.collapses4 + input,
+.collapses5 + input,
+.collapses6 + input,
+.collapses7 + input,
+.collapses8 + input,
+.collapses9 + input,
+.collapses10 + input,
+.collapsemiubicaion + input,
+.collapseotrolugar + input{
+	  display: none; /* hide the checkboxes */
+}
+
+
+
+.collapses + input + #mostrar,
+.collapses2 + input +  #mostrar,
+.collapses3 + input +  #mostrar,
+.collapses4 + input +  #mostrar,
+.collapses5 + input +  #mostrar,
+.collapses6 + input +  #mostrar,
+.collapses7 + input +  #mostrar,
+.collapses8 + input +  #mostrar,
+.collapses9 + input +  #mostrar,
+.collapses10 + input +  #mostrar,
+.collapsemiubicaion + input +  #mostrarmapa,
+.collapseotrolugar + input +  #mostrardatoscontacto {
+  
+    display:none;
+}
+
+
+
+.collapses + input:checked +  #mostrar,
+.collapses2 + input:checked +  #mostrar,
+.collapses3 + input:checked +  #mostrar,
+.collapses4 + input:checked +  #mostrar,
+.collapses5 + input:checked +  #mostrar,
+.collapses6 + input:checked +  #mostrar,
+.collapses7 + input:checked +  #mostrar,
+.collapses8 + input:checked +  #mostrar,
+.collapses9 + input:checked +  #mostrar,
+.collapses10 + input:checked +  #mostrar,
+.collapsemiubicaion + input:checked +  #mostrarmapa,
+.collapseotrolugar + input:checked +  #mostrardatoscontacto{
+  display:block;
+}
+
+
+
+
+/*estilos para estilos de facturacion------------------------------------------------------------------------------------------*/
+
+#facturacion {
+	background-color: #FFFFFF;
+	display: inline;
+	float: left;
+	margin-top:-20px;
+	padding-top: 0px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 0px;
+	width: 100%;
+	font-family: "Century Gothic";
+	max-width: 100%;
+}
+
+
+	
+	
+	
+/* Facturacion*/
+
+.containerfactura{
+	font-family:"Century Gothic";
+	color:rgba(0,0,0,1.00);
+	width:77%;
+	
+	}
+	
+.factura{
+	padding-left:20%;
+	padding-bottom:30px;
+	text-align: right;
+	
+	}
+
+
+.factura label{
+	color:rgba(0,0,0,1.00);
+		float:left;
+
+}
+	
+.factura input{
+	align-content:center;
+	height:20px;
+	padding-left:5px;
+	width:60%;
+	text-align: left;
+	border-top:none;
+	border-left:none;
+	border-right: none;
+	border-color:rgba(255,77,120,1.00);	
+	}
+	
+.elementosfactura{
+	padding-bottom:20px;
+	
+	}
+
+
+
+
+
+
+
+
+/*medias stilos para otros medidas de pantalla---------------------------------------------------------------------------------*/
+
+@media (max-width: 1420px) {
+	#vac1, #vac2, #vac3, #vac4 {width:15%; margin-right:3%; margin-left:5%;float:left; padding:3%;}
+	#containertxt h1{
+	padding-top: 34px;
+}
+
+	#containertxt{ padding-left:0px;}
+	#containertxt h1{ margin-left:0%; margin-top:10%; padding-left:10px; font-size:22px;}
+	#containertxt h2{ font-size:16px; padding-left:5px;}
+	#containertxt p{ padding-left:25px; padding-right:5px;}
+	#containertxt ul{padding-left:40px;}
+
+
+@media (max-width: 1260px) {
+	
+		.faq{
+		margin-top: 15%;
+		padding-left:30px;}
+	.faq h1{
+		margin-right:35%;}
+		
+	.faq input{width:40%; background-position:90% 60%;}
+	
+	.resume{
+	padding-top:25%;}
+	
+	#listames li{
+	font-family:"Century Gothic";
+	font-size: medium;
+	}
+	
+	#containertxt h1{
+		padding-top:50px;}
+		
+			#containertxt{ padding-left:0px;}
+	#containertxt h1{ margin-left:0%; margin-top:10%; padding-left:10px; font-size:22px;}
+	#containertxt h2{ font-size:16px; padding-left:5px;}
+	#containertxt p{ padding-left:35px; padding-right:5px;}
+	
+	#mostrar p{ padding-left:15%; padding-right:10%; margin-right:0%; margin-left:0%; width:100%;}
+	#mostrar { padding-left:0px; margin-left:0px; width:100%;}
+
+
+
+}
+@media (max-width: 1000px) {
+	
+	#bannersomos{ margin-top:19%;}
+	
+	#listames li{
+	font-family:"Century Gothic";
+	font-size: medium;
+	}
+	
+	#containertxt h1{
+		padding-top:50px;}
+
+
+@media (max-width: 900px) {
+	#bannersomos{margin-top: 12%;}
+	
+	
+}
+
+}
+
+
+@media (max-width: 800px) {
+	
+	#bannerpuesto{ margin-top:19%;}
+	
+	
+	
+	#valores{font-size:10px;} .listavacantes{margin-left:5%;}
+	#eventstitle{ padding-top:60px; } #eventstitle h1{font-size:14px;}
+	
+	#bannersomos{ margin-top:19%;} #bannerunete{ margin-top:0%;} #valores{padding-bottom:10px;}
+	
+	#containertxth1{font-size:14px;}
+	
+	/*facturacion*/
+	
+	.containerfactura{
+		font-size: 9px;
+		font-weight:normal;}
+	.factura input{
+		width:50%;}
+		
+	/*======*/
+	
+	
+		.faq{
+		margin-top: 25%;
+		padding-left:30px;}
+	.faq h1{
+		margin-right:35%;}
+		
+	.faq input{width:40%; background-position:90% 60%;}
+	
+	.resume{
+	padding-top:25%;}
+
+
+	.modal{
+		margin-top:20%;}
+	
+	#vac1, #vac2, #vac3, #vac4 {width:15%; margin-right:5%; margin-left:5%;float:left; padding:3%;}
+	
+	.txtvac{
+		font-size:10px;}
+	
+	.yearevent {
+		font-size:medium;}
+	
+	#listames li{
+	font-size: small;
+	}
+	
+	#containertxt{
+		padding-left:30px;
+		}
+	
+	#containertxt h1{
+		padding-top:50px;
+		font-size:38px;
+		padding-left:150px;
+		display:block;
+	}
+	
+		#containertxt{ padding-left:0px;}
+	#containertxt h1{ margin-left:0%; margin-top:10%; padding-left:10px; font-size:22px;}
+	#containertxt h2{ font-size:16px; padding-left:5px;}
+	#containertxt p{ padding-left:25px; padding-right:5px;}
+
+
+	#mostrar p{ padding-left:15%; padding-right:10%; margin-right:0%; margin-left:0%; width:100%;}
+	#mostrar { padding-left:0px; margin-left:0px; width:100%;}
+
+	
+}
+
+
+
+
+@media (max-width: 480px) {
+	
+	#containertxt h1{
+	padding-top: 14px;} 
+	
+	
+	#eventstitle{padding-top:30%; padding-right:0%; padding-left:0%;} #containertxt{padding-right:0%; padding-left:0%; padding-top:15%;}
+	#containertxt p{padding-left:10%;}
+	
+	
+/*FAQ*/
+
+.faq h1{
+	color: rgba(255,77,120,1.00);
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	display: inline;
+}
+.faq input{
+	width: 220px;
+	margin-top:10%;
+}
+	
+	#listafaq{ padding-left:5%;}
+	#imglista img{ width:50%;}
+	
+	#bannersomos{margin-top:25%; padding-bottom:25%;} #bannerunete{margin-top:-5%;}
+	
+/*facturacion*/
+
+.factura{
+	padding-left:2%;
+	
+	}
+
+
+
+/**/
+
+
+#containertxt h1{
+		font-size:18px;
+		padding-left:150px;
+		display:block;
+		line-height:25px;
+		padding-top:0%;
+		margin-top:-10%;}	
+		
+	.faq h1{
+		margin-right:5%;}
+			.faq{
+		margin-top: 25%;}
+	
+		.txtvac{
+		font-size:9px;}
+	
+	#containertxt{
+		padding-left:30px;}
+	
+	#containertxt h1{
+		font-size:28px;
+		padding-left:150px;
+		display:block;
+	}
+	
+	#containertxt{ padding-left:0px;}
+	#containertxt h1{ margin-left:0%; margin-top:20%; padding-left:10px; font-size:22px;}
+	#containertxt h2{ font-size:16px; padding-left:5px;}
+	#containertxt p{ padding-left:5px; padding-right:5px;}
+
+
+	#vacantes{} #vacantes p{ font-size:22px; padding-left:0px; margin-left:0px;}
+	#vac1, #vac2, #vac3, #vac4 { width:70%; margin-right:7%; margin-left:7%; float:none; padding:20%; margin-bottom:10%;}
+	
+}
+@media (max-width: 426px) {
+
+		#listames li{font-size:9px;}
+	#listames p{font-size:9px;} #listames{padding-top:10px; margin-top:14px;}
+	
+	#bannerlistavac{ margin-top:-7%;}
+	
+	#bannerpuesto{ margin-top:24%;}
+	
+		#containertxt{ padding-left:0px;}
+	#containertxt h1{ margin-left:0%; margin-top:20%; padding-left:10px; font-size:22px;}
+	#containertxt h2{ font-size:16px; padding-left:5px;}
+	#containertxt p{ padding-left:5px; padding-right:5px;}
+
+	#nombrelista {padding-top:10px;}
+	
+	#pcvalores{ display:none;}
+	#responsivevalores{display:block; } 
+	
+	
+	#vacantes{ padding-left:20%;}
+	
+	
+	#mostrar p{ padding-left:15%; padding-right:10%; margin-right:0%; margin-left:0%; width:100%;}
+	#mostrar { padding-left:0px; margin-left:0px; width:100%;}
+
+}
+
+
+
+
+@media (max-width: 376px) {
+#bannerpuesto{ margin-top:28%;}
+.resumedivs label{font-size:10px;}
+
+.form-controlcv{
+	width:50%;}
+	
+.modal-content{width:70%;}
+
+
+}
+@media (max-width: 375px) {
+
+	#eventstitle{padding-top:30%; padding-right:0%; padding-left:-20%;} #containertxt h1{padding-left:0%; padding-right:0%;}	
+	#bannerpuesto{ margin-top:28%;}
+}
+@media (max-width: 376px) {	
+	#listames li{font-size:9px;}
+	#listames p{font-size:9px;} #listames{padding-top:10px; margin-top:14px;}
+	
+	
+	#containertxt{ padding-left:0px;}
+	#containertxt h1{ margin-left:0%; margin-top:20%; padding-left:10px; font-size:22px;}
+	#containertxt h2{ font-size:16px; padding-left:5px;}
+	#containertxt p{ padding-left:5px; padding-right:5px;}
+
+	#nombrelista {padding-top:10px;}
+
+	#mostrar p{ padding-left:10%; padding-right:0%; margin-right:0%; margin-left:0%; width:100%;}
+	#mostrar { padding-left:0px; margin-left:0px; width:100%;}
+
+}
+
+
+
+	
+
+
+
+@media (max-width: 320px) {
+	#listames li{font-size:9px;}
+	#listames p{font-size:9px;} #listames{padding-top:10px; margin-top:10px;}
+	
+	#containertxt{
+		padding-left:30px;}
+	
+	#containertxt h1{
+		font-size:18px;
+		padding-left:150px;
+		display:block;
+		line-height:25px;
+		padding-top:0%;
+		margin-top:-20%;}
+		
+	#bannersomos{ margin-top:35%; padding-bottom:45%;} #bannerunete{ margin-top:-5%;}
+	
+	
+/*FAQ*/
+
+.faq h1{
+	color: rgba(255,77,120,1.00);
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	display: inline;
+}
+.faq input{
+	width: 220px;
+	margin-top:10%;
+}
+	
+	#listafaq{ padding-left:5%;}
+	#imglista{margin-top:5%; } #imglista img{ width:30%; padding-left:0px; margin-left:0%;}
+	#nombrelista h1{ font-size:10px;}
+	
+	#vacantes p{ width:11%; font-size:9px; text-align:center;} #vac1, #vac2, #vac3, #vac4{width:30%; margin-bottom:4%; text-align:center;}
+	#vacantes{margin-left:10%; text-align:center;}
+	.txtvac{width:20%;}
+	
+	#eventstitle{padding-top:40%; padding-right:0%;} #containertxt{padding-right:0%; padding-left:1%; padding-top:25%;}
+	
+	#bannerpuesto{ margin-top:34%;}
+	
+	#containertxt{ padding-left:0px;}
+	#containertxt h1{ margin-left:0%; margin-top:20%; padding-left:10px; font-size:22px;}
+	#containertxt h2{ font-size:16px; padding-left:5px;}
+	#containertxt p{ padding-left:5px; padding-right:5px;}
+	
+	#nombrelista {padding-top:10px;}
+	
+	#vac1, #vac2, #vac3, #vac4 { width:40%; margin-right:7%; margin-left:7%; float:none; padding:10%; padding-right:0%; margin-bottom:10%; text-align:center;}
+	.txtvac { width:200px;  font-size:9px; padding-left:0px; margin-left:-15px; padding-right:10px;}
+	
+	#mostrar p{ padding-left:15%; padding-right:10%; margin-right:0%; margin-left:0%; width:100%;}
+	#mostrar { padding-left:0px; margin-left:0px; width:100%;}
+	
+}
