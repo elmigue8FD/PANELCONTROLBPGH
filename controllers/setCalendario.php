@@ -39,7 +39,7 @@ if (!empty($_POST)){
             $arrayO = [
                 "title" => 'Orden No.'.$rowOrden['idtblordencompra'],
                 "start" => $fechaorden,
-                "color" => '#C51162',
+                "color" => '#DD5465',
                 "tipo" => '1'
                 ];  
             array_push($arrayCompleto,$arrayO);
@@ -52,7 +52,7 @@ if (!empty($_POST)){
             $arrayC = [
                 "title" => 'Cotización No.'.$rowCotizador['idtblordencotizador'],
                 "start" => $rowCotizador['tblordencotizador_fchcreacion'],
-                "color" => '#E040FB',
+                "color" => '#212121',
                 "tipo" => '2'];  
             array_push($arrayCompleto,$arrayC);
         } 
@@ -63,7 +63,7 @@ if (!empty($_POST)){
             $arrayCN = [
                 "title" => 'Cotización No.'.$rowCotizadorN['idtblordencotizador'],
                 "start" => $rowCotizadorN['tblordencotizador_fchcreacion'],
-                "color" => '#E040FB',
+                "color" => '#212121',
                 "tipo" => '2'];  
             array_push($arrayCompleto,$arrayCN);
         } 
