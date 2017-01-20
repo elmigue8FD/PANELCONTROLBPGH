@@ -8109,6 +8109,91 @@ class FuncionesBePickler{
         return $fechafinal;
         
     }
+
+    //Funcion para el control de rango de horarios
+    public static function getRangoshorarios($fechapedido){
+
+		$arrayCompleto=[];
+		$arrayRango1 = [
+		                "idRango" => '1',
+		                "idHoramenor" => '1',
+		                "idHoramayor" => '4',
+		                "rango" => '9:00 a 12:00'
+		                ];  
+		
+
+		$arrayRango2 = [
+		                "idRango" => '2',
+		                "idHoramenor" => '4',
+		                "idHoramayor" => '7',
+		                "rango" => '12:00 a 15:00'
+		                ];  
+		
+
+		$arrayRango3 = [
+		                "idRango" => '3',
+		                "idHoramenor" => '7',
+		                "idHoramayor" => '10',
+		                "rango" => '15:00 a 18:00'
+		                ];  
+		
+
+		$arrayRango4 = [
+		                "idRango" => '4',
+		                "idHoramenor" => '10',
+		                "idHoramayor" => '13',
+		                "rango" => '18:00 a 21:00'
+		                ];  
+		
+
+		date_default_timezone_set("America/Monterrey");
+        $fechapedidoingresada = new DateTime($fechapedido);
+        $fechahoy = new DateTime(date("d-m-Y"));
+
+
+        if($fechapedidoingresada == $fechahoy){ 
+            $tipodepedido= 1; //pedidoparahoy
+        }else{
+            $tipodepedido= 2; //pedidoparaotrodia
+        }
+
+        if($tipodepedido==1){
+
+        	$timefinal = date("H:i");
+
+			if($timefinal>='00:00' && $timefinal<'09:00'){
+				array_push($arrayCompleto,$arrayRango1);
+        		array_push($arrayCompleto,$arrayRango2);
+        		array_push($arrayCompleto,$arrayRango3);
+        		array_push($arrayCompleto,$arrayRango4);
+
+			}
+			else if($timefinal>='09:00' && $timefinal<'12:00'){
+				
+        		array_push($arrayCompleto,$arrayRango2);
+        		array_push($arrayCompleto,$arrayRango3);
+        		array_push($arrayCompleto,$arrayRango4);
+
+			}
+			else if($timefinal>='12:00' && $timefinal<'15:00'){ 
+
+        		array_push($arrayCompleto,$arrayRango3);
+        		array_push($arrayCompleto,$arrayRango4);
+			
+			}
+			else if($timefinal>='15:00' && $timefinal<'18:00'){ 
+
+        		array_push($arrayCompleto,$arrayRango4);
+			
+			}else{}
+        	
+
+        }else {
+        }
+
+    	return $resultado=$arrayCompleto;
+    }
+
     
  
  
