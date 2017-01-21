@@ -8189,6 +8189,10 @@ class FuncionesBePickler{
         	
 
         }else {
+        	array_push($arrayCompleto,$arrayRango1);
+        	array_push($arrayCompleto,$arrayRango2);
+        	array_push($arrayCompleto,$arrayRango3);
+        	array_push($arrayCompleto,$arrayRango4);
         }
 
     	return $resultado=$arrayCompleto;
