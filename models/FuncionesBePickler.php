@@ -8116,33 +8116,41 @@ class FuncionesBePickler{
 		$arrayCompleto=[];
 		$arrayRango1 = [
 		                "idRango" => '1',
-		                "idHoramenor" => '1',
-		                "idHoramayor" => '4',
-		                "rango" => '9:00 a 12:00'
+		                "idtblhora_menor" => '1',
+		                "tblhora_menor"=>'9:00',
+		                "idtblhora_mayor" => '4',
+		                "tblhora_mayor"=>'12:00',		                
+		                "rango_hora" => '9:00 a 12:00'
 		                ];  
 		
 
 		$arrayRango2 = [
 		                "idRango" => '2',
-		                "idHoramenor" => '4',
-		                "idHoramayor" => '7',
-		                "rango" => '12:00 a 15:00'
+		                "idtblhora_menor" => '4',
+		                "tblhora_menor"=>'12:00',
+		                "idtblhora_mayor" => '7',
+		                "tblhora_mayor"=>'15:00',		                
+		                "rango_hora" => '12:00 a 15:00'
 		                ];  
 		
 
 		$arrayRango3 = [
 		                "idRango" => '3',
-		                "idHoramenor" => '7',
-		                "idHoramayor" => '10',
-		                "rango" => '15:00 a 18:00'
+		                "idtblhora_menor" => '7',
+		                "tblhora_menor"=>'15:00',
+		                "idtblhora_mayor" => '10',
+		                "tblhora_mayor"=>'18:00',		                
+		                "rango_hora" => '15:00 a 18:00'
 		                ];  
 		
 
 		$arrayRango4 = [
 		                "idRango" => '4',
-		                "idHoramenor" => '10',
-		                "idHoramayor" => '13',
-		                "rango" => '18:00 a 21:00'
+		                "idtblhora_menor" => '10',
+		                "tblhora_menor"=>'18:00',
+		                "idtblhora_mayor" => '13',
+		                "tblhora_mayor"=>'21:00',		                
+		                "rango_hora" => '18:00 a 21:00'
 		                ];  
 		
 
