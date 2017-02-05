@@ -3720,6 +3720,26 @@ class FuncionesBePickler{
 			return false;
 		}
 	}
+
+	/*Obtiene todos los registros de tblproduct Activos */
+    public static function getAllTblproductoActAllDataByTblclasifproduct($idtblclasifproduct){
+        
+        $idtblproducto=0;        
+	    $activado=1;
+		$consulta = "SELECT * FROM tblproducto as producto INNER JOIN tblproductdetalle as detalle ON producto.idtblproducto = detalle.tblproducto_idtblproducto INNER JOIN tblproductimg as img ON producto.idtblproducto = img.tblproducto_idtblproducto INNER JOIN tblespecificingrediente as especificingrediente ON detalle.tblespecificingrediente_idtblespecificingrediente = especificingrediente.idtblespecificingrediente WHERE producto.idtblproducto > ? AND producto.tblproducto_activado = ? AND producto.tblclasifproduct_idtblclasifproduct = ? GROUP BY producto.idtblproducto ORDER BY producto.tblproducto_nombre";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblproducto,PDO::PARAM_INT);
+			$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(3,$idtblclasifproduct,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
     
     
     /*Obtiene todos los registros de tblproduct Activos  de un proveedor */
