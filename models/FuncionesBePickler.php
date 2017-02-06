@@ -8000,7 +8000,7 @@ class FuncionesBePickler{
         
         $activado=1;
         
-        $fechapedidoingresada = new DateTime($fechapeidido);
+        $fechapedidoingresada = new DateTime($fechapedido);
         $fechahoy = new DateTime("now");
         $interval= $fechahoy->diff($fechapedidoingresada);
         $diasMinimos= $interval->format('%d');
