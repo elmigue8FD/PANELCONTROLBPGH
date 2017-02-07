@@ -8226,6 +8226,42 @@ class FuncionesBePickler{
     	return $resultado=$arrayCompleto;
     }
 
+
+    public static function getTblproductoDetalleByTblproducto($idtblproduct){
+
+    	$consulta = "SELECT * FROM tblproductdetalle TPD 
+    					INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto 
+    					INNER JOIN tblproveedor TPV ON TPV.idtblproveedor = TP.tblproveedor_idtblproveedor
+    					WHERE tblproducto_idtblproducto = ?
+    					ORDER BY idtblproductdetalle";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblproduct,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+
+
+    public static function getTblproductImgByTblproducto($idtblproduct){
+
+    	$consulta = "SELECT * FROM tblproductimg WHERE tblproducto_idtblproducto = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblproduct,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+
     
  
  
