@@ -8227,13 +8227,17 @@ class FuncionesBePickler{
     }
 
 
-    public static function getTblproductoDetalleByTblproducto($idtblproduct){
+     //Obtener informacion del producto y del proveedor 
+    public static function getTblproductoAndTblproveedor($idtblproduct){
 
-    	$consulta = "SELECT * FROM tblproductdetalle TPD 
-    					INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto 
-    					INNER JOIN tblproveedor TPV ON TPV.idtblproveedor = TP.tblproveedor_idtblproveedor
-    					WHERE tblproducto_idtblproducto = ?
-    					ORDER BY idtblproductdetalle";
+    	$consulta = "SELECT TP.*,TPV.*,THa.tblhora_hora as tblhoraabre,THc.tblhora_hora as tblhoracierra    FROM tblproducto TP 
+				INNER JOIN tblproveedor TPV ON TPV.idtblproveedor = TP.tblproveedor_idtblproveedor
+				INNER JOIN tblhrsprovtienda THP ON THP.tblproveedor_idtblproveedor = TPV.idtblproveedor
+	     		INNER JOIN tblhraabre TA ON THP.tblhraabre_idtblhraabre = TA.idtblhraabre
+	     		INNER JOIN tblhracierra TC ON THP.tblhracierra_idtblhracierra = TC.idtblhracierra
+	     		INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora 
+	     		INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora
+					WHERE TP.idtblproducto = ?";
 		
 		try{
 
@@ -8247,6 +8251,23 @@ class FuncionesBePickler{
     }
 
 
+    //obtiene los detalles de un producto 
+    public static function getTblproductoDetalleByTblproducto($idtblproduct){
+
+    	$consulta = "SELECT * FROM tblproductdetalle WHERE tblproducto_idtblproducto = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblproduct,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+
+    //obtiene las imagenes de un producto 
     public static function getTblproductImgByTblproducto($idtblproduct){
 
     	$consulta = "SELECT * FROM tblproductimg WHERE tblproducto_idtblproducto = ?";
