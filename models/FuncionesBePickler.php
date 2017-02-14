@@ -3210,10 +3210,10 @@ class FuncionesBePickler{
 			$resultado->execute();
 
 			if($resultado->rowCount()>0){
-				$consulta = "SELECT MAX(idtblordencompra) AS idtblordencompra FROM tblordencompra";
-				$resultado2 = ConexionDB::getInstance()->getDb()->prepare($consulta);
-				$resultado2->execute();
-				return $resultado2->fetchAll(PDO::FETCH_ASSOC);
+				
+				$id= ConexionDB::getInstance()->getDb()->lastInsertId();
+				
+				return $id;
 
 			}else {
 				return $resultado->rowCount();
