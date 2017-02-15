@@ -8319,6 +8319,35 @@ class FuncionesBePickler{
 
     }
 
+
+    //Funcion especifica para actualizar la cantidad de un producto
+    public static function setUpdateTblcarritoproductCantidad($casoAddDiss,$cantidad,$emailmodifico, $idtblordencompra,$idtblproductdetalle){
+
+    	if($casoAddDiss==1){ //Caso cuando se aumente la cantidad 
+
+    		$update = "UPDATE tblcarritoproduct SET tblcarritoproduct_cantidad = tblcarritoproduct_cantidad +(?),tblcarritoproduct_fchmodificacion = NOW(),tblcarritoproduct_emailusuamodifico = ? WHERE tblcarritoproduct_idtblordencompra = ? AND tblcarritoproduct_idtblproductdetalle = ?";
+
+    	}else { //Casi cuando se disminuya la cantidad
+
+    		$update = "UPDATE tblcarritoproduct SET tblcarritoproduct_cantidad = tblcarritoproduct_cantidad -(?),tblcarritoproduct_fchmodificacion = NOW(),tblcarritoproduct_emailusuamodifico = ? WHERE tblcarritoproduct_idtblordencompra = ? AND tblcarritoproduct_idtblproductdetalle = ?";
+
+    	}
+
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(4,$idtblproductdetalle,PDO::PARAM_INT);
+			
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+
     
  
  
