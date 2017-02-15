@@ -3188,10 +3188,12 @@ class FuncionesBePickler{
     /*Insertar un registro en tblordencompra*/
 	 public static function setTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo){
         
+        $conexionPDO = ConexionDB::getInstance()->getDb();
+        
         $insert ="INSERT INTO tblordencompra (tblordencompra_fchordencompra,tblordencompra_totalordencompra,tblordencompra_statuspagado,tblordencompra_nombrecliente,tblordencompra_sistemapago,tblordencompra_facturacion,tblordencompra_devolucion,tblordencompra_stripetoken,tblordencompra_stripeemail,tblordencompra_calificacion,tblordencompra_ordencompracliente,tblcliente_idtblcliente,tblsistemapago_idtblsistemapago,tblordencompra_fchmodificacion,tblordencompra_fchcreacion,tblordencompra_emailusuacreo,tblordencompra_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
         
         try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado = $conexionPDO->prepare($insert);
 			$resultado->bindParam(1,$fchordencompra,PDO::PARAM_STR);
 			$resultado->bindParam(2,$toralorden,PDO::PARAM_STR);
 			$resultado->bindParam(3,$statuspagado,PDO::PARAM_INT);
@@ -3210,12 +3212,12 @@ class FuncionesBePickler{
 			$resultado->execute();
 
 			if($resultado->rowCount()>0){
-				
-				$id= ConexionDB::getInstance()->getDb()->lastInsertId();
+
+				$id = $conexionPDO->lastInsertId();
 				
 				return $id;
 
-			}else {
+			}else{
 				return $resultado->rowCount();
 			}
 			
@@ -8299,11 +8301,11 @@ class FuncionesBePickler{
 
     	if($casoAddDiss==1){
 
-    		$update ="UPDATE tblproductdetalle SET tblproductdetalle_stock = tblproductdetalle_stock- (?)  WHERE idtblproductdetalle = ? ";
+    		$update ="UPDATE tblproductdetalle SET tblproductdetalle_stock = tblproductdetalle_stock+ (?)  WHERE idtblproductdetalle = ? ";
 
     	}else {
 
-    		$update ="UPDATE tblproductdetalle SET tblproductdetalle_stock = tblproductdetalle_stock+ (?)  WHERE idtblproductdetalle = ? ";
+    		$update ="UPDATE tblproductdetalle SET tblproductdetalle_stock = tblproductdetalle_stock-(?)  WHERE idtblproductdetalle = ? ";
 
     	}
 
