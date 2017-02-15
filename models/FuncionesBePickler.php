@@ -447,7 +447,7 @@ class FuncionesBePickler{
 
 		try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
-			$resultado->bindParam(1,$idtblordencompraordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
 			$resultado->bindParam(2,$idtblproductdetalle,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->fetchColumn(); //retorna el numero de count
@@ -8292,6 +8292,31 @@ class FuncionesBePickler{
 		} catch(PDOException $e){
 			return false;
 		}
+    }
+
+    //funcion especifica para actualizar stock
+    public static function setUpdateStockTblproductdetalle($idtblproductdetalle,$cantidad,$casoAddDiss){
+
+    	if($casoAddDiss==1){
+
+    		$update ="UPDATE tblproductdetalle SET tblproductdetalle_stock = tblproductdetalle_stock- (?)  WHERE idtblproductdetalle = ? ";
+
+    	}else {
+
+    		$update ="UPDATE tblproductdetalle SET tblproductdetalle_stock = tblproductdetalle_stock+ (?)  WHERE idtblproductdetalle = ? ";
+
+    	}
+
+    	 try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproductdetalle,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+
     }
 
     
