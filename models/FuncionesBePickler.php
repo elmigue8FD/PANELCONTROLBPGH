@@ -8352,6 +8352,29 @@ class FuncionesBePickler{
 
     
      }
+
+
+    /*Consultar un todos los carritoproduct por idtblordencompra */
+	public static function getAllTblcarritoproductByTblordencompra2($idtblordencompra){
+	    
+		$consulta = "SELECT TCP.*, TPD.*, TP.*,TPI.* FROM tblcarritoproduct TCP
+       				  INNER JOIN tblordencompra TOC ON TCP.tblcarritoproduct_idtblordencompra = TOC.idtblordencompra  
+      				  INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = TCP.tblcarritoproduct_idtblproductdetalle
+      				  INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto
+      				  INNER JOIN tblproductimg TPI ON TP.idtblproducto = TPI.tblproducto_idtblproducto
+      				  WHERE TCP.tblcarritoproduct_idtblordencompra = ? 
+      				  GROUP BY TCP.idtblcarritoproduct";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	} 
  
     
 }
