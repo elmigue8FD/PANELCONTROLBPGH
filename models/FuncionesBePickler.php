@@ -8035,7 +8035,7 @@ class FuncionesBePickler{
         
         if($idtbltipodeservicio==1){ //Entrega en Pasteleria
             
-            $consulta = "SELECT TPR.*, TPI.*,TPRD.* FROM tblproducto TPR
+            $consulta = "SELECT TPR.*,TP.* ,TPI.*,TPRD.* FROM tblproducto TPR
 		             INNER JOIN tblproveedor TP ON TP.idtblproveedor = TPR.tblproveedor_idtblproveedor
 		             INNER JOIN tblproductdetalle TPRD ON TPRD.tblproducto_idtblproducto = TPR.idtblproducto
 		             INNER JOIN tblcategproduct TCP ON TCP.idtblcategproduct = TPR.tblcategproduct_idtblcategproduct
@@ -8084,7 +8084,7 @@ class FuncionesBePickler{
         }else{//Entrega en Domicilio
         
         
-             $consulta="SELECT TPR.*, TPI.*,TPRD.* FROM tblproducto TPR
+             $consulta="SELECT TPR.*, TP.* ,TPI.*,TPRD.* FROM tblproducto TPR
                                          INNER JOIN tblproveedor TP ON TP.idtblproveedor = TPR.tblproveedor_idtblproveedor
                                          INNER JOIN tblproductdetalle TPRD ON TPRD.tblproducto_idtblproducto = TPR.idtblproducto
                                          INNER JOIN tblcategproduct TCP ON TCP.idtblcategproduct = TPR.tblcategproduct_idtblcategproduct
