@@ -3531,7 +3531,9 @@ class FuncionesBePickler{
     public static function getAllTblproductcomplemAct2($idtblproveedor){
 	    
 	    $activado=1;
-		$consulta = "SELECT * FROM tblproductcomplem WHERE tblproveedor_idtblproveedor= ? AND tblproductcomplem_activado= ? ";
+		$consulta = "SELECT * FROM tblproductcomplem TPC 
+					  INNER JOIN tblproveedor TP ON TPC.tblproveedor_idtblproveedor = TP.idtblproveedor
+					  WHERE tblproveedor_idtblproveedor= ? AND tblproductcomplem_activado= ? ";
 		
 		try{
 
