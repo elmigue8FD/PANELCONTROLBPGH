@@ -8383,7 +8383,145 @@ class FuncionesBePickler{
 		} catch(PDOException $e){
 			return false;
 		}
-	} 
+	}
+
+
+
+	/*
+    TCPC: tblcarritoporductcomplem
+    TPC: tblproductcomplem
+    Funcion que se encarga de llevar a cabo el agregar y/o actualiza TCPC y TPC
+    */
+    public static function setTCPCsetUpdateTCPCAndsetUpdateTPC($tipodepedido,$cantidad,$nombreproductcom,$nombreproveedor,$precioreal,$preciobp,$emailcreo,$idtblordencompra,$idtblproductcomplem){
+
+    	$conexionPDO = ConexionDB::getInstance()->getDb(); 
+
+      	if($tipodepedido==1){ //CASO PARA HOY 
+
+			//Verificamos el stock para comparar con la cantidad añadir 
+	    	$consultaStock= "SELECT * FROM tblproductcomplem WHERE idtblproductcomplem = ?";
+			$resultado = $conexionPDO->prepare($consultaStock);
+			$resultado->bindParam(1,$idtblproductcomplem,PDO::PARAM_INT);
+			$resultado->execute();
+			$registro = $resultado->fetchAll(PDO::FETCH_ASSOC);
+			
+			//obtiene el stock del productocomplem
+			foreach ($registro as $row) {$stock = $row['tblproductcomplem_stock'];} 
+    		
+			if($cantidad<=$stock){
+
+				//consulta para identificar si exite el carrito o no 
+	    		$consulta = "SELECT * FROM tblcarritoproductcomplem TCPC WHERE TCPC.tblcarritoproductcomplem_idtblordencompra = ? AND TCPC.tblcarritoproductcomplem_idtblproductcomplem = ?";
+		    	$resultado = $conexionPDO->prepare($consulta);
+				$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+				$resultado->bindParam(2,$idtblproductcomplem,PDO::PARAM_INT);
+				$resultado->execute();
+				$existeCarrito = $resultado->rowCount();
+
+				if($existeCarrito>0){ //Se actualizara carrito y el stock del productocomplem con el trigger
+
+	    			$trigger = 
+	    				"DROP TRIGGER IF EXISTS actualizarstockUpdate".";".
+	    				"CREATE TRIGGER actualizarstockUpdate BEFORE UPDATE ON tblcarritoproductcomplem FOR EACH ROW UPDATE tblproductcomplem  TPC SET TPC.tblproductcomplem_stock = TPC.tblproductcomplem_stock-?, TPC.tblproductcomplem_fchmodificacion =NOW(), TPC.tblproductcomplem_emailusuamodifico = NEW.tblcarritoproductcomplem_emailusuamodifico WHERE TPC.idtblproductcomplem = NEW.tblcarritoproductcomplem_idtblproductcomplem";
+	    			$resultado = $conexionPDO->prepare($trigger);
+	    			$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+	    			$resultado->execute();
+
+	    			$update = "UPDATE tblcarritoproductcomplem SET tblcarritoproductcomplem_cantidad = tblcarritoproductcomplem_cantidad + ? , tblcarritoproductcomplem_fchmodificacion = NOW(), tblcarritoproductcomplem_emailusuamodifico = ? 
+	    				WHERE tblcarritoproductcomplem_idtblordencompra = ? AND tblcarritoproductcomplem_idtblproductcomplem = ?";
+
+	    			$resultado = $conexionPDO->prepare($update);
+					$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+					$resultado->bindParam(2,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(3,$idtblordencompra,PDO::PARAM_INT);
+					$resultado->bindParam(4,$idtblproductcomplem,PDO::PARAM_INT);
+					$resultado->execute();	
+
+	    			return $resultado->rowCount();
+
+    			}else{ //se crea carrito y se actualiza stock del producto con trigger 
+	    			$trigger = "DROP TRIGGER IF EXISTS actualizarstock".";".
+	    				"CREATE TRIGGER actualizarstock BEFORE INSERT ON tblcarritoproductcomplem FOR EACH ROW UPDATE tblproductcomplem TPC SET TPC.tblproductcomplem_stock = TPC.tblproductcomplem_stock-(NEW.tblcarritoproductcomplem_cantidad), TPC.tblproductcomplem_fchmodificacion =NOW(), TPC.tblproductcomplem_emailusuamodifico = NEW.tblcarritoproductcomplem_emailusuamodifico WHERE TPC.idtblproductcomplem = NEW.tblcarritoproductcomplem_idtblproductcomplem";
+	    			$resultado = $conexionPDO->prepare($trigger);
+	    			$resultado->execute();
+
+	    			$insertUpdate =    				
+	    				"INSERT INTO tblcarritoproductcomplem (tblcarritoproductcomplem_cantidad, tblcarritoproductcomplem_nombreproducto,	tblcarritoproductcomplem_nombreproveedor,tblcarritoproductcomplem_precioreal,
+	    					tblcarritoproductcomplem_preciobp,tblcarritoproductcomplem_fchmodificacion,tblcarritoproductcomplem_fchcreacion,tblcarritoproductcomplem_emailusuacreo, tblcarritoproductcomplem_emailusuamodifico,tblcarritoproductcomplem_idtblordencompra,tblcarritoproductcomplem_idtblproductcomplem) VALUES(?,?,?,?,?,NOW(),NOW(),?,?,?,?)";
+
+	    			$resultado = $conexionPDO->prepare($insertUpdate);
+					$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+					$resultado->bindParam(2,$nombreproductcom,PDO::PARAM_STR);
+					$resultado->bindParam(3,$nombreproveedor,PDO::PARAM_STR);
+					$resultado->bindParam(4,$precioreal,PDO::PARAM_STR);
+					$resultado->bindParam(5,$preciobp,PDO::PARAM_STR);
+					$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(7,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(8,$idtblordencompra,PDO::PARAM_INT);
+					$resultado->bindParam(9,$idtblproductcomplem,PDO::PARAM_INT);
+					$resultado->execute();
+
+					return $resultado->rowCount();
+    			}
+			}
+			else{
+				return "2";//regresara un valor 2 para saber que el stock es menor que la cantidad a ingresa
+			}
+    	}else{//CASO SOBREPEDIDO
+
+    		//consulta para identificar si exite el carrito o no 
+    		$consulta = "SELECT * FROM tblcarritoproductcomplem TCPC WHERE TCPC.tblcarritoproductcomplem_idtblordencompra = ? AND TCPC.tblcarritoproductcomplem_idtblproductcomplem = ?";
+	    	$resultado = $conexionPDO->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproductcomplem,PDO::PARAM_INT);
+			$resultado->execute();
+			$existeCarrito = $resultado->rowCount();
+
+    		if($existeCarrito>0){  //actualiza la cantidad del carrito
+    			//Se elimina el trigger para no actualizar el stock
+    			$triggerEliminar= "DROP TRIGGER IF EXISTS actualizarstockUpdate";
+    			$resultado = $conexionPDO->prepare($triggerEliminar);
+    			$resultado->execute();	
+
+    			$update = "UPDATE tblcarritoproductcomplem SET tblcarritoproductcomplem_cantidad = tblcarritoproductcomplem_cantidad + ? , tblcarritoproductcomplem_fchmodificacion = NOW(), tblcarritoproductcomplem_emailusuamodifico = ? 
+    				WHERE tblcarritoproductcomplem_idtblordencompra = ? AND tblcarritoproductcomplem_idtblproductcomplem = ? ";
+
+    			$resultado = $conexionPDO->prepare($update);
+				$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+				$resultado->bindParam(2,$emailcreo,PDO::PARAM_STR);
+				$resultado->bindParam(3,$idtblordencompra,PDO::PARAM_INT);
+				$resultado->bindParam(4,$idtblproductcomplem,PDO::PARAM_INT);
+				$resultado->execute();	
+
+    			return $resultado->rowCount();
+
+				
+    		}else{ //creo
+
+    			//Se elimina el trigger para no actualizar el stock
+    			$triggerEliminar= "DROP TRIGGER IF EXISTS actualizarstock";
+    			$resultado = $conexionPDO->prepare($triggerEliminar);
+    			$resultado->execute();
+
+    			$insertUpdate = "INSERT INTO tblcarritoproductcomplem (tblcarritoproductcomplem_cantidad, tblcarritoproductcomplem_nombreproducto,	tblcarritoproductcomplem_nombreproveedor,tblcarritoproductcomplem_precioreal,
+    					tblcarritoproductcomplem_preciobp,tblcarritoproductcomplem_fchmodificacion,tblcarritoproductcomplem_fchcreacion,tblcarritoproductcomplem_emailusuacreo, tblcarritoproductcomplem_emailusuamodifico,tblcarritoproductcomplem_idtblordencompra,tblcarritoproductcomplem_idtblproductcomplem) VALUES(?,?,?,?,?,NOW(),NOW(),?,?,?,?)";
+
+    			$resultado = $conexionPDO->prepare($insertUpdate);
+				$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+				$resultado->bindParam(2,$nombreproductcom,PDO::PARAM_STR);
+				$resultado->bindParam(3,$nombreproveedor,PDO::PARAM_STR);
+				$resultado->bindParam(4,$precioreal,PDO::PARAM_STR);
+				$resultado->bindParam(5,$preciobp,PDO::PARAM_STR);
+				$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
+				$resultado->bindParam(7,$emailcreo,PDO::PARAM_STR);
+				$resultado->bindParam(8,$idtblordencompra,PDO::PARAM_INT);
+				$resultado->bindParam(9,$idtblproductcomplem,PDO::PARAM_INT);
+				$resultado->execute();
+
+				return $resultado->rowCount();	
+    		}
+    	}
+    } 
  
     
 }
