@@ -4292,7 +4292,14 @@ class FuncionesBePickler{
     /*Obtiene un registro de tblproveedor*/
     public static function getTblproveedor($idtblproveedor){
 	    
-		$consulta = "SELECT * FROM tblproveedor WHERE idtblproveedor = ?";
+		$consulta = "SELECT TPV.*,THa.tblhora_hora as tblhoraabre,THc.tblhora_hora as tblhoracierra 
+				FROM tblproveedor TPV
+				INNER JOIN tblhrsprovtienda THP ON THP.tblproveedor_idtblproveedor = TPV.idtblproveedor
+	     		INNER JOIN tblhraabre TA ON THP.tblhraabre_idtblhraabre = TA.idtblhraabre
+	     		INNER JOIN tblhracierra TC ON THP.tblhracierra_idtblhracierra = TC.idtblhracierra
+	     		INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora 
+	     		INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora
+				WHERE TPV.idtblproveedor = ?";
 		
 		try{
 
