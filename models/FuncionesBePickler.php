@@ -8527,7 +8527,8 @@ class FuncionesBePickler{
     /*Consultar todos los reistros de tblcarritoproductcomplem  por idtblordencompra*/
 	public static function getAllTblcarritoproductcomplemByTblordencompra2($idtblordencompra){
 	    
-		$consulta = "SELECT TCPC.* FROM tblcarritoproductcomplem TCPC
+		$consulta = "SELECT * FROM tblcarritoproductcomplem TCPC
+				INNER JOIN tblproductcomplem TPC ON TPC.idtblproductcomplem = TCPC.tblcarritoproductcomplem_idtblproductcomplem
       		WHERE TCPC.tblcarritoproductcomplem_idtblordencompra = ?";
 		
 		try{
