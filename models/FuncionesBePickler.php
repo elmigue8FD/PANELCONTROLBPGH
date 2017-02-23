@@ -8522,6 +8522,24 @@ class FuncionesBePickler{
     		}
     	}
     } 
+
+
+    /*Consultar todos los reistros de tblcarritoproductcomplem  por idtblordencompra*/
+	public static function getAllTblcarritoproductcomplemByTblordencompra2($idtblordencompra){
+	    
+		$consulta = "SELECT TCPC.* FROM tblcarritoproductcomplem TCPC
+      		WHERE TCPC.tblcarritoproductcomplem_idtblordencompra = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
  
     
 }
