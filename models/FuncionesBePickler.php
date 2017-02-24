@@ -8541,6 +8541,144 @@ class FuncionesBePickler{
 			return false;
 		}
 	}
+
+
+	/*
+    TCP: tblcarritoproduct
+    TP: tblproductdetalle
+    Funcion que se encarga de llevar a cabo el agregar y/o actualiza TCPC y TPC
+    */
+    public static function setTCPsetUpdateTCPAndsetUpdateTP($tipodepedido,$cantidad,$nombreproduct,$nombreproveedor,$precioreal,$preciobp,$personalizar,$msjtarjeta,$calif,$emailcreo,$idtblordencompra,$idtblproductdetalle){
+
+    	$conexionPDO = ConexionDB::getInstance()->getDb(); 
+
+      	if($tipodepedido==1){ //CASO PARA HOY 
+
+			//Verificamos el stock para comparar con la cantidad añadir 
+	    	$consultaStock= "SELECT * FROM tblproductdetalle WHERE idtblproductdetalle = ?";
+			$resultado = $conexionPDO->prepare($consultaStock);
+			$resultado->bindParam(1,$idtblproductdetalle,PDO::PARAM_INT);
+			$resultado->execute();
+			$registro = $resultado->fetchAll(PDO::FETCH_ASSOC);
+			
+			//obtiene el stock del productocomplem
+			foreach ($registro as $row) {$stock = $row['tblproductdetalle_stock'];} 
+    		
+			if($cantidad<=$stock){
+
+				//consulta para identificar si exite el carrito o no 
+	    		$consulta = "SELECT * FROM tblcarritoproduct TCP WHERE TCP.tblcarritoproduct_idtblordencompra = ? AND TCP.tblcarritoproduct_idtblproductdetalle = ?";
+		    	$resultado = $conexionPDO->prepare($consulta);
+				$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+				$resultado->bindParam(2,$idtblproductdetalle,PDO::PARAM_INT);
+				$resultado->execute();
+				$existeCarrito = $resultado->rowCount();
+
+				if($existeCarrito>0){ //Se actualizara carrito y el stock del productocomplem con el trigger
+
+	    			$trigger = 
+	    				"DROP TRIGGER IF EXISTS actualizarstocProductkUpdate".";".
+	    				"CREATE TRIGGER actualizarstocProductkUpdate BEFORE UPDATE ON tblcarritoproduct FOR EACH ROW UPDATE tblproductdetalle  TPD SET TPD.tblproductdetalle_stock = TPD.tblproductdetalle_stock-?, TPD.tblproductdetalle_fchmodificacion =NOW(), TPD.tblproductdetalle_emailusuamodifico = NEW.tblcarritoproduct_emailusuamodifico WHERE TPD.idtblproductdetalle = NEW.tblcarritoproduct_idtblproductdetalle";
+	    			$resultado = $conexionPDO->prepare($trigger);
+	    			$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+	    			$resultado->execute();
+
+	    			$update = "UPDATE tblcarritoproduct SET tblcarritoproduct_cantidad = tblcarritoproduct_cantidad + ? , tblcarritoproduct_fchmodificacion = NOW(), tblcarritoproduct_emailusuamodifico = ? 
+	    				WHERE tblcarritoproduct_idtblordencompra = ? AND tblcarritoproduct_idtblproductdetalle = ?";
+
+	    			$resultado = $conexionPDO->prepare($update);
+					$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+					$resultado->bindParam(2,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(3,$idtblordencompra,PDO::PARAM_INT);
+					$resultado->bindParam(4,$idtblproductdetalle,PDO::PARAM_INT);
+					$resultado->execute();	
+
+	    			return $resultado->rowCount();
+
+    			}else{ //se crea carrito y se actualiza stock del producto con trigger 
+	    			$trigger = "DROP TRIGGER IF EXISTS actualizarstockProduct".";".
+	    				"CREATE TRIGGER actualizarstockProduct BEFORE INSERT ON tblcarritoproduct FOR EACH ROW UPDATE tblproductdetalle TPD SET TPD.tblproductdetalle_stock = TPD.tblproductdetalle_stock-(NEW.tblcarritoproduct_cantidad), TPD.tblproductdetalle_fchmodificacion =NOW(), TPD.tblproductdetalle_emailusuamodifico = NEW.tblcarritoproduct_emailusuamodifico WHERE TPD.idtblproductdetalle = NEW.tblcarritoproduct_idtblproductdetalle";
+	    			$resultado = $conexionPDO->prepare($trigger);
+	    			$resultado->execute();
+
+	    			$insert ="INSERT INTO tblcarritoproduct (tblcarritoproduct_cantidad, tblcarritoproduct_nombreproducto,tblcarritoproduct_nombreproveedor,tblcarritoproduct_precioreal,tblcarritoproduct_preciobp,tblcarritoproduct_personalizar,tblcarritoproduct_mensajetarjeta,tblcarritoproduct_calificacion,tblcarritoproduct_fchmodificacion,tblcarritoproduct_fchcreacion,tblcarritoproduct_emailusuacreo,tblcarritoproduct_emailusuamodifico,tblcarritoproduct_idtblordencompra,tblcarritoproduct_idtblproductdetalle) VALUES (?,?,?,?,?,?,?,?,NOW(),NOW(),?,?,?,?)"; 
+
+	    			$resultado = $conexionPDO->prepare($insert);
+					$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+					$resultado->bindParam(2,$nombreproduct,PDO::PARAM_STR);
+					$resultado->bindParam(3,$nombreproveedor,PDO::PARAM_STR);
+					$resultado->bindParam(4,$precioreal,PDO::PARAM_STR);
+					$resultado->bindParam(5,$preciobp,PDO::PARAM_STR);
+					$resultado->bindParam(6,$personalizar,PDO::PARAM_STR);
+					$resultado->bindParam(7,$msjtarjeta,PDO::PARAM_STR);
+					$resultado->bindParam(8,$calif,PDO::PARAM_STR);
+					$resultado->bindParam(9,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(10,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(11,$idtblordencompra,PDO::PARAM_INT);
+					$resultado->bindParam(12,$idtblproductdetalle,PDO::PARAM_INT);
+					$resultado->execute();
+					return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+    			}
+			}
+			else{
+				return "2";//regresara un valor 2 para saber que el stock es menor que la cantidad a ingresa
+			}
+    	}else{//CASO SOBREPEDIDO
+
+    		//consulta para identificar si exite el carrito o no 
+    		$consulta = "SELECT * FROM tblcarritoproduct TCP WHERE TCP.tblcarritoproduct_idtblordencompra = ? AND TCP.tblcarritoproduct_idtblproductdetalle = ?";
+	    	$resultado = $conexionPDO->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproductdetalle,PDO::PARAM_INT);
+			$resultado->execute();
+			$existeCarrito = $resultado->rowCount();
+
+    		if($existeCarrito>0){  //actualiza la cantidad del carrito
+    			//Se elimina el trigger para no actualizar el stock
+    			$triggerEliminar= "DROP TRIGGER IF EXISTS actualizarstocProductkUpdate";
+    			$resultado = $conexionPDO->prepare($triggerEliminar);
+    			$resultado->execute();	
+
+    			$update = "UPDATE tblcarritoproduct SET tblcarritoproduct_cantidad = tblcarritoproduct_cantidad + ? , tblcarritoproduct_fchmodificacion = NOW(), tblcarritoproduct_emailusuamodifico = ? 
+    				WHERE tblcarritoproduct_idtblordencompra = ? AND tblcarritoproduct_idtblproductdetalle = ? ";
+
+    			$resultado = $conexionPDO->prepare($update);
+				$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+				$resultado->bindParam(2,$emailcreo,PDO::PARAM_STR);
+				$resultado->bindParam(3,$idtblordencompra,PDO::PARAM_INT);
+				$resultado->bindParam(4,$idtblproductdetalle,PDO::PARAM_INT);
+				$resultado->execute();	
+
+    			return $resultado->rowCount();
+
+				
+    		}else{ //creo
+
+    			//Se elimina el trigger para no actualizar el stock
+    			$triggerEliminar= "DROP TRIGGER IF EXISTS actualizarstockProduct";
+    			$resultado = $conexionPDO->prepare($triggerEliminar);
+    			$resultado->execute();
+
+    			$insert ="INSERT INTO tblcarritoproduct (tblcarritoproduct_cantidad, tblcarritoproduct_nombreproducto,tblcarritoproduct_nombreproveedor,tblcarritoproduct_precioreal,tblcarritoproduct_preciobp,tblcarritoproduct_personalizar,tblcarritoproduct_mensajetarjeta,tblcarritoproduct_calificacion,tblcarritoproduct_fchmodificacion,tblcarritoproduct_fchcreacion,tblcarritoproduct_emailusuacreo,tblcarritoproduct_emailusuamodifico,tblcarritoproduct_idtblordencompra,tblcarritoproduct_idtblproductdetalle) VALUES (?,?,?,?,?,?,?,?,NOW(),NOW(),?,?,?,?)"; 
+
+	    			$resultado = $conexionPDO->prepare($insert);
+					$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+					$resultado->bindParam(2,$nombreproduct,PDO::PARAM_STR);
+					$resultado->bindParam(3,$nombreproveedor,PDO::PARAM_STR);
+					$resultado->bindParam(4,$precioreal,PDO::PARAM_STR);
+					$resultado->bindParam(5,$preciobp,PDO::PARAM_STR);
+					$resultado->bindParam(6,$personalizar,PDO::PARAM_STR);
+					$resultado->bindParam(7,$msjtarjeta,PDO::PARAM_STR);
+					$resultado->bindParam(8,$calif,PDO::PARAM_STR);
+					$resultado->bindParam(9,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(10,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(11,$idtblordencompra,PDO::PARAM_INT);
+					$resultado->bindParam(12,$idtblproductdetalle,PDO::PARAM_INT);
+					$resultado->execute();
+					return $resultado->rowCount();	
+    		}
+    	}
+    }
  
     
 }
