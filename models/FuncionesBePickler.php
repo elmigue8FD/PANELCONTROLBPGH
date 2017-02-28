@@ -8726,6 +8726,53 @@ class FuncionesBePickler{
 
 
     }
+
+    /*
+    TCPC: tblcarritoproductcomplem
+    TPC: tblproductcomplem
+    Funcion que se encarga de llevar a cabo el eliminar un carrito  y/o actualizar el stock de  productos complementarios
+    */
+    public static function setDeleteTCPCAndsetUpdateTPC($tipodepedido,$cantidad,$idtblcarritoproductcomplem,$idtblproductcomplem,$emailmodifico){
+
+    	$conexionPDO = ConexionDB::getInstance()->getDb(); 
+
+
+    	//si el tipo de servicio es para hoy se elimina carrito y se actualiza el 
+    	if($tipodepedido==1){
+
+    		$trigger = "DROP TRIGGER IF EXISTS actualizarstockProductCompleDelete".";".
+	    				"CREATE TRIGGER actualizarstockProductCompleDelete AFTER DELETE ON tblcarritoproductcomplem FOR EACH ROW UPDATE tblproductcomplem TPC SET TPC.tblproductcomplem_stock = TPC.tblproductcomplem_stock+(?), TPC.tblproductcomplem_fchmodificacion =NOW(), TPC.tblproductcomplem_emailusuamodifico = ? WHERE TPC.idtblproductcomplem =?";
+	    	$resultado = $conexionPDO->prepare($trigger);
+	    	$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+	    	$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+	    	$resultado->bindParam(3,$idtblproductcomplem,PDO::PARAM_INT);
+	    	$resultado->execute();
+
+	    	$delete = "DELETE FROM tblcarritoproductcomplem WHERE idtblcarritoproductcomplem = ?";
+	    	$resultado = $conexionPDO->prepare($delete);
+	    	$resultado->bindParam(1,$idtblcarritoproductcomplem,PDO::PARAM_INT);
+	    	$resultado->execute();
+
+	    	return $resultado->rowCount();
+
+
+    	}else{
+
+    		//Se elimina el trigger para no actualizar el stock
+    		$triggerEliminar= "DROP TRIGGER IF EXISTS actualizarstockProductCompleDelete";
+    		$resultado = $conexionPDO->prepare($triggerEliminar);
+    		$resultado->execute();
+
+    		$delete = "DELETE FROM tblcarritoproductcomplem WHERE idtblcarritoproductcomplem = ?";
+	    	$resultado = $conexionPDO->prepare($delete);
+	    	$resultado->bindParam(1,$idtblcarritoproductcomplem,PDO::PARAM_INT);
+	    	$resultado->execute();
+
+	    	return $resultado->rowCount();
+    	}
+
+
+    }
  
     
 }
