@@ -8679,6 +8679,53 @@ class FuncionesBePickler{
     		}
     	}
     }
+
+    /*
+    TCP: tblcarritoproduct
+    TP: tblproductdetalle
+    Funcion que se encarga de llevar a cabo el eliminar un carrito  y/o actualizar el stock de un productodetalle 
+    */
+    public static function setDeleteTCPAndsetUpdateTP($tipodepedido,$cantidad,$idtblcarritoproduct,$idtblproductdetalle,$emailmodifico){
+
+    	$conexionPDO = ConexionDB::getInstance()->getDb(); 
+
+
+    	//si el tipo de servicio es para hoy se elimina carrito y se actualiza el 
+    	if($tipodepedido==1){
+
+    		$trigger = "DROP TRIGGER IF EXISTS actualizarstockProductDelete".";".
+	    				"CREATE TRIGGER actualizarstockProductDelete AFTER DELETE ON tblcarritoproduct FOR EACH ROW UPDATE tblproductdetalle TPD SET TPD.tblproductdetalle_stock = TPD.tblproductdetalle_stock+(?), TPD.tblproductdetalle_fchmodificacion =NOW(), TPD.tblproductdetalle_emailusuamodifico = ? WHERE TPD.idtblproductdetalle =?";
+	    	$resultado = $conexionPDO->prepare($trigger);
+	    	$resultado->bindParam(1,$cantidad,PDO::PARAM_INT);
+	    	$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+	    	$resultado->bindParam(3,$idtblproductdetalle,PDO::PARAM_INT);
+	    	$resultado->execute();
+
+	    	$delete = "DELETE FROM tblcarritoproduct WHERE idtblcarritoproduct = ?";
+	    	$resultado = $conexionPDO->prepare($delete);
+	    	$resultado->bindParam(1,$idtblcarritoproduct,PDO::PARAM_INT);
+	    	$resultado->execute();
+
+	    	return $resultado->rowCount();
+
+
+    	}else{
+
+    		//Se elimina el trigger para no actualizar el stock
+    		$triggerEliminar= "DROP TRIGGER IF EXISTS actualizarstockProductDelete";
+    		$resultado = $conexionPDO->prepare($triggerEliminar);
+    		$resultado->execute();
+
+    		$delete = "DELETE FROM tblcarritoproduct WHERE idtblcarritoproduct = ?";
+	    	$resultado = $conexionPDO->prepare($delete);
+	    	$resultado->bindParam(1,$idtblcarritoproduct,PDO::PARAM_INT);
+	    	$resultado->execute();
+
+	    	return $resultado->rowCount();
+    	}
+
+
+    }
  
     
 }
