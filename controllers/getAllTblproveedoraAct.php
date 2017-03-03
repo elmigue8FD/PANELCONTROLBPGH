@@ -15,7 +15,6 @@ $resultado= '';
 if (!empty($_POST)){
 
 	$solicitadoBy=$_POST["solicitadoBy"];
-    $direccion=$_POST["direccion"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
