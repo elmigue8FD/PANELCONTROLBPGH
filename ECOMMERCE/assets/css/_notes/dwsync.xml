@@ -5,12 +5,12 @@
 <file name="default.css" server="tenatito.com" local="131222573109386936" remote="131230867800000000" Dst="1" />
 <file name="font-awesome.css" server="tenatito.com" local="130947761660000000" remote="131230867800000000" Dst="1" />
 <file name="footer.css" server="tenatito.com" local="131230432117955456" remote="131230867800000000" Dst="1" />
-<file name="bootstrap.css" server="tenatito.com" local="131238256376021538" remote="131238220200000000" Dst="1" />
+<file name="bootstrap.css" server="tenatito.com" local="131270229797527283" remote="131270197800000000" Dst="1" />
 <file name="infografias.css" server="tenatito.com" local="131231318071987740" remote="131231282400000000" Dst="1" />
 <file name="footerdocs.css" server="tenatito.com" local="131232762441104451" remote="131232726000000000" Dst="1" />
-<file name="jquery.fancybox.css" server="tenatito.com" local="131224313538622283" remote="131230867800000000" Dst="1" />
-<file name="slick.css" server="tenatito.com" local="131047846900000000" remote="131230867800000000" Dst="1" />
-<file name="style.css" server="tenatito.com" local="131231172792438570" remote="131231140800000000" Dst="1" />
+<file name="jquery.fancybox.css" server="tenatito.com" local="131224313538622283" remote="131263231800000000" Dst="1" />
+<file name="slick.css" server="tenatito.com" local="131263121000000000" remote="131263231800000000" Dst="1" />
+<file name="style.css" server="tenatito.com" local="131270259684431957" remote="131270225400000000" Dst="1" />
 <file name="bootstrap-datepicker.css" server="ftp.bepickler.com" local="131224313459265410" remote="131231232000000000" Dst="1" />
 <file name="component.css" server="ftp.bepickler.com" local="131222594292508846" remote="131231232000000000" Dst="1" />
 <file name="default.css" server="ftp.bepickler.com" local="131222573109386936" remote="131231232000000000" Dst="1" />
@@ -22,4 +22,20 @@
 <file name="jquery.fancybox.css" server="ftp.bepickler.com" local="131224313538622283" remote="131231232000000000" Dst="1" />
 <file name="slick.css" server="ftp.bepickler.com" local="131047846900000000" remote="131231232000000000" Dst="1" />
 <file name="style.css" server="ftp.bepickler.com" local="131231172792438570" remote="131231232000000000" Dst="1" />
+<file name="config.rb" server="tenatito.com" local="131263120960000000" remote="131263231800000000" Dst="1" />
+<file name="Hastupedido.css" server="tenatito.com" local="131275057105280909" remote="131275021800000000" Dst="1" />
+<file name="hover.css" server="tenatito.com" local="131284855359953744" remote="131284835400000000" Dst="1" />
+<file name="pop.css" server="tenatito.com" local="131284917553432524" remote="131284881600000000" Dst="1" />
+<file name="slick-theme.css" server="tenatito.com" local="131267264523504176" remote="131267232000000000" Dst="1" />
+<file name="slader.css" server="tenatito.com" local="131263121000000000" remote="131263231800000000" Dst="1" />
+<file name="slick-theme.less" server="tenatito.com" local="131263121000000000" remote="131263231800000000" Dst="1" />
+<file name="slick-theme.scss" server="tenatito.com" local="131263121000000000" remote="131263231800000000" Dst="1" />
+<file name="slick.less" server="tenatito.com" local="131263121000000000" remote="131263231800000000" Dst="1" />
+<file name="slick2.css" server="tenatito.com" local="131047846900000000" remote="131263231800000000" Dst="1" />
+<file name="slick.scss" server="tenatito.com" local="131263121000000000" remote="131263231800000000" Dst="1" />
+<file name="marcaspop.css" server="tenatito.com" local="131284806886559992" remote="131284835400000000" Dst="1" />
+<file name="stars.css" server="tenatito.com" local="131284868532513777" remote="131284835400000000" Dst="1" />
+<file name="IniciarSesion.css" server="tenatito.com" local="131270726160000000" remote="131274465600000000" Dst="1" />
+<file name="pop-Registro.css" server="tenatito.com" local="131270726060000000" remote="131274466200000000" Dst="1" />
+<file name="popMisCotiza.css" server="tenatito.com" local="131270726120000000" remote="131274466200000000" Dst="1" />
 </dwsync>

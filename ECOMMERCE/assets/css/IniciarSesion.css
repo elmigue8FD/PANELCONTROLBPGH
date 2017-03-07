@@ -1,0 +1,448 @@
+.margenes-IniSe{
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+/*Titulo*/
+.TituloIS{
+	text-align:center;
+	padding-bottom: 6%;
+	text-decoration: underline;
+	color: #FF2A7F;
+}
+
+/*imagenes*/
+.Caja-imagenes-IS{
+	
+	margin-left: 10%;
+	margin-top: 20px; 
+	
+}
+
+.imagen-IS{
+	diaplay:block;
+	vartical-align:middle;
+}
+
+.Contenedor-IS{
+	
+	margin-left: 10%;
+	float:left;
+
+}
+.Caja-formulario-IS{
+	float:left;
+	margin-top: 20px; 
+	margin-left: 30%;
+	width: 30%;
+
+}
+
+.Formulario-IS{
+	
+	
+}
+.item-f-IS{
+	padding-bottom: 30px;
+	
+	
+}
+.Text-IS{
+  border: 1px solid #FF2A7F;
+  font-size: 16px;
+  font-family: Arial, Verdana;
+  border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF);
+  background: -moz-linear-gradient(left, #FFFFFF);
+  background: -webkit-linear-gradient(left, #FFFFFF);
+  background: -o-linear-gradient(left, #FFFFFF);
+  color: #2E3133;
+  width: 260px;
+	
+	
+}
+.Caja-boton-IS{
+	
+	margin-left:30%;
+	margin-right: 40%;
+
+}
+
+.Caja-boton-IS-E{
+	text-align: right;
+ 
+}
+
+.Etiqueta-IS{
+	width: 130%;
+	padding-left: 50%;
+	padding-top: 10px;
+}
+
+.Boton-IS{
+	background-color:#ffffff;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:1px solid #FF2A7F;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:18px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ff7fff;
+	outline: none;
+}
+.Boton-IS-E{
+	width:  160%;
+	background-color:#ffffff;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:1px solid #FF2A7F;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:18px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ff7fff;
+}
+
+/* Testo */
+.Text-IS-P{
+	
+	color: #FF2A7F;
+	text-decoration: underline;
+}
+
+/* IniciarSesion . Registro */
+/*PArte para el documento de Registro*/
+/*Tamaño de los formularios*/
+
+.Contenedor-1{
+	width: 100%;	
+}
+
+.Caja1-R{
+	width: 100%;	
+	
+}
+/* ------ */
+
+
+
+
+.Nombre-R{
+	margin-left: 14%;
+	float:left;
+	width: 40%;
+	
+}
+
+.Empresa-R{
+	width: 40;
+	margin-left: 6%;
+	float:left;
+	
+}
+
+.Caja2-R{
+	margin-top:2%;
+	margin-left: 14%;
+	float:left;
+	width: 40%;
+	
+}
+
+
+
+
+.Caja3-R{
+	margin-top:2%;
+	width: 40%;
+	margin-left:6%;
+	float:left;
+	
+}
+
+
+/*Fin de contenedores para formulario*/
+
+/*Contenedores inferiores de imagnes y boton*/
+.Contenedor-2{
+	margin-left: 14%;
+	width: 50%;
+	display:block;
+	
+}
+
+
+.Contenedor-3{
+	margin-top: 7%;
+	text-align:center;
+	
+}
+/*Orden de las etiquetas del Check Box*/
+.C-R{
+	 
+	float:left;
+	padding-right: 15%;
+	
+}
+.C-R-C{
+	padding-left: 35%;
+	text-align: left;
+	width: 100%;
+}
+
+.T-C{
+	margin-left: 5%;
+}
+
+/*Inter espaciado en cada elemento y caja de texto*/
+
+.I-T-R{
+	padding-bottom: 10px;
+}
+
+.Text-IS-E{
+  border: 1px solid #FF2A7F;
+  font-size: 16px;
+  font-family: Arial, Verdana;
+  border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF);
+  background: -moz-linear-gradient(left, #FFFFFF);
+  background: -webkit-linear-gradient(left, #FFFFFF);
+  background: -o-linear-gradient(left, #FFFFFF);
+  color: #2E3133;
+	width: 120px;
+}
+
+.lista1{
+	float: left;
+}
+
+.lista2{
+	margin-left: 43%;
+}
+
+/* Lista de Opciones*/
+.Text-IS-S{
+	border: 1px solid #FF2A7F;
+  font-size: 14px;
+  font-family: Arial, Verdana;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF);
+  background: -moz-linear-gradient(left, #FFFFFF);
+  background: -webkit-linear-gradient(left, #FFFFFF);
+  background: -o-linear-gradient(left, #FFFFFF);
+  color: #2E3133;
+	width: 260px;
+	height: 30px;
+}
+
+/*Boton Registro*/
+
+.Boton-R{
+	background-color:#ffffff;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:1px solid #FF2A7F;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:18px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ff7fff;
+	outline: none;
+}
+
+imagen-IS-E{
+	float:left;
+}
+/* Fin de la parte de Registro */
+
+
+/* Estilos para Documento Mis Cotizaciones */
+/* Orden y tamaño*/
+.margenes-CM{
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+/* Estilos para Tabla*/
+.TablaMC table{
+	width:100%;
+	margin-bottom: 5%;
+}
+
+.TablaMC td{
+	margin: 15px;
+  padding: 15px;
+	font-size: 15px;
+	width: 12%;
+}
+.Tabla-TR{
+	
+	border-bottom:3px solid #FF2A7F;
+}
+
+
+
+.TablaMC label{
+	color: #A5A5A5;
+}
+/* Estilos cajas y texto*/
+
+/* Parte superior*/
+
+.TituloMC{
+	color: #FF2A7F;
+	padding-bottom: 1%;
+}
+
+.EncabezadoMC label{
+	font-size: 16px;
+	padding-bottom: 2%;
+}
+
+.EncabezadoMC span{
+	padding-left:  20%;
+}
+
+/* Secccion de Persona */
+
+.Persona-CM h2{
+	color: #FF2A7F;
+	font-size: 190%;
+	padding-bottom: 2%;
+}
+
+
+/* Seccion de mis  datos*/
+.MisDatos-CM h2{
+	color: #FF2A7F;
+	font-size: 190%;
+	padding-bottom: 2%;
+	padding-top: 2%;
+}
+
+.C-boton-CM{
+	margin-top: 1%; 
+	text-align: right;
+}
+
+
+/* Seccion de Direccion*/
+.Direccion-CM h2{
+	color: #FF2A7F;
+	font-size: 190%;
+	padding-bottom: 2%;
+	padding-top: 2%;
+}
+
+.Caja-Text-CM{
+	padding-bottom: 1%;
+}
+
+/*Cajas de texto*/
+
+.Text-CM{
+	 border: 1px solid #FF2A7F;
+  font-size: 16px;
+  font-family: Arial, Verdana;
+  border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF);
+  background: -moz-linear-gradient(left, #FFFFFF);
+  background: -webkit-linear-gradient(left, #FFFFFF);
+  background: -o-linear-gradient(left, #FFFFFF);
+  color: #2E3133;
+  width: 180px;
+  
+}
+
+.Persona-CM span{
+	padding-left: 2%;
+	
+}
+.MisDatos-CM span{
+	padding-left: 2%;
+}
+.Direccion-CM span{
+	padding-left: 2%;
+}
+
+
+
+
+/*Conbo Box*/
+.Text-CM-S{
+	 border: 1px solid #FF2A7F;
+  font-size: 16px;
+  font-family: Arial, Verdana;
+  border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF);
+  background: -moz-linear-gradient(left, #FFFFFF);
+  background: -webkit-linear-gradient(left, #FFFFFF);
+  background: -o-linear-gradient(left, #FFFFFF);
+  color: #2E3133;
+  width: 180px;
+  height: 27px;
+}
+/* Estilos para botones */
+.TablaMC button{
+	background-color:#ffffff;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:1px solid #FF2A7F;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:18px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ff7fff;
+	width: 100%; 
+}
+.Boton-CM-E{
+	background-color:#ffffff;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:1px solid #FF2A7F;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:18px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ff7fff;
+}
+
+/*Fin de documento mis Cotizaciones*/
+
+

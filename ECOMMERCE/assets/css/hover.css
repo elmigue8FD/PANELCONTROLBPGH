@@ -1,0 +1,147 @@
+div.contenedor{
+	width: 350px;
+	height: 160px;
+	overflow: hidden;
+	padding-left: 60px;
+}
+
+div.imagen{
+	width:200px;
+	height:170px;
+	background-color:#e4e4e4;
+	overflow: hidden;
+	-webkit-transition: height .4s;
+}
+
+img.imagen{
+	display: block;
+	width:50px;
+	height:40px;
+	-webkit-transition: margin-top .4s;
+}
+div.info{
+	width:200px;
+	height:0px;
+	background-color: #ADAEB7;
+	overflow: hidden;
+	-webkit-transition: height .4s;
+}
+
+p.titulo{
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 6px;
+	margin-bottom: 0px;
+	font-size: 1.1em;
+	color: #FFFFFF;
+}
+
+p.adicional{
+	color: #FFFFFF;
+	margin-left: 6px;
+}
+
+a.link{
+	float:right;
+	margin-top:-25px;
+	margin-right:5px;
+	padding:10px 30px;
+	background-color:#ffffff;
+	font-size: .8em;
+	color:white;
+	text-decoration: none;
+}
+
+div.contenedor:hover div.imagen{
+	height:85px;
+}
+
+div.contenedor:hover div.info{
+	height: 148px;
+}
+
+div.contenedor:hover img.imagen{
+	margin-top:25px;
+}
+
+
+
+
+
+/*boton de agregar en los slider ++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+.agregar-caja{
+	
+	margin-top:0;
+	padding-top:0;
+	margin-left: 230px; margin-top:-4px;
+	width: 45px;
+	position:fixed;
+	visibility:visible z-index:2;
+}
+.agregar{
+	margin:0;
+	padding:0;
+	
+}
+
+/*==================
+ RESPONSIVE DESIGN
+====================*/
+
+
+
+
+@media (max-width: 1024px) {
+
+
+div.contenedor{
+	width: 300px;
+	padding-left: 10px;
+}
+
+}
+
+@media (max-width: 800px) {
+	
+div.contenedor{
+	width: 200px;
+	padding-left: 0px;
+}
+	
+	
+}
+
+
+@media (max-width: 700px) {
+	
+	div.imagen{ background-color:#ffffff;}
+}
+
+
+@media (max-width: 600px) {
+	
+	div.contenedor{  width:150px; padding-left:0px;}
+
+}
+@media (max-width: 500px){
+	
+	.agregar-caja{ width:2%; margin-top:0px; margin-left:100px;  }
+}
+
+
+@media (max-width: 480px){
+	
+	
+	.info{ display:none;}
+	
+	
+	
+
+}
+
+
+@media (max-width: 376px){
+	
+	.agregar-caja{ width:5%; margin-left:50px; }
+	#imgagregar { width:35%;}
+}

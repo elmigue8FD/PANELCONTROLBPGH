@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ec-stars-wrapper{
+	/* Espacio entre los inline-block (los hijos, los `a`) 
+	   http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
+	font-size: 0;
+	/* Podríamos quitarlo, 
+		pero de esta manera (siempre que no le demos padding), 
+		sólo aplicará la regla .ec-stars-wrapper:hover a cuando
+		también se esté haciendo hover a alguna estrella */
+	display: inline-block;
+}
+.ec-stars-wrapper a, .ec-stars-wrapper-popup a {
+	text-decoration: none;
+	display: inline-block;
+	/* Volver a dar tamaño al texto */
+	font-size: 22px;
+	font-size: 2rem;
+	
+	color: #888;
+}
+
+.ec-stars-wrapper:hover a {
+	color: #FF4D78;
+}
+
+
+.ec-stars-wrapper-popup:hover a {
+	color: #FF4D78;
+}
+/*
+ * El selector de hijo, es necesario para aumentar la especifidad
+ */
+.ec-stars-wrapper > a:hover ~ a {
+	color: #888;
+}
+
+.ec-stars-wrapper-popup > a:hover ~ a {
+	color: #888;
+}
+
+.ec-stars-wrapper-popup{ text-align:center;  font-size:0; display:none;}
+
+@media (max-width: 480px){
+	
+	.ec-stars-wrapper-popup{ display: inline-block; margin-left:5%;}
+	
+	
+}
+
+
+@media (max-width: 426px){
+	
+	.ec-stars-wrapper-popup{ margin-left:20%;}
+	
+	
+	
+}
+
+
+@media (max-width: 376px){
+.ec-stars-wrapper a, .ec-stars-wrapper-popup a {
+
+	font-size: 18px;
+
+	
+	
+}
+}

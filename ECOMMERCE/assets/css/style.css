@@ -55,6 +55,7 @@ a:focus {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Century Gothic";
+  font-weight: bold;
 }
 
 h2 {
@@ -123,9 +124,9 @@ img {
   color: #fff;
 }
 
-.mu-send-btn {
+.botonordenar {
 	background-color: transparent;
-	border: 1px solid #ccc;
+	border: 1px solid #FF4D78;
 	display: inline-block;
 	font-size: 11px;
 	padding-top: 6px;
@@ -137,10 +138,13 @@ img {
 	-ms-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	transition: all 0.5s;
-	margin-top: 5%;
+	margin-top: 6%;
+	text-align:center;
+	width:50%;
+	margin-left:25%;
 }
-.mu-send-btn:hover, .mu-send-btn:focus {
-  color: #fff;
+.botonordenar:hover, .botonordenar:focus {
+  color: #FF4D78;
 }
 
 /* LAYOUTS - Page layout styles */
@@ -340,14 +344,14 @@ img {
   padding: 0 30px;
 }
 #mu-slider .mu-slider-area .mu-top-slider .slick-prev::before {
-  content: url(../img/flechaizq.png);
+  content: url(../img/izquierda.png);
   
 }
 
 
 	
 #mu-slider .mu-slider-area .mu-top-slider .slick-next::before {
-  content: url(../img/flechader.png);
+  content: url(../img/derecha.png);
   }
 
 
@@ -381,7 +385,7 @@ img {
 #mu-slider .mu-slider-area .mu-top-slider .slick-prev {
   left: 20px;
 }
-#mu-slider .mu-slider-area .mu-top-slider .slick-next {
+#mu-slider .mu-slider-area .mu-top-slider .slick-next{
   right: 20px;
 }
 
@@ -2007,11 +2011,27 @@ RESERVATION SECTION
  RESPONSIVE DESIGN
 ====================*/
 
+@media (max-width: 1440px) {
+ 
+ #modal-contenido{ margin-top:15%; height:100%;}
+ 
+ 
+
+}
+
+
 @media (max-width: 1024px) {
 	
-	.mu-main-navbar .mu-main-nav img{
-	margin-left:20px;}
+	.mu-main-navbar .mu-main-nav img{margin-left:20px;}
 	
+	#myModal2{ width:100%;  }
+  
+  #modal-contenido{ width:85%; margin-top:18%; height:90%; } 
+  
+  
+  .close2{ float: right; width:15%; margin-right:-10%}
+  .close2 img{ width:10%; }
+  
 
 
 	
@@ -2172,6 +2192,14 @@ RESERVATION SECTION
 		
 		
 		
+	#myModal2{ width:100%;}
+  
+  #modal-content{ width:80%; margin-top:22%; margin-left:10%;}
+  
+  
+  .close2{ float: right; width:25%; margin-right:-15%; }
+  .close2 img{ width:30%; }
+		
 	}
 
 
@@ -2220,6 +2248,20 @@ RESERVATION SECTION
   }
 }
 @media (max-width: 640px) {
+	
+	#fechapedido{ width:100%; margin-left:40%;}
+	
+	#modal-content{
+	width: 100%;
+	height:120%;
+	margin-left: 0%;
+	margin-top: 26%;
+	padding-left: 10px;
+	left: -8%;
+}
+
+	#datos { padding-left:10%;}
+	
 	
 	
 
@@ -2285,13 +2327,90 @@ RESERVATION SECTION
   #mu-blog-banner .mu-blog-banner-area {
     min-height: 220px;
   }
+  
+  
+  #myModal2{ width:100%;}
+  
+  #modal-content{ width:80%; margin-top:26%; margin-left:10%;}
+  
+  
+  .close2{ float: right; width:25%; margin-right:-10%}
+  .close2 img{ width:35%; }
 }
+
+@media (max-width: 480px) {
+
+	#myModal2{ z-index:1000; margin:0%; height:100%;}
+	#modal-content{ width:100%; margin-top:0%; margin-left:8%;}
+	.close2{  width:65%; }
+	.close2 a img{ width:40%; }
+	
+	#lugarpedido h1{ text-align:center; padding-left:8%;}
+	#lugarpedido h2{ text-align:center;}
+	
+	 #fechapedido{ width:100%; margin-left:26%;}
+
+}
+@media (max-width: 426px) {
+	
+	
+	#modal-content{
+	width: 100%;
+	height:100%;
+	margin-left: 0%;
+	margin-top: 0%;
+	padding-left: 10px;
+	left: -8%;
+}
+
+	#datos { padding-left:10%;}
+	#myModal2{ z-index:1000;}
+	
+	
+	.close2{  width:65%; }
+	.close2 a img{ width:30%; }
+	
+	#lugarpedido h1{ text-align:center; padding-left:0%; font-size:18px;} 
+	
+	#lugarpedido h2{ text-align:center;}
+	
+	 #fechapedido{ width:100%; margin-left:26%;}
+	
+	
+	
+}
+
+
 
 @media (max-width: 376px) {
 	.mu-main-navbar .mu-main-nav li a {
 	padding-right: 13px;
 	padding-left:15px;
   }
+  
+  #myModal2{
+	width: 100%;
+	height: 100%;
+}
+  
+  #lugarpedido h1{ text-align:center; padding-left:5%;}
+  
+  
+  .close2{ float: right; width:25%; margin-right:-10%}
+  .close2 img{ width:35%; }
+  
+
+
+		#modal-content{
+	width: 100%;
+	height:120%;
+	margin-left: 0%;
+	margin-top: 0%;
+	padding-left: 10px;
+	left: -8%;
+}
+
+	#datos { padding-left:10%;}  
   
   
 
@@ -2302,6 +2421,18 @@ RESERVATION SECTION
 
 @media (max-width: 480px) {
 	
+	
+	#divservicio, #diventrega, #divcp, #divcalle, #divcolonia, #divmunicipio,#divciudad,#divestado{ width:100%; padding-left:15px;}
+	#nums, #nums1{ width:40%; }
+	#nums1{
+	margin-left: 4%;
+	margin-right: 5%;
+}
+	
+	.mu-main-navbar .mu-main-nav li a {
+	padding-right: 13px;
+	padding-left:5px;
+  }
 	
 		
 
@@ -2450,8 +2581,27 @@ RESERVATION SECTION
   .mu-blog-related-post .mu-blog-related-post-area {   
     margin-top: 30px;   
   }
+  
+  #modal-content{
+	margin-left: 8%;
+	height: 125%;
+}
 }
 @media (max-width: 360px) {
+	#myModal2{ height:120%;}
+	
+	#modal-content{
+	width: 100%;
+	height:125%;
+	margin-left: 0%;
+	margin-top: 0%;
+	padding-left: 10px;
+	left: 0%;
+}
+
+	#datos { padding-left:10%;}
+	
+	
 	
 	/*slider modica el tamano del boton */
 
@@ -2603,6 +2753,10 @@ RESERVATION SECTION
 }
 @media (max-width: 320px) {
 	
+	#divservicio, #diventrega, #divcp, #divcalle, #divcolonia, #divmunicipio,#divciudad,#divestado{ width:100%; padding-left:15px;}
+	#nums, #nums1{ width:40%; }
+	#nums1{margin-left:7%;}
+	
 	.mu-main-navbar .mu-main-nav li a {
 	padding-right: 13px;
 	padding-left:5px;
@@ -2675,4 +2829,276 @@ RESERVATION SECTION
   z-index: 99;
 }
 
+
+ 
+
+ #modal-content{
+	width: 100%;
+	height:125%;
+	margin-left: 0%;
+	margin-top: 0%;
+	padding-left: 10px;
+	left: 0%;
+}
+
+}
+
+
+
+
+/*has tu pedido¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿*/
+
+
+/*.modal,*/
+.modal2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+.modal2{
+	z-index:1000;
+	}
+	
+	
+/* Modal Content/Box */
+/*.modal-content {
+	background-color: #fefefe;
+	margin-top: 10.5%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 2%; 
+	padding-top: 3px;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-bottom: 0px;
+	border: 1px solid #888;
+	width: 45%; 
+}
+*/
+
+/* The Close Button */
+.close,
+.close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.close2:hover,
+.close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+	
+#myBtn,
+#myBtn2,
+#myBtn2b,
+#myBtn2c {
+	}
+
+/*lugar y fecha del pedido del boto hacer pedido*/
+#lugarpedido{
+	width:100%;}
+	
+#lugarpedido h1{
+	font-size: 20px;
+	font-family: "Century Gothic";
+	color: rgba(255,77,120,1.00);
+	font-weight: bold;
+	padding-top: 20px;
+	text-align: center;
+	padding-left: 15%;
+}
+	
+#lugarpedido h2{
+	font-size: 14px;
+	font-family: "Century Gothic";
+	color: rgba(255,77,120,1.00);
+	margin-top: 15px;
+	text-align: center;
+}
+	
+ #fechapedido{
+	width: 90%;
+  border: 1px solid #fff;
+  border-bottom-color: #de5465;
+}
+
+ .popup_hazpedido_centrado{
+  width: 50%;
+  height: auto;
+  max-width: 75%;
+  margin-top: 0px;
+  margin-left: 25%;
+}
+
+#popboton{ display:none;}
+
+.mostrar{
+	width:98%;
+	max-width:98%;
+	margin-top:25px;
+	}
+	
+.mostrar iframe{
+	width:100%;}
+
+
+
+/* datos de envio====================================================================*/
+
+.mostrardatoscontacto{
+	font-family:"Century Gothic";
+	color:rgba(0,0,0,1.00);
+	width:77%;
+	margin-bottom: 0px;
+	}
+	
+.datos{
+	width: 100%;
+	margin-top: 0px;
+	padding-left: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	
+	}
+
+
+.datos label{
+	color: rgba(0,0,0,1.00);
+	width: 33%;
+	padding-left: 0px;
+
+}
+	
+.datos input{
+	color: rgba(0,0,0,1.00);
+	height: 24px;
+	padding-left: 5px;
+	width: 44%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-color: rgba(255,77,120,1.00);
+	}
+	
+#numext, #numint, #colonia, #municipio, #estado, #ciudad, #servicio, #entrega, #cp, #numext, #numint, #calle{
+	width: 80%;
+} 
+
+
+.elementosdatos{ 
+	width: 50%;
+	float: left;}
+	
+
+
+.close2{ float: right; width:25%; margin-right:-11%}
+  .close2 img{
+	width: 25%;
+	margin-bottom: 19%;
+	margin-left: 44%;
+}
+	
+.mu-send-btn-datos {
+  background-color: transparent;
+  border: 2px solid #ccc;
+  width:25%;
+  max-width:25%;
+  margin-top:20px;
+  margin-left:70%;
+  color:rgba(255,77,120,1.00);
+  font-size:12px;
+ 
+  
+   
+ }
+
+.mu-send-btn-datos:hover{
+	border-color:rgba(255,77,120,1.00);
+	}
+	
+	
+.elementosdatos{
+	padding-bottom: 10px;
+	
+	}
+	
+
+.collapsemiubicaion,
+.collapseotrolugar {
+  cursor: pointer;
+  display: block;
+}
+
+/*--------------------------------------------------------*/
+  select{
+  color: #A1A1A1;
+  border: solid 2px #FF4D78;
+  width:90%;
+  border-left:none;
+  border-top:none;
+  border-right:none;
+  -webkit-appearance:none;
+  text-indent:2px;
+  text-overflow: '';
+  background-image:url(../img/flechaabajo.png);
+  background-size: 10px;
+  background-repeat:no-repeat;
+  background-position: 99% ;
+  }
+  
+  button.close{
+    background-color: #ff4d78;
+    color: #000;
+    opacity: 1;
+    padding: 1px 6px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    border: 0;
+  }
+  .close:hover{
+    background-color: #ff4d78;
+    color: #000;
+    opacity: 1;
+    padding: 1px 6px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+  }
+
+  .center {
+    margin: 0 auto;
+    width: 50%;
+    margin-top:5%;
+}
+
+.textoCentrado{
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+}
+#modalHazTuPedido
+{
+  color: rgba(255,77,120,1.00);
+  font-family: "Century Gothic";
+  font-weight: bold;
+}
+
+.banderas{
+  border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 20%;
+    border-color: #ff4d78;
 }

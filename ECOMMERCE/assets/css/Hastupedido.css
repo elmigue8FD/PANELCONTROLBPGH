@@ -1,0 +1,316 @@
+.etiquetas-conten{
+	padding-top: 70px;
+	padding-left: 30px;
+}
+
+.etiquetas{
+	border: 1px solid #FF2A7F;
+	font-size: 16px;
+	font-family: Arial, Verdana;
+	text-align: center;
+	border-radius: 9px;
+	-moz-border-radius: 9px;
+	-webkit-border-radius: 9px;
+	-o-border-radius: 9px;
+	background: #FFFFFF;
+	background: linear-gradient(left, #FFFFFF);
+	background: -moz-linear-gradient(left, #FFFFFF);
+	background: -webkit-linear-gradient(left, #FFFFFF);
+	background: -o-linear-gradient(left, #FFFFFF);
+	color: #2E3133;
+	width: 10%;
+}
+
+.margenes{
+	width: 89%;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+
+
+
+/*Slider*/ 
+.slider {
+	width: 88%;
+	margin-top: 30px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 88px;
+    }
+
+.slick-slide {
+      margin: 0px 20px;
+    }
+
+.slick-slide img {
+      width: 100%;
+    }
+.slick-prev:before,
+.slick-next:before {
+        color: black;
+    }
+#slider-medidas{
+	display: block;
+	width: 100%;
+	margin-left:auto;
+	margin-right:auto;
+    position:static;
+}
+/*Medidas slider superior*/
+#top-slider-medidas{
+	display: inline-block;
+	width: 90%;
+	
+}
+
+.caja-slider{
+	width: 100%;
+	padding-left:8%;
+	
+}
+
+.ocultar{
+
+	visibility:hidden; 
+}
+
+
+/*==================
+	Botones superiores y buscador
+====================*/
+
+.myButton, .myButton-anadir {
+	background-color:#ffffff;
+	-moz-border-radius:9px;
+	-webkit-border-radius:9px;
+	border-radius:9px;
+	border:1px solid #FF2A7F;
+	display:inline-block;
+	cursor:pointer;
+	color:#FF2A7F;
+	font-family:Arial;
+	font-size:18px;
+	padding:4px 11px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ff7fff;
+	outline: none;
+	
+}
+.myButton:hover, .myButton-anadir:hover {
+	background: rgba(0,0,0,0);
+    color: #e15366;
+    box-shadow: inset 0 0 0 3px #ffffff;
+}
+.myButton:active, .myButton-anadir:active {
+	position:inline;
+	top:1px;
+	background:#FFFFFF;
+}
+
+
+#izquierda {
+float:left;
+width:75%;
+}
+
+#derecha {
+float:left;
+width:25%;
+ 
+}
+
+
+/* Imput de Busqueda*/
+.search{
+  border: 1px solid #FF2A7F;
+  font-size: 16px;
+  font-family: Arial, Verdana;
+ /* padding: 30px;
+  padding-left: 19px;
+  padding-right: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;*/
+  border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF);
+  background: -moz-linear-gradient(left, #FFFFFF);
+  background: -webkit-linear-gradient(left, #FFFFFF);
+  background: -o-linear-gradient(left, #FFFFFF);
+  color: #2E3133;
+  width: 100%;
+ 
+}
+
+
+/*Lista de  Filtrado*/
+
+
+.filtro{
+  border: 1px solid #FF2A7F;
+  font-size: 14px;
+  font-family: Arial, Verdana;
+  padding: 30px;
+  padding-left: 17px;
+  padding-right: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -o-border-radius: 9px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF);
+  background: -moz-linear-gradient(left, #FFFFFF);
+  background: -webkit-linear-gradient(left, #FFFFFF);
+  background: -o-linear-gradient(left, #FFFFFF);
+  color: #2E3133;
+  
+}
+
+
+.listaopciones {
+
+	width: 100%;
+    padding-left:36%;
+	
+}
+
+.listaopciones select{
+	text-align-last:center; 
+	width: auto;
+	margin: 0 auto;
+}
+
+
+
+/* A qui termina la lista de filtrado*/
+
+/*label de slider*/
+.etiquetassli{
+	display: block;
+	text-align:center;
+	
+}
+
+/*Fin de de label de slider*/
+
+
+
+/*==================
+ RESPONSIVE DESIGN
+====================*/
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+	
+.margenes{ width:95%;}	
+	
+}
+
+
+
+@media (max-width: 768px) {
+
+	
+/*seccion de buscado y selector de categoria*/	
+	.search {  font-size:10px; padding-left:13px;}
+	.myButton{ font-size:16px;}
+	
+/*carusel de categoria y marca*/
+
+.etiquetassli{ font-size:12px; }	
+.caja-slider{ }
+.regular.slider{ }
+.etiquetas{ width:20%;}
+
+/*cariseles nuevo, clasico y de temporada*/
+
+.imagen{ }
+.imagen img{ width:80%; margin-left:7%; margin-top:9%;}
+
+
+.slider{ width:100%;}
+
+
+
+@media (max-width: 600px) {
+
+	.margenes{ width:90%;}
+	
+}
+
+
+@media (max-width: 481px) {
+
+	.myButton-anadir{ font-size:10px;}
+	
+}
+
+}
+@media (max-width: 426px) {
+	
+	
+	/*seccion de buscado y selector de categoria*/	
+	.search {  font-size:9px; padding-left:13px;  }
+	.myButton{ font-size:16px;}
+	#izquierda{ width:100%;}
+	#derecha{ display:none;}
+	
+	.listaopciones{ padding-left:10%;}
+	
+	.etiquetassli{ font-size:9px;}
+	
+	.etiquetas{ width:30%;}
+	.imagen img{ width:50%; margin-left:0px; }
+	
+	div.contenedor{ width:100%;}
+	div.imagen{ width:50%;} 
+	.slider { width:90%;}
+	
+	.modal-content-p{ width:100%;}
+	.modal{ width:100%;}
+	
+	#slick-next, #slick-prev{ width:10%; height:40%;}
+	
+	
+
+	
+}
+
+@media (max-width: 376px) {
+	
+	.etiquetassli{ display:none;}
+	
+	.regular.slider img{
+	width: 69px;
+}
+	.regular.slider{ margin-left:5%;   width:100%;}
+	
+	.imagen{ width:50%;}
+	.imagen img{ width:150px; margin-left:5px; margin-top:40px; }
+	
+	#slider-medidas{ width:90%; margin-left:-2%; }
+	.contenedor{ width:100%;}
+	
+	.caja-slider{ margin-left:-8%;}
+	
+	#slick-next, #slick-prev{ width:10%; height:40%;}
+	 
+	 
+}
+
+
+@media (max-width: 320px) {
+	
+	.etiquetas	{ width:35%;}
+	.regular.slider img{ width:55px;}
+	.imagen img{ width:150px; margin-left:10px; margin-top:55px; }
+	
+}

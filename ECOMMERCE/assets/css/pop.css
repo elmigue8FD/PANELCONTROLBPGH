@@ -1,0 +1,367 @@
+/*
+.modal {
+    display: none; 
+    position: fixed; 
+    padding-top: 140px; 
+    width: 110%;  
+    height: 90%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}*/
+#myModal1,#myModal1, #myModal2, #myModal3, #myModal4, #myModal5, #myModal6, #myModal7, #myModal8, #myModal9, #myModal10, #myModal11, #myModal12, #myModal13, #myModal14, #myModal15, #myModal16, #myModal17, #myModal18, #myModal19, #myModal20, #myModal21, #myModal22, #myModal23, #myModal24, #myModal25, #myModal26, #myModal27{
+	width: 100%; height:100%;
+	margin-top: 0%; z-index:1000;
+} #contenidomodal{ width:50%; height:100%; padding-bottom:0px;  }
+
+
+/*icono de cerrar*/
+.exit{
+width: 35px; height: 35px;
+}
+/*Imgenen pop*/
+.imagen-pop-conter{
+	
+	float:left;
+    width:40%;
+	position:static;
+	height: 100%;
+	
+
+	padding-left:5px;
+}
+/*Contenido dentro del pop*/
+.contenido-pop{
+	float: left;
+	width: 50%;
+	position: static;
+	height: 90%;
+	margin-top: 3%;
+	padding-top: 2%;
+	padding-left: 30px;
+}
+
+/*Texto pop-up*/
+.eti{
+	
+	color:#FF2A7F;
+	
+}
+.eti1{
+	color:#FF2A7F;
+	font-weight:bold;
+	width: 140px;
+}
+.et{
+   color:#969696;
+   
+}
+.etp{
+   color:#969696;
+   width: 140px;
+   margi:0;
+}
+
+.eti2{
+	color:#000000;
+    font-weight:bold;
+}
+
+.etl{
+	color:#969696;
+	margin:0;
+	padding:0;
+	margin-right:0;
+	margin-left:0;
+	width:70px;
+	position:block;
+	float:left;
+}
+.oet{
+	margin:0;
+	padding:0;
+	margin-left:0;
+	position:block;
+	margin-right:0;
+	
+	
+}
+
+.check{
+	float:left;
+}
+.etc{
+	margin:0;
+	padding:0;
+	margin-left:0;
+	position:block;
+	margin-right:0;
+	color:#969696;
+}
+/*caja de texto*/
+.caja-text{
+	width: 120%;
+	height: 25%;
+	border: 1px solid #FF2A7F;
+	text-align:left;
+	resize: none;
+	overflow: auto;
+	
+}
+/*MIGUEl*/
+.borde-rosa{
+	border: 1px solid #FF2A7F;
+}
+/*FIN MIGUEL*/
+.caja-text-p{
+	width: 102%;
+	height: 15%;
+	border: 1px solid #FF2A7F;
+	text-align: left;
+	resize: none;
+	overflow: auto;
+	font-size: small;
+	margin-bottom: 6px;
+	
+}
+
+.atext-box{
+	margin-top: 0%;
+	width: 100%;
+	height: 70%;
+	padding-top: 5%;
+	
+}
+
+/*separador pequeño 1*/
+
+.separador1{
+	padding-top: 10%;
+	padding:5px;
+	
+}
+
+.separador2{
+	padding-top: 50%;
+	padding:5px;
+	
+}
+/* Modal Content */
+/*.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 2px solid #FF2A7F;
+	padding:10px;
+    width: 33%;
+	height: 100%;
+	border-radius: 5%;
+	
+}*/
+/*
+.modal-content-p {
+	background-color: #fefefe;
+	margin: auto;
+	border: 2px solid #FF2A7F;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-left: 30px;
+	padding-bottom: 30px;
+	width: 75%;
+	height: 100%;
+	border-radius: 5%;
+	
+}
+*/
+/* The Close Button */
+.close1, .close7,
+.close2, .close6,
+.close3, .close5,
+.close4, .close8,
+.close9, .close10,
+.close11,.close12,
+.close13,.close14,
+.close15,.close16,
+.close17,.close18,
+.close19,.close20,
+.close21,.close22,
+.close23,.close24,
+.close25,.close26,
+.close27,.close28,
+.close29,.close30,
+.close31,.close32,
+.close33,.close34{
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*Boton posicion */
+
+#btnp{
+	float:right;
+}
+/*Carrucel pequeño*/
+/*tamaño para carrucel pequeño*/
+ /*.tamaño{
+      width: 50%;
+      height: 20%;
+      margin-left: 5%;
+	  margin-top: 10px;
+    }
+*/
+.tamaño-n{
+
+      width:100%;
+      height: 30%;
+	 
+}
+.box{
+	width:100%;
+}	
+	
+.galeria-img{
+	max-width: 100%;
+	
+	
+}
+
+.galeria{
+	width:auto;
+	display: flex;
+	justify-content:center;
+	
+}
+
+.galeria-item{
+	padding-left: 0px;
+	width: auto;
+	width: 100%;
+	cursor: pointer;
+	background-color: #E7E7E7;
+	margin-right: 5px;
+	height: auto;
+	
+}
+
+
+.galeria-show{
+	
+
+	max-width:100%;
+}
+
+
+.galeria-mostrar{
+	display:none;
+
+}
+
+.galeria-mostrar:target{
+	display:block;
+	justify-content:center;
+}
+
+
+
+/* fin de Carrucel pequeño*/
+/*pop up versiones movil*/
+@media (max-width: 1024px) {
+	
+	#myModal1{
+	height: 100%;
+	margin-top: 0%;
+} 
+
+	#contenidomodal{ width:80%; height:130%;  } 
+	
+	
+
+
+
+}
+
+@media (max-width: 800px) {
+	
+	#contenidomodal{
+	height: 120%;
+}
+	
+	
+}
+
+
+@media (max-width: 488px) {
+
+
+	.imagen-pop-conter{ margin-top:10%;}
+	
+	#myModal1{ height:100%;}
+	#contenidomodal{ height: 150%;}
+	
+	
+}
+@media (max-width: 481px) {
+	
+
+.et, .eti, .etl, .oet{ font-size:10px;}
+		
+.oet option{ font-size:10px;}	
+
+.caja-text-p{ font-size:9px; height:15%;}
+
+
+
+#myModal1, #myModal2, #myModal3, #myModal4, #myModal5, #myModal6, #myModal7, #myModal8, #myModal9, #myModal10, #myModal11, #myModal12, #myModal13, #myModal14, #myModal15, #myModal16, #myModal17, #myModal18, #myModal19, #myModal20, #myModal21, #myModal22, #myModal23,  #myModal24, #myModal25, #myModal26, #myModal27{ width:100%; height:100%; margin-top:0%;}
+
+
+#contenidomodal{
+	width: 100%;
+	height: 100%;
+	
+} 
+
+}
+
+
+
+@media (max-width: 426px) {
+#myModal1, #myModal2, #myModal3, #myModal4, #myModal5, #myModal6, #myModal7, #myModal8, #myModal9, #myModal10, #myModal11, #myModal12, #myModal13, #myModal14, #myModal15, #myModal16, #myModal17, #myModal18, #myModal19, #myModal20, #myModal21, #myModal22, #myModal23,  #myModal24, #myModal25, #myModal26, #myModal27{}
+
+#contenidomodal{
+	width: 100%;
+	height: 100%;
+}
+}
+
+
+@media (max-width: 426px) {
+	.et, .eti, .etl, .oet{ font-size:8px;}
+		
+.oet option{ font-size:8px;}	
+
+.caja-text-p{ font-size:8px; height:15%;}
+
+.contenido-pop{ padding-top:0px; margin-top:1%;}
+	
+}
+
+@media (max-width: 376px) {
+
+
+	.imagen-pop-conter{ margin-top:10%;}
+	
+	#myModal1{ height:100%;}
+	#contenidomodal{
+	height: 240%;
+}
+	
+	
+}
