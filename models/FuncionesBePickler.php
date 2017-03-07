@@ -8774,6 +8774,71 @@ class FuncionesBePickler{
 
     }
  
+ 	public static function MgetAllTblciudadByTblproducto($idtblpais){
+    	$activado=1;
+    	$consulta="SELECT tblciudad.* FROM tblciudad WHERE tblciudad.tblciudad_activado=? AND EXISTS
+			(SELECT idtblpais FROM tblpais where tblpais.idtblpais=tblciudad.tblpais_idtblpais AND tblpais.tblpais_activado=? AND tblpais.idtblpais=?
+			and EXISTS
+			(SELECT idtblcolonia FROM tblcolonia WHERE tblciudad.idtblciudad=tblcolonia.tblciudad_idtblciudad AND tblcolonia.tblcolonia_activado=?
+			and EXISTS
+			(SELECT idtblproveedor FROM tblproveedor WHERE tblcolonia.idtblcolonia=tblproveedor.tblcolonia_idtblcolonia AND tblproveedor.tblproveedor_activado=?
+			and EXISTS
+			(SELECT idtblproducto FROM tblproducto WHERE tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor AND tblproducto.tblproducto_activado=?))))";
+		 try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(3,$idtblpais,PDO::PARAM_INT);
+			$resultado->bindParam(4,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(5,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(6,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+
+    public static function MgetAllTblserviciosByTblproducto(){
+    	$activado=1;
+    	$consulta="SELECT * FROM tbltiposervicio AS tts WHERE exists
+		(SELECT idtblproveedor FROM tblproveedor AS tpr WHERE tts.idtbltiposervicio=tpr.tbltiposervicio_idtbltiposervicio 
+		AND tpr.tblproveedor_activado=?
+		AND EXISTS
+		(SELECT idtblproducto FROM tblproducto AS tpo WHERE tpr.idtblproveedor=tpo.tblproveedor_idtblproveedor
+		AND tpo.tblproducto_activado=?))";
+		 try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+ 	
+ 	public static function MgetAllTblcoloniaByTblproducto($tblciudad){
+    	$activado=1;
+    	$consulta="SELECT tblcolonia.* FROM tblcolonia WHERE tblcolonia.tblcolonia_activado=? AND exists
+			(SELECT idtblciudad FROM tblciudad WHERE tblciudad.idtblciudad=tblcolonia.tblciudad_idtblciudad AND tblciudad.tblciudad_activado=? AND tblciudad.idtblciudad=?
+			and EXISTS
+			(SELECT idtblproveedor FROM tblproveedor WHERE tblcolonia.idtblcolonia=tblproveedor.tblcolonia_idtblcolonia AND tblproveedor.tblproveedor_activado=?
+			and EXISTS
+			(SELECT idtblproducto FROM tblproducto WHERE tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor AND tblproducto.tblproducto_activado=?)))";
+		 try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(3,$tblciudad,PDO::PARAM_INT);
+			$resultado->bindParam(4,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(5,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+    }
     
 }
 ?>
