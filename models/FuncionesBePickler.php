@@ -8839,6 +8839,57 @@ class FuncionesBePickler{
 			return false;
 		}
     }
+
+    //obtiene los productos todos sin el ingrediente especifico y solo de un proveedor
+    public static function getTblproductoByTblproveedorAndTblclasifproduct($fechapedido,$idtblproveedor,$idtblclasifproduct){
+        
+        $activado=1;
+        
+        $fechapedidoingresada = new DateTime($fechapedido);
+        $fechahoy = new DateTime("now");
+        $interval= $fechahoy->diff($fechapedidoingresada);
+        $diasMinimos= $interval->format('%d');
+        
+        $diasemana= $fechapedidoingresada->format('l');        
+        
+       if($fechapedidoingresada == $fechahoy){ 
+            $tipodepedido= 1; //pedidoparahoy
+            $stock=1;
+        }else{
+            $tipodepedido= 2; //pedidoparaotrodia
+            $stock=0;
+        }
+            
+        $consulta = "SELECT TPR.*, TP.*,TPI.* ,TPRD.* FROM tblproducto TPR 
+        INNER JOIN tblproveedor TP ON TP.idtblproveedor = TPR.tblproveedor_idtblproveedor
+        INNER JOIN tblproductdetalle TPRD ON TPRD.tblproducto_idtblproducto = TPR.idtblproducto
+        INNER JOIN tblclasifproduct TCLP ON TCLP.idtblclasifproduct = TPR.tblclasifproduct_idtblclasifproduct
+        INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TPR.idtblproducto
+        WHERE TP.idtblproveedor = ?  
+	        AND TPR.tblproducto_activado = ?
+	        AND TCLP.tblclasifproduct_activado = ?
+	        AND TPR.tblclasifproduct_idtblclasifproduct= ?
+	        AND TPRD.tblproducto_activado = ?
+	        AND TPRD.tblproductdetalle_stock >= ?
+	        AND TPRD.tblproductdetalle_diaselaboracion <= ?
+	        GROUP BY TPR.idtblproducto";
+
+            try{
+                
+                $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+                $resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+                $resultado->bindParam(2,$activado,PDO::PARAM_INT);
+                $resultado->bindParam(3,$activado,PDO::PARAM_INT);
+                $resultado->bindParam(4,$idtblclasifproduct,PDO::PARAM_INT);
+                $resultado->bindParam(5,$activado,PDO::PARAM_INT);
+                $resultado->bindParam(6,$stock,PDO::PARAM_INT);
+                $resultado->bindParam(7,$diasMinimos,PDO::PARAM_INT);
+                $resultado->execute();
+                return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
+            }catch(PDOException $e){
+                return false;      
+            }   
+    }
     
 }
 ?>
