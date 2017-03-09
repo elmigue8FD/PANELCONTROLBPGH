@@ -8869,7 +8869,7 @@ class FuncionesBePickler{
 	        AND TPR.tblproducto_activado = ?
 	        AND TCLP.tblclasifproduct_activado = ?
 	        AND TPR.tblclasifproduct_idtblclasifproduct= ?
-	        AND TPRD.tblproducto_activado = ?
+	        AND TPRD.tblproductdetalle_activado = ?
 	        AND TPRD.tblproductdetalle_stock >= ?
 	        AND TPRD.tblproductdetalle_diaselaboracion <= ?
 	        GROUP BY TPR.idtblproducto";
