@@ -8927,6 +8927,7 @@ class FuncionesBePickler{
 		                "rango_precio" => 'mayor a $350.00'
 		                ];
 
+		array_push($arrayCompleto,$arrayRango0);
 		array_push($arrayCompleto,$arrayRango1);
         array_push($arrayCompleto,$arrayRango2);
         array_push($arrayCompleto,$arrayRango3);
