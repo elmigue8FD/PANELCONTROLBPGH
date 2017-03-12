@@ -8890,6 +8890,51 @@ class FuncionesBePickler{
                 return false;      
             }   
     }
+
+    // Funcion para obtener Rangos de Precios para el Filtro
+     public static function getAllRangoPrecios(){
+    	$arrayCompleto=[];
+
+    	$arrayRango0 = [
+		                "idRangoPrecio" => '0',
+		                "rangovalor" => '0',		                
+		                "rango_precio" => 'Rango de Precio'
+		                ]; 
+		$arrayRango1 = [
+		                "idRangoPrecio" => '1',
+		                "rangovalor" => '150.00',		                
+		                "rango_precio" => 'menor a $150.00'
+		                ];  
+		
+
+		$arrayRango2 = [
+		                "idRangoPrecio" => '2',
+		                "rangovalor" => '250.00',		                
+		                "rango_precio" => '$150.00 - $250.00'
+		                ];  
+		
+
+		$arrayRango3 = [
+		                "idRangoPrecio" => '3',
+		                "rangovalor" => '350.00',		                
+		                "rango_precio" => '$250.00 - $350.00' 
+		                ];  
+		
+
+		$arrayRango4 = [
+		                "idRangoPrecio" => '4',
+		                "rangovalor" => '351.00',		                
+		                "rango_precio" => 'mayor a $350.00'
+		                ];
+
+		array_push($arrayCompleto,$arrayRango1);
+        array_push($arrayCompleto,$arrayRango2);
+        array_push($arrayCompleto,$arrayRango3);
+        array_push($arrayCompleto,$arrayRango4);
+
+        return $resultado=$arrayCompleto;                  
+
+    }
     
 }
 ?>
