@@ -37,7 +37,7 @@ if (!empty($_POST)){
 
     $solicitadoBy=$_POST["solicitadoBy"];
     $clientenombre=$_POST["clientenombre"];
-    $clientecallenums=$_POST['clienteapellidos'];
+    $clienteapellidos=$_POST['clienteapellidos'];
     $clientecallenum=$_POST['clientecallenum'];
     $clientecolonia=$_POST['clientecolonia'];
     $clientecodipost=$_POST['clientecodipost'];
