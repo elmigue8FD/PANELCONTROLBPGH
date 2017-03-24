@@ -28,7 +28,7 @@ $resultado= '';
  */
 if (!empty($_POST)){
 
-	$solicitadoBy=$_POST["solicitadoBy"];
+    $solicitadoBy=$_POST["solicitadoBy"];
     $idtblordencompra=$_POST["idtblordencompra"];
     $fchordencompra=$_POST["fchordencompra"];
     $toralorden=$_POST["toralorden"];
@@ -40,27 +40,28 @@ if (!empty($_POST)){
     $stripentoken=$_POST["stripentoken"];
     $emailstripe=$_POST["emailstripe"];
     $calif=$_POST["calif"];
+    $ordencompracliente = $_POST["ordencompracliente"];
     $idtblcliente=$_POST["idtblcliente"];
     $idtblsistpago=$_POST["idtblsistpago"];
     $emailmodificacion=$_POST["emailmodificacion"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setUpdateTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$idtblcliente,$idtblsistpago,$emailmodificacion,$idtblordencompra);
+    $resultado = FuncionesBePickler::setUpdateTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailmodificacion,$idtblordencompra);
 
     if($resultado)
     {
         /**
          * Si es éxitos le mandamos los resultados a quien lo solicito.
          */
-    	InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
+        InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
 
     }else
     {
         /**
          * Si fallo manda a la función de fallo a quien lo solicito.
          */
-    	InfoSolicitadaBy::sinDatos($solicitadoBy);
+        InfoSolicitadaBy::sinDatos($solicitadoBy);
     }
 }
 /**
