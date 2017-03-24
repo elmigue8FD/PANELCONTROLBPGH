@@ -19,6 +19,7 @@ $clientetelf= '';
 $clienteext= '';
 $clientecel= '';
 $clienterfc= '';
+$cedulafiscal='';
 $clienteciudad= '';
 $clientepais= '';
 $nombencargadoemp= '';
@@ -34,7 +35,7 @@ $resultado='';
  */
 if (!empty($_POST)){
 
-	$solicitadoBy=$_POST["solicitadoBy"];
+    $solicitadoBy=$_POST["solicitadoBy"];
     $clientenombre=$_POST["clientenombre"];
     $clientecallenums=$_POST['clienteapellidos'];
     $clientecallenum=$_POST['clientecallenum'];
@@ -46,6 +47,7 @@ if (!empty($_POST)){
     $clienteext=$_POST['clienteext'];
     $clientecel=$_POST['clientecel'];
     $clienterfc=$_POST['clienterfc'];
+    $cedulafiscal=$_POST['clientecedulafiscal'];
     $clienteciudad=$_POST['clienteciudad'];
     $clientepais=$_POST['clientepais'];
     $nombencargadoemp=$_POST['nombencargadoemp'];
@@ -58,21 +60,21 @@ if (!empty($_POST)){
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setTblcliente($clientenombre, $clienteapellidos,$clientecallenum,$clientecolonia,$clientecodipost,$clientenacimiento,$clientesexo,$clientetelf,$clienteext,$clientecel,$clienterfc,$clienteciudad,$clientepais,$nombencargadoemp,$clienteemail,$clienteactivado,$clientepasswd,$emailcreo,$recibirinfo,$idtipocliente);
+    $resultado = FuncionesBePickler::setTblcliente($clientenombre, $clienteapellidos,$clientecallenum,$clientecolonia,$clientecodipost,$clientenacimiento,$clientesexo,$clientetelf,$clienteext,$clientecel,$clienterfc,$cedulafiscal,$clienteciudad,$clientepais,$nombencargadoemp,$clienteemail,$clienteactivado,$clientepasswd,$emailcreo,$recibirinfo,$idtipocliente);
 
     if($resultado)
     {
         /**
          * Si es éxitos le mandamos los resultados a quien lo solicito.
          */
-    	InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
+        InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
 
     }else
     {
         /**
          * Si fallo manda a la función de fallo a quien lo solicito.
          */
-    	InfoSolicitadaBy::sinDatos($solicitadoBy);
+        InfoSolicitadaBy::sinDatos($solicitadoBy);
     }
 }
 /**
@@ -90,6 +92,7 @@ unset($clientetelf);
 unset($clienteext);
 unset($clientecel);
 unset($clienterfc);
+unset($clientecedulafiscal);
 unset($clienteciudad);
 unset($clientepais);
 unset($nombencargadoemp);
