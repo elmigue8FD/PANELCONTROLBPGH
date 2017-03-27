@@ -1065,12 +1065,14 @@ class FuncionesBePickler{
 ///// FUNCIONES REFRENTE A TABLA tblcliente /////////
 
     /*Insertar un cliente */
-    public static function setTblcliente($clientenombre, $clienteapellidos,$clientecallenum,$clientecolonia,$clientecodipost,$clientenacimiento,$clientesexo,$clientetelf,$clienteext,$clientecel,$clienterfc,$clienteciudad,$clientepais,$nombencargadoemp,$clienteemail,$clienteactivado,$clientepasswd,$emailcreo,$recibirinfo,$idtipocliente){
+    public static function setTblcliente($clientenombre, $clienteapellidos,$clientecallenum,$clientecolonia,$clientecodipost,$clientenacimiento,$clientesexo,$clientetelf,$clienteext,$clientecel,$clienterfc,$cedulafiscal,$clienteciudad,$clientepais,$nombencargadoemp,$clienteemail,$clienteactivado,$clientepasswd,$emailcreo,$recibirinfo,$idtipocliente){
+
+    	$conexionPDO = ConexionDB::getInstance()->getDb();
         
-        $insert ="INSERT INTO tblcliente (tblcliente_nombre, tblcliente_apellidos,tblcliente_callenum,tblcliente_colonia,tblcliente_codipost,tblcliente_fchnacimiento,tblcliente_sexo,tblcliente_telefono,tblcliente_extencion,tblcliente_celular,tblcliente_rfc,tblcliente_ciudad,tblcliente_pais,tblcliente_nombencargadoempresa,tblcliente_email,tblcliente_activado,tblcliente_fchmodificacion,tblcliente_password,tblcliente_fchcreacion,tblcliente_emailusacreo,tblcliente_emailusamodifico,tblcliente_recibirInfo,tblcliente_idtbltipocliente,) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,NOW(),?,?,?,?)"; 
+        $insert ="INSERT INTO tblcliente (tblcliente_nombre, tblcliente_apellidos,tblcliente_callenum,tblcliente_colonia,tblcliente_codipost,tblcliente_fchnacimiento,tblcliente_sexo,tblcliente_telefono,tblcliente_extencion,tblcliente_celular,tblcliente_rfc,tblcliente_cedulafiscal,tblcliente_ciudad,tblcliente_pais,tblcliente_nombencargadoempresa,tblcliente_email,tblcliente_activado,tblcliente_fchmodificacion,tblcliente_password,tblcliente_fchcreacion,tblcliente_emailusuacreo,tblcliente_emailusuamodifico,tblcliente_recibirInfo,tbltipocliente_idtbltipocliente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,NOW(),?,?,?,?)"; 
         
         try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado = $conexionPDO->prepare($insert);
 			$resultado->bindParam(1,$clientenombre,PDO::PARAM_STR);
 			$resultado->bindParam(2,$clienteapellidos,PDO::PARAM_STR);
 			$resultado->bindParam(3,$clientecallenum,PDO::PARAM_STR);
@@ -1082,18 +1084,28 @@ class FuncionesBePickler{
 			$resultado->bindParam(9,$clienteext,PDO::PARAM_STR);
 			$resultado->bindParam(10,$clientecel,PDO::PARAM_STR);
 			$resultado->bindParam(11,$clienterfc,PDO::PARAM_STR);
-			$resultado->bindParam(12,$clienteciudad,PDO::PARAM_STR);
-			$resultado->bindParam(13,$clientepais,PDO::PARAM_STR);
-			$resultado->bindParam(14,$nombencargadoemp,PDO::PARAM_STR);
-			$resultado->bindParam(15,$clienteemail,PDO::PARAM_STR);
-			$resultado->bindParam(16,$clienteactivado,PDO::PARAM_INT);
-			$resultado->bindParam(17,$clientepasswd,PDO::PARAM_STR);
-			$resultado->bindParam(18,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(12,$cedulafiscal,PDO::PARAM_STR);
+			$resultado->bindParam(13,$clienteciudad,PDO::PARAM_STR);
+			$resultado->bindParam(14,$clientepais,PDO::PARAM_STR);
+			$resultado->bindParam(15,$nombencargadoemp,PDO::PARAM_STR);
+			$resultado->bindParam(16,$clienteemail,PDO::PARAM_STR);
+			$resultado->bindParam(17,$clienteactivado,PDO::PARAM_INT);
+			$resultado->bindParam(18,$clientepasswd,PDO::PARAM_STR);
 			$resultado->bindParam(19,$emailcreo,PDO::PARAM_STR);
-			$resultado->bindParam(20,$recibirinfo,PDO::PARAM_INT);
-			$resultado->bindParam(21,$idtipocliente,PDO::PARAM_INT);
+			$resultado->bindParam(20,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(21,$recibirinfo,PDO::PARAM_INT);
+			$resultado->bindParam(22,$idtipocliente,PDO::PARAM_INT);
 		    $resultado->execute();
-			return $resultado->rowCount(); //retorna el numero de registros afectados por el insert
+		    
+			if($resultado->rowCount()>0){
+
+				$idCliente = $conexionPDO->lastInsertId();
+				
+				return $idCliente;
+
+			}else{
+				return $resultado->rowCount();
+			}
 		} catch(PDOException $e){
 			return false;
 		}
@@ -3243,9 +3255,9 @@ class FuncionesBePickler{
     }
     
     /*Actualizar un registro en tblordencompra*/
-	 public static function setUpdateTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$idtblcliente,$idtblsistpago,$emailmodificacion,$idtblordencompra){
+	 public static function setUpdateTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailmodificacion,$idtblordencompra){
         
-        $insert ="UPDATE tblordencompra SET tblordencompra_fchordencompra = ?, tblordencompra_totalordencompra= ? ,tblordencompra_statuspagado = ?,tblordencompra_sistemapago = ?,tblordencompra_facturacion = ?,tblordencompra_devolucion = ?,tblordencompra_stripetoken = ?,tblordencompra_stripeemail = ?,tblordencompra_calificacion = ?,tblcliente_idtblcliente = ?,tblsistemapago_idtblsistemapago = ?,tblordencompra_fchmodificacion= NOW(), tblordencompra_emailusuamodifico = ? WHERE idtblordencompra = ? "; 
+        $insert ="UPDATE tblordencompra SET tblordencompra_fchordencompra = ?, tblordencompra_totalordencompra= ? ,tblordencompra_statuspagado = ?,tblordencompra_nombrecliente= ? ,tblordencompra_sistemapago = ?,tblordencompra_facturacion = ?,tblordencompra_devolucion = ?,tblordencompra_stripetoken = ?,tblordencompra_stripeemail = ?,tblordencompra_calificacion= ? , tblordencompra_ordencompracliente = ?,tblcliente_idtblcliente = ?,tblsistemapago_idtblsistemapago = ?,tblordencompra_fchmodificacion= NOW(), tblordencompra_emailusuamodifico = ? WHERE idtblordencompra = ? "; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -3259,10 +3271,11 @@ class FuncionesBePickler{
 			$resultado->bindParam(8,$stripentoken,PDO::PARAM_STR);
 			$resultado->bindParam(9,$emailstripe,PDO::PARAM_STR);
 			$resultado->bindParam(10,$calif,PDO::PARAM_STR);
-			$resultado->bindParam(11,$idtblcliente,PDO::PARAM_INT);
-			$resultado->bindParam(12,$idtblsistpago,PDO::PARAM_INT);
-			$resultado->bindParam(13,$emailmodificacion,PDO::PARAM_STR);
-			$resultado->bindParam(14,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(11,$ordencompracliente,PDO::PARAM_STR);
+			$resultado->bindParam(12,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(13,$idtblsistpago,PDO::PARAM_INT);
+			$resultado->bindParam(14,$emailmodificacion,PDO::PARAM_STR);
+			$resultado->bindParam(15,$idtblordencompra,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
