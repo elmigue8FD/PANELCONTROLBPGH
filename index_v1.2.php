@@ -932,7 +932,6 @@
     function pruebaHora()
     {
       //dataType:"json",
-      //
       $.ajax({  method:"POST",   url:"./../../controllers/getTblhorasByTblProveedor.php",  data:{solicitadoBy:"WEB", idtblcolonia:1,idtbltipodeservicio:1,fechapedido:"31-03-2017"}  })
               .done(function( getTblhorasByTblProveedor ) {   
                 console.log('getTblhorasByTblProveedor::'+getTblhorasByTblProveedor);

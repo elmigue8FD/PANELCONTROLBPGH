@@ -8818,14 +8818,16 @@ class FuncionesBePickler{
 		}
     }
  	
- 	public static function MgetAllTblcoloniaByTblproducto($tblciudad){
+ 	public static function MgetAllTblcoloniaByTblproducto($tblciudad,$diferenciaDias){
     	$activado=1;
     	$consulta="SELECT tblcolonia.* FROM tblcolonia WHERE tblcolonia.tblcolonia_activado=? AND exists
 			(SELECT idtblciudad FROM tblciudad WHERE tblciudad.idtblciudad=tblcolonia.tblciudad_idtblciudad AND tblciudad.tblciudad_activado=? AND tblciudad.idtblciudad=?
 			and EXISTS
 			(SELECT idtblproveedor FROM tblproveedor WHERE tblcolonia.idtblcolonia=tblproveedor.tblcolonia_idtblcolonia AND tblproveedor.tblproveedor_activado=?
 			and EXISTS
-			(SELECT idtblproducto FROM tblproducto WHERE tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor AND tblproducto.tblproducto_activado=?)))";
+			(SELECT idtblproducto FROM tblproducto WHERE tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor AND tblproducto.tblproducto_activado=?
+			AND EXISTS
+			(select idtblproductdetalle from tblproductdetalle WHERE tblproductdetalle_activado=? AND tblproductdetalle_diaselaboracion<=?))))";
 		 try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
 			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
@@ -8833,12 +8835,351 @@ class FuncionesBePickler{
 			$resultado->bindParam(3,$tblciudad,PDO::PARAM_INT);
 			$resultado->bindParam(4,$activado,PDO::PARAM_INT);
 			$resultado->bindParam(5,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(6,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(7,$diferenciaDias,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
 		} catch(PDOException $e){
 			return false;
 		}
     }
+
+    public static function MgetAllTblcategproductByTblproducto($idtblciudad,$idtbltiposervicio,$diaselaboracion,$idtblcolonia){
+    	$activado=1;
+    	$tipodeservicioDefault=3;
+    	if($idtbltiposervicio==1)
+    	{
+	    	$consulta="SELECT * FROM tblcategproduct WHERE tblcategproduct_activado = ?
+			AND EXISTS 
+			(SELECT idtblciudad FROM tblciudad WHERE tblciudad.tblciudad_activado=? AND tblciudad.idtblciudad=?
+			AND EXISTS
+			(SELECT idtblcolonia FROM tblcolonia WHERE tblcolonia.tblcolonia_activado=? AND tblcolonia.idtblcolonia=?
+			AND EXISTS
+			(SELECT idtblproveedor FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=? AND tblproveedor.tblcolonia_idtblcolonia=tblcolonia.idtblcolonia AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?)
+			AND EXISTS
+			(SELECT idtblproducto FROM tblproducto WHERE tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor AND tblproducto.tblproducto_activado=?
+			AND EXISTS
+			(SELECT idtblproductdetalle FROM tblproductdetalle WHERE tblproductdetalle.tblproducto_idtblproducto=tblproducto.idtblproducto AND tblproductdetalle_activado=? AND tblproductdetalle_diaselaboracion<=?)))))";			
+			 try{
+				$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+				$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(3,$idtblciudad,PDO::PARAM_INT);
+				$resultado->bindParam(4,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(5,$idtblcolonia,PDO::PARAM_INT);
+				$resultado->bindParam(6,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(7,$idtbltiposervicio,PDO::PARAM_INT);
+				$resultado->bindParam(8,$tipodeservicioDefault,PDO::PARAM_INT);
+				$resultado->bindParam(9,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(10,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(11,$diaselaboracion,PDO::PARAM_INT);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+			} catch(PDOException $e){
+				return false;
+			}
+		}
+		elseif($idtbltiposervicio==2)
+		{
+			$consulta="SELECT * FROM tblcategproduct WHERE tblcategproduct_activado = ?
+				AND EXISTS 
+				(SELECT idtblciudad 
+				FROM tblciudad 
+				WHERE tblciudad.tblciudad_activado=?
+				AND tblciudad.idtblciudad=?
+				AND EXISTS
+				(SELECT idtblproveedor 
+				FROM tblproveedor 
+				WHERE tblproveedor.tblproveedor_activado=? 
+				AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?)
+				AND EXISTS
+				(SELECT idtblproducto 
+				FROM tblproducto 
+				WHERE tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor 
+				AND tblproducto.tblproducto_activado=?
+				AND EXISTS
+				(SELECT idtblproductdetalle 
+				FROM tblproductdetalle 
+				WHERE tblproductdetalle.tblproducto_idtblproducto=tblproducto.idtblproducto 
+				AND tblproductdetalle_activado=? 
+				AND tblproductdetalle_diaselaboracion<=?))))";			
+			 try{
+				$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+				$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(3,$idtblciudad,PDO::PARAM_INT);
+				$resultado->bindParam(4,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(5,$idtbltiposervicio,PDO::PARAM_INT);
+				$resultado->bindParam(6,$tipodeservicioDefault,PDO::PARAM_INT);
+				$resultado->bindParam(7,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(8,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(9,$diaselaboracion,PDO::PARAM_INT);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+			} catch(PDOException $e){
+				return false;
+			}
+		}
+    }
+    public static function MgetAllTblproveedorByTblproducto($idtblciudad,$idtbltiposervicio,$diaselaboracion,$idtblcolonia){
+    	$activado=1;
+    	$tipodeservicioDefault=3;
+    	if($idtbltiposervicio==1)
+    	{
+	    	$consulta="SELECT * FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=? AND tblproveedor.tblcolonia_idtblcolonia=? AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?)
+				AND EXISTS 
+				(SELECT idtblciudad FROM tblciudad WHERE tblciudad.tblciudad_activado=? AND tblciudad.idtblciudad=?
+				AND EXISTS
+				(SELECT idtblcolonia FROM tblcolonia WHERE tblcolonia.tblcolonia_activado=? AND tblcolonia.idtblcolonia=?
+				AND EXISTS
+				(SELECT idtblproducto FROM tblproducto WHERE tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor AND tblproducto.tblproducto_activado=?
+				AND EXISTS
+				(SELECT idtblproductdetalle FROM tblproductdetalle WHERE tblproductdetalle.tblproducto_idtblproducto=tblproducto.idtblproducto AND tblproductdetalle_activado=? AND tblproductdetalle_diaselaboracion<=?))))";			
+			 try{
+				$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+				$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
+				$resultado->bindParam(3,$idtblciudad,PDO::PARAM_INT);
+				$resultado->bindParam(4,$tipodeservicioDefault,PDO::PARAM_INT);
+				$resultado->bindParam(5,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(6,$idtblciudad,PDO::PARAM_INT);
+				$resultado->bindParam(7,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(8,$idtblcolonia,PDO::PARAM_INT);
+				$resultado->bindParam(9,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(10,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(11,$diaselaboracion,PDO::PARAM_INT);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+			} catch(PDOException $e){
+				return false;
+			}
+		}
+		elseif($idtbltiposervicio==2)
+		{
+			$consulta="SELECT * FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=? AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?)
+			AND EXISTS 
+			(SELECT idtblciudad FROM tblciudad WHERE tblciudad.tblciudad_activado=? AND tblciudad.idtblciudad=?
+			AND EXISTS
+			(SELECT idtblproducto FROM tblproducto WHERE tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor AND tblproducto.tblproducto_activado=?
+			AND EXISTS
+			(SELECT idtblproductdetalle FROM tblproductdetalle WHERE tblproductdetalle.tblproducto_idtblproducto=tblproducto.idtblproducto AND tblproductdetalle_activado=? AND tblproductdetalle_diaselaboracion<=?)))";			
+			 try{
+				$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+				$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(2,$idtbltiposervicio,PDO::PARAM_INT);
+				$resultado->bindParam(3,$tipodeservicioDefault,PDO::PARAM_INT);
+				$resultado->bindParam(4,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(5,$idtblciudad,PDO::PARAM_INT);
+				$resultado->bindParam(6,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(7,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(8,$diaselaboracion,PDO::PARAM_INT);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+			} catch(PDOException $e){
+				return false;
+			}
+		}
+    }
+    public static function MgetAllTblproducto($idtblpais,$idtblciudad,$idtblcolonia,$idtblsemana,$diaselaboracion,$idtbltiposervicio,$hora){
+    	$activado=1;
+    	$tipodeservicioDefault=3;
+    	$idtblproductoDefault=0;
+    	$idtblsemanaDefault=0;
+    	/*
+    	activadi    	disaelaboracion    	idpais    	activado    	idciuad    	activado    	idcolonia    	activado    	actviado    	tipodeservicio     	defaultservicio    	defaultsemana    	idseamana?    	hora?    	 */
+
+    	if($idtbltiposervicio==1)
+    	{
+    		/*
+    		$consulta="
+SELECT * FROM tblproducto INNER JOIN tblproductdetalle ON tblproductdetalle.tblproducto_idtblproducto INNER JOIN tblproductimg ON tblproductimg.tblproducto_idtblproducto=tblproducto.idtblproducto WHERE tblproducto.idtblproducto>0 AND tblproductdetalle.tblproductdetalle_activado=1 AND tblproductdetalle.tblproductdetalle_diaselaboracion<=99
+AND EXISTS
+(SELECT * FROM tblpais WHERE tblpais.idtblpais=1 AND tblpais.tblpais_activado=1
+AND exists
+(SELECT * FROM tblciudad WHERE tblciudad.idtblciudad=1 AND tblciudad.tblciudad_activado=1 AND tblciudad.tblpais_idtblpais=tblpais.idtblpais
+AND exists 
+(SELECT * FROM tblcolonia WHERE tblcolonia.idtblcolonia=1 AND tblcolonia.tblcolonia_activado=1 AND tblcolonia.tblciudad_idtblciudad=tblciudad.idtblciudad
+AND exists
+(SELECT * FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=1 AND tblproveedor.tblcolonia_idtblcolonia=tblcolonia.idtblcolonia AND (tblproveedor.tbltiposervicio_idtbltiposervicio=1 or tblproveedor.tbltiposervicio_idtbltiposervicio=3) AND tblproducto.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor
+AND exists
+(SELECT * FROM tbldiasemana WHERE idtbldiasemana>0 
+AND exists
+(SELECT * FROM tbldiaprovservicio WHERE tbldiaprovservicio.tbldiasemana_idtbldiasemana=1 
+AND exists
+(SELECT * FROM tblhrsprovtienda INNER JOIN tblhraabre ON tblhrsprovtienda.tblhraabre_idtblhraabre=tblhraabre.idtblhraabre INNER JOIN tblhracierra ON tblhrsprovtienda.tblhracierra_idtblhracierra=tblhracierra.idtblhracierra INNER JOIN tblhora ON tblhraabre.tblhora_idtblhora=tblhora.idtblhora INNER JOIN tblhora as tblhoraxcierra ON tblhracierra.tblhora_idtblhora=tblhoraxcierra.idtblhora WHERE tblhrsprovtienda.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor AND CAST('16:00' AS TIME ) BETWEEN tblhora.tblhora_hora AND tblhoraxcierra.tblhora_hora ))))))) GROUP BY tblproducto.idtblproducto";
+*/
+		$consulta="SELECT * FROM tblproducto INNER JOIN tblproductdetalle ON tblproductdetalle.tblproducto_idtblproducto=tblproducto.idtblproducto INNER JOIN tblproductimg ON tblproductimg.tblproducto_idtblproducto=tblproducto.idtblproducto INNER JOIN tblproveedor ON tblproducto.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor WHERE tblproducto.idtblproducto>? AND tblproductdetalle.tblproductdetalle_activado=? AND tblproductdetalle.tblproductdetalle_diaselaboracion<=?
+			AND EXISTS
+			(SELECT * FROM tblpais WHERE tblpais.idtblpais=? AND tblpais.tblpais_activado=?
+			AND exists
+			(SELECT * FROM tblciudad WHERE tblciudad.idtblciudad=? AND tblciudad.tblciudad_activado=? AND tblciudad.tblpais_idtblpais=tblpais.idtblpais
+			AND exists 
+			(SELECT * FROM tblcolonia WHERE tblcolonia.idtblcolonia=? AND tblcolonia.tblcolonia_activado=? AND tblcolonia.tblciudad_idtblciudad=tblciudad.idtblciudad
+			AND exists
+			(SELECT * FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=? AND tblproveedor.tblcolonia_idtblcolonia=tblcolonia.idtblcolonia AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?) AND tblproducto.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor
+			AND exists
+			(SELECT * FROM tbldiasemana WHERE idtbldiasemana>?
+			AND exists
+			(SELECT * FROM tbldiaprovservicio WHERE tbldiaprovservicio.tbldiasemana_idtbldiasemana=? 
+			AND exists
+			(SELECT * FROM tblhrsprovtienda INNER JOIN tblhraabre ON tblhrsprovtienda.tblhraabre_idtblhraabre=tblhraabre.idtblhraabre INNER JOIN tblhracierra ON tblhrsprovtienda.tblhracierra_idtblhracierra=tblhracierra.idtblhracierra INNER JOIN tblhora ON tblhraabre.tblhora_idtblhora=tblhora.idtblhora INNER JOIN tblhora as tblhoraxcierra ON tblhracierra.tblhora_idtblhora=tblhoraxcierra.idtblhora WHERE tblhrsprovtienda.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor AND CAST( SEC_TO_TIME(?*60*60*24) AS TIME ) BETWEEN tblhora.tblhora_hora AND tblhoraxcierra.tblhora_hora ))))))) GROUP BY tblproducto.idtblproducto";
+
+			 try{
+				$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+				$resultado->bindParam(1,$idtblproductoDefault,PDO::PARAM_INT);
+				$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(3,$diaselaboracion,PDO::PARAM_INT);
+				$resultado->bindParam(4,$idtblpais,PDO::PARAM_INT);
+				$resultado->bindParam(5,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(6,$idtblciudad,PDO::PARAM_INT);
+				$resultado->bindParam(7,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(8,$idtblcolonia,PDO::PARAM_INT);
+				$resultado->bindParam(9,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(10,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(11,$idtbltiposervicio,PDO::PARAM_INT);
+				$resultado->bindParam(12,$tipodeservicioDefault,PDO::PARAM_INT);
+				$resultado->bindParam(13,$idtblsemanaDefault,PDO::PARAM_INT);
+				$resultado->bindParam(14,$idtblsemana,PDO::PARAM_INT);
+				$resultado->bindParam(15,$hora,PDO::PARAM_STR);
+				//$resultado->bindParam(15,$hora,PDO::PARAM_STR);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+			} catch(PDOException $e){
+				return false;
+			}
+    		/*
+
+	    	$consulta="SELECT * FROM tblproducto INNER JOIN tblproductdetalle ON tblproductdetalle.tblproducto_idtblproducto=tblproducto.idtblproducto AND tblproductdetalle_activado=? AND tblproductdetalle_diaselaboracion<=? WHERE tblproducto.tblproducto_activado=?
+				AND EXISTS 
+				(SELECT idtblciudad FROM tblciudad WHERE tblciudad.tblciudad_activado=? AND tblciudad.idtblciudad=?
+				AND EXISTS
+				(SELECT idtblcolonia FROM tblcolonia WHERE tblcolonia.tblcolonia_activado=? AND tblciudad.idtblciudad=tblcolonia.tblciudad_idtblciudad AND tblcolonia.idtblcolonia=?
+				AND EXISTS
+				(SELECT idtblproveedor FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=? AND tblproveedor.tblcolonia_idtblcolonia=tblcolonia.idtblcolonia AND tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?))))";
+			 try{
+				$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+				$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(2,$diaselaboracion,PDO::PARAM_INT);
+				$resultado->bindParam(3,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(4,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(5,$idtblciudad,PDO::PARAM_INT);
+				$resultado->bindParam(6,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(7,$idtblcolonia,PDO::PARAM_INT);
+				$resultado->bindParam(8,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(9,$idtbltiposervicio,PDO::PARAM_INT);
+				$resultado->bindParam(10,$tipodeservicioDefault,PDO::PARAM_INT);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+			} catch(PDOException $e){
+				return false;
+			}
+			*/
+		}
+		elseif($idtbltiposervicio==2)
+		{
+			/*
+			$consulta="SELECT * FROM tblproducto INNER JOIN tblproductdetalle ON tblproductdetalle.tblproducto_idtblproducto=tblproducto.idtblproducto AND tblproductdetalle_activado=? AND tblproductdetalle_diaselaboracion<=? WHERE tblproducto.tblproducto_activado=?
+			AND EXISTS 
+			(SELECT idtblciudad FROM tblciudad WHERE tblciudad.tblciudad_activado=? AND tblciudad.idtblciudad=?
+			AND EXISTS
+			(SELECT idtblcolonia FROM tblcolonia WHERE tblcolonia.tblcolonia_activado=? AND tblciudad.idtblciudad=tblcolonia.tblciudad_idtblciudad
+			AND EXISTS
+			(SELECT idtblproveedor FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=? AND tblproveedor.tblcolonia_idtblcolonia=tblcolonia.idtblcolonia AND tblproveedor.idtblproveedor=tblproducto.tblproveedor_idtblproveedor AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?))))";*/
+			/*$consulta="SELECT * FROM tblproducto INNER JOIN tblproductdetalle ON tblproductdetalle.tblproducto_idtblproducto INNER JOIN tblproductimg ON tblproductimg.tblproducto_idtblproducto=tblproducto.idtblproducto INNER JOIN tblproveedor ON tblproducto.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor WHERE tblproducto.idtblproducto>? AND tblproductdetalle.tblproductdetalle_activado=? AND tblproductdetalle.tblproductdetalle_diaselaboracion<=?
+			AND EXISTS
+			(SELECT * FROM tblpais WHERE tblpais.idtblpais=? AND tblpais.tblpais_activado=?
+			AND exists
+			(SELECT * FROM tblciudad WHERE tblciudad.idtblciudad=? AND tblciudad.tblciudad_activado=? AND tblciudad.tblpais_idtblpais=tblpais.idtblpais
+			AND exists 
+			(SELECT * FROM tblcolonia WHERE tblcolonia.idtblcolonia=? AND tblcolonia.tblcolonia_activado=? AND tblcolonia.tblciudad_idtblciudad=tblciudad.idtblciudad
+			AND exists
+			(SELECT * FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=? AND tblproveedor.tblcolonia_idtblcolonia=tblcolonia.idtblcolonia AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?) AND tblproducto.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor
+			)))) GROUP BY tblproducto.idtblproducto";
+			*/
+			$consulta="SELECT * FROM tblproducto INNER JOIN tblproductdetalle ON tblproductdetalle.tblproducto_idtblproducto=tblproducto.idtblproducto INNER JOIN tblproductimg ON tblproductimg.tblproducto_idtblproducto=tblproducto.idtblproducto INNER JOIN tblproveedor ON tblproducto.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor WHERE tblproducto.idtblproducto>? AND tblproductdetalle.tblproductdetalle_activado=? AND tblproductdetalle.tblproductdetalle_diaselaboracion<=?
+			AND EXISTS
+			(SELECT * FROM tblpais WHERE tblpais.idtblpais=? AND tblpais.tblpais_activado=?
+			AND exists
+			(SELECT * FROM tblciudad WHERE tblciudad.idtblciudad=? AND tblciudad.tblciudad_activado=? AND tblciudad.tblpais_idtblpais=tblpais.idtblpais
+			AND exists
+			(SELECT * FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=? AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?) AND tblproducto.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor
+			))) GROUP BY tblproducto.idtblproducto";
+			 try{
+				$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+				$resultado->bindParam(1,$idtblproductoDefault,PDO::PARAM_INT);
+				$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(3,$diaselaboracion,PDO::PARAM_INT);
+				$resultado->bindParam(4,$idtblpais,PDO::PARAM_INT);
+				$resultado->bindParam(5,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(6,$idtblciudad,PDO::PARAM_INT);
+				$resultado->bindParam(7,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(8,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(9,$idtbltiposervicio,PDO::PARAM_INT);
+				$resultado->bindParam(10,$tipodeservicioDefault,PDO::PARAM_INT);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+			} catch(PDOException $e){
+				return false;
+			}
+		}
+    }
+    public static function MgetAllTblproductcomplem($idtblpais,$idtblciudad,$idtblcolonia,$idtblsemana,$diaselaboracion,$idtbltiposervicio,$hora)
+    {
+    	$activado=1;
+    	$tipodeservicioDefault=3;
+    	$idtblproductoDefault=0;
+    	$idtblsemanaDefault=0;
+    	if($idtbltiposervicio==1)
+    	{
+
+		}
+		elseif($idtbltiposervicio==2)
+		{
+			$consulta="SELECT * FROM tblproductcomplem INNER JOIN tblproveedor ON tblproductcomplem.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor WHERE tblproductcomplem.idtblproductcomplem>? AND tblproductcomplem.tblproductcomplem_activado=?
+			AND EXISTS
+			(SELECT * FROM tblpais WHERE tblpais.idtblpais=? AND tblpais.tblpais_activado=?
+			AND exists
+			(SELECT * FROM tblciudad WHERE tblciudad.idtblciudad=? AND tblciudad.tblciudad_activado=? AND tblciudad.tblpais_idtblpais=tblpais.idtblpais
+			AND exists
+			(SELECT * FROM tblproveedor WHERE tblproveedor.tblproveedor_activado=? AND (tblproveedor.tbltiposervicio_idtbltiposervicio=? OR tblproveedor.tbltiposervicio_idtbltiposervicio=?) AND tblproductcomplem.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor
+			))) GROUP BY tblproductcomplem.idtblproductcomplem";
+			try{
+				$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+				$resultado->bindParam(1,$idtblproductoDefault,PDO::PARAM_INT);
+				$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(3,$idtblpais,PDO::PARAM_INT);
+				$resultado->bindParam(4,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(5,$idtblciudad,PDO::PARAM_INT);
+				$resultado->bindParam(6,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(7,$activado,PDO::PARAM_INT);
+				$resultado->bindParam(8,$idtbltiposervicio,PDO::PARAM_INT);
+				$resultado->bindParam(9,$tipodeservicioDefault,PDO::PARAM_INT);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+			} catch(PDOException $e){
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public static function MgetAllTblpaisANDTblciuad($idtblpais,$idtblciudad)
+	{
+		$consulta="SELECT * FROM tblpais 
+		INNER JOIN tblciudad ON tblciudad.tblpais_idtblpais=tblpais.idtblpais 
+		WHERE tblpais.idtblpais=? AND tblciudad.idtblciudad=?";
+			try{
+				$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+				$resultado->bindParam(1,$idtblpais,PDO::PARAM_INT);
+				$resultado->bindParam(2,$idtblciudad,PDO::PARAM_INT);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+			} catch(PDOException $e){
+				return false;
+			}
+	}
 
     //obtiene los productos todos sin el ingrediente especifico y solo de un proveedor
     public static function getTblproductoByTblproveedorAndTblclasifproduct($fechapedido,$idtblproveedor,$idtblclasifproduct){

@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Recursos utilizados
  */
@@ -46,10 +47,17 @@ if (!empty($_POST)){
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo);
-
+    if(!isset($_SESSION["idtblordencompra"]))
+    {   
+        $resultado = FuncionesBePickler::setTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion
+            ,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo);
+    }else
+    {
+        $resultado=$_SESSION["idtblordencompra"];
+    }
     if($resultado)
     {
+        $_SESSION["idtblordencompra"]=$resultado;
         /**
          * Si es éxitos le mandamos los resultados a quien lo solicito.
          */
