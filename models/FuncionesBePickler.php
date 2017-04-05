@@ -9290,6 +9290,46 @@ AND exists
         return $resultado=$arrayCompleto;                  
 
     }
+
+
+
+    //Funcion para obtener los datos de un cupon, siempre y cuando el cliente no lo haya utilizado
+    //tblcupondescuento TBCD
+    //tblhistcupondescuento TBHCD
+    /*Verifica si existe un cupon con de un cliente  */
+    public static function getTBCDAndsetCheckTBHCD($cupondescuento, $idtblcliente){
+
+    	$conexionPDO = ConexionDB::getInstance()->getDb(); 
+    	$activado =1;
+        
+        $check = "SELECT COUNT(*) FROM tblhistcupondescuento WHERE tblhistcupondescuento_cupon = ? AND tblhistcupondescuento_idtblcliente = ? ";
+
+		try{
+			$resultado = $conexionPDO->prepare($check);
+			$resultado->bindParam(1,$cupondescuento,PDO::PARAM_STR);
+			$resultado->bindParam(2,$idtblcliente,PDO::PARAM_INT);
+			$resultado->execute();
+			$existe = $resultado->fetchColumn(); //retorna el numero de count
+
+			if($existe>0){ //Existe un registro de uso de codigo con el cliente
+				return false;
+			}else{
+
+				$consulta = "SELECT * FROM tblcupondescuento WHERE tblcupondescuento_codigo = ? AND tblcupondescuento_activado = ?";
+
+				$resultado = $conexionPDO->prepare($consulta);
+				$resultado->bindParam(1,$cupondescuento,PDO::PARAM_STR);
+				$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+				$resultado->execute();
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+
+			}
+
+		}catch(PDOException $e){
+			return false;
+		}
+        
+    }
     
 }
 ?>
