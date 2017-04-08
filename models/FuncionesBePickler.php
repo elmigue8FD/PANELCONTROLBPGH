@@ -9350,6 +9350,78 @@ AND exists
 			return false;
 		}
     }
+
+    /*Se inserta u obtiene un cliente para el manejo de Fb(Redes Sociales)*/
+    public static function getTblclienteORsetTblcliente($clientenombre, $clienteapellidos,$clientecallenum,$clientecolonia,$clientecodipost,$clientenacimiento,$clientesexo,$clientetelf,$clienteext,$clientecel,$clienterfc,$cedulafiscal,$clienteciudad,$clientepais,$nombencargadoemp,$clienteemail,$clienteactivado,$clientepasswd,$emailcreo,$recibirinfo,$idtipocliente){
+
+    	$conexionPDO = ConexionDB::getInstance()->getDb();
+
+    	$consulta = "SELECT * FROM tblcliente WHERE tblcliente_email = ?";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$clienteemail,PDO::PARAM_STR);
+			$resultado->execute();
+			$existe= $resultado->rowCount(); //retorna el numero de registros
+
+			if($existe>0){
+
+				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+
+			}else{				
+		        $insert ="INSERT INTO tblcliente (tblcliente_nombre, tblcliente_apellidos,tblcliente_callenum,tblcliente_colonia,tblcliente_codipost,tblcliente_fchnacimiento,tblcliente_sexo,tblcliente_telefono,tblcliente_extencion,tblcliente_celular,tblcliente_rfc,tblcliente_cedulafiscal,tblcliente_ciudad,tblcliente_pais,tblcliente_nombencargadoempresa,tblcliente_email,tblcliente_activado,tblcliente_fchmodificacion,tblcliente_password,tblcliente_fchcreacion,tblcliente_emailusuacreo,tblcliente_emailusuamodifico,tblcliente_recibirInfo,tblcliente_idtbltipocliente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,NOW(),?,?,?,?)"; 
+		        
+		        try{
+					$resultado = $conexionPDO->prepare($insert);
+					$resultado->bindParam(1,$clientenombre,PDO::PARAM_STR);
+					$resultado->bindParam(2,$clienteapellidos,PDO::PARAM_STR);
+					$resultado->bindParam(3,$clientecallenum,PDO::PARAM_STR);
+					$resultado->bindParam(4,$clientecolonia,PDO::PARAM_STR);
+					$resultado->bindParam(5,$clientecodipost,PDO::PARAM_INT);
+					$resultado->bindParam(6,$clientenacimiento,PDO::PARAM_STR);
+					$resultado->bindParam(7,$clientesexo,PDO::PARAM_STR);
+					$resultado->bindParam(8,$clientetelf,PDO::PARAM_STR);
+					$resultado->bindParam(9,$clienteext,PDO::PARAM_STR);
+					$resultado->bindParam(10,$clientecel,PDO::PARAM_STR);
+					$resultado->bindParam(11,$clienterfc,PDO::PARAM_STR);
+					$resultado->bindParam(12,$cedulafiscal,PDO::PARAM_STR);
+					$resultado->bindParam(13,$clienteciudad,PDO::PARAM_STR);
+					$resultado->bindParam(14,$clientepais,PDO::PARAM_STR);
+					$resultado->bindParam(15,$nombencargadoemp,PDO::PARAM_STR);
+					$resultado->bindParam(16,$clienteemail,PDO::PARAM_STR);
+					$resultado->bindParam(17,$clienteactivado,PDO::PARAM_INT);
+					$resultado->bindParam(18,$clientepasswd,PDO::PARAM_STR);
+					$resultado->bindParam(19,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(20,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(21,$recibirinfo,PDO::PARAM_INT);
+					$resultado->bindParam(22,$idtipocliente,PDO::PARAM_INT);
+				    $resultado->execute();
+				    
+					if($resultado->rowCount()>0){
+
+						$id = $conexionPDO->lastInsertId();
+						
+						return $id;
+
+					}else{
+						return $resultado->rowCount();
+					}
+				} catch(PDOException $e){
+					return false;
+				}
+
+			}
+
+		}catch(PDOException $e){
+			return false;
+		}  
+    }
+
+
+
+
+
+
     
 }
 ?>
