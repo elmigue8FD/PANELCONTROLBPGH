@@ -9366,7 +9366,9 @@ AND exists
 
 			if($existe>0){
 
-				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+				$idtblcliente = $resultado->fetchAll(PDO::FETCH_COLUMN, 0); //retorna los campos del registro de la primera columna 
+
+				return $idtblcliente[0];
 
 			}else{				
 		        $insert ="INSERT INTO tblcliente (tblcliente_nombre, tblcliente_apellidos,tblcliente_callenum,tblcliente_colonia,tblcliente_codipost,tblcliente_fchnacimiento,tblcliente_sexo,tblcliente_telefono,tblcliente_extencion,tblcliente_celular,tblcliente_rfc,tblcliente_cedulafiscal,tblcliente_ciudad,tblcliente_pais,tblcliente_nombencargadoempresa,tblcliente_email,tblcliente_activado,tblcliente_fchmodificacion,tblcliente_password,tblcliente_fchcreacion,tblcliente_emailusuacreo,tblcliente_emailusuamodifico,tblcliente_recibirInfo,tblcliente_idtbltipocliente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,NOW(),?,?,?,?)"; 
