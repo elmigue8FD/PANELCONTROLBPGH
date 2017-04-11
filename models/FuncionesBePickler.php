@@ -1128,9 +1128,9 @@ class FuncionesBePickler{
     }
     
     /*Actualizar un cliente */
-    public static function setUpdateTblcliente($idtblcliente,$clientenombre, $clienteapellidos,$clientecallenum,$clientecolonia,$clientecodipost,$clientenacimiento,$clientesexo,$clientetelf,$clienteext,$clientecel,$clienterfc,$clienteciudad,$clientepais,$nombencargadoemp,$clienteemail,$clienteactivado,$clientepasswd,$emailmodifico,$recibirinfo,$idtipocliente){
+    public static function setUpdateTblcliente($idtblcliente,$clientenombre, $clienteapellidos,$clientecallenum,$clientecolonia,$clientecodipost,$clientenacimiento,$clientesexo,$clientetelf,$clienteext,$clientecel,$clienterfc,$cedulafiscal,$clienteciudad,$clientepais,$nombencargadoemp,$clienteemail,$clienteactivado,$clientepasswd,$emailmodifico,$recibirinfo,$idtipocliente){
         
-        $update ="UPDATE tblcliente SET tblcliente_nombre = ?, tblcliente_apellidos = ?,tblcliente_callenum = ?,tblcliente_colonia = ?,tblcliente_codipost = ?,tblcliente_fchnacimiento = ?,tblcliente_sexo = ?,tblcliente_telefono = ?,tblcliente_extencion = ?,tblcliente_celular = ?,tblcliente_rfc = ?,tblcliente_ciudad = ?,tblcliente_pais = ?,tblcliente_nombencargadoempresa = ?,tblcliente_email = ?,tblcliente_activado = ?,tblcliente_fchmodificacion = NOW(),tblcliente_password = ?,tblcliente_emailusamodifico = ?,tblcliente_recibirInfo = ? ,tblcliente_idtbltipocliente = ? WHERE idtblcliente = ? "; 
+        $update ="UPDATE tblcliente SET tblcliente_nombre = ?, tblcliente_apellidos = ?,tblcliente_callenum = ?,tblcliente_colonia = ?,tblcliente_codipost = ?,tblcliente_fchnacimiento = ?,tblcliente_sexo = ?,tblcliente_telefono = ?,tblcliente_extencion = ?,tblcliente_celular = ?,tblcliente_rfc = ?,tblcliente_cedulafiscal =?,tblcliente_ciudad = ?,tblcliente_pais = ?,tblcliente_nombencargadoempresa = ?,tblcliente_email = ?,tblcliente_activado = ?,tblcliente_fchmodificacion = NOW(),tblcliente_password = ?,tblcliente_emailusuamodifico = ?,tblcliente_recibirInfo = ? ,tbltipocliente_idtbltipocliente = ? WHERE idtblcliente = ? "; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
@@ -1145,16 +1145,17 @@ class FuncionesBePickler{
 			$resultado->bindParam(9,$clienteext,PDO::PARAM_STR);
 			$resultado->bindParam(10,$clientecel,PDO::PARAM_STR);
 			$resultado->bindParam(11,$clienterfc,PDO::PARAM_STR);
-			$resultado->bindParam(12,$clienteciudad,PDO::PARAM_STR);
-			$resultado->bindParam(13,$clientepais,PDO::PARAM_STR);
-			$resultado->bindParam(14,$nombencargadoemp,PDO::PARAM_STR);
-			$resultado->bindParam(15,$clienteemail,PDO::PARAM_STR);
-			$resultado->bindParam(16,$clienteactivado,PDO::PARAM_INT);
-			$resultado->bindParam(17,$clientepasswd,PDO::PARAM_STR);
-			$resultado->bindParam(18,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(19,$recibirinfo,PDO::PARAM_INT);
-			$resultado->bindParam(20,$idtipocliente,PDO::PARAM_INT);
-			$resultado->bindParam(21,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(12,$cedulafiscal,PDO::PARAM_STR);
+			$resultado->bindParam(13,$clienteciudad,PDO::PARAM_STR);
+			$resultado->bindParam(14,$clientepais,PDO::PARAM_STR);
+			$resultado->bindParam(15,$nombencargadoemp,PDO::PARAM_STR);
+			$resultado->bindParam(16,$clienteemail,PDO::PARAM_STR);
+			$resultado->bindParam(17,$clienteactivado,PDO::PARAM_INT);
+			$resultado->bindParam(18,$clientepasswd,PDO::PARAM_STR);
+			$resultado->bindParam(19,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(20,$recibirinfo,PDO::PARAM_INT);
+			$resultado->bindParam(21,$idtipocliente,PDO::PARAM_INT);
+			$resultado->bindParam(22,$idtblcliente,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectados por el insert
 		} catch(PDOException $e){

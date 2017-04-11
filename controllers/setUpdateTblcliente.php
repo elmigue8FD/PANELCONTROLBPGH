@@ -38,7 +38,7 @@ if (!empty($_POST)){
 	$solicitadoBy=$_POST["solicitadoBy"];
     $idtblcliente=$_POST["idtblcliente"];
     $clientenombre=$_POST["clientenombre"];
-    $clientecallenums=$_POST['clienteapellidos'];
+    $clienteapellidos=$_POST['clienteapellidos'];
     $clientecallenum=$_POST['clientecallenum'];
     $clientecolonia=$_POST['clientecolonia'];
     $clientecodipost=$_POST['clientecodipost'];
@@ -48,6 +48,7 @@ if (!empty($_POST)){
     $clienteext=$_POST['clienteext'];
     $clientecel=$_POST['clientecel'];
     $clienterfc=$_POST['clienterfc'];
+    $cedulafiscal=$_POST['cedulafiscal'];
     $clienteciudad=$_POST['clienteciudad'];
     $clientepais=$_POST['clientepais'];
     $nombencargadoemp=$_POST['nombencargadoemp'];
@@ -60,7 +61,7 @@ if (!empty($_POST)){
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setUpdateTblcliente($idtblcliente,$clientenombre, $clienteapellidos,$clientecallenum,$clientecolonia,$clientecodipost,$clientenacimiento,$clientesexo,$clientetelf,$clienteext,$clientecel,$clienterfc,$clienteciudad,$clientepais,$nombencargadoemp,$clienteemail,$clienteactivado,$clientepasswd,$emailmodifico,$recibirinfo,$idtipocliente);
+    $resultado = FuncionesBePickler::setUpdateTblcliente($idtblcliente,$clientenombre, $clienteapellidos,$clientecallenum,$clientecolonia,$clientecodipost,$clientenacimiento,$clientesexo,$clientetelf,$clienteext,$clientecel,$clienterfc,$cedulafiscal,$clienteciudad,$clientepais,$nombencargadoemp,$clienteemail,$clienteactivado,$clientepasswd,$emailmodifico,$recibirinfo,$idtipocliente);
 
     if($resultado)
     {
