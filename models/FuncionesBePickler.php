@@ -9420,6 +9420,25 @@ AND exists
 		}  
     }
 
+    /*se obtiene el registro del cliente por emial y password */
+	public static function getTblclienteBySession($clienteemail,$clientepassword){
+	    
+	    $activado=1;
+		$consulta = "SELECT * FROM tblcliente WHERE tblcliente_email = ? AND tblcliente_password = ? AND tblcliente_activado = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$clienteemail,PDO::PARAM_STR);
+			$resultado->bindParam(2,$clientepassword,PDO::PARAM_STR);
+			$resultado->bindParam(3,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
 
 
 
