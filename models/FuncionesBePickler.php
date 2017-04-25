@@ -9439,6 +9439,24 @@ AND exists
 		}
 	}
 
+	/*Funcion para obtener todas la ordenes hechas por el cliente */
+	public static function getAllTblordencompraByidcliente($idtblcliente){
+		
+		$pagado=1;
+		$consulta = "SELECT * FROM tblordencompra TOC WHERE TOC.tblordencompra_statuspagado = ? AND TOC.tblcliente_idtblcliente = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$pagado,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblcliente,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
 
 
 
