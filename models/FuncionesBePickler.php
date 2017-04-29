@@ -9509,6 +9509,49 @@ AND exists
 		}
 		
 	}
+	
+
+	/*Funcion para obtner los productos complementarios para carrito */
+	public static function getAllTblproductcomplemByTblordencompra($idtblordencompra,$fechapedido){
+
+		$fechapedidoingresada = new DateTime($fechapedido);
+        $fechahoy = new DateTime("now");
+        $interval= $fechahoy->diff($fechapedidoingresada);
+        $diasMinimos= $interval->format('%d');
+        
+        $diasemana= $fechapedidoingresada->format('l');        
+        
+       if($fechapedidoingresada == $fechahoy){ 
+            $tipodepedido= 1; //pedidoparahoy
+            $stock=1;
+        }else{
+            $tipodepedido= 2; //pedidoparaotrodia
+            $stock=0;
+        }
+
+
+		$activado=1;
+		$consulta = "SELECT TPC.*, TP.* FROM tblproductcomplem TPC
+						INNER JOIN tblproveedor TPV ON TPC.tblproveedor_idtblproveedor = TPV.idtblproveedor
+						INNER JOIN tblproducto TP ON TPV.idtblproveedor = TP.tblproveedor_idtblproveedor 
+						INNER JOIN tblproductdetalle TPD ON TP.idtblproducto = TPD.tblproducto_idtblproducto
+					INNER JOIN tblcarritoproduct TCP ON TPD.idtblproductdetalle = TCP.tblcarritoproduct_idtblproductdetalle
+						WHERE TCP.tblcarritoproduct_idtblordencompra = ? AND 
+						      TPC.tblproductcomplem_activado = ? AND 
+						      TPC.tblproductcomplem_stock >= ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(3,$stock,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
 
 
 
