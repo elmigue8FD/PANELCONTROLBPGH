@@ -9531,14 +9531,15 @@ AND exists
 
 
 		$activado=1;
-		$consulta = "SELECT TPC.*, TP.* FROM tblproductcomplem TPC
-						INNER JOIN tblproveedor TPV ON TPC.tblproveedor_idtblproveedor = TPV.idtblproveedor
-						INNER JOIN tblproducto TP ON TPV.idtblproveedor = TP.tblproveedor_idtblproveedor 
-						INNER JOIN tblproductdetalle TPD ON TP.idtblproducto = TPD.tblproducto_idtblproducto
-					INNER JOIN tblcarritoproduct TCP ON TPD.idtblproductdetalle = TCP.tblcarritoproduct_idtblproductdetalle
-						WHERE TCP.tblcarritoproduct_idtblordencompra = ? AND 
-						      TPC.tblproductcomplem_activado = ? AND 
-						      TPC.tblproductcomplem_stock >= ?";
+		$consulta = "SELECT TPC.*, TPV.* FROM tblproductcomplem TPC
+			INNER JOIN tblproveedor TPV ON TPC.tblproveedor_idtblproveedor = TPV.idtblproveedor
+			INNER JOIN tblproducto TP ON TPV.idtblproveedor = TP.tblproveedor_idtblproveedor 
+			INNER JOIN tblproductdetalle TPD ON TP.idtblproducto = TPD.tblproducto_idtblproducto
+			INNER JOIN tblcarritoproduct TCP ON TPD.idtblproductdetalle = TCP.tblcarritoproduct_idtblproductdetalle
+				WHERE TCP.tblcarritoproduct_idtblordencompra = ? AND 
+					  TPC.tblproductcomplem_activado = ? AND 
+					  TPC.tblproductcomplem_stock >= ? 
+				GROUP BY TPC.idtblproductcomplem";
 		
 		try{
 
