@@ -7645,29 +7645,32 @@ class FuncionesBePickler{
         
         if($idtbltipodeservicio==1){ //Entrega en Pasteleria
             $consulta = "SELECT TC.* FROM tblcolonia TC
-				                        INNER JOIN tblproveedor TP ON TC.idtblcolonia = TP.tblcolonia_idtblcolonia 
-				                        INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
-				                        INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto 
-                                        INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
-                                        INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
-			                        WHERE TC.tblciudad_idtblciudad = ?		
-                				         AND TP.tblproveedor_activado = ?
-                				         AND TPR.tblproducto_activado = ? 
-                				         AND TPRD.tblproductdetalle_activado = ?
-                				         AND TPRD.tblproductdetalle_stock >= ?
-                				         AND TPRD.tblproductdetalle_diaselaboracion <= ?
-                                         AND TDS.tbldiasemana_dia = ?
-                					GROUP BY TC.idtblcolonia";
+			INNER JOIN tblproveedor TP ON TC.idtblcolonia = TP.tblcolonia_idtblcolonia 
+			INNER JOIN tblproducto TPR ON TPR.tblproveedor_idtblproveedor = TP.idtblproveedor 
+			INNER JOIN tblproductdetalle TPRD ON TPR.idtblproducto = TPRD.tblproducto_idtblproducto 
+            INNER JOIN tbldiaprovservicio TDP ON TDP.tblproveedor_idtblproveedor = TP.idtblproveedor
+            INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDP.tbldiasemana_idtbldiasemana
+			    WHERE TC.tblciudad_idtblciudad = ?		
+                	AND TP.tblproveedor_activado = ?
+                	AND TPR.tblproducto_activado = ?
+                	AND (TP.tbltiposervicio_idtbltiposervicio = ? OR TP.tbltiposervicio_idtbltiposervicio = ? ) 
+                	AND TPRD.tblproductdetalle_activado = ?
+                	AND TPRD.tblproductdetalle_stock >= ?
+                	AND TPRD.tblproductdetalle_diaselaboracion <= ?
+                    AND TDS.tbldiasemana_dia = ?
+                	GROUP BY TC.idtblcolonia";
 					    
 			try{
 			    $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
 			    $resultado->bindParam(1,$idtblciudad,PDO::PARAM_INT);
 			    $resultado->bindParam(2,$activado,PDO::PARAM_INT);
 			    $resultado->bindParam(3,$activado,PDO::PARAM_INT);
-			    $resultado->bindParam(4,$activado,PDO::PARAM_INT);
-			    $resultado->bindParam(5,$stock,PDO::PARAM_INT);
-			    $resultado->bindParam(6,$diasMinimos,PDO::PARAM_INT);
-			    $resultado->bindParam(7,$diasemana,PDO::PARAM_STR);
+			    $resultado->bindParam(4,$idtbltipodeservicio,PDO::PARAM_INT);
+			    $resultado->bindParam(5,$tipodeservicioCompleto,PDO::PARAM_INT);
+			    $resultado->bindParam(6,$activado,PDO::PARAM_INT);
+			    $resultado->bindParam(7,$stock,PDO::PARAM_INT);
+			    $resultado->bindParam(8,$diasMinimos,PDO::PARAM_INT);
+			    $resultado->bindParam(9,$diasemana,PDO::PARAM_STR);
 			    $resultado->execute();
 			    return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
 			    } catch(PDOException $e){
