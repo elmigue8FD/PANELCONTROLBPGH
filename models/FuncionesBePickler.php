@@ -9760,6 +9760,54 @@ AND exists
         
     }
 
+    /*Funcion para obtner las novedades activas por una intervalo de 1 mes*/
+	public static function getAllTblnovedadesAct(){
+
+		$fechahoy = new DateTime("now");
+		$fechahoyformato = $fechahoy->format('Y-m-d');
+		$fechainicio = $fechahoy->sub(new DateInterval('P30D'));
+		$fechainicioformato = $fechainicio->format('Y-m-d');
+		$activado=1;
+		$consulta = "SELECT * FROM tblnovedades 
+						WHERE tblnovedades_activado =?
+						AND ((tblnovedades_fchcreacion BETWEEN ? AND ?) 
+						  OR (tblnovedades_fchmodificacion BETWEEN ? AND ?) 
+						)
+						";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(2,$fechainicioformato,PDO::PARAM_STR);
+			$resultado->bindParam(3,$fechahoyformato,PDO::PARAM_STR);
+			$resultado->bindParam(4,$fechainicioformato,PDO::PARAM_STR);
+			$resultado->bindParam(5,$fechahoyformato,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
+	/*Funcion para obtner los testimonios activas */
+	public static function getAllTbltestimonioAct(){
+
+		
+		$activado=1;
+		$consulta = "SELECT * FROM tbltestimonio WHERE tbltestimonio_activado =?	";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
 
 
 
