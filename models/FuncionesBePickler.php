@@ -146,7 +146,7 @@ class FuncionesBePickler{
 	public static function setTblciudad($nombreciudad, $activado, $idtblpais, $emailcreo){
 
 		$insert ="INSERT INTO tblciudad (tblciudad_nombre, tblciudad_activado, tblpais_idtblpais,tblciudad_fchmodificacion, tblciudad_fchcreacion, tblciudad_emailusuacreo, tblciudad_emailusuamodifico) VALUES (?,?,?,NOW(),NOW(),?,?)";
-    
+
 		try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
 			$resultado->bindParam(1,$nombreciudad,PDO::PARAM_STR);
@@ -181,8 +181,7 @@ class FuncionesBePickler{
 	/*Actualizar Ciudad*/
 	public static function setUpdateTblciudad($idtblciudad, $nombreciudad, $activado,$idtblpais, $emailmodifico){
 
-		$update = "UPDATE tblciudad SET tblciudad_nombre = ?, tblciudad_activado = ?,tblpais_idtblpais = ?, 
-		          tblciudad_fchmodificacion = NOW(), tblciudad_emailusuamodifico= ? WHERE idtblciudad = ?";
+		$update = "UPDATE tblciudad SET tblciudad_nombre = ?, tblciudad_activado = ?,tblpais_idtblpais = ?, tblciudad_fchmodificacion = NOW(), tblciudad_emailusuamodifico= ? WHERE idtblciudad = ?";
 
 		try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
@@ -301,7 +300,7 @@ class FuncionesBePickler{
 	public static function getCheckTblcolonia($nombrecolonia, $idtblciudad){
 
 		$check = "SELECT COUNT(*) FROM tblcolonia WHERE tblcolonia_nombre = ? AND tblciudad_idtblciudad= ?";
-                 
+
 		try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
 			$resultado->bindParam(1,$nombrecolonia,PDO::PARAM_STR);
@@ -9505,36 +9504,6 @@ AND exists
 		}
 		
 	}
-<<<<<<< HEAD
-     
-	 //.......................agregadas.............//
-    /*Muestra en numero el total de las colonias registradas en base a una ciudad en especifica */
-    public static function getCountAllTblcoloniasByTblCiudad($tblciudad_idtblciudad){
-        
-        $consulta = "SELECT COUNT(*) FROM tblcolonia WHERE tblciudad_idtblciudad =?"; 
-		try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
-			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
-			$resultado->execute();
-		   return $resultado->fetchColumn(0); //retorna el numero de count		
-		}catch(PDOException $e){
-			return false;
-		}
-    }
-	
-	/*Muestra en numero el total ciudades registradas */
-    public static function getCountAllTblCiudad(){ 
-        
-        $consulta = "SELECT COUNT(*) FROM tblciudad "; 
-		try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
-			$resultado->execute();
-		   return $resultado->fetchColumn(0); //retorna el numero de count		
-		}catch(PDOException $e){
-			return false;
-		}
-    }
-=======
 	
 
 	/*Funcion para obtner los productos complementarios para carrito */
@@ -9838,119 +9807,13 @@ AND exists
 			return false;
 		}
 	}
->>>>>>> origin/master
 
-    /*Consultar todas las Ciudades (Este Activo o Inactivo) con nombre del pais al que pertenecen**/
-	public static function getAllTblciudadByTblPais(){
-		
-		$consulta = "SELECT TC.*,TP.* FROM tblciudad TC 
-                     INNER JOIN tblpais TP ON TP.idtblpais=TC.tblpais_idtblpais
-					 ORDER BY TC.tblciudad_nombre ASC";
 
-		try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
-			$resultado->execute();
-			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
-		} catch(PDOException $e){
-			return false;
-		}
-	}
-	
-	/*Actualizar el estatus de un registro en tblciudad*/
-	 public static function setUpdateTblCiudadEstatus($idtblciudad,$activado,$emailmodifico){
-        
-        $insert ="UPDATE tblciudad SET tblciudad_activado = ?,tblciudad_fchmodificacion = NOW(),
-		          tblciudad_emailusuamodifico = ? WHERE idtblciudad= ?"; 
-        
-        try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);			
-			$resultado->bindParam(1,$activado,PDO::PARAM_INT);			
-			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(3,$idtblciudad,PDO::PARAM_INT);
-			$resultado->execute();
-			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
-		} catch(PDOException $e){
-			return false;
-		}
-    }
 
-	 /*Actualizar Ciudad pero no el estatus*/
-	public static function setUpdateTblCiudadSinEst($idtblciudad, $nombreciudad,$idtblpais, $emailmodifico){
 
-		$update = "UPDATE tblciudad SET tblciudad_nombre = ?,tblpais_idtblpais = ?, 
-		          tblciudad_fchmodificacion = NOW(), tblciudad_emailusuamodifico= ? WHERE idtblciudad = ?";
-      
-		try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
-			$resultado->bindParam(1,$nombreciudad,PDO::PARAM_STR);			
-			$resultado->bindParam(2,$idtblpais,PDO::PARAM_INT);
-			$resultado->bindParam(3,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(4,$idtblciudad,PDO::PARAM_INT);
-			$resultado->execute();
-			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
-		}catch(PDOException $e){
-			return false;
-		}
-	}
 
-	
-	 /*Obtiene todas las colonias en base a la ciudad a la que pertenece*/
-    public static function getAllTblcoloniaByTblciudadPertenecen($tblciudad_idtblciudad){       
-         $consulta = "SELECT TC.*,TD.* FROM tblcolonia TC
-               INNER JOIN tblciudad TD ON TD.idtblciudad = TC.tblciudad_idtblciudad               
-               WHERE TC.tblciudad_idtblciudad= ? ORDER BY TC.tblcolonia_nombre ASC;";
-		
 
-		try{
-
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
-			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
-			$resultado->execute();
-			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
-		} catch(PDOException $e){
-			return false;
-		}
-	}
-	
-	
-	/*Actualizar el estatus de un registro en tblcolonia*/
-	 public static function setUpdateTblColoniaEstatus($idtblcolonia,$activado,$emailmodifico){
-        
-        $insert ="UPDATE tblcolonia SET tblcolonia_activado = ?,tblcolonia_fchmodificacion = NOW(),
-		         tblcolonia_emailusuamodifico = ? WHERE idtblcolonia= ?"; 
-        
-        try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);			
-			$resultado->bindParam(1,$activado,PDO::PARAM_INT);			
-			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(3,$idtblcolonia,PDO::PARAM_INT);
-			$resultado->execute();
-			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
-		} catch(PDOException $e){
-			return false;
-		}
-    }
-	
-	/*Actualizar Colonia pero no el estatus*/
-	public static function setUpdateTblcoloniaSinEst($idtblcolonia, $nombrecolonia,$codipost,$idtblciudad, $emailmodifico){
-
-		$update = "UPDATE tblcolonia SET tblcolonia_nombre = ?,tblcolonia_codipost = ?, tblciudad_idtblciudad = ?, tblcolonia_fchmodificacion = NOW(), tblcolonia_emailusuamodifico= ? WHERE idtblcolonia = ?";
-
-		try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
-			$resultado->bindParam(1,$nombrecolonia,PDO::PARAM_STR);
-			$resultado->bindParam(2,$codipost,PDO::PARAM_INT);			
-			$resultado->bindParam(3,$idtblciudad,PDO::PARAM_INT);
-			$resultado->bindParam(4,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(5,$idtblcolonia,PDO::PARAM_INT);
-			$resultado->execute();
-			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
-		}catch(PDOException $e){
-			return false;
-		}
-	}
-	
-   //....... 
+    
 }
 ?>
 
