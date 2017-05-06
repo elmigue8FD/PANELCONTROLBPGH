@@ -51,8 +51,7 @@
 					<div class="md-card">
 						
                         <div class="user_content">
-						<form method="post" action="facturas/facturas.php">
-						   <button type="submit">GENERAR FACTURA PDF</button>  
+						
 							 <ul>                
 									<div class="uk-grid uk-margin-medium-top uk-margin-large-bottom" data-uk-grid-margin >
                                       
@@ -61,8 +60,7 @@
 								   </div> 
 								   
 								   </ul>  
-								   <input type="hidden" name="generar_factura" value="true">
-								   </form>
+								 
 								   </div> </div> </div>				
             </div>
 			
@@ -74,7 +72,37 @@
   <?php include('../codigo_general/script_commonPB.php'); ?>  
   
    <!-- archivos JS-->
-  <script type="text/javascript" src="hh.js">  
+  <script type="text/javascript">
+     $(window).ready(function()
+    {  //console.log('pagina lista');
+       paraHora();
+    });
+	
+	
+	 /* Create by: Reyna Maria Martinez Vazquez*/
+    function paraHora(){
+		
+		
+    	$.ajax({ 
+       method: "POST",
+       dataType:"json",
+      url: "./../../controllers/getAllTblhora.php",data: {solicitadoBy:"WEB"}	 
+	  })
+            .done(function(msg){
+			//console.log(msg);
+			$("#mostrarhoras").html("");
+                 $.each(msg.datos, function (i,item)
+  {tblhora_hora=item.tblhora_hora;
+  $("#mostrarhoras").append('<ul class="md-list md-list-addon" ><li>'+
+  '<div class="md-list-addon-element"><i class="md-list-addon-icon material-icons md-24">&#xe8ae;</i>'+
+  ' </div><div class="md-list-content"><span class="uk-text-small uk-text-muted">_________</span>'+
+  '<span class="md-list-heading">'+tblhora_hora+'</span> </div></li></ul>');
+                                                                                                                                                                                                                   
+				 });                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      //.always(function(){  console.log("always");});
+    }	  
   	
   </script> 
   
