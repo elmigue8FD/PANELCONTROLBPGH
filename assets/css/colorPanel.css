@@ -1,0 +1,68 @@
+#header_main{  background:#dd5465; }
+
+.user_heading{background:#dd5465;}
+
+ 
+  
+.oculto{display:none;}
+
+.ye{  background-color:#dd5465;
+     color:white;
+ }
+ 
+ #botonModificar{  background-color:#dd5465;
+     color:white;
+ }
+ 
+ 
+#bnoti{  background-color:#dd5465;
+      color:white;
+ }
+ 
+ .ye2{  background-color:#999999;
+      
+ }
+ 
+ #tama{ /*width:175px; {text-transform:uppercase;}
+       height:95px;	*/  
+	   width:auto; 
+       max-height:90px;
+	   }
+	   
+	   .tama{ /*width:175px; {text-transform:uppercase;}
+       height:95px;	*/  
+	   width:auto; 
+       max-height:140px;
+	   }
+	   
+	   
+	   
+	   #tama3{ /*width:175px; {text-transform:uppercase;}
+       height:95px;	*/  
+	   width:auto; 
+       max-height:140px;
+	   }
+	   
+	   #tama2{ /*width:175px; 
+       height:95px;	*/  
+	   width:auto; 
+       max-height:95px;
+	   }
+	   
+ #tamletra{ font-size: 3pt;} 
+ .md-fab.md-fab-accent{/*background:#7cb342*/ background-color:#dd5465;}
+ 
+ 
+ .md-fab {
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+   } 
+   
+   .arriba {	
+	margin-top: 35px;	
+   } 
+.usuarios {
+	margin-top: 25px;	
+}
+
