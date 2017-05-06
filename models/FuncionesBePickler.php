@@ -9809,6 +9809,1703 @@ AND exists
 	}
 
 
+	 /*Muestra en numero el total de las colonias registradas en base a una ciudad en especifica */
+    public static function getCountAllTblcoloniasByTblCiudad($tblciudad_idtblciudad){
+        
+        $consulta = "SELECT COUNT(*) FROM tblcolonia WHERE tblciudad_idtblciudad =?"; 
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Muestra en numero el total ciudades registradas */
+    public static function getCountAllTblCiudad(){ 
+        
+        $consulta = "SELECT COUNT(*) FROM tblciudad "; 
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+
+    /*Consultar todas las Ciudades (Este Activo o Inactivo) con nombre del pais al que pertenecen**/
+	public static function getAllTblciudadByTblPais(){
+		
+		$consulta = "SELECT TC.*,TP.* FROM tblciudad TC 
+                     INNER JOIN tblpais TP ON TP.idtblpais=TC.tblpais_idtblpais
+					 ORDER BY TC.tblciudad_nombre ASC";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Actualizar el estatus de un registro en tblciudad*/
+	 public static function setUpdateTblCiudadEstatus($idtblciudad,$activado,$emailmodifico){
+        
+        $insert ="UPDATE tblciudad SET tblciudad_activado = ?,tblciudad_fchmodificacion = NOW(),
+		          tblciudad_emailusuamodifico = ? WHERE idtblciudad= ?"; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);			
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);			
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+
+	 /*Actualizar Ciudad pero no el estatus*/
+	public static function setUpdateTblCiudadSinEst($idtblciudad, $nombreciudad,$idtblpais, $emailmodifico){
+
+		$update = "UPDATE tblciudad SET tblciudad_nombre = ?,tblpais_idtblpais = ?, 
+		          tblciudad_fchmodificacion = NOW(), tblciudad_emailusuamodifico= ? WHERE idtblciudad = ?";
+      
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$nombreciudad,PDO::PARAM_STR);			
+			$resultado->bindParam(2,$idtblpais,PDO::PARAM_INT);
+			$resultado->bindParam(3,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(4,$idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+
+	
+	 /*Obtiene todas las colonias (activo o inactivo) en base a la ciudad a la que pertenece*/
+    public static function getAllTblcoloniaByTblciudadPertenecen($tblciudad_idtblciudad){       
+         $consulta = "SELECT TC.*,TD.* FROM tblcolonia TC
+               INNER JOIN tblciudad TD ON TD.idtblciudad = TC.tblciudad_idtblciudad               
+               WHERE TC.tblciudad_idtblciudad= ? ORDER BY TC.tblcolonia_nombre ASC;";
+		
+            
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Actualizar el estatus de un registro en tblcolonia*/
+	 public static function setUpdateTblColoniaEstatus($idtblcolonia,$activado,$emailmodifico){
+        
+        $insert ="UPDATE tblcolonia SET tblcolonia_activado = ?,tblcolonia_fchmodificacion = NOW(),
+		         tblcolonia_emailusuamodifico = ? WHERE idtblcolonia= ?"; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);			
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);			
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idtblcolonia,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Actualizar Colonia pero no el estatus*/
+	public static function setUpdateTblcoloniaSinEst($idtblcolonia, $nombrecolonia,$codipost,$idtblciudad, $emailmodifico){
+
+		$update = "UPDATE tblcolonia SET tblcolonia_nombre = ?,tblcolonia_codipost = ?, tblciudad_idtblciudad = ?, tblcolonia_fchmodificacion = NOW(), tblcolonia_emailusuamodifico= ? WHERE idtblcolonia = ?";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$nombrecolonia,PDO::PARAM_STR);
+			$resultado->bindParam(2,$codipost,PDO::PARAM_INT);			
+			$resultado->bindParam(3,$idtblciudad,PDO::PARAM_INT);
+			$resultado->bindParam(4,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(5,$idtblcolonia,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+
+   /*Muestra en numero el total de los proveedores registrados en base a una ciudad en especifica */
+    public static function getCountAllTblproveedorByTblCiudad($tblciudad_idtblciudad){
+        
+        $consulta = "SELECT COUNT(*) FROM tblproveedor TP
+                 INNER JOIN tblcolonia TC ON TP.tblcolonia_idtblcolonia=TC.idtblcolonia
+                 WHERE TC.tblciudad_idtblciudad =?"; 
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	
+	/*Muestra todas las Ciudades (Activas) y que tengan colonias **/
+	public static function getAllTblciudadActAByColonia(){
+		
+		$activado=1;
+		$consulta = "SELECT Distinct(DA.tblciudad_nombre),DA.idtblciudad 
+		             FROM tblciudad DA 
+	INNER JOIN tblcolonia TC ON DA.idtblciudad=TC.tblciudad_idtblciudad       
+                     WHERE DA.tblciudad_activado = ?";						  
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
+	
+	
+	/*Consulta todas las Colonias (activas) en base a la ciudad a la que pertenecen*/
+	public static function getAllTblcoloniaByTblCiudad($idtblciudad){	             
+		$activo=1;
+		$consulta = "SELECT TCO.* FROM tblcolonia TCO 
+                    INNER JOIN tblciudad TCD ON TCO.tblciudad_idtblciudad=TCD.idtblciudad
+                    WHERE TCO.tblcolonia_activado=? AND TCD.idtblciudad =?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activo,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Obtiene todos los proveedores en base a la ciudad a la que pertenece*/
+    public static function getAllTblproveedorbyTblciudad($tblciudad_idtblciudad){       
+         $consulta = "SELECT TP.*,TC.*,TPED.*,TS.*,
+                      TA.*,TCDD.* FROM tblproveedor TP                      
+               INNER JOIN tblcolonia TC ON TP.tblcolonia_idtblcolonia=TC.idtblcolonia
+			   INNER JOIN tblciudad TCDD ON TCDD.idtblciudad=TC.tblciudad_idtblciudad
+               INNER JOIN tbltipopedido TPED ON TP.tbltipopedido_idtbltipopedido=TPED.idtbltipopedido
+               INNER JOIN tbltiposervicio TS ON TP.tbltiposervicio_idtbltiposervicio = TS.idtbltiposervicio
+               INNER JOIN tblpaquete TA ON TP.tblpaquete_idtblpaquete = TA.idtblpaquete
+               WHERE TC.tblciudad_idtblciudad= ? ORDER BY TP.tblproveedor_nombre ASC";		
+
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Borrar datos del proveedor */
+	public static function setDeleteTblproveedor1($id,$email,$cel,$banco,$clave,$titular,$rfc,$tel,$ext,$dire,$emailmodifico){
+                                                 
+		$update = "UPDATE tblproveedor SET 		
+		tblproveedor_direccion=?,tblproveedor_telefonotienda=?,tblproveedor_extencion=?,
+		tblproveedor_celular=?,tblproveedor_email=?,
+		tblproveedor_rfc=?,tblproveedor_claveintban=?,tblproveedor_banco=?,tblproveedor_nombretitucuen=?,
+		tblproveedor_fchmodificacion = NOW(), tblproveedor_emailusuamodifico =? 
+		WHERE idtblproveedor = ?";
+     	
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);			
+			$resultado->bindParam(1,$dire,PDO::PARAM_STR);			
+			$resultado->bindParam(2,$tel,PDO::PARAM_STR);
+            $resultado->bindParam(3,$ext,PDO::PARAM_STR);
+            $resultado->bindParam(4,$cel,PDO::PARAM_STR);
+            $resultado->bindParam(5,$email,PDO::PARAM_STR);           
+            $resultado->bindParam(6,$rfc,PDO::PARAM_STR);
+            $resultado->bindParam(7,$clave,PDO::PARAM_STR);
+            $resultado->bindParam(8,$banco,PDO::PARAM_STR);	
+            $resultado->bindParam(9,$titular,PDO::PARAM_STR);            		
+			$resultado->bindParam(10,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(11,$id,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*muestra los datos del proveedor para posteriormente modificar sus datos */
+    public static function getTblproveedorByCiudad($idtblproveedor){
+	    
+		$consulta = "SELECT TBP.*,TBCO.* FROM tblproveedor TBP
+                    INNER JOIN tblcolonia TBCO ON TBCO.idtblcolonia=TBP.tblcolonia_idtblcolonia   
+                    WHERE TBP.idtblproveedor = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Actualizar el estatus de un registro en tblproveedor*/
+	 public static function setUpdateTblproveedorEstatus($idtblproveedor,$activado,$emailmodifico){
+        
+        $insert ="UPDATE tblproveedor SET tblproveedor_activado = ?,tblproveedor_fchmodificacion = NOW(),tblproveedor_emailusuamodifico = ? WHERE 	idtblproveedor  = ?"; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);			
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);			
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	
+	/*Insertar un registro en tblproveedor*/
+	 public static function setTblproveedor2($nombreprov,$srclogo,$descripcion,$direccion,$seo,$telftienda,$extencion,$celular,$email,$rfc,$clave,$banco,$titular,$activado,$idtbltipopedido,$idtbltiposervicio,$idtblcolonia,$idtblpaquete,$emailcreo){
+                    
+        $insert ="INSERT INTO tblproveedor (tblproveedor_nombre,tblproveedor_srclogo,tblproveedor_descripcion,tblproveedor_direccion,tblproveedor_seo,tblproveedor_telefonotienda,tblproveedor_extencion,tblproveedor_celular,tblproveedor_email,tblproveedor_rfc,tblproveedor_claveintban,tblproveedor_banco,tblproveedor_nombretitucuen,tblproveedor_activado,tbltipopedido_idtbltipopedido,tbltiposervicio_idtbltiposervicio,tblcolonia_idtblcolonia,tblpaquete_idtblpaquete,tblproveedor_fchmodificacion,tblproveedor_fchcreacion,tblproveedor_emailusuacreo,tblproveedor_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$nombreprov,PDO::PARAM_STR);
+			$resultado->bindParam(2,$srclogo,PDO::PARAM_STR);
+			$resultado->bindParam(3,$descripcion,PDO::PARAM_STR);
+			$resultado->bindParam(4,$direccion,PDO::PARAM_STR);
+			$resultado->bindParam(5,$seo,PDO::PARAM_STR);
+			$resultado->bindParam(6,$telftienda,PDO::PARAM_STR);
+			$resultado->bindParam(7,$extencion,PDO::PARAM_STR);
+			$resultado->bindParam(8,$celular,PDO::PARAM_STR);
+			$resultado->bindParam(9,$email,PDO::PARAM_STR); 
+			$resultado->bindParam(10,$rfc,PDO::PARAM_STR);
+			$resultado->bindParam(11,$clave,PDO::PARAM_STR);
+			$resultado->bindParam(12,$banco,PDO::PARAM_STR);
+			$resultado->bindParam(13,$titular,PDO::PARAM_STR);
+			$resultado->bindParam(14,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(15,$idtbltipopedido,PDO::PARAM_INT);
+			$resultado->bindParam(16,$idtbltiposervicio,PDO::PARAM_INT);
+			$resultado->bindParam(17,$idtblcolonia,PDO::PARAM_INT);
+			$resultado->bindParam(18,$idtblpaquete,PDO::PARAM_INT);
+			$resultado->bindParam(19,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(20,$emailcreo,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	
+	
+	/*Actualizar un registro en tblproveedor (aqui no cambia el estatus)*/
+	 public static function setUpdateTblproveedor2($idtblproveedor,$nombreprov,$srclogo,$descripcion,$direccion,$seo,$telftienda,$extencion,$celular,$email,$rfc,$clave,$banco,$titular,$idtbltipopedido,$idtbltiposervicio,$idtblcolonia,$idtblpaquete,$emailmodifico){
+        
+        $insert ="UPDATE tblproveedor SET tblproveedor_nombre = ?,
+		tblproveedor_srclogo = ?,tblproveedor_descripcion = ?,tblproveedor_direccion = ?,
+		tblproveedor_seo = ?,tblproveedor_telefonotienda = ?,tblproveedor_extencion = ?,
+		tblproveedor_celular = ?,tblproveedor_email = ?, tblproveedor_rfc = ?,
+        tblproveedor_claveintban = ?, tblproveedor_banco = ?,tblproveedor_nombretitucuen = ?,		
+		tbltipopedido_idtbltipopedido = ?,	tbltiposervicio_idtbltiposervicio = ?,
+		tblcolonia_idtblcolonia = ?,tblpaquete_idtblpaquete = ?,
+		tblproveedor_fchmodificacion = NOW(),tblproveedor_emailusuamodifico = ? WHERE 	idtblproveedor  = ?"; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$nombreprov,PDO::PARAM_STR);
+			$resultado->bindParam(2,$srclogo,PDO::PARAM_STR);
+			$resultado->bindParam(3,$descripcion,PDO::PARAM_STR);
+			$resultado->bindParam(4,$direccion,PDO::PARAM_STR);
+			$resultado->bindParam(5,$seo,PDO::PARAM_STR);
+			$resultado->bindParam(6,$telftienda,PDO::PARAM_STR);
+			$resultado->bindParam(7,$extencion,PDO::PARAM_STR);
+			$resultado->bindParam(8,$celular,PDO::PARAM_STR);
+			$resultado->bindParam(9,$email,PDO::PARAM_STR);			
+			$resultado->bindParam(10,$rfc,PDO::PARAM_STR);	
+			$resultado->bindParam(11,$clave,PDO::PARAM_STR);	
+			$resultado->bindParam(12,$banco,PDO::PARAM_STR);	
+			$resultado->bindParam(13,$titular,PDO::PARAM_STR);			
+			$resultado->bindParam(14,$idtbltipopedido,PDO::PARAM_INT);
+			$resultado->bindParam(15,$idtbltiposervicio,PDO::PARAM_INT);
+			$resultado->bindParam(16,$idtblcolonia,PDO::PARAM_INT);
+			$resultado->bindParam(17,$idtblpaquete,PDO::PARAM_INT);
+			$resultado->bindParam(18,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(19,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	
+	
+	/*Muestra en numero el total de productos registrados en base a un proveedor en especifico */
+    public static function getCountAllProductosByProveedor($iddeproveedor){
+        
+        $consulta = "SELECT COUNT(*) FROM tblproducto P
+               INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = P.tblproveedor_idtblproveedor
+               INNER JOIN tblcategproduct C ON C.idtblcategproduct = P.tblcategproduct_idtblcategproduct
+               INNER JOIN tblproductdetalle D ON D.tblproducto_idtblproducto = P.idtblproducto
+               WHERE P.tblproveedor_idtblproveedor=?";			   	       
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$iddeproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Consultar todas las Ciudades (Activas) que tengan con colonias dadas de alta y que tengan proveedores **/
+	public static function getAllTblciudadActAByProveedor(){
+		
+		$activado=1;
+		$consulta = "SELECT Distinct(DA.tblciudad_nombre),
+                     DA.idtblciudad FROM tblciudad DA 
+                     INNER JOIN tblcolonia TC ON DA.idtblciudad=TC.tblciudad_idtblciudad 
+                     INNER JOIN tblproveedor PRO ON PRO.tblcolonia_idtblcolonia = TC.idtblcolonia     
+                     WHERE DA.tblciudad_activado =  ?";						  
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Consulta los proveedores en base a la ciudad a la que pertenecen*/
+	public static function getAllProveedorByCiudad($idtblciudad){	             
+		$consulta = "SELECT TP.*
+                     FROM tblproveedor TP                      
+                     INNER JOIN tblcolonia TC ON TP.tblcolonia_idtblcolonia=TC.idtblcolonia
+                     INNER JOIN tblciudad TCDD ON TCDD.idtblciudad=TC.tblciudad_idtblciudad               
+                     WHERE TC.tblciudad_idtblciudad= ? ORDER BY TP.tblproveedor_nombre ASC";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	/*Consultar todas las categorias en base a proveedor **/
+	public static function getAllTblCategoriasByProveedor($idproveedor){		
+		
+		$consulta = "SELECT Distinct(C.tblcategproduct_nombre),
+                     C.idtblcategproduct,PRO.idtblproveedor
+                     FROM tblcategproduct C 
+              INNER JOIN tblproducto P ON P.tblcategproduct_idtblcategproduct = C.idtblcategproduct
+              INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = P.tblproveedor_idtblproveedor 
+			  WHERE P.tblproveedor_idtblproveedor=?";						  
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Consultar todos los productos en base a categoria y por proveedor y muestra los ingredientes**/
+	public static function getAllTblProductosByProvAndCategIngred($idproveedor,$idcategoria){		
+		
+		$consulta = "SELECT Distinct(I.tblespecificingrediente_nombre),I.idtblespecificingrediente
+                     FROM tblcategproduct C
+       INNER JOIN tblproducto P ON P.tblcategproduct_idtblcategproduct = C.idtblcategproduct
+       INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = P.tblproveedor_idtblproveedor
+       INNER JOIN tblproductdetalle D ON D.tblproducto_idtblproducto = P.idtblproducto
+       INNER JOIN tblespecificingrediente I ON I.idtblespecificingrediente= D.tblespecificingrediente_idtblespecificingrediente
+       WHERE P.tblproveedor_idtblproveedor=? AND C.idtblcategproduct=?";						  
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idcategoria,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	
+	/*Consultar todos los productos (activos o inactivos) en base a proveedor **/
+	public static function getAllTblProductosByProveedor($idproveedor){		
+		
+		$consulta = "SELECT PRO.*,C.*,D.*,P.* FROM tblproducto P					 
+               INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = P.tblproveedor_idtblproveedor
+               INNER JOIN tblcategproduct C ON C.idtblcategproduct = P.tblcategproduct_idtblcategproduct
+               INNER JOIN tblproductdetalle D ON D.tblproducto_idtblproducto = P.idtblproducto
+               WHERE P.tblproveedor_idtblproveedor=?";						  
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Consultar imagenes de todos los productos en base a proveedor **/
+	public static function getAllProductosImagByProveedor($producto,$detalle){		
+		
+		$consulta = "SELECT I.*,PRO.* FROM tblproductimg I
+                    INNER JOIN tblproducto P ON I.tblproducto_idtblproducto = P.idtblproducto
+                      INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = P.tblproveedor_idtblproveedor 
+                      INNER JOIN tblproductdetalle D ON D.tblproducto_idtblproducto = P.idtblproducto
+                    WHERE P.idtblproducto= ? AND D.idtblproductdetalle= ? LIMIT 3"; 						  
+		 
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$producto,PDO::PARAM_INT);
+			$resultado->bindParam(2,$detalle,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Actualizar el estatus de un producto */
+	 public static function setUpdateTblproductoEstatus($idtblproducto,$activado,$emailmodifico){
+        
+        $insert ="UPDATE tblproductdetalle SET tblproductdetalle_activado = ?,
+		     tblproductdetalle_fchmodificacion = NOW(),
+		    tblproductdetalle_emailusuamodifico = ? WHERE idtblproductdetalle = ?";  
+
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);			
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);			
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idtblproducto,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	
+	/*Consultar todos los productos en base a categoria y por proveedor **/
+	public static function getAllTblProductosByProvAndCateg($idproveedor,$idcategoria){		
+		
+		$consulta = "SELECT PRO.*,C.*,P.*,D.* FROM tblproducto P
+               INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = P.tblproveedor_idtblproveedor
+               INNER JOIN tblcategproduct C ON C.idtblcategproduct = P.tblcategproduct_idtblcategproduct
+               INNER JOIN tblproductdetalle D ON D.tblproducto_idtblproducto = P.idtblproducto
+			    WHERE P.tblproveedor_idtblproveedor=? AND C.idtblcategproduct=?";						  
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idcategoria,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Obtiene un registro de tblproductdetalle*/
+    public static function getTblproductoDetalle2($idtblproductdetalle){
+	    
+		$consulta = "SELECT D.*,I.* FROM tblproductdetalle D
+		INNER JOIN tblespecificingrediente I ON I.idtblespecificingrediente= D.tblespecificingrediente_idtblespecificingrediente
+          WHERE D.idtblproductdetalle = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblproductdetalle,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Consultar todos los productos en base a categoria,proveedor e ingrediente**/
+	public static function getAllTblProductosByProvAndCategIngrediente($idproveedor,$idcategoria,$ingre){		
+		
+		$consulta = "SELECT PRO.*,C.*, P.*,D.* FROM tblproducto P
+               INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = P.tblproveedor_idtblproveedor
+               INNER JOIN tblcategproduct C ON C.idtblcategproduct = P.tblcategproduct_idtblcategproduct
+               INNER JOIN tblproductdetalle D ON D.tblproducto_idtblproducto = P.idtblproducto			   
+               INNER JOIN tblespecificingrediente I ON I.idtblespecificingrediente= D.tblespecificingrediente_idtblespecificingrediente
+               WHERE P.tblproveedor_idtblproveedor=? AND C.idtblcategproduct=? AND I.idtblespecificingrediente=?";						  
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idcategoria,PDO::PARAM_INT);
+			$resultado->bindParam(3,$ingre,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Cuenta el numero de clientes invitados*/
+	public static function getCountAllTblclientesInvitados(){ 
+		$invitado=2;
+		$check = "SELECT COUNT(*) FROM tblcliente WHERE tbltipocliente_idtbltipocliente= ? ";
+
+		try{                                         
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$invitado,PDO::PARAM_INT);			
+			$resultado->execute();
+			return $resultado->fetchColumn(); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Cuenta el numero de clientes registrados*/
+	public static function getCountAllTblclientesRegistrados(){ 
+		$invitado=1;
+		$check = "SELECT COUNT(*) FROM tblcliente WHERE tbltipocliente_idtbltipocliente= ? ";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$invitado,PDO::PARAM_INT);			
+			$resultado->execute();
+			return $resultado->fetchColumn(); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Obtiene todos los clientes invitados */
+    public static function getAllTblclienteInvitados(){ 
+     $invitado=2;	
+         $consulta = "SELECT * FROM tblcliente
+                     WHERE tbltipocliente_idtbltipocliente=? ORDER BY tblcliente_apellidos ASC";		
+
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$invitado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Obtiene todos los clientes registrados*/
+    public static function getAllTblclienteRegistrados(){ 
+      $registrado=1;	
+         $consulta = "SELECT * FROM tblcliente
+                     WHERE tbltipocliente_idtbltipocliente=? ORDER BY tblcliente_apellidos ASC";		
+
+		try{       
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$registrado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*cuenta el numero de ordenes compradas por un cliente*/
+	public static function getCountAllOrdenesbyCliente($cliente){ 
+		$check = "SELECT COUNT(*) FROM tblordencompra WHERE tblcliente_idtblcliente = ? ";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$cliente,PDO::PARAM_INT);			
+			$resultado->execute();
+			return $resultado->fetchColumn(); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/* cuenta el numero de cotizaciones que hay en una ciudad por producto normal*/
+	public static function getCountAllTblordenescotizadorBynombreCiudad($nombreciudad){
+      
+	$consulta = "SELECT COUNT(*) FROM tblordencotizador TOC
+		   INNER JOIN tblcarritoproductcotizador TCPC ON TCPC.tblordencotizador_idtblordencotizador = TOC.idtblordencotizador
+		   INNER JOIN tblproductcotizador TPC ON TCPC.tblproductcotizador_idtblproductcotizador = TPC.idtblproductcotizador
+		   INNER JOIN tblevento TE ON TPC.tblevento_idtblevento = TE.idtblevento  
+		  WHERE TOC.tblordencotizador_ciudad = ? ";
+      
+        try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$nombreciudad,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchColumn(); //retorna el numero de count
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	 /* Funcion para obtener las ordenes de cotizaciones de producto contestadas por ciudad */
+    public static function getAllTblordenescotizadorBynombreCiudad($nombreciudad){
+      
+	$consulta = "SELECT TOC.*,TCPC.*,TPC.* ,TE.* FROM tblordencotizador TOC
+		   INNER JOIN tblcarritoproductcotizador TCPC ON TCPC.tblordencotizador_idtblordencotizador = TOC.idtblordencotizador
+		   INNER JOIN tblproductcotizador TPC ON TCPC.tblproductcotizador_idtblproductcotizador = TPC.idtblproductcotizador
+		   INNER JOIN tblevento TE ON TPC.tblevento_idtblevento = TE.idtblevento  
+		  WHERE TOC.tblordencotizador_ciudad = ? ";
+      
+        try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$nombreciudad,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/* Funcion para obtener las ordenes de cotizaciones de productos detalle*/
+    public static function getTblordenescotizadorByTblcarritocotizador2($idtblordencotizador,$idtblcarritoproductcotizador){
+        
+	$consulta = "SELECT TOC.*,TE.*,TCPC.*,TPC.*,PR.* FROM tblordencotizador TOC
+		   INNER JOIN tblcarritoproductcotizador TCPC ON TCPC.tblordencotizador_idtblordencotizador = TOC.idtblordencotizador
+		   INNER JOIN tblproductcotizador TPC ON TCPC.tblproductcotizador_idtblproductcotizador = TPC.idtblproductcotizador
+		   INNER JOIN tblproveedor PR ON PR.idtblproveedor = TPC.tblproveedor_idtblproveedor
+		   INNER JOIN tblevento TE ON TPC.tblevento_idtblevento = TE.idtblevento  
+		   WHERE TOC.idtblordencotizador= ? AND TCPC.idtblcarritoproductcotizador = ?";   
+        try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencotizador,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblcarritoproductcotizador,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Obtiene todos los registros de tblcarritoproductnuevcotiza por ciudad*/
+    public static function getAlltblcarritoproductnuevcotizadorByCiudad($nombreciudad){	    
+		$consulta = "SELECT TCNC.*,COS.*,P.* FROM tblcarritoproductnuevcotiza TCNC		              
+	     INNER JOIN tblordencotizador TOC ON TOC.idtblordencotizador = TCNC.tblordencotizador_idtblordencotizador
+         INNER JOIN tblcostocotizacionproductnuevo COS ON COS.tblcarritoproductnuevcotiza_idtblcarritoproductnuevcotiza=TCNC.idtblcarritoproductnuevcotiza
+         INNER JOIN tblproveedor P ON P.idtblproveedor=COS.tblproveedor_idtblproveedor
+                     WHERE TOC.tblordencotizador_ciudad=?";		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$nombreciudad,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Obtiene un registro de tblcostocotizacionproductnuevo con nombre del proveedor*/
+    public static function getTblcostocotizacionproductnuevoDatos($idtblcarritoproductnuevcotiza,$idtblproveedor){
+	    
+		$consulta = "SELECT N.*,P.* FROM tblcostocotizacionproductnuevo N 		             
+					 INNER JOIN tblproveedor P ON P.idtblproveedor=N.tblproveedor_idtblproveedor         
+					 WHERE N.tblcarritoproductnuevcotiza_idtblcarritoproductnuevcotiza = ? 
+					 AND N.tblproveedor_idtblproveedor = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblcarritoproductnuevcotiza,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/* cuenta el numero de cotizaciones que hay en una ciudad por producto nuevo*/
+	public static function getCountAlltblcarritoproductnuevcotizadorByCiudad($nombreciudad){
+      
+	$consulta = "SELECT COUNT(*) FROM tblcarritoproductnuevcotiza TCNC 
+	     INNER JOIN tblordencotizador TOC ON TOC.idtblordencotizador = TCNC.tblordencotizador_idtblordencotizador
+         INNER JOIN tblcostocotizacionproductnuevo COS ON COS.tblcarritoproductnuevcotiza_idtblcarritoproductnuevcotiza=TCNC.idtblcarritoproductnuevcotiza
+         INNER JOIN tblproveedor P ON P.idtblproveedor=COS.tblproveedor_idtblproveedor
+                     WHERE TOC.tblordencotizador_ciudad= ? ";
+      
+        try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$nombreciudad,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchColumn(); //retorna el numero de count
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	
+	/*Muestra el total de los cupones registrados en base a una ciudad en especifico */
+    public static function getCountAllTblcupondescuentoByTblCiudad($tblciudad_idtblciudad){
+        
+        $consulta = "SELECT COUNT(*) FROM tblcupondescuento WHERE tblciudad_idtblciudad =?"; 
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Muestra el total de los cupones utilizados en base a una ciudad en especifica */
+    public static function getCountAllTblcupondescuentoByTblCiudadHisto($tblciudad_idtblciudad){
+        
+        $consulta = "SELECT COUNT(*) FROM tblhistcupondescuento H
+		            INNER JOIN tblcliente C ON C.idtblcliente = H.tblhistcupondescuento_idtblcliente
+                INNER JOIN tblcupondescuento D ON D.idtblcupondescuento = H.tblcupondescuento_idtblcupondescuento   
+                WHERE D.tblciudad_idtblciudad = ?";
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Consultar una Cupon (Este Activo o Inactivo) en una ciudad   */
+	public static function getTblcupon1($idcupon){
+	    
+		$consulta = "SELECT C.* FROM tblcupondescuento C 
+                    INNER JOIN tblciudad CD ON CD.idtblciudad = C.tblciudad_idtblciudad                    
+                      WHERE C.idtblcupondescuento=?";		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idcupon,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Actualizar Cupon pero no el estatus*/
+	public static function setUpdateTblcupondescuentoSinEst($idcupon,$nombre,$valor,$idciudad,$emailmodifico){
+
+		$update = "UPDATE tblcupondescuento SET tblcupondescuento_codigo = ?,
+		  tblcupondescuento_descuento = ?, tblciudad_idtblciudad = ?, 
+		  tblcupondescuento_fchmodificacion = NOW(), tblcupondescuento_emailusuamodifico= ? 
+		  WHERE idtblcupondescuento = ?";
+      
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$nombre,PDO::PARAM_STR);
+			$resultado->bindParam(2,$valor,PDO::PARAM_INT);			
+			$resultado->bindParam(3,$idciudad,PDO::PARAM_INT);
+			$resultado->bindParam(4,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(5,$idcupon,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Consultar historial de Cupones */
+	public static function getTblhistcupondescuento1($idciudad){
+	    
+		$consulta = "SELECT DATE(H.tblhistcupondescuento_fchcreacion) AS fecha,
+		H.tblhistcupondescuento_cupon,C.*                   
+                    FROM tblhistcupondescuento H
+                INNER JOIN tblcliente C ON C.idtblcliente = H.tblhistcupondescuento_idtblcliente
+                INNER JOIN tblcupondescuento D ON D.idtblcupondescuento = H.tblcupondescuento_idtblcupondescuento   
+                WHERE D.tblciudad_idtblciudad=? ORDER BY fecha";		
+		try{ 
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Obtiene todos los cupones en base a la ciudad a la que pertenecen*/
+    public static function getAllTblcupondescuentoByTblciudadPertenecen($tblciudad_idtblciudad){       
+         $consulta = "SELECT C.* FROM tblcupondescuento C
+                      INNER JOIN tblciudad CD ON CD.idtblciudad = C.tblciudad_idtblciudad
+                      WHERE C.tblciudad_idtblciudad=? ";
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Actualizar el estatus de un cupon*/
+	 public static function setUpdateTblcupondescuentoEstatus($idcupon,$activado,$emailmodifico){
+        
+        $insert ="UPDATE tblcupondescuento SET tblcupondescuento_activado = ?,
+		         tblcupondescuento_fchmodificacion = NOW(),
+		         tblcupondescuento_emailusuamodifico = ? WHERE idtblcupondescuento= ?"; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);			
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);			
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idcupon,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Verificar si existe un Cupon en una Ciudad*/
+	public static function getCheckTblcuponDesc($nombre,$ciudad){
+
+		$check = "SELECT COUNT(*) FROM tblcupondescuento WHERE tblcupondescuento_codigo = ? 
+		         AND tblciudad_idtblciudad= ?";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$nombre,PDO::PARAM_STR);
+			$resultado->bindParam(2,$ciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchColumn(); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Insertar una Cupon*/
+	public static function setTblcuponparaDescuento($nombre,$valor,$estatus,$ciudad,$emailcreo){
+
+		$insert ="INSERT INTO tblcupondescuento (tblcupondescuento_codigo,
+                    tblcupondescuento_descuento,tblcupondescuento_activado,tblciudad_idtblciudad,
+					tblcupondescuento_fchmodificacion, 
+                    tblcupondescuento_fchcreacion,tblcupondescuento_emailusuacreo,
+                     tblcupondescuento_emailusuamodifico) VALUES (?,?,?,?,NOW(),NOW(),?,?)";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$nombre,PDO::PARAM_STR);
+			$resultado->bindParam(2,$valor,PDO::PARAM_INT);
+			$resultado->bindParam(3,$estatus,PDO::PARAM_INT);
+			$resultado->bindParam(4,$ciudad,PDO::PARAM_INT);
+			$resultado->bindParam(5,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Consultar una usuario (Este Activo o Inactivo)*/
+	public static function getTblUsuario($idtblusuario){
+	    
+		$consulta = "SELECT U.*,A.* FROM tblusuariosmount U 
+                     INNER JOIN tblniveleacceso A ON A.idtblniveleacceso=U.tblniveleacceso_idtblniveleacceso
+					 WHERE U.idtblusuariosmount=?";		   
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblusuario,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Actualizar Usuario pero no el estatus*/
+	public static function setUpdateTblusuarioSinEst($nombre,$ap,$am,$email,$ciudad,$cel,$puesto,$emailmodifico,$id){
+
+		$update = "UPDATE tblusuariosmount SET 
+		tblusuariosmount_nombre =?,tblusuariosmount_apellidoPaterno =?,tblusuariosmount_apellidoMaterno=?,
+		tblusuariosmount_email=?,tblciudad_idtblciudad=?,tblusuariosmount_celular=?,tblniveleacceso_idtblniveleacceso=?,
+		tblusuariosmount_fchmodificacion = NOW(), tblusuariosmount_emailusuamodifico =? 
+		WHERE idtblusuariosmount = ?";		
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$nombre,PDO::PARAM_STR);
+			$resultado->bindParam(2,$ap,PDO::PARAM_STR);			
+			$resultado->bindParam(3,$am,PDO::PARAM_STR);
+			$resultado->bindParam(4,$email,PDO::PARAM_STR);
+			$resultado->bindParam(5,$ciudad,PDO::PARAM_INT);
+			$resultado->bindParam(6,$cel,PDO::PARAM_STR);
+			$resultado->bindParam(7,$puesto,PDO::PARAM_INT);
+			$resultado->bindParam(8,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(9,$id,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Verificar si existe un usuario ya registrado por email y telefono*/
+	public static function getCheckTblusuario($email,$cel){
+
+		$check = "SELECT COUNT(*) FROM tblusuariosmount WHERE tblusuariosmount_email = ? 
+		          AND tblusuariosmount_celular= ?";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$email,PDO::PARAM_STR);
+			$resultado->bindParam(2,$cel,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchColumn(); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Consultar todos los Usuarios (Este Activo o Inactivo) con su puesto**/
+	public static function getAllTblusuariosmount($ciudad){ 
+		
+		$consulta = "SELECT U.*,A.*,P.*,C.* FROM tblusuariosmount U 
+                     INNER JOIN tblniveleacceso A ON A.idtblniveleacceso=U.tblniveleacceso_idtblniveleacceso
+					 INNER JOIN tblciudad C ON C.idtblciudad=U.tblciudad_idtblciudad
+					INNER JOIN tblpais P ON P.idtblpais=C.tblpais_idtblpais
+					WHERE U.tblciudad_idtblciudad= ?";
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$ciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Borrar datos del usuario */
+	public static function setDeleteTblusuariomount($email,$cel,$emailmodifico,$id){
+
+		$update = "UPDATE tblusuariosmount SET 		
+		tblusuariosmount_email=?,tblusuariosmount_celular=?,
+		tblusuariosmount_fchmodificacion = NOW(), tblusuariosmount_emailusuamodifico =? 
+		WHERE idtblusuariosmount = ?";		
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);			
+			$resultado->bindParam(1,$email,PDO::PARAM_STR);			
+			$resultado->bindParam(2,$cel,PDO::PARAM_STR);			
+			$resultado->bindParam(3,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(4,$id,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	
+	/*Actualizar el estatus de un usuario*/
+	 public static function setUpdateUsuario($idusuario,$activado,$emailmodifico){
+        
+        $insert ="UPDATE tblusuariosmount SET tblusuariosmount_activado = ?,
+		          tblusuariosmount_fchmodificacion = NOW(),
+		         tblusuariosmount_emailusuamodifico = ? WHERE idtblusuariosmount= ?"; 
+
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);			
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);			
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idusuario,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Insertar un usuario*/
+	public static function setTblusuariosmount($nombre,$apaterno,$amaterno,$email,$ciudad,$cel,$puesto,$pass,$estatus,$emailcreo){
+
+		$insert ="INSERT INTO tblusuariosmount (tblusuariosmount_nombre,tblusuariosmount_apellidoPaterno,
+		          tblusuariosmount_apellidoMaterno,tblusuariosmount_email,
+		          tblciudad_idtblciudad,tblusuariosmount_celular,tblniveleacceso_idtblniveleacceso,
+		          tblusuariosmount_password,tblusuariosmount_activado,tblusuariosmount_fchmodificacion,
+                  tblusuariosmount_fchcreacion,tblusuariosmount_emailusuacreo,tblusuariosmount_emailusuamodifico) 
+				  VALUES (?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)";
+          
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$nombre,PDO::PARAM_STR);
+			$resultado->bindParam(2,$apaterno,PDO::PARAM_STR);
+			$resultado->bindParam(3,$amaterno,PDO::PARAM_STR);
+			$resultado->bindParam(4,$email,PDO::PARAM_STR);
+			$resultado->bindParam(5,$ciudad,PDO::PARAM_INT);
+			$resultado->bindParam(6,$cel,PDO::PARAM_STR);
+			$resultado->bindParam(7,$puesto,PDO::PARAM_INT);
+			$resultado->bindParam(8,$pass,PDO::PARAM_STR);
+			$resultado->bindParam(9,$estatus,PDO::PARAM_INT);
+			$resultado->bindParam(10,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(11,$emailcreo,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+
+	}
+	
+	
+	/*Insertar una notificacion*/
+	public static function setTblnotificacionAlta($tipoN,$asunto,$mensaje,$emisor,$idSeccion,$emailcreo){
+       
+		$insert ="INSERT INTO tblnotificacion (tblnotificacion_tipo,tblnotificacion_asunto,
+                   tblnotificacion_mensaje,tblnotificacion_emisor,
+                   tblnotificacionredireccion_idtblnotificacionredireccion,
+                   tblnotificacion_fchmodificacion,tblnotificacion_fchcreacion,
+                   tblnotificacion_emailusuacreo,tblnotificacion_emailusuamodifico) 
+				   VALUES (?,?,?,?,?,NOW(),NOW(),?,?)";
+        
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$tipoN,PDO::PARAM_INT);
+			$resultado->bindParam(2,$asunto,PDO::PARAM_STR);
+			$resultado->bindParam(3,$mensaje,PDO::PARAM_STR);
+			$resultado->bindParam(4,$emisor,PDO::PARAM_STR);
+			$resultado->bindParam(5,$idSeccion,PDO::PARAM_INT);
+			$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(7,$emailcreo,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Obtiene el maximo id de la tabla tblnotificacion*/
+    public static function getAllTblnotificacionMax(){       
+         $consulta = "SELECT MAX(idtblnotificacion) AS id FROM tblnotificacion ";
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	
+	
+	
+	/*Consultar todas las secciones del panel de proveedor**/
+	public static function getAllTbltblnotificacionredireccionPP(){		
+		
+		$consulta = "SELECT N.idtblnotificacionredireccion,N.tblnotificacionredireccion_nombre 
+		             FROM tblnotificacionredireccion N";		
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Obtiene todos los  registro de tblnotificacion y tblnotificacionvisto by destinatario*/
+    public static function getAllTblnotificacionbyTblnotificacionvistaPanel(){
+	    
+		$consulta = " SELECT TN.idtblnotificacion,TN.tblnotificacion_tipo,TN.tblnotificacion_asunto,
+                       TN.tblnotificacion_mensaje,TN.tblnotificacion_emisor,DATE(TN.tblnotificacion_fchcreacion) AS fecha,
+                       TN.tblnotificacionredireccion_idtblnotificacionredireccion, 
+                       TNV.idtblnotificacionvista,TNV.tblnotificacionvista_destino,
+                       TNV.tblnotificacionvista_status,TNV.tblnotificacion_idtblnotificacion, 
+					   P.tblproveedor_nombre
+					   FROM tblnotificacion TN 
+		INNER JOIN tblnotificacionvista TNV ON TNV.tblnotificacion_idtblnotificacion = TN.idtblnotificacion
+        INNER JOIN tblproveedor P ON P.idtblproveedor = TNV.tblnotificacionvista_destino		
+		ORDER BY TNV.tblnotificacionvista_status, TN.tblnotificacion_fchcreacion DESC";  
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	// muestra detalle de la notificacion
+	 public static function getAllTblnotificacionbyTblnotificacionvistaDetalle($idnot,$destino){
+	    
+		$consulta = " SELECT TN.*, TNV.*,P.* FROM tblnotificacion TN 
+		INNER JOIN tblnotificacionvista TNV ON TNV.tblnotificacion_idtblnotificacion = TN.idtblnotificacion
+        INNER JOIN tblproveedor P ON P.idtblproveedor = TNV.tblnotificacionvista_destino		
+		 WHERE TN.idtblnotificacion = ? AND TNV.tblnotificacionvista_destino=?";
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idnot,PDO::PARAM_INT);
+			$resultado->bindParam(2,$destino,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Muestra en numero el total de las ordenes registradas en base a una ciudad en especifica */
+    public static function getCountAllOrdenesByTblCiudad($nameCiudad){
+        
+        $consulta = "SELECT COUNT(*) FROM tblordencompra OC                                        
+        INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra
+        WHERE OC.tblordencompra_statuspagado=1 AND ENV.tbldatosenvio_ciudad=?"; 
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$nameCiudad,PDO::PARAM_STR);
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	
+	/*Muestra en numero el total de las ordenes registradas en base a una ciudad en especifica */
+    public static function getCountAllOrdenesCarritosByCiudad($nameCiudad){
+        
+        $consulta = "SELECT COUNT(*) FROM tblordencompra OC                                        
+        INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra
+        WHERE OC.tblordencompra_statuspagado=0 AND ENV.tbldatosenvio_ciudad=?"; 
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$nameCiudad,PDO::PARAM_STR);
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Muestra en numero el total de las ordenes pendientes por pagar en una ciudad en especifica */
+    public static function getCountAllOrdenesPendientesByCiudad($nameCiudad){
+        
+        $consulta = "SELECT COUNT(*) FROM tblordencompra OC                                        
+        INNER JOIN tblentregaproducto TE ON TE.tblentregaproducto_idtblordencompra = OC.idtblordencompra
+        INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra
+        WHERE TE.tblentregaproducto_statusdeposito='Pendiente' AND TE.tblentregaproducto_status='Entregado'
+		AND ENV.tbldatosenvio_ciudad=?"; 
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$nameCiudad,PDO::PARAM_STR);
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Actualizar orden pendiente a orden ya pagada(historial)*/
+	public static function setUpdateTblentregaproductoPagada($statusdeposito,$emailmodifico,$idtblentregaproducto){
+				  
+		$update = "UPDATE tblentregaproducto SET tblentregaproducto_statusdeposito = ?,
+		          tblentregaproducto_fchmodificacion = NOW(), tblentregaproducto_emailusuamodifico= ? WHERE idtblentregaproducto = ?";
+      
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$statusdeposito,PDO::PARAM_STR);
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idtblentregaproducto,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Muestra orden pagada con tblcarritoproduct*/
+	public static function getAllTblordencompraDatos($nameCiudad){ 
+	        
+			$consulta = "SELECT Distinct(PRO.tblproveedor_nombre),PRO.idtblproveedor,
+                        OC.idtblordencompra,ENV.tbldatosenvio_fchagendado,ENV.tbldatosenvio_ciudad
+                        FROM tblordencompra OC                                        
+   INNER JOIN tblcarritoproduct CA ON  CA.tblcarritoproduct_idtblordencompra = OC.idtblordencompra 
+   INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra
+   INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = CA.tblcarritoproduct_idtblproductdetalle
+   INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto
+   INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = TP.tblproveedor_idtblproveedor      		    
+   WHERE OC.tblordencompra_statuspagado=1 AND ENV.tbldatosenvio_ciudad= ? ";
+   	  	
+				
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$nameCiudad,PDO::PARAM_STR);			
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Obtiene los registros de tblentregaproducto en base status entregado*/
+    public static function getTblentregaproductoStatus($idtblordencompra,$idtblproveedor){
+	    
+		$consulta = "SELECT * FROM tblentregaproducto WHERE tblentregaproducto_idtblordencompra = ? 
+		            AND tblentregaproducto_idtblproveedor = ? AND tblentregaproducto_status='Entregado' 
+					ORDER BY tblentregaproducto_fchcortepago";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	 /*Consultar un carritoproduct por idtblordencompra y proveedor */
+	public static function getAllTblcarritoproductByidorden($idtblordencompra,$idtblproveedor){
+	    
+		$consulta = "SELECT TP.*,TCP.*,TPD.* FROM tblcarritoproduct TCP		             
+       				 INNER JOIN tblordencompra TOC ON  TCP.tblcarritoproduct_idtblordencompra = TOC.idtblordencompra  
+      				 INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = TCP.tblcarritoproduct_idtblproductdetalle
+      				 INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto      				 
+					 WHERE TCP.tblcarritoproduct_idtblordencompra = ? AND TP.tblproveedor_idtblproveedor = ? ";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/* muestra productos complementarios por orden de compra*/
+	public static function getAllTblordencompraProComp2($orden){
+	    
+   $consulta = "SELECT OC.*,PCOM.*,ENV.* FROM tblcarritoproductcomplem PCOM  
+           INNER JOIN tblordencompra OC ON PCOM.tblcarritoproductcomplem_idtblordencompra = OC.idtblordencompra
+		   INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra
+           WHERE OC.idtblordencompra= ? "; 
+	
+				
+		try{   
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$orden,PDO::PARAM_INT);		
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Obtiene un registro de tblentregaproducto  por ordencompra y proveedor*/
+    public static function getTblentregaproductoByOrdenProveedor($idtblordencompra,$idtblproveedor){
+	    
+		$consulta = "SELECT * FROM tblentregaproducto WHERE tblentregaproducto_idtblordencompra = ? 
+		            AND tblentregaproducto_idtblproveedor = ?
+					ORDER BY tblentregaproducto_fchpagoproveedor DESC"; 
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*  ...  muestra datos de carrito complementario y su producto*/
+	public static function getAllTblordencompraProComp($orden,$prove){	    
+		$consulta = "SELECT OC.*,ENV.*,PC.*,PCOM.* FROM tblcarritoproductcomplem PCOM  
+           INNER JOIN tblordencompra OC ON PCOM.tblcarritoproductcomplem_idtblordencompra = OC.idtblordencompra
+		   INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra
+           INNER JOIN  tblproductcomplem PC ON PC.idtblproductcomplem = PCOM.tblcarritoproductcomplem_idtblproductcomplem
+      	  WHERE OC.idtblordencompra= ? AND PC.tblproveedor_idtblproveedor=?";
+		   			
+				
+		try{   
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$orden,PDO::PARAM_INT);
+			$resultado->bindParam(2,$prove,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Verificar si existe un carrito de producto complementario por orden y proveedor*/
+    public static function getCheckTblordencompraProComp($orden1,$prove1){
+        
+		$check = "SELECT COUNT(*) FROM tblcarritoproductcomplem PCOM  
+           INNER JOIN tblordencompra OC ON PCOM.tblcarritoproductcomplem_idtblordencompra = OC.idtblordencompra
+		   INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra
+           INNER JOIN  tblproductcomplem PC ON PC.idtblproductcomplem = PCOM.tblcarritoproductcomplem_idtblproductcomplem
+      	   INNER JOIN tblproveedor PROV ON PROV.idtblproveedor = PC.tblproveedor_idtblproveedor
+      	   WHERE OC.idtblordencompra= ? AND PROV.idtblproveedor=? ";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$orden1,PDO::PARAM_INT);
+			$resultado->bindParam(2,$prove1,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchColumn(0); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+        
+    }
+	
+	/*Consultar carritos por ciudad de envio */
+	public static function getAllTblcarritoCiudad($str_ciudad){
+	    
+		$consulta = "SELECT OC.* FROM tblordencompra OC               
+                INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra                
+                WHERE OC.tblordencompra_statuspagado=0 AND ENV.tbldatosenvio_ciudad= ? 
+                GROUP BY OC.idtblordencompra ORDER BY OC.tblordencompra_fchordencompra DESC";	
+					 
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$str_ciudad,PDO::PARAM_STR);			
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Consultar detelle de una orden en carrito producto normal y estatus no pagado en orden*/
+	public static function getAllTblcarritoproduByOrden($idorden){
+	    
+		$consulta = "SELECT CA.*,OC.* FROM tblcarritoproduct CA                                        
+   INNER JOIN tblordencompra OC ON  CA.tblcarritoproduct_idtblordencompra = OC.idtblordencompra 
+   INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = CA.tblcarritoproduct_idtblproductdetalle       		    
+   WHERE OC.tblordencompra_statuspagado=0 AND OC.idtblordencompra= ?
+	ORDER BY CA.tblcarritoproduct_fchcreacion ASC";
+	
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idorden,PDO::PARAM_INT);			
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*    verifica si hay carrito complementario por orden de compra*/
+	 public static function getCheckTblordencompraProComp2($orden1){
+        
+		$check = "SELECT COUNT(*) FROM tblcarritoproductcomplem PCOM  
+           INNER JOIN tblordencompra OC ON PCOM.tblcarritoproductcomplem_idtblordencompra = OC.idtblordencompra
+		   INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra
+           INNER JOIN  tblproductcomplem PC ON PC.idtblproductcomplem = PCOM.tblcarritoproductcomplem_idtblproductcomplem
+      	   INNER JOIN tblproveedor PROV ON PROV.idtblproveedor = PC.tblproveedor_idtblproveedor
+      	   WHERE OC.idtblordencompra= ?";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$orden1,PDO::PARAM_INT);			
+			$resultado->execute();
+			return $resultado->fetchColumn(0); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+        
+    }
+	
+	
+	
+	 /*Obtiene todos los  registro de tblfotografo con nombre de la ciudad*/
+    public static function getAllTblfotografobyTblciudad2($idtblciudad){
+	    
+		$consulta = " SELECT F.*,C.* FROM tblfotografo F 
+		INNER JOIN tblciudad C ON C.idtblciudad = F.tblciudad_idtblciudad
+		WHERE tblciudad_idtblciudad = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	 /*Obtiene un registro de tblfotografo */
+    public static function getTblfotografobyId($idtblfotografo){
+	    
+		$consulta = " SELECT * FROM tblfotografo WHERE idtblfotografo = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblfotografo,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	
+	/*Insertar un Fotografo*/
+	public static function setTblfotografo($nombre,$direcc,$tel,$precio,$idciudad,$emailcreo){
+
+		$insert ="INSERT INTO tblfotografo (tblfotografo_nombre,tblfotografo_direccion,
+                  tblfotografo_contacto,tblfotografo_preciofoto,tblciudad_idtblciudad,
+                  tblfotografo_fchmodificacion,tblfotografo_fchcreacion,tblfotografo_emailusuacreo,
+                   tblfotografo_emailusuamodifico) VALUES (?,?,?,?,?,NOW(), NOW(),?,?)";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$nombre,PDO::PARAM_STR);
+			$resultado->bindParam(2,$direcc,PDO::PARAM_STR);
+			$resultado->bindParam(3,$tel,PDO::PARAM_STR);
+			$resultado->bindParam(4,$precio,PDO::PARAM_STR);
+			$resultado->bindParam(5,$idciudad,PDO::PARAM_INT);
+			$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(7,$emailcreo,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Verificar si existe un Colonia en Ciudad*/
+	public static function getCheckTblfotografo($tel,$idtblciudad){
+
+		$check = "SELECT COUNT(*) FROM tblfotografo WHERE tblfotografo_contacto = ? AND tblciudad_idtblciudad = ?";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$tel,PDO::PARAM_STR);
+			$resultado->bindParam(2,$idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchColumn(); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Obtiene el maximo id de la tabla tblnotificacion*/
+    public static function getAllTblfotografoMax(){       
+         $consulta = "SELECT MAX(idtblfotografo) AS id FROM tblfotografo";
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Insertar un registro en tblnotificacionvista*/
+	public static function setTblfotografocatalogo1($imag,$idfotog,$emailcreo){
+                            
+      $insert ="INSERT INTO tblfotografocatalogo (tblfotografocatalogo_srcimg,
+                 tblfotografo_idtblfotografo,tblfotografocatalogo_fchmodificacion,
+                 tblfotografocatalogo_fchcreacion,tblfotografocatalogo_emailusuacreo,
+                 tblfotografocatalogo_emailusuamodifico) VALUES (?,?,NOW(),NOW(),?,?)";       
+				  
+	    
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$imag,PDO::PARAM_STR);
+			$resultado->bindParam(2,$idfotog,PDO::PARAM_INT);
+			$resultado->bindParam(3,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(4,$emailcreo,PDO::PARAM_STR);					
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	
+	
+	/*Actualizar Fotografo*/
+	public static function setUpdateTblfotografo1($nombre,$ciudad,$direccion,$tel,$precio,$emailmodifico,$idfotografo){
+
+		$update = "UPDATE tblfotografo SET  tblfotografo_nombre=?,tblciudad_idtblciudad=?, tblfotografo_direccion=?,
+                   tblfotografo_contacto =?, tblfotografo_preciofoto=?,tblfotografo_fchmodificacion = NOW(),
+                   tblfotografo_emailusuamodifico =?  WHERE idtblfotografo =? ";
+              
+		try{ 
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$nombre,PDO::PARAM_STR);
+			$resultado->bindParam(2,$ciudad,PDO::PARAM_INT);
+			$resultado->bindParam(3,$direccion,PDO::PARAM_STR);
+			$resultado->bindParam(4,$tel,PDO::PARAM_STR);
+			$resultado->bindParam(5,$precio,PDO::PARAM_STR);
+			$resultado->bindParam(6,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(7,$idfotografo,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	
+	
+	/*Elimina un registro de tblfotografocatalogo*/
+    public static function setDeleteTblfotografocatalogo1($idfotografo){
+	    
+		$delete = "DELETE FROM tblfotografocatalogo WHERE tblfotografo_idtblfotografo= ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($delete);
+			$resultado->bindParam(1,$idfotografo,PDO::PARAM_INT);
+			$resultado->execute();
+	     	return $resultado->rowCount(); //retorna el numero de registros afectados
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Elimina un registro de tblfotografo*/
+    public static function setDeleteTblfotografo1($id,$cel,$dire,$emailmodifico){
+	    
+		$update = "UPDATE tblfotografo SET tblfotografo_direccion=?,
+                   tblfotografo_contacto =?,tblfotografo_fchmodificacion = NOW(),
+                   tblfotografo_emailusuamodifico =?  WHERE idtblfotografo =? ";
+		      
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$dire,PDO::PARAM_STR);
+			$resultado->bindParam(2,$cel,PDO::PARAM_STR);
+			$resultado->bindParam(3,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(4,$id,PDO::PARAM_INT);
+			$resultado->execute();
+	     	return $resultado->rowCount(); //retorna el numero de registros afectados
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Muestra en numero el total de los proveedores registrados en base a una ciudad en especifica */
+    public static function getCountAllTblfotografoByTblCiudad($tblciudad_idtblciudad){
+        
+        $consulta = "SELECT COUNT(*) FROM tblfotografo WHERE tblciudad_idtblciudad =?";                  
+                  
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);			
+			$resultado->bindParam(1,$tblciudad_idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+		   return $resultado->fetchColumn(0); //retorna el numero de count		
+		}catch(PDOException $e){
+			return false;
+		}
+    }
 
 
 
