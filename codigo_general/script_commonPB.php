@@ -190,7 +190,7 @@
             $( "#"+menuActivo ).addClass( "current_section" );
        </script>-->
     <!--cerrar sesion -->
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         $("#logOut").click(function(){
           $.ajax({
               method: "POST",     
@@ -208,4 +208,4 @@
               window.location.href = "./index.php";
             });
         });
-    </script>
+    </script> -->
