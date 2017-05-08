@@ -86,7 +86,7 @@
     	$.ajax({ 
        method: "POST",
        dataType:"json",
-      url: "./../../controllers/getAllTblhora.php",data: {solicitadoBy:"WEB"}	 
+      url: "../../../controllers/getAllTblhora.php",data: {solicitadoBy:"WEB"}	 
 	  })
             .done(function(msg){
 			//console.log(msg);

@@ -149,7 +149,7 @@
 	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllProductosByProveedor.php", 
+	   url: "../../../controllers/getCountAllProductosByProveedor.php", 
 	   data: {solicitadoBy:"WEB",iddeproveedor:iddeproveedor}})
             .done(function(mc){				   
                      if(parseInt(mc.success)==1){ 
@@ -164,7 +164,8 @@
 	 //.-----mostrar ciudades----------------------------------------------------------------
 	  function mostrar_Ciudades(){	
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadActAByProveedor.php", data: {solicitadoBy:"WEB"}})
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadActAByProveedor.php", 
+	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				if (parseInt(mostCiud.success)==1) {
 					ciudad=true;
@@ -190,7 +191,7 @@
 	      var idtblciudad=$("#SelectCiudadesProducto").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
           
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllProveedorByCiudad.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudad.php", 
 	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
             .done(function(mf){				
 				   if (parseInt(mf.success)==1) {				   
@@ -221,7 +222,7 @@
 	      var id_proveedor=$("#SelectProveedor").val();	//se recibe el id que seleciono el usuario del select de proveedor            
           
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblCategoriasByProveedor.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblCategoriasByProveedor.php", 
 	 data: {solicitadoBy:"WEB",idproveedor:id_proveedor }}) 
             .done(function(mf){
 				
@@ -253,7 +254,7 @@
             var id_proveedor=$("#SelectProveedor").val();	//proveedor
            var cat=$("#SelectCategoria").val();	     //categoria
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblProductosByProvAndCategIngred.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblProductosByProvAndCategIngred.php", 
 	 data: {solicitadoBy:"WEB",idproveedor:id_proveedor,idcategoria:cat}})
             .done(function(ing){
 				if (parseInt(ing.success)==1) {
@@ -288,7 +289,7 @@
             
 	   $.ajax({ 
               method: "POST",dataType: "json",
-			  url: "./../../controllers/getAllTblProductosByProveedor.php", 
+			  url: "../../../controllers/getAllTblProductosByProveedor.php", 
 		      data: {solicitadoBy:"WEB",idproveedor:id_de_proveedor},
 			  beforeSend: function(){
 				   $('#esperarMostrarProductos').css('display','inline');}	
@@ -379,7 +380,7 @@
 											  $.ajax({//detalle de cada producto 
                                               method: "POST",  
                                               dataType: "json",  
-                                              url: "./../../controllers/getTblproductoDetalle2.php",  
+                                              url: "../../../controllers/getTblproductoDetalle2.php",  
                                              data: {solicitadoBy:"WEB",idtblproductdetalle:iddetalleproducto}  })
                                              .done(function( msg5 ) {
          
@@ -407,7 +408,7 @@
 		                       	//___________________________________			
 			                     $.ajax({ 
                                  method: "POST",dataType: "json",
-		                         url: "./../../controllers/getAllProductosImagByProveedor.php", 
+		                         url: "../../../controllers/getAllProductosImagByProveedor.php", 
 		                         data: {solicitadoBy:"WEB",producto:idprod1,detalle:id_detalle}}) 
                                  .done(function(ab){
 				                 if(parseInt(ab.success)==1){					             
@@ -459,7 +460,7 @@
 		  
 		  $.ajax({ 
                    method: "POST",dataType: "json",
-				   url: "./../../controllers/setUpdateTblproductoEstatus.php", 				  
+				   url: "../../../controllers/setUpdateTblproductoEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idtblproducto:id_detalle,
 				   activado:estatus,emailmodifico:emaildeUsuario}})
                   .done(function(mg){	
@@ -484,7 +485,7 @@
 					   var iprov = $("#SelectProveedor").val();
 	   $.ajax({ 
               method: "POST",dataType: "json",
-			  url: "./../../controllers/getAllTblProductosByProvAndCateg.php", 
+			  url: "../../../controllers/getAllTblProductosByProvAndCateg.php", 
 		      data: {solicitadoBy:"WEB",idproveedor:iprov,idcategoria:idcate},
 			   beforeSend: function(){
 				   $('#esperarMostrarProductos').css('display','inline');}	
@@ -571,7 +572,7 @@
 											  $.ajax({//detalle de cada producto 
                                               method: "POST",  
                                               dataType: "json",  
-                                              url: "./../../controllers/getTblproductoDetalle2.php",  
+                                              url: "../../../controllers/getTblproductoDetalle2.php",  
                                              data: {solicitadoBy:"WEB",idtblproductdetalle:iddetalleproducto2}})
                                              .done(function( msg5 ) {
          
@@ -600,7 +601,7 @@
 		                       	//___________________________________			
 			                     $.ajax({ 
                                  method: "POST",dataType: "json",
-		                         url: "./../../controllers/getAllProductosImagByProveedor.php", 
+		                         url: "../../../controllers/getAllProductosImagByProveedor.php", 
 		                         data: {solicitadoBy:"WEB",producto:idprod2,detalle:id_detalle2}})								 
                                  .done(function(ab2){
 				                 if(parseInt(ab2.success)==1){
@@ -651,7 +652,7 @@
 		  
 		  $.ajax({ 
                    method: "POST",dataType: "json",
-				   url: "./../../controllers/setUpdateTblproductoEstatus.php", 				  
+				   url: "../../../controllers/setUpdateTblproductoEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idtblproducto:id_detalle2,
 				   activado:estatus,emailmodifico:emaildeUsuario}})
                   .done(function(mg){					
@@ -675,7 +676,7 @@
 					    
 	   $.ajax({ 
               method: "POST",dataType: "json",
-			  url: "./../../controllers/getAllTblProductosByProvAndCategIngrediente.php", 
+			  url: "../../../controllers/getAllTblProductosByProvAndCategIngrediente.php", 
 		      data: {solicitadoBy:"WEB",idproveedor:iprov,idcategoria:idcate,ingre:ingre},
 			   beforeSend: function(){
 				   $('#esperarMostrarProductos').css('display','inline');}	
@@ -760,7 +761,7 @@
 											  $.ajax({//detalle de cada producto 
                                               method: "POST",  
                                               dataType: "json",  
-                                              url: "./../../controllers/getTblproductoDetalle2.php",  
+                                              url: "../../../controllers/getTblproductoDetalle2.php",  
                                              data: {solicitadoBy:"WEB",idtblproductdetalle:iddetalleproducto2}})
                                              .done(function( msg5 ) {
          
@@ -787,7 +788,7 @@
 		                       	//___________________________________			
 			                     $.ajax({ 
                                  method: "POST",dataType: "json",
-		                         url: "./../../controllers/getAllProductosImagByProveedor.php", 
+		                         url: "../../../controllers/getAllProductosImagByProveedor.php", 
 		                         data: {solicitadoBy:"WEB",producto:idprod2,detalle:id_detalle2}})								 
                                  .done(function(ab2){
 				                 if(parseInt(ab2.success)==1){

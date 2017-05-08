@@ -482,7 +482,7 @@
 	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllTblproveedorByTblCiudad.php", 
+	   url: "../../../controllers/getCountAllTblproveedorByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idtblciudad}})
             .done(function(mc){
 				   
@@ -508,7 +508,7 @@
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				   
@@ -530,7 +530,7 @@
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadActAByColonia.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadActAByColonia.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				//console.log(mcol);    
@@ -561,7 +561,7 @@
 	 //var verColonias2 = $("#proveedorcoloniamod");
         
      $.ajax({     
-       method: "POST",dataType: "json",url: "./../../controllers/getAllTblcoloniaByTblCiudad.php", 
+       method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:idtblciudad}})  
             .done(function(mcol){
 				
@@ -585,7 +585,7 @@
      	 var verColonias2 = $("#proveedorcoloniamod");
         
      $.ajax({     
-       method: "POST",dataType: "json",url: "./../../controllers/getAllTblcoloniaByTblCiudad.php", 
+       method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:idtblciudad}})
             .done(function(mcol){
 				
@@ -609,7 +609,7 @@
        var verColonias2 = $("#proveedorcoloniamod");	 
                           //nombre del select que tendra las colonias
      $.ajax({     
-       method: "POST",dataType: "json",url: "./../../controllers/getAllTblcoloniaByTblCiudad.php", 
+       method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:proCiudad}}) 
             .done(function(mcol){
 								
@@ -634,7 +634,7 @@
 	 var ModificarPaquete = $("#proveedorpaquetemod");	      
     
      $.ajax({    //inicia ajax  
-       method: "POST",dataType: "json",url: "./../../controllers/getAllTblpaqueteAct.php",
+       method: "POST",dataType: "json",url: "../../../controllers/getAllTblpaqueteAct.php",
 	   data: {solicitadoBy:"WEB"}})
             .done(function(mpaq){
 				
@@ -657,7 +657,7 @@
           
 			 //alert("entrando a la funcion mostrar proveedor"+tblciudad_idtblciudad);
          $.ajax({ 
-        method: "POST",dataType: "json",url: "./../../controllers/getAllTblproveedorbyTblciudad.php", 
+        method: "POST",dataType: "json",url: "../../../controllers/getAllTblproveedorbyTblciudad.php", 
 		data: {solicitadoBy:"WEB",tblciudad_idtblciudad:tblciudad_idtblciudad},
 		    beforeSend: function(){
                               $('#esperarMostrarProveedor').css('display','inline');								  
@@ -889,7 +889,7 @@
 			   
 		          $.ajax({ 
                    method: "POST",dataType:"json",
-				   url: "./../../controllers/setDeleteTblproveedor1.php", 				  
+				   url: "../../../controllers/setDeleteTblproveedor1.php", 				  
 				   data:{solicitadoBy:"WEB",id:idproveedor,email:email,cel:cel,
 				 banco:banco,clave:clave,titular:titular,rfc:rfc,tel:tel,ext:ext,
 				   dire:direcc,emailmodifico:emaildeUsuario} })   
@@ -920,7 +920,7 @@
     function datosmodificarUsuario(idproveedor){
            // alert("entrando a mostrar datos de un proveedor en especifico");
     $.ajax({ 
-       method: "POST",dataType: "json",url: "./../../controllers/getTblproveedorByCiudad.php", 
+       method: "POST",dataType: "json",url: "../../../controllers/getTblproveedorByCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblproveedor:idproveedor}})
             .done(function(msg){
                 
@@ -933,7 +933,7 @@
                  $.each(msg.datos, function(x,item){
 			
 			  $("#parafoto").append('<label for="task_title">Foto de perfil</label> <br/><br/>'+				
-		      '<img id="tama2" name="tama2" src="./../../assests_general/proveedor/logoProveedor/'+
+		      '<img id="tama2" name="tama2" src="../../assests_general/proveedor/logoProveedor/'+
 	                                 item.tblproveedor_srclogo+'" />'                                 						   
 				  ); 
 				 
@@ -1094,7 +1094,7 @@
    
     srcimgActual=$("#tama2").attr("src"); //id de ftografia actual se recupera su valor del src
    // alert('srcimgActual::'+srcimgActual);
-    srcimgActual=srcimgActual.replace('./../../assests_general/proveedor/logoProveedor/', '');
+    srcimgActual=srcimgActual.replace('../../assests_general/proveedor/logoProveedor/', '');
     //alert('srcimgActual::'+srcimgActual);
 
     // input nuevo
@@ -1185,7 +1185,7 @@
 	  
                        //borramos el archivo actual de la fotografia en el servidor
                        $.ajax({ method: "POST",  dataType: "json",  
-	                   url: "./../../controllers/setDeleteFileImgProveedor.php", 
+	                   url: "../../../controllers/setDeleteFileImgProveedor.php", 
 	                   data: {solicitadoBy:"WEB",tblproveedorimg_srcimg:srcimgActual} }) 
                       .done(function( datos ){
                        borradafoto=true;
@@ -1198,7 +1198,7 @@
 
                        //var ruta = "imagen-ajax.php";
                        $.ajax({  method: "POST",
-		               url: "./../../controllers/uploadImgProveedor.php", 
+		               url: "../../../controllers/uploadImgProveedor.php", 
 		               data: formData ,contentType: false,
                        processData: false, })
                       .done(function( datos ){
@@ -1206,7 +1206,7 @@
                       		if(datos=="success"){	
 							subioNuevaFoto=true;
 							//--------actualiza datos
-                      $.ajax({ method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblproveedor2.php", 				  
+                      $.ajax({ method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblproveedor2.php", 				  
 				   data:{solicitadoBy:"WEB",idtblproveedor:idusuario,
 				   nombreprov:nombreModificar,srclogo:srcimg1, 
 				   descripcion:descripcionModificar,
@@ -1333,7 +1333,7 @@
 							
 		else{			
 	
-	               $.ajax({ method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblproveedor2.php", 				  
+	               $.ajax({ method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblproveedor2.php", 				  
 				   data:{solicitadoBy:"WEB",idtblproveedor:idusuario,
 				   nombreprov:nombreModificar,srclogo:srcimg1, 
 				   descripcion:descripcionModificar,
@@ -1393,7 +1393,7 @@
 		}		   
 		           
 		  $.ajax({ 
-                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblproveedorEstatus.php", 				  
+                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblproveedorEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idtblproveedor:idproveedor,
 				   activado:activoModificar,emailmodifico:emaildeProveedor}})
                   .done(function(mg){
@@ -1537,7 +1537,7 @@
 			
             UIkit.modal.confirm("Si los datos del proveedor ingresados son correctos, presione Ok", function(){
 				
-              $.ajax({method: "POST",dataType: "json",url: "./../../controllers/setCheckTblproveedor.php",                
+              $.ajax({method: "POST",dataType: "json",url: "../../../controllers/setCheckTblproveedor.php",                
 		data: {solicitadoBy:"WEB",nombreprov:proveedornombre,idtblcolonia:proveedorcolonia}})
         .done(function(msg){        
        
@@ -1558,7 +1558,7 @@
                        $("#pAgregar").addClass("oculto");
 			   //alta al registro------------------
                             $.ajax({ method: "POST",dataType: "json",
-							url: "./../../controllers/setTblproveedor2.php",
+							url: "../../../controllers/setTblproveedor2.php",
 							data: {solicitadoBy:"WEB",nombreprov:proveedornombre,
 							srclogo:imagen,descripcion:proveedordescripcion,
 							direccion:proveedordireccion,seo:proveedorseo,

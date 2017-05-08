@@ -426,7 +426,7 @@
 	  
 	   var idtblciudad=$("#selectColonia").val(); 
        $.ajax({ method: "POST",  dataType: "json",  
-	    url: "./../../controllers/setDeleteFileImgProveedor.php", 
+	    url: "../../../controllers/setDeleteFileImgProveedor.php", 
 	      data: {solicitadoBy:"WEB",tblproveedorimg_srcimg:srcimgActual} }) 
         .done(function( datos ){
                        borradafoto=true;
@@ -444,7 +444,7 @@
 	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllTblcoloniasByTblCiudad.php", 
+	   url: "../../../controllers/getCountAllTblcoloniasByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idtblciudad}})
             .done(function(mc){
 				   
@@ -472,7 +472,7 @@
 	   	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllTblCiudad.php", 
+	   url: "../../../controllers/getCountAllTblCiudad.php", 
 	   data: {solicitadoBy:"WEB"}})
             .done(function(mc){
 				   //console.log(mc);
@@ -514,7 +514,7 @@
                inicializarTablas();
      $.ajax({     
       method: "POST",dataType: "json",
-	 url: "./../../controllers/getAllTblciudadByTblPais.php", data: {solicitadoBy:"WEB"},
+	 url: "../../../controllers/getAllTblciudadByTblPais.php", data: {solicitadoBy:"WEB"},
 	  beforeSend: function(){
                               $('#esperarMostrarCiudades').css('display','inline');								  
                                                  }
@@ -580,7 +580,7 @@
 			       $("#estado"+idciudad).text("Desactivado");}		   
 		
              $.ajax({ 
-                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblCiudadEstatus.php", 				  
+                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblCiudadEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idtblciudad:idciudad,activado:activoModificar,
 				   emailmodifico:emaildeUsuario}})
                   .done(function(mg){					 
@@ -625,7 +625,7 @@
 	   {
 		   
 		 $.ajax({    //inicia ajax  
-       method: "POST",dataType: "json",url: "./../../controllers/getCheckTblciudad.php",
+       method: "POST",dataType: "json",url: "../../../controllers/getCheckTblciudad.php",
 	   data: {solicitadoBy:"WEB",nombreciudad:ciudadNombre,idtblpais:paisId}          
 	   })   
             .done(function(mpa){  
@@ -638,7 +638,7 @@
 					      $("#agregarNuevaCiudad").addClass("oculto");
 					 $.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "./../../controllers/setTblciudad.php", 
+							   url: "../../../controllers/setTblciudad.php", 
 							   data: {solicitadoBy:"WEB",nombreciudad:ciudadNombre,							   
 							   activado:ciudadEstatus,idtblpais:paisId,emailcreo:emailUsuario},
 							   beforeSend: function(){
@@ -687,7 +687,7 @@
     function mostrarDatosCiudad(idciudad){
           
     $.ajax({ 
-       method: "POST",dataType: "json",url: "./../../controllers/getTblciudad.php", 
+       method: "POST",dataType: "json",url: "../../../controllers/getTblciudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:idciudad}})  
             .done(function(msg){
                
@@ -717,7 +717,7 @@
 		  {
 			   
 		           $.ajax({  
-                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblCiudadSinEst.php", 				  
+                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblCiudadSinEst.php", 				  
 				   data:{solicitadoBy:"WEB",idtblciudad:idciudad,				  
 				   nombreciudad:nombreModificar,idtblpais:idpais,emailmodifico:emaildeProveedor},
 				   beforeSend: function(){
@@ -753,7 +753,7 @@
 	function mostrarCiudadesU(){ //muestra las ciudades activas 	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostC){
 				//console.log(mcol);   
@@ -787,7 +787,7 @@
 		    var idDelaCiudad=$("#selectColonia").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
              inicializarTablas();
 		   $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblcoloniaByTblciudadPertenecen.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblciudadPertenecen.php", 
 	    data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idDelaCiudad},
 		     beforeSend: function(){
                               $('#esperarMostrarColonias').css('display','inline');								  
@@ -869,7 +869,7 @@
 		  //console.log('idciudad: '+idciudad+'...activo: '+activoModificar);					 
 		
              $.ajax({ 
-                   method:"POST",dataType: "json",url: "./../../controllers/setUpdateTblColoniaEstatus.php", 				  
+                   method:"POST",dataType: "json",url: "../../../controllers/setUpdateTblColoniaEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idtblcolonia:idcolonia,activado:activoModificar1,
 				   emailmodifico:emaildeUsuario}})
                   .done(function(mg){
@@ -923,7 +923,7 @@
 	   else{
 		    
 		 $.ajax({    
-       method: "POST",dataType: "json",url: "./../../controllers/getCheckTblcolonia.php",
+       method: "POST",dataType: "json",url: "../../../controllers/getCheckTblcolonia.php",
 	   data: {solicitadoBy:"WEB",nombrecolonia:coloniaNombre,idtblciudad:coloniaCiudad}	         
 	              })  
             .done(function(mpa2){   
@@ -935,7 +935,7 @@
 					       $("#agregarNuevaColonia").addClass("oculto");
 					$.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "./../../controllers/setTblcolonia.php", 
+							   url: "../../../controllers/setTblcolonia.php", 
 							   data: {solicitadoBy:"WEB",idtblciudad:coloniaCiudad,
 							   nombrecolonia:coloniaNombre,codipost:coloniaCodpost,
 							   activado:coloniaEstatus,emailcreo:emailUsuario},
@@ -989,7 +989,7 @@
     function mostrarDatosColonia(idcolonia){
           
     $.ajax({ 
-       method: "POST",dataType: "json",url: "./../../controllers/getTblcolonia.php", 
+       method: "POST",dataType: "json",url: "../../../controllers/getTblcolonia.php", 
 	   data: {solicitadoBy:"WEB",idtblcolonia:idcolonia}}) 
             .done(function(msg){ 
                
@@ -1032,7 +1032,7 @@
 	   else{    
 			   
 		           $.ajax({ 
-                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcoloniaSinEst.php", 				  
+                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblcoloniaSinEst.php", 				  
 				   data:{solicitadoBy:"WEB",idtblcolonia:iddeColonia,				  
 				   idtblciudad:modificaCiudad,nombrecolonia:modificaColonia,codipost:modificaCodpos,
 				   emailmodifico:emaildeProveedor},

@@ -379,7 +379,7 @@
 		estatus=0;
 		
 		                     $.ajax({method: "POST",dataType: "json",
-							   url: "./../../controllers/setTblnotificacion.php", 
+							   url: "../../../controllers/setTblnotificacion.php", 
 							   data: {solicitadoBy:"WEB",tipo:tipoN,asunto:asunto, 
 							   mensaje:mensaje,emisor:emisor,idredireccion:idSeccion,
 							   emailcreo:emailUsuario} })                
@@ -388,7 +388,7 @@
             if(parseInt(ms.success)==1){ tabla1=true;
 							//---------------------
                                 $.ajax({method: "POST",dataType: "json",
-							   url: "./../../controllers/getAllTblnotificacionMax.php", 
+							   url: "../../../controllers/getAllTblnotificacionMax.php", 
 							   data: {solicitadoBy:"WEB"} })					                                                
 							   .done(function(ms2){
 									 if(parseInt(ms2.success)==1){
@@ -399,7 +399,7 @@
 										 if(tipoN=="1") { //UIkit.modal.alert('especifico escogio');
 										 //--------------------Alta notificacionvista ----------------------
 								         $.ajax({method:"POST",dataType:"json",
-							             url: "./../../controllers/setTblnotificacionvista.php", 
+							             url: "../../../controllers/setTblnotificacionvista.php", 
 							             data: {solicitadoBy:"WEB",destino:idProveedor,status:estatus,
 										 emailcreo:emailUsuario,idtblnotificacion:idInsertado} })					                                                
 							             .done(function(ms2){  
@@ -420,7 +420,7 @@
 										//UIkit.modal.alert('genenal escogio');
 										
 	$.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblproveedor.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblproveedor.php", 
 	 data: {solicitadoBy:"WEB"}}) 
             .done(function(con){				
 				   if (parseInt(con.success)==1) {
@@ -431,7 +431,7 @@
                       //console.log('prove:'+idp);
 					  //.....
 				         $.ajax({method:"POST",dataType:"json",
-							             url: "./../../controllers/setTblnotificacionvista.php", 
+							             url: "../../../controllers/setTblnotificacionvista.php", 
 							             data: {solicitadoBy:"WEB",idtblnotificacion:idInsertado,status:estatus,
 										 destino:idp,emailcreo:emailUsuario} })					                                                
 							             .done(function(ms22){
@@ -483,7 +483,7 @@
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				   
@@ -511,7 +511,7 @@
 	      var idtblciudad=$("#ciudades").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
           
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllProveedorByCiudad.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudad.php", 
 	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
             .done(function(mf){				
 				   if (parseInt(mf.success)==1) {				   
@@ -540,7 +540,7 @@
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTbltblnotificacionredireccionPP.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTbltblnotificacionredireccionPP.php", 
 	        data: {solicitadoBy:"WEB"}})
             .done(function(secc){
 				   
@@ -564,7 +564,7 @@
     inicializarTablas()
   $.ajax({ 
       method: "POST",dataType: "json",
-	  url: "./../../controllers/getAllTblnotificacionbyTblnotificacionvistaPanel.php", 
+	  url: "../../../controllers/getAllTblnotificacionbyTblnotificacionvistaPanel.php", 
 	  data: {solicitadoBy:"WEB"},
 	   beforeSend: function(){
 				   $('#esperarMostrarNotifica').css('display','inline');}	
@@ -612,7 +612,7 @@
     	$.ajax({ 
        method: "POST",
        dataType:"json",
-      url: "./../../controllers/getAllTblnotificacionbyTblnotificacionvistaDetalle.php",
+      url: "../../../controllers/getAllTblnotificacionbyTblnotificacionvistaDetalle.php",
 	  data: {solicitadoBy:"WEB",idnot:idnot,destino:destino}	 
 	  })
             .done(function(msg){

@@ -548,7 +548,7 @@
 		 var nomCiudad=$("#selectProducto").val();	//nombre de la ciudad del select
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllTblordenescotizadorBynombreCiudad.php", 
+	   url: "../../../controllers/getCountAllTblordenescotizadorBynombreCiudad.php", 
 	   data: {solicitadoBy:"WEB",nombreciudad:nomCiudad}})
             .done(function(mcc){				   
                      if(parseInt(mcc.success)==1){ 
@@ -567,7 +567,7 @@
 		 var nomCiudad=$("#selectProductoNuevo").val();	//nombre de la ciudad del select
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAlltblcarritoproductnuevcotizadorByCiudad.php", 
+	   url: "../../../controllers/getCountAlltblcarritoproductnuevcotizadorByCiudad.php", 
 	   data: {solicitadoBy:"WEB",nombreciudad:nomCiudad}})
             .done(function(mcc){				   
                      if(parseInt(mcc.success)==1){ 
@@ -584,7 +584,7 @@
 	function mostrarCiudades(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", data: {solicitadoBy:"WEB"}})
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", data: {solicitadoBy:"WEB"}})
             .done(function(mostC){				
 				$("#selectProducto").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
 				$("#selectProductoNuevo").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
@@ -617,7 +617,7 @@
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getAllTblordenescotizadorBynombreCiudad.php",  
+    url: "../../../controllers/getAllTblordenescotizadorBynombreCiudad.php",  
     data: {solicitadoBy:"WEB",nombreciudad:nomCiudad},
 	 beforeSend: function(){
 				   $('#esperarMostrarCotiProdu').css('display','inline');}	
@@ -704,7 +704,7 @@ function detalleCotizacion(idtblordencotizador,idtblcarritoproductcotizador){
   $.ajax({
     method: "POST",   
     dataType: "json",  
-    url: "./../../controllers/getTblordenescotizadorByTblcarritocotizador2.php",  
+    url: "../../../controllers/getTblordenescotizadorByTblcarritocotizador2.php",  
     data: {solicitadoBy:"WEB",idtblordencotizador:idtblordencotizador,
 	idtblcarritoproductcotizador:idtblcarritoproductcotizador}})
     .done(function(msg1){ 
@@ -798,7 +798,7 @@ function mostrarCotizacionesProductosNuevos(){
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getAlltblcarritoproductnuevcotizadorByCiudad.php",  
+    url: "../../../controllers/getAlltblcarritoproductnuevcotizadorByCiudad.php",  
     data: {solicitadoBy:"WEB",nombreciudad:nombreCiudad},
 	 beforeSend: function(){
 				   $('#esperarMostrarCotiProduNuevo').css('display','inline');}	
@@ -872,7 +872,7 @@ function detalleCtizacionProductNuevo(idtblordencotizador,idtblcarritoproductnue
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/gettblcarritoproductnuevcotiza.php",  
+    url: "../../../controllers/gettblcarritoproductnuevcotiza.php",  
     data: {solicitadoBy:"WEB",idtblcarritoproductnuevcotiza:idtblcarritoproductnuevocotizador}})
       .done(function(msg2){  
         if(msg2.success==1){ re=true; 
@@ -897,7 +897,7 @@ function detalleCtizacionProductNuevo(idtblordencotizador,idtblcarritoproductnue
   $.ajax({
       method: "POST",  
       dataType: "json",  
-      url: "./../../controllers/getTblordencotizador.php",  
+      url: "../../../controllers/getTblordencotizador.php",  
       data: {solicitadoBy:"WEB",idtblordencotizador:idtblordencotizador}})
         .done(function(msg3) 
       { 
@@ -920,7 +920,7 @@ function detalleCtizacionProductNuevo(idtblordencotizador,idtblcarritoproductnue
   $.ajax({    //obtiene datos de contestacion del proveedor
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getTblcostocotizacionproductnuevoDatos.php",  
+    url: "../../../controllers/getTblcostocotizacionproductnuevoDatos.php",  
     data: {solicitadoBy:"WEB",idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idtblproveedor}}) 
     .done(function(msg){ 
         if(msg.success==1){
