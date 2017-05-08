@@ -11508,6 +11508,32 @@ AND exists
     }
 
 
+    /*Funcion para obtner las direcciones de los proveedores en carritos*/
+	public static function getAllDireccionProveedorByidordencompra($idtblordencompra){
+
+		
+		$consulta = "SELECT TPR.idtblproveedor,TPR.tblproveedor_direccion, TCL.tblcolonia_nombre , TC.tblciudad_nombre, TPS.tblpais_nombre FROM tblproveedor TPR
+			 INNER JOIN tblproducto TP ON TP.tblproveedor_idtblproveedor = TPR.idtblproveedor
+			 INNER JOIN tblproductdetalle TPD ON TPD.tblproducto_idtblproducto = TP.idtblproducto
+			 INNER JOIN tblcarritoproduct TCP ON TCP.tblcarritoproduct_idtblproductdetalle = TPD.idtblproductdetalle
+			 INNER JOIN tblcolonia TCL ON TPR.tblcolonia_idtblcolonia = TCL.idtblcolonia
+			 INNER JOIN tblciudad TC ON TCL.tblciudad_idtblciudad = TC.idtblciudad
+			 INNER JOIN tblpais TPS ON TC.tblpais_idtblpais = TPS.idtblpais
+			 WHERE TCP.tblcarritoproduct_idtblordencompra = ?
+			 GROUP BY TPR.idtblproveedor";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
+
 
 
     
