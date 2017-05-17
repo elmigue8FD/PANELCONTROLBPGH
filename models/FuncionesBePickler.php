@@ -11632,29 +11632,6 @@ AND exists
 	}
 	
 	
-	/*Insertar un registro en tblnotificacion*/
-	public static function setTblnotificacion1($tipo,$asunto,$mensaje,$emisor,$emailcreo,$idredireccion){
-        
-        $insert ="INSERT INTO tblnotificacion (tblnotificacion_tipo, tblnotificacion_asunto,
-		tblnotificacion_mensaje,tblnotificacion_emisor,tblnotificacion_fchmodificacion,
-		tblnotificacion_fchcreacion,tblnotificacion_emailusuacreo,tblnotificacion_emailusuamodifico,
-		tblnotificacionredireccion_idtblnotificacionredireccion) VALUES (?,?,?,?,NOW(),NOW(),?,?,?)"; 
-        
-        try{
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
-			$resultado->bindParam(1,$tipo,PDO::PARAM_INT);
-			$resultado->bindParam(2,$asunto,PDO::PARAM_STR);
-			$resultado->bindParam(3,$mensaje,PDO::PARAM_STR);
-			$resultado->bindParam(4,$emisor,PDO::PARAM_STR);
-			$resultado->bindParam(5,$emailcreo,PDO::PARAM_STR);
-			$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
-			$resultado->bindParam(7,$idredireccion,PDO::PARAM_INT);
-			$resultado->execute();
-			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
-		} catch(PDOException $e){
-			return false;
-		}
-    }
 	
 	
 	/*Insertar un registro en tblnotificacionvista*/
