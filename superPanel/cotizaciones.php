@@ -727,8 +727,8 @@ function detalleCotizacion(idtblordencotizador,idtblcarritoproductcotizador){
           $("#contestada_nomproducto").append('<span class="md-list-heading">'+item.tblproductcotizador_nombre+'</span><span class="uk-text-small uk-text-muted">Nombre Producto</span><span style="display:none" id="cotizacion_idproductcotizador">'+item.tblproductcotizador_idtblproductcotizador+'</span>');
           
             if(idtblmotivoo==2){ //cotizaciones contestadas
-		     $("#espacio_datosevento_cotiProducto").removeClass("uk-width-large-1-2");
-			 $("#espacio_datosevento_cotiProducto").addClass( "uk-width-large-1-3" );
+		     //$("#espacio_datosevento_cotiProducto").removeClass("uk-width-large-1-2");
+			// $("#espacio_datosevento_cotiProducto").addClass( "uk-width-large-1-3" );
 			 $("#respuestaCotizaciondeProductoNormal").append('<li>'+
                   '  <div class="md-list-addon-element">'+
 				  '<i class="md-list-addon-icon material-icons">&#xE7E9;</i></div>'+
@@ -755,9 +755,16 @@ function detalleCotizacion(idtblordencotizador,idtblcarritoproductcotizador){
                  '  </li>');
          
 			 } else{			 
-			   $("#espacio_datosevento_cotiProducto").removeClass( "uk-width-large-1-3" );
-			  $("#espacio_datosevento_cotiProducto").addClass("uk-width-large-1-2");
-			  
+			 //  $("#espacio_datosevento_cotiProducto").removeClass( "uk-width-large-1-3" );
+			  //$("#espacio_datosevento_cotiProducto").addClass("uk-width-large-1-2");
+			  $("#respuestaCotizaciondeProductoNormal").append('<li>'+
+                  '  <div class="md-list-addon-element">'+
+				  '<i class="md-list-addon-icon material-icons">&#xE7E9;</i></div>'+
+					'<div class="md-list-content" >'+
+					'<span class="md-list-heading">'+item.tblproveedor_nombre +'</span>'+
+					 '<span class="uk-text-small uk-text-muted">Nombre del proveedor</span>'+
+					'</div>'+
+                   '</li>');
 			  }
    
  
@@ -872,7 +879,7 @@ function detalleCtizacionProductNuevo(idtblordencotizador,idtblcarritoproductnue
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "../../../controllers/gettblcarritoproductnuevcotiza.php",  
+    url: "../../../controllers/gettblcarritoproductnuevcotiza1.php",  
     data: {solicitadoBy:"WEB",idtblcarritoproductnuevcotiza:idtblcarritoproductnuevocotizador}})
       .done(function(msg2){  
         if(msg2.success==1){ re=true; 
