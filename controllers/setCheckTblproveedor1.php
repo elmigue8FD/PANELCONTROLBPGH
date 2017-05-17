@@ -8,33 +8,23 @@ require './InfoSolicitadaBy.php';
  * Variables Utilizadas
  */
 $solicitadoBy= '';
-$nombre= '';
-$direcc= '';
-$tel= '';
-$precio= '';
-$idciudad='';
-$estatus='';
-$emailcreo= '';
+$nombreprov='';
+$idtblcolonia='';
 $resultado= '';
 /**
  * Validamos que el array $_POST no es null.
  */
 if (!empty($_POST)){
 
-	$solicitadoBy	= $_POST["solicitadoBy"];
-    $nombre      = $_POST['nombre'];
-	$direcc		= $_POST['direcc'];
-	$tel			= $_POST['tel'];
-	$precio		= $_POST['precio'];
-	$idciudad		= $_POST['idciudad'];
-	$estatus		= $_POST['estatus'];
-	$emailcreo	= $_POST['emailcreo'];
+	$solicitadoBy=$_POST["solicitadoBy"];
+    $nombreprov=$_POST["nombreprov"];
+    $idtblcolonia=$_POST["idtblcolonia"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setTblfotografo($nombre,$direcc,$tel,$precio,$idciudad,$estatus,$emailcreo);
+    $resultado = FuncionesBePickler::setCheckTblproveedor1($nombreprov,$idtblcolonia);
 
-    if($resultado) 
+    if($resultado)
     {
         /**
          * Si es éxitos le mandamos los resultados a quien lo solicito.
@@ -53,12 +43,7 @@ if (!empty($_POST)){
  * Desctruimos las variables para liberar memoria
  */
 unset($solicitadoBy);
-unset($nombre);
-unset($direcc);
-unset($tel);
-unset($precio);
-unset($idciudad);
-unset($estatus);
-unset($emailcreo);
+unset($nombreprov);
+unset($idtblcolonia);
 unset($resultado);
 ?>

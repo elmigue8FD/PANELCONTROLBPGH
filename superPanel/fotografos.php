@@ -50,7 +50,7 @@
                     <div class="uk-grid" data-uk-grid-margin>
                         <div class="uk-width-medium-1-3">
                              <span class="uk-text-small">Selecciona una ciudad: </span>
-                             <select id="selectCiudad" name="selectCiudad" class="uk-button uk-form-select" data-uk-form-select  onchange="javascript:mostrarFotografo();cantidadFotografos();">
+                             <select id="selectCiudad" name="selectCiudad" class="uk-button uk-form-select" data-uk-form-select  onchange="javascript:mostrarFotografo();cantidadFotografos();seleccFotografo();">
                             <option value="" disabled selected hidden>Selecciona...</option>
 						   </select>  
                         </br>
@@ -62,7 +62,16 @@
 				                       <img src="cargando.gif" /> 				 
                                            </div> 
                         </div>
+						<div class="uk-width-medium-1-3"> </div>
+						
+						<div id="selMuestFoto" class="uk-width-medium-1-3 uk-float-right oculto">
+                            <span class="uk-text-small">Ver solo Fotógrafo: </span> <!-- datos del -->
+                                   <select id="SelectFotografo" name="SelectFotografo" class="uk-button uk-form-select" data-uk-form-select  onchange="javascript:especificoFotografo();" >
+                                    <option value="" disabled selected readonly >Selecciona...</option>
+                                   </select>                             
+                        </div>
 					</div>
+					
 					<label class="uk-float-right" id="numeroFotografos"> </label>
 					</br>
 					</div><!-- cierre del content-->
@@ -290,6 +299,168 @@
 	
 	}); 
 	
+	function especificoFotografo(){
+		var idtblfotografo= $("#SelectFotografo").val();
+	
+	$.ajax({ 
+        method: "POST",dataType: "json",url: "../../../controllers/getAllTblfotografobyidTblfotografo.php", 
+		data: {solicitadoBy:"WEB",idtblfotografo:idtblfotografo}, 
+		beforeSend: function(){     
+           $('#esperarMostrarfotografo').css('display','inline');								  
+                                                 }
+		
+		})
+          .done(function(mprov){
+				
+				 if(parseInt(mprov.success)==1){
+					 nohaypp=true;
+                    // $("#paraInicial").addClass('oculto'); 
+					 
+				     $('#listarFotografo').html("");                   
+                  $.each(mprov.datos, function(g,item)
+				 {	
+			         idfo=item.idtblfotografo;
+				  $("#listarFotografo").append(
+				 '<div class="md-card">'+
+                '<div class="md-card-content">'+
+				'<div class="uk-grid " data-uk-grid-margin>'+	
+				 '  <div class="md-card-head-menu" >'+
+                  '    <a id="bbMod'+g+'" class="md-fab md-fab-small md-fab-accent uk-float-right" href="#modificar2"'+
+				  ' data-uk-modal="{target:"#modificar2",bgclose:false, center:true }" '+
+				  'onclick="mostrarDatosFotografo('+idfo+');">'+
+                   '   <i class="material-icons">&#xe254;</i>'+
+                    '            </a>'+
+					'<button type="button" class="md-fab md-fab-small md-fab-accent uk-float-left" onclick="eliminarFotografo('+idfo+')" '+
+				       'id="botonEliminarFotografo'+g+'">'+ ' <i class="material-icons">&#xE872;</i>'+   
+					   '</button>'+  //' </div>'+
+								
+                     '        </div>'+
+					 '  <div class="uk-width-large-1-4" id="parafoto'+mprov.datos[g].idtblfotografo+'">	 '+
+						
+						
+						'	</div>	'+
+						
+						'<div class="uk-width-large-3-4"> '+
+					 	'<div class="uk-text-center"> 	'+			   
+                        '<div class="md-card-content">'+
+                          '  <ul class="md-list">'+
+							'    <li> <div class="md-list-content">'+
+                             '           <h3 class="uk-text-bold">Fot&oacute;grafo</h3>'+
+                              '          <span>'+item.tblfotografo_nombre+'</span>'+
+                               '     </div> '+
+                               ' </li></ul></div></div> '+
+					 '<div class="uk-grid"> '+
+					 '<div class="uk-width-large-2-4">  '+        			 
+                      '  <div class="md-card-content"> '+
+                       '     <ul class="md-list"> '+
+						'	 <li>'+
+                         '           <div class="md-list-content">'+
+                          '              <span class="uk-text-small uk-text-muted">Ciudad</span>'+
+                           '             <span >'+item.tblciudad_nombre+'</span> '+  
+						   '<input type="checkbox" id="estatusFotog'+idfo+'" class="checkbox" name="checkbox" '+item.tblfotografo_activado+'/> '+ 
+                            '        </div> '+
+                             '   </li><li> '+
+                              '      <div class="md-list-content"> '+
+                               '         <span class="uk-text-small uk-text-muted">Direcci&oacute;n</span> '+
+                                '        <span id="dirr'+idfo+'">'+item.tblfotografo_direccion+'</span> '+
+                                 '   </div> '+
+                                '</li>'+
+								
+								'</ul></div></div> '+
+					 '<div class="uk-width-large-2-4"> '+
+                      '  <div class="md-card-content"> '+
+                       '     <ul class="md-list"> '+
+					   '<li> '+
+                                 '   <div class="md-list-content"> '+
+                                  '      <span class="uk-text-small uk-text-muted">Tel&eacute;fono</span> '+
+                                   '     <span id="contacto'+idfo+'">'+item.tblfotografo_contacto+'</span> '+
+                                    '</div> '+
+                                '</li>'+
+						'	<li> '+
+                         '           <div class="md-list-content"> '+
+                          '              <span class="uk-text-small uk-text-muted">Precio por foto</span> '+
+                           '         <label>$<span>'+item.tblfotografo_preciofoto+'</span> </label> '+
+                            '        </div> '+
+                             '   </li>'+
+							 
+                               ' </ul>'+
+                        '</div> </div> </div> </div> </div> </div></div> '									 
+									);									
+							     
+			            									
+										   
+						          if(parseInt(item.tblfotografo_activado)!=0){
+                                          $("#estatusFotog"+idfo).prop("checked", true);										 
+										 
+                                           }
+						                  else {
+                                          $("#estatusFotog"+idfo).prop("checked", false);
+                                           										  
+										    } 
+								  
+								  
+								  	//___________________________________			
+			                     $.ajax({ 
+                                 method: "POST",dataType: "json",
+		                         url: "../../../controllers/getAllTblfotografocatalogobyTblfotografo.php", 
+		                         data: {solicitadoBy:"WEB",idtblfotografo:idfo}}) 
+                                 .done(function(ab){
+				                 if(parseInt(ab.success)==1){					             
+                                 imagen=true; 
+                                 $.each(ab.datos, function(x,item)
+				                 {	
+								
+			 $("#parafoto"+mprov.datos[g].idtblfotografo).append('<div class="uk-width-large-1-1 uk-container-center">'+	
+			' <img id="ta" class="tama" src="../assets/img/fotografos/'+ab.datos[x].tblfotografocatalogo_srcimg +'" />  </div>');
+                                  }); //fin del each
+                           
+                               } else { imagen=false;  } 
+							  
+	            }) .fail(function( jqXHR, textStatus ) { console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})	
+					  
+					//-----------------
+							//........................
+                            } ); // fin del each				     
+                            //----------------------
+                                      }
+							else 
+						{     nohaypp=false; 
+					// $("#paraInicial").removeClass('oculto');
+					$('#listarFotografo').html(""); 
+				
+					  }
+			 
+              })
+			 
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      .always(function(){ $("#esperarMostrarfotografo").hide();  });
+	  
+   } //fin de la funcion
+	function seleccFotografo(){		
+	 var idtblciudad= $("#selectCiudad").val();
+          $("#SelectFotografo").html("");
+      $.ajax({     
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblfotografobyTblciudad2.php", 
+	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad}})
+            .done(function(mostF){
+			   if(parseInt(mostF.success)==1){
+				   $("#selMuestFoto").removeClass('oculto');
+				   
+				$("#SelectFotografo").append('<option value="" disabled selected readonly >Selecciona...</option>');
+				   
+                $.each(mostF.datos, function(i,item)
+				 {	idtblfo=item.idtblfotografo;	
+				 //muestra ciudades en el encabezado de la interfaz principal
+                 $("#SelectFotografo").append('<option value="' + idtblfo +'">' + item.tblfotografo_nombre + '</option>');
+				  			 
+                      });	 
+				}else{ $("#selMuestFoto").addClass('oculto');}             
+              
+			  })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})	 
+	
+	}//fin d ela funcion
+	
 	 function cantidadFotografos(){
 	   var idtblciudad=$("#selectCiudad").val(); 
 	   //se recibe el id del select de la ciudad que selecciono el usuario en la pantalla principal
@@ -324,7 +495,8 @@
 	 ciudad=$("#foto_Ciudad").val();
 	 direccion =$("#foto_direccion").val();    
      telefono= $("#foto_tel").val();    
-     precio =$("#foto_precio").val();  
+     precio =$("#foto_precio").val();
+     estatus=1;	 
      emailUsuario="reyna@gmail.com";   
 	 
 	
@@ -403,7 +575,7 @@
                                method: "POST",dataType: "json",
 							   url: "../../../controllers/setTblfotografo.php", 
 							   data: {solicitadoBy:"WEB",nombre:nombre,
-							  direcc:direccion,tel:telefono,
+							  direcc:direccion,tel:telefono,estatus:estatus,
 							   precio:precio,idciudad:ciudad,emailcreo:emailUsuario},
 							 beforeSend: function(){
                               $('#esperarAgregarFotografo').css('display','inline'); }
@@ -452,10 +624,11 @@
                                       $("#listarFotografo").html("");								
 				                        mostrarFotografo();  
 								        cantidadFotografos();
-								 
+										seleccFotografo();  
+								      
 										  
 										 }else {
-                                        UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
+                                        UIkit.modal.alert('Ocurrio un error, vuelva intentarlo.');
                                         } 	
 					
                                  
@@ -466,7 +639,7 @@
 								
 										  //-------------------------------
 										 }else {
-                                        UIkit.modal.alert('Ocurrio un error, vuelva intentarlo 2da');
+                                        UIkit.modal.alert('Ocurrio un error, vuelva intentarlo.');
                                         } 	
 					
                                  
@@ -477,7 +650,7 @@
 										 
 										 //-----------------------
 							  }); //fin del each
-									 }else{ UIkit.modal.alert('Ocurrio un error, vuelva intentarlo 77 max'); }
+									 }else{ UIkit.modal.alert('Ocurrio un error, vuelva intentarlo.'); }
               })
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
       //.always(function(){  console.log("always");});
@@ -487,7 +660,7 @@
 									  
 									
                                     }else {
-                                      UIkit.modal.alert('Ocurrio un error, vuelva intentarlo insercion 1ra');
+                                      UIkit.modal.alert('Ocurrio un error, vuelva intentarlo.');
                                     }                          
                                   })
                               .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
@@ -601,7 +774,8 @@
 						'	 <li>'+
                          '           <div class="md-list-content">'+
                           '              <span class="uk-text-small uk-text-muted">Ciudad</span>'+
-                           '             <span >'+item.tblciudad_nombre+'</span> '+                           						   
+                           '             <span >'+item.tblciudad_nombre+'</span> '+  
+						   '<input type="checkbox" id="estatusFotog'+idfo+'" class="checkbox" name="checkbox" '+item.tblfotografo_activado+'/> '+ 
                             '        </div> '+
                              '   </li><li> '+
                               '      <div class="md-list-content"> '+
@@ -633,12 +807,20 @@
 							     
 			            			
                                 	
-						 if(item.tblfotografo_contacto=="" && item.tblfotografo_direccion=="" ){
+						/*if(item.tblfotografo_contacto=="" && item.tblfotografo_direccion=="" ){
                                            $("#botonEliminarFotografo"+g).remove();
 										   $("#bbMod"+g).remove();										
 										    											
+                                           }*/
+										   
+						          if(parseInt(item.tblfotografo_activado)!=0){
+                                          $("#estatusFotog"+idfo).prop("checked", true);										 
+										 
                                            }
-						         
+						                  else {
+                                          $("#estatusFotog"+idfo).prop("checked", false);
+                                           										  
+										    } 
 								  
 								  
 								  	//___________________________________			
@@ -682,10 +864,13 @@
       function eliminarFotografo(idfo){  
    
                         ciudad = $("#selectCiudad").val();
-						   direcc = $("#dirr"+idfo).val();						
-				           cel = $("#contacto"+idfo).val();	  	   
+						direcc = $("#dirr"+idfo).val();						
+				           cel = $("#contacto"+idfo).val();	 
+					   //estatus = $("#estatusFotog"+idfo).val();
+                     estatus = 0;					   
+	           
+                               						   
 		             emaildeUsuario="Flor@gmail.com";	
-					 //alert(ciudad+'..');
 					 
            UIkit.modal.confirm('Si desea eliminar al Fotografo, presione Ok', function(){                      
 			     
@@ -694,9 +879,9 @@
                    method: "POST",dataType:"json",
 				   url: "../../../controllers/setDeleteTblfotografo1.php", 				  
 				   data:{solicitadoBy:"WEB",id:idfo,cel:cel,				 
-				   dire:direcc,emailmodifico:emaildeUsuario} })    
+				   dire:direcc,estatus:estatus,emailmodifico:emaildeUsuario} })    
                   .done(function(mgg){
-                    console.log(mgg);					  
+                    			  
 					 if(parseInt(mgg.success)==1){ 					 
 							//UIkit.modal("#modificar").hide(); //se oculta el pupop de Modificar usuario 
                                 								
@@ -705,6 +890,8 @@
 							 $('#selectCiudad').val(ciudad);					           
 				             $('#listarFotografo').html("");					
 				            mostrarFotografo();
+							seleccFotografo(); 
+							cantidadFotografos();
                                        }
 							else{
                               UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
@@ -910,7 +1097,7 @@
                                       $("#selectCiudad").val(ciudad);				                
                                       $("#listarFotografo").html("");								
 				                       mostrarFotografo();
-										  
+										seleccFotografo();  
 										 }else {  UIkit.modal.alert('Ocurrio un error, vuelva intentarlo'); }                                
                                             
                                            })   .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
@@ -972,7 +1159,8 @@
 						
 						$("#selectCiudad").val(ciudad);
 				        $('#listarFotografo').html("");					
-				         mostrarFotografo();	
+				         mostrarFotografo();
+                          seleccFotografo();						 
                        $('#formModificar')[0].reset(); //limpia el form 
                    
         

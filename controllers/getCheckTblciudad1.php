@@ -7,43 +7,31 @@ require './InfoSolicitadaBy.php';
 /**
  * Variables Utilizadas
  */
-$solicitadoBy= '';
-$nombre= '';
-$direcc= '';
-$tel= '';
-$precio= '';
-$idciudad='';
-$estatus='';
-$emailcreo= '';
-$resultado= '';
+$solicitadoBy   = '';
+$nombreciudad   = '';
+$idtblpais      = '';
+$resultado         = '';
 /**
  * Validamos que el array $_POST no es null.
  */
 if (!empty($_POST)){
-
 	$solicitadoBy	= $_POST["solicitadoBy"];
-    $nombre      = $_POST['nombre'];
-	$direcc		= $_POST['direcc'];
-	$tel			= $_POST['tel'];
-	$precio		= $_POST['precio'];
-	$idciudad		= $_POST['idciudad'];
-	$estatus		= $_POST['estatus'];
-	$emailcreo	= $_POST['emailcreo'];
+	$nombreciudad	= $_POST["nombreciudad"]; 
+    $idtblpais      = $_POST["idtblpais"];   
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setTblfotografo($nombre,$direcc,$tel,$precio,$idciudad,$estatus,$emailcreo);
+    $resultado = FuncionesBePickler::getCheckTblciudad1($nombreciudad, $idtblpais);
 
-    if($resultado) 
+    if($resultado)    
     {
-        /**
+    	/**
          * Si es éxitos le mandamos los resultados a quien lo solicito.
          */
-    	InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
+    	InfoSolicitadaBy::solicitadaby($solicitadoBy,$resultado);
 
-    }else
-    {
-        /**
+    }else{
+    	/**
          * Si fallo manda a la función de fallo a quien lo solicito.
          */
     	InfoSolicitadaBy::sinDatos($solicitadoBy);
@@ -53,12 +41,7 @@ if (!empty($_POST)){
  * Desctruimos las variables para liberar memoria
  */
 unset($solicitadoBy);
-unset($nombre);
-unset($direcc);
-unset($tel);
-unset($precio);
-unset($idciudad);
-unset($estatus);
-unset($emailcreo);
+unset($nombreciudad);
+unset($idtblpais);
 unset($resultado);
 ?>

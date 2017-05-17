@@ -45,20 +45,28 @@
                                     <h2>Proveedores</h2>
                                     </div>
 									<div >  
-									<label class="uk-float-right" id="numeroProveedores"> </label>
+									
 									</div>
 									
 				
                     <div class="uk-grid" data-uk-grid-margin>
-                        <div  class="uk-width-medium-1-3" >                            
-				   <select id="proveedorCiudad" name="proveedorCiudad" class="uk-button uk-form-select" data-uk-form-select  onchange="javascript:mostrarProveedor();cantidadProveedores();">
+                        <div  class="uk-width-medium-1-2" >                            
+				   <select id="proveedorCiudad" name="proveedorCiudad" class="uk-button uk-form-select" data-uk-form-select  onchange="javascript:mostrarProveedor();cantidadProveedores();mostrar_proveedorLista();">
                    <option value="" disabled selected hidden>Selecciona una Ciudad...</option>
 					     <optgroup label="Selecciona una Ciudad.." disabled selected>
                    </select>	
                         </div>
+						
+						<!--<div class="uk-width-medium-1-3"> </div>-->
+						 <div class="uk-width-medium-1-2 oculto uk-float-right" id="divUprov" >
+                            <span class="uk-text-small">Ver solo Proveedor: </span>
+                                   <select id="SelectProveedor" name="SelectProveedor" class="uk-button uk-form-select" data-uk-form-select  onchange="javascript:mostrarProveedorEscogido();" >
+                                    <option value="" disabled selected readonly >Selecciona...</option>
+                                   </select>                             
+                              </div>
 					</div>
-					
-					
+					</br>
+					<label class="uk-float-right" id="numeroProveedores"> </label>
 					 </br>
 									  <div class="uk-text-center oculto" id="esperarMostrarProveedor" >
                                       <label> Procesando... </label>
@@ -273,7 +281,7 @@
                     <input type="text" class="md-input" id="proveedorseo" name="proveedorseo" />
                 </div>
 				<div class="uk-margin-medium-bottom">
-                    <label for="task_title">* N&uacute;mero Celular</label>
+                    <label for="task_title">* N&uacute;mero Celular (LADA + número Celular)</label>
                     <input type="text" class="md-input masked_input" id="proveedorcelular" name="proveedorcelular" data-inputmask="'mask': '9999999999'" data-inputmask-showmaskonhover="false" />
                 </div>
 				
@@ -285,7 +293,7 @@
                      </div> </div>
 					  <div class="uk-width-medium-1-2">
 					 <div class="uk-margin-medium-bottom">
-                  <label for="task_title">Tel&eacute;fono de Tienda</label>
+                  <label for="task_title">Tel&eacute;fono de Tienda (LADA  + Número teléfonico)</label>
                   <input class="md-input masked_input" id="proveedortelefono" name="proveedortelefono" type="text" data-inputmask="'mask': '9999999999'" data-inputmask-showmaskonhover="false" />
                    </div></div></div>
 
@@ -471,7 +479,38 @@
 		 }		 
 		 );
 		 
-		 
+		 function mostrar_proveedorLista(){
+
+	      var idtblciudad=$("#proveedorCiudad").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
+          
+     $.ajax({     
+     method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudad.php", 
+	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
+            .done(function(mf){				
+				   if (parseInt(mf.success)==1) {				   
+				  $("#divUprov").removeClass('oculto');
+				   $("#SelectProveedor").html("");	
+				  $("#SelectProveedor").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				
+                $.each(mf.datos, function(i,item)
+				 {	idtblproveedor=item.idtblproveedor;	
+				      estatus=item.tblproveedor_activado;     
+				 //muestra ciudades en el encabezado de la interfaz principal 
+				 
+				 if (estatus=="1" || estatus=="0"){ provee=true;
+                 $("#SelectProveedor").append('<option value="' + idtblproveedor +'">' + item.tblproveedor_nombre + '</option>');
+				 }else{ provee=false;}				 
+				   });
+				   
+				   }else{ 
+				    $("#SelectProveedor").html("");
+					$("#SelectProveedor").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				} 
+                                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      
+   } 
 	//.-----mostrar cantidad proveedores en base a la ciudad en la que esta----------------------------------------------------------------
 	  function cantidadProveedores(){
 	   var idtblciudad=$("#proveedorCiudad").val(); 
@@ -677,8 +716,9 @@
 				      
 				     idproveedor=item.idtblproveedor;               
                      proCiudad=item.tblciudad_idtblciudad;
+					 estatus = item.tblproveedor_activado;
 				    		
-				  
+				  if (estatus=="1" || estatus=="0"){ muestra=true;
 				  $("#listarProveedor").append(
 				  '<div class="md-card"> <form class="uk-form"> <div class="md-card-content"> <div class="uk-grid uk-grid-divider" data-uk-grid-margin>'+
 							  '<div class="uk-width-medium-1-2">'+
@@ -837,21 +877,10 @@
 										 $("#paraTelefono"+idproveedor).text(mprov.datos[g].tblproveedor_telefonotienda);			
 											} 	
 											
-											 if(item.tblproveedor_email=="" && item.tblproveedor_celular=="" && item.tblproveedor_banco==""
-						 && item.tblproveedor_claveintban==""  && item.tblproveedor_nombretitucuen==""
-						 && item.tblproveedor_rfc=="" && mprov.datos[g].tblproveedor_telefonotienda==""
-						 && mprov.datos[g].tblproveedor_extencion=="" &&
-						 item.tblproveedor_direccion=="" ){
-                                           $("#botonmodificarProve"+g).remove();
-										   $("#botonEliminarProvee"+g).remove();	
-                                          $("#mar"+idproveedor).remove();
-										   $("#estadoProveedor"+idproveedor).text("Ya no es socio en la empresa");
-										 // $("#idciud"+idproveedor).text("");
-										    $("#paraextencion"+idproveedor).text("");
-                                              $("#paraTelefono"+idproveedor).text("");											
-                                           }
+											 
 						          
 							//........................
+				  }else{muestra=false;}
                             }				
 				            );				     
                             //----------------------
@@ -881,6 +910,7 @@
 					  tel = $("#paraTelefono"+idproveedor).val();
 					  ext= $("#paraextencion"+idproveedor).val();
 					  direcc = $("#iddirecc"+idproveedor).val();
+					  estatus=2;
 					  tblciudad_idtblciudad=$("#proveedorCiudad").val();			   
 		             emaildeUsuario="Flor@gmail.com";	
 					 
@@ -892,9 +922,9 @@
 				   url: "../../../controllers/setDeleteTblproveedor1.php", 				  
 				   data:{solicitadoBy:"WEB",id:idproveedor,email:email,cel:cel,
 				 banco:banco,clave:clave,titular:titular,rfc:rfc,tel:tel,ext:ext,
-				   dire:direcc,emailmodifico:emaildeUsuario} })   
+				   dire:direcc,estatus:estatus,emailmodifico:emaildeUsuario} })   
                   .done(function(mgg){
-                    console.log(mgg);					  
+                    			  
 					 if(parseInt(mgg.success)==1){ 					 
 							//UIkit.modal("#modificar").hide(); //se oculta el pupop de Modificar usuario 
                                 								
@@ -903,6 +933,8 @@
 							 $('#proveedorCiudad').val( tblciudad_idtblciudad);					           
 				             $('#listarProveedor').html("");					
 				             mostrarProveedor();
+							 cantidadProveedores();
+							 mostrar_proveedorLista();
                                        }
 							else{
                               UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
@@ -933,7 +965,7 @@
                  $.each(msg.datos, function(x,item){
 			
 			  $("#parafoto").append('<label for="task_title">Foto de perfil</label> <br/><br/>'+				
-		      '<img id="tama2" name="tama2" src="../../assests_general/proveedor/logoProveedor/'+
+		      '<img id="tama2" name="tama2" src="./../../assests_general/proveedor/logoProveedor/'+
 	                                 item.tblproveedor_srclogo+'" />'                                 						   
 				  ); 
 				 
@@ -1094,7 +1126,7 @@
    
     srcimgActual=$("#tama2").attr("src"); //id de ftografia actual se recupera su valor del src
    // alert('srcimgActual::'+srcimgActual);
-    srcimgActual=srcimgActual.replace('../../assests_general/proveedor/logoProveedor/', '');
+    srcimgActual=srcimgActual.replace('./../../assests_general/proveedor/logoProveedor/', '');
     //alert('srcimgActual::'+srcimgActual);
 
     // input nuevo
@@ -1236,6 +1268,7 @@
 						$("#proveedorCiudad").val(ciudadModificar);
 				        $('#listarProveedor').html("");					
 				        mostrarProveedor();	
+						mostrar_proveedorLista();
                        $('#pantallaModificar')[0].reset(); //limpia el form	         
 			}else{   UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');}
                                   })
@@ -1365,6 +1398,7 @@
 						$("#proveedorCiudad").val(ciudadModificar);
 				        $('#listarProveedor').html("");					
 				        mostrarProveedor();	
+						mostrar_proveedorLista();
                        $('#pantallaModificar')[0].reset(); //limpia el form         
         
          })
@@ -1537,7 +1571,7 @@
 			
             UIkit.modal.confirm("Si los datos del proveedor ingresados son correctos, presione Ok", function(){
 				
-              $.ajax({method: "POST",dataType: "json",url: "../../../controllers/setCheckTblproveedor.php",                
+              $.ajax({method: "POST",dataType: "json",url: "../../../controllers/setCheckTblproveedor1.php",                
 		data: {solicitadoBy:"WEB",nombreprov:proveedornombre,idtblcolonia:proveedorcolonia}})
         .done(function(msg){        
        
@@ -1587,6 +1621,7 @@
 				      $('#listarProveedor').html("");					
 				        mostrarProveedor();
 					    cantidadProveedores();
+						mostrar_proveedorLista();
 					 
 					  }
 					                     else {
@@ -1620,6 +1655,225 @@
 		   
 		     
   }  
+  
+      //mostrar solo proveedor seleccionado
+   function mostrarProveedorEscogido(){
+			
+		    var idtblProveedor2=$("#SelectProveedor").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
+          console.log('id'+idtblProveedor2);
+			 //alert("entrando a la funcion mostrar proveedor"+tblciudad_idtblciudad);
+         $.ajax({   
+        method: "POST",dataType: "json",url: "../../../controllers/getAllTblproveedorbyidTblproveedor2.php", 
+		data: {solicitadoBy:"WEB",idtblproveedor:idtblProveedor2},
+		    beforeSend: function(){  
+                              $('#esperarMostrarProveedor').css('display','inline');								  
+                                                 }
+		
+		                  })
+          .done(function(mprov2){             
+       if(parseInt(mprov2.success)==1){
+					 nohaypp5=true;
+                    // $("#paraInicial").addClass('oculto'); 
+					 
+				     $('#listarProveedor').html("");                   
+                  $.each(mprov2.datos, function(g2,item)
+				 {	
+			         idtblciudad=item.idtblciudad;	
+				      
+				     idproveedor=item.idtblproveedor;               
+                     proCiudad=item.tblciudad_idtblciudad;
+				    		
+				   
+				 $("#listarProveedor").append(
+				  '<div class="md-card"> <form class="uk-form"> <div class="md-card-content"> <div class="uk-grid uk-grid-divider" data-uk-grid-margin>'+
+							  '<div class="uk-width-medium-1-2">'+
+							 
+							  '<div class="md-card-head-menu" >'+
+							 
+	              '<a class="md-fab md-fab-small md-fab-accent uk-float-right" href="#modificar" id="botonmodificarProve'+g2+'"'+
+		          ' data-uk-modal="{target:"#modificar",bgclose:false, center:true }" onclick="datosmodificarUsuario('+
+	                           idproveedor+'); mostrarColoniaModificar('+proCiudad+');" >'+                                                   
+							  ' <i class="material-icons">&#xe254;</i>'+            					  
+                               '</a> '+	
+					 
+								
+								 '<button type="button" class="md-fab md-fab-small md-fab-accent uk-float-left" onclick="eliminarUsuario('+idproveedor+')" '+
+				       'id="botonEliminarProvee'+g2+'">'+ ' <i class="material-icons">&#xE872;</i>'+   
+					   '</button>'+  ' </div>'+
+								
+							    '<ul class="md-list">'+
+							    '<li class="uk-text-center">'+ 
+	              '<img id="tama" name="tama" src="./../../assests_general/proveedor/logoProveedor/'+
+	                                   item.tblproveedor_srclogo+'" />'+
+                                '</li> <li>'+                               
+                                '<div class="md-list-content">'+
+                                '<h4 class="uk-text-bold">Proveedor</h4>'+								
+                                '<span class="mayus">'+item.tblproveedor_nombre+'</span>'+
+                                '</div> </li>'+							      
+                                    
+								'<li>'+
+                                '<div class="md-list-content">'+
+                                '<span class="uk-text-small uk-text-muted">Descripci&oacute;n</span>'+
+                                '<span>'+item.tblproveedor_descripcion+'</span>'+
+                                '</div>'+
+                                '</li>'+
+															
+                                '<li>'+
+                                '<div class="md-list-content">'+
+                                '<span class="uk-text-small uk-text-muted">Email</span>'+
+                                '<span id="idemail'+idproveedor+'">'+item.tblproveedor_email+'</span>'+
+                                '</div></li>'+
+								'<li>'+
+                                '<div class="md-list-content">'+
+                                '<span class="uk-text-small uk-text-muted">SEO</span>'+
+                                '<span>'+item.tblproveedor_seo+'</span>'+
+                                '</div>'+
+                                '</li>'+ 
+								'<li>'+
+                                '<div class="md-list-content">'+
+                                '<span class="uk-text-small uk-text-muted">Celular</span>'+
+                                '<span id="idcel'+idproveedor+'">'+item.tblproveedor_celular+'</span>'+
+                                '</div>'+
+                                '</li>'+
+								'<li>'+
+                                    '<div class="md-list-content">'+                                    
+                                      '<span class="uk-text-small uk-text-muted">Banco</span>'+
+                                        '<span id="idbanco'+idproveedor+'">'+item.tblproveedor_banco+'</span> '+   
+                                    '</div>'+
+                                    '</li>'+
+									'<li>	'+							
+                                    '<div class="md-list-content">'+
+                                       '<span class="uk-text-small uk-text-muted">CLABE interbancaria</span>'+
+                                       ' <span id="idclave'+idproveedor+'">'+item.tblproveedor_claveintban +'   </span>'+
+                                       '</div></li>'+
+									   '<li>	'+							
+                                    '<div class="md-list-content">'+
+                                       '<span class="uk-text-small uk-text-muted">Nombre del Titular de la Cuenta</span>'+
+                                       ' <span id="idtitular'+idproveedor+'">'+item.tblproveedor_nombretitucuen +  '</span>'+
+                                       '</div></li>'+
+								
+                                 '</ul></div>'+
+						 '<div class="uk-width-medium-1-2">'+
+                         '<div class="md-card-content">'+
+                            '<ul class="md-list">'+										   
+									 
+									   ' <li>'+   
+                                    '<div class="md-list-content">'+
+                                       '<span class="uk-text-small uk-text-muted">RFC</span>'+
+                                       ' <span id="idrfc'+idproveedor+'">'+ item.tblproveedor_rfc  +'</span>'+
+                                   ' </div> </li>'+
+								   
+								   '<li>'+
+                                '<div class="md-list-content">'+
+							    '<span class="uk-text-small uk-text-muted">Tel&eacute;fono</span>'+
+                                '<span id="paraTelefono'+idproveedor+'"></span>'+
+                                 '</div> </li>'+
+								 '<li>'+
+                                '<div class="md-list-content" >'+
+                                '<span class="uk-text-small uk-text-muted">Extencion</span>'+                              
+								'<span id="paraextencion'+idproveedor+'">'+mprov2.datos[g2].tblproveedor_extencion+'</span>'+
+                                '</div>'+  
+                                '</li>'+
+							'<li>'+
+                                '<div class="md-list-content">'+
+                                '<span class="uk-text-small uk-text-muted">Direcci&oacute;n</span>'+
+                                '<span id="iddirecc'+idproveedor+'">'+item.tblproveedor_direccion+'</span>'+
+                                '</div>'+
+                             '</li>'+
+							 '<li>'+
+                                '<div class="md-list-content">'+
+                                '<span class="uk-text-small uk-text-muted">Ciudad</span>'+
+                                '<span id="idciud'+idproveedor+'">'+item.tblciudad_nombre+'</span>'+
+                                '</div>'+
+                             '</li>'+
+							 '<li>'+
+                                '<div class="md-list-content">'+
+                                '<span class="uk-text-small uk-text-muted">Colonia</span>'+
+                                '<span id="idcolonia'+idproveedor+'">'+item.tblcolonia_nombre+'</span>'+
+                                '</div>'+
+                             '</li>'+								
+								'<li>'+
+                                '<div class="md-list-content">'+
+                                '<span class="uk-text-small uk-text-muted">Tipo de paquete</span>'+
+                                '<span>'+item.tblpaquete_nombre+'</span>'+
+                                '</div>'+
+                                '</li>'+
+								   ' <li>'+								
+                                    '<div class="md-list-content">'+
+                                   ' <span class="uk-text-small uk-text-muted">Tipo de servicio</span>'+
+                                    ' <span>'+item.tbltiposervicio_nombre+'</span>'+
+                                    '</div> </li> <li>'+
+                                   ' <div class="md-list-content">'+
+                                     ' <span class="uk-text-small uk-text-muted">Tipo de pedido</span>'+
+                                       ' <span>'+item.tbltipopedido_nombre+'</span>'+
+                                   ' </div>  </li> <li>'+								
+				                  '<div class="md-list-content" >'+
+                                  '<span class="uk-text-small uk-text-muted">Estatus</span> '+								  
+									    
+					'&nbsp;&nbsp;'+'<input type="checkbox" id="mar'+idproveedor+'"  onclick="actualizarProv('+idproveedor+');" class="checkbox" name="checkbox" '+						                                                   
+								          item.tblproveedor_activado+'/> '+
+								   ' <span class="md-list-heading uk-float-left" id="estadoProveedor'+idproveedor+'"> </span>'+
+									                             
+                                    ' </div> </li> </ul>  </div>  </div>'+
+									'</div> </div> </form> </div> '										 
+									);									
+							     
+			            			
+                                  
+								         if(parseInt(item.tblproveedor_activado)!=0){
+                                          $("#mar"+idproveedor).prop("checked", true);										 
+										  $('#estadoProveedor'+idproveedor).text("Activo");
+										 
+                                           }
+						                  else {
+                                          $("#mar"+idproveedor).prop("checked", false);
+                                           $('#estadoProveedor'+idproveedor).text("Desactivado");  										  
+										    } 
+							
+                                         if(mprov2.datos[g2].tblproveedor_extencion==null || mprov2.datos[g2].tblproveedor_extencion==""){
+									        $("#paraextencion"+idproveedor).text("----------");										   
+								                } else{
+										 $("#paraextencion"+idproveedor).text(mprov2.datos[g2].tblproveedor_extencion);			
+											} 
+											
+									      if(mprov2.datos[g2].tblproveedor_telefonotienda==null || mprov2.datos[g2].tblproveedor_telefonotienda==""){
+										 $("#paraTelefono" +idproveedor).text("----------");          
+                                            }else{
+										 $("#paraTelefono"+idproveedor).text(mprov2.datos[g2].tblproveedor_telefonotienda);			
+											} 	
+											
+											 if(item.tblproveedor_email=="" && item.tblproveedor_celular=="" && item.tblproveedor_banco==""
+						 && item.tblproveedor_claveintban==""  && item.tblproveedor_nombretitucuen==""
+						 && item.tblproveedor_rfc=="" && mprov2.datos[g2].tblproveedor_telefonotienda==""
+						 && mprov2.datos[g2].tblproveedor_extencion=="" &&
+						 item.tblproveedor_direccion=="" ){
+                                           $("#botonmodificarProve"+g2).remove();
+										   $("#botonEliminarProvee"+g2).remove();	
+                                          $("#mar"+idproveedor).remove();
+										   $("#estadoProveedor"+idproveedor).text("Ya no es socio en la empresa");
+										 // $("#idciud"+idproveedor).text("");
+										    $("#paraextencion"+idproveedor).text("");
+                                              $("#paraTelefono"+idproveedor).text("");											
+                                           }
+						         
+							//........................
+                            }				
+				            );				     
+                            //----------------------
+                                      }
+							else 
+						{     nohaypp=false;				 
+				 // $("#paraInicial").removeClass('oculto'); 
+				  $("#listarProveedor").html("");					
+				
+					  }
+			 
+              })
+			 
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      .always(function(){ $("#esperarMostrarProveedor").hide();  });
+	  
+   } //fin de la funcion
   </script> 
     
 

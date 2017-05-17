@@ -20,6 +20,7 @@ $ext = '';
 $dire = '';
 //$col = '';
 $emailmodifico  = '';
+$estatus = '';
 $resultado      = ''; 
 
 
@@ -39,14 +40,14 @@ if (!empty($_POST)){
     $tel			= $_POST["tel"];
     $ext			= $_POST["ext"]; 
     $dire			= $_POST["dire"]; 
-   // $col			= $_POST["col"];	
+    $estatus	    = $_POST["estatus"];	
 	$emailmodifico	= $_POST["emailmodifico"];
 	
 	                                                      
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setDeleteTblproveedor1($id,$email,$cel,$banco,$clave,$titular,$rfc,$tel,$ext,$dire,$emailmodifico);
+    $resultado = FuncionesBePickler::setDeleteTblproveedor1($id,$email,$cel,$banco,$clave,$titular,$rfc,$tel,$ext,$dire,$emailmodifico,$estatus);
     
     if($resultado)
     {
@@ -78,6 +79,7 @@ unset($tel);
 unset($ext);
 unset($dire);
 unset($emailmodifico);
+unset($estatus);
 unset($resultado);
 
 ?>

@@ -27,6 +27,10 @@
 	<link rel="stylesheet" href="../assets/css/colorPanel.css" media="all"> 	
 	<!-- dropify -->
     <link rel="stylesheet" href="../assets/skins/dropify/css/dropify.css">
+	
+   <link href="http://getuikit.com/docs/css/uikit.docs.min.css" rel="stylesheet" >
+
+
 
 </head>
 <body class="sidebar_main_open sidebar_main_swipe" >
@@ -54,6 +58,7 @@
 									<li class="uk-active"><a href="#"> Carritos</a></li>
                                     <li><a href="#"> Ordenes </a></li>
                                    <li><a href="#"> Pagos </a></li>
+								   <li><a href="#" onclick="resetCamp();"> Generar PDF </a></li>
                                      
 								</ul>
 								
@@ -91,7 +96,7 @@
 					
 					               <div>
 								   <br/>
-								   <h4> Para mas informaci&oacute;n, haz clic en el Número de Orden. </h4>
+								   <h4> Para mas informaci&oacute;n, haz clic en el Registro. </h4>
 								    <label class="uk-float-right" id="numeroCarritos"> </label> 
 									<br/>
 									
@@ -109,7 +114,7 @@
                     <div class="uk-overflow-container uk-margin-bottom">
                        <!-- <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair ts_issues2" id="tablaCarritos" >
                        --> <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair " id="tablaCarritos">
-               
+                           
 						  <thead>
                                 <tr>
                                     									 
@@ -793,9 +798,98 @@
 	  <!-- ........................................ -->	 
 					
 					 
-                                    </div> <!-- fin pag3 -->		
+                                    </div> <!-- fin pag3 -->	
+   
+		<!-- ****************************** inicio pag4 *****************************  -->
+							   <div> 
+							   <div class="md-card">
+					               <div class="md-card-content">
+									<div>           
+                                    <h2>Generar Reporte de Ventas</h2>
+									 </div>	
 									
+									<div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-1-1">
+                  						
+                  <span class="uk-text-small">Selecciona una Ciudad e Ingresa un rango de fechas y en base a ellas se hara el reporte.</span>
+                   
+					<form class="uk-form-stacked" id="formuEnvRepo" method="post" action="../reporteVentas.php" > <!--s./../../controllers/ubmit" onclick="bajarReporte();" -->
+                     <div class="uk-grid" data-uk-grid-margin>
+							
+							 
+                        <div class="uk-width-medium-1-4"></br></br>						   							 
+                             <select id="selectCiudadG" name="selectCiudadG" class="uk-button uk-form-select" data-uk-form-select >
+                             </select>
+				         
+                        </div>
+					
+                                <div class="uk-width-medium-1-4"></br>	
+								   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								   <label>Fecha Inicial</label>
+                                    <div class="uk-input-group"> 
+                                        <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
+                                     
+									 <input placeholder="dia/mes/año" class="md-input uk_dp_start" type="text" id="fecha_inicialRango" name="fecha_inicialRango" date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']}" /> 
+                                      <!--monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun', 'Jul','Ago','Sep','Oct','Nov','Dic'], 
+                                      dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'], 
+                                      dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb'], 
+                                     dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'] }"> -->
+                                     
+									 
                                    
+									</div> 
+                                </div>
+                                <div class="uk-width-medium-1-4"></br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								   								
+								<label>Fecha Final </label>
+                                    <div class="uk-input-group">
+                                        <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
+                                       <input placeholder="dia/mes/año" class="md-input uk_dp_end" type="text" id="fecha_finalRango" name="fecha_finalRango"> <!-- -->
+                                    </div>
+                                </div>
+								
+								<div class="uk-width-medium-1-4"> </br>  
+								<button type="submit" class="md-btn md-btn-flat ye" id="generar100" name="generar100" onclick="funcion(event);">Generar PDF</button>
+                             </div>
+                            </div> 
+							     </form>
+                      <!--   </div>
+                    </div> -->
+			   <div class="uk-text-center oculto" id="cargarVerReporte" >
+			     </br></br>
+                 <label > Procesando... </label>
+				  <img src="cargando.gif" />				  
+                 </div> 
+                </div>
+            </div>
+					                
+								  </div>   
+					            </div>
+
+						
+						
+					
+				<!-- ----------------  Imagen de BePickler en la Interfaz Inicial--------------- -->
+			   <br/>
+			   <div id="paraInicial">				
+               <div class="md-card"> 
+			   <div class="md-card-content"> 
+			   <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
+			   <div class="uk-width-medium-1-3 uk-container-center">
+			   <img id="logoBPP" name="logoBPP" src="../assets/img/delPanel/logoo.jpg" />	                                
+			   </div>
+			   </div>
+			   </div></div>     				 
+               </div>
+				
+					
+	 
+	  <!-- ........................................ -->
+	  
+                                    </div> <!-- fin pag4 -->							
+									
+                                
 	<div class="uk-modal" id="mapa"><!--Mapa-->
      <div class="uk-modal-dialog">
       <button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
@@ -833,7 +927,18 @@
     <!--  issues list functions 
    <script src="../assets/js/pages/pages_issues.min.js"></script>  
    
+   
    <script src="../assets/js/pages/pages_issuesPru2.js"></script> -->
+    <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
+    <!-- htmleditor (codeMirror) -->
+    <script src="../assets/js/uikit_htmleditor_custom.min.js"></script>
+    <!-- inputmask-->
+    <script src="../bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
+   
+    <script src="http://getuikit.com/docs/js/uikit.min.js" ></script>
+   <script src="http://getuikit.com/src/js/components/datepicker.js" ></script>
+    <!--  forms advanced functions  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+    <script src="../assets/js/pages/forms_advanced2.js"></script>
 	<!--  dropify -->
     <script src="../assets/js/custom/dropify/dist/js/dropify.min.js"></script>
     <!--  form file input functions -->
@@ -854,12 +959,91 @@
 	     
 		 mostrarCiudadesCarrito();  //se cargar automaticamente cuando carge la pagina
          mostrarCiudadesOrdenes();	
-         mostrarCiudadesPagos();		 
+         mostrarCiudadesPagos();
+         mostrarCiudadesU();
 		 
-      }); 
+		 
+      });  
 	   /* Create by: Reyna Maria Martinez Vazquez*/
+	  
+     
+	  function resetCamp(){
+		   $('#formuEnvRepo')[0].reset(); 
+	  }
+	  
+	  
 	   
+	   function funcion(evt) { 
+  
+	var ciudad= document.getElementById("selectCiudadG").value;
+   var feInicial= document.getElementById("fecha_inicialRango").value;
+   var feFinal = document.getElementById("fecha_finalRango").value;
+  
+	
+	  var formato= /^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/;
+	          	
+   if(ciudad ==""){
+    UIkit.modal.alert("Por favor, seleccione una Ciudad.");
+   evt.preventDefault();
+    return false;
+     }
+   
+   if(feInicial == ""){
+    UIkit.modal.alert("Por favor, complete el campo Fecha Inicial.");
+   evt.preventDefault();
+    return false;
+     }
+  
+   if(feFinal =="") {
+    UIkit.modal.alert("Por favor, complete el campo Fecha Final.");
+	evt.preventDefault();
+    return false;
+     } 
+	
+ 
+ //.............validacion.............................................
+	
+    if(!formato.test(feInicial))
+    { 
+     UIkit.modal.alert("Fecha Inicial es incorrecto, ejemplo dia/mes/año."); 
+    evt.preventDefault();}
+	
+  if(!formato.test(feFinal))
+    { 
+     UIkit.modal.alert("Fecha Final es incorrecto, ejemplo dia/mes/año."); 
+    evt.preventDefault();
+              }
+      
+    if(ciudad !="" && feInicial != "" && feFinal !="" && formato.test(feInicial) && formato.test(feFinal))
+	{    
+		$("#cargarVerReporte").removeClass("oculto"); 
+	}
+	
+}
 	   
+	   function mostrarCiudadesU(){ //muestra las ciudades activas 	
+      
+     $.ajax({     
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
+	 data: {solicitadoBy:"WEB"}})
+            .done(function(mostC){
+				//console.log(mcol); 
+				 
+				$("#selectCiudadG").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				
+                $.each(mostC.datos, function(i,item)				
+				 {	  
+				 idtblciudad=item.idtblciudad;	
+				 
+				 //muestra ciudades en el encabezado de la interfaz principal
+                 $("#selectCiudadG").append('<option value="' +item.tblciudad_nombre+'">' + item.tblciudad_nombre + '</option>');
+				 	});	
+					
+                                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      //.always(function(){  console.log("always");});
+   } 
 	   
 	   //.-----mostrar cantidad de ordenes en base a la ciudad en la que esta----------------------------------------------------------------
 	  function cantidadOrdenes(){
@@ -1144,9 +1328,13 @@ var tabla3_OrdenesHistorial=3;
 					id_pro= item.idtblproveedor;
 					cdad= item.tbldatosenvio_ciudad;
 					
-					fagendado= o1.datos[s].tbldatosenvio_fchagendado;
-                    fagendado = fagendado.split("-");                 
-				    fagendado = fagendado[2]+"/"+fagendado[1]+"/"+fagendado[0];
+					    fagendado= o1.datos[s].tbldatosenvio_fchagendado;
+                        fagendado = fagendado.split("-");                 
+				        fagendado = fagendado[2]+"/"+fagendado[1]+"/"+fagendado[0];
+					   
+					 
+					
+					
 					
 					//........... ................. .................. ........
 				
@@ -1166,10 +1354,7 @@ var tabla3_OrdenesHistorial=3;
 					                   
 						     //---- --------- -----  ---
 				if(mg3.datos[u].tblentregaproducto_statusdeposito=="Pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito=="PENDIENTE"){
-			       
-				  fchcortepago= mg3.datos[u].tblentregaproducto_fchcortepago;
-                  fchcortepago = fchcortepago.split("-"); 
-                  fchcortepago = fchcortepago[2]+"/"+fchcortepago[1]+"/"+fchcortepago[0];				
+			       			
 				
                  $("#bodyTabla_PendientesPago").append(
 				 ' <tr>'+				
@@ -1185,7 +1370,7 @@ var tabla3_OrdenesHistorial=3;
 			     '<td class="uk-text-center">'+
 		         '$<span name="totaltabla1'+s+'" id="totaltabla1'+s+'"></span></td>'+	
 			     '<td class="uk-width-medium-1-3 uk-text-center" >'+			                      
-                 '<span>'+ fchcortepago+'</span>'+
+                 '<span id="f_corte'+u+'"></span>'+				 
                  '</td>'+
 			     '<td class="uk-text-center">'+
 			     '<button type="button" class="md-btn md-btn-flat ye" onclick="pagarDeposito('+o1.datos[s].idtblproveedor+','+o1.datos[s].idtblordencompra+');" id="ye">Pagar</button>'+
@@ -1193,7 +1378,17 @@ var tabla3_OrdenesHistorial=3;
 			     '</tr>'							
 								
 				 );
-				                   
+				        
+                      if(mg3.datos[u].tblentregaproducto_fchcortepago==null || mg3.datos[u].tblentregaproducto_fchcortepago=="")
+					 {    $('#f_corte'+u).text('---'); 
+					 } 
+					 else { 
+					 fchcortepago= mg3.datos[u].tblentregaproducto_fchcortepago;
+                        fchcortepago = fchcortepago.split("-"); 
+                        fchcortepago = fchcortepago[2]+"/"+fchcortepago[1]+"/"+fchcortepago[0];
+					   $('#f_corte'+u).text(fchcortepago); 
+					
+					       }						
 				 
 				   	$("#tabla_PagosPendientes").trigger('updateAll', [true]);//actualiza tabla 	
                     totalCompra_pagos(o1.datos[s].idtblordencompra,s,o1.datos[s].idtblproveedor);
@@ -1203,9 +1398,6 @@ var tabla3_OrdenesHistorial=3;
 			                } 
 							
 				else{	
-				fchcortepago= mg3.datos[u].tblentregaproducto_fchcortepago;
-                  fchcortepago = fchcortepago.split("-"); 
-                  fchcortepago = fchcortepago[2]+"/"+fchcortepago[1]+"/"+fchcortepago[0];
                 
 				$("#bodyTabla_HistorialPagos").append(
 				 ' <tr>'+
@@ -1219,10 +1411,20 @@ var tabla3_OrdenesHistorial=3;
 		         '<td class="uk-text-center">'+
 		         '$<span name="totaltabla1'+s+'" id="totaltabla1'+s+'"></span></td>'+
 		         '<td class="uk-width-medium-1-3 uk-text-center" >'+			                      
-                 '<span>'+ fchcortepago +'</span>'+   
+                 '<span id="f_corte2'+u+'"></span>'+ 
                	 '</td>'+						
 				 '</tr>'
-				             );							
+				             );	
+							 
+                    if(mg3.datos[u].tblentregaproducto_fchcortepago==null || mg3.datos[u].tblentregaproducto_fchcortepago=="")
+					 {  $('#f_corte2'+u).text('---'); 
+					 } 
+					 else { 
+					 fchcortepago= mg3.datos[u].tblentregaproducto_fchcortepago;
+                        fchcortepago = fchcortepago.split("-"); 
+                        fchcortepago = fchcortepago[2]+"/"+fchcortepago[1]+"/"+fchcortepago[0];
+					   $('#f_corte2'+u).text(fchcortepago); 
+					       }							 
 				                   
 				 
 				   	$("#tabla_PagosHistorial").trigger('updateAll', [true]);//actualiza tabla 
@@ -1263,7 +1465,8 @@ var tabla3_OrdenesHistorial=3;
 				  
    }	//fin del la funcion		
 	   
-	
+	 
+	 
 	//.................................................................
      
 	
@@ -1429,12 +1632,12 @@ var tabla3_OrdenesHistorial=3;
                   fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
                // $("#bodyTabla_OrdenesHistorial").html("");
 				$("#bodyTabla_OrdenesHistorial").append(
-				 ' <tr>'+
-                 '<td class="uk-width-medium-1-3 uk-text-center"  onclick="pupopOrdenEntregar('+
+				 ' <tr onclick="pupopOrdenEntregar('+
 				              o1.datos[s].idtblordencompra+','+o1.datos[s].idtblproveedor
-							  +','+tabla3_OrdenesHistorial
-							  +');"'+				 
-				 ' data-uk-modal="{target:'+"'#porentregar'"+',bgclose:false, center:true }" >'+
+							  +','+tabla3_OrdenesHistorial+');"'+	
+				'data-uk-modal="{target:'+"'#porentregar'"+',bgclose:false, center:true }"  >'+
+                 
+				'<td class="uk-width-medium-1-3 uk-text-center" >'+
                                  '<span id="mostrarOrden">'+ o1.datos[s].idtblordencompra +'<span/>'+
                					  ' </td>'+      
 				'<td class="uk-width-medium-1-3 uk-text-center" >'+	
@@ -1471,11 +1674,12 @@ var tabla3_OrdenesHistorial=3;
 				else{				
 				//$("#bodyTabla_OrdenesEntregarPendientes").html(""); 
                  $("#bodyTabla_OrdenesEntregarPendientes").append(
-				 ' <tr>'+
-                 '<td class="uk-width-medium-1-3 uk-text-center"  onclick="pupopOrdenEntregar('+
+				 ' <tr onclick="pupopOrdenEntregar('+
 				 o1.datos[s].idtblordencompra+','+o1.datos[s].idtblproveedor+
 				 ','+tabla2_OrdenesPendiente+');"'+
 				 ' data-uk-modal="{target:'+"'#porentregar'"+',bgclose:false, center:true }" >'+
+				 
+                 '<td class="uk-width-medium-1-3 uk-text-center" >'+
                  '<span id="mostrarOrden">'+ o1.datos[s].idtblordencompra +'<span/>'+
                	 ' </td>'+
 				 '<td class="uk-width-medium-1-3 uk-text-center" >'+	
@@ -1501,11 +1705,12 @@ var tabla3_OrdenesHistorial=3;
 				}else{ 								 
 			         //$("#bodyTabla_OrdenesEntregar").html("");	
 					$("#bodyTabla_OrdenesEntregar").append(
-				      ' <tr>'+
-                      '<td class="uk-width-medium-1-3 uk-text-center"  onclick="pupopOrdenEntregar('+
+				      ' <tr onclick="pupopOrdenEntregar('+
                       o1.datos[s].idtblordencompra+','+o1.datos[s].idtblproveedor
 					  +','+tabla1_Ordenes +');"'+
 				     ' data-uk-modal="{target:'+"'#porentregar'"+',bgclose:false, center:true }" >'+
+					 
+                      '<td class="uk-width-medium-1-3 uk-text-center" >'+
                      '<span id="mostrarOrden">'+ o1.datos[s].idtblordencompra +'<span/>'+
                	     ' </td>'+
 				     '<td class="uk-width-medium-1-3 uk-text-center" >'+	
@@ -1922,8 +2127,9 @@ var tabla3_OrdenesHistorial=3;
 	  '<i class="md-list-addon-icon  material-icons">&#xE55F;</i></div>'+
 	  '<div class="md-list-content"><span class="md-list-heading" id="dirCompletaOrden">'+
 	  msg3.datos[i3].tbldatosenvio_pais+", "+msg3.datos[i3].tbldatosenvio_ciudad+", "+
-	  msg3.datos[i3].tbldatosenvio_calle+" "+msg3.datos[i3].tbldatosenvio_numint+",Col."+
-	  msg3.datos[i3].tbldatosenvio_colonia+", C&oacute;digo postal "+msg3.datos[i3].tbldatosenvio_codipost+
+	  msg3.datos[i3].tbldatosenvio_calle+" "+msg3.datos[i3].tbldatosenvio_numint+
+	  //",Col."+
+	 // msg3.datos[i3].tbldatosenvio_colonia+", C&oacute;digo postal "+msg3.datos[i3].tbldatosenvio_codipost+
 	  '</span><span class="uk-text-small uk-text-muted">Dirección</span></div></li>');
 	  
       $("#botondeubicacion").append('<button id="ye" class="md-btn md-btn-block ye"'+
@@ -2244,10 +2450,8 @@ function geocodeResult(results, status) {
 				
 				 //muestra ciudades en la tabla 
                  $("#mostrarCarritosBody").append(
-				 ' <tr>'+
-                 '<td class="uk-width-medium-1-3 uk-text-center"  onclick="mostrarDatosdeOrden('+
-	                                                iddeorden+');"'+
-				 ' data-uk-modal="{target:'+"'#vercarrito'"+',bgclose:false, center:true }" >'+
+				 ' <tr onclick="mostrarDatosdeOrden('+iddeorden+');" data-uk-modal="{target:'+"'#vercarrito'"+',bgclose:false, center:true }">'+
+                 '<td class="uk-width-medium-1-3 uk-text-center" >'+
                  '<span id="mostrarOrden">'+ iddeorden +'<span/>'+
                	 ' </td>'+
 				 '<td class="uk-width-medium-1-3 uk-text-center" >'+			                      
@@ -2557,8 +2761,9 @@ function geocodeResult(results, status) {
 	  '<i class="md-list-addon-icon  material-icons">&#xE55F;</i></div>'+
 	  '<div class="md-list-content"><span class="md-list-heading" id="dirCompletaOrden">'+
 	  msg33.datos[i3].tbldatosenvio_pais+", "+msg33.datos[i3].tbldatosenvio_ciudad+", "+
-	  msg33.datos[i3].tbldatosenvio_calle+" "+msg33.datos[i3].tbldatosenvio_numint+",Col."+
-	  msg33.datos[i3].tbldatosenvio_colonia+", C&oacute;digo postal "+msg33.datos[i3].tbldatosenvio_codipost+
+	  msg33.datos[i3].tbldatosenvio_calle+" "+msg33.datos[i3].tbldatosenvio_numint+
+	  //",Col."+
+	 // msg33.datos[i3].tbldatosenvio_colonia+", C&oacute;digo postal "+msg33.datos[i3].tbldatosenvio_codipost+
 	  '</span><span class="uk-text-small uk-text-muted">Dirección</span></div></li>');
 	  
       

@@ -7,34 +7,29 @@ require './InfoSolicitadaBy.php';
 /**
  * Variables Utilizadas
  */
+
 $solicitadoBy= '';
-$nombre= '';
-$direcc= '';
-$tel= '';
-$precio= '';
-$idciudad='';
-$estatus='';
-$emailcreo= '';
-$resultado= '';
+$destino='';
+$status='';
+$idtblnotificacion='';
+$emailcreo='';
+$resultado='';
 /**
  * Validamos que el array $_POST no es null.
  */
 if (!empty($_POST)){
 
-	$solicitadoBy	= $_POST["solicitadoBy"];
-    $nombre      = $_POST['nombre'];
-	$direcc		= $_POST['direcc'];
-	$tel			= $_POST['tel'];
-	$precio		= $_POST['precio'];
-	$idciudad		= $_POST['idciudad'];
-	$estatus		= $_POST['estatus'];
-	$emailcreo	= $_POST['emailcreo'];
+	$solicitadoBy=$_POST["solicitadoBy"];
+	$destino=$_POST["destino"];
+    $status=$_POST["status"];   
+    $idtblnotificacion=$_POST["idtblnotificacion"];
+    $emailcreo=$_POST["emailcreo"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
-     */
-    $resultado = FuncionesBePickler::setTblfotografo($nombre,$direcc,$tel,$precio,$idciudad,$estatus,$emailcreo);
+     */                               
+    $resultado = FuncionesBePickler::setTblnotificacionvista1($destino,$status,$emailcreo,$idtblnotificacion);
 
-    if($resultado) 
+    if($resultado)
     {
         /**
          * Si es éxitos le mandamos los resultados a quien lo solicito.
@@ -53,12 +48,9 @@ if (!empty($_POST)){
  * Desctruimos las variables para liberar memoria
  */
 unset($solicitadoBy);
-unset($nombre);
-unset($direcc);
-unset($tel);
-unset($precio);
-unset($idciudad);
-unset($estatus);
+unset($destino);
+unset($status);
+unset($idtblnotificacion);
 unset($emailcreo);
 unset($resultado);
 ?>

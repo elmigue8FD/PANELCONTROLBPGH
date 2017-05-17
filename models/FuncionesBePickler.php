@@ -11599,6 +11599,86 @@ AND exists
 		}
 	}
 
+    /*Verifica que no exista un registro en tblproveedor  */
+    public static function setCheckTblproveedor1($nombreprov,$idtblcolonia){
+        
+        $check = "SELECT COUNT(*) FROM tblproveedor WHERE tblproveedor_nombre=? AND tblcolonia_idtblcolonia=?";
+                 
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($check);
+			$resultado->bindParam(1,$nombreprov,PDO::PARAM_STR);
+			$resultado->bindParam(2,$idtblcolonia,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchColumn(); //retorna el numero de count
+		}catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	/*Obtiene un registro de tblcarritoproductnuevcotiza*/
+    public static function gettblcarritoproductnuevcotiza1($idtblcarritoproductnuevcotiza){
+	    
+		$consulta = "SELECT * FROM tblcarritoproductnuevcotiza WHERE idtblcarritoproductnuevcotiza = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblcarritoproductnuevcotiza,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	
+	/*Insertar un registro en tblnotificacion*/
+	public static function setTblnotificacion1($tipo,$asunto,$mensaje,$emisor,$emailcreo,$idredireccion){
+        
+        $insert ="INSERT INTO tblnotificacion (tblnotificacion_tipo, tblnotificacion_asunto,
+		tblnotificacion_mensaje,tblnotificacion_emisor,tblnotificacion_fchmodificacion,
+		tblnotificacion_fchcreacion,tblnotificacion_emailusuacreo,tblnotificacion_emailusuamodifico,
+		tblnotificacionredireccion_idtblnotificacionredireccion) VALUES (?,?,?,?,NOW(),NOW(),?,?,?)"; 
+        
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$tipo,PDO::PARAM_INT);
+			$resultado->bindParam(2,$asunto,PDO::PARAM_STR);
+			$resultado->bindParam(3,$mensaje,PDO::PARAM_STR);
+			$resultado->bindParam(4,$emisor,PDO::PARAM_STR);
+			$resultado->bindParam(5,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(7,$idredireccion,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
+	
+	
+	/*Insertar un registro en tblnotificacionvista*/
+	public static function setTblnotificacionvista1($destino,$status,$emailcreo,$idtblnotificacion){
+                            
+      $insert ="INSERT INTO tblnotificacionvista (tblnotificacionvista_destino,tblnotificacionvista_status,
+	  tblnotificacionvista_fchmodificacion,tblnotificacionvista_fchcreacion,
+	  tblnotificacionvista_emailusuacreo,tblnotificacionvista_emailusuamodifico,
+	  tblnotificacion_idtblnotificacion) VALUES (?,?,NOW(),NOW(),?,?,?)";       
+				  
+	    
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$destino,PDO::PARAM_INT);
+			$resultado->bindParam(2,$status,PDO::PARAM_INT);
+			$resultado->bindParam(3,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(4,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(5,$idtblnotificacion,PDO::PARAM_INT);			
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
 
     
 }
