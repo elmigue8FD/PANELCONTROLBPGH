@@ -323,8 +323,8 @@
     <!-- page specific plugins -->
     <!-- ionrangeslider -->
     <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
-    <!-- htmleditor (codeMirror) -->
-    <script src="../assets/js/uikit_htmleditor_custom.min.js"></script>   
+    <!-- htmleditor (codeMirror) 
+    <script src="../assets/js/uikit_htmleditor_custom.min.js"></script>  --> 
     <!-- inputmask-->
     <script src="../bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
     <!--  forms advanced functions -->
@@ -379,17 +379,23 @@
 		estatus=0;
 		
 		                     $.ajax({method: "POST",dataType: "json",
-							   url: "../../../controllers/setTblnotificacion.php", 
+							   url: "../../../controllers/setTblnotificacion1.php", 
 							   data: {solicitadoBy:"WEB",tipo:tipoN,asunto:asunto, 
 							   mensaje:mensaje,emisor:emisor,idredireccion:idSeccion,
-							   emailcreo:emailUsuario} })                
+							   emailcreo:emailUsuario},
+							   beforeSend: function(){
+                                       $('#enviandoMensaje').css('display','inline'); }
+							   })                
 							  .done(function(ms){
 								 //  console.log(ms);
             if(parseInt(ms.success)==1){ tabla1=true;
 							//---------------------
                                 $.ajax({method: "POST",dataType: "json",
 							   url: "../../../controllers/getAllTblnotificacionMax.php", 
-							   data: {solicitadoBy:"WEB"} })					                                                
+							   data: {solicitadoBy:"WEB"},
+							   beforeSend: function(){
+                                       $('#enviandoMensaje').css('display','inline'); }
+							   })					                                                
 							   .done(function(ms2){
 									 if(parseInt(ms2.success)==1){
 								$.each(ms2.datos, function(i,item)
@@ -399,13 +405,15 @@
 										 if(tipoN=="1") { //UIkit.modal.alert('especifico escogio');
 										 //--------------------Alta notificacionvista ----------------------
 								         $.ajax({method:"POST",dataType:"json",
-							             url: "../../../controllers/setTblnotificacionvista.php", 
+							             url: "../../../controllers/setTblnotificacionvista1.php", 
 							             data: {solicitadoBy:"WEB",destino:idProveedor,status:estatus,
-										 emailcreo:emailUsuario,idtblnotificacion:idInsertado} })					                                                
+										 emailcreo:emailUsuario,idtblnotificacion:idInsertado},
+										 beforeSend: function(){
+                                       $('#enviandoMensaje').css('display','inline'); }
+										 })					                                                
 							             .done(function(ms2){  
-									    if(parseInt(ms2.success)==1){
-										
-										  UIkit.modal.alert('Mensaje Enviado.');
+									    if(parseInt(ms2.success)==1){										
+										 UIkit.modal.alert('Mensaje Enviado.');
 										 mostrarNotificaciones();
 										 }else {
                                         UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
@@ -421,7 +429,9 @@
 										
 	$.ajax({     
      method: "POST",dataType: "json",url: "../../../controllers/getAllTblproveedor.php", 
-	 data: {solicitadoBy:"WEB"}}) 
+	 data: {solicitadoBy:"WEB"},
+	 beforeSend: function(){ $('#enviandoMensaje').css('display','inline'); }
+	 }) 
             .done(function(con){				
 				   if (parseInt(con.success)==1) {
 								consulto=true;
@@ -431,9 +441,11 @@
                       //console.log('prove:'+idp);
 					  //.....
 				         $.ajax({method:"POST",dataType:"json",
-							             url: "../../../controllers/setTblnotificacionvista.php", 
+							             url: "../../../controllers/setTblnotificacionvista1.php", 
 							             data: {solicitadoBy:"WEB",idtblnotificacion:idInsertado,status:estatus,
-										 destino:idp,emailcreo:emailUsuario} })					                                                
+										 destino:idp,emailcreo:emailUsuario},
+										 beforeSend: function(){ $('#enviandoMensaje').css('display','inline'); }
+										 })					                                                
 							             .done(function(ms22){
 											 		 
 									    if(parseInt(ms22.success)==1){										 
@@ -443,7 +455,7 @@
                                         }                          
                                        })
                                       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-                                      // .always(function(){  $("#enviandoMensaje").hide(); 	});						 
+                                      .always(function(){  $("#enviandoMensaje").hide(); 	});						 
 				        //.....	
 				
 				        });//fin del each
@@ -455,7 +467,7 @@
 						else{ consulto=false;	 UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');}				
 				 
     })  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-										
+		.always(function(){  $("#enviandoMensaje").hide(); 	});									
 						}	 
 			//____________________________________________________________________________________
 										 
