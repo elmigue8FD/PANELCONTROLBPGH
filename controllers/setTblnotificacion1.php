@@ -14,6 +14,7 @@ $asunto='';
 $mensaje='';
 $emisor='';
 $emailcreo='';
+$idredireccion='';
 $resultado='';
 /**
  * Validamos que el array $_POST no es null.
@@ -25,11 +26,12 @@ if (!empty($_POST)){
     $asunto=$_POST["asunto"];
     $mensaje=$_POST["mensaje"];
     $emisor=$_POST["emisor"];
+	$idredireccion=$_POST["idredireccion"];
     $emailcreo=$_POST["emailcreo"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
-     */
-    $resultado = FuncionesBePickler::setTblnotificacion($tipo,$asunto,$mensaje,$emisor,$emailcreo);
+     */                            
+    $resultado = FuncionesBePickler::setTblnotificacion1($tipo,$asunto,$mensaje,$emisor,$emailcreo,$idredireccion);
 
     if($resultado)
     {
@@ -54,6 +56,7 @@ unset($tipo);
 unset($asunto);
 unset($mensaje);
 unset($emisor);
-unset($emailcreo);
+unset($idredireccion);
+unset($emailcreo);  
 unset($resultado);
 ?>

@@ -7254,7 +7254,7 @@ class FuncionesBePickler{
     }
 
 	/*Insertar un registro en tblnotificacion*/
-	public static function setTblnotificacion($tipo,$asunto,$mensaje,$emisor,$emailcreo,$idredireccion){
+	public static function setTblnotificacion1($tipo,$asunto,$mensaje,$emisor,$emailcreo,$idredireccion){
         
         $insert ="INSERT INTO tblnotificacion (tblnotificacion_tipo, tblnotificacion_asunto,tblnotificacion_mensaje,tblnotificacion_emisor,tblnotificacion_fchmodificacion,tblnotificacion_fchcreacion,tblnotificacion_emailusuacreo,tblnotificacion_emailusuamodifico, tblnotificacionredireccion_idtblnotificacionredireccion) VALUES (?,?,?,?,NOW(),NOW(),?,?,?)"; 
         
