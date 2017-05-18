@@ -11,6 +11,7 @@ $solicitadoBy= '';
 $idtblordencompra= '';
 $fchordencompra='';
 $toralorden='';
+$totaldelivery='';
 $statuspagado='';
 $nombrecliente='';
 $sistemapago='';
@@ -32,6 +33,7 @@ if (!empty($_POST)){
     $idtblordencompra=$_POST["idtblordencompra"];
     $fchordencompra=$_POST["fchordencompra"];
     $toralorden=$_POST["toralorden"];
+    $totaldelivery= $_POST["totaldelivery"];
     $statuspagado=$_POST["statuspagado"];
     $nombrecliente=$_POST["nombrecliente"];
     $sistemapago=$_POST["sistemapago"];
@@ -47,7 +49,7 @@ if (!empty($_POST)){
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setUpdateTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailmodificacion,$idtblordencompra);
+    $resultado = FuncionesBePickler::setUpdateTblordencompra($fchordencompra, $toralorden,$totaldelivery,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailmodificacion,$idtblordencompra);
 
     if($resultado)
     {
@@ -71,6 +73,7 @@ unset($solicitadoBy);
 unset($idtblordencompra);
 unset($fchordencompra);
 unset($toralorden);
+unset($totaldelivery);
 unset($statuspagado);
 unset($nombrecliente);
 unset($sistemapago);

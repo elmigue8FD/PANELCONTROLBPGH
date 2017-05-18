@@ -3199,29 +3199,30 @@ class FuncionesBePickler{
 
 
     /*Insertar un registro en tblordencompra*/
-	 public static function setTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo){
+	 public static function setTblordencompra($fchordencompra, $toralorden,$totaldelivery,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo){
         
         $conexionPDO = ConexionDB::getInstance()->getDb();
         
-        $insert ="INSERT INTO tblordencompra (tblordencompra_fchordencompra,tblordencompra_totalordencompra,tblordencompra_statuspagado,tblordencompra_nombrecliente,tblordencompra_sistemapago,tblordencompra_facturacion,tblordencompra_devolucion,tblordencompra_stripetoken,tblordencompra_stripeemail,tblordencompra_calificacion,tblordencompra_ordencompracliente,tblcliente_idtblcliente,tblsistemapago_idtblsistemapago,tblordencompra_fchmodificacion,tblordencompra_fchcreacion,tblordencompra_emailusuacreo,tblordencompra_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
+        $insert ="INSERT INTO tblordencompra (tblordencompra_fchordencompra,tblordencompra_totalordencompra,tblordencompra_totaldelivery,tblordencompra_statuspagado,tblordencompra_nombrecliente,tblordencompra_sistemapago,tblordencompra_facturacion,tblordencompra_devolucion,tblordencompra_stripetoken,tblordencompra_stripeemail,tblordencompra_calificacion,tblordencompra_ordencompracliente,tblcliente_idtblcliente,tblsistemapago_idtblsistemapago,tblordencompra_fchmodificacion,tblordencompra_fchcreacion,tblordencompra_emailusuacreo,tblordencompra_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
         
         try{
 			$resultado = $conexionPDO->prepare($insert);
 			$resultado->bindParam(1,$fchordencompra,PDO::PARAM_STR);
 			$resultado->bindParam(2,$toralorden,PDO::PARAM_STR);
-			$resultado->bindParam(3,$statuspagado,PDO::PARAM_INT);
-			$resultado->bindParam(4,$nombrecliente,PDO::PARAM_STR);
-			$resultado->bindParam(5,$sistemapago,PDO::PARAM_STR);
-			$resultado->bindParam(6,$facturacion,PDO::PARAM_INT);
-			$resultado->bindParam(7,$devolucion,PDO::PARAM_INT);
-			$resultado->bindParam(8,$stripentoken,PDO::PARAM_STR);
-			$resultado->bindParam(9,$emailstripe,PDO::PARAM_STR);
-			$resultado->bindParam(10,$calif,PDO::PARAM_STR);
-			$resultado->bindParam(11,$ordencompracliente,PDO::PARAM_STR);
-			$resultado->bindParam(12,$idtblcliente,PDO::PARAM_INT);
-			$resultado->bindParam(13,$idtblsistpago,PDO::PARAM_INT);
-			$resultado->bindParam(14,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(3,$totaldelivery,PDO::PARAM_STR);
+			$resultado->bindParam(4,$statuspagado,PDO::PARAM_INT);
+			$resultado->bindParam(5,$nombrecliente,PDO::PARAM_STR);
+			$resultado->bindParam(6,$sistemapago,PDO::PARAM_STR);
+			$resultado->bindParam(7,$facturacion,PDO::PARAM_INT);
+			$resultado->bindParam(8,$devolucion,PDO::PARAM_INT);
+			$resultado->bindParam(9,$stripentoken,PDO::PARAM_STR);
+			$resultado->bindParam(10,$emailstripe,PDO::PARAM_STR);
+			$resultado->bindParam(11,$calif,PDO::PARAM_STR);
+			$resultado->bindParam(12,$ordencompracliente,PDO::PARAM_STR);
+			$resultado->bindParam(13,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(14,$idtblsistpago,PDO::PARAM_INT);
 			$resultado->bindParam(15,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(16,$emailcreo,PDO::PARAM_STR);
 			$resultado->execute();
 
 			if($resultado->rowCount()>0){
@@ -3255,28 +3256,29 @@ class FuncionesBePickler{
         
     }
     
-    /*Actualizar un registro en tblordencompra*/
-	 public static function setUpdateTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailmodificacion,$idtblordencompra){
+     /*Actualizar un registro en tblordencompra*/
+	 public static function setUpdateTblordencompra($fchordencompra, $toralorden,$totaldelivery,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailmodificacion,$idtblordencompra){
         
-        $insert ="UPDATE tblordencompra SET tblordencompra_fchordencompra = ?, tblordencompra_totalordencompra= ? ,tblordencompra_statuspagado = ?,tblordencompra_nombrecliente= ? ,tblordencompra_sistemapago = ?,tblordencompra_facturacion = ?,tblordencompra_devolucion = ?,tblordencompra_stripetoken = ?,tblordencompra_stripeemail = ?,tblordencompra_calificacion= ? , tblordencompra_ordencompracliente = ?,tblcliente_idtblcliente = ?,tblsistemapago_idtblsistemapago = ?,tblordencompra_fchmodificacion= NOW(), tblordencompra_emailusuamodifico = ? WHERE idtblordencompra = ? "; 
+        $insert ="UPDATE tblordencompra SET tblordencompra_fchordencompra = ?, tblordencompra_totalordencompra= ?,tblordencompra_totaldelivery= ? ,tblordencompra_statuspagado = ?,tblordencompra_nombrecliente= ? ,tblordencompra_sistemapago = ?,tblordencompra_facturacion = ?,tblordencompra_devolucion = ?,tblordencompra_stripetoken = ?,tblordencompra_stripeemail = ?,tblordencompra_calificacion= ? , tblordencompra_ordencompracliente = ?,tblcliente_idtblcliente = ?,tblsistemapago_idtblsistemapago = ?,tblordencompra_fchmodificacion= NOW(), tblordencompra_emailusuamodifico = ? WHERE idtblordencompra = ? "; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
 			$resultado->bindParam(1,$fchordencompra,PDO::PARAM_STR);
 			$resultado->bindParam(2,$toralorden,PDO::PARAM_STR);
-			$resultado->bindParam(3,$statuspagado,PDO::PARAM_INT);
-			$resultado->bindParam(4,$nombrecliente,PDO::PARAM_STR);
-			$resultado->bindParam(5,$sistemapago,PDO::PARAM_STR);
-			$resultado->bindParam(6,$facturacion,PDO::PARAM_INT);
-			$resultado->bindParam(7,$devolucion,PDO::PARAM_INT);
-			$resultado->bindParam(8,$stripentoken,PDO::PARAM_STR);
-			$resultado->bindParam(9,$emailstripe,PDO::PARAM_STR);
-			$resultado->bindParam(10,$calif,PDO::PARAM_STR);
-			$resultado->bindParam(11,$ordencompracliente,PDO::PARAM_STR);
-			$resultado->bindParam(12,$idtblcliente,PDO::PARAM_INT);
-			$resultado->bindParam(13,$idtblsistpago,PDO::PARAM_INT);
-			$resultado->bindParam(14,$emailmodificacion,PDO::PARAM_STR);
-			$resultado->bindParam(15,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(3,$totaldelivery,PDO::PARAM_STR);
+			$resultado->bindParam(4,$statuspagado,PDO::PARAM_INT);
+			$resultado->bindParam(5,$nombrecliente,PDO::PARAM_STR);
+			$resultado->bindParam(6,$sistemapago,PDO::PARAM_STR);
+			$resultado->bindParam(7,$facturacion,PDO::PARAM_INT);
+			$resultado->bindParam(8,$devolucion,PDO::PARAM_INT);
+			$resultado->bindParam(9,$stripentoken,PDO::PARAM_STR);
+			$resultado->bindParam(10,$emailstripe,PDO::PARAM_STR);
+			$resultado->bindParam(11,$calif,PDO::PARAM_STR);
+			$resultado->bindParam(12,$ordencompracliente,PDO::PARAM_STR);
+			$resultado->bindParam(13,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(14,$idtblsistpago,PDO::PARAM_INT);
+			$resultado->bindParam(15,$emailmodificacion,PDO::PARAM_STR);
+			$resultado->bindParam(16,$idtblordencompra,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){

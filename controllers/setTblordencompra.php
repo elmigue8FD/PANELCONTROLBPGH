@@ -1,5 +1,6 @@
 <?php
-session_start();
+require './Msession.php';
+//session_start();
 /**
  * Recursos utilizados
  */
@@ -11,6 +12,7 @@ require './InfoSolicitadaBy.php';
 $solicitadoBy= '';
 $fchordencompra='';
 $toralorden='';
+$totaldelivery='';
 $statuspagado='';
 $nombrecliente='';
 $sistemapago='';
@@ -32,6 +34,7 @@ if (!empty($_POST)){
     $solicitadoBy=$_POST["solicitadoBy"];
     $fchordencompra=$_POST["fchordencompra"];
     $toralorden=$_POST["toralorden"];
+    $totaldelivery= $_POST["totaldelivery"];
     $statuspagado=$_POST["statuspagado"];
     $nombrecliente=$_POST["nombrecliente"];
     $sistemapago=$_POST["sistemapago"];
@@ -49,7 +52,7 @@ if (!empty($_POST)){
      */
     if(!isset($_SESSION["idtblordencompra"]))
     {   
-        $resultado = FuncionesBePickler::setTblordencompra($fchordencompra, $toralorden,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion
+        $resultado = FuncionesBePickler::setTblordencompra($fchordencompra, $toralorden,$totaldelivery,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion
             ,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo);
     }else
     {
@@ -77,6 +80,7 @@ if (!empty($_POST)){
 unset($solicitadoBy);
 unset($fchordencompra);
 unset($toralorden);
+unset($totaldelivery);
 unset($statuspagado);
 unset($nombrecliente);
 unset($sistemapago);
