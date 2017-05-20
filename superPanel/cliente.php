@@ -469,12 +469,14 @@ $( window ).ready(function()
                 '</tr>' 		 
 					);									
 					
-					 if(inv.datos[g].tblcliente_fchnacimiento!=null)
-					 {  fecha= inv.datos[g].tblcliente_fchnacimiento;
+					 if(inv.datos[g].tblcliente_fchnacimiento==null || inv.datos[g].tblcliente_fchnacimiento=="" || inv.datos[g].tblcliente_fchnacimiento=="0000-00-00")
+					 {  $('#invitado'+g).text('---');
+					 } else {  
+					 fecha= inv.datos[g].tblcliente_fchnacimiento;
                         fecha = fecha.split("-");                 
 					    fecha = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
 					  $('#invitado'+g).text(fecha); 
-					 } else { $('#invitado'+g).text('---');  }
+					 }
                                     							   
                                     
 					$("#tabla_invitados").trigger('updateAll', [true]);//actualiza tabla 
@@ -520,10 +522,9 @@ $( window ).ready(function()
                                .done(function(mc2){				
                                 if(parseInt(mc2.success)==1){
                       
-           $("#body_tablaRegistrados").append('<tr>'+
-                '<td class="uk-width-medium-1-3" '+
-				' onclick="mostrarDatosCiudad('+reg.datos[r].idtblcliente+');"'+
+           $("#body_tablaRegistrados").append('<tr onclick="mostrarDatosCiudad('+reg.datos[r].idtblcliente+');"'+
 				'data-uk-modal="{target:'+"'#detalleDatosCliente'"+',bgclose:false, center:true }">'+
+                '<td class="uk-width-medium-1-3" >'+
                 '<span>'+reg.datos[r].tblcliente_nombre+' '+reg.datos[r].tblcliente_apellidos+' </span>'+ 
                	' </td>'+	
 				'<td class="uk-text-center">'+
@@ -541,21 +542,22 @@ $( window ).ready(function()
                 '</tr> '  
 				);									
 					              	     
-                     if(reg.datos[r].tblcliente_fchnacimiento!=null)
-					 {  fecha= reg.datos[r].tblcliente_fchnacimiento;
+                     if(reg.datos[r].tblcliente_fchnacimiento==null || reg.datos[r].tblcliente_fchnacimiento=="" || reg.datos[r].tblcliente_fchnacimiento=="0000-00-00")
+					 {  $('#registrado'+r).text('---');
+					 } else {  
+					 fecha= reg.datos[r].tblcliente_fchnacimiento;
                         fecha = fecha.split("-");                 
 					    fecha = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
 					  $('#registrado'+r).text(fecha); 
-					 } else { $('#registrado'+r).text('---');  }
+					 }
 					 
 					$("#tabla_registrados").trigger('updateAll', [true]);//actualiza tabla 
 					
 								}else{
 									
-								$("#body_tablaRegistrados").append('<tr>'+
-                '<td class="uk-width-medium-1-3" '+
-				' onclick="mostrarDatosCiudad('+reg.datos[r].idtblcliente+');"'+
+								$("#body_tablaRegistrados").append('<tr onclick="mostrarDatosCiudad('+reg.datos[r].idtblcliente+');"'+
 				'data-uk-modal="{target:'+"'#detalleDatosCliente'"+',bgclose:false, center:true }">'+
+                '<td class="uk-width-medium-1-3" >'+
                 '<span>'+reg.datos[r].tblcliente_nombre+' '+reg.datos[r].tblcliente_apellidos+' </span>'+ 
                	' </td>'+	
 				'<td class="uk-text-center">'+
@@ -576,12 +578,14 @@ $( window ).ready(function()
                 '</tr> '  
 				);									
 					              	     
-                     if(reg.datos[r].tblcliente_fchnacimiento!=null)
-					 {  fecha= reg.datos[r].tblcliente_fchnacimiento;
+                     if(reg.datos[r].tblcliente_fchnacimiento==null || reg.datos[r].tblcliente_fchnacimiento=="" || reg.datos[r].tblcliente_fchnacimiento=="0000-00-00" )
+					 {  $('#registrado'+r).text('---'); 
+					 } else {  
+					 fecha= reg.datos[r].tblcliente_fchnacimiento;
                         fecha = fecha.split("-");                 
 					    fecha = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
 					  $('#registrado'+r).text(fecha); 
-					 } else { $('#registrado'+r).text('---');  }
+					 }
 					 
 					$("#tabla_registrados").trigger('updateAll', [true]);//actualiza tabla 	
 									
@@ -628,15 +632,18 @@ $( window ).ready(function()
 				  $("#cliente_cel").text(item.tblcliente_celular);                   
 				  $("#cliente_pais").text(item.tblcliente_pais);  
                   $("#cliente_ciudad").text(item.tblcliente_ciudad);
-                  $("#cliente_sexo").text(item.tblcliente_sexo);               			  
+                              			  
 				  $("#cliente_direccion").text(item.tblcliente_callenum+', Col:'+item.tblcliente_colonia+', CP:'+item.tblcliente_codipost);	
 				  	
-							
-            
+						if(item.tblcliente_sexo=="" || item.tblcliente_sexo==null)	
+						{  $("#cliente_sexo").text("------");   
+					    }else{
+							$("#cliente_sexo").text(item.tblcliente_sexo);   
+						    }
 				
-				    if(item.tblcliente_fchnacimiento==null || item.tblcliente_fchnacimiento=="")
+				    if(item.tblcliente_fchnacimiento==null || item.tblcliente_fchnacimiento=="" || item.tblcliente_fchnacimiento=="0000-00-00")
 					{  $("#cliente_FechaNaci").text("------");	    
-				   }else { 
+				     }else { 
                            fecha= msg.datos[x].tblcliente_fchnacimiento;
                         fecha = fecha.split("-");                 
 					    fecha = fecha[2]+"/"+fecha[1]+"/"+fecha[0];				   

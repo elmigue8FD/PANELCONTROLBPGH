@@ -360,7 +360,7 @@
 					                </div>
 									<br/><br/>
 					               <div>								  
-								   <h4> Para mas informaci&oacute;n de la orden, haz clic en el Número de Orden. </h4>
+								   <h4> Para mas información de la orden, haz clic en el Número de Orden. </h4>
 								    
 									<label class="uk-float-right" id="numeroOrdenes"> </label> 
 									<br/>
@@ -914,7 +914,7 @@
    
 
     <?php include('../codigo_general/script_commonPB.php'); ?>  <!-- llamada para ejecutar el jquery -->
-
+   <script src="../assets/js/pages/forms_advanced2.js"></script>
     <!-- page specific plugins -->
     <!-- tablesorter -->
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
@@ -927,22 +927,26 @@
     <!--  issues list functions 
    <script src="../assets/js/pages/pages_issues.min.js"></script>  
    
-   
-   <script src="../assets/js/pages/pages_issuesPru2.js"></script> -->
-    <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
-    <!-- htmleditor (codeMirror) -->
+    
+  <!--  kendoui functions -->
+  <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
+	
+  <!-- <script src="../assets/js/pages/pages_issuesPru2.js"></script> 
+    
+	
+    
     <script src="../assets/js/uikit_htmleditor_custom.min.js"></script>
-    <!-- inputmask-->
+    --><!-- -->
     <script src="../bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
-   
+  
     <script src="http://getuikit.com/docs/js/uikit.min.js" ></script>
    <script src="http://getuikit.com/src/js/components/datepicker.js" ></script>
     <!--  forms advanced functions  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
-    <script src="../assets/js/pages/forms_advanced2.js"></script>
-	<!--  dropify -->
+    
+	<!--  dropify 
     <script src="../assets/js/custom/dropify/dist/js/dropify.min.js"></script>
-    <!--  form file input functions -->
-    <script src="../assets/js/pages/forms_file_input.min.js"></script>
+    
+    <script src="../assets/js/pages/forms_file_input.min.js"></script> -->
 	<script src="../assets/js/kendoui_custom.min.js"></script> 
   <!--  kendoui functions -->
   <script src="../assets/js/pages/kendoui.min.js"></script>

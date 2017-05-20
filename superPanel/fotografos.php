@@ -114,14 +114,14 @@
         <div class="uk-modal-dialog uk-modal-dialog-large">
 		 <button type="button"  class="uk-modal-close uk-close uk-close-alt"></button>
             <form enctype="multipart/form-data" method="POST" class="uk-form-stacked" id="formuAlta">
-			  <h3 class="heading_b uk-margin-bottom">Agregar nuevo fot&oacute;grafo </h3>
+			  <h3 class="heading_b uk-margin-bottom">Agregar nuevo fotógrafo </h3>
 			    
 				<div class="uk-grid uk-margin-medium-top uk-margin-large-bottom" data-uk-grid-margin>
              
 			 <div class="uk-width-large-1-2">
 			 <ul class="md-list md-list-addon">
                 <div class="uk-margin-medium-bottom">
-                   <label for="task_title">Nombre del fot&oacute;grafo</label>
+                   <label for="task_title">Nombre del fotógrafo</label>
                     <input type="text" class="md-input" id="foto_nombre" name="snippet_title"/>
                 </div>
 				<div class="uk-margin-medium-bottom">
@@ -137,7 +137,7 @@
                 </div>
 				
 				<div class="uk-margin-medium-bottom">
-                    <label for="task_title">Teléfono</label>
+                    <label for="task_title">Contacto</label>
                     <input id="foto_tel" type="text" class="md-input" minlength="7" maxlength="10" />
                        
                 </div>
@@ -156,7 +156,7 @@
 				
 				
 				<div class="uk-margin-medium-bottom uk-text-center">
-                            <label for="task_title">Subir fotograf&iacute;as</label>
+                            <label for="task_title">Subir fotografías</label>
                             <input type="file" id="foto1" name="foto1" class="dropify" data-max-file-size="1000K" accept="image/jpg,jpeg,png,gif" />
 						    <input type="hidden" id="fotoUnoBD" name="foto1BD" />
 							<label for="task_priority" class="uk-form-label">Foto 1</label>
@@ -218,7 +218,7 @@
                 <div class="uk-margin-medium-bottom">                  
                       <input type="text" class="md-input" id="mod_tel" name="snippet_title" minlength="7"  maxlength="10" /> 
                         </div>
-			     <label for="task_title">Precio por foto</label>
+			     <label for="task_title">Precio por foto (00.00)</label>
 				<div class="uk-margin-medium-bottom">                   
                    <div class="uk-input-group">
                                 <span class="uk-input-group-addon">$</span>                               
@@ -301,6 +301,14 @@
 	
 	function especificoFotografo(){
 		var idtblfotografo= $("#SelectFotografo").val();
+		
+		if(idtblfotografo=="todos"){   
+		                            var idtblciudad= $("#selectCiudad").val();
+                                      $("#selectCiudad").val(idtblciudad);				                
+                                      $("#listarFotografo").html("");								
+				                        mostrarFotografo(); 
+  		
+		}else{
 	
 	$.ajax({ 
         method: "POST",dataType: "json",url: "../../../controllers/getAllTblfotografobyidTblfotografo.php", 
@@ -357,8 +365,7 @@
                          '           <div class="md-list-content">'+
                           '              <span class="uk-text-small uk-text-muted">Ciudad</span>'+
                            '             <span >'+item.tblciudad_nombre+'</span> '+  
-						   '<input type="checkbox" id="estatusFotog'+idfo+'" class="checkbox" name="checkbox" '+item.tblfotografo_activado+'/> '+ 
-                            '        </div> '+
+						    '        </div> '+
                              '   </li><li> '+
                               '      <div class="md-list-content"> '+
                                '         <span class="uk-text-small uk-text-muted">Direcci&oacute;n</span> '+
@@ -388,15 +395,7 @@
 									);									
 							     
 			            									
-										   
-						          if(parseInt(item.tblfotografo_activado)!=0){
-                                          $("#estatusFotog"+idfo).prop("checked", true);										 
-										 
-                                           }
-						                  else {
-                                          $("#estatusFotog"+idfo).prop("checked", false);
-                                           										  
-										    } 
+							
 								  
 								  
 								  	//___________________________________			
@@ -434,6 +433,7 @@
 			 
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
       .always(function(){ $("#esperarMostrarfotografo").hide();  });
+		}
 	  
    } //fin de la funcion
 	function seleccFotografo(){		
@@ -447,7 +447,7 @@
 				   $("#selMuestFoto").removeClass('oculto');
 				   
 				$("#SelectFotografo").append('<option value="" disabled selected readonly >Selecciona...</option>');
-				   
+				 $("#SelectFotografo").append('<option value="todos">Todos</option>');   
                 $.each(mostF.datos, function(i,item)
 				 {	idtblfo=item.idtblfotografo;	
 				 //muestra ciudades en el encabezado de la interfaz principal
@@ -775,8 +775,7 @@
                          '           <div class="md-list-content">'+
                           '              <span class="uk-text-small uk-text-muted">Ciudad</span>'+
                            '             <span >'+item.tblciudad_nombre+'</span> '+  
-						   '<input type="checkbox" id="estatusFotog'+idfo+'" class="checkbox" name="checkbox" '+item.tblfotografo_activado+'/> '+ 
-                            '        </div> '+
+						    '        </div> '+
                              '   </li><li> '+
                               '      <div class="md-list-content"> '+
                                '         <span class="uk-text-small uk-text-muted">Direcci&oacute;n</span> '+
@@ -813,14 +812,7 @@
 										    											
                                            }*/
 										   
-						          if(parseInt(item.tblfotografo_activado)!=0){
-                                          $("#estatusFotog"+idfo).prop("checked", true);										 
-										 
-                                           }
-						                  else {
-                                          $("#estatusFotog"+idfo).prop("checked", false);
-                                           										  
-										    } 
+						         
 								  
 								  
 								  	//___________________________________			
@@ -1155,7 +1147,7 @@
                    .done(function(ad){      //se hace si NO se subio nuevas fotos
 	        
                         UIkit.modal("#modificar2").hide(); //se oculta el pupop                        
-                        UIkit.modal.alert('Fotografo Modificado con &eacute;xito');                             
+                        UIkit.modal.alert('Fotografo Modificado con éxito');                             
 						
 						$("#selectCiudad").val(ciudad);
 				        $('#listarFotografo').html("");					

@@ -164,8 +164,7 @@
 	 //.-----mostrar ciudades----------------------------------------------------------------
 	  function mostrar_Ciudades(){	
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadActAByProveedor.php", 
-	 data: {solicitadoBy:"WEB"}})
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadActAByProveedor.php", data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				if (parseInt(mostCiud.success)==1) {
 					ciudad=true;
@@ -319,7 +318,7 @@
 				               $("#tarjetaProducto").append('<div class="md-card">'+
                '<div class="md-card-content">'+				
 		       '<div class="uk-grid uk-grid-divider" data-uk-grid-margin>'+	
-		       '<div class="uk-width-medium-1-2" >'+	
+		       '<div class="uk-width-medium-1-2" ></br></br>'+	
 			   '<div class="uk-grid" id="parafoto'+gh.datos[g].idtblproductdetalle+'">'+              		 
 		       '</div> </div>'+	
 					'<div class="uk-width-medium-1-2">'+	
@@ -332,7 +331,7 @@
                                     '</div>'+
                                 '</li> <li>'+								
                                     '<div class="md-list-content">'+
-                               '<span class="uk-text-small uk-text-muted">Categor&iacute;a</span>'+
+                               '<span class="uk-text-small uk-text-muted">Categoría</span>'+
                                        ' <span>'+ categoria+ '</span>'+
                                     '</div> </li>'+
 									' <li>'+
@@ -417,7 +416,7 @@
 				                 {	
 								 
 			 $("#parafoto"+gh.datos[g].idtblproductdetalle).append('<div class="uk-width-medium-1-2 uk-container-center">	'+	
-			' <img id="tama" src="./../../assests_general/productos/linea/'+
+			' <img class="tama" src="../../assests_general/productos/linea/'+
 	                  ab.datos[x].tblproductimg_srcimg +'" />  </div>');
                                   }); //fin del each
                            
@@ -515,7 +514,7 @@
 				               $("#tarjetaProducto").append('<div class="md-card">'+
                '<div class="md-card-content">'+				
 		       '<div class="uk-grid uk-grid-divider" data-uk-grid-margin>'+	
-		       '<div class="uk-width-medium-1-2" >'+	
+		       '<div class="uk-width-medium-1-2" ></br></br>'+	
 			   '<div class="uk-grid" id="parafoto'+gh2.datos[g2].idtblproductdetalle+'">'+              		 
 		       '</div> </div>'+	
 					'<div class="uk-width-medium-1-2">'+	
@@ -611,7 +610,7 @@
 				                 {	
 								 
 			 $("#parafoto"+gh2.datos[g2].idtblproductdetalle).append('<div class="uk-width-medium-1-2 uk-container-center">	'+	
-			' <img id="tama" src="./../../assests_general/productos/linea/'+
+			' <img class="tama" src="../../assests_general/productos/linea/'+
 	                  ab2.datos[x2].tblproductimg_srcimg +'" />  </div>');
                                   }); //fin del each
                            
@@ -657,7 +656,7 @@
 				   activado:estatus,emailmodifico:emaildeUsuario}})
                   .done(function(mg){					
                             if(parseInt(mg.success)==1){                             
-                              UIkit.modal.alert('Estatus del Producto Modificado con &Eacute;xito'); 
+                              UIkit.modal.alert('Estatus del Producto Modificado con Éxito'); 
 							} else{
                               UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
                                  }     
@@ -704,7 +703,7 @@
 				               $("#tarjetaProducto").append('<div class="md-card">'+
                '<div class="md-card-content">'+				
 		       '<div class="uk-grid uk-grid-divider" data-uk-grid-margin>'+	
-		       '<div class="uk-width-medium-1-2" >'+	
+		       '<div class="uk-width-medium-1-2" ></br></br>'+	
 			   '<div class="uk-grid" id="parafoto'+gh2.datos[g2].idtblproductdetalle+'">'+              		 
 		       '</div> </div>'+	
 					'<div class="uk-width-medium-1-2">'+	
@@ -798,7 +797,7 @@
 				                 {	
 								 
 			 $("#parafoto"+gh2.datos[g2].idtblproductdetalle).append('<div class="uk-width-medium-1-2 uk-container-center">	'+	
-			' <img id="tama" src="./../../assests_general/productos/linea/'+
+			' <img class="tama" src="../../assests_general/productos/linea/'+
 	                  ab2.datos[x2].tblproductimg_srcimg +'" />  </div>');
                                   }); //fin del each
                            

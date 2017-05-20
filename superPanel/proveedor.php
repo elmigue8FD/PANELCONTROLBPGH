@@ -62,6 +62,7 @@
                             <span class="uk-text-small">Ver solo Proveedor: </span>
                                    <select id="SelectProveedor" name="SelectProveedor" class="uk-button uk-form-select" data-uk-form-select  onchange="javascript:mostrarProveedorEscogido();" >
                                     <option value="" disabled selected readonly >Selecciona...</option>
+								   
                                    </select>                             
                               </div>
 					</div>
@@ -149,25 +150,27 @@
 			   
 			         <label for="task_title">* Email</label>                   
 					 <div class="uk-margin-medium-bottom">                    
-                     <input class="md-input masked_input" id="proveedoremailmodificar" name="proveedoremailmodificar" type="text" data-inputmask="'alias': 'email'" data-inputmask-showmaskonhover="false" />
-                     </div>
+                     <!--<input class="md-input masked_input" id="proveedoremailmodificar" name="proveedoremailmodificar" type="text" data-inputmask="'alias': 'email'" data-inputmask-showmaskonhover="false" />
+                     -->
+					  <input class="md-input" id="proveedoremailmodificar" name="proveedoremailmodificar" type="text" />
+					 </div>
 					
 					<label for="task_title">* SEO</label>
 					<div class="uk-margin-medium-bottom">                    
                     <input class="md-input" id="proveedorseomodificar" name="proveedorseomodificar" type="text" />
                     </div>
-					<label for="task_title">* Celular</label>
+					<label for="task_title">* Número Celular (LADA + Número Celular)</label>
 				    <div class="uk-margin-medium-bottom">                    
                     <input type="text" class="md-input masked_input" id="proveedorcelularmodificar" name="proveedorcelularmodificar" data-inputmask="'mask': '9999999999'" data-inputmask-showmaskonhover="false"/>
                     </div>
 					 <div class="uk-grid">			 
 			        <div class="uk-width-medium-1-2">
-				    <label for="task_title">Extencion</label>
-					<div class="uk-margin-medium-bottom">                    
+				    <label for="task_title">Extensión</label>
+					<div class="uk-margin-medium-bottom"> </br>                   
                     <input type="text" class="md-input" id="proveedorextensionmodificar" maxlength="4" name="proveedorextensionmodificar" />
                     </div> </div>
 					<div class="uk-width-medium-1-2">
-				    <label for="task_title">Tel&eacute;fono</label>
+				    <label for="task_title">Teléfono de Tienda (LADA  + Número teléfonico)</label>
 				    <div class="uk-margin-medium-bottom">                    
                      <input class="md-input masked_input" id="proveedortelefonomodificar" name="proveedortelefonomodificar" type="text" data-inputmask="'mask': '9999999999'" data-inputmask-showmaskonhover="false" />
                      </div>   </div>    </div>
@@ -206,12 +209,12 @@
 				
 				<label for="task_title">* Colonia</label>
 				<div class="uk-margin-medium-bottom">                  
-					 <select id="proveedorcoloniamod" name="proveedorcoloniamod" class="md-input">
+					 <select id="proveedorcoloniaMod" name="proveedorcoloniaMod" class="md-input">
                      <option value="" disabled selected hidden>* Colonia</option>			
                      </select>		 			
                 </div>
 				
-				<label for="task_title">* Direcci&oacute;n (Calle y Número)</label>
+				<label for="task_title">* Dirección (Calle y Número)</label>
 				<div class="uk-margin-medium-bottom">                    
                     <input class="md-input" id="proveedordireccionmodificar" name="proveedordireccionmodificar" type="text" />
                 </div>
@@ -267,33 +270,33 @@
 					
                 </div>		
 				<div class="uk-margin-medium-bottom">
-                    <label for="task_title">* Descripci&oacute;n </label>
+                    <label for="task_title">* Descripción </label>
                  
 						<textarea rows="3" cols="15" class="md-input" id="proveedordescripcion" maxlength="299" name="proveedordescripcion"> </textarea>
 			   </div>
 				<div id="contador"></div>
 				<div class="uk-margin-medium-bottom">
                     <label for="task_title">* Email</label>
-                 <input class="md-input masked_input" id="proveedoremail" name="proveedoremail" type="text" data-inputmask="'alias': 'email'" data-inputmask-showmaskonhover="false" />
+                 <input class="md-input" id="proveedoremail" name="proveedoremail" type="text"/>
                </div>			 
 				<div class="uk-margin-medium-bottom">
                     <label for="task_title">* SEO</label>
                     <input type="text" class="md-input" id="proveedorseo" name="proveedorseo" />
                 </div>
 				<div class="uk-margin-medium-bottom">
-                    <label for="task_title">* N&uacute;mero Celular (LADA + número Celular)</label>
+                    <label for="task_title">* Número Celular (LADA + Número Celular)</label>
                     <input type="text" class="md-input masked_input" id="proveedorcelular" name="proveedorcelular" data-inputmask="'mask': '9999999999'" data-inputmask-showmaskonhover="false" />
                 </div>
 				
 				  <div class="uk-grid">			 
 			       <div class="uk-width-medium-1-2">
 				     <div class="uk-margin-medium-bottom">
-				    <label for="task_title">Extensi&oacute;n</label>
+				    <label class="uk-text-muted">Extensión</label></br></br>
                      <input type="text" class="md-input" id="proveedorextension" name="proveedorextension" maxlength="4" />
                      </div> </div>
 					  <div class="uk-width-medium-1-2">
 					 <div class="uk-margin-medium-bottom">
-                  <label for="task_title">Tel&eacute;fono de Tienda (LADA  + Número teléfonico)</label>
+                  <label class="uk-text-muted">Teléfono de Tienda (LADA  + Número teléfonico)</label></br>
                   <input class="md-input masked_input" id="proveedortelefono" name="proveedortelefono" type="text" data-inputmask="'mask': '9999999999'" data-inputmask-showmaskonhover="false" />
                    </div></div></div>
 
@@ -333,7 +336,7 @@
                      </select>					
                 </div>
 				<div class="uk-margin-medium-bottom">
-                    <label for="task_title">* Direcci&oacute;n (Calle y Número)</label>
+                    <label for="task_title">* Dirección (Calle y Número)</label>
                     <input type="text" class="md-input" id="proveedordireccion" name="proveedordireccion" />
                 </div>
 				
@@ -350,7 +353,7 @@
                        <div>
                             <span class="icheck-inline">
                                 <input type="radio" name="tipopedido" value="1" id="mismodia" />
-                                <label>Para el mismo d&iacute;a</label> 
+                                <label>Para el mismo día</label> 
                             </span>
                       </div>
 					  <div>
@@ -362,7 +365,7 @@
 					  <div>	
 							 <span class="icheck-inline">
                                 <input type="radio" name="tipopedido" value="3" id="diaypedido"  checked />
-                                <label>El mismo d&iacute;a y sobre pedido</label> 
+                                <label>El mismo día y sobre pedido</label> 
                             </span>
                     </div>
                 </div>
@@ -487,11 +490,12 @@
      method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudad.php", 
 	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
             .done(function(mf){				
-				   if (parseInt(mf.success)==1) {				   
+		      if (parseInt(mf.success)==1) {				   
 				  $("#divUprov").removeClass('oculto');
 				   $("#SelectProveedor").html("");	
 				  $("#SelectProveedor").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
-				
+				  $("#SelectProveedor").append('<option value="todos">Todos</option>');
+				  
                 $.each(mf.datos, function(i,item)
 				 {	idtblproveedor=item.idtblproveedor;	
 				      estatus=item.tblproveedor_activado;     
@@ -499,6 +503,8 @@
 				 
 				 if (estatus=="1" || estatus=="0"){ provee=true;
                  $("#SelectProveedor").append('<option value="' + idtblproveedor +'">' + item.tblproveedor_nombre + '</option>');
+				
+				 
 				 }else{ provee=false;}				 
 				   });
 				   
@@ -511,6 +517,10 @@
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
       
    } 
+   
+   
+       
+   
 	//.-----mostrar cantidad proveedores en base a la ciudad en la que esta----------------------------------------------------------------
 	  function cantidadProveedores(){
 	   var idtblciudad=$("#proveedorCiudad").val(); 
@@ -596,20 +606,21 @@
 	   var idtblciudad=$("#proveedorCiudadAg").val(); //se recibe el id del select de la ciudad que selecciono el usuario
 	     
 		                //nombre del select que contendra las colonias
-     var verColonias = $("#proveedorcolonia"); 
-	 //var verColonias2 = $("#proveedorcoloniamod");
+     
+     //var verColonias2 = $("#proveedorcoloniaMod");
         
      $.ajax({     
        method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:idtblciudad}})  
             .done(function(mcol){
 				
-				$("#proveedorcolonia").html("");				
+				$("#proveedorcolonia").html("");
+              //  $("#proveedorcoloniaMod").html("");				
                  $.each(mcol.datos, function(i,item)
 				 {	
 				 //muestra colonias en pupop para dar de alta proveedor
-                  verColonias.append('<option value="' + item.idtblcolonia +'">' + item.tblcolonia_nombre + '</option>');
-                  //verColonias2.append('<option value="' + item.idtblcolonia +'">' + item.tblcolonia_nombre + '</option>');
+                $("#proveedorcolonia").append('<option value="' + item.idtblcolonia +'">' + item.tblcolonia_nombre + '</option>');
+                // verColonias2.append('<option value="' + item.idtblcolonia +'">' + item.tblcolonia_nombre + '</option>');
                   
 				  });				
               })
@@ -621,7 +632,7 @@
 	      var idtblciudad=$("#proveedorCiudadModd").val(); //se recibe el id del select de la ciudad que selecciono el usuario
 	     
 		                //id del select que contendra las colonias
-     	 var verColonias2 = $("#proveedorcoloniamod");
+     	 
         
      $.ajax({     
        method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
@@ -629,11 +640,11 @@
             .done(function(mcol){
 				
 				
-				$("#proveedorcoloniamod").html("");
+				$("#proveedorcoloniaMod").html(""); 
                  $.each(mcol.datos, function(i,item)
 				 {	
 				 //muestra colonias en pupop para modificar proveedor
-                  verColonias2.append('<option value="' + item.idtblcolonia +'">' + item.tblcolonia_nombre + '</option>');
+                  $("#proveedorcoloniaMod").append('<option value="' + item.idtblcolonia +'">' + item.tblcolonia_nombre + '</option>');
                   
 				  });
 				
@@ -642,28 +653,26 @@
       
    }
    //............................... mostrar colonias en pupop de modificar proveedor
-   //  muestra la colonia guardada   .......................................
+    // muestra la colonia guardada   .......................................
     function mostrarColoniaModificar(proCiudad){	   
-	   
-       var verColonias2 = $("#proveedorcoloniamod");	 
-                          //nombre del select que tendra las colonias
+	    
      $.ajax({     
        method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:proCiudad}}) 
-            .done(function(mcol){
-								
-				$("#proveedorcoloniamod").html("");
-                 $.each(mcol.datos, function(i,item)
+            .done(function(mcolj){
+							
+				 $("#proveedorcoloniaMod").html("");
+                 $.each(mcolj.datos, function(i,item)
 				 {					 
 				  //muestra colonias en pupop para modificar proveedor
-				  verColonias2.append('<option value="' + item.idtblcolonia +'">' + item.tblcolonia_nombre + '</option>');
+				 $("#proveedorcoloniaMod").append('<option value="' + item.idtblcolonia +'">' + item.tblcolonia_nombre + '</option>');
                   
 				  });               
 				
               })
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
       
-   } 
+   }  
   
    
    //----- mostrar paquetes ---------------------------------------------------------------------
@@ -727,7 +736,8 @@
 							 
 	              '<a class="md-fab md-fab-small md-fab-accent uk-float-right" href="#modificar" id="botonmodificarProve'+g+'"'+
 		          ' data-uk-modal="{target:"#modificar",bgclose:false, center:true }" onclick="datosmodificarUsuario('+
-	                           idproveedor+'); mostrarColoniaModificar('+proCiudad+');" >'+                                                   
+	                         //  idproveedor+');mostrarColoniaModificar();" >'+  
+                          idproveedor+'); mostrarColoniaModificar('+proCiudad+');" >'+ 							   
 							  ' <i class="material-icons">&#xe254;</i>'+            					  
                                '</a> '+	
 					 
@@ -985,7 +995,7 @@
 				  $("#proveedortelefonomodificar").val(item.tblproveedor_telefonotienda);
 				  $("#proveedorextensionmodificar").val(item.tblproveedor_extencion);				       
 				  $("#proveedorCiudadModd").val(item.tblciudad_idtblciudad);
-				  $("#proveedorcoloniamod").val(item.tblcolonia_idtblcolonia);
+				  $("#proveedorcoloniaMod").val(item.tblcolonia_idtblcolonia);
 				  $("#proveedordireccionmodificar").val(item.tblproveedor_direccion);
 				  $("#proveedorpaquetemod").val(item.tblpaquete_idtblpaquete);
 				  
@@ -1097,7 +1107,7 @@
 			   titularParaModificar= $("#titularModificar").val();			   
 			   direccionModificar= $("#proveedordireccionmodificar").val();
 			   ciudadModificar= $("#proveedorCiudadModd").val();
-			   coloniaModificar= $("#proveedorcoloniamod").val();
+			   coloniaModificar= $("#proveedorcoloniaMod").val();
 			   paqueteModificar= $("#proveedorpaquetemod").val();
 			   emaildeProveedor="Flor@gmail.com";
 			    	    
@@ -1126,7 +1136,7 @@
    
     srcimgActual=$("#tama2").attr("src"); //id de ftografia actual se recupera su valor del src
    // alert('srcimgActual::'+srcimgActual);
-    srcimgActual=srcimgActual.replace('./../../assests_general/proveedor/logoProveedor/', '');
+    srcimgActual=srcimgActual.replace('../../assests_general/proveedor/logoProveedor/', '');
     //alert('srcimgActual::'+srcimgActual);
 
     // input nuevo
@@ -1190,7 +1200,7 @@
 		        { 
 			UIkit.modal.alert('Es necesario escoger una Ciudad.');
                   }
-	    else if ( $('#proveedorcoloniamod').val()==null)	
+	    else if ( $('#proveedorcoloniaMod').val()==null)	
 		        { 
 			UIkit.modal.alert('Es necesario escoger una colonia.');
                   }	
@@ -1343,7 +1353,7 @@
 		        { 
 			UIkit.modal.alert('Es necesario escoger una Ciudad.');
                   }
-	    else if ( $('#proveedorcoloniamod').val()==null)	
+	    else if ( $('#proveedorcoloniaMod').val()==null)	
 		        { 
 			UIkit.modal.alert('Es necesario escoger una colonia.');
                   }	
@@ -1660,7 +1670,19 @@
    function mostrarProveedorEscogido(){
 			
 		    var idtblProveedor2=$("#SelectProveedor").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
-          console.log('id'+idtblProveedor2);
+          
+		  
+		  
+		  if(idtblProveedor2=="todos"){
+		  
+		  var idtblciudad=$("#proveedorCiudad").val();
+		
+	         $("#proveedorCiudad").val(idtblciudad);
+				 $('#listarProveedor').html("");					
+				   mostrarProveedor();	
+		  
+		  
+		  }else{
 			 //alert("entrando a la funcion mostrar proveedor"+tblciudad_idtblciudad);
          $.ajax({   
         method: "POST",dataType: "json",url: "../../../controllers/getAllTblproveedorbyidTblproveedor2.php", 
@@ -1673,7 +1695,7 @@
           .done(function(mprov2){             
        if(parseInt(mprov2.success)==1){
 					 nohaypp5=true;
-                    // $("#paraInicial").addClass('oculto'); 
+                   
 					 
 				     $('#listarProveedor').html("");                   
                   $.each(mprov2.datos, function(g2,item)
@@ -1842,20 +1864,7 @@
 										 $("#paraTelefono"+idproveedor).text(mprov2.datos[g2].tblproveedor_telefonotienda);			
 											} 	
 											
-											 if(item.tblproveedor_email=="" && item.tblproveedor_celular=="" && item.tblproveedor_banco==""
-						 && item.tblproveedor_claveintban==""  && item.tblproveedor_nombretitucuen==""
-						 && item.tblproveedor_rfc=="" && mprov2.datos[g2].tblproveedor_telefonotienda==""
-						 && mprov2.datos[g2].tblproveedor_extencion=="" &&
-						 item.tblproveedor_direccion=="" ){
-                                           $("#botonmodificarProve"+g2).remove();
-										   $("#botonEliminarProvee"+g2).remove();	
-                                          $("#mar"+idproveedor).remove();
-										   $("#estadoProveedor"+idproveedor).text("Ya no es socio en la empresa");
-										 // $("#idciud"+idproveedor).text("");
-										    $("#paraextencion"+idproveedor).text("");
-                                              $("#paraTelefono"+idproveedor).text("");											
-                                           }
-						         
+											
 							//........................
                             }				
 				            );				     
@@ -1863,7 +1872,7 @@
                                       }
 							else 
 						{     nohaypp=false;				 
-				 // $("#paraInicial").removeClass('oculto'); 
+				 
 				  $("#listarProveedor").html("");					
 				
 					  }
@@ -1872,6 +1881,8 @@
 			 
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
       .always(function(){ $("#esperarMostrarProveedor").hide();  });
+	  
+		  }
 	  
    } //fin de la funcion
   </script> 

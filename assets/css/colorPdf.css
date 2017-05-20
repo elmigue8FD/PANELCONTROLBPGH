@@ -1,0 +1,90 @@
+
+		 
+		 .ye{  background-color:#dd5465;
+     color:white;
+ }
+ 
+      .rell{  background-color:#CCCCCC;
+    
+       }
+		 
+		 body { 
+    background-image: url(../img/delPanel/bepi.JPG); 
+	/*background:url(background.jpg) no-repeat;*/
+	 background-position:center center;
+	background-repeat:no-repeat; 
+	background-image-resolution:300dpi;
+	background-image-resize:6; 
+	
+		 }
+		 
+		 .texCen{ text-align: center;
+		     font-family: Arial;
+			 color: black;
+		 }
+		 
+		 .neg{ font-weight: bold;		        
+		       font-family: Arial;
+			   font-size:9pt;
+			   color: black;}
+		 
+		 .table1 { /* text-align: center;        
+		background-color: #dd5465;
+		border: solid 10px; 
+		border-color: #FC85A5;*/
+		  width: 100%; /*ancho*/
+		 /*height: 35%;   alto*/
+		 /*margin: auto;*/
+		 font-family: Arial;		
+		color: black;
+		font-size:9pt;
+	   	
+      }	
+	  
+	  .table2 {  text-align: center;        
+		/*background-color: #dd5465; */
+		  /*border: dotted 1em; */        
+		  padding:0px;
+		  border-color: #333333;
+		  border-collapse: collapse;
+		  width: 100%; /*ancho*/
+		 /*height: 35%;   alto*/
+		 /*margin: auto;   */
+		 font-family: Arial;		
+		color: black;  /*letra*/
+		font-size:9pt;
+	   	
+      }	
+	  .table2 td{ border: solid 1em; 
+                border-color: #333333;
+		/*  width: 15px; ancho text-align:center;*/
+		/* height: 35%;*/
+          }	 
+	  
+	  
+	  caption{ font-family: Arial;
+             color: black;
+		     caption-side: top;
+		     font-size:9pt;
+		    /* font-weight: bold;*/
+			 text-align:left;
+		     }	 
+
+			 
+	  .ta1{      
+		text-align:right;
+				}
+				
+	  .ta2{      
+		text-align:left;
+				}			
+
+      /*.letra{
+        font-family: Arial;		
+		color: black;
+        font-size:20;		
+		}	*/
+		
+		
+		
+  
