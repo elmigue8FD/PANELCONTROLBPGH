@@ -104,7 +104,7 @@
                             
 						  <thead>
                                 <tr>                                   
-                                    <th class="uk-text-center" >Cup&oacute;n</th>
+                                    <th class="uk-text-center" >Cupón</th>
                                     <th class="uk-text-center">Valor</th>									
 									<th class="uk-text-center">Estatus</th>						
                                     
@@ -115,6 +115,15 @@
                                
                             </tbody>
                         </table>
+						<div id="pagerCupones" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+    </div>
                     </div>
 					
 					
@@ -137,7 +146,7 @@
 			  <h3 class="heading_b uk-margin-bottom">Agregar Cupón </h3>
 			 
                 <div class="uk-width-medium-2-2 ">
-                    <label for="task_title">Nombre del cup&oacute;n</label>
+                    <label for="task_title">Nombre del cupón</label>
                     <input type="text" class="md-input" id="altaNombre" maxlength="15" name="snippet_title"/>
                 </div> </br>
 				<div class="uk-width-medium-1-2">
@@ -184,7 +193,7 @@
             <form class="uk-form-stacked">
 			  <h3 class="heading_b uk-margin-bottom">Modificar Datos</h3>
                <div class="uk-width-medium-2-2 ">
-                    <label for="task_title">Nombre del cup&oacute;n</label>
+                    <label for="task_title">Nombre del cupón</label>
 					<span class="oculto" id="modificarIdcupon"></span>
                     <input type="text" class="md-input" id="modificarNombre" maxlength="15" name="snippet_title"/>
                 </div> </br>
@@ -258,7 +267,7 @@
                          <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair" id="tabla_cuponesHistorico">
                               <thead>
                                 <tr>                                   
-                                    <th class="uk-text-center">Cupon</th>                                    
+                                    <th class="uk-text-center">Cupón</th>                                    
                                     <th class="uk-text-center">Cliente</th>
 									<th class="uk-text-center">Fecha de uso</th>                                    
                                 </tr>
@@ -269,6 +278,15 @@
                                
                             </tbody>
                         </table>
+						<div id="pagerHistCupon" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+    </div>
                     </div>
 					</div>
 					</div>
@@ -295,6 +313,7 @@
    
     <!-- page specific plugins -->
     <!-- tablesorter -->
+	<script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/widgets/widget-alignChar.min.js"></script>
@@ -330,6 +349,11 @@
 		 }); 
 		 } 
 		 
+   function inicializarPagCupon(){  		
+ 	$("#tabla_cupones")
+		.tablesorterPager({container: $("#pagerCupones")})  ;
+		 }
+		 
 		 function inicializarTablasHistorico(){
 		 $("#tabla_cuponesHistorico").tablesorter({
     sortList: [[3,0]], //ordenar por de inicio esa columna 
@@ -337,7 +361,12 @@
     widgets: ['filter']//activar el widget de filtro de busqueda
 		 }); 
 		 
- }
+      }
+	  
+	  function inicializarPagCuponHisto(){  		
+ 	$("#tabla_cuponesHistorico")
+		.tablesorterPager({container: $("#pagerHistCupon")})  ;
+		 }
 	
 
 function cantidadCupones(){
@@ -345,7 +374,7 @@ function cantidadCupones(){
 	   //se recibe el id del select de la ciudad para mostras cantidad de colonias que tiene registradas	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllTblcupondescuentoByTblCiudad.php", 
+	   url: "./../../controllers/getCountAllTblcupondescuentoByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idtblciudad}})
             .done(function(mc){ 
 				   
@@ -365,7 +394,7 @@ function cantidadCupones(){
 	   //se recibe el id del select de la ciudad para mostras cantidad de colonias que tiene registradas	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllTblcupondescuentoByTblCiudadHisto.php", 
+	   url: "./../../controllers/getCountAllTblcupondescuentoByTblCiudadHisto.php", 
 	   data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idciudad}})
             .done(function(mc){ 
 				   
@@ -384,7 +413,7 @@ function cantidadCupones(){
  function mostrarDatosCupon(idcupon){
           
     $.ajax({ 
-       method: "POST",dataType: "json",url: "../../../controllers/getTblcupon1.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getTblcupon1.php", 
 	   data: {solicitadoBy:"WEB",idcupon:idcupon}}) 
             .done(function(msg){
                
@@ -419,7 +448,7 @@ function cantidadCupones(){
 		     }
 		
 	   else if( !(/^([0-9])*$/.test(valor)) ){    
-			UIkit.modal.alert('Es necesario que el campo Valor del Cupón solo contega Digitos.');
+			UIkit.modal.alert('Es necesario que el campo Valor del Cupón solo contega Digitos (ejemplo:100).';
 		    }  
 	 else if( $('#selectCiudadMod').val()==null){
 			UIkit.modal.alert('Es necesario escoger una ciudad.');
@@ -429,7 +458,7 @@ function cantidadCupones(){
 	   else{    
 			   
 		           $.ajax({ 
-                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblcupondescuentoSinEst.php", 				  
+                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcupondescuentoSinEst.php", 				  
 				   data:{solicitadoBy:"WEB",idcupon:idcupon,				  
 				   nombre:nombre,valor:valor,idciudad:idciudad,
 				   emailmodifico:email},
@@ -464,7 +493,7 @@ function cantidadCupones(){
 	function mostrarCiudades(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostC){
 				//console.log(mcol);   
@@ -497,7 +526,7 @@ function cantidadCupones(){
 		    var idDelaCiudad=$("#selectCiudadHisto").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
              inicializarTablasHistorico();
 		   $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getTblhistcupondescuento1.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getTblhistcupondescuento1.php", 
 	    data: {solicitadoBy:"WEB",idciudad:idDelaCiudad},
 		beforeSend: function(){   
            $('#esperarMostrarCuponesH').css('display','inline');								  
@@ -506,6 +535,7 @@ function cantidadCupones(){
             .done(function(mo){ 
 				
 				if(parseInt(mo.success)==1){
+					 $("#pagerHistCupon").removeClass('oculto');
 				Hiscupon=true;
 				$("#body_tablaHistorico").html("");
                 $.each(mo.datos, function(i,item)
@@ -538,11 +568,12 @@ function cantidadCupones(){
 				                       
 				 
 				   		$("#tabla_cuponesHistorico").trigger('updateAll', [true]);//actualiza tabla 
-				
+				         inicializarPagCuponHisto();
 				
                 });	 //cierre del each
                         //-----------
 				}else{Hiscupon=false
+				  $("#pagerHistCupon").addClass('oculto');
 				 $("#body_tablaHistorico").html("");
 				}         
                 
@@ -557,7 +588,7 @@ function cantidadCupones(){
 		    var idDelaCiudad=$("#selectCiudadGral").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
              inicializarTablas();
 		   $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblcupondescuentoByTblciudadPertenecen.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblcupondescuentoByTblciudadPertenecen.php", 
 	    data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idDelaCiudad},
 		beforeSend: function(){   
            $('#esperarMostrarCupones').css('display','inline');								  
@@ -566,6 +597,7 @@ function cantidadCupones(){
             .done(function(mo){ 
 				
 				if(parseInt(mo.success)==1){
+					$("#pagerCupones").removeClass('oculto');	
 				Hcupon=true;
 				$("#body_tablaCupones").html("");
                 $.each(mo.datos, function(i,item)
@@ -602,11 +634,12 @@ function cantidadCupones(){
                                             } 
 				 
 				   		$("#tabla_cupones").trigger('updateAll', [true]);//actualiza tabla 
-				
+				         inicializarPagCupon();
 				
                 });	 //cierre del each
                         //-----------
 				}else{Hcupon=false  
+				$("#pagerCupones").addClass('oculto');
 				$("#body_tablaCupones").html("");}         
                 
       }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
@@ -631,7 +664,7 @@ function cantidadCupones(){
 		 			 
 		
              $.ajax({ 
-                   method:"POST",dataType: "json",url: "../../../controllers/setUpdateTblcupondescuentoEstatus.php", 				  
+                   method:"POST",dataType: "json",url: "./../../controllers/setUpdateTblcupondescuentoEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idcupon:idcupon,activado:activoModificar1,
 				   emailmodifico:emaildeUsuario}})
                   .done(function(mg){					  
@@ -685,7 +718,7 @@ function cantidadCupones(){
 		     }
 		
 	   else if( !(/^([0-9])*$/.test(valor)) ){    
-			UIkit.modal.alert('Es necesario que el campo Valor del Cupón solo contega Digitos.');
+			UIkit.modal.alert('Es necesario que el campo Valor del Cupón solo contega Digitos (ejemplo:100) .');
 		    }  
 	 else if( $('#selectCiudad').val()==null){
 			UIkit.modal.alert('Es necesario escoger una ciudad.');
@@ -693,7 +726,7 @@ function cantidadCupones(){
 	   else{
 		   
 		 $.ajax({    //inicia ajax  
-       method: "POST",dataType: "json",url: "../../../controllers/getCheckTblcuponDesc.php",
+       method: "POST",dataType: "json",url: "./../../controllers/getCheckTblcuponDesc.php",
 	   data: {solicitadoBy:"WEB",nombre:nombre,ciudad:ciudad}	         
 	   })
             .done(function(mpa){   
@@ -705,7 +738,7 @@ function cantidadCupones(){
 					      $("#cupon_alta").addClass("oculto");
 					 $.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "../../../controllers/setTblcuponparaDescuento.php", 
+							   url: "./../../controllers/setTblcuponparaDescuento.php", 
 							   data: {solicitadoBy:"WEB",nombre:nombre, 
 							   valor:valor,
 							   estatus:cuponEstatus,ciudad:ciudad,emailcreo:emailUsuario},

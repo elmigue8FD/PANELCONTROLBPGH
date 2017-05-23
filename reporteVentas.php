@@ -1,5 +1,5 @@
 <?php
-require '../../models/FuncionesBePickler.php';
+require 'FuncionesReporte.php';
 
 //include_once '../../controllers/InfoSolicitadaBy.php';
 include_once ('superPanel/mPDf/mpdf.php');
@@ -209,8 +209,7 @@ unset($comRetenida);
   $mpdf  =  new mPDF('c','letter','','',24,24,34,24);
   $mpdf->SetDisplayMode('fullpage');  // ()decidir como se va a mostrar el PDF
   $mpdf->SetAuthor("Autor Reyna MMM"); //poner autor al pdf, puede ser puesto de varias maneras
-  $stylesheet = file_get_contents('colorPdf.css');
- // $stylesheet2 = file_get_contents('../PANELCONTROL/assets/css/mainPanel.css');
+  $stylesheet = file_get_contents('colorPdf.css'); 
   $mpdf->WriteHTML ($stylesheet,1);
  // $mpdf->WriteHTML ($stylesheet2,2);
   $mpdf->WriteHTML($cuerpo,2);

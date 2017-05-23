@@ -336,7 +336,7 @@
                      </select>					
                 </div>
 				<div class="uk-margin-medium-bottom">
-                    <label for="task_title">* Dirección (Calle y Número)</label>
+                    <label for="task_title">* Direcci&oacute;n (Calle y Número)</label>
                     <input type="text" class="md-input" id="proveedordireccion" name="proveedordireccion" />
                 </div>
 				
@@ -353,7 +353,7 @@
                        <div>
                             <span class="icheck-inline">
                                 <input type="radio" name="tipopedido" value="1" id="mismodia" />
-                                <label>Para el mismo día</label> 
+                                <label>Para el mismo d&iacute;a</label> 
                             </span>
                       </div>
 					  <div>
@@ -365,7 +365,7 @@
 					  <div>	
 							 <span class="icheck-inline">
                                 <input type="radio" name="tipopedido" value="3" id="diaypedido"  checked />
-                                <label>El mismo día y sobre pedido</label> 
+                                <label>El mismo d&iacute;a y sobre pedido</label> 
                             </span>
                     </div>
                 </div>
@@ -487,7 +487,7 @@
 	      var idtblciudad=$("#proveedorCiudad").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
           
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudad.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllProveedorByCiudad.php", 
 	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
             .done(function(mf){				
 		      if (parseInt(mf.success)==1) {				   
@@ -531,7 +531,7 @@
 	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllTblproveedorByTblCiudad.php", 
+	   url: "./../../controllers/getCountAllTblproveedorByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idtblciudad}})
             .done(function(mc){
 				   
@@ -557,7 +557,7 @@
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				   
@@ -579,7 +579,7 @@
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadActAByColonia.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadActAByColonia.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				//console.log(mcol);    
@@ -610,7 +610,7 @@
      //var verColonias2 = $("#proveedorcoloniaMod");
         
      $.ajax({     
-       method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getAllTblcoloniaByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:idtblciudad}})  
             .done(function(mcol){
 				
@@ -635,7 +635,7 @@
      	 
         
      $.ajax({     
-       method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getAllTblcoloniaByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:idtblciudad}})
             .done(function(mcol){
 				
@@ -657,7 +657,7 @@
     function mostrarColoniaModificar(proCiudad){	   
 	    
      $.ajax({     
-       method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getAllTblcoloniaByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:proCiudad}}) 
             .done(function(mcolj){
 							
@@ -682,7 +682,7 @@
 	 var ModificarPaquete = $("#proveedorpaquetemod");	      
     
      $.ajax({    //inicia ajax  
-       method: "POST",dataType: "json",url: "../../../controllers/getAllTblpaqueteAct.php",
+       method: "POST",dataType: "json",url: "./../../controllers/getAllTblpaqueteAct.php",
 	   data: {solicitadoBy:"WEB"}})
             .done(function(mpaq){
 				
@@ -705,7 +705,7 @@
           
 			 //alert("entrando a la funcion mostrar proveedor"+tblciudad_idtblciudad);
          $.ajax({ 
-        method: "POST",dataType: "json",url: "../../../controllers/getAllTblproveedorbyTblciudad.php", 
+        method: "POST",dataType: "json",url: "./../../controllers/getAllTblproveedorbyTblciudad.php", 
 		data: {solicitadoBy:"WEB",tblciudad_idtblciudad:tblciudad_idtblciudad},
 		    beforeSend: function(){
                               $('#esperarMostrarProveedor').css('display','inline');								  
@@ -929,7 +929,7 @@
 			   
 		          $.ajax({ 
                    method: "POST",dataType:"json",
-				   url: "../../../controllers/setDeleteTblproveedor1.php", 				  
+				   url: "./../../controllers/setDeleteTblproveedor1.php", 				  
 				   data:{solicitadoBy:"WEB",id:idproveedor,email:email,cel:cel,
 				 banco:banco,clave:clave,titular:titular,rfc:rfc,tel:tel,ext:ext,
 				   dire:direcc,estatus:estatus,emailmodifico:emaildeUsuario} })   
@@ -962,7 +962,7 @@
     function datosmodificarUsuario(idproveedor){
            // alert("entrando a mostrar datos de un proveedor en especifico");
     $.ajax({ 
-       method: "POST",dataType: "json",url: "../../../controllers/getTblproveedorByCiudad.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getTblproveedorByCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblproveedor:idproveedor}})
             .done(function(msg){
                 
@@ -1136,7 +1136,7 @@
    
     srcimgActual=$("#tama2").attr("src"); //id de ftografia actual se recupera su valor del src
    // alert('srcimgActual::'+srcimgActual);
-    srcimgActual=srcimgActual.replace('../../assests_general/proveedor/logoProveedor/', '');
+    srcimgActual=srcimgActual.replace('./../../assests_general/proveedor/logoProveedor/', '');
     //alert('srcimgActual::'+srcimgActual);
 
     // input nuevo
@@ -1227,7 +1227,7 @@
 	  
                        //borramos el archivo actual de la fotografia en el servidor
                        $.ajax({ method: "POST",  dataType: "json",  
-	                   url: "../../../controllers/setDeleteFileImgProveedor.php", 
+	                   url: "./../../controllers/setDeleteFileImgProveedor.php", 
 	                   data: {solicitadoBy:"WEB",tblproveedorimg_srcimg:srcimgActual} }) 
                       .done(function( datos ){
                        borradafoto=true;
@@ -1240,7 +1240,7 @@
 
                        //var ruta = "imagen-ajax.php";
                        $.ajax({  method: "POST",
-		               url: "../../../controllers/uploadImgProveedor.php", 
+		               url: "./../../controllers/uploadImgProveedor.php", 
 		               data: formData ,contentType: false,
                        processData: false, })
                       .done(function( datos ){
@@ -1248,7 +1248,7 @@
                       		if(datos=="success"){	
 							subioNuevaFoto=true;
 							//--------actualiza datos
-                      $.ajax({ method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblproveedor2.php", 				  
+                      $.ajax({ method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblproveedor2.php", 				  
 				   data:{solicitadoBy:"WEB",idtblproveedor:idusuario,
 				   nombreprov:nombreModificar,srclogo:srcimg1, 
 				   descripcion:descripcionModificar,
@@ -1376,7 +1376,7 @@
 							
 		else{			
 	
-	               $.ajax({ method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblproveedor2.php", 				  
+	               $.ajax({ method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblproveedor2.php", 				  
 				   data:{solicitadoBy:"WEB",idtblproveedor:idusuario,
 				   nombreprov:nombreModificar,srclogo:srcimg1, 
 				   descripcion:descripcionModificar,
@@ -1437,7 +1437,7 @@
 		}		   
 		           
 		  $.ajax({ 
-                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblproveedorEstatus.php", 				  
+                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblproveedorEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idtblproveedor:idproveedor,
 				   activado:activoModificar,emailmodifico:emaildeProveedor}})
                   .done(function(mg){
@@ -1581,7 +1581,7 @@
 			
             UIkit.modal.confirm("Si los datos del proveedor ingresados son correctos, presione Ok", function(){
 				
-              $.ajax({method: "POST",dataType: "json",url: "../../../controllers/setCheckTblproveedor1.php",                
+              $.ajax({method: "POST",dataType: "json",url: "./../../controllers/setCheckTblproveedor1.php",                
 		data: {solicitadoBy:"WEB",nombreprov:proveedornombre,idtblcolonia:proveedorcolonia}})
         .done(function(msg){        
        
@@ -1602,7 +1602,7 @@
                        $("#pAgregar").addClass("oculto");
 			   //alta al registro------------------
                             $.ajax({ method: "POST",dataType: "json",
-							url: "../../../controllers/setTblproveedor2.php",
+							url: "./../../controllers/setTblproveedor2.php",
 							data: {solicitadoBy:"WEB",nombreprov:proveedornombre,
 							srclogo:imagen,descripcion:proveedordescripcion,
 							direccion:proveedordireccion,seo:proveedorseo,
@@ -1677,6 +1677,8 @@
 		  
 		  var idtblciudad=$("#proveedorCiudad").val();
 		
+			  // var idtblciudad=$("#SelectProveedor").val(); 
+	          //console.log('recibio'+idtblciudad);
 	         $("#proveedorCiudad").val(idtblciudad);
 				 $('#listarProveedor').html("");					
 				   mostrarProveedor();	
@@ -1685,7 +1687,7 @@
 		  }else{
 			 //alert("entrando a la funcion mostrar proveedor"+tblciudad_idtblciudad);
          $.ajax({   
-        method: "POST",dataType: "json",url: "../../../controllers/getAllTblproveedorbyidTblproveedor2.php", 
+        method: "POST",dataType: "json",url: "./../../controllers/getAllTblproveedorbyidTblproveedor2.php", 
 		data: {solicitadoBy:"WEB",idtblproveedor:idtblProveedor2},
 		    beforeSend: function(){  
                               $('#esperarMostrarProveedor').css('display','inline');								  
@@ -1695,7 +1697,7 @@
           .done(function(mprov2){             
        if(parseInt(mprov2.success)==1){
 					 nohaypp5=true;
-                   
+                    // $("#paraInicial").addClass('oculto'); 
 					 
 				     $('#listarProveedor').html("");                   
                   $.each(mprov2.datos, function(g2,item)
@@ -1864,7 +1866,20 @@
 										 $("#paraTelefono"+idproveedor).text(mprov2.datos[g2].tblproveedor_telefonotienda);			
 											} 	
 											
-											
+											 if(item.tblproveedor_email=="" && item.tblproveedor_celular=="" && item.tblproveedor_banco==""
+						 && item.tblproveedor_claveintban==""  && item.tblproveedor_nombretitucuen==""
+						 && item.tblproveedor_rfc=="" && mprov2.datos[g2].tblproveedor_telefonotienda==""
+						 && mprov2.datos[g2].tblproveedor_extencion=="" &&
+						 item.tblproveedor_direccion=="" ){
+                                           $("#botonmodificarProve"+g2).remove();
+										   $("#botonEliminarProvee"+g2).remove();	
+                                          $("#mar"+idproveedor).remove();
+										   $("#estadoProveedor"+idproveedor).text("Ya no es socio en la empresa");
+										 // $("#idciud"+idproveedor).text("");
+										    $("#paraextencion"+idproveedor).text("");
+                                              $("#paraTelefono"+idproveedor).text("");											
+                                           }
+						         
 							//........................
                             }				
 				            );				     
@@ -1872,7 +1887,7 @@
                                       }
 							else 
 						{     nohaypp=false;				 
-				 
+				 // $("#paraInicial").removeClass('oculto'); 
 				  $("#listarProveedor").html("");					
 				
 					  }

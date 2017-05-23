@@ -55,7 +55,7 @@
 								<ul class="uk-tab" class="named_tab" data-uk-tab="{connect:'#settings_users', animation: 'slide-horizontal' }">
                                    
 									<li class="uk-active"><a href="#">Notificaciones Enviadas</a></li>
-                                    <li><a href="#"> Nueva Notificación </a></li>                                                                          
+                                    <li><a href="#" onclick="borr();"> Nueva Notificación </a></li>                                                                          
 								</ul>
 										
 				</div>
@@ -105,6 +105,16 @@
                         <tbody id="tblnotificacion" name="tblnotificacion">
                        </tbody>
                         </table>
+						
+		<div id="pagerNoti" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+    </div>	
                     </div>
 					
 					
@@ -313,6 +323,7 @@
 
     <!-- page specific plugins -->
      <!-- tablesorter -->
+	 <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/widgets/widget-alignChar.min.js"></script>
@@ -341,7 +352,10 @@
   });
    /* Create by: Reyna Maria Martinez Vazquez*/
  
-		
+		function borr(){
+		   $('#formuEnviarMensaje')[0].reset(); 
+	  }
+	  
    function inicializarTablas(){
   $("#tabla_noti").tablesorter({
     //sortList: [[1,0]], //ordenar por de inicio esa columna 
@@ -350,7 +364,11 @@
 		 }); 
    } 
    
-   
+   function inicializarPagNotifica(){  		
+ 		$("#tabla_noti")
+		.tablesorterPager({container: $("#pagerNoti")})  ;
+		 }
+		 
     function mostrarMas(){
 		  $("input[name='tipodeNotificacion']").html("");
     tipo= $("input[name='tipodeNotificacion']:checked").val();
@@ -379,7 +397,7 @@
 		estatus=0;
 		
 		                     $.ajax({method: "POST",dataType: "json",
-							   url: "../../../controllers/setTblnotificacion1.php", 
+							   url: "./../../controllers/setTblnotificacion1.php", 
 							   data: {solicitadoBy:"WEB",tipo:tipoN,asunto:asunto, 
 							   mensaje:mensaje,emisor:emisor,idredireccion:idSeccion,
 							   emailcreo:emailUsuario},
@@ -391,7 +409,7 @@
             if(parseInt(ms.success)==1){ tabla1=true;
 							//---------------------
                                 $.ajax({method: "POST",dataType: "json",
-							   url: "../../../controllers/getAllTblnotificacionMax.php", 
+							   url: "./../../controllers/getAllTblnotificacionMax.php", 
 							   data: {solicitadoBy:"WEB"},
 							   beforeSend: function(){
                                        $('#enviandoMensaje').css('display','inline'); }
@@ -405,7 +423,7 @@
 										 if(tipoN=="1") { //UIkit.modal.alert('especifico escogio');
 										 //--------------------Alta notificacionvista ----------------------
 								         $.ajax({method:"POST",dataType:"json",
-							             url: "../../../controllers/setTblnotificacionvista1.php", 
+							             url: "./../../controllers/setTblnotificacionvista1.php", 
 							             data: {solicitadoBy:"WEB",destino:idProveedor,status:estatus,
 										 emailcreo:emailUsuario,idtblnotificacion:idInsertado},
 										 beforeSend: function(){
@@ -428,7 +446,7 @@
 										//UIkit.modal.alert('genenal escogio');
 										
 	$.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblproveedor.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblproveedor.php", 
 	 data: {solicitadoBy:"WEB"},
 	 beforeSend: function(){ $('#enviandoMensaje').css('display','inline'); }
 	 }) 
@@ -441,7 +459,7 @@
                       //console.log('prove:'+idp);
 					  //.....
 				         $.ajax({method:"POST",dataType:"json",
-							             url: "../../../controllers/setTblnotificacionvista1.php", 
+							             url: "./../../controllers/setTblnotificacionvista1.php", 
 							             data: {solicitadoBy:"WEB",idtblnotificacion:idInsertado,status:estatus,
 										 destino:idp,emailcreo:emailUsuario},
 										 beforeSend: function(){ $('#enviandoMensaje').css('display','inline'); }
@@ -495,7 +513,7 @@
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				   
@@ -523,7 +541,7 @@
 	      var idtblciudad=$("#ciudades").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
           
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudad.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllProveedorByCiudad.php", 
 	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
             .done(function(mf){				
 				   if (parseInt(mf.success)==1) {				   
@@ -552,7 +570,7 @@
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTbltblnotificacionredireccionPP.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTbltblnotificacionredireccionPP.php", 
 	        data: {solicitadoBy:"WEB"}})
             .done(function(secc){
 				   
@@ -576,13 +594,14 @@
     inicializarTablas()
   $.ajax({ 
       method: "POST",dataType: "json",
-	  url: "../../../controllers/getAllTblnotificacionbyTblnotificacionvistaPanel.php", 
+	  url: "./../../controllers/getAllTblnotificacionbyTblnotificacionvistaPanel.php", 
 	  data: {solicitadoBy:"WEB"},
 	   beforeSend: function(){
 				   $('#esperarMostrarNotifica').css('display','inline');}	
 	  }) 
         .done(function(notif){
 			if(parseInt(notif.success)==1){
+				
 				$("#tblnotificacion").html("");
             $.each(notif.datos, function(i,item){
 				
@@ -595,7 +614,10 @@
 				    fecha = fecha[2]+"/"+fecha[1]+"/"+fecha[0];
                    idnot=item.idtblnotificacion;
 				      destino =item.tblnotificacionvista_destino;
-					
+					  
+				$("#pagerNoti").removeClass('oculto');	
+				   
+				   
                $("#tblnotificacion").append(
             '<tr class="'+clase+'" >'+
 			'<td class="uk-width-medium-1-3 uk-text-center"  '+
@@ -607,9 +629,11 @@
            // '<td>'+notif.datos[i].tblnotificacion_emisor+'</td>'+ -->
 			'</tr>');
 			$("#tabla_noti").trigger('updateAll', [true]);//actualiza tabla 
-				
+				inicializarPagNotifica();
           }); //fin del each
-			}else{ 
+		  
+			}else{  $("#pagerNoti").addClass('oculto');	
+				   
 		           $("#tblnotificacion").html("");
 		       }
         
@@ -624,7 +648,7 @@
     	$.ajax({ 
        method: "POST",
        dataType:"json",
-      url: "../../../controllers/getAllTblnotificacionbyTblnotificacionvistaDetalle.php",
+      url: "./../../controllers/getAllTblnotificacionbyTblnotificacionvistaDetalle.php",
 	  data: {solicitadoBy:"WEB",idnot:idnot,destino:destino}	 
 	  })
             .done(function(msg){

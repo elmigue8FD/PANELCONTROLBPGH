@@ -89,7 +89,7 @@
 					
 					               <div>
 								   <br/><br/>
-								   <h4> Para mas informaci&oacute;n, haz clic en el Número de Orden. </h4>
+								   <h4> Para mas información, haz clic en el Registro. </h4>
 								   <label class="uk-float-right" id="numeroCotiProductos"> </label> 
 								   <br/>
 								   </div>
@@ -117,7 +117,7 @@
 						   <thead>
                                 <tr>
 									 
-									<th class="uk-text-center">N° Orden Cotizaci&oacute;n</th>
+									<th class="uk-text-center">N° Orden Cotización</th>
 									<th class="uk-text-center">Producto</th>
 									<th class="uk-text-center">Fecha de evento</th>	
 									<th class="uk-text-center">Tipo de evento</th>	
@@ -132,6 +132,15 @@
                                
                             </tbody>
                         </table>
+			 <div id="pagerCotiProdNocontestadas" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+    </div>	
                     </div>					
                 </div>
             </div>
@@ -148,7 +157,7 @@
 						   <thead>
                                 <tr>
 									 
-									<th class="uk-text-center">N° Orden Cotizaci&oacute;n</th>
+									<th class="uk-text-center">N° Orden Cotización</th>
 									<th class="uk-text-center">Producto</th>
 									<th class="uk-text-center">Fecha de evento</th>	
 									<th class="uk-text-center">Tipo de evento</th>	
@@ -163,6 +172,15 @@
                                
                             </tbody>
                         </table>
+			 <div id="pagerCotiProdContestadas" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+    </div>	
                     </div>					
                 </div>
             </div>
@@ -174,7 +192,7 @@
             <button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
 			
             <div class="uk-modal-header">
-             <h3 class="uk-modal-title"><i class="material-icons" >&#xE878;</i>&nbsp;Detalle de Cotizaci&oacute;n de Productos</h3>
+             <h3 class="uk-modal-title"><i class="material-icons" >&#xE878;</i>&nbsp;Detalle de Cotización de Productos</h3>
             </div>
 			<div class="uk-grid">
            <div class="uk-width-large-1-2"></div>
@@ -191,7 +209,7 @@
                 <!-- <div class="uk-grid "></div> -->
                  <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                   <div class="uk-width-large-1-3">
-                   <h4 class="heading_c uk-margin-small-bottom">Informaci&oacute;n de Cliente </h4>
+                   <h4 class="heading_c uk-margin-small-bottom">Información de Cliente </h4>
                   <div class="uk-form-row">
                   <ul class="md-list md-list-addon">
                    <li>
@@ -286,7 +304,7 @@
 					
 					               <div>
 								   <br/><br/>
-								   <h4> Para mas informaci&oacute;n, haz clic en el registro Número de Orden. </h4>
+								   <h4> Para mas información, haz clic en el registro. </h4>
 								   <label class="uk-float-right" id="numeroCotiProductosNuevos"> </label> 
 								   <br/>
 								   </div>
@@ -307,10 +325,10 @@
                       <!--  <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair" id="ts_issues">
                           -->
                            <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair" id="tablaProductoNuevo_NoCont" >
-                         
+                           
 						  <thead>
                                 <tr>
-                                    <th class="uk-text-center">N° Orden Cotizaci&oacute;n</th>
+                                    <th class="uk-text-center">N° Orden Cotización</th>
 									<th class="uk-text-center">Fecha de evento</th>
 									<th class="uk-text-center">Tipo de evento</th>
 									
@@ -323,6 +341,15 @@
                                                                   
                             </tbody>
                         </table>
+			 <div id="pagerCotizProdNuevoNoContest" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+    </div>	
                     </div>
 					
                 </div>
@@ -335,7 +362,7 @@
                       <!--  <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair" id="ts_issues">
                           -->
                          <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair" id="tablaProductoNuevo_Cont">
-                         
+                          
 						  <thead>
                                 <tr>
                                     <th class="uk-text-center">N° Orden Cotizaci&oacute;n</th>									
@@ -349,6 +376,15 @@
                                
                             </tbody>
                         </table>
+			 <div id="pagerCotizProdNuevoContest" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+    </div>	
                     </div>
 					
                 </div>
@@ -494,6 +530,7 @@
 
     <!-- page specific plugins -->
     <!-- tablesorter -->
+	<script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/widgets/widget-alignChar.min.js"></script>
@@ -530,25 +567,62 @@
 	
 	function inicializarTablas(){
   $("#tabla_productos_CotContestadas").tablesorter({
-    sortList: [[1,0]], //ordenar por de inicio esa columna 
-    headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
+    sortList: [[4,0]], //ordenar por de inicio esa columna 
+    headers: {2: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
 		 }); 
 		 
 		  $("#tabla_productos_NoCotContestadas").tablesorter({
-    sortList: [[1,0]], //ordenar por de inicio esa columna 
+    sortList: [[4,0]], //ordenar por de inicio esa columna 
+    headers: {2: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
+    widgets: ['filter']//activar el widget de filtro de busqueda
+		 }); 
+		 
+	}//fin d ela funcion
+	
+	  function inicializarPagCotiProduNoCon(){  		
+ 		$("#tabla_productos_NoCotContestadas")
+		.tablesorterPager({container: $("#pagerCotiProdNocontestadas")})  ;
+		 }
+		 
+		 function inicializarPagCotiProduCon(){  		
+ 		$("#tabla_productos_CotContestadas")
+		.tablesorterPager({container: $("#pagerCotiProdContestadas")})  ;
+		 }
+		 
+		 
+		 function inicializarTablasProductoNuevo(){
+  $("#tablaProductoNuevo_Cont").tablesorter({
+    sortList: [[4,0]], //ordenar por de inicio esa columna 
+    headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
+    widgets: ['filter']//activar el widget de filtro de busqueda
+		 }); 
+		 
+		  $("#tablaProductoNuevo_NoCont").tablesorter({
+    sortList: [[3,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
 		 }); 
 		 
 	}//fin d ela funcion
+	
+	function inicializarPagCotiProduNuevoCon(){  		
+ 		$("#tablaProductoNuevo_Cont")
+		.tablesorterPager({container: $("#pagerCotizProdNuevoContest")})  ;
+		 }
+		 
+	function inicializarPagCotiProduNuevoNoCon(){  		
+ 		$("#tablaProductoNuevo_NoCont")
+		.tablesorterPager({container: $("#pagerCotizProdNuevoNoContest")})  ;
+		 }
+		 
 
     function cantidadCotizacionProductos(){	  //muestra cantidad de cotizaciones de productos             
 	     
 		 var nomCiudad=$("#selectProducto").val();	//nombre de la ciudad del select
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllTblordenescotizadorBynombreCiudad.php", 
+	   url: "./../../controllers/getCountAllTblordenescotizadorBynombreCiudad.php", 
 	   data: {solicitadoBy:"WEB",nombreciudad:nomCiudad}})
             .done(function(mcc){				   
                      if(parseInt(mcc.success)==1){ 
@@ -567,7 +641,7 @@
 		 var nomCiudad=$("#selectProductoNuevo").val();	//nombre de la ciudad del select
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAlltblcarritoproductnuevcotizadorByCiudad.php", 
+	   url: "./../../controllers/getCountAlltblcarritoproductnuevcotizadorByCiudad.php", 
 	   data: {solicitadoBy:"WEB",nombreciudad:nomCiudad}})
             .done(function(mcc){				   
                      if(parseInt(mcc.success)==1){ 
@@ -584,7 +658,7 @@
 	function mostrarCiudades(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", data: {solicitadoBy:"WEB"}})
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", data: {solicitadoBy:"WEB"}})
             .done(function(mostC){				
 				$("#selectProducto").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
 				$("#selectProductoNuevo").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
@@ -617,7 +691,7 @@
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "../../../controllers/getAllTblordenescotizadorBynombreCiudad.php",  
+    url: "./../../controllers/getAllTblordenescotizadorBynombreCiudad.php",  
     data: {solicitadoBy:"WEB",nombreciudad:nomCiudad},
 	 beforeSend: function(){
 				   $('#esperarMostrarCotiProdu').css('display','inline');}	
@@ -632,6 +706,9 @@
           
         
 		if(msg.datos[i].tblmotivocotizacion_idtblmotivocotizacion=="2" ){
+			
+			$("#pagerCotiProdContestadas").removeClass('oculto');	
+			
 			   fchentrega= msg.datos[i].tblcarritoproductcotizador_fchentrega;
                fchentrega = fchentrega.split("-");
                fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];  
@@ -646,13 +723,16 @@
        // '<td class="uk-text-center"><span  class="uk-text-bold" id="statusCotizacion'+i+'"></span></td>'+
 		'</tr>');
         $("#tabla_productos_CotContestadas").trigger('updateAll', [true]);//actualiza tabla
-        
+        inicializarPagCotiProduCon();
 		 //statusCotizacion(msg.datos[i].tblmotivocotizacion_idtblmotivocotizacion,i);
 		}else{
+			
+			$("#pagerCotiProdNocontestadas").removeClass('oculto');	
 			   fchentrega= msg.datos[i].tblcarritoproductcotizador_fchentrega;
                fchentrega = fchentrega.split("-");
                fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];  
         //body de tabla de productos
+		
         $("#body_productos_noContestados").append(  
         '<tr data-uk-modal="{target:'+nombreIdPupop+',bgclose:false,modal:false}" '+
 		'onclick="detalleCotizacion('+msg.datos[i].idtblordencotizador+','+msg.datos[i].idtblcarritoproductcotizador+')"> '+
@@ -664,12 +744,16 @@
 		'</tr>');
         $("#tabla_productos_NoCotContestadas").trigger('updateAll', [true]);//actualiza tabla
 			
-			
+		inicializarPagCotiProduNoCon();	
 			
 		}
 		 
         }); //fin del each
-		}else{hh=false;    
+		}else{hh=false; 
+              $("#pagerCotiProdContestadas").addClass('oculto');
+              $("#pagerCotiProdNocontestadas").addClass('oculto');				  
+
+			  
 		 $("#body_productos_noContestados").empty();
  		 $("#body_productosContestados").empty();  }
              
@@ -704,7 +788,7 @@ function detalleCotizacion(idtblordencotizador,idtblcarritoproductcotizador){
   $.ajax({
     method: "POST",   
     dataType: "json",  
-    url: "../../../controllers/getTblordenescotizadorByTblcarritocotizador2.php",  
+    url: "./../../controllers/getTblordenescotizadorByTblcarritocotizador2.php",  
     data: {solicitadoBy:"WEB",idtblordencotizador:idtblordencotizador,
 	idtblcarritoproductcotizador:idtblcarritoproductcotizador}})
     .done(function(msg1){ 
@@ -801,11 +885,11 @@ function mostrarCotizacionesProductosNuevos(){
 	
              var nombreCiudad=$("#selectProductoNuevo").val();
                     idpopupNuevo = "'#productonuevo'";
-
+      inicializarTablasProductoNuevo();
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "../../../controllers/getAlltblcarritoproductnuevcotizadorByCiudad.php",  
+    url: "./../../controllers/getAlltblcarritoproductnuevcotizadorByCiudad.php",  
     data: {solicitadoBy:"WEB",nombreciudad:nombreCiudad},
 	 beforeSend: function(){
 				   $('#esperarMostrarCotiProduNuevo').css('display','inline');}	
@@ -813,9 +897,9 @@ function mostrarCotizacionesProductosNuevos(){
     .done(function( msg){      
         if(msg.success==1){ 
       $.each(msg.datos, function(i,item){ 
-       	   
+       	  	
 	  if(msg.datos[i].tblmotivocotizacion_idtblmotivocotizacion=="2"){
-			      
+			   $("#pagerCotizProdNuevoContest").removeClass('oculto');    
       //idtblcarritoproductnuevocotizador=msg.datos[i].idtblcarritoproductnuevcotiza;
       fchentrega= msg.datos[i].tblcarritoproductnuevcotiza_fchentrega ;
       fchentrega = fchentrega.split("-");
@@ -832,7 +916,11 @@ function mostrarCotizacionesProductosNuevos(){
         '</tr>');
 
       $("#tablaProductoNuevo_Cont").trigger('updateAll', [true]);//actualiza tabla
+	    inicializarPagCotiProduNuevoCon();
+	  
 	  }else{    
+	  
+	         $("#pagerCotizProdNuevoNoContest").removeClass('oculto');
 		   fchentrega= msg.datos[i].tblcarritoproductnuevcotiza_fchentrega ;
       fchentrega = fchentrega.split("-");
       fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
@@ -847,12 +935,18 @@ function mostrarCotizacionesProductosNuevos(){
         '</tr>');
 
       $("#tablaProductoNuevo_NoCont").trigger('updateAll', [true]);//actualiza tabla
-		  
+		  inicializarPagCotiProduNuevoNoCon();
 		  
 	  }
       
     }); //fin del each
-		}else{ $("#body_PNuevo_noContestadas").empty();  $("#body_PNuevo_Contestadas").empty(); }
+		}else{ 
+		 $("#pagerCotizProdNuevoContest").addClass('oculto');
+		  $("#pagerCotizProdNuevoNoContest").addClass('oculto');
+		  
+		$("#body_PNuevo_noContestadas").empty();  
+		$("#body_PNuevo_Contestadas").empty();
+		}
 
     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
 	.always(function(){ $("#esperarMostrarCotiProduNuevo").hide(); });
@@ -879,7 +973,7 @@ function detalleCtizacionProductNuevo(idtblordencotizador,idtblcarritoproductnue
   $.ajax({
     method: "POST",  
     dataType: "json",  
-    url: "../../../controllers/gettblcarritoproductnuevcotiza1.php",  
+    url: "./../../controllers/gettblcarritoproductnuevcotiza1.php",  
     data: {solicitadoBy:"WEB",idtblcarritoproductnuevcotiza:idtblcarritoproductnuevocotizador}})
       .done(function(msg2){  
         if(msg2.success==1){ re=true; 
@@ -904,7 +998,7 @@ function detalleCtizacionProductNuevo(idtblordencotizador,idtblcarritoproductnue
   $.ajax({
       method: "POST",  
       dataType: "json",  
-      url: "../../../controllers/getTblordencotizador.php",  
+      url: "./../../controllers/getTblordencotizador.php",  
       data: {solicitadoBy:"WEB",idtblordencotizador:idtblordencotizador}})
         .done(function(msg3) 
       { 
@@ -927,7 +1021,7 @@ function detalleCtizacionProductNuevo(idtblordencotizador,idtblcarritoproductnue
   $.ajax({    //obtiene datos de contestacion del proveedor
     method: "POST",  
     dataType: "json",  
-    url: "../../../controllers/getTblcostocotizacionproductnuevoDatos.php",  
+    url: "./../../controllers/getTblcostocotizacionproductnuevoDatos.php",  
     data: {solicitadoBy:"WEB",idtblcarritoproductnuevocotizador:idtblcarritoproductnuevocotizador,idtblproveedor:idtblproveedor}}) 
     .done(function(msg){ 
         if(msg.success==1){

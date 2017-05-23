@@ -143,10 +143,10 @@
 				   <label class="uk-text-muted uk-text-small">Email:</label>
 				    <div class="uk-margin-medium-bottom">                   
                    <!-- <input type="text" class="md-input" id="modificar_email" name="snippet_title" /> -->
-				    <input class="md-input masked_input" id="modificar_email" name="modificar_email" type="text" data-inputmask="'alias': 'email'" data-inputmask-showmaskonhover="false" />
+				    <input class="md-input" id="modificar_email" name="modificar_email" type="text"  />
             
                      </div>
-				   <label class="uk-text-muted uk-text-small">Celular:</label>
+				   <label class="uk-text-muted uk-text-small">Celular (LADA + Número Celular):</label>
                 <div class="uk-margin-medium-bottom">                    
                    <!-- <input type="text" class="md-input" id="modificar_celular" name="snippet_title" maxlength="10"/>
                 -->
@@ -208,7 +208,7 @@
 				<div class="uk-margin-medium-bottom">
                     <label for="task_title">Email:</label>
               <!-- <input type="text" class="md-input" id="alta_email" name="alta_email" /> -->
-			  <input class="md-input masked_input" id="alta_email" name="alta_email" type="text" data-inputmask="'alias': 'email'" data-inputmask-showmaskonhover="false" />
+			  <input class="md-input" id="alta_email" name="alta_email" type="text"  />
             
 				   
                 </div>
@@ -219,7 +219,7 @@
 				<div class="uk-width-large-1-2">
 			   <ul class="md-list md-list-addon">
                 <div class="uk-margin-medium-bottom">
-                    <label for="task_title">Celular:</label>
+                    <label for="task_title">Celular (LADA + Número Celular):</label>
                   <!--  <input type="text" class="md-input" id="alta_cel" name="snippet_title" maxlength="10" />-->
 				  <input type="text" class="md-input masked_input" id="alta_cel"  data-inputmask="'mask': '9999999999'" data-inputmask-showmaskonhover="false" />
               
@@ -314,7 +314,7 @@
     function mostrarDatosUsuario(idu){
           
     $.ajax({ 
-       method: "POST",dataType: "json",url: "../../../controllers/getTblUsuario.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getTblUsuario.php", 
 	   data: {solicitadoBy:"WEB",idtblusuario:idu}}) 
             .done(function(msg){ 
                
@@ -379,7 +379,7 @@
 	   else{    
 			   
 		           $.ajax({ 
-                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblusuarioSinEst.php", 				  
+                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblusuarioSinEst.php", 				  
 				   data:{solicitadoBy:"WEB",nombre:nombre,				  
 				   ap:apaterno,am:amaterno,email:email,
 				   cel:cel,puesto:puesto,ciudad:ciudad,id:id, 
@@ -488,7 +488,7 @@
 	   else{
 		   
 		 $.ajax({    //inicia ajax  
-       method: "POST",dataType: "json",url: "../../../controllers/getCheckTblusuario.php",
+       method: "POST",dataType: "json",url: "./../../controllers/getCheckTblusuario.php",
 	   data: {solicitadoBy:"WEB",email:email_alta,cel:cel_alta}	         
 	          })
             .done(function(mpa){  
@@ -500,7 +500,7 @@
 					          $("#agregarNUsuario").addClass("oculto");
 					 $.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "../../../controllers/setTblusuariosmount.php", 
+							   url: "./../../controllers/setTblusuariosmount.php", 
 							   data: {solicitadoBy:"WEB",
 							   nombre:nombre_alta,
 	                           apaterno:paterno_alta,
@@ -556,7 +556,7 @@
 		function mostrarPuestos(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblnivelaccesoAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblnivelaccesoAct.php", 
 	 data: {solicitadoBy:"WEB"}}) 
             .done(function(mostC){
 				 
@@ -588,7 +588,7 @@
    function mostrarCiudades(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostC){
 				//console.log(mcol);   
@@ -623,7 +623,7 @@
 			    
           $.ajax({     
           method: "POST",dataType: "json",
-	      url: "../../../controllers/getAllTblusuariosmount.php", data: {solicitadoBy:"WEB",ciudad:ciudad},
+	      url: "./../../controllers/getAllTblusuariosmount.php", data: {solicitadoBy:"WEB",ciudad:ciudad},
 		  beforeSend: function(){
 				   $('#esperarMostrarUsuarios').css('display','inline');}	
 		  })
@@ -798,7 +798,7 @@
 			   
 		          $.ajax({ 
                    method: "POST",dataType:"json",
-				   url: "../../../controllers/setDeleteTblusuariomount.php", 				  
+				   url: "./../../controllers/setDeleteTblusuariomount.php", 				  
 				   data:{solicitadoBy:"WEB",id:idu,email:email,
 				   cel:cel,emailmodifico:emaildeUsuario} })
                   .done(function(mg){
@@ -838,7 +838,7 @@
 				}		   
 		  
              $.ajax({ 
-                   method:"POST",dataType: "json",url: "../../../controllers/setUpdateUsuario.php", 				  
+                   method:"POST",dataType: "json",url: "./../../controllers/setUpdateUsuario.php", 				  
 				   data:{solicitadoBy:"WEB",idusuario:idu,activado:activoModificar1,
 				   emailmodifico:emaildeUsuario}})
                   .done(function(mg){

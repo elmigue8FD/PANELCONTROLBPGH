@@ -117,6 +117,15 @@
                                
                             </tbody>
                         </table>
+		<div id="pagerClienteInv" class="pager">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
                     </div>					
                 </div>
             </div>
@@ -141,7 +150,7 @@
                   
 					              
 								   
-								   <h4> Para mas informaci&oacute;n, haz clic en el nombre del cliente. </h4>
+								   <h4> Para mas información, haz clic en el nombre del cliente. </h4>
 								    <label class="uk-float-right" id="numeroRegistrados"> </label> 
 									<br/>
 									
@@ -164,8 +173,7 @@
                                 <tr>
                                     <th class="uk-text-center">Nombre</th>
 									<th class="uk-text-center">Email</th>
-									<th class="uk-text-center">Celular</th>
-									<!--<th class="uk-text-center">Fecha de nacimiento</th>-->
+									<th class="uk-text-center">Celular</th>									
 									<th class="uk-text-center">Ordenes</th> 
 									<th class="uk-text-center">Ciudad</th> 
                                 </tr>
@@ -176,6 +184,15 @@
                                
                             </tbody>
                         </table>
+						<div id="pagerClienteReg" class="pager">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
                     </div>
 					
                 </div>
@@ -327,6 +344,7 @@
 
     <!-- page specific plugins -->
     <!-- tablesorter -->
+	<script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/widgets/widget-alignChar.min.js"></script>
@@ -362,7 +380,14 @@ $( window ).ready(function()
     widgets: ['filter']//activar el widget de filtro de busqueda
 		 }); 
 		 
+		 } 
+
+   function inicializarPagInv(){  		
+ 		$("#tabla_invitados")
+		.tablesorterPager({container: $("#pagerClienteInv")})  ;
+		 }		 
 		 
+		 function inicializarTablasRegistrados(){
 		 $("#tabla_registrados").tablesorter({
     sortList: [[0,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
@@ -371,12 +396,17 @@ $( window ).ready(function()
 		 
 	}
 	
+	 function inicializarPagRegist(){  		
+ 		$("#tabla_registrados")
+		.tablesorterPager({container: $("#pagerClienteReg")})  ;
+		 }		
+	
 	
 	function cantidadInvitados(){	  //muestra cantidad de cientes del tipo invitados	             
 	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllTblclientesInvitados.php", 
+	   url: "./../../controllers/getCountAllTblclientesInvitados.php", 
 	   data: {solicitadoBy:"WEB"}})
             .done(function(mcc){				   
                      if(parseInt(mcc.success)==1){ 
@@ -394,7 +424,7 @@ $( window ).ready(function()
 	   
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllTblclientesRegistrados.php", 
+	   url: "./../../controllers/getCountAllTblclientesRegistrados.php", 
 	   data: {solicitadoBy:"WEB"}})
             .done(function(mcc){				   
                      if(parseInt(mcc.success)==1){ 
@@ -413,7 +443,7 @@ $( window ).ready(function()
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				   
@@ -439,14 +469,15 @@ $( window ).ready(function()
              inicializarTablas();
 			 
 	   $.ajax({ 
-        method: "POST",dataType: "json",url: "../../../controllers/getAllTblclienteInvitados.php", 
+        method: "POST",dataType: "json",url: "./../../controllers/getAllTblclienteInvitados.php", 
 		data: {solicitadoBy:"WEB"},
 		 beforeSend: function(){
 				   $('#esperarMostrarInvitados').css('display','inline');}	
 		})
           .done(function(inv){ 	
          //console.log(inv);		  
-				 if(parseInt(inv.success)==1){                    					 
+				 if(parseInt(inv.success)==1){  
+                    $("#pagerClienteInv").removeClass('oculto');				 
 				         //$("#body_tablaInvitados").empty();             
                   $.each(inv.datos, function(g,item)
 				 {	  id=item.idtblcliente;
@@ -480,12 +511,13 @@ $( window ).ready(function()
                                     							   
                                     
 					$("#tabla_invitados").trigger('updateAll', [true]);//actualiza tabla 
+					inicializarPagInv();
 			//........................
                   });	//fin del each			     
                //----------------------
                                       }
 							else 
-						{  				    
+						{   $("#pagerClienteInv").addClass('oculto'); 				    
 					$("#body_tablaInvitados").empty();					
 				        }
 			 
@@ -499,16 +531,17 @@ $( window ).ready(function()
    function mostrarRegistradosTabla(){
 			
 		    //var nombre_Ciudad=$("#registradoCiudad").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
-             inicializarTablas();
+             inicializarTablasRegistrados();
 	   $.ajax({ 
-        method: "POST",dataType: "json",url: "../../../controllers/getAllTblclienteRegistrados.php", 
+        method: "POST",dataType: "json",url: "./../../controllers/getAllTblclienteRegistrados.php", 
 		data: {solicitadoBy:"WEB"},
 		 beforeSend: function(){
 				   $('#esperarMostrarRegistrados').css('display','inline');}	
 		})
           .done(function(reg){ 	
               //console.log(reg);		  
-				 if(parseInt(reg.success)==1){                    					 
+				 if(parseInt(reg.success)==1){  
+                         $("#pagerClienteReg").removeClass('oculto');				 
 				     $('#body_tablaRegistrados').empty();
 					 
                   $.each(reg.datos, function(r,item)
@@ -517,7 +550,7 @@ $( window ).ready(function()
 					 
 					              $.ajax({     
                                method: "POST",dataType: "json",
-	                           url: "../../../controllers/getCountAllOrdenesbyCliente.php", 
+	                           url: "./../../controllers/getCountAllOrdenesbyCliente.php", 
 	                           data: {solicitadoBy:"WEB",cliente:id_cliente}}) 
                                .done(function(mc2){				
                                 if(parseInt(mc2.success)==1){
@@ -588,7 +621,7 @@ $( window ).ready(function()
 					 }
 					 
 					$("#tabla_registrados").trigger('updateAll', [true]);//actualiza tabla 	
-									
+						inicializarPagRegist();
 									
 								     }	
                              }) .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})  								
@@ -600,7 +633,7 @@ $( window ).ready(function()
                             //----------------------
                                       }
 							else 
-						{  				    
+						{  	  $("#pagerClienteReg").addClass('oculto');				    
 					$("#body_tablaRegistrados").empty();					
 				        }
 			 
@@ -622,7 +655,7 @@ $( window ).ready(function()
 				  $("#cliente_telefono").empty();
 				  
     $.ajax({ 
-       method: "POST",dataType: "json",url: "../../../controllers/getTblcliente.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getTblcliente.php", 
 	   data: {solicitadoBy:"WEB",idtblcliente:idtblcliente}})   
             .done(function(msg){
 				$.each(msg.datos, function(x,item){	 

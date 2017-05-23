@@ -106,7 +106,7 @@
                                 <tr>
                                     <!-- class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair"   id="ts_issues2" name="ts_issues2"  -->
                                     <th class="uk-text-center">Ciudad</th>
-                                    <th class="uk-text-center"> Pa&iacute;s</th>
+                                    <th class="uk-text-center"> País</th>
                                     <th class="uk-text-center">Estatus</th>
                                     
                                 </tr>
@@ -117,6 +117,15 @@
                                
                             </tbody>
                         </table>
+		<div id="pager" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
                     </div>
 					</div>
 					</div>
@@ -143,10 +152,10 @@
                     <input type="text" class="md-input" id="altaNombreCiudad" name="altaNombreCiudad"/>
                 </div>
 				<div class="uk-margin-medium-bottom">
-                    <label for="task_title">Pa&iacute;s al que pertenece:</label><br/>
+                    <label for="task_title">País al que pertenece:</label><br/>
                     <!-- <input type="text" class="md-input" id="Task_title" name="snippet_title"/> -->
 					<input type="radio" name="altaNombrePais" value="1" id="altaIdNombrePais" checked readonly   /> 
-					 <label>M&eacute;xico</label>
+					 <label>México</label>
                 </div>
                 
                 
@@ -264,7 +273,7 @@
                                     <!--<th class="uk-text-center">N°</th> -->
 									<th class="uk-text-center">Ciudad</th>
                                     <th class="uk-text-center">Colonia</th>
-									<th class="uk-text-center">C&oacute;digo Postal</th>   
+									<th class="uk-text-center">Código Postal</th>   
                                     <th class="uk-text-center">Estatus</th>
                                     
                                 </tr>
@@ -276,8 +285,17 @@
                                
                             </tbody>
 							
-                        </table>
-						 <div id="noHay"> </div>	 
+                        </table>						
+						 <div id="noHay"> </div>
+      <div id="pagerColonias" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+    </div>						 
                     </div>
 					</div>
 					</div>
@@ -308,7 +326,7 @@
                     <input type="text" class="md-input" id="altaColonia" name="altaColonia"/>
                 </div>
 				 <div class="uk-margin-medium-bottom">
-                    <label for="task_title">C&oacute;digo Postal</label>
+                    <label for="task_title">Código Postal</label>
                     <input type="text" class="md-input" id="altaCodPostal" maxlength="5" name="altaCodPostal"/>
                 </div>
                 
@@ -354,7 +372,7 @@
 				   <span class="oculto" id="muestraIdColonia"></span>
                     <input type="text" class="md-input" id="modificarColoniaNombre" name="snippet_title"/>
                 </div>
-				<label for="task_title">C&oacute;digo Postal</label>
+				<label for="task_title">Código Postal</label>
 				<div class="uk-margin-medium-bottom">                    
                     <input type="text" class="md-input" id="modificarColoniaCodpos" maxlength="5" name="snippet_title"/>
                 </div>
@@ -380,8 +398,8 @@
 	<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::  -->
 	
 	 <?php include('../codigo_general/script_commonPB.php'); ?>
-   
     <!-- tablesorter -->
+	<script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/widgets/widget-alignChar.min.js"></script>
@@ -390,20 +408,14 @@
     <script src="../bower_components/tablesorter/dist/js/widgets/widget-print.min.js"></script>
 	
 	 <!-- ionrangeslider -->
-    <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
-
-    <!--  tablesorter functions 
-    <script src="../assets/js/pages/plugins_tablesorter.min.js"></script>-->
-    <!--  issues list functions 
-   <script src="../assets/js/pages/pages_issues.min.js"></script> 
-   <script src="../assets/js/pages/pages_issuesPru2.js"></script> -->
-  
+    <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>  
   <!-- kendo UI -->
   <script src="../assets/js/kendoui_custom.min.js"></script> 
   <!--  kendoui functions -->
   <script src="../assets/js/pages/kendoui.min.js"></script>
   <!--page_contact_list-->
   <script src="../assets/js/pages/page_contact_list.min.js"></script>
+  
 	
 	<!--<script src="assets/js/pages/tres.js"> </script>  --> 
 	   <!-- ------------------------ -->
@@ -417,25 +429,10 @@
 		 mostrarCiudadesU();
 		 cantidadCiudades();
 		 
-		 
-		 
-      }); 
+     }); 
 	     /* Create by: Reyna Maria Martinez Vazquez*/ 
 	//------------------------------------------------------	
-  function bajarReporte(){
-	  
-	   var idtblciudad=$("#selectColonia").val(); 
-       $.ajax({ method: "POST",  dataType: "json",  
-	    url: "../../../controllers/setDeleteFileImgProveedor.php", 
-	      data: {solicitadoBy:"WEB",tblproveedorimg_srcimg:srcimgActual} }) 
-        .done(function( datos ){
-                       borradafoto=true;
-                       })
-       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
-        
-	  
-	  
-  }//fin
+  
 	
 		function cantidadColonias(){
 	   var idtblciudad=$("#selectColonia").val(); 
@@ -444,7 +441,7 @@
 	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllTblcoloniasByTblCiudad.php", 
+	   url: "./../../controllers/getCountAllTblcoloniasByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idtblciudad}})
             .done(function(mc){
 				   
@@ -472,7 +469,7 @@
 	   	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllTblCiudad.php", 
+	   url: "./../../controllers/getCountAllTblCiudad.php", 
 	   data: {solicitadoBy:"WEB"}})
             .done(function(mc){
 				   //console.log(mc);
@@ -495,33 +492,47 @@
    //....................
 		 
 		 function inicializarTablas(){
-  $("#tbl_ciudades").tablesorter({
+    $("#tbl_ciudades").tablesorter({
     sortList: [[0,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
-    widgets: ['filter']//activar el widget de filtro de busqueda
-		 }); 
+    widgets: ['filter'] //activar el widget de filtro de busqueda
+	}); 
+ 		 
+		 }
 		 
 		 
+		 function inicializarPaginacion(){  		
+ 		$("#tbl_ciudades")
+		.tablesorterPager({container: $("#pager")})  ;
+		 }
+		 
+   function inicializarTablasColonias(){		 
 		 $("#tbl_colonias").tablesorter({
     sortList: [[1,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
 		 }); 
   }
+  
+  function inicializarPaginacionColonias(){  		
+ 		$("#tbl_colonias")
+		.tablesorterPager({container: $("#pagerColonias")})  ;
+		 }
       //.-----mostrar ciudades----------------------------------------------------------------
-	  function mostrarCiudadesRegistradas(){ 
-	      
+	  function mostrarCiudadesRegistradas(){ 	      
                inicializarTablas();
      $.ajax({     
       method: "POST",dataType: "json",
-	 url: "../../../controllers/getAllTblciudadByTblPais.php", data: {solicitadoBy:"WEB"},
+	 url: "./../../controllers/getAllTblciudadByTblPais.php", data: {solicitadoBy:"WEB"},
 	  beforeSend: function(){
                               $('#esperarMostrarCiudades').css('display','inline');								  
                                                  }
 				   })
 	 
             .done(function(mo){
-				
+			if(parseInt(mo.success)==1){
+					$("#pager").removeClass('oculto');	
+				   
                 $.each(mo.datos, function(i,item)
                {				   
 			      //asignamos nombres a las valores
@@ -559,7 +570,10 @@
                                             } 
 				 
 				   	$("#tbl_ciudades").trigger('updateAll', [true]);//actualiza tabla 
+					inicializarPaginacion();
                       });	 //cierre del each
+					  
+			}else{ $("#pager").addClass('oculto');}
                                  
               })
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
@@ -580,12 +594,12 @@
 			       $("#estado"+idciudad).text("Desactivado");}		   
 		
              $.ajax({ 
-                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblCiudadEstatus.php", 				  
+                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblCiudadEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idtblciudad:idciudad,activado:activoModificar,
 				   emailmodifico:emaildeUsuario}})
                   .done(function(mg){					 
                             if(parseInt(mg.success)==1){  							 
-                              UIkit.modal.alert('Estatus de la Ciudad modificado con &eacute;xito'); 
+                              UIkit.modal.alert('Estatus de la Ciudad modificado con Éxito'); 
 							   
 							   $('#selectColonia').html(""); //se actualizan en el menu de colonias
 							     mostrarCiudadesU();
@@ -625,7 +639,7 @@
 	   {
 		   
 		 $.ajax({    //inicia ajax  
-       method: "POST",dataType: "json",url: "../../../controllers/getCheckTblciudad.php",
+       method: "POST",dataType: "json",url: "./../../controllers/getCheckTblciudad1.php",
 	   data: {solicitadoBy:"WEB",nombreciudad:ciudadNombre,idtblpais:paisId}          
 	   })   
             .done(function(mpa){  
@@ -638,7 +652,7 @@
 					      $("#agregarNuevaCiudad").addClass("oculto");
 					 $.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "../../../controllers/setTblciudad.php", 
+							   url: "./../../controllers/setTblciudad.php", 
 							   data: {solicitadoBy:"WEB",nombreciudad:ciudadNombre,							   
 							   activado:ciudadEstatus,idtblpais:paisId,emailcreo:emailUsuario},
 							   beforeSend: function(){
@@ -687,7 +701,7 @@
     function mostrarDatosCiudad(idciudad){
           
     $.ajax({ 
-       method: "POST",dataType: "json",url: "../../../controllers/getTblciudad.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getTblciudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:idciudad}})  
             .done(function(msg){
                
@@ -717,7 +731,7 @@
 		  {
 			   
 		           $.ajax({  
-                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblCiudadSinEst.php", 				  
+                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblCiudadSinEst.php", 				  
 				   data:{solicitadoBy:"WEB",idtblciudad:idciudad,				  
 				   nombreciudad:nombreModificar,idtblpais:idpais,emailmodifico:emaildeProveedor},
 				   beforeSend: function(){
@@ -753,7 +767,7 @@
 	function mostrarCiudadesU(){ //muestra las ciudades activas 	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostC){
 				//console.log(mcol);   
@@ -785,9 +799,10 @@
    function mostrarColoniasReg(){
 			
 		    var idDelaCiudad=$("#selectColonia").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
-             inicializarTablas();
+             
+			 inicializarTablasColonias();
 		   $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblciudadPertenecen.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblcoloniaByTblciudadPertenecen.php", 
 	    data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idDelaCiudad},
 		     beforeSend: function(){
                               $('#esperarMostrarColonias').css('display','inline');								  
@@ -797,6 +812,8 @@
             .done(function(mo){
 				
 				if(parseInt(mo.success)==1){
+				
+				$("#pagerColonias").removeClass('oculto');	
 				$("#noHay").html("");
 				$("#MostrarColoniasBody").html("");
                 $.each(mo.datos, function(i,item)
@@ -834,13 +851,14 @@
 										   $("#estadoColonia"+idcolonia).text("Desactivado");
                                             } 
 				 
-				   		$("#tbl_colonias").trigger('updateAll', [true]);//actualiza tabla 
+				   		   $("#tbl_colonias").trigger('updateAll', [true]);//actualiza tabla
+                           inicializarPaginacionColonias();						
                       });	 //cierre del each
                         //-----------
                            }
 							else 
 						{  
-					
+					$("#pagerColonias").addClass('oculto');	
 			    $("#MostrarColoniasBody").html("");
 									
 					 }	
@@ -869,7 +887,7 @@
 		  //console.log('idciudad: '+idciudad+'...activo: '+activoModificar);					 
 		
              $.ajax({ 
-                   method:"POST",dataType: "json",url: "../../../controllers/setUpdateTblColoniaEstatus.php", 				  
+                   method:"POST",dataType: "json",url: "./../../controllers/setUpdateTblColoniaEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idtblcolonia:idcolonia,activado:activoModificar1,
 				   emailmodifico:emaildeUsuario}})
                   .done(function(mg){
@@ -923,7 +941,7 @@
 	   else{
 		    
 		 $.ajax({    
-       method: "POST",dataType: "json",url: "../../../controllers/getCheckTblcolonia.php",
+       method: "POST",dataType: "json",url: "./../../controllers/getCheckTblcolonia.php",
 	   data: {solicitadoBy:"WEB",nombrecolonia:coloniaNombre,idtblciudad:coloniaCiudad}	         
 	              })  
             .done(function(mpa2){   
@@ -935,7 +953,7 @@
 					       $("#agregarNuevaColonia").addClass("oculto");
 					$.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "../../../controllers/setTblcolonia.php", 
+							   url: "./../../controllers/setTblcolonia.php", 
 							   data: {solicitadoBy:"WEB",idtblciudad:coloniaCiudad,
 							   nombrecolonia:coloniaNombre,codipost:coloniaCodpost,
 							   activado:coloniaEstatus,emailcreo:emailUsuario},
@@ -989,7 +1007,7 @@
     function mostrarDatosColonia(idcolonia){
           
     $.ajax({ 
-       method: "POST",dataType: "json",url: "../../../controllers/getTblcolonia.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getTblcolonia.php", 
 	   data: {solicitadoBy:"WEB",idtblcolonia:idcolonia}}) 
             .done(function(msg){ 
                
@@ -1032,7 +1050,7 @@
 	   else{    
 			   
 		           $.ajax({ 
-                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblcoloniaSinEst.php", 				  
+                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcoloniaSinEst.php", 				  
 				   data:{solicitadoBy:"WEB",idtblcolonia:iddeColonia,				  
 				   idtblciudad:modificaCiudad,nombrecolonia:modificaColonia,codipost:modificaCodpos,
 				   emailmodifico:emaildeProveedor},

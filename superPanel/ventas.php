@@ -96,7 +96,7 @@
 					
 					               <div>
 								   <br/>
-								   <h4> Para mas informaci&oacute;n, haz clic en el Registro. </h4>
+								   <h4> Para mas información, haz clic en el Registro. </h4>
 								    <label class="uk-float-right" id="numeroCarritos"> </label> 
 									<br/>
 									
@@ -119,11 +119,8 @@
                                 <tr>
                                     									 
 									<th class="uk-text-center">N° de Orden</th>
-									<th class="uk-text-center">Fecha de creaci&oacute;n</th>
-									
-                                   
-									
-                                    
+									<th class="uk-text-center">Fecha de creación</th>
+									                                    
                                 </tr>
                             </thead>
                             
@@ -133,6 +130,15 @@
 							
                         </table>
 						<div id="noHayCarritos"> </div>
+		<div id="pagerCarritos" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
                     </div>					
                 </div>
             </div> <!-- cierre del mdcard -->
@@ -165,7 +171,7 @@
               
                  <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                   <div class="uk-width-large-1-3">
-                   <h4 class="heading_c uk-margin-small-bottom">Informaci&oacute;n de Cliente </h4>
+                   <h4 class="heading_c uk-margin-small-bottom">Información de Cliente </h4>
                     <div class="uk-form-row">
                      <ul class="md-list md-list-addon" id="datoscliente2">
                       <li>
@@ -241,7 +247,7 @@
                     </ul>
                    </div>
                    <div class="uk-width-large-1-3">
-                    <h4 class="heading_c uk-margin-small-bottom">Datos de Envio </h4>
+                    <h4 class="heading_c uk-margin-small-bottom">Datos de Envío </h4>
                      <div class="uk-form-row">
                       <ul class="md-list md-list-addon">
                        <li>
@@ -291,7 +297,7 @@
 						
 											
 					<!--- ------------- -->
-					 <h4 class="heading_c uk-margin-small-bottom"><br/>Informaci&oacute;n de Quien Recibe </h4>
+					 <h4 class="heading_c uk-margin-small-bottom"><br/>Información de Quien Recibe </h4>
                     <div class="uk-form-row">
                      <ul class="md-list md-list-addon">
                       <li>
@@ -360,7 +366,7 @@
 					                </div>
 									<br/><br/>
 					               <div>								  
-								   <h4> Para mas información de la orden, haz clic en el Número de Orden. </h4>
+								   <h4> Para mas información de la orden, haz clic en el Registro. </h4>
 								    
 									<label class="uk-float-right" id="numeroOrdenes"> </label> 
 									<br/>
@@ -404,6 +410,15 @@
                             </tbody>
                         </table>
 						<div id="noHayOrdenes"> </div>
+		<div id="pagerOrdenesPorEntregar" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
                     </div>
 					
                 </div>
@@ -438,7 +453,15 @@
                             </tbody>
                         </table>
 						<div id="noHayOrdenesPendientes"> </div>
-						
+			<div id="pagerOrdenesPendientes" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
                     </div>
 					
                 </div>
@@ -463,8 +486,8 @@
                                     <th class="uk-text-center">N° de orden</th>	
 									<th class="uk-text-center">Proveedor </th>
 									<th class="uk-text-center">Total de compra</th>
-									<th class="uk-text-center">Fecha para dep&oacute;sito</th>
-									<th class="uk-text-center">Estatus del dep&oacute;sito</th> 									
+									<th class="uk-text-center">Fecha para depósito</th>
+									<th class="uk-text-center">Estatus del depósito</th> 									
                                     
                                 </tr>
                             </thead>
@@ -476,6 +499,15 @@
                             </tbody>
                         </table>
 						<div id="noHayOrdenesEnHistorial"> </div>
+			<div id="pagerOrdenesHistorial" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>	
                     </div>
 					
                 </div>
@@ -513,7 +545,7 @@
                 <!-- <div class="uk-grid "></div> -->
                  <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                   <div class="uk-width-large-1-3">
-                   <h4 class="heading_c uk-margin-small-bottom">Informaci&oacute;n de Cliente </h4>
+                   <h4 class="heading_c uk-margin-small-bottom">Información de Cliente </h4>
                     <div class="uk-form-row">
                      <ul class="md-list md-list-addon" id="datoscliente">
                       <li>
@@ -757,6 +789,15 @@
                             </tbody>
 							
                         </table>
+			<div id="pagerPagoPend" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
                     </div>
 					
                 </div>
@@ -775,8 +816,7 @@
                                <thead>
                                 <tr>						 
 									<th class="uk-text-center">N° de Orden</th>
-									<th class="uk-text-center">Proveedor</th>
-								    <!--<th class="uk-text-center">Cantidad de productos </th> -->
+									<th class="uk-text-center">Proveedor</th>								  
 									<th class="uk-text-center">Total de depósito</th>
 									<th class="uk-text-center">Fecha de corte</th>								
                                     
@@ -787,6 +827,15 @@
                                
                             </tbody>
                         </table>
+			<div id="pagerPagoHist" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
                     </div>					
                 </div>
             </div> <!-- cierre del mdcard -->
@@ -813,7 +862,7 @@
                   						
                   <span class="uk-text-small">Selecciona una Ciudad e Ingresa un rango de fechas y en base a ellas se hara el reporte.</span>
                    
-					<form class="uk-form-stacked" id="formuEnvRepo" method="post" action="../reporteVentas.php" > <!--s./../../controllers/ubmit" onclick="bajarReporte();" -->
+					<form class="uk-form-stacked" id="formuEnvRepo" method="post" action="reporte1.php" > <!--s./../../controllers/ubmit" onclick="bajarReporte();" -->
                      <div class="uk-grid" data-uk-grid-margin>
 							
 							 
@@ -829,11 +878,13 @@
                                     <div class="uk-input-group"> 
                                         <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
                                      
-									 <input placeholder="dia/mes/año" class="md-input uk_dp_start" type="text" id="fecha_inicialRango" name="fecha_inicialRango" date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']}" /> 
+									 <input  date-uk-datepicker placeholder="dia/mes/año" class="md-input uk_dp_start" type="text" id="fecha_inicialRango" name="fecha_inicialRango"  /> 
                                       <!--monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun', 'Jul','Ago','Sep','Oct','Nov','Dic'], 
                                       dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'], 
                                       dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb'], 
-                                     dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'] }"> -->
+                                     dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'] }">
+date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']}"
+									 -->
                                      
 									 
                                    
@@ -851,7 +902,7 @@
 								
 								<div class="uk-width-medium-1-4"> </br>  
 								<button type="submit" class="md-btn md-btn-flat ye" id="generar100" name="generar100" onclick="funcion(event);">Generar PDF</button>
-                             </div>
+                             </div>  <!--<input type="hidden" name="generar_factura" value="true">-->
                             </div> 
 							     </form>
                       <!--   </div>
@@ -914,9 +965,10 @@
    
 
     <?php include('../codigo_general/script_commonPB.php'); ?>  <!-- llamada para ejecutar el jquery -->
-   <script src="../assets/js/pages/forms_advanced2.js"></script>
-    <!-- page specific plugins -->
+    <script src="../assets/js/pages/forms_advanced2.js"></script>
+     <!--page specific plugins -->
     <!-- tablesorter -->
+	<script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/widgets/widget-alignChar.min.js"></script>
@@ -939,9 +991,13 @@
     --><!-- -->
     <script src="../bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
   
-    <script src="http://getuikit.com/docs/js/uikit.min.js" ></script>
-   <script src="http://getuikit.com/src/js/components/datepicker.js" ></script>
-    <!--  forms advanced functions  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+    <!--<script src="http://getuikit.com/docs/js/uikit.min.js" ></script>
+   <script src="http://getuikit.com/src/js/components/datepicker.js" ></script>-->
+   
+    <!--  <script src="../bower_components/uikit/js/uikit.min.js"></script>
+    <script src="../bower_components/uikit/js/components/datepicker.js"></script>
+   
+    forms advanced functions  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
     
 	<!--  dropify 
     <script src="../assets/js/custom/dropify/dist/js/dropify.min.js"></script>
@@ -1028,7 +1084,7 @@
 	   function mostrarCiudadesU(){ //muestra las ciudades activas 	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostC){
 				//console.log(mcol); 
@@ -1059,7 +1115,7 @@
      	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllOrdenesByTblCiudad.php", 
+	   url: "./../../controllers/getCountAllOrdenesByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",nameCiudad:idtblciudad}})
             .done(function(mc){				   
                      if(parseInt(mc.success)==1){ 
@@ -1082,7 +1138,7 @@
       
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllOrdenesCarritosByCiudad.php", 
+	   url: "./../../controllers/getCountAllOrdenesCarritosByCiudad.php", 
 	   data: {solicitadoBy:"WEB",nameCiudad:idtblciudad}})
             .done(function(mc){				   
                      if(parseInt(mc.success)==1){ 
@@ -1105,7 +1161,7 @@
     
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "../../../controllers/getCountAllOrdenesPendientesByCiudad.php", 
+	   url: "./../../controllers/getCountAllOrdenesPendientesByCiudad.php", 
 	   data: {solicitadoBy:"WEB",nameCiudad:idtblciudad}})
             .done(function(mc){				   
                      if(parseInt(mc.success)==1){ 
@@ -1134,6 +1190,14 @@ var tabla3_OrdenesHistorial=3;
       });
 	  
 	 }
+	 
+	  function inicializarPagCarrio(){  		
+ 		$("#tablaCarritos")
+		.tablesorterPager({container: $("#pagerCarritos")})  ;
+		 }
+		 
+		 
+		 
 	  //-----tablas pestaña ordenes-----
 	  function inicializarTablas_ordenes(){
 	  
@@ -1158,6 +1222,22 @@ var tabla3_OrdenesHistorial=3;
 	 
 	 }
 	 
+	 function inicializarPagOrdenEntreg(){  		
+ 		$("#tablaOrdenesPorEntregar")
+		.tablesorterPager({container: $("#pagerOrdenesPorEntregar")})  ;
+		 }
+		 
+	 function inicializarPagOrdenPend(){  		
+ 		$("#tablaOrdenesEntregarPendientes")
+		.tablesorterPager({container: $("#pagerOrdenesPendientes")})  ;
+		 }
+		 
+   function inicializarPagOrdenHis(){  		
+ 		$("#tabla_OrdenesHistorial")
+		.tablesorterPager({container: $("#pagerOrdenesHistorial")})  ;
+		 }		 
+		 
+	 
 	 //-----tablas de la pestaña Pagos
 	 function inicializarTablas_Pagos(){	 
 	
@@ -1175,7 +1255,15 @@ var tabla3_OrdenesHistorial=3;
 	  
 	 }
 	 
-	 
+	  function inicializarPagPagosPendientes(){  		
+ 		$("#tabla_PagosPendientes")
+		.tablesorterPager({container: $("#pagerPagoPend")})  ;
+		 }
+
+  function inicializarPagPagosHistorico(){  		
+ 		$("#tabla_PagosHistorial")
+		.tablesorterPager({container: $("#pagerPagoHist")})  ;
+		 }		 
 	 
 	 
 	 
@@ -1185,7 +1273,7 @@ var tabla3_OrdenesHistorial=3;
 	  function mostrarCiudadesPagos(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php",
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php",
 	 data: {solicitadoBy:"WEB"}})
             .done(function(cp){
 				
@@ -1222,7 +1310,7 @@ var tabla3_OrdenesHistorial=3;
    //console.log('identregaproducto: '+identregaproducto+'estatus: '+statusdeposito+'ciudad: '+envioCiudad);				
 		           $.ajax({ 
                    method: "POST", dataType: "json",
-				   url: "../../../controllers/setUpdateTblentregaproductoPagada.php", 				  
+				   url: "./../../controllers/setUpdateTblentregaproductoPagada.php", 				  
 				   data:{solicitadoBy:"WEB",idtblentregaproducto:identregaproducto,				  
 				   statusdeposito:statusdeposito,emailmodifico:emaildeUsuario}})			  
 				   
@@ -1232,7 +1320,7 @@ var tabla3_OrdenesHistorial=3;
 						    
 		            //--------------------------------------------------
 					    $.ajax({method: "POST",dataType: "json",
-							   url: "../../../controllers/setTblnotificacion.php", 
+							   url: "./../../controllers/setTblnotificacion.php", 
 							   data: {solicitadoBy:"WEB",tipo:tipoN,asunto:asunto, 
 							   mensaje:mensaje,emisor:emisor,idredireccion:idSeccion,
 							   emailcreo:emailUsuario} })                
@@ -1241,7 +1329,7 @@ var tabla3_OrdenesHistorial=3;
                     if(parseInt(ms.success)==1){ tabla1=true;
 							//---------------------
                                 $.ajax({method: "POST",dataType: "json",
-							   url: "../../../controllers/getAllTblnotificacionMax.php", 
+							   url: "./../../controllers/getAllTblnotificacionMax.php", 
 							   data: {solicitadoBy:"WEB"} })					                                                
 							   .done(function(ms2){
 									 if(parseInt(ms2.success)==1){
@@ -1251,7 +1339,7 @@ var tabla3_OrdenesHistorial=3;
 										
 										 //--------------------Alta notificacionvista ----------------------
 								         $.ajax({method:"POST",dataType:"json",
-							             url: "../../../controllers/setTblnotificacionvista.php", 
+							             url: "./../../controllers/setTblnotificacionvista.php", 
 							             data: {solicitadoBy:"WEB",destino:idtblproveedor,status:estatus,
 										 emailcreo:emailUsuario,idtblnotificacion:idInsertado} })					                                                
 							             .done(function(ms3){  
@@ -1313,7 +1401,7 @@ var tabla3_OrdenesHistorial=3;
 	   
 	    $.ajax({     
       method: "POST",dataType: "json",
-	  url: "../../../controllers/getAllTblordencompraDatos.php", 
+	  url: "./../../controllers/getAllTblordencompraDatos.php", 
 	  data: {solicitadoBy:"WEB",nameCiudad:nameCiudad},
 	   beforeSend: function(){
 				   $('#esperarMostrarPagos').css('display','inline');}	
@@ -1346,7 +1434,7 @@ var tabla3_OrdenesHistorial=3;
                              $.ajax({//Checar para ver si existe un registro de tblentregaprodruct
                               method: "POST",  
                               dataType: "json",  
-                              url: "../../../controllers/getTblentregaproductoStatus.php",  
+                              url: "./../../controllers/getTblentregaproductoStatus.php",  
                               data: {solicitadoBy:"WEB",idtblordencompra:id_orden,idtblproveedor:id_pro}})
                              .done(function( mg3 ){
 						   
@@ -1355,16 +1443,16 @@ var tabla3_OrdenesHistorial=3;
 			                        pagos=true;
 									 
 			                  $.each(mg3.datos, function(u,item){
-					                   
+					            identrega=item.idtblentregaproducto;          
 						     //---- --------- -----  ---
 				if(mg3.datos[u].tblentregaproducto_statusdeposito=="Pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito=="PENDIENTE"){
 			       			
-				
+				 $("#pagerPagoPend").removeClass('oculto');	
                  $("#bodyTabla_PendientesPago").append(
 				 ' <tr>'+				
                	 '<td class="uk-width-medium-1-3 uk-text-center"  >'+
                  '<span>'+ o1.datos[s].idtblordencompra +'</span>'+
-				 '<span class="oculto" id="spanIdentregaPend">'+ mg3.datos[u].idtblentregaproducto+'</span>'+				
+				// '<span class="oculto" id="spanIdentregaPend">'+ mg3.datos[u].idtblentregaproducto+'</span>'+				
 				 '<span class="oculto" id="spanCiudadEnvio">'+ o1.datos[s].tbldatosenvio_ciudad +'</span>'+ 
                	 '</td>'+ 
 				 '<td class="uk-width-medium-1-3 uk-text-center" >'+
@@ -1374,7 +1462,7 @@ var tabla3_OrdenesHistorial=3;
 			     '<td class="uk-text-center">'+
 		         '$<span name="totaltabla1'+s+'" id="totaltabla1'+s+'"></span></td>'+	
 			     '<td class="uk-width-medium-1-3 uk-text-center" >'+			                      
-                 '<span id="f_corte'+u+'"></span>'+				 
+                 '<span id="f_corte'+identrega+'"></span>'+				 
                  '</td>'+
 			     '<td class="uk-text-center">'+
 			     '<button type="button" class="md-btn md-btn-flat ye" onclick="pagarDeposito('+o1.datos[s].idtblproveedor+','+o1.datos[s].idtblordencompra+');" id="ye">Pagar</button>'+
@@ -1384,25 +1472,25 @@ var tabla3_OrdenesHistorial=3;
 				 );
 				        
                       if(mg3.datos[u].tblentregaproducto_fchcortepago==null || mg3.datos[u].tblentregaproducto_fchcortepago=="")
-					 {    $('#f_corte'+u).text('---'); 
+					 {    $('#f_corte'+identrega).text('---'); 
 					 } 
 					 else { 
 					 fchcortepago= mg3.datos[u].tblentregaproducto_fchcortepago;
                         fchcortepago = fchcortepago.split("-"); 
                         fchcortepago = fchcortepago[2]+"/"+fchcortepago[1]+"/"+fchcortepago[0];
-					   $('#f_corte'+u).text(fchcortepago); 
+					   $('#f_corte'+identrega).text(fchcortepago); 
 					
 					       }						
 				 
 				   	$("#tabla_PagosPendientes").trigger('updateAll', [true]);//actualiza tabla 	
                     totalCompra_pagos(o1.datos[s].idtblordencompra,s,o1.datos[s].idtblproveedor);
-				    
+				  inicializarPagPagosPendientes();
 				  //--------------------------------------------------------------
 			  			  
 			                } 
 							
 				else{	
-                
+                  $("#pagerPagoHist").removeClass('oculto');	
 				$("#bodyTabla_HistorialPagos").append(
 				 ' <tr>'+
                  '<td class="uk-width-medium-1-3 uk-text-center"   >'+ 
@@ -1415,27 +1503,29 @@ var tabla3_OrdenesHistorial=3;
 		         '<td class="uk-text-center">'+
 		         '$<span name="totaltabla1'+s+'" id="totaltabla1'+s+'"></span></td>'+
 		         '<td class="uk-width-medium-1-3 uk-text-center" >'+			                      
-                 '<span id="f_corte2'+u+'"></span>'+ 
+                 '<span id="f_corte2'+identrega+'"></span>'+ 
                	 '</td>'+						
 				 '</tr>'
 				             );	
 							 
                     if(mg3.datos[u].tblentregaproducto_fchcortepago==null || mg3.datos[u].tblentregaproducto_fchcortepago=="")
-					 {  $('#f_corte2'+u).text('---'); 
+					 {  
+				        $('#f_corte2'+identrega).text('---');
 					 } 
 					 else { 
-					 fchcortepago= mg3.datos[u].tblentregaproducto_fchcortepago;
-                        fchcortepago = fchcortepago.split("-"); 
-                        fchcortepago = fchcortepago[2]+"/"+fchcortepago[1]+"/"+fchcortepago[0];
-					   $('#f_corte2'+u).text(fchcortepago); 
+					
+					  fchcortepago2= mg3.datos[u].tblentregaproducto_fchcortepago;
+                        fchcortepago2 = fchcortepago2.split("-"); 
+                        fchcortepago2 = fchcortepago2[2]+"/"+fchcortepago2[1]+"/"+fchcortepago2[0];
+					   $('#f_corte2'+identrega).text(fchcortepago2); 
+					 
 					       }							 
 				                   
 				 
-				   	$("#tabla_PagosHistorial").trigger('updateAll', [true]);//actualiza tabla 
-					
-					
+				   	$("#tabla_PagosHistorial").trigger('updateAll', [true]);//actualiza tabla 					
 					 //funcion para calcular el Total de la Orden 
                      totalCompra_pagos(o1.datos[s].idtblordencompra,s,o1.datos[s].idtblproveedor);
+				 inicializarPagPagosHistorico();
 				    				           
                                  }  //termina el else  
 							 
@@ -1456,7 +1546,9 @@ var tabla3_OrdenesHistorial=3;
 
 		 //--------------------------------	
 			
-            } else{				
+            } else{	
+           $("#pagerPagoPend").addClass('oculto');
+           $("#pagerPagoHist").addClass('oculto');			   
 				//tabla ordenes pendientes				  
 			    $("#bodyTabla_PendientesPago").empty(); 				
 				
@@ -1483,7 +1575,7 @@ var tabla3_OrdenesHistorial=3;
       $.ajax({
       method: "POST",  
       dataType: "json",  
-      url: "../../../controllers/getAllTblcarritoproductByidorden.php",  
+      url: "./../../controllers/getAllTblcarritoproductByidorden.php",  
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
       .done(function(msg4) { 
       $.each(msg4.datos, function(i4,item){
@@ -1507,7 +1599,7 @@ var tabla3_OrdenesHistorial=3;
           $.ajax({
             method: "POST",  
             dataType: "json",   
-            url: "../../../controllers/getAllTblordencompraProComp.php",  
+            url: "./../../controllers/getAllTblordencompraProComp.php",  
             data: {solicitadoBy:"WEB",orden:idtblordencompra,prove:idtblproveedor}})
               .done(function(msg7) {
 				  
@@ -1558,7 +1650,7 @@ var tabla3_OrdenesHistorial=3;
 	  function mostrarCiudadesOrdenes(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php",
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php",
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCi){
 				
@@ -1590,7 +1682,7 @@ var tabla3_OrdenesHistorial=3;
 			
 	   $.ajax({     
       method: "POST",dataType: "json",
-	  url: "../../../controllers/getAllTblordencompraDatos.php", 
+	  url: "./../../controllers/getAllTblordencompraDatos.php", 
 	  data: {solicitadoBy:"WEB",nameCiudad:nombredeCiudad},
 	   beforeSend: function(){
 				   $('#esperarMostrarOrdenes').css('display','inline');}	
@@ -1617,7 +1709,7 @@ var tabla3_OrdenesHistorial=3;
                              $.ajax({//Checar para ver si existe un registro de tblentregaprodruct
                               method: "POST",  
                               dataType: "json",  
-                              url: "../../../controllers/getTblentregaproductoByOrdenProveedor.php",  
+                              url: "./../../controllers/getTblentregaproductoByOrdenProveedor.php",  
                               data: {solicitadoBy:"WEB",idtblordencompra:id_orden,idtblproveedor:id_pro}})
                              .done(function( mg3 ){
 						   
@@ -1635,6 +1727,8 @@ var tabla3_OrdenesHistorial=3;
                   fchpagoproveedor = fchpagoproveedor.split("-");
                   fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
                // $("#bodyTabla_OrdenesHistorial").html("");
+			   $("#pagerOrdenesHistorial").removeClass('oculto');
+			   
 				$("#bodyTabla_OrdenesHistorial").append(
 				 ' <tr onclick="pupopOrdenEntregar('+
 				              o1.datos[s].idtblordencompra+','+o1.datos[s].idtblproveedor
@@ -1660,6 +1754,7 @@ var tabla3_OrdenesHistorial=3;
 				                   
 				 
 				   	$("#tabla_OrdenesHistorial").trigger('updateAll', [true]);//actualiza tabla 
+					inicializarPagOrdenHis();
 					
 					if(mg3.datos[u].tblentregaproducto_statusdeposito!="Pendiente"){
                     $('#tblstatusdeposito'+s).append('<span class="uk-badge uk-badge-success">'+mg3.datos[u].tblentregaproducto_statusdeposito+'</span>');
@@ -1676,7 +1771,8 @@ var tabla3_OrdenesHistorial=3;
 			                } 
 							
 				else{				
-				//$("#bodyTabla_OrdenesEntregarPendientes").html(""); 
+				//$("#bodyTabla_OrdenesEntregarPendientes").html("");
+                    $("#pagerOrdenesPendientes").removeClass('oculto');				
                  $("#bodyTabla_OrdenesEntregarPendientes").append(
 				 ' <tr onclick="pupopOrdenEntregar('+
 				 o1.datos[s].idtblordencompra+','+o1.datos[s].idtblproveedor+
@@ -1699,7 +1795,7 @@ var tabla3_OrdenesHistorial=3;
 				                   
 				 
 				$("#tablaOrdenesEntregarPendientes").trigger('updateAll', [true]);//actualiza tabla 	
-                              
+                        inicializarPagOrdenPend();      
                    }  //termina el else  
 							 
 							 //---- ------  -----  ---
@@ -1707,7 +1803,8 @@ var tabla3_OrdenesHistorial=3;
 			      });  //cierra el each				 
                            
 				}else{ 								 
-			         //$("#bodyTabla_OrdenesEntregar").html("");	
+			         //$("#bodyTabla_OrdenesEntregar").html("");
+                     $("#pagerOrdenesPorEntregar").removeClass('oculto');					 
 					$("#bodyTabla_OrdenesEntregar").append(
 				      ' <tr onclick="pupopOrdenEntregar('+
                       o1.datos[s].idtblordencompra+','+o1.datos[s].idtblproveedor
@@ -1729,7 +1826,7 @@ var tabla3_OrdenesHistorial=3;
 				                   
 				 
 				$("#tablaOrdenesPorEntregar").trigger('updateAll', [true]);//actualiza tabla  
-					 
+					  inicializarPagOrdenEntreg();
 								 
 								 }
 			           //--------------------------------
@@ -1742,7 +1839,10 @@ var tabla3_OrdenesHistorial=3;
 			
                             } 
 				else{
-                  
+                 $("#pagerOrdenesPorEntregar").addClass('oculto');
+                 $("#pagerOrdenesPendientes").addClass('oculto');
+                 $("#pagerOrdenesHistorial").addClass('oculto');
+				 
                   //tabla ordenes por entregar				  
 			    $("#bodyTabla_OrdenesEntregar").empty(); 
 				
@@ -1770,7 +1870,7 @@ var tabla3_OrdenesHistorial=3;
   $.ajax({
       method: "POST",  
      dataType: "json",  
-      url: "../../../controllers/getAllTblcarritoproductByidorden.php",  
+      url: "./../../controllers/getAllTblcarritoproductByidorden.php",  
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
         .done(function(msg4) { 
         $.each(msg4.datos, function(i4,item){
@@ -1790,7 +1890,7 @@ var tabla3_OrdenesHistorial=3;
           $.ajax({
             method: "POST",  
             dataType: "json",   
-            url: "../../../controllers/getAllTblordencompraProComp.php",  
+            url: "./../../controllers/getAllTblordencompraProComp.php",  
             data: {solicitadoBy:"WEB",orden:idtblordencompra,prove:idtblproveedor}})
               .done(function(msg7) {				  
 				  if (parseInt(msg7.success)==1) {
@@ -1849,7 +1949,7 @@ var tabla3_OrdenesHistorial=3;
 		   $.ajax({    
          method: "POST",  
         dataType: "json",  
-         url: "../../../controllers/getTblordencompra.php",  
+         url: "./../../controllers/getTblordencompra.php",  
         data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra}}) 
         .done(function(msg7) {  
 			
@@ -1873,7 +1973,7 @@ var tabla3_OrdenesHistorial=3;
 	 //----------------mostrar datos del cliente-----------------------------------				 
 					$.ajax({ 
         method: "POST",dataType: "json",
-	    url: "../../../controllers/getTblcliente.php",  
+	    url: "./../../controllers/getTblcliente.php",  
         data: {solicitadoBy:"WEB",idtblcliente:idcliente} })
             .done(function(ms){	
 			
@@ -1939,7 +2039,7 @@ var tabla3_OrdenesHistorial=3;
 	 $.ajax({
       method: "POST",  
       dataType: "json",  
-      url: "../../../controllers/getAllTblcarritoproductByidorden.php",  
+      url: "./../../controllers/getAllTblcarritoproductByidorden.php",  
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
 	                                      
         .done(function(msg4) {
@@ -1967,7 +2067,7 @@ var tabla3_OrdenesHistorial=3;
             $.ajax({//detalle de cada producto 
       method: "POST",  
       dataType: "json",  
-      url: "../../../controllers/getTblproductoDetalle2.php",  
+      url: "./../../controllers/getTblproductoDetalle2.php",  
       data: {solicitadoBy:"WEB", idtblproductdetalle:iddetalleproducto}  })
      .done(function( msg5 ) {
       
@@ -1992,7 +2092,7 @@ var tabla3_OrdenesHistorial=3;
                  $.ajax({//muestra el ingrediente especifico del producto 
                  method: "POST",  
                  dataType: "json",  
-                 url: "../../../controllers/getTblespecificingrediente.php",  
+                 url: "./../../controllers/getTblespecificingrediente.php",  
                  data: {solicitadoBy:"WEB",idtblespecificingrediente:idtblespecificingre}  })
                 .done(function( msg6) {   
                  $.each(msg6.datos, function(i6,item6){
@@ -2042,7 +2142,7 @@ var tabla3_OrdenesHistorial=3;
 	//............checar datos para pupop de productos complementarios *****
       $.ajax({
       method: "POST", dataType: "json",  
-      url: "../../../controllers/getCheckTblordencompraProComp.php",  
+      url: "./../../controllers/getCheckTblordencompraProComp.php",  
       data: {solicitadoBy:"WEB",orden1:idtblordencompra,prove1:idtblproveedor}})  
 	  
       .done(function(h1) {
@@ -2052,7 +2152,7 @@ var tabla3_OrdenesHistorial=3;
 	 		  
                $.ajax({ 
                method: "POST", dataType: "json",
-	           url: "../../../controllers/getAllTblordencompraProComp.php", 
+	           url: "./../../controllers/getAllTblordencompraProComp.php", 
 	           data: {solicitadoBy:"WEB",orden:idtblordencompra,prove:idtblproveedor}})
                .done(function(men){
                 								 	
@@ -2103,7 +2203,7 @@ var tabla3_OrdenesHistorial=3;
 	 $.ajax({//datos de envio de la orden (general)
       method: "POST",  
       dataType: "json",  
-      url: "../../../controllers/getTbldatosenvio.php",  
+      url: "./../../controllers/getTbldatosenvio.php",  
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra}  }) 
      .done(function( msg3 ) {	  
       $.each(msg3.datos, function(i3,item3){
@@ -2161,7 +2261,7 @@ var tabla3_OrdenesHistorial=3;
              $.ajax({//se obtiene datos del producto
              method: "POST",  
              dataType: "json",  
-             url: "../../../controllers/getTblentregaproductoByOrdenProveedor.php",  
+             url: "./../../controllers/getTblentregaproductoByOrdenProveedor.php",  
              data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
             .done(function( msg9) {
            // console.log("ENTREGA");
@@ -2209,7 +2309,7 @@ var tabla3_OrdenesHistorial=3;
       $.ajax({
         method: "POST",  
         dataType: "json",  
-        url: "../../../controllers/getTblentregacomplem.php",  
+        url: "./../../controllers/getTblentregacomplem.php",  
         data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
        .done(function( msg10) {
 		    if(parseInt(msg10.success)==1){ ggu=true;
@@ -2243,7 +2343,7 @@ var tabla3_OrdenesHistorial=3;
   $.ajax({//se obtiene datos del producto
     method: "POST",  
     dataType: "json",  
-    url: "../../../controllers/getTblentregaproductoByOrdenProveedor.php",  
+    url: "./../../controllers/getTblentregaproductoByOrdenProveedor.php",  
     data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})	
     .done(function( msg9) {      
       $.each(msg9.datos, function(i,item3){
@@ -2302,7 +2402,7 @@ var tabla3_OrdenesHistorial=3;
       $.ajax({
         method: "POST",  
         dataType: "json",  
-        url: "../../../controllers/getTblentregacomplem.php",  
+        url: "./../../controllers/getTblentregacomplem.php",  
         data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
        .done(function( msg10) { 
 		   //console.log("entro a historial imagnes");
@@ -2404,7 +2504,7 @@ function geocodeResult(results, status) {
 	 function mostrarCiudadesCarrito(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php",
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php",
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCi){
 				
@@ -2431,7 +2531,7 @@ function geocodeResult(results, status) {
 	   
 	 $.ajax({     
      method: "POST",dataType: "json",
-	 url: "../../../controllers/getAllTblcarritoCiudad.php", 
+	 url: "./../../controllers/getAllTblcarritoCiudad.php", 
 	 data: {solicitadoBy:"WEB",str_ciudad:nombreCiudadCarritos},
 	  beforeSend: function(){
 				   $('#esperarMostrarCarritos').css('display','inline');}	
@@ -2439,7 +2539,7 @@ function geocodeResult(results, status) {
      .done(function(mo){
 				                 			
                 if(parseInt(mo.success)==1){				
-				 nocarritos=true;
+				$("#pagerCarritos").removeClass('oculto');
 				$("#mostrarCarritosBody").empty(); 
 				
                 $.each(mo.datos, function(i,item)
@@ -2466,14 +2566,16 @@ function geocodeResult(results, status) {
 				                   
 				 
 				   	$("#tablaCarritos").trigger('updateAll', [true]);//actualiza tabla 
+					 inicializarPagCarrio();
              });	//cierre del each
 			 
 			 //---------------------
 			      }
 							else 
-						{  					
+						{  	
+					$("#pagerCarritos").addClass('oculto');				
 					  $("#mostrarCarritosBody").empty(); 
-				      nocarritos=false;					
+				      			
 					    }	
 			 
 			 //------------
@@ -2509,7 +2611,7 @@ function geocodeResult(results, status) {
 		   $.ajax({    
          method: "POST",  
         dataType: "json",  
-         url: "../../../controllers/getTblordencompra.php",  
+         url: "./../../controllers/getTblordencompra.php",  
         data: {solicitadoBy:"WEB",idtblordencompra:iddeorden}})
         .done(function(mu22) { 
 						
@@ -2537,7 +2639,7 @@ function geocodeResult(results, status) {
 	 //----------------mostrar datos del cliente-----------------------------------				 
 					$.ajax({ 
                     method: "POST",dataType: "json",
-	                url: "../../../controllers/getTblcliente.php",  
+	                url: "./../../controllers/getTblcliente.php",  
                     data: {solicitadoBy:"WEB",idtblcliente:idcliente} })
                    .done(function(cli23){	
 			        if (parseInt(cli23.success)==1) {
@@ -2566,7 +2668,7 @@ function geocodeResult(results, status) {
 	$.ajax({
       method: "POST",  
       dataType: "json",  
-      url: "../../../controllers/getAllTblcarritoproduByOrden.php",  
+      url: "./../../controllers/getAllTblcarritoproduByOrden.php",  
       data: {solicitadoBy:"WEB",idorden:iddeorden}}) 
       .done(function(msg44) {
         $.each(msg44.datos, function(i44,item){		
@@ -2597,7 +2699,7 @@ function geocodeResult(results, status) {
             $.ajax({//detalle de cada producto de acuerdo
       method: "POST",  
       dataType: "json",  
-      url: "../../../controllers/getTblproductoDetalle2.php",  
+      url: "./../../controllers/getTblproductoDetalle2.php",  
       data: {solicitadoBy:"WEB", idtblproductdetalle:iddetalleproducto}  })
      .done(function( msg55 ) {
       
@@ -2622,7 +2724,7 @@ function geocodeResult(results, status) {
                  $.ajax({//muestra el ingrediente especifico 
                  method: "POST",  
                  dataType: "json",  
-                 url: "../../../controllers/getTblespecificingrediente.php",  
+                 url: "./../../controllers/getTblespecificingrediente.php",  
                  data: {solicitadoBy:"WEB",idtblespecificingrediente:idtblespecificingre}  })
                 .done(function( msg88) {  
                  $.each(msg88.datos, function(i8,item88){
@@ -2671,7 +2773,7 @@ function geocodeResult(results, status) {
 	//............ datos para pupop Productos complementarios *****
       $.ajax({
       method: "POST", dataType: "json",  
-      url: "../../../controllers/getCheckTblordencompraProComp2.php",  
+      url: "./../../controllers/getCheckTblordencompraProComp2.php",  
       data: {solicitadoBy:"WEB",orden1:iddeorden}})  
 	  
         .done(function(h12) {
@@ -2681,7 +2783,7 @@ function geocodeResult(results, status) {
 	 		  
        $.ajax({ 
        method: "POST", dataType: "json",
-	   url: "../../../controllers/getAllTblordencompraProComp2.php", 
+	   url: "./../../controllers/getAllTblordencompraProComp2.php", 
 	   data: {solicitadoBy:"WEB",orden:iddeorden}})
        .done(function(men77){
                 							 	
@@ -2737,7 +2839,7 @@ function geocodeResult(results, status) {
 		$.ajax({//datos de envio de la orden (general)
       method: "POST",  
       dataType: "json",  
-      url: "../../../controllers/getTbldatosenvio.php",  
+      url: "./../../controllers/getTbldatosenvio.php",  
       data: {solicitadoBy:"WEB", idtblordencompra:iddeorden}  }) 
      .done(function( msg33 ) { 
 	  
