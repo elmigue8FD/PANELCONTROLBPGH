@@ -11131,7 +11131,7 @@ AND exists
 	    
 		$consulta = "SELECT * FROM tblentregaproducto WHERE tblentregaproducto_idtblordencompra = ? 
 		            AND tblentregaproducto_idtblproveedor = ? AND tblentregaproducto_status='Entregado' 
-					ORDER BY tblentregaproducto_fchcortepago";
+					ORDER BY tblentregaproducto_fchcortepago DESC";
 		
 		try{
 
