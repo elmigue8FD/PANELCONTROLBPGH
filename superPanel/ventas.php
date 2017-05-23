@@ -1084,7 +1084,7 @@ date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Juni
 	   function mostrarCiudadesU(){ //muestra las ciudades activas 	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostC){
 				//console.log(mcol); 
@@ -1115,7 +1115,7 @@ date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Juni
      	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllOrdenesByTblCiudad.php", 
+	   url: "../../../controllers/getCountAllOrdenesByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",nameCiudad:idtblciudad}})
             .done(function(mc){				   
                      if(parseInt(mc.success)==1){ 
@@ -1138,7 +1138,7 @@ date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Juni
       
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllOrdenesCarritosByCiudad.php", 
+	   url: "../../../controllers/getCountAllOrdenesCarritosByCiudad.php", 
 	   data: {solicitadoBy:"WEB",nameCiudad:idtblciudad}})
             .done(function(mc){				   
                      if(parseInt(mc.success)==1){ 
@@ -1161,7 +1161,7 @@ date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Juni
     
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllOrdenesPendientesByCiudad.php", 
+	   url: "../../../controllers/getCountAllOrdenesPendientesByCiudad.php", 
 	   data: {solicitadoBy:"WEB",nameCiudad:idtblciudad}})
             .done(function(mc){				   
                      if(parseInt(mc.success)==1){ 
@@ -1273,7 +1273,7 @@ var tabla3_OrdenesHistorial=3;
 	  function mostrarCiudadesPagos(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php",
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php",
 	 data: {solicitadoBy:"WEB"}})
             .done(function(cp){
 				
@@ -1310,7 +1310,7 @@ var tabla3_OrdenesHistorial=3;
    //console.log('identregaproducto: '+identregaproducto+'estatus: '+statusdeposito+'ciudad: '+envioCiudad);				
 		           $.ajax({ 
                    method: "POST", dataType: "json",
-				   url: "./../../controllers/setUpdateTblentregaproductoPagada.php", 				  
+				   url: "../../../controllers/setUpdateTblentregaproductoPagada.php", 				  
 				   data:{solicitadoBy:"WEB",idtblentregaproducto:identregaproducto,				  
 				   statusdeposito:statusdeposito,emailmodifico:emaildeUsuario}})			  
 				   
@@ -1320,7 +1320,7 @@ var tabla3_OrdenesHistorial=3;
 						    
 		            //--------------------------------------------------
 					    $.ajax({method: "POST",dataType: "json",
-							   url: "./../../controllers/setTblnotificacion.php", 
+							   url: "../../../controllers/setTblnotificacion.php", 
 							   data: {solicitadoBy:"WEB",tipo:tipoN,asunto:asunto, 
 							   mensaje:mensaje,emisor:emisor,idredireccion:idSeccion,
 							   emailcreo:emailUsuario} })                
@@ -1329,7 +1329,7 @@ var tabla3_OrdenesHistorial=3;
                     if(parseInt(ms.success)==1){ tabla1=true;
 							//---------------------
                                 $.ajax({method: "POST",dataType: "json",
-							   url: "./../../controllers/getAllTblnotificacionMax.php", 
+							   url: "../../../controllers/getAllTblnotificacionMax.php", 
 							   data: {solicitadoBy:"WEB"} })					                                                
 							   .done(function(ms2){
 									 if(parseInt(ms2.success)==1){
@@ -1339,7 +1339,7 @@ var tabla3_OrdenesHistorial=3;
 										
 										 //--------------------Alta notificacionvista ----------------------
 								         $.ajax({method:"POST",dataType:"json",
-							             url: "./../../controllers/setTblnotificacionvista.php", 
+							             url: "../../../controllers/setTblnotificacionvista.php", 
 							             data: {solicitadoBy:"WEB",destino:idtblproveedor,status:estatus,
 										 emailcreo:emailUsuario,idtblnotificacion:idInsertado} })					                                                
 							             .done(function(ms3){  
@@ -1401,7 +1401,7 @@ var tabla3_OrdenesHistorial=3;
 	   
 	    $.ajax({     
       method: "POST",dataType: "json",
-	  url: "./../../controllers/getAllTblordencompraDatos.php", 
+	  url: "../../../controllers/getAllTblordencompraDatos.php", 
 	  data: {solicitadoBy:"WEB",nameCiudad:nameCiudad},
 	   beforeSend: function(){
 				   $('#esperarMostrarPagos').css('display','inline');}	
@@ -1434,7 +1434,7 @@ var tabla3_OrdenesHistorial=3;
                              $.ajax({//Checar para ver si existe un registro de tblentregaprodruct
                               method: "POST",  
                               dataType: "json",  
-                              url: "./../../controllers/getTblentregaproductoStatus.php",  
+                              url: "../../../controllers/getTblentregaproductoStatus.php",  
                               data: {solicitadoBy:"WEB",idtblordencompra:id_orden,idtblproveedor:id_pro}})
                              .done(function( mg3 ){
 						   
@@ -1575,7 +1575,7 @@ var tabla3_OrdenesHistorial=3;
       $.ajax({
       method: "POST",  
       dataType: "json",  
-      url: "./../../controllers/getAllTblcarritoproductByidorden.php",  
+      url: "../../../controllers/getAllTblcarritoproductByidorden.php",  
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
       .done(function(msg4) { 
       $.each(msg4.datos, function(i4,item){
@@ -1599,7 +1599,7 @@ var tabla3_OrdenesHistorial=3;
           $.ajax({
             method: "POST",  
             dataType: "json",   
-            url: "./../../controllers/getAllTblordencompraProComp.php",  
+            url: "../../../controllers/getAllTblordencompraProComp.php",  
             data: {solicitadoBy:"WEB",orden:idtblordencompra,prove:idtblproveedor}})
               .done(function(msg7) {
 				  
@@ -1650,7 +1650,7 @@ var tabla3_OrdenesHistorial=3;
 	  function mostrarCiudadesOrdenes(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php",
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php",
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCi){
 				
@@ -1682,7 +1682,7 @@ var tabla3_OrdenesHistorial=3;
 			
 	   $.ajax({     
       method: "POST",dataType: "json",
-	  url: "./../../controllers/getAllTblordencompraDatos.php", 
+	  url: "../../../controllers/getAllTblordencompraDatos.php", 
 	  data: {solicitadoBy:"WEB",nameCiudad:nombredeCiudad},
 	   beforeSend: function(){
 				   $('#esperarMostrarOrdenes').css('display','inline');}	
@@ -1709,7 +1709,7 @@ var tabla3_OrdenesHistorial=3;
                              $.ajax({//Checar para ver si existe un registro de tblentregaprodruct
                               method: "POST",  
                               dataType: "json",  
-                              url: "./../../controllers/getTblentregaproductoByOrdenProveedor.php",  
+                              url: "../../../controllers/getTblentregaproductoByOrdenProveedor.php",  
                               data: {solicitadoBy:"WEB",idtblordencompra:id_orden,idtblproveedor:id_pro}})
                              .done(function( mg3 ){
 						   
@@ -1870,7 +1870,7 @@ var tabla3_OrdenesHistorial=3;
   $.ajax({
       method: "POST",  
      dataType: "json",  
-      url: "./../../controllers/getAllTblcarritoproductByidorden.php",  
+      url: "../../../controllers/getAllTblcarritoproductByidorden.php",  
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
         .done(function(msg4) { 
         $.each(msg4.datos, function(i4,item){
@@ -1890,7 +1890,7 @@ var tabla3_OrdenesHistorial=3;
           $.ajax({
             method: "POST",  
             dataType: "json",   
-            url: "./../../controllers/getAllTblordencompraProComp.php",  
+            url: "../../../controllers/getAllTblordencompraProComp.php",  
             data: {solicitadoBy:"WEB",orden:idtblordencompra,prove:idtblproveedor}})
               .done(function(msg7) {				  
 				  if (parseInt(msg7.success)==1) {
@@ -1949,7 +1949,7 @@ var tabla3_OrdenesHistorial=3;
 		   $.ajax({    
          method: "POST",  
         dataType: "json",  
-         url: "./../../controllers/getTblordencompra.php",  
+         url: "../../../controllers/getTblordencompra.php",  
         data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra}}) 
         .done(function(msg7) {  
 			
@@ -1973,7 +1973,7 @@ var tabla3_OrdenesHistorial=3;
 	 //----------------mostrar datos del cliente-----------------------------------				 
 					$.ajax({ 
         method: "POST",dataType: "json",
-	    url: "./../../controllers/getTblcliente.php",  
+	    url: "../../../controllers/getTblcliente.php",  
         data: {solicitadoBy:"WEB",idtblcliente:idcliente} })
             .done(function(ms){	
 			
@@ -2039,7 +2039,7 @@ var tabla3_OrdenesHistorial=3;
 	 $.ajax({
       method: "POST",  
       dataType: "json",  
-      url: "./../../controllers/getAllTblcarritoproductByidorden.php",  
+      url: "../../../controllers/getAllTblcarritoproductByidorden.php",  
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
 	                                      
         .done(function(msg4) {
@@ -2067,7 +2067,7 @@ var tabla3_OrdenesHistorial=3;
             $.ajax({//detalle de cada producto 
       method: "POST",  
       dataType: "json",  
-      url: "./../../controllers/getTblproductoDetalle2.php",  
+      url: "../../../controllers/getTblproductoDetalle2.php",  
       data: {solicitadoBy:"WEB", idtblproductdetalle:iddetalleproducto}  })
      .done(function( msg5 ) {
       
@@ -2092,7 +2092,7 @@ var tabla3_OrdenesHistorial=3;
                  $.ajax({//muestra el ingrediente especifico del producto 
                  method: "POST",  
                  dataType: "json",  
-                 url: "./../../controllers/getTblespecificingrediente.php",  
+                 url: "../../../controllers/getTblespecificingrediente.php",  
                  data: {solicitadoBy:"WEB",idtblespecificingrediente:idtblespecificingre}  })
                 .done(function( msg6) {   
                  $.each(msg6.datos, function(i6,item6){
@@ -2142,7 +2142,7 @@ var tabla3_OrdenesHistorial=3;
 	//............checar datos para pupop de productos complementarios *****
       $.ajax({
       method: "POST", dataType: "json",  
-      url: "./../../controllers/getCheckTblordencompraProComp.php",  
+      url: "../../../controllers/getCheckTblordencompraProComp.php",  
       data: {solicitadoBy:"WEB",orden1:idtblordencompra,prove1:idtblproveedor}})  
 	  
       .done(function(h1) {
@@ -2152,7 +2152,7 @@ var tabla3_OrdenesHistorial=3;
 	 		  
                $.ajax({ 
                method: "POST", dataType: "json",
-	           url: "./../../controllers/getAllTblordencompraProComp.php", 
+	           url: "../../../controllers/getAllTblordencompraProComp.php", 
 	           data: {solicitadoBy:"WEB",orden:idtblordencompra,prove:idtblproveedor}})
                .done(function(men){
                 								 	
@@ -2203,7 +2203,7 @@ var tabla3_OrdenesHistorial=3;
 	 $.ajax({//datos de envio de la orden (general)
       method: "POST",  
       dataType: "json",  
-      url: "./../../controllers/getTbldatosenvio.php",  
+      url: "../../../controllers/getTbldatosenvio.php",  
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra}  }) 
      .done(function( msg3 ) {	  
       $.each(msg3.datos, function(i3,item3){
@@ -2261,7 +2261,7 @@ var tabla3_OrdenesHistorial=3;
              $.ajax({//se obtiene datos del producto
              method: "POST",  
              dataType: "json",  
-             url: "./../../controllers/getTblentregaproductoByOrdenProveedor.php",  
+             url: "../../../controllers/getTblentregaproductoByOrdenProveedor.php",  
              data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
             .done(function( msg9) {
            // console.log("ENTREGA");
@@ -2309,7 +2309,7 @@ var tabla3_OrdenesHistorial=3;
       $.ajax({
         method: "POST",  
         dataType: "json",  
-        url: "./../../controllers/getTblentregacomplem.php",  
+        url: "../../../controllers/getTblentregacomplem.php",  
         data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
        .done(function( msg10) {
 		    if(parseInt(msg10.success)==1){ ggu=true;
@@ -2343,7 +2343,7 @@ var tabla3_OrdenesHistorial=3;
   $.ajax({//se obtiene datos del producto
     method: "POST",  
     dataType: "json",  
-    url: "./../../controllers/getTblentregaproductoByOrdenProveedor.php",  
+    url: "../../../controllers/getTblentregaproductoByOrdenProveedor.php",  
     data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})	
     .done(function( msg9) {      
       $.each(msg9.datos, function(i,item3){
@@ -2402,7 +2402,7 @@ var tabla3_OrdenesHistorial=3;
       $.ajax({
         method: "POST",  
         dataType: "json",  
-        url: "./../../controllers/getTblentregacomplem.php",  
+        url: "../../../controllers/getTblentregacomplem.php",  
         data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
        .done(function( msg10) { 
 		   //console.log("entro a historial imagnes");
@@ -2504,7 +2504,7 @@ function geocodeResult(results, status) {
 	 function mostrarCiudadesCarrito(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php",
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php",
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCi){
 				
@@ -2531,7 +2531,7 @@ function geocodeResult(results, status) {
 	   
 	 $.ajax({     
      method: "POST",dataType: "json",
-	 url: "./../../controllers/getAllTblcarritoCiudad.php", 
+	 url: "../../../controllers/getAllTblcarritoCiudad.php", 
 	 data: {solicitadoBy:"WEB",str_ciudad:nombreCiudadCarritos},
 	  beforeSend: function(){
 				   $('#esperarMostrarCarritos').css('display','inline');}	
@@ -2611,7 +2611,7 @@ function geocodeResult(results, status) {
 		   $.ajax({    
          method: "POST",  
         dataType: "json",  
-         url: "./../../controllers/getTblordencompra.php",  
+         url: "../../../controllers/getTblordencompra.php",  
         data: {solicitadoBy:"WEB",idtblordencompra:iddeorden}})
         .done(function(mu22) { 
 						
@@ -2639,7 +2639,7 @@ function geocodeResult(results, status) {
 	 //----------------mostrar datos del cliente-----------------------------------				 
 					$.ajax({ 
                     method: "POST",dataType: "json",
-	                url: "./../../controllers/getTblcliente.php",  
+	                url: "../../../controllers/getTblcliente.php",  
                     data: {solicitadoBy:"WEB",idtblcliente:idcliente} })
                    .done(function(cli23){	
 			        if (parseInt(cli23.success)==1) {
@@ -2668,7 +2668,7 @@ function geocodeResult(results, status) {
 	$.ajax({
       method: "POST",  
       dataType: "json",  
-      url: "./../../controllers/getAllTblcarritoproduByOrden.php",  
+      url: "../../../controllers/getAllTblcarritoproduByOrden.php",  
       data: {solicitadoBy:"WEB",idorden:iddeorden}}) 
       .done(function(msg44) {
         $.each(msg44.datos, function(i44,item){		
@@ -2699,7 +2699,7 @@ function geocodeResult(results, status) {
             $.ajax({//detalle de cada producto de acuerdo
       method: "POST",  
       dataType: "json",  
-      url: "./../../controllers/getTblproductoDetalle2.php",  
+      url: "../../../controllers/getTblproductoDetalle2.php",  
       data: {solicitadoBy:"WEB", idtblproductdetalle:iddetalleproducto}  })
      .done(function( msg55 ) {
       
@@ -2724,7 +2724,7 @@ function geocodeResult(results, status) {
                  $.ajax({//muestra el ingrediente especifico 
                  method: "POST",  
                  dataType: "json",  
-                 url: "./../../controllers/getTblespecificingrediente.php",  
+                 url: "../../../controllers/getTblespecificingrediente.php",  
                  data: {solicitadoBy:"WEB",idtblespecificingrediente:idtblespecificingre}  })
                 .done(function( msg88) {  
                  $.each(msg88.datos, function(i8,item88){
@@ -2773,7 +2773,7 @@ function geocodeResult(results, status) {
 	//............ datos para pupop Productos complementarios *****
       $.ajax({
       method: "POST", dataType: "json",  
-      url: "./../../controllers/getCheckTblordencompraProComp2.php",  
+      url: "../../../controllers/getCheckTblordencompraProComp2.php",  
       data: {solicitadoBy:"WEB",orden1:iddeorden}})  
 	  
         .done(function(h12) {
@@ -2783,7 +2783,7 @@ function geocodeResult(results, status) {
 	 		  
        $.ajax({ 
        method: "POST", dataType: "json",
-	   url: "./../../controllers/getAllTblordencompraProComp2.php", 
+	   url: "../../../controllers/getAllTblordencompraProComp2.php", 
 	   data: {solicitadoBy:"WEB",orden:iddeorden}})
        .done(function(men77){
                 							 	
@@ -2839,7 +2839,7 @@ function geocodeResult(results, status) {
 		$.ajax({//datos de envio de la orden (general)
       method: "POST",  
       dataType: "json",  
-      url: "./../../controllers/getTbldatosenvio.php",  
+      url: "../../../controllers/getTbldatosenvio.php",  
       data: {solicitadoBy:"WEB", idtblordencompra:iddeorden}  }) 
      .done(function( msg33 ) { 
 	  

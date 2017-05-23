@@ -311,7 +311,7 @@
 		}else{
 	
 	$.ajax({ 
-        method: "POST",dataType: "json",url: "./../../controllers/getAllTblfotografobyidTblfotografo.php", 
+        method: "POST",dataType: "json",url: "../../../controllers/getAllTblfotografobyidTblfotografo.php", 
 		data: {solicitadoBy:"WEB",idtblfotografo:idtblfotografo}, 
 		beforeSend: function(){     
            $('#esperarMostrarfotografo').css('display','inline');								  
@@ -401,7 +401,7 @@
 								  	//___________________________________			
 			                     $.ajax({ 
                                  method: "POST",dataType: "json",
-		                         url: "./../../controllers/getAllTblfotografocatalogobyTblfotografo.php", 
+		                         url: "../../../controllers/getAllTblfotografocatalogobyTblfotografo.php", 
 		                         data: {solicitadoBy:"WEB",idtblfotografo:idfo}}) 
                                  .done(function(ab){
 				                 if(parseInt(ab.success)==1){					             
@@ -440,7 +440,7 @@
 	 var idtblciudad= $("#selectCiudad").val();
           $("#SelectFotografo").html("");
       $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblfotografobyTblciudad2.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblfotografobyTblciudad2.php", 
 	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad}})
             .done(function(mostF){
 			   if(parseInt(mostF.success)==1){
@@ -468,7 +468,7 @@
 		             	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllTblfotografoByTblCiudad.php", 
+	   url: "../../../controllers/getCountAllTblfotografoByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idtblciudad}})
             .done(function(mc){  
 				   
@@ -542,7 +542,7 @@
 		     
 			
 		 $.ajax({    
-       method: "POST",dataType: "json",url: "./../../controllers/getCheckTblfotografo.php",
+       method: "POST",dataType: "json",url: "../../../controllers/getCheckTblfotografo.php",
 	   data: {solicitadoBy:"WEB",tel:telefono,idtblciudad:ciudad}	         
 	              })  
             .done(function(mpa2){   
@@ -573,7 +573,7 @@
 				//------------------------------------------------******************
 				             $.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "./../../controllers/setTblfotografo.php", 
+							   url: "../../../controllers/setTblfotografo.php", 
 							   data: {solicitadoBy:"WEB",nombre:nombre,
 							  direcc:direccion,tel:telefono,estatus:estatus,
 							   precio:precio,idciudad:ciudad,emailcreo:emailUsuario},
@@ -587,7 +587,7 @@
 										
 									//--------------
 									$.ajax({method: "POST",dataType: "json",
-							   url: "./../../controllers/getAllTblfotografoMax.php", 
+							   url: "../../../controllers/getAllTblfotografoMax.php", 
 							   data: {solicitadoBy:"WEB"} })					                                                
 							   .done(function(ms2){
 									 if(parseInt(ms2.success)==1){
@@ -599,7 +599,7 @@
 										 //------------------------
 										  $.ajax({     
                                            method: "POST",dataType: "json",
-										   url: "./../../controllers/setTblfotografocatalogo1.php", 
+										   url: "../../../controllers/setTblfotografocatalogo1.php", 
 	                                       data: {solicitadoBy:"WEB",imag:srcimg1,idfotog:idInsertado,emailcreo:emailUsuario }}) 
                                           .done(function(mostC){
 				                          if(parseInt(mostC.success)==1){
@@ -608,7 +608,7 @@
 										   //------------subir foto 2--------------
 								                  $.ajax({     
                                            method: "POST",dataType: "json",
-										   url: "./../../controllers/setTblfotografocatalogo1.php", 
+										   url: "../../../controllers/setTblfotografocatalogo1.php", 
 	                                       data: {solicitadoBy:"WEB",imag:srcimg2,idfotog:idInsertado,emailcreo:emailUsuario }}) 
                                           .done(function(mostC2){				   
                   
@@ -693,7 +693,7 @@
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				   
@@ -717,7 +717,7 @@
           
 			 
          $.ajax({ 
-        method: "POST",dataType: "json",url: "./../../controllers/getAllTblfotografobyTblciudad2.php", 
+        method: "POST",dataType: "json",url: "../../../controllers/getAllTblfotografobyTblciudad2.php", 
 		data: {solicitadoBy:"WEB",idtblciudad:tblciudad_idtblciudad},
 		beforeSend: function(){   
            $('#esperarMostrarfotografo').css('display','inline');								  
@@ -826,7 +826,7 @@
 								  	//___________________________________			
 			                     $.ajax({ 
                                  method: "POST",dataType: "json",
-		                         url: "./../../controllers/getAllTblfotografocatalogobyTblfotografo.php", 
+		                         url: "../../../controllers/getAllTblfotografocatalogobyTblfotografo.php", 
 		                         data: {solicitadoBy:"WEB",idtblfotografo:idfo}}) 
                                  .done(function(ab){
 				                 if(parseInt(ab.success)==1){					             
@@ -877,7 +877,7 @@
 			   
 		          $.ajax({ 
                    method: "POST",dataType:"json",
-				   url: "./../../controllers/setDeleteTblfotografo1.php", 				  
+				   url: "../../../controllers/setDeleteTblfotografo1.php", 				  
 				   data:{solicitadoBy:"WEB",id:idfo,cel:cel,				 
 				   dire:direcc,estatus:estatus,emailmodifico:emaildeUsuario} })    
                   .done(function(mgg){
@@ -909,7 +909,7 @@
  function mostrarDatosFotografo(idfo){
              $("#fotosActuales").empty();
     $.ajax({ 
-       method: "POST",dataType: "json",url: "./../../controllers/getTblfotografobyId.php", 
+       method: "POST",dataType: "json",url: "../../../controllers/getTblfotografobyId.php", 
 	   data: {solicitadoBy:"WEB",idtblfotografo:idfo}}) 
             .done(function(msg){
                
@@ -925,7 +925,7 @@
 				  
 				                 $.ajax({   //mostrar fotos actuales
                                  method: "POST",dataType: "json",
-		                         url: "./../../controllers/getAllTblfotografocatalogobyTblfotografo.php", 
+		                         url: "../../../controllers/getAllTblfotografocatalogobyTblfotografo.php", 
 		                         data: {solicitadoBy:"WEB",idtblfotografo:idfo}}) 
                                  .done(function(ab){
 				                 if(parseInt(ab.success)==1){					             
@@ -1008,7 +1008,7 @@
 					   /*-------------  Para borrar imagenes del S-------------------------*/
 		         	           $.ajax({   //mostrar fotos actuales
                                  method: "POST",dataType: "json",
-		                         url: "./../../controllers/getAllTblfotografocatalogobyTblfotografo.php", 
+		                         url: "../../../controllers/getAllTblfotografocatalogobyTblfotografo.php", 
 		                         data: {solicitadoBy:"WEB",idtblfotografo:idfotografo}}) 
                                  .done(function(ab){
 				                 if(parseInt(ab.success)==1){					             
@@ -1055,7 +1055,7 @@
                       		if(datos=="success"){	
 							subioNuevaFoto=true;
 							//--------actualiza datos en fotografo
-                   $.ajax({ method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblfotografo1.php", 				  
+                   $.ajax({ method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblfotografo1.php", 				  
 				   data:{solicitadoBy:"WEB",idfotografo:idfotografo,
 				   nombre:nombre,ciudad:ciudad,				   
 				   direccion:direccion,tel:tel,precio:precio,
@@ -1068,7 +1068,7 @@
 				
 				                       $.ajax({   //------------borrar Fotos en B--------------  
                                            method: "POST",dataType: "json",
-										   url: "./../../controllers/setDeleteTblfotografocatalogo1.php", 
+										   url: "../../../controllers/setDeleteTblfotografocatalogo1.php", 
 	                                       data: {solicitadoBy:"WEB",idfotografo:idfotografo}}) 
                                           .done(function(vv){  
 				                          if(parseInt(vv.success)==1){
@@ -1076,7 +1076,7 @@
 										 //------------------------actualiza en catalogo ----------------------------------				               
 										  $.ajax({     
                                            method: "POST",dataType: "json",
-										   url: "./../../controllers/setTblfotografocatalogo1.php", 
+										   url: "../../../controllers/setTblfotografocatalogo1.php", 
 	                                       data: {solicitadoBy:"WEB",imag:srcimg1,idfotog:idfotografo,emailcreo:emaildeUsuario }}) 
                                           .done(function(mostC){
 				                          if(parseInt(mostC.success)==1){
@@ -1085,7 +1085,7 @@
 										   //------------subir foto 2--------------
 								                  $.ajax({     
                                            method: "POST",dataType: "json",
-										   url: "./../../controllers/setTblfotografocatalogo1.php", 
+										   url: "../../../controllers/setTblfotografocatalogo1.php", 
 	                                       data: {solicitadoBy:"WEB",imag:srcimg2,idfotog:idfotografo,emailcreo:emaildeUsuario }}) 
                                           .done(function(mostC2){				   
                   
@@ -1145,7 +1145,7 @@
       
 		
 	     //console.log('id: '+idfotografo+' nom:'+nombre+'ciudad'+ciudad+'di:'+direccion+'tel'+tel+'precio'+precio+'email:'+emaildeUsuario);
-	               $.ajax({ method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblfotografo1.php", 				  
+	               $.ajax({ method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblfotografo1.php", 				  
 				   data:{solicitadoBy:"WEB",idfotografo:idfotografo,
 				   nombre:nombre,ciudad:ciudad,				   
 				   direccion:direccion,tel:tel,precio:precio,

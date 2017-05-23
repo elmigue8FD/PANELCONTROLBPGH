@@ -374,7 +374,7 @@ function cantidadCupones(){
 	   //se recibe el id del select de la ciudad para mostras cantidad de colonias que tiene registradas	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllTblcupondescuentoByTblCiudad.php", 
+	   url: "../../../controllers/getCountAllTblcupondescuentoByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idtblciudad}})
             .done(function(mc){ 
 				   
@@ -394,7 +394,7 @@ function cantidadCupones(){
 	   //se recibe el id del select de la ciudad para mostras cantidad de colonias que tiene registradas	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllTblcupondescuentoByTblCiudadHisto.php", 
+	   url: "../../../controllers/getCountAllTblcupondescuentoByTblCiudadHisto.php", 
 	   data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idciudad}})
             .done(function(mc){ 
 				   
@@ -413,7 +413,7 @@ function cantidadCupones(){
  function mostrarDatosCupon(idcupon){
           
     $.ajax({ 
-       method: "POST",dataType: "json",url: "./../../controllers/getTblcupon1.php", 
+       method: "POST",dataType: "json",url: "../../../controllers/getTblcupon1.php", 
 	   data: {solicitadoBy:"WEB",idcupon:idcupon}}) 
             .done(function(msg){
                
@@ -458,7 +458,7 @@ function cantidadCupones(){
 	   else{    
 			   
 		           $.ajax({ 
-                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblcupondescuentoSinEst.php", 				  
+                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblcupondescuentoSinEst.php", 				  
 				   data:{solicitadoBy:"WEB",idcupon:idcupon,				  
 				   nombre:nombre,valor:valor,idciudad:idciudad,
 				   emailmodifico:email},
@@ -493,7 +493,7 @@ function cantidadCupones(){
 	function mostrarCiudades(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostC){
 				//console.log(mcol);   
@@ -526,7 +526,7 @@ function cantidadCupones(){
 		    var idDelaCiudad=$("#selectCiudadHisto").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
              inicializarTablasHistorico();
 		   $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getTblhistcupondescuento1.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getTblhistcupondescuento1.php", 
 	    data: {solicitadoBy:"WEB",idciudad:idDelaCiudad},
 		beforeSend: function(){   
            $('#esperarMostrarCuponesH').css('display','inline');								  
@@ -588,7 +588,7 @@ function cantidadCupones(){
 		    var idDelaCiudad=$("#selectCiudadGral").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
              inicializarTablas();
 		   $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblcupondescuentoByTblciudadPertenecen.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblcupondescuentoByTblciudadPertenecen.php", 
 	    data: {solicitadoBy:"WEB",tblciudad_idtblciudad:idDelaCiudad},
 		beforeSend: function(){   
            $('#esperarMostrarCupones').css('display','inline');								  
@@ -664,7 +664,7 @@ function cantidadCupones(){
 		 			 
 		
              $.ajax({ 
-                   method:"POST",dataType: "json",url: "./../../controllers/setUpdateTblcupondescuentoEstatus.php", 				  
+                   method:"POST",dataType: "json",url: "../../../controllers/setUpdateTblcupondescuentoEstatus.php", 				  
 				   data:{solicitadoBy:"WEB",idcupon:idcupon,activado:activoModificar1,
 				   emailmodifico:emaildeUsuario}})
                   .done(function(mg){					  
@@ -726,7 +726,7 @@ function cantidadCupones(){
 	   else{
 		   
 		 $.ajax({    //inicia ajax  
-       method: "POST",dataType: "json",url: "./../../controllers/getCheckTblcuponDesc.php",
+       method: "POST",dataType: "json",url: "../../../controllers/getCheckTblcuponDesc.php",
 	   data: {solicitadoBy:"WEB",nombre:nombre,ciudad:ciudad}	         
 	   })
             .done(function(mpa){   
@@ -738,7 +738,7 @@ function cantidadCupones(){
 					      $("#cupon_alta").addClass("oculto");
 					 $.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "./../../controllers/setTblcuponparaDescuento.php", 
+							   url: "../../../controllers/setTblcuponparaDescuento.php", 
 							   data: {solicitadoBy:"WEB",nombre:nombre, 
 							   valor:valor,
 							   estatus:cuponEstatus,ciudad:ciudad,emailcreo:emailUsuario},

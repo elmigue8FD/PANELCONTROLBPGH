@@ -406,7 +406,7 @@ $( window ).ready(function()
 	 
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllTblclientesInvitados.php", 
+	   url: "../../../controllers/getCountAllTblclientesInvitados.php", 
 	   data: {solicitadoBy:"WEB"}})
             .done(function(mcc){				   
                      if(parseInt(mcc.success)==1){ 
@@ -424,7 +424,7 @@ $( window ).ready(function()
 	   
      $.ajax({     
        method: "POST",dataType: "json",
-	   url: "./../../controllers/getCountAllTblclientesRegistrados.php", 
+	   url: "../../../controllers/getCountAllTblclientesRegistrados.php", 
 	   data: {solicitadoBy:"WEB"}})
             .done(function(mcc){				   
                      if(parseInt(mcc.success)==1){ 
@@ -443,7 +443,7 @@ $( window ).ready(function()
 		                
     
      $.ajax({     
-     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostCiud){
 				   
@@ -469,7 +469,7 @@ $( window ).ready(function()
              inicializarTablas();
 			 
 	   $.ajax({ 
-        method: "POST",dataType: "json",url: "./../../controllers/getAllTblclienteInvitados.php", 
+        method: "POST",dataType: "json",url: "../../../controllers/getAllTblclienteInvitados.php", 
 		data: {solicitadoBy:"WEB"},
 		 beforeSend: function(){
 				   $('#esperarMostrarInvitados').css('display','inline');}	
@@ -533,7 +533,7 @@ $( window ).ready(function()
 		    //var nombre_Ciudad=$("#registradoCiudad").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
              inicializarTablasRegistrados();
 	   $.ajax({ 
-        method: "POST",dataType: "json",url: "./../../controllers/getAllTblclienteRegistrados.php", 
+        method: "POST",dataType: "json",url: "../../../controllers/getAllTblclienteRegistrados.php", 
 		data: {solicitadoBy:"WEB"},
 		 beforeSend: function(){
 				   $('#esperarMostrarRegistrados').css('display','inline');}	
@@ -550,7 +550,7 @@ $( window ).ready(function()
 					 
 					              $.ajax({     
                                method: "POST",dataType: "json",
-	                           url: "./../../controllers/getCountAllOrdenesbyCliente.php", 
+	                           url: "../../../controllers/getCountAllOrdenesbyCliente.php", 
 	                           data: {solicitadoBy:"WEB",cliente:id_cliente}}) 
                                .done(function(mc2){				
                                 if(parseInt(mc2.success)==1){
@@ -655,7 +655,7 @@ $( window ).ready(function()
 				  $("#cliente_telefono").empty();
 				  
     $.ajax({ 
-       method: "POST",dataType: "json",url: "./../../controllers/getTblcliente.php", 
+       method: "POST",dataType: "json",url: "../../../controllers/getTblcliente.php", 
 	   data: {solicitadoBy:"WEB",idtblcliente:idtblcliente}})   
             .done(function(msg){
 				$.each(msg.datos, function(x,item){	 
