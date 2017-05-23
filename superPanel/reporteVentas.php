@@ -1,8 +1,6 @@
 <?php
-require 'FuncionesReporte.php';
-
-//include_once '../../controllers/InfoSolicitadaBy.php';
-include_once ('superPanel/mPDf/mpdf.php');
+include_once 'FuncionesBePickler.php';
+include_once 'mPDF/mpdf.php';
 
 if (isset($_POST["generar100"])) 
 {
@@ -208,7 +206,7 @@ unset($comRetenida);
   $filename='ReporteVentas.pdf';
   $mpdf  =  new mPDF('c','letter','','',24,24,34,24);
   $mpdf->SetDisplayMode('fullpage');  // ()decidir como se va a mostrar el PDF
-  $mpdf->SetAuthor("Autor Reyna MMM"); //poner autor al pdf, puede ser puesto de varias maneras
+  $mpdf->SetAuthor("BePickler"); //poner autor al pdf, puede ser puesto de varias maneras
   $stylesheet = file_get_contents('colorPdf.css'); 
   $mpdf->WriteHTML ($stylesheet,1);
  // $mpdf->WriteHTML ($stylesheet2,2);
