@@ -55,7 +55,7 @@
 								<ul class="uk-tab" class="named_tab" data-uk-tab="{connect:'#settings_users', animation: 'slide-horizontal' }">
                                    
 									<li class="uk-active"><a href="#">Notificaciones Enviadas</a></li>
-                                    <li><a href="#" onclick="borr();"> Nueva Notificación </a></li>                                                                          
+                                    <li><a href="#" > Nueva Notificación </a></li>                                                                          
 								</ul>
 										
 				</div>
@@ -76,7 +76,7 @@
                                     <h2>Notificaciones</h2>
                                     </div>
 									<div > 
-									<h4>Para mas información del mensaje, hay clic en el destinarario.</h4>
+									<h4>Para mas información del mensaje, hay clic en el destinatario.</h4>
 									</div>
                     <br>
                   <div class="uk-text-center oculto" id="esperarMostrarNotifica" >
@@ -94,12 +94,8 @@
                               <thead>
                                 <tr>
                                     <th class="uk-text-center">Destinatario</th>
-                                    <th class="uk-text-center">Asunto</th>                                    
-                                 <!--  <th class="uk-text-center">Mensaje</th> -->
-									<th class="uk-text-center">Fecha</th>
-									<!--<th class="uk-text-center">Emisor</th> -->
-									
-                                    
+                                    <th class="uk-text-center">Asunto</th>
+									<th class="uk-text-center">Fecha</th>                                    
                                 </tr>
                             </thead>
                         <tbody id="tblnotificacion" name="tblnotificacion">
@@ -177,44 +173,7 @@
     </div>
 				<!-- 
 	
-	.............................. -->
-	<div class="uk-modal" id="respondermensajemmm" >
-        <div class="uk-modal-dialog">
-            <!--<button class="uk-modal-close uk-close" type="button"></button> -->
-		<button type="button"  class="uk-modal-close uk-close uk-close-alt"></button>
-            <form>
-                <div class="uk-modal-header">
-                    <h3 class="uk-modal-title">Mensaje</h3>
-                </div>
-                <div class="uk-margin-medium-bottom">
-                    <label for="mail_new_to">Fecha:</label>
-                    <input type="text" class="md-input" id="mail_new_to"/>
-                </div>
-				<div class="uk-margin-medium-bottom">
-                    <label for="mail_new_to">Emisor:</label>
-                    <input type="text" class="md-input" id="mail_to"/>
-                </div>
-				<div class="uk-margin-medium-bottom">
-                    <label for="mail_new_to">Asunto:</label>
-                    <input type="text" class="md-input" id="mail_to"/>
-                </div>
-                <div class="uk-margin-large-bottom">
-                    <label for="mail_new_message">Mensaje:</label>
-                    <textarea name="mail_new_message" id="mail_new_message" cols="30" rows="6" class="md-input"></textarea>
-                </div>
-                
-																
-                   <div class="uk-modal-footer">                 
-                        <button type="button" class="uk-float-right md-btn md-btn-flat " id="ye" href="#enviarmensaje" data-uk-modal="{target:'#enviarmensaje',bgclose:false,center:true }">Contestar Mensaje</button>              					
-                       
-                    </div>				
-				
-            </form>
-        </div>
-    </div>
-					 
-					
-					
+	.............................. -->					
 					 
                                     </div> <!-- fin pag1 -->
 									
@@ -244,7 +203,7 @@
 						</div>
 						<div>	
 							<span class="icheck-inline">
-                                <input type="radio" name="tipodeNotificacion" value="2" id="alta_general"  onclick="mostrarMas();"/> 
+                                <input type="radio" checked name="tipodeNotificacion" value="2" id="alta_general"  onclick="mostrarMas();"/> 
                                 <label>En General.</label> 
                             </span>
 						</div>
@@ -269,7 +228,7 @@
 				 
 				 
 				 <div class="uk-width-medium-1-2"> 
-				<span class="uk-text-muted " >Seccion para la Notificación:</span>
+				<span class="uk-text-muted " >Sección para la Notificación:</span>
                      <select id="seccion" name="seccion" class="md-input">
                      <option value="" disabled selected hidden>Selecciona...</option>					  
                      </select>
@@ -347,14 +306,12 @@
     <script type="text/javascript" >
        $( window ).ready(function() {   
        mostrarNotificaciones();
-     mostrarSecciones();
-	 mostrarCiudades();
+       mostrarSecciones();
+	   mostrarCiudades();
   });
    /* Create by: Reyna Maria Martinez Vazquez*/
  
-		function borr(){
-		   $('#formuEnviarMensaje')[0].reset(); 
-	  }
+		
 	  
    function inicializarTablas(){
   $("#tabla_noti").tablesorter({
@@ -396,6 +353,22 @@
 		emailUsuario="reyna@gmail.com"; 
 		estatus=0;
 		
+		
+		if( $('#enviarmensaje_nombre').val()==""){
+			UIkit.modal.alert('Es necesario completar el campo Nombre de quien envia.');
+		       }
+		  else if( $('#seccion').val()==null){			  
+		UIkit.modal.alert('Es necesario escoger una Sección.');		
+		     } 
+        else if( $('#enviarmensaje_asunto').val()==""){			  
+		UIkit.modal.alert('Es necesario completar el campo Asunto.');		
+		     } 
+      else if( $('#enviarmensaje_mensaje').val()==""){			  
+		UIkit.modal.alert('Es necesario completar el campo Mensaje.');		
+		     }
+		else{	 
+			 
+			 
 		                     $.ajax({method: "POST",dataType: "json",
 							   url: "../../../controllers/setTblnotificacion1.php", 
 							   data: {solicitadoBy:"WEB",tipo:tipoN,asunto:asunto, 
@@ -432,6 +405,8 @@
 							             .done(function(ms2){  
 									    if(parseInt(ms2.success)==1){										
 										 UIkit.modal.alert('Mensaje Enviado.');
+										 $('#formuEnviarMensaje')[0].reset();
+										 $("#escogerDestinatario").addClass("oculto");
 										 mostrarNotificaciones();
 										 }else {
                                         UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
@@ -466,7 +441,8 @@
 										 })					                                                
 							             .done(function(ms22){
 											 		 
-									    if(parseInt(ms22.success)==1){										 
+									    if(parseInt(ms22.success)==1){	
+                                            $('#formuEnviarMensaje')[0].reset();										
 										     varios=true;
 										 }else {
                                             varios=false;
@@ -506,10 +482,12 @@
                               .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
                               .always(function(){  $("#enviandoMensaje").hide(); 							 
 							  });	
+							  
+	     }
 	 } // fin de la funcion
 	 
 	 
-    function mostrarCiudades(){		  
+    function mostrarCiudades(){	 //muestra ciudades en select en seccion Redactar Notificacion	  
 		                
     
      $.ajax({     
@@ -522,9 +500,7 @@
 				 //muestra ciudades en el encabezado de la interfaz principal
                  $("#ciudades").append('<option value="' + idtblciudad +'">' + item.tblciudad_nombre + '</option>');
 				  				 
-                      });	
-					  
-					  
+                      });
 					  
 					  //-------------
 					 
@@ -535,7 +511,7 @@
    
          	   
 		          
-   
+     //muestra proveedores en select en seccion Redactar Notificacion
    function mostrar_provedores(){
 
 	      var idtblciudad=$("#ciudades").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
@@ -550,10 +526,14 @@
 				  $("#SelectProveedor").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
 				
                 $.each(mf.datos, function(i,item)
-				 {	idtblproveedor=item.idtblproveedor;	
+				 {	idtblproveedor=item.idtblproveedor;
+				           estatus=item.tblproveedor_activado;
+						                //tblproveedor_activado
+					if(estatus=="1"){ es=true;
 				 //muestra ciudades en el encabezado de la interfaz principal 
                  $("#SelectProveedor").append('<option value="' + idtblproveedor +'">' + item.tblproveedor_nombre + '</option>');
-				  				 
+				  	            }	
+								else{es=false;}		 
 				   });
 				   
 				   }else{ 
@@ -566,7 +546,7 @@
       
    }  //fin de la funcion
    
-    function mostrarSecciones(){		  
+    function mostrarSecciones(){	 //muestra secciones para la noti en select en seccion Redactar Notificacion	  
 		                
     
      $.ajax({     
@@ -588,8 +568,8 @@
    } 
    
          
-		 
-  function mostrarNotificaciones(){
+		//muestra notificaciones enviadas 
+  function mostrarNotificaciones(){ 
  var clase;
     inicializarTablas()
   $.ajax({ 
@@ -624,9 +604,7 @@
 		    ' data-uk-modal="{target:'+"'#verMensaje'"+',bgclose:false, center:true }" onclick="detalleNotifi('+idnot+','+destino+');">'+
 			'<a>'+notif.datos[i].tblproveedor_nombre+'</a></td>'+			
 			'<td><a>'+notif.datos[i].tblnotificacion_asunto+'</a></td>'+ 
-			//'<td>'+notif.datos[i].tblnotificacion_mensaje+'</td>'+ onclick="mostrarDatosCupon('+iddeProveedor+');" -->
-            '<td>'+fecha+'</td>'+
-           // '<td>'+notif.datos[i].tblnotificacion_emisor+'</td>'+ -->
+			'<td>'+fecha+'</td>'+         
 			'</tr>');
 			$("#tabla_noti").trigger('updateAll', [true]);//actualiza tabla 
 				inicializarPagNotifica();
@@ -642,7 +620,7 @@
 } // fin
 
 
- function detalleNotifi(idnot,destino){
+ function detalleNotifi(idnot,destino){ //muestra detalle de la Notificacion enviada
 		
 		
     	$.ajax({ 

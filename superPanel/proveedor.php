@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"> 
+<html lang="en">
 <!-- Create by: Reyna Maria Martinez Vazquez-->
 <head>
     <meta charset="UTF-8">
@@ -7,49 +7,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Remove Tap Highlight on Windows Phone IE -->
     <meta name="msapplication-tap-highlight" content="no"/>
-     
-     <?php include("../codigo_general/minimagenPanel.php"); ?>
+
+   <?php include("../codigo_general/minimagenPanel.php"); ?>
 
     <title>BePickler</title>
-	
+
+<!-- htmleditor (codeMirror) -->
+    <link rel="stylesheet" href="../bower_components/codemirror/lib/codemirror.css">    
     <!-- uikit -->
-    <link rel="stylesheet" href="../bower_components/uikit/css/uikit.almost-flat.min.css" media="all" >
+    <link rel="stylesheet" href="../bower_components/uikit/css/uikit.almost-flat.min.css" media="all">
     <!-- flag icons -->
-    <link rel="stylesheet" href="../assets/icons/flags/flags.min.css" media="all" >
-    <!-- style switcher --> 
-    <link rel="stylesheet" href="../assets/css/style_switcher.min.css" media="all" >   
+    <link rel="stylesheet" href="../assets/icons/flags/flags.min.css" media="all">
+    <!-- style switcher -->
+    <link rel="stylesheet" href="../assets/css/style_switcher.min.css" media="all">    
     <!-- altair admin -->
-    <link rel="stylesheet" href="../assets/css/mainPanel.css" media="all" id="dep">
-    <!-- themes 	-->
-    <link rel="stylesheet" href="../assets/css/themes/themes_combined.min.css" media="all" >
-	<link rel="stylesheet" href="../assets/css/colorPanel.css" media="all"> 	
-	 <!-- htmleditor (codeMirror) -->
-    <link rel="stylesheet" href="../bower_components/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="../assets/css/mainPanel.css" media="all"> 
+    <!-- themes -->
+    <link rel="stylesheet" href="../assets/css/themes/themes_combined.min.css" media="all">	
+	<link rel="stylesheet" href="../assets/css/colorPanel.css" media="all">
 	 <!-- dropify -->
     <link rel="stylesheet" href="../assets/skins/dropify/css/dropify.css">	
-
-    <!-- ............. -->
+</head>
+<body class=" sidebar_main_open sidebar_main_swipe" >
+    <!-- main header -->
+    
+	<?php include("../codigo_general/menuPanel.php"); ?>
+   
+    <!-- main sidebar end  inicia aside-->
+	<!-- fin del aside.............................  -->
 	
-</head> 
-  <body class="sidebar_main_open sidebar_main_swipe" >
-    <!-- menu y encabezado de la pagina -->
-    <?php include('../codigo_general/menuPanel.php'); ?>          
-               
-<!-- aqui empieza la pagina -->
-<div id="page_content">
-        <div id="page_content_inner">
-
-			<div class="md-card">
-					    <div class="md-card-content">
-									<div>         
+   <!--  estas no van todavia-->
+   <div id="page_content">
+	<div id="page_content_inner"> 
+	
+								
+	<div id="top_bar">
+        <div class="md-top-bar ">
+          <div class="uk-width-large-8-10 uk-container-center">
+            <div class="md-card-content">
+              <div class="uk-grid">
+                <div class="uk-width-1-1">
+                                
+								
+								<ul class="uk-tab" class="named_tab" data-uk-tab="{connect:'#settings_users', animation: 'slide-horizontal' }">
+                                   
+									<li class="uk-active"><a href="#">Proveedor</a></li>
+                                    <li><a href="#" >Usuario Proveedor</a></li>
+                                   <!-- <li><a href="#"><font size="3">author </font></a></li> -->
+                                     
+								</ul>
+								
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+							
+							
+							<!--<div class="md-card">
+                            <div class="md-card-content"> -->
+							
+								
+                               <!-- <ul id="settings_users" class="uk-switcher uk-margin"> -->
+								<div id="settings_users" class="uk-switcher uk-margin">
+								
+								
+                                    <div> <!-- inicio pag1 -->
+							<div class="md-card">
+					               <div class="md-card-content">
+									<div>    <!-- id="page_heading" -->         
                                     <h2>Proveedores</h2>
+                                   
                                     </div>
-									<div >  
 									
-									</div>
-									
-				
-                    <div class="uk-grid" data-uk-grid-margin>
+				<div class="uk-grid" data-uk-grid-margin>
                         <div  class="uk-width-medium-1-2" >                            
 				   <select id="proveedorCiudad" name="proveedorCiudad" class="uk-button uk-form-select" data-uk-form-select  onchange="javascript:mostrarProveedor();cantidadProveedores();mostrar_proveedorLista();">
                    <option value="" disabled selected hidden>Selecciona una Ciudad...</option>
@@ -73,10 +105,13 @@
                                       <label> Procesando... </label>
 				                       <img src="cargando.gif" /> 				 
                                            </div> 
-					<!--  ----  -->
-					</div><!-- cierre del content-->
-				</div> <!--  cierre del mcard-->
-				<br/>
+					                </div>
+									
+									
+					            </div>
+								
+						
+					<br/>
 				<!-- ----------------  Imagen de BePickler en la Interfaz Inicial--------------- -->
 			   <div id="paraInicial">				
                <div class="md-card"> 
@@ -93,19 +128,16 @@
 		       <div id="listarProveedor">
                <!-- AQui aparecen los proveedoredores -->
 			   </div>
-			  <!-- ------------------------------- -->
-	          </div ><!-- de  id="page_content" -->
-              </div> <!-- id="page_content_inner" -->
-
-	 <!-- icono para dar de alta Proveedores -->
+					
+					 <!-- icono para dar de alta Proveedores -->
 	
     <div class="md-fab-wrapper" id="paraAltasProv">
          <a class="md-fab md-fab-accent" href="#altaProveedor" onclick="rCO();" data-uk-modal="{ target:'#altaProveedor',bgclose:false, center:true }">
          <i class="material-icons">&#xe7fe;</i>
          </a>
     </div>
-	
-	
+					 
+					 
 	<!-- .....Pupop para modificar proveedor  .................................................... -->
 	<div class="uk-modal" id="modificar">
        <div class="uk-modal-dialog uk-modal-dialog-large">
@@ -416,41 +448,315 @@
               </form>
         </div>
     </div> <!-- cierre agregar pasteleria-->
+					 
+                                    </div> <!-- fin pag1 -->
+									
+									
+									
+                                    <div>  <!-- inicio pag 2 -->
+													
+				<div class="md-card">
+					    <div class="md-card-content">
+									<div>    <!-- id="page_heading" -->         
+                                    <h2>Usuario Proveedor</h2>
+                                 							   
+                                    </div>									
+				
+				                       <br/>
+									 <span class="uk-text-medium">Para modificar los datos, haz clic en el nombre del Usuario.</span>
+				                     
+									 <label class="uk-float-right" id="numeroUsuarios"> </label> 
+									  </br>
+									  <div class="uk-text-center oculto" id="esperarMostrarUsuarios" >
+                                      <label> Procesando... </label>
+				                       <img src="cargando.gif" /> 				 
+                                       </div> 
+					            
+							
+					
+					</div><!-- cierre del content-->
+				</div> <!-- cierre del mcard-->
+				
+								
+				<div class="md-card" id="muestraTablaGeneral">
+				<div class="md-card-content">		
+                         <div class="uk-overflow-container uk-margin-bottom">
+                     
+						   <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair" id="tbl_usuariosP">
+                            
+							<thead>
+                                <tr>
+                                    <th class="uk-text-center">Nombre</th>                                   									
+									<th class="uk-text-center">Proveedor</th>
+                                    <th class="uk-text-center">Estatus</th>
+									 <th class="uk-text-center">Email</th>
+									<th class="uk-text-center">Celular</th>
+									<th class="uk-text-center">Puesto</th>
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody id="mostrarUsuariosBody">
+                              
+                            </tbody>
+                        </table>
+		<div id="pager" class="pager oculto">
+    	<form>
+    		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="../bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="../bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="../bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
+                    </div>
+					</div>
+					</div>
+					
+					 <div class="md-fab-wrapper">
+					<!-- <a href="#" data-uk-modal="{ target:'#new_issue2',bgclose:false,center:true }" > href="#agregarCiudadDiv"-->
+                     <a class="md-fab md-fab-accent" onclick="rCO();" data-uk-modal="{ target:'#agregarUsuarioDiv',bgclose:false, center:true }" >
+	                           
+                     <i class="material-icons">&#xE145;</i>
+                     </a>
+                     </div>
+					 
+					 
+					 <!-- agregar ciudad -->
+						  
+	<div class="uk-modal" id="agregarUsuarioDiv">
+        <div class="uk-modal-dialog uk-modal-dialog-large">
+		   <button type="button"  class="uk-modal-close uk-close uk-close-alt"></button>
+           <form class="uk-form-stacked" id="formAltaUsuario"  >
+		    <h3 class="heading_b uk-margin-bottom">Agregar Usuario </h3>
+		  <div class="uk-grid uk-margin-medium-top uk-margin-large-bottom" data-uk-grid-margin >             
+			  <div class="uk-width-large-1-2">	
+                 <ul class="md-list md-list-addon">
+			    <div class="uk-margin-medium-bottom">
+				    <label for="task_title">Ciudad:</label>
+                    <select id="altaCiudadUsuario" name="altaCiudadUsuario" class="uk-button uk-form-select" data-uk-form-select onchange="mostrar_provedoresdeUsuarios();" >
+                   <option value="" disabled selected hidden>Selecciona...</option>					   
+                   </select>
+                </div>
+				
+				<div class="uk-margin-medium-bottom">
+				    <label for="task_title">Proveedor:</label>
+                    <select id="altaProveedorUsuario" name="altaProveedorUsuario" class="uk-button uk-form-select" data-uk-form-select >
+                   <option value="" disabled selected hidden>Selecciona...</option>
+					     
+                   </select>
+                </div>				
+				<div class="uk-margin-medium-bottom">
+				    <label for="task_title">Puesto:</label>
+                    <select id="altaPuestoUsuario" name="altaPuestoUsuario" class="uk-button uk-form-select" data-uk-form-select >
+                   <option value="" disabled selected hidden>Selecciona...</option>					     
+                   </select>
+                </div>
+				
+                <div class="uk-margin-medium-bottom">
+                    <label for="task_title">Nombre:</label>
+                    <input type="text" class="md-input" id="altaNombreUsuario" name="altaNombreUsuario"/>
+                </div>
+				<div class="uk-margin-medium-bottom">
+                    <label for="task_title">Apellidos:</label>
+                    <input type="text" class="md-input" id="altaApeUsuario" name="altaApeUsuario"/>
+                </div>
+				<div class="uk-margin-medium-bottom">
+                    <label for="task_title">Email:</label>
+                    <input type="text" class="md-input" id="altaEmailUsuario" name="altaEmailUsuario"/>
+                </div>
+				</ul>
+				</div>
+				<div class="uk-width-large-1-2">	
+				  <ul class="md-list md-list-addon">
+				  
+				   
+				<div class="uk-margin-medium-bottom">
+                    <label for="task_title">Celular:</label>
+                    <input type="text" class="md-input" id="altaCelUsuario" maxlength="10" name="altaCelUsuario"/>
+                </div>
+				<div class="uk-margin-medium-bottom">
+                    <label for="task_title">Password:</label>
+                    <input type="password" class="md-input" id="altaPassUsuario" name="altaPassUsuario"/>
+                </div>
+				<div class="uk-margin-medium-bottom">
+                    <label for="task_title">Repetir Password:</label>
+                    <input type="password" class="md-input" id="altaPassUsuario2" name="altaPassUsuario2"/>
+                </div>
+                <div class="uk-margin-medium-bottom">
+                    <label for="task_priority" class="uk-form-label">Estatus:</label>
+                    <div>
+                            <input type="checkbox"  checked data-switchery-color="#00CC66" id="altaEstatusUsuario"/> <!--id="switch_demo_1" data-switchery-color="#1e88e5"-->  
+                           <label for="switch_demo_1" class="inline-label">Activo</label>  
+                    </div>
+                </div>
+				
+				 <div class="uk-text-center oculto" id="cargarNuevoUsuario" >
+                <label > Procesando... </label>
+				  <img src="cargando.gif" /> 				
+                 </div> 
+				 
+                	 
+			   </ul></div>
+         </div>	
+            <div class="uk-modal-footer uk-text-right">
+                
+			 <button type="button" class="md-btn md-btn-flat ye" id="agregarNuevoUsuario" name="agregarNuevoUsuario" onclick="agregarUsuario();">Agregar</button>
+               </div>		 
+            </form>
+        </div>
+    </div>                   
+        
 
-    
+		        
+					
+					 <!-- cierra agragar ciudad ........... -->
+					
+					 <!-- ........modificar ciudad -->
+		 <div class="uk-modal" id="mUsuario">
+        <div class="uk-modal-dialog uk-modal-dialog-large">
+		   <button type="button"  class="uk-modal-close uk-close uk-close-alt"></button>
+           <form class="uk-form-stacked" id="formUsuario" >		 
+			  <h3 class="heading_b uk-margin-bottom">Modificar Datos </h3>
+			  <div class="uk-grid uk-margin-medium-top uk-margin-large-bottom" data-uk-grid-margin >             
+			  <div class="uk-width-large-1-2">	
+			  <ul class="md-list md-list-addon"> 
+			  
+			   <div class="uk-margin-medium-bottom">
+				    <label for="task_title">Ciudad:</label>
+                    <select id="modCiudadUsuario" name="modCiudadUsuario" class="uk-button uk-form-select" data-uk-form-select onchange="mostrar_provedoresdeUsuarios2();" >
+                   <option value="" disabled selected hidden>Selecciona...</option>
+					   
+                   </select>
+                </div>	
+            <div class="uk-margin-medium-bottom">
+				    <label for="task_title">Proveedor:</label>
+                    <select id="modProvUsuario" name="modProvUsuario" class="uk-button uk-form-select" data-uk-form-select  >
+                   <option value="" disabled selected hidden>Selecciona...</option>					   
+                   </select>
+                </div>					
+				<div class="uk-margin-medium-bottom">
+				    <label for="task_title">Puesto:</label>
+                    <select id="modPuesUsuario" name="modPuesUsuario" class="uk-button uk-form-select" data-uk-form-select >
+                   <option value="" disabled selected hidden>Selecciona...</option>					     
+                   </select>
+                </div>
+				 <label for="task_title">Nombre:</label>
+                <div class="uk-margin-medium-bottom">  
+                  <span class="oculto" id="modIdUsuario"></span>				
+                    <input type="text" class="md-input" id="modNombreUsuario" name="modNombreUsuario"/>
+                </div>
+				<label for="task_title">Apellidos:</label>
+				<div class="uk-margin-medium-bottom">                    
+                    <input type="text" class="md-input" id="modApeUsuario" name="modApeUsuario"/>
+                </div>
+				</ul></div>
+				 <div class="uk-width-large-1-2">	
+			  <ul class="md-list md-list-addon"> 
+				<label for="task_title">Email:</label>
+				<div class="uk-margin-medium-bottom">                    
+                    <input type="text" class="md-input" id="modEmailUsuario" name="modEmailUsuario"/>
+                </div>
+				<label for="task_title">Celular:</label>
+				<div class="uk-margin-medium-bottom">
+                    <input type="text" class="md-input" id="modCelUsuario" name="modCelUsuario" maxlength="10" />
+                </div>
+				<label for="task_title">¿Cambiar Password?</label>
+				<div class="uk-margin-medium-bottom">                    					   
+                         <div>	</br>				    
+							<span class="icheck-inline">							
+                                <input type="radio" name="preguntaPass" checked value="1" id="no" onclick="mostrarMas();"  /> 
+                                <label>No.</label> 
+                            </span>
+						</div>
+						<div>	
+							<span class="icheck-inline">
+                                <input type="radio" name="preguntaPass" value="2" id="si"  onclick="mostrarMas();"/> 
+                                <label>Si.</label> 
+                            </span>
+						</div>
+						
+                </div> 
+				 <div class="oculto"  id="CambiarPass">
+				 <label for="task_title">Password:</label>
+				<div class="uk-margin-medium-bottom">                   
+                    <input type="password" class="md-input" id="modPassUsuario" name="modPassUsuario"/>
+                </div>
+				 <label for="task_title">Repetir Password:</label>
+				<div class="uk-margin-medium-bottom">                   
+                    <input type="password" class="md-input" id="modPassUsuario2" name="modPassUsuario2"/>
+                </div>
+				</div>
+				                               
+                <div class="uk-text-center oculto" id="cargarModificarUsuario" >                
+				  <label > Procesando... </label>
+				  <img src="cargando.gif" /> 				 
+                 </div> 
+                   
+                
+			
+                
+			   </ul></div></div>
+			   <div class="uk-modal-footer">
+                
+			    <button type="button" class="md-btn md-btn-flat ye uk-float-right" id="ye" onclick="actualizarUsuario();" >Guardar Cambios</button>
+                <div id="modDiv">
+				</div>
+				</div>
+            </form>
+        </div>
+    </div>
 
-
-   
-   
-   <!-- ------------------------ -->   
-    <!-- libreria jquery -->   
-   <?php include('../codigo_general/script_commonPB.php'); ?>
-   
-      <!--  dropify -->
-    <script src="../assets/js/custom/dropify/dist/js/dropify.min.js"></script>
+                                    </div>  <!-- fin pag 2 -->
+				</div>								
+                </div>
+            </div>
+			
+	<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::  -->
+	
+	 <?php include('../codigo_general/script_commonPB.php'); ?>
+    <!-- tablesorter -->
+	<script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.js"></script>
+    <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
+    <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
+    <script src="../bower_components/tablesorter/dist/js/widgets/widget-alignChar.min.js"></script>
+    <script src="../bower_components/tablesorter/dist/js/extras/jquery.tablesorter.pager.min.js"></script>
+	<script src="../bower_components/tablesorter/dist/js/widgets/widget-columnSelector.min.js"></script>
+    <script src="../bower_components/tablesorter/dist/js/widgets/widget-print.min.js"></script>
+	
+  <script src="../assets/js/custom/dropify/dist/js/dropify.min.js"></script>
     <!--  form file input functions -->
     <script src="../assets/js/pages/forms_file_input.min.js"></script>		
-    <!-- ionrangeslider -->
-    <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
-    <!-- htmleditor (codeMirror) -->
-    <script src="../assets/js/uikit_htmleditor_custom.min.js"></script>
-    <!-- inputmask-->
+   	
+	<!-- ionrangeslider -->
+    <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>  
+  <!-- kendo UI -->
+  <script src="../assets/js/kendoui_custom.min.js"></script> 
+  <!--  kendoui functions -->
+  <script src="../assets/js/pages/kendoui.min.js"></script>
+   <!-- inputmask-->
     <script src="../bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
-    <!--  forms advanced functions -->
+    
+  <!--page_contact_list-->
+  
+  <script src="../assets/js/pages/page_contact_list.min.js"></script>
+   <!--  forms advanced functions -->
     <script src="../assets/js/pages/forms_advanced.min.js"></script>
       
 	  
-	   
-  <script type="text/javascript" >  
-     
-   /* Create by: Reyna Maria Martinez Vazquez*/
+	
+	<!--<script src="assets/js/pages/tres.js"> </script>  --> 
+	   <!-- ------------------------ -->
+    <script type="text/javascript" >
+       /* Create by: Reyna Maria Martinez Vazquez*/
   $( window ).ready(function()
     {
         //console.log('pagina lista');
 	     mostrarCiudades();  //se cargar automaticamente cuando carge la pagina	      
 	     mostrarPaquete();	
 		 mostrarCiudadesConColonias();
-		 
+		 mostrarUsuariosProveedor();
+		 mostrarPuestos();
 		 //..........
 		 var max_chars = 299;
 
@@ -476,6 +782,661 @@
 		 //.......
 		
     }); 
+	
+	
+	//------------------usuarios proveedor-----------------------------------------
+	
+	function mostrarMas(){
+		  $("input[name='preguntaPass']").html("");
+    tipo= $("input[name='preguntaPass']:checked").val();
+	  
+	  
+	  
+		if(tipo=="1"){	
+			//console.log("no");  
+			$("#CambiarPass").addClass("oculto");
+		    }
+	    if(tipo=="2"){		                
+           //console.log("si");	
+		  $("#CambiarPass").removeClass("oculto");
+			   }
+	 } // fin de la funcion
+	 
+	 function rCO(){
+		 $("#agregarNuevoUsuario").removeClass("oculto");
+	}
+	
+	 function inicializarTablaUsuario(){
+    $("#tbl_usuariosP").tablesorter({
+    sortList: [[0,0]], //ordenar por de inicio esa columna 
+    headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
+    widgets: ['filter'] //activar el widget de filtro de busqueda
+	}); 
+ 		 
+		 }
+		 
+		 
+		 function inicializarPaginacion(){  		
+ 		$("#tbl_usuariosP")
+		.tablesorterPager({container: $("#pager")})  ;
+		 }
+		 
+		 
+	function mostrarUsuariosProveedor(){ 	      
+               inicializarTablaUsuario();
+     $.ajax({     
+      method: "POST",dataType: "json",
+	 url: "../../../controllers/getAllTblusuarioproveedorDatos.php", data: {solicitadoBy:"WEB"},
+	  beforeSend: function(){
+                              $('#esperarMostrarUsuarios').css('display','inline');								  
+                                                 }
+				   })
+	 
+            .done(function(mow){
+			if(parseInt(mow.success)==1){
+				
+				   
+				
+					$("#pager").removeClass('oculto');	
+				   
+                $.each(mow.datos, function(i,item)
+               {		
+                        if(item.tblusuarioproveedor_activado=="2"){
+					nomostrar=true;
+				    }else{ nomostrar=false;			   
+			      //asignamos nombres a las valores
+			        nombre=item.tblusuarioproveedor_nombre;
+				    apellido=item.tblusuarioproveedor_apellido; 
+					email=item.tblusuarioproveedor_email; 
+                   cel=item.tblusuarioproveedor_celular; 					
+					id= item.idtblusuarioproveedor;
+                 proveedor=item.tblproveedor_nombre;
+                 puesto=item.tblniveleacceso_nombre;
+               idciu=item.idtblciudad;
+                  
+					
+				
+                 $("#mostrarUsuariosBody").append(
+				 ' <tr>'+
+                 '<td onclick="mostrarDatosUsuarioP('+id+'); mostrarProvedoresdeUsuariosBoton('+id+');"'+
+				 ' data-uk-modal="{target:'+"'#mUsuario'"+',bgclose:false, center:true }" >'+
+                                 '<span>'+ nombre+' '+apellido +'<span/>'+
+               					  ' </td>'+
+				               				               
+								'<td>'+				                      
+                                  ' <span >'+ proveedor +' </span>'+
+								   ' <span class="oculto" id="deCiudad'+id+'">'+ idciu +' </span>'+
+               					  ' </td>'+   
+                 '<td class="uk-width-medium-1-3">'+									
+                '<input type="checkbox" data-switchery '+
+				'data-switchery-color="#00CC66" onclick="ModEstatusUsuario('+id+');"  id="mostrarEstatusU'+id+'" '+ item.tblusuarioproveedor_activado +' />'+  
+                 '<span class="inline-label" id="estadoU'+id+'">   </span> '+                            									
+							'</td>	'+	
+							 '<td>'+				                      
+                                  ' <span >'+ email +' </span>'+
+               					  ' </td>'+ 
+                               '<td>'+				                      
+                                  ' <span >'+ cel +' </span>'+
+               					  ' </td>'+
+					            '<td>'+				                      
+                                  ' <span >'+ puesto +' </span>'+
+               					  ' </td>'+			  
+                                '</tr>'
+				 
+				 );
+				                    if(parseInt(item.tblusuarioproveedor_activado)!=0){
+                                          $("#mostrarEstatusU"+id).prop("checked", true);
+										 $("#estadoU"+id).text("Activo");
+										 
+                                           }
+						                  else {
+                                          $("#mostrarEstatusU"+id).prop("checked", false);
+										  $("#estadoU"+id).text("Desactivado");
+                                            } 
+				 
+				   	$("#tbl_usuariosP").trigger('updateAll', [true]);//actualiza tabla 
+					inicializarPaginacion();
+					}
+					
+                      });	 //cierre del each
+					  
+			}else{ $("#pager").addClass('oculto');}
+                                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      .always(function(){ $("#esperarMostrarUsuarios").hide();  });
+   } 	//fin de la funcion
+	
+	function mostrarProvedoresdeUsuariosBoton(id){
+      
+	     var idtblciudad=$("#deCiudad"+id).text();	//se recibe el id que seleciono el usuario del select de Ciudades            
+         
+     $.ajax({     
+     method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudad.php", 
+	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
+            .done(function(mfe){				
+				   if (parseInt(mfe.success)==1) {				   
+				  $("#modProvUsuario").html("");
+				
+				//  $("#modProvUsuario").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				
+                $.each(mfe.datos, function(i,item)
+				 {	idtblproveedor=item.idtblproveedor;	
+				 //muestra ciudades en el encabezado de la interfaz principal 
+                 $("#modProvUsuario").append('<option value="' + idtblproveedor +'">' + item.tblproveedor_nombre + '</option>');
+				  				 
+				   });
+				            
+				   }else{ 
+				    $("#modProvUsuario").html("");
+					$("#modProvUsuario").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				} 
+                                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      
+   } //fin de la funcion 
+   
+   
+	function agregarUsuario(){	  
+	  
+	prove = $("#altaProveedorUsuario").val();  
+	 puesto=$("#altaPuestoUsuario").val();
+	 nombre=$("#altaNombreUsuario").val();
+    apellido=$("#altaApeUsuario").val();
+     email=$("#altaEmailUsuario").val();
+     cel=$("#altaCelUsuario").val();	
+      pass=$("#altaPassUsuario").val();	 
+	  pass2 =$("#altaPassUsuario2").val();	 
+     estatus= $("#altaEstatusUsuario").prop('checked'); 	    
+     emailUsuario="reyna@gmail.com";   
+	
+	if(estatus){
+		   estatus=1;		
+		     }
+		   else{
+			estatus=0;
+		   }  
+		  
+		  if( $('#altaCiudadUsuario').val()==null){
+			UIkit.modal.alert('Es necesario escoger una ciudad.');
+		       }
+		  else if( $('#altaProveedorUsuario').val()==null){			  
+		UIkit.modal.alert('Es necesario escoger un Proveedor.');		
+		     } 
+      else if( $('#altaPuestoUsuario').val()==null){			  
+		UIkit.modal.alert('Es necesario escoger un Puesto.');		
+		     } 			 
+        else if	(  $('#altaNombreUsuario').val()=="" ){
+			UIkit.modal.alert('Es necesario completar el campo de Nombre.');
+		     }
+       else if	(  $('#altaApeUsuario').val()=="" ){
+			UIkit.modal.alert('Es necesario completar el campo de Apellidos.');
+		     }	
+       else if	(  $('#altaEmailUsuario').val()=="" ){
+			UIkit.modal.alert('Es necesario completar el campo de Email.');
+		     }	
+	else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email)) ){
+            UIkit.modal.alert('Verifique la dirección de correo electronico (ejemplo@ejemplo.com). ');
+          }	 
+      else if	(  $('#altaCelUsuario').val()=="" ){
+			UIkit.modal.alert('Es necesario completar el campo de Celular.');
+		     }	
+	 else if ( !(/^\d{10}$/.test(cel)) ){
+			UIkit.modal.alert('Es necesario que el Celular solo contenga 10 digitos y sin espacios.');
+		     }
+     else if	(  $('#altaPassUsuario').val()=="" ){
+			UIkit.modal.alert('Es necesario completar el campo de Password.');
+		     }	
+        else if	(  $('#altaPassUsuario2').val()=="" ){
+			UIkit.modal.alert('Es necesario completar el campo de Repetir Password.');
+		     }
+       else if( (/\s/.test(pass)) || (/\s/.test(pass2)) ){ 
+            UIkit.modal.alert('Ingrese un password sin espacios.');
+          }	
+		else if(!(/^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(pass)) ){
+            UIkit.modal.alert('La contraseña debe tener mínimo 8 caracteres, al menos una minúscula, al menos una mayúscula y al menos un número o caracter especial. Verifique campo Password ');
+          } 
+		else if(!(/^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(pass2)) ){
+            UIkit.modal.alert('La contraseña debe tener mínimo 8 caracteres, al menos una minúscula, al menos una mayúscula y al menos un número o caracter especial. Veifique campo Repetir Password ');
+          }
+        else if(pass!=pass2){
+              UIkit.modal.alert('Los Password no son identicos, intentalo de nuevo.'); 
+                   }			 
+	   
+	   else{
+		    
+		 $.ajax({    
+       method: "POST",dataType: "json",url: "../../../controllers/setCheckTblusuarioproveedor.php",
+	   data: {solicitadoBy:"WEB",emailproveedor:email,idtblproveeedor:prove}	         
+	              })    
+        
+            .done(function(mpa2){   
+                 if(parseInt(mpa2.datos)==1){
+                      UIkit.modal.alert('Este Usuario ya esta registrado.');
+                                              }
+							else 
+						{  
+					       $("#agregarNuevoUsuario").addClass("oculto");
+					$.ajax({ 
+                               method: "POST",dataType: "json",
+							   url: "../../../controllers/setTblusuarioproveedor2.php", 
+							   data: {solicitadoBy:"WEB",
+							   nombreproveedor:nombre,
+							   apellidoproveedor:apellido,
+							   emailproveedor:email,
+							   celularproveedor:cel,
+							   activado:estatus,
+							   idtblproveedor:prove,
+							   idtblnivelacceso:puesto,
+							   password:pass,
+							   emailcreo:emailUsuario },
+							   
+							  
+				
+							 beforeSend: function(){
+                              $('#cargarNuevoUsuario').css('display','inline'); }
+							
+							       })                                                                                                                                                                                               
+                                                                                                      
+							   .done(function(ms){                                    
+       
+                                    if(parseInt(ms.success)==1){
+									   $("#formAltaUsuario")[0].reset(); //vaciar el formulario
+                                      UIkit.modal("#agregarUsuarioDiv").hide();  //oculta el pupop  
+                                      								  
+                                      UIkit.modal.alert('Usuario Registrado con éxito');
+                                     
+                               
+				                $("#mostrarUsuariosBody").html("");					
+				               mostrarUsuariosProveedor();							
+								// cantidadColonias(); 
+
+								 
+                                    }else {
+                                      UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
+                                    }                          
+                                  })
+                              .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+                              .always(function(){  $("#cargarNuevoUsuario").hide(); });	
+							  
+							  
+							
+					}
+				
+				
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+	  
+     // .always(function(){  console.log("always");}); //fin ajax	  
+	   }  
+	  } //fin
+	  
+	function mostrarPuestos(){	
+      
+     $.ajax({     
+     method: "POST",dataType: "json",url: "../../../controllers/getAllTblnivelaccesoAct.php", 
+	 data: {solicitadoBy:"WEB"}}) 
+            .done(function(mostC){
+				 
+				  $('#altaPuestoUsuario').html(""); 
+				 $('#modPuesUsuario').html(""); 
+				  
+				$("#altaPuestoUsuario").append('<option value="" disabled selected readonly >Selecciona un puesto...</option>'); 
+				$("#modPuesUsuario").append('<option value="" disabled selected readonly >Selecciona un puesto...</option>'); 
+				
+                $.each(mostC.datos, function(i,item)				
+				 {	  
+				      idtblniveleacceso=item.idtblniveleacceso;
+				 
+				 	 
+							 //muestra ciudades en el encabezado de la interfaz principal
+                 $("#altaPuestoUsuario").append('<option  value="' + idtblniveleacceso +'">' + mostC.datos[i].tblniveleacceso_nombre + '</option>');
+				 $("#modPuesUsuario").append('<option value="' + idtblniveleacceso +'">' + item.tblniveleacceso_nombre + '</option>');  				    
+				 
+					});	
+					
+                                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      //.always(function(){  console.log("always");});
+   } //fin de la funcion
+   
+	//------------- modifica el estatus de una ciudad---------  
+ function ModEstatusUsuario(id){
+		     activoModificar =  $("#mostrarEstatusU"+id).prop('checked');		
+										
+			 emaildeUsuario="Flor@gmail.com";
+			 
+			if(activoModificar){
+		       activoModificar=1; 
+               $("#estadoU"+id).text("Activo");
+			   }
+		    else{ activoModificar=0; 
+			       $("#estadoU"+id).text("Desactivado");}		   
+		
+             $.ajax({ 
+                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblusuariosproveedorEstatus.php", 				  
+				   data:{solicitadoBy:"WEB",idtblusuario:id,activado:activoModificar,
+				   emailmodifico:emaildeUsuario}}) 
+                  .done(function(mg){					 
+                            if(parseInt(mg.success)==1){  							 
+                              UIkit.modal.alert('Estatus del Usuario Modificado con Éxito'); 
+							 
+							} else{
+                              UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
+                                 }     
+								 }) 	  
+                  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+                 // .always(function(){  console.log("always");});
+		} //fin d ela funcion
+	
+	
+	
+	
+	
+	//muestra proveedores en select de alta y modificar de usuarios en base ciudad que escogio
+	function mostrar_provedoresdeUsuarios(){
+
+	      var idtblciudad=$("#altaCiudadUsuario").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
+          
+     $.ajax({     
+     method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudad.php", 
+	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
+            .done(function(mf){				
+				   if (parseInt(mf.success)==1) {				   
+				  
+				   $("#altaProveedorUsuario").html("");	
+				  $("#altaProveedorUsuario").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				
+                $.each(mf.datos, function(i,item)
+				 {	idtblproveedor=item.idtblproveedor;	
+				 //muestra ciudades en el encabezado de la interfaz principal 
+                 $("#altaProveedorUsuario").append('<option value="' + idtblproveedor +'">' + item.tblproveedor_nombre + '</option>');
+				  				 
+				   });
+				   
+				   }else{ 
+				    $("#altaProveedorUsuario").html("");
+					$("#altaProveedorUsuario").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				} 
+                                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      
+   } //fin de la funcion
+   
+   function mostrar_provedoresdeUsuarios2(){
+
+	      var idtblciudad=$("#modCiudadUsuario").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
+          
+     $.ajax({     
+     method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudad.php", 
+	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
+            .done(function(mfe){				
+				   if (parseInt(mfe.success)==1) {				   
+				  
+				   $("#modProvUsuario").html("");	
+				  $("#modProvUsuario").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				
+                $.each(mfe.datos, function(i,item)
+				 {	idtblproveedor=item.idtblproveedor;	
+				 //muestra ciudades en el encabezado de la interfaz principal 
+                 $("#modProvUsuario").append('<option value="' + idtblproveedor +'">' + item.tblproveedor_nombre + '</option>');
+				  				 
+				   });
+				   
+				   }else{ 
+				    $("#modProvUsuario").html("");
+					$("#modProvUsuario").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				} 
+                                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      
+   } //fin de la funcion
+   
+   
+  
+   
+//-----------------------------------Modificar Datos--------------------------------
+   //..............Mostrar datos de la ciudad para posteriormente modificarlos ---------------------- 
+   
+    function mostrarDatosUsuarioP(id){
+           $("#modDiv").html("");
+		   //$("#modProvUsuario").html("");	
+    $.ajax({ 
+       method: "POST",dataType: "json",url: "../../../controllers/getAllTblusuarioproveedorDatos2.php", 
+	   data: {solicitadoBy:"WEB",idtblusuarioproveedor:id}})   
+            .done(function(msg){   
+               
+                //console.log(msg);
+				$.each(msg.datos, function(x,item){
+					  idp= item.idtblusuarioproveedor;
+			       //$('#mciudad')[0].reset();				 
+				  $("#modIdUsuario").text(idp);
+				 $("#modCiudadUsuario").val(item.idtblciudad);
+				  $("#modProvUsuario").val(item.tblproveedor_idtblproveedor);
+				  $("#modPuesUsuario").val(item.tblniveleacceso_idtblniveleacceso);
+                  $("#modNombreUsuario").val(item.tblusuarioproveedor_nombre);
+				  $("#modApeUsuario").val(item.tblusuarioproveedor_apellido);
+				  $("#modEmailUsuario").val(item.tblusuarioproveedor_email);
+				  $("#modCelUsuario").val(item.tblusuarioproveedor_celular);
+				  
+			
+         $("#modDiv").append(
+     '<button type="button" class="md-btn md-btn-flat ye uk-float-left" id="ye" '+
+     ' onclick="eliminarUsuarioProveedor('+idp+');" >Eliminar</button>'
+                );
+
+  
+				        })
+                   })              
+          .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+          //.always(function(){  console.log("always");});				  
+	}	//fin
+	
+	//---------actualizar datos de la colonia
+       function actualizarUsuario(){			
+               tipo= $("input[name='preguntaPass']:checked").val();
+               iddeUsuario= $('#modIdUsuario').text();
+			   modProveedor= $('#modProvUsuario').val();                 
+			   modPuesto= $('#modPuesUsuario').val(); 		   
+	           modNombre= $("#modNombreUsuario").val(); 
+			   modApellidos= $('#modApeUsuario').val(); 
+			   modCelular= $('#modCelUsuario').val();  
+			   modEmail= $('#modEmailUsuario').val();
+
+			   pass= $('#modPassUsuario').val();
+			   pass2= $('#modPassUsuario2').val();
+			   emaildeUsua="Flor@gmail.com";
+				
+		  if( $('#modCiudadUsuario').val()==null){
+			UIkit.modal.alert('Es necesario escoger una ciudad.');
+		       }
+		  else if( $('#modProvUsuario').val()==null){			  
+		UIkit.modal.alert('Es necesario escoge un Proveedor.');		
+		     }         			 
+        else if	( $('#modPuesUsuario').val()==null){
+			UIkit.modal.alert('Es necesario escoger un Puesto.');
+		     }	
+		else if	( $('#modNombreUsuario').val()==""){
+			UIkit.modal.alert('Es necesario completar el campo Nombre.');
+		     }
+		else if	( $('#modApeUsuario').val()==""){
+			UIkit.modal.alert('Es necesario completar el campo Apellidos.');
+		     }
+		else if	( $('#modEmailUsuario').val()==""){
+			UIkit.modal.alert('Es necesario completar el campo Email.');
+		     }	
+		else if	( $('#modCelUsuario').val()==""){
+			UIkit.modal.alert('Es necesario completar el campo Celular.');
+		     }	
+		else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(modEmail)) ){
+            UIkit.modal.alert('Verifique la dirección de correo electronico (ejemplo@ejemplo.com). ');
+          }		 
+		else if ( !(/^\d{10}$/.test(modCelular)) ){
+			UIkit.modal.alert('Es necesario que el Celular solo contenga 10 digitos y Sin espacios.');
+		     }	 
+				
+	   else  {
+			  
+			  if (tipo=="1"){
+		           $.ajax({ 
+                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblusuarioproveedorSinEst.php", 				  
+				   data:{solicitadoBy:"WEB",
+				  idtblusuarioproveedor:iddeUsuario,
+				  nombreproveedor:modNombre,
+				  apellidoproveedor:modApellidos,
+				  emailproveedor:modEmail,
+				  celularproveedor:modCelular,
+				  idtblproveedor:modProveedor,
+				  idtblnivelacceso:modPuesto,
+				  emailmodifico:emaildeUsua}, 
+				   beforeSend: function(){
+                              $('#cargarModificarUsuario').css('display','inline');						 
+				
+                                     }
+							})
+                  .done(function(mg){
+					  
+					 if(parseInt(mg.success)==1){ 
+					 
+							UIkit.modal("#mUsuario").hide(); //se oculta el pupop de Modificar colonia                           
+                              UIkit.modal.alert('Usuario Modificado con Éxito'); 
+							  
+							
+				               $("#mostrarUsuariosBody").html("");					
+				               mostrarUsuariosProveedor();	
+								
+								
+                                       }
+							else{
+                              UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
+                                 }
+								 
+								 }) 	  
+                  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+                  .always(function(){ $("#cargarModificarUsuario").hide(); //console.log("always");
+				  });
+			  }//fin de 1
+			 
+			 if (tipo=="2"){ 
+			
+			      if ( $('#modPassUsuario').val()==""){
+			           UIkit.modal.alert('Es necesario completar el campo Password.');
+		                 }
+		          else if	( $('#modPassUsuario2').val()==""){
+			       UIkit.modal.alert('Es necesario completar el campo Repetir Password.');
+		             }
+				 else if( (/\s/.test(pass)) || (/\s/.test(pass2)) ){ 
+                 UIkit.modal.alert('Ingrese un password sin espacios.');
+                     }	
+		else if(!(/^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(pass)) ){
+            UIkit.modal.alert('La contraseña debe tener mínimo 8 caracteres, al menos una minúscula, al menos una mayúscula y al menos un número o caracter especial. Verifique campo Password ');
+          } 
+		else if(!(/^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(pass2)) ){
+            UIkit.modal.alert('La contraseña debe tener mínimo 8 caracteres, al menos una minúscula, al menos una mayúscula y al menos un número o caracter especial. Veifique campo Repetir Password ');
+          }
+        else if(pass!=pass2){
+              UIkit.modal.alert('Los Password no son identicos, intentalo de nuevo.'); 
+                   }	
+           else{
+			   
+			                        $.ajax({ 
+                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblusuarioproveedorSinEst2.php", 				  
+				   data:{solicitadoBy:"WEB",
+				  idtblusuarioproveedor:iddeUsuario,
+				  nombreproveedor:modNombre,
+				  apellidoproveedor:modApellidos,
+				  emailproveedor:modEmail,
+				  pass:pass,
+				  celularproveedor:modCelular,
+				  idtblproveedor:modProveedor,
+				  idtblnivelacceso:modPuesto,
+				  emailmodifico:emaildeUsua}, 
+				   beforeSend: function(){
+                              $('#cargarModificarUsuario').css('display','inline');						 
+				
+                                     }
+							})
+                  .done(function(mg2){
+					  
+					 if(parseInt(mg2.success)==1){ 
+					 
+							UIkit.modal("#mUsuario").hide(); //se oculta el pupop                           
+                              UIkit.modal.alert('Usuario Modificado con Éxito'); 						  
+							  $('#formUsuario')[0].reset(); //limpia el form								  
+							  $("#CambiarPass").addClass("oculto");
+				               $("#mostrarUsuariosBody").html("");					
+				               mostrarUsuariosProveedor();	
+								
+								
+                                       }
+							else{
+                              UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
+                                 }
+								 
+								 }) 	  
+                  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+                  .always(function(){ $("#cargarModificarUsuario").hide(); //console.log("always");
+				  });
+			   
+		    }	//fin del else			   
+			 
+			 }//fin de la 2
+		  
+	   }	//fin del else 
+	}	//fin
+	
+	
+	
+	//eliminar datos de usuario
+	 function eliminarUsuarioProveedor(idp){ 
+   
+       
+                      email="";
+				      cel= "";
+					  estatus=2;
+		             emaildeUsuario="Flor@gmail.com";	
+					 
+           UIkit.modal.confirm('Si desea eliminar al usuario,presione Ok', function(){                      
+			     
+			   
+		          $.ajax({ 
+                   method: "POST",dataType:"json",
+				   url: "../../../controllers/DeleteTblusuarioproveedorDatos.php", 				  
+				   data:{solicitadoBy:"WEB",idtblusuarioproveedor:idp,
+				   emailproveedor:email,celularproveedor:cel,
+				 activado:estatus,emailmodifico:emaildeUsuario} })   
+                  .done(function(mgg){
+               
+            			  
+					 if(parseInt(mgg.success)==1){ 					 
+						      UIkit.modal("#mUsuario").hide(); //se oculta el pupop de Modificar usuario 
+                                								
+                              UIkit.modal.alert('Usuario Eliminado con Éxito'); 
+							  
+							 					           
+				              $("#mostrarUsuariosBody").html("");					
+				               mostrarUsuariosProveedor();	
+							
+                                       }
+							else{
+                              UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
+                                 }
+								 
+								 }) 	  
+                  .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+                  
+	   });	
+	}// fin de la funcion
+	
+	
+	
+	
+	
+	//---------------------------------------Proveedor -----------------------------------------
 	
          $("#ye").click(function(){  //funcion para ocultar el logo de la pantalla principal de BP cuando se de de alta un proveedor
 			$("#paraInicial").remove(); 
@@ -565,6 +1526,8 @@
 				 {	idtblciudad=item.idtblciudad;	
 				 //muestra ciudades en el encabezado de la interfaz principal
                  $("#proveedorCiudad").append('<option value="' + idtblciudad +'">' + item.tblciudad_nombre + '</option>');
+				 $("#altaCiudadUsuario").append('<option value="' + idtblciudad +'">' + item.tblciudad_nombre + '</option>');
+				 $("#modCiudadUsuario").append('<option value="' + idtblciudad +'">' + item.tblciudad_nombre + '</option>');
 				  				 
                       });	
                                  
@@ -655,13 +1618,15 @@
    //............................... mostrar colonias en pupop de modificar proveedor
     // muestra la colonia guardada   .......................................
     function mostrarColoniaModificar(proCiudad){	   
-	    
+	     
+		//proCiudad= $("#idciudad"+idproveedor).text();
+		
      $.ajax({     
        method: "POST",dataType: "json",url: "../../../controllers/getAllTblcoloniaByTblCiudad.php", 
 	   data: {solicitadoBy:"WEB",idtblciudad:proCiudad}}) 
             .done(function(mcolj){
-							
-				 $("#proveedorcoloniaMod").html("");
+					 $("#proveedorcoloniaMod").empty();		
+				
                  $.each(mcolj.datos, function(i,item)
 				 {					 
 				  //muestra colonias en pupop para modificar proveedor
@@ -748,7 +1713,7 @@
 								
 							    '<ul class="md-list">'+
 							    '<li class="uk-text-center">'+ 
-	              '<img id="tama" name="tama" src="./../../assests_general/proveedor/logoProveedor/'+
+	              '<img id="tama" name="tama" src="../../assests_general/proveedor/logoProveedor/'+
 	                                   item.tblproveedor_srclogo+'" />'+
                                 '</li> <li>'+                               
                                 '<div class="md-list-content">'+
@@ -828,6 +1793,7 @@
 							 '<li>'+
                                 '<div class="md-list-content">'+
                                 '<span class="uk-text-small uk-text-muted">Ciudad</span>'+
+								 '<span id="idciudad'+idproveedor+'" class="oculto">'+item.idtblciudad+'</span>'+
                                 '<span id="idciud'+idproveedor+'">'+item.tblciudad_nombre+'</span>'+
                                 '</div>'+
                              '</li>'+
@@ -1706,7 +2672,7 @@
 				      
 				     idproveedor=item.idtblproveedor;               
                      proCiudad=item.tblciudad_idtblciudad;
-				    		
+				  	
 				   
 				 $("#listarProveedor").append(
 				  '<div class="md-card"> <form class="uk-form"> <div class="md-card-content"> <div class="uk-grid uk-grid-divider" data-uk-grid-margin>'+
@@ -1866,8 +2832,7 @@
 										 $("#paraTelefono"+idproveedor).text(mprov2.datos[g2].tblproveedor_telefonotienda);			
 											} 	
 											
-											 
-						         
+											 						         
 							//........................
                             }				
 				            );				     
@@ -1888,9 +2853,9 @@
 		  }
 	  
    } //fin de la funcion
-  </script> 
-    
+    </script> 
+   
 
-  
+    
 </body>
 </html>

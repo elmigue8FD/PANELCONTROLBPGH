@@ -28,9 +28,17 @@
 	<!-- dropify -->
     <link rel="stylesheet" href="../assets/skins/dropify/css/dropify.css">
 	
-   <link href="http://getuikit.com/docs/css/uikit.docs.min.css" rel="stylesheet" >
+ <!--  <link href="http://getuikit.com/docs/css/uikit.docs.min.css" rel="stylesheet" >-->
 
-
+  
+  <link type="text/css" rel="stylesheet" href="../bower_components/jquery-ui/themes/base/jquery-ui.css" />
+ 
+ <!--
+  <link type="text/css" rel="stylesheet" href="../bower_components/jquery-ui/themes/smoothness/jquery-ui.css" />
+ <link rel="stylesheet" src="../bower_components/jquery-ui/themes/cupertino/jquery-ui.css">
+ 
+ 
+ -->
 
 </head>
 <body class="sidebar_main_open sidebar_main_swipe" >
@@ -58,7 +66,7 @@
 									<li class="uk-active"><a href="#"> Carritos</a></li>
                                     <li><a href="#"> Ordenes </a></li>
                                    <li><a href="#"> Pagos </a></li>
-								   <li><a href="#" onclick="resetCamp();"> Generar PDF </a></li>
+								   <li><a href="#" onclick="resetCamp();"> Reporte </a></li>
                                      
 								</ul>
 								
@@ -216,13 +224,7 @@
                     </div>
                    </li>
 				   
-				  <!-- <li>			 
-				   <div class="md-list-content">
-				   <span class="md-list-heading" id="carrito_nombreProveedor">
-				     </span> </div>
-				   <span class="uk-text-small uk-text-muted">Nombre del Proveedor</span>
-				  </li>  -->  
-				  
+				 				  
                    </ul><br>				   
 				    <h5 class="heading_c uk-margin-small-bottom uk-h6">Producto(s)</h5>				  
                     <ul class="md-list md-list-addon" id="carrito_productos">
@@ -860,9 +862,11 @@
 									<div class="uk-grid" data-uk-grid-margin>
                     <div class="uk-width-1-1">
                   						
-                  <span class="uk-text-small">Selecciona una Ciudad e Ingresa un rango de fechas y en base a ellas se hara el reporte.</span>
-                   
-					<form class="uk-form-stacked" id="formuEnvRepo" method="post" action="reporte1.php" > <!--s./../../controllers/ubmit" onclick="bajarReporte();" -->
+                      </br> </br>
+					  <span class="uk-text-small">Selecciona una Ciudad e Ingresa un rango de fechas y en base a ellas se hara el reporte.</span>
+                    
+					  </br> </br>
+					<form class="uk-form-stacked" id="formuEnvRepo" method="post" action="reporteVentas.php" > 
                      <div class="uk-grid" data-uk-grid-margin>
 							
 							 
@@ -878,13 +882,7 @@
                                     <div class="uk-input-group"> 
                                         <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
                                      
-									 <input  date-uk-datepicker placeholder="dia/mes/año" class="md-input uk_dp_start" type="text" id="fecha_inicialRango" name="fecha_inicialRango"  /> 
-                                      <!--monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun', 'Jul','Ago','Sep','Oct','Nov','Dic'], 
-                                      dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'], 
-                                      dayNamesShort: ['Dom','Lun','Mar','Mie','Jue','Vie','Sáb'], 
-                                     dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'] }">
-date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']}"
-									 -->
+									 <input placeholder="dia/mes/año" class="md-input" type="text" id="fecha_inicialRango" name="fecha_inicialRango"  /> 
                                      
 									 
                                    
@@ -896,7 +894,7 @@ date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Juni
 								<label>Fecha Final </label>
                                     <div class="uk-input-group">
                                         <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
-                                       <input placeholder="dia/mes/año" class="md-input uk_dp_end" type="text" id="fecha_finalRango" name="fecha_finalRango"> <!-- -->
+                                       <input placeholder="dia/mes/año" class="md-input" type="text" id="fecha_finalRango" name="fecha_finalRango"> 
                                     </div>
                                 </div>
 								
@@ -967,7 +965,10 @@ date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Juni
     <?php include('../codigo_general/script_commonPB.php'); ?>  <!-- llamada para ejecutar el jquery -->
     <script src="../assets/js/pages/forms_advanced2.js"></script>
      <!--page specific plugins -->
-    <!-- tablesorter -->
+	
+	  <script src="../bower_components/jquery-ui/jquery-ui.js"></script> 
+	  <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script> 
+   
 	<script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
@@ -983,26 +984,10 @@ date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Juni
   <!--  kendoui functions -->
   <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
 	
-  <!-- <script src="../assets/js/pages/pages_issuesPru2.js"></script> 
-    
-	
-    
-    <script src="../assets/js/uikit_htmleditor_custom.min.js"></script>
-    --><!-- -->
+ 
     <script src="../bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
   
-    <!--<script src="http://getuikit.com/docs/js/uikit.min.js" ></script>
-   <script src="http://getuikit.com/src/js/components/datepicker.js" ></script>-->
    
-    <!--  <script src="../bower_components/uikit/js/uikit.min.js"></script>
-    <script src="../bower_components/uikit/js/components/datepicker.js"></script>
-   
-    forms advanced functions  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
-    
-	<!--  dropify 
-    <script src="../assets/js/custom/dropify/dist/js/dropify.min.js"></script>
-    
-    <script src="../assets/js/pages/forms_file_input.min.js"></script> -->
 	<script src="../assets/js/kendoui_custom.min.js"></script> 
   <!--  kendoui functions -->
   <script src="../assets/js/pages/kendoui.min.js"></script>
@@ -1013,10 +998,27 @@ date-uk-datepicker="i18n:{months:['Enero','Febrero','Marzo','Abril','Mayo','Juni
 	<!-- archivos JS-->
   <script type="text/javascript" >
     
+	 
+	  
 	$( window ).ready(function()
     {
-        //console.log('pagina lista');
-	     
+	
+             $("#fecha_inicialRango").datepicker( {dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
+                                     monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo",
+                                         "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
+                                         "Noviembre", "Diciembre" ],
+                                     firstDay: 1,
+                                     dateFormat: "dd/mm/yy"
+	                             });
+								 
+             $("#fecha_finalRango").datepicker( { dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
+                                     monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo",
+                                         "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
+                                         "Noviembre", "Diciembre" ],
+                                     firstDay: 1,
+                                     dateFormat: "dd/mm/yy"
+                });
+
 		 mostrarCiudadesCarrito();  //se cargar automaticamente cuando carge la pagina
          mostrarCiudadesOrdenes();	
          mostrarCiudadesPagos();
@@ -1339,7 +1341,7 @@ var tabla3_OrdenesHistorial=3;
 										
 										 //--------------------Alta notificacionvista ----------------------
 								         $.ajax({method:"POST",dataType:"json",
-							             url: "../../../controllers/setTblnotificacionvista.php", 
+							             url: "./../../controllers/setTblnotificacionvista.php", 
 							             data: {solicitadoBy:"WEB",destino:idtblproveedor,status:estatus,
 										 emailcreo:emailUsuario,idtblnotificacion:idInsertado} })					                                                
 							             .done(function(ms3){  

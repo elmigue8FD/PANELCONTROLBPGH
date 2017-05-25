@@ -42,9 +42,19 @@ $respuesta = FuncionesBePickler::getAllTblordencompraDatosbyFechas($nameCiudad,$
           foreach( $respuesta as $res1){     		  
 		  $idtblordencompra =$res1['idtblordencompra']; 
           $idtblproveedor=	$res1['idtblproveedor'];  
-         // $costoServDom = $res1['tblordencompra_precioServicioDomicilio'];  
-         $costoServDom = $res1['tblordencompra_totaldelivery'];  			  
-          $comisionXservDomic = $costoServDom*0.15*1.16;                  
+        // $costoServDom = $res1['tblordencompra_precioServicioDomicilio']; ya no cuenta este campo
+         $costoServDom1 = $res1['tblordencompra_totaldelivery'];  
+
+         if($costoServDom1==null || $costoServDom1=="" || $costoServDom1=="0.0" || $costoServDom1=="0"){
+			 $costoServDom = 0;          
+		                    } else
+		{ $costoServDom = $costoServDom1;  }					
+							
+			 
+	 if($costoServDom==0){
+	    $comisionXservDomic = 0;
+		}else{			
+		$comisionXservDomic = $costoServDom*0.15*1.16;  }                
 			  
 		       $respuesta2 = FuncionesBePickler::getTblentregaproductoByOrdenProveedorFechas($idtblordencompra,$idtblproveedor);
 		       foreach( $respuesta2 as $res2){				                                
@@ -159,14 +169,17 @@ $cuerpo .= "
 		                  $comRetenida= ($precioFinal*0.0395+4)*1.16;            
 							 }
 					  	 
-					if($sistemaPago=='Stripe'){			          
+					else if($sistemaPago=='Stripe'){			          
                        //[Precio final o total de compra con el descuento   x   3.6%   +   3.00 ] x   1.16	 				   
 		                   $comRetenida= ($precioFinal*0.036+3)*1.16;            
 							 }	
-                   if($sistemaPago=='Conekta'){			          
+                  else if($sistemaPago=='Conekta' || $sistemaPago=='Coneckta'){			          
                        //[Precio final o total de compra con el descuento   x   2.95%   +   2.00 ] x   1.16			   
 		                 $comRetenida= ($precioFinal*0.0295+2)*1.16;            
-							 } 	
+							 }
+				else{    $comRetenida = 0; }			 
+                 
+											 
                  $precioPagado = $precioFinal-$comRetenida;	
                 $utilidadesBrutas=$comisionBP+$precioPagado+$comisionXservDomic;
 				$utilidadesNetas = $utilidadesBrutas/1.16;

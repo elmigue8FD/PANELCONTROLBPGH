@@ -135,7 +135,7 @@
                     
                    </li>
 				
-				     <li title="Pastelerias">
+				     <li title="Proveedor">
                     <a href="proveedor.php">
                         <span class="menu_icon"><i class="material-icons">&#xe7e9;</i></span>
                         <span class="menu_title">Proveedor</span>
@@ -152,7 +152,7 @@
                     
                       </li>
 					  
-					  <li title="Fotografos">
+					  <li title="Fot&oacute;grafos">
                     <a href="fotografos.php">
                         <span class="menu_icon"><i class="material-icons">&#xe412;</i></span>
                         <span class="menu_title">Fot&oacute;grafos</span>
@@ -208,7 +208,7 @@
                 
                   </li>
                 
-				<li title="Usuarios">
+				<li title="Notificaciones">
                     <a href="notificaciones.php">
                         <span class="menu_icon"><i class="material-icons">&#xe7f4;</i></span>
                         <span class="menu_title">Notificaciones</span>
