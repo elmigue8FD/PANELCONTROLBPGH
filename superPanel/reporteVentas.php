@@ -1,5 +1,5 @@
 <?php
-include_once '../../../FuncionesBePickler.php';
+include_once 'FuncionesBePickler.php';
 include_once 'mPDF/mpdf.php';
 
 if (isset($_POST["generar100"])) 
