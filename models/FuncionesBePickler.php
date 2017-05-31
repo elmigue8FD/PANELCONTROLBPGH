@@ -9774,7 +9774,7 @@ AND exists
 						WHERE tblnovedades_activado =?
 						AND ((tblnovedades_fchcreacion BETWEEN ? AND ?) 
 						  OR (tblnovedades_fchmodificacion BETWEEN ? AND ?) 
-						)
+						) ORDER BY RAND()
 						";
 		
 		try{
@@ -9797,7 +9797,7 @@ AND exists
 
 		
 		$activado=1;
-		$consulta = "SELECT * FROM tbltestimonio WHERE tbltestimonio_activado =?	";
+		$consulta = "SELECT * FROM tbltestimonio WHERE tbltestimonio_activado =? ORDER BY RAND() LIMIT 5";
 		
 		try{
 
