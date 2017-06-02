@@ -10853,19 +10853,20 @@ AND exists
 	}
 	
 	/*Borrar datos del usuario */
-	public static function setDeleteTblusuariomount($email,$cel,$emailmodifico,$id){
+	public static function setDeleteTblusuariomount($email,$cel,$estatus,$emailmodifico,$id){
 
 		$update = "UPDATE tblusuariosmount SET 		
-		tblusuariosmount_email=?,tblusuariosmount_celular=?,
+		tblusuariosmount_email=?,tblusuariosmount_celular=?,tblusuariosmount_activado=?,
 		tblusuariosmount_fchmodificacion = NOW(), tblusuariosmount_emailusuamodifico =? 
 		WHERE idtblusuariosmount = ?";		
 		
 		try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);			
 			$resultado->bindParam(1,$email,PDO::PARAM_STR);			
-			$resultado->bindParam(2,$cel,PDO::PARAM_STR);			
-			$resultado->bindParam(3,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(4,$id,PDO::PARAM_INT);
+			$resultado->bindParam(2,$cel,PDO::PARAM_STR);
+            $resultado->bindParam(3,$estatus,PDO::PARAM_INT);			
+			$resultado->bindParam(4,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(5,$id,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
 		}catch(PDOException $e){

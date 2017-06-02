@@ -227,17 +227,17 @@
 				
 				<div class="uk-margin-medium-bottom">
                     <label for="task_title">Password:</label>
-                    <input type="text" class="md-input" id="alta_password" name="snippet_title" />
+                    <input type="password" class="md-input" id="alta_password" name="snippet_title" />
                 </div>
 				<div class="uk-margin-medium-bottom">
                     <label for="task_title">Repetir Password:</label>
-                    <input type="text" class="md-input" id="alta_password2" name="snippet_title" />
+                    <input type="password" class="md-input" id="alta_password2" name="snippet_title" />
                 </div>
 				
 				<div class="uk-margin-medium-bottom">
-                    <label for="task_title">Pa&iacute;s al que pertenece:</label><br/>                   
+                    <label for="task_title">País al que pertenece:</label><br/>                   
 					<input type="radio" name="alta_NombrePais" value="1" id="altaIdNombrePais" checked readonly   /> 
-					 <label>M&eacute;xico</label>
+					 <label>México</label>
                 </div>
 				<div class="uk-margin-medium-bottom">                    
                     <select id="alta_puesto" class="uk-button uk-form-select" data-uk-form-select >
@@ -649,7 +649,8 @@
                     
 				 //muestra ciudades en la tabla 
 				                   
-	                   
+	                   if(item.tblusuariosmount_activado=="2"){ 
+					   nousu=true}else{
                  $("#tarjetaUsuario").append(
                        
 				' <div class="usuarios"><div class="md-card md-card-hover">'+
@@ -766,12 +767,7 @@
                                           $("#mostrarEstatus"+idu).prop("checked", false);
 										  $("#estado"+idu).text("Desactivado");
                                             } 
-								         if(cel=="" && email==""){
-                                         $("#botonEliminar"+i).remove();
-										  $("#botondemodi"+i).remove();	
-                                          $("#mostrarEstatus"+idu).remove();
-										   $("#estado"+idu).text("Ya no labora en la empresa");
-                                           }			
+					   }		
 				  
                       });	 //cierre del each
 			  }else{   usu=false;  
@@ -788,7 +784,7 @@
     function eliminarUsuario(idu){ 	
                    email=$("#m_email"+idu).val();
 				      cel= $("#m_cel"+idu).val();
-					  
+					estatus=2;  
                    //ciudad= $("ciudadNombre"+idu).val();
                     var ciudad= $("#selectciudad").val();				   
 		             emaildeUsuario="Flor@gmail.com";	
@@ -800,7 +796,7 @@
                    method: "POST",dataType:"json",
 				   url: "../../../controllers/setDeleteTblusuariomount.php", 				  
 				   data:{solicitadoBy:"WEB",id:idu,email:email,
-				   cel:cel,emailmodifico:emaildeUsuario} })
+				   cel:cel,estatus:estatus,emailmodifico:emaildeUsuario} })
                   .done(function(mg){
                      				  
 					 if(parseInt(mg.success)==1){ 					 

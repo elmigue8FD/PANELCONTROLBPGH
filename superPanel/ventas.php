@@ -856,17 +856,24 @@
 							   <div class="md-card">
 					               <div class="md-card-content">
 									<div>           
-                                    <h2>Generar Reporte de Ventas</h2>
+                                    <h2>Generar Reportes</h2>
 									 </div>	
-									
-									<div class="uk-grid" data-uk-grid-margin>
-                    <div class="uk-width-1-1">
-                  						
-                      </br> </br>
-					  <span class="uk-text-small">Selecciona una Ciudad e Ingresa un rango de fechas y en base a ellas se hara el reporte.</span>
-                    
-					  </br> </br>
-					<form class="uk-form-stacked" id="formuEnvRepo" method="post" action="reporteVentas.php" > 
+								  </div>   
+					            </div>
+
+						
+						
+					
+				<!-- ---------------- <div class="uk-width-medium-1-1 uk-container-center"> --------------- -->
+			   <br/>
+			   <div id="paraInicial">				
+               <div class="md-card"> 
+			   <div class="md-card-content"> 
+			   <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
+			   <div class="uk-width-medium-1-1 uk-container-center">
+			   <span class="uk-text-medium">Generar Reporte de ventas:</span>                    
+			
+			  <form class="uk-form-stacked" id="formuEnvRepo" method="post" action="reporteVentas.php" > 
                      <div class="uk-grid" data-uk-grid-margin>
 							
 							 
@@ -882,7 +889,7 @@
                                     <div class="uk-input-group"> 
                                         <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
                                      
-									 <input placeholder="dia/mes/año" class="md-input" type="text" id="fecha_inicialRango" name="fecha_inicialRango"  /> 
+									 <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="fecha_inicialRango" name="fecha_inicialRango"  /> 
                                      
 									 
                                    
@@ -894,42 +901,122 @@
 								<label>Fecha Final </label>
                                     <div class="uk-input-group">
                                         <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
-                                       <input placeholder="dia/mes/año" class="md-input" type="text" id="fecha_finalRango" name="fecha_finalRango"> 
+                                       <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="fecha_finalRango" name="fecha_finalRango"> 
                                     </div>
                                 </div>
 								
-								<div class="uk-width-medium-1-4"> </br>  
-								<button type="submit" class="md-btn md-btn-flat ye" id="generar100" name="generar100" onclick="funcion(event);">Generar PDF</button>
+								<div class="uk-width-medium-1-4"> </br></br>  
+								<button type="submit" class="md-btn md-btn-flat ye" id="generar100" name="generar100" onclick="paraPdf(event);">Generar PDF</button>
+                             </div>  <!--<input type="hidden" name="generar_factura" value="true">paraPdf(evt) --> 
+                            </div> 
+							     </form>
+			   
+			   </div> 
+			 
+			   </div>
+			   </div></div>   <!-- fin del pdf --> 
+			   
+			   
+			    <div class="md-card"> 
+			   <div class="md-card-content"> 
+			   <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
+			   <div class="uk-width-medium-1-1 uk-container-center">
+			   <span class="uk-text-medium">Generar Reporte de Ordenes:</span>                    
+			
+			  <form class="uk-form-stacked" id="formuEnvRepoD1" method="post" action="reporte.php" > 
+                     <div class="uk-grid" data-uk-grid-margin>
+							
+							 
+                        <div class="uk-width-medium-1-4"></br></br>						   							 
+                             <select id="selectCiudadGD1" name="selectCiudadGD1" class="uk-button uk-form-select" data-uk-form-select >
+                             </select>
+				         
+                        </div>
+					
+                                <div class="uk-width-medium-1-4"></br>	
+								   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								   <label>Fecha Inicial</label>
+                                    <div class="uk-input-group"> 
+                                        <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
+                                     
+									 <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="fecha_inicialRangoD1" name="fecha_inicialRangoD1"  /> 
+                                     
+									 
+                                   
+									</div> 
+                                </div>
+                                <div class="uk-width-medium-1-4"></br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								   								
+								<label>Fecha Final </label>
+                                    <div class="uk-input-group">
+                                        <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
+                                       <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="fecha_finalRangoD1" name="fecha_finalRangoD1"> 
+                                    </div>
+                                </div>
+								
+								<div class="uk-width-medium-1-4"> </br></br>  
+								<button type="submit" class="md-btn md-btn-flat ye" id="generar101" name="generar101" onclick="paraExcel1(event);">Generar Excel</button>
                              </div>  <!--<input type="hidden" name="generar_factura" value="true">-->
                             </div> 
 							     </form>
-                      <!--   </div>
-                    </div> -->
-			   <div class="uk-text-center oculto" id="cargarVerReporte" >
-			     </br></br>
-                 <label > Procesando... </label>
-				  <img src="cargando.gif" />				  
-                 </div> 
-                </div>
-            </div>
-					                
-								  </div>   
-					            </div>
-
-						
-						
-					
-				<!-- ----------------  Imagen de BePickler en la Interfaz Inicial--------------- -->
-			   <br/>
-			   <div id="paraInicial">				
-               <div class="md-card"> 
+			   
+			   </div> 
+			 
+			   </div>
+			   </div></div>   <!-- fin del excel doc1 -->
+			   
+			    <div class="md-card"> 
 			   <div class="md-card-content"> 
 			   <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
-			   <div class="uk-width-medium-1-3 uk-container-center">
-			   <img id="logoBPP" name="logoBPP" src="../assets/img/delPanel/logoo.jpg" />	                                
+			   <div class="uk-width-medium-1-1 uk-container-center">
+			   <span class="uk-text-medium">Generar Reporte de productos vendidos:</span>                    
+			
+			  <form class="uk-form-stacked" id="formuEnvRepoD2" method="post" action="reporteProductos.php" > 
+                     <div class="uk-grid" data-uk-grid-margin>
+							
+							 
+                        <div class="uk-width-medium-1-4"></br></br>						   							 
+                             <select id="selectCiudadGD2" name="selectCiudadGD2" class="uk-button uk-form-select" data-uk-form-select >
+                             </select>
+				         
+                        </div>
+					
+                                <div class="uk-width-medium-1-4"></br>	
+								   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								   <label>Fecha Inicial</label>
+                                    <div class="uk-input-group"> 
+                                        <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
+                                     
+									 <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="fecha_inicialRangoD2" name="fecha_inicialRangoD2"  /> 
+                                     
+									 
+                                   
+									</div> 
+                                </div>
+                                <div class="uk-width-medium-1-4"></br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								   								
+								<label>Fecha Final </label>
+                                    <div class="uk-input-group">
+                                        <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
+                                       <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="fecha_finalRangoD2" name="fecha_finalRangoD2"> 
+                                    </div>
+                                </div>
+								
+								<div class="uk-width-medium-1-4"> </br></br>  
+								<button type="submit" class="md-btn md-btn-flat ye" id="generar102" name="generar102" onclick="paraExcel2(event);">Generar Excel</button>
+                             </div>  <!--<input type="hidden" name="generar_factura" value="true">-->  
+                            </div> 
+							     </form>
+			   
+			   </div> 
+			 
 			   </div>
-			   </div>
-			   </div></div>     				 
+			   </div></div>   <!-- fin del excel doc2 -->
+
+
+			   
                </div>
 				
 					
@@ -1003,7 +1090,7 @@
 	$( window ).ready(function()
     {
 	
-             $("#fecha_inicialRango").datepicker( {dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
+             $(".calendarioReporte").datepicker( {dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
                                      monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo",
                                          "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
                                          "Noviembre", "Diciembre" ],
@@ -1011,7 +1098,7 @@
                                      dateFormat: "dd/mm/yy"
 	                             });
 								 
-             $("#fecha_finalRango").datepicker( { dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
+             $(".calendarioReporte").datepicker( { dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
                                      monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo",
                                          "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
                                          "Noviembre", "Diciembre" ],
@@ -1031,12 +1118,14 @@
      
 	  function resetCamp(){
 		   $('#formuEnvRepo')[0].reset(); 
+		   $('#formuEnvRepoD1')[0].reset(); 
+		   $('#formuEnvRepoD2')[0].reset(); 
 	  }
 	  
 	  
 	   
-	   function funcion(evt) { 
-  
+	   function paraPdf(evt) { 
+   
 	var ciudad= document.getElementById("selectCiudadG").value;
    var feInicial= document.getElementById("fecha_inicialRango").value;
    var feFinal = document.getElementById("fecha_finalRango").value;
@@ -1076,12 +1165,104 @@
     evt.preventDefault();
               }
       
-    if(ciudad !="" && feInicial != "" && feFinal !="" && formato.test(feInicial) && formato.test(feFinal))
+    
+	
+}  //fin para pdf
+
+
+
+function paraExcel1(evt) { 
+   
+	var ciudad= document.getElementById("selectCiudadGD1").value;
+   var feInicial= document.getElementById("fecha_inicialRangoD1").value;
+   var feFinal = document.getElementById("fecha_finalRangoD1").value;
+  
+	
+	  var formato= /^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/;
+	          	
+   if(ciudad ==""){
+    UIkit.modal.alert("Por favor, seleccione una Ciudad.");
+   evt.preventDefault();
+    return false;
+     }
+   
+   if(feInicial == ""){
+    UIkit.modal.alert("Por favor, complete el campo Fecha Inicial.");
+   evt.preventDefault();
+    return false;
+     }
+  
+   if(feFinal =="") {
+    UIkit.modal.alert("Por favor, complete el campo Fecha Final.");
+	evt.preventDefault();
+    return false;
+     } 
+	
+ 
+ //.............validacion.............................................
+	
+    if(!formato.test(feInicial))
+    { 
+     UIkit.modal.alert("Fecha Inicial es incorrecto, ejemplo dia/mes/año."); 
+    evt.preventDefault();}
+	
+  if(!formato.test(feFinal))
+    { 
+     UIkit.modal.alert("Fecha Final es incorrecto, ejemplo dia/mes/año."); 
+    evt.preventDefault();
+              }
+      
+    /*if(ciudad !="" && feInicial != "" && feFinal !="" && formato.test(feInicial) && formato.test(feFinal))
 	{    
 		$("#cargarVerReporte").removeClass("oculto"); 
-	}
+	}*/
 	
-}
+}  //fin para excel1------------------------------------------------------
+
+function paraExcel2(evt) { 
+   
+	var ciudad= document.getElementById("selectCiudadGD2").value;
+   var feInicial= document.getElementById("fecha_inicialRangoD2").value;
+   var feFinal = document.getElementById("fecha_finalRangoD2").value;
+  
+	
+	  var formato= /^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/;
+	          	
+   if(ciudad ==""){
+    UIkit.modal.alert("Por favor, seleccione una Ciudad.");
+   evt.preventDefault();
+    return false;
+     }
+   
+   if(feInicial == ""){
+    UIkit.modal.alert("Por favor, complete el campo Fecha Inicial.");
+   evt.preventDefault();
+    return false;
+     }
+  
+   if(feFinal =="") {
+    UIkit.modal.alert("Por favor, complete el campo Fecha Final.");
+	evt.preventDefault();
+    return false;
+     } 
+	
+ 
+ //.............validacion.............................................
+	
+    if(!formato.test(feInicial))
+    { 
+     UIkit.modal.alert("Fecha Inicial es incorrecto, ejemplo dia/mes/año."); 
+    evt.preventDefault();}
+	
+  if(!formato.test(feFinal))
+    { 
+     UIkit.modal.alert("Fecha Final es incorrecto, ejemplo dia/mes/año."); 
+    evt.preventDefault();
+              }
+      
+    
+	
+}  //fin para excel 2--------------------------------
 	   
 	   function mostrarCiudadesU(){ //muestra las ciudades activas 	
       
@@ -1091,7 +1272,9 @@
             .done(function(mostC){
 				//console.log(mcol); 
 				 
-				$("#selectCiudadG").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				$("#selectCiudadG").append('<option value="" disabled selected readonly >Selecciona...</option>'); //pdf
+				$("#selectCiudadGD1").append('<option value="" disabled selected readonly >Selecciona...</option>'); //excel 1
+				$("#selectCiudadGD2").append('<option value="" disabled selected readonly >Selecciona...</option>'); //excel 2
 				
                 $.each(mostC.datos, function(i,item)				
 				 {	  
@@ -1099,7 +1282,10 @@
 				 
 				 //muestra ciudades en el encabezado de la interfaz principal
                  $("#selectCiudadG").append('<option value="' +item.tblciudad_nombre+'">' + item.tblciudad_nombre + '</option>');
-				 	});	
+                  $("#selectCiudadGD1").append('<option value="' +item.tblciudad_nombre+'">' + item.tblciudad_nombre + '</option>');
+				  $("#selectCiudadGD2").append('<option value="' +item.tblciudad_nombre+'">' + item.tblciudad_nombre + '</option>');
+				 				 
+				 });	
 					
                                  
               })
@@ -1244,13 +1430,13 @@ var tabla3_OrdenesHistorial=3;
 	 function inicializarTablas_Pagos(){	 
 	
 	  $("#tabla_PagosPendientes").tablesorter({
-    sortList: [[4,0]], //ordenar por de inicio esa columna 
+   // sortList: [[5,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
       });
 	  
 	  $("#tabla_PagosHistorial").tablesorter({
-    sortList: [[4,0]], //ordenar por de inicio esa columna 
+   // sortList: [[5,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
       });
@@ -1292,9 +1478,9 @@ var tabla3_OrdenesHistorial=3;
    } 
 	 
 	 //------------------------------------------------------------------- 
-	 function pagarDeposito(idtblproveedor,idtblordencompra){			
+	 function pagarDeposito(idtblproveedor,idtblordencompra,identrega){			
                    		
-			    identregaproducto= $('#spanIdentregaPend').text();				
+			    identregaproducto= $('#spanIdentregaPend'+identrega).text();				
 	            statusdeposito="Pagado";	
 			     envioCiudad = $("#spanCiudadEnvio").text();
 			    emaildeUsuario="Flor@gmail.com"; //emailusuamodifico
@@ -1316,13 +1502,14 @@ var tabla3_OrdenesHistorial=3;
 				   data:{solicitadoBy:"WEB",idtblentregaproducto:identregaproducto,				  
 				   statusdeposito:statusdeposito,emailmodifico:emaildeUsuario}})			  
 				   
-                  .done(function(mg){					 
+                  .done(function(mg){
+              			  
 					 if(parseInt(mg.success)==1){ 
 					 
-						    
+						   
 		            //--------------------------------------------------
 					    $.ajax({method: "POST",dataType: "json",
-							   url: "../../../controllers/setTblnotificacion.php", 
+							   url: "../../../controllers/setTblnotificacion1.php", 
 							   data: {solicitadoBy:"WEB",tipo:tipoN,asunto:asunto, 
 							   mensaje:mensaje,emisor:emisor,idredireccion:idSeccion,
 							   emailcreo:emailUsuario} })                
@@ -1337,11 +1524,10 @@ var tabla3_OrdenesHistorial=3;
 									 if(parseInt(ms2.success)==1){
 								$.each(ms2.datos, function(i,item)
 				              { 
-										 idInsertado=item.id;									 
-										
+										idInsertado=item.id;
 										 //--------------------Alta notificacionvista ----------------------
 								         $.ajax({method:"POST",dataType:"json",
-							             url: "./../../controllers/setTblnotificacionvista.php", 
+							             url: "../../../controllers/setTblnotificacionvista1.php", 
 							             data: {solicitadoBy:"WEB",destino:idtblproveedor,status:estatus,
 										 emailcreo:emailUsuario,idtblnotificacion:idInsertado} })					                                                
 							             .done(function(ms3){  
@@ -1454,7 +1640,7 @@ var tabla3_OrdenesHistorial=3;
 				 ' <tr>'+				
                	 '<td class="uk-width-medium-1-3 uk-text-center"  >'+
                  '<span>'+ o1.datos[s].idtblordencompra +'</span>'+
-				// '<span class="oculto" id="spanIdentregaPend">'+ mg3.datos[u].idtblentregaproducto+'</span>'+				
+				 '<span class="oculto" id="spanIdentregaPend'+identrega+'">'+ mg3.datos[u].idtblentregaproducto+'</span>'+				
 				 '<span class="oculto" id="spanCiudadEnvio">'+ o1.datos[s].tbldatosenvio_ciudad +'</span>'+ 
                	 '</td>'+ 
 				 '<td class="uk-width-medium-1-3 uk-text-center" >'+
@@ -1467,7 +1653,7 @@ var tabla3_OrdenesHistorial=3;
                  '<span id="f_corte'+identrega+'"></span>'+				 
                  '</td>'+
 			     '<td class="uk-text-center">'+
-			     '<button type="button" class="md-btn md-btn-flat ye" onclick="pagarDeposito('+o1.datos[s].idtblproveedor+','+o1.datos[s].idtblordencompra+');" id="ye">Pagar</button>'+
+			     '<button type="button" class="md-btn md-btn-flat ye" onclick="pagarDeposito('+o1.datos[s].idtblproveedor+','+o1.datos[s].idtblordencompra+','+identrega+');" id="botPag'+u+'">Pagar</button>'+
                  '</td>'+
 			     '</tr>'							
 								
@@ -1758,7 +1944,7 @@ var tabla3_OrdenesHistorial=3;
 				   	$("#tabla_OrdenesHistorial").trigger('updateAll', [true]);//actualiza tabla 
 					inicializarPagOrdenHis();
 					
-					if(mg3.datos[u].tblentregaproducto_statusdeposito!="Pendiente"){
+					if(mg3.datos[u].tblentregaproducto_statusdeposito!="Pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito!="pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito!="PENDIENTE"){
                     $('#tblstatusdeposito'+s).append('<span class="uk-badge uk-badge-success">'+mg3.datos[u].tblentregaproducto_statusdeposito+'</span>');
                     }else { 
                     $('#tblstatusdeposito'+s).append('<span class="uk-badge uk-badge-warning">'+mg3.datos[u].tblentregaproducto_statusdeposito+'</span>');
@@ -1968,7 +2154,11 @@ var tabla3_OrdenesHistorial=3;
                         fagendado+ '</span>'   ); 
 		           
 		  $("#ordenPorEntregar_numdeorden").text('Orden No.'+ item.idtblordencompra);
-		 
+		  
+		   
+		  
+		   $("#ordenPorEntregar_nombrecliente").text(item.tblordencompra_nombrecliente);	
+		
                   });  //cierre del each
 	 
 	 
@@ -1982,7 +2172,7 @@ var tabla3_OrdenesHistorial=3;
 			   
 			         $.each(ms.datos, function(i,item){
 			
-                  $("#ordenPorEntregar_nombrecliente").text(item.tblcliente_nombre+' '+item.tblcliente_apellidos);				 
+                //  $("#ordenPorEntregar_nombrecliente").text(item.tblcliente_nombre+' '+item.tblcliente_apellidos);				 
 				  
                   $("#ordenPorEntregar_emailcliente").text(item.tblcliente_email);				 
 				  
@@ -2389,7 +2579,7 @@ var tabla3_OrdenesHistorial=3;
 	  '</div></div></div></div>'+
 	  '</div></div></div>');
 
-      if(msg9.datos[i].tblentregaproducto_statusdeposito!="Pendiente"){
+      if(msg9.datos[i].tblentregaproducto_statusdeposito!="Pendiente" || msg9.datos[i].tblentregaproducto_statusdeposito!="pendiente" || msg9.datos[i].tblentregaproducto_statusdeposito!="PENDIENTE"){
         $('#statusdeposito_historial').append('<span class="uk-badge uk-badge-success">'+
 		msg9.datos[i].tblentregaproducto_statusdeposito+'</span>');
       }else {
@@ -2653,7 +2843,7 @@ function geocodeResult(results, status) {
                   $("#carrito_telcliente").append('<span class="md-list-heading">'+
 				  item.tblcliente_celular+' </span>');
 					});//fin del each 
-					}else{console.log("noo");}
+					}else{nph=false;}
 
                       })
           .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})

@@ -1,9 +1,58 @@
 <?php
 require '../../db/ConexionDB.php';
 //falta requiere 
-class FuncionesBePickler{
+class FuncionesReporte{
 
 	function _constructu(){}
+	
+	/*Obtiene un registro de tblentregaproducto  por ordencompra y proveedor*/
+    public static function getTblentregaproductoByOrdenProveedorD2($idtblordencompra,$idtblproveedor){
+	    $estatus="entregado";
+		$consulta = "SELECT * FROM tblentregaproducto WHERE tblentregaproducto_idtblordencompra = ? 
+		            AND tblentregaproducto_idtblproveedor = ? AND tblentregaproducto_status=?
+					ORDER BY tblentregaproducto_fchpagoproveedor DESC"; 
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(3,$estatus,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	/*Muestra orden pagada con tblcarritoproduct*/
+	public static function getAllTblordencompraDatosD2($nameCiudad,$fechaIni,$fechaFin){ 
+	        
+			$consulta = "SELECT Distinct(PRO.tblproveedor_nombre),PRO.idtblproveedor,
+                        OC.idtblordencompra,OC.tblordencompra_fchordencompra,OC.tblordencompra_nombrecliente,
+						ENV.tbldatosenvio_fchagendado,ENV.tbldatosenvio_ciudad
+                        FROM tblordencompra OC                                        
+   INNER JOIN tblcarritoproduct CA ON  CA.tblcarritoproduct_idtblordencompra = OC.idtblordencompra 
+   INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra
+   INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = CA.tblcarritoproduct_idtblproductdetalle
+   INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto
+   INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = TP.tblproveedor_idtblproveedor      		    
+   WHERE OC.tblordencompra_statuspagado=1 AND ENV.tbldatosenvio_ciudad= ? 
+   AND OC.tblordencompra_fchordencompra Between ? AND ?";
+   	  	
+       try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$nameCiudad,PDO::PARAM_STR);
+            $resultado->bindParam(2,$fechaIni,PDO::PARAM_STR);
+            $resultado->bindParam(3,$fechaFin,PDO::PARAM_STR);			
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
      /*Muestra orden pagada en base a un rango d efachas*/
 	public static function getAllTblordencompraDatosbyFechas($nameCiudad,$fechaIni,$fechaFin){ 
 	                       

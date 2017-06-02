@@ -448,7 +448,7 @@ function cantidadCupones(){
 		     }
 		
 	   else if( !(/^([0-9])*$/.test(valor)) ){    
-			UIkit.modal.alert('Es necesario que el campo Valor del Cupón solo contega Digitos (ejemplo:100).';
+			UIkit.modal.alert('Es necesario que el campo Valor del Cupón solo contega Digitos (ejemplo:100).');
 		    }  
 	 else if( $('#selectCiudadMod').val()==null){
 			UIkit.modal.alert('Es necesario escoger una ciudad.');

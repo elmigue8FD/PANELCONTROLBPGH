@@ -1,5 +1,5 @@
 <?php
-include_once 'FuncionesBePickler.php';
+include_once 'FuncionesReporte.php';
 include_once 'mPDF/mpdf.php';
 
 if (isset($_POST["generar100"])) 
@@ -37,7 +37,7 @@ $cuerpo .= "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http
 
 //----------------
  
-$respuesta = FuncionesBePickler::getAllTblordencompraDatosbyFechas($nameCiudad,$fechaIni,$fechaFin);              
+$respuesta = FuncionesReporte::getAllTblordencompraDatosbyFechas($nameCiudad,$fechaIni,$fechaFin);              
               
           foreach( $respuesta as $res1){     		  
 		  $idtblordencompra =$res1['idtblordencompra']; 
@@ -56,7 +56,7 @@ $respuesta = FuncionesBePickler::getAllTblordencompraDatosbyFechas($nameCiudad,$
 		}else{			
 		$comisionXservDomic = $costoServDom*0.15*1.16;  }                
 			  
-		       $respuesta2 = FuncionesBePickler::getTblentregaproductoByOrdenProveedorFechas($idtblordencompra,$idtblproveedor);
+		       $respuesta2 = FuncionesReporte::getTblentregaproductoByOrdenProveedorFechas($idtblordencompra,$idtblproveedor);
 		       foreach( $respuesta2 as $res2){				                                
 					
                             $fCompra=$res1['tblordencompra_fchordencompra'];
@@ -96,7 +96,7 @@ $cuerpo .= "<br><br/>
 $cuerpo .= "<table class='table2'>
 <tr class='rell'><td>Categoria:</td><td>Nombre del Producto:</td>  <td>Caracteristicas</td>  <td>Cantidad</td> <td>Precio Original Unitario </td></tr>
 "; 
-           $productos = FuncionesBePickler::getAllTblcarritoproductByidorden3($idtblordencompra,$idtblproveedor);		 
+           $productos = FuncionesReporte::getAllTblcarritoproductByidorden3($idtblordencompra,$idtblproveedor);		 
 		      foreach( $productos as $resP){
 				  
 				  
@@ -134,7 +134,7 @@ $cuerpo .= "
            
          
 //Productos complementarios------------
-$productosComplementarios = FuncionesBePickler::getAllTblordencompraProCompR($idtblordencompra,$idtblproveedor);  
+$productosComplementarios = FuncionesReporte::getAllTblordencompraProCompR($idtblordencompra,$idtblproveedor);  
                foreach( $productosComplementarios as $resPCom){	
                      
 $cuerpo .= "
@@ -216,7 +216,8 @@ unset($sistemaPago); //$comRetenida
 unset($comRetenida);
 		  }
 
-  $filename='ReporteVentas.pdf';
+  $archivo='ReporteVentas.pdf';
+  $archivo_de_salida = $archivo;
   $mpdf  =  new mPDF('c','letter','','',24,24,34,24);
   $mpdf->SetDisplayMode('fullpage');  // ()decidir como se va a mostrar el PDF
   $mpdf->SetAuthor("BePickler"); //poner autor al pdf, puede ser puesto de varias maneras
@@ -224,8 +225,19 @@ unset($comRetenida);
   $mpdf->WriteHTML ($stylesheet,1);
  // $mpdf->WriteHTML ($stylesheet2,2);
   $mpdf->WriteHTML($cuerpo,2);
-  $mpdf->Output($filename,'I'); //sacar lo que el objeto en writehtml tiene y lo mostrara en pantalla	
-	   
+  //$mpdf->Output($filename,'I'); //sacar lo que el objeto en writehtml tiene y lo mostrara en pantalla	
+	$mpdf->Output($archivo_de_salida); 
+
+//Creacion de las cabeceras que generarán el archivo pdf
+header ("Content-Type: application/download");
+header ("Content-Disposition: attachment; filename=$archivo");
+header("Content-Length: " . filesize("$archivo"));
+$fp = fopen($archivo, "r");
+fpassthru($fp);
+fclose($fp);
+
+//Eliminación del archivo en el servidor
+unlink($archivo); 
 	
 }
 unset($nameCiudad);

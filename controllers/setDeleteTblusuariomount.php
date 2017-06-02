@@ -11,6 +11,7 @@ $solicitadoBy   = '';
 $email = '';
 $cel = '';
 $id = '';
+$estatus = '';
 $emailmodifico  = '';
 $resultado         = ''; 
 /**
@@ -22,11 +23,12 @@ if (!empty($_POST)){
     $email			= $_POST['email'];
     $cel			= $_POST['cel'];   
 	$id			= $_POST['id'];
+	$estatus	    = $_POST['estatus'];
 	$emailmodifico	= $_POST['emailmodifico'];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setDeleteTblusuariomount($email,$cel,$emailmodifico,$id);
+    $resultado = FuncionesBePickler::setDeleteTblusuariomount($email,$cel,$estatus,$emailmodifico,$id);
     
     if($resultado)
     {
@@ -50,6 +52,7 @@ unset($solicitadoBy);
 unset($email);
 unset($cel);
 unset($id);
+unset($estatus);
 unset($emailmodifico);
 unset($resultado);
 ?>

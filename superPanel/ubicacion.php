@@ -671,6 +671,8 @@
                               $('#mostrarCiudadesBody').html("");
 							 mostrarCiudadesRegistradas();							 
 							 cantidadCiudades();
+							  $('#selectColonia').html(""); //se actualizan en el menu de colonias
+							  mostrarCiudadesU();
 									  
                                     }else {
                                       UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
