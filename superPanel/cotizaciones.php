@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
  <html lang="en"> 
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -89,7 +92,7 @@
 					
 					               <div>
 								   <br/><br/>
-								   <h4> Para mas información, haz clic en el Registro. </h4>
+								   <h4> Para más información, haz clic en el Registro. </h4>
 								   <label class="uk-float-right" id="numeroCotiProductos"> </label> 
 								   <br/>
 								   </div>
@@ -304,7 +307,7 @@
 					
 					               <div>
 								   <br/><br/>
-								   <h4> Para mas información, haz clic en el registro. </h4>
+								   <h4> Para más información, haz clic en el registro. </h4>
 								   <label class="uk-float-right" id="numeroCotiProductosNuevos"> </label> 
 								   <br/>
 								   </div>
@@ -865,7 +868,7 @@ function detalleCotizacion(idtblordencotizador,idtblcarritoproductcotizador){
 
          $("#cotizacion_botondeubicacion").append('<button id="ye" class="md-btn md-btn-block ye"'+
 	          ' onclick="mapaGeo('+2+','+idmapaCotizaciones+')" type="button"  data-uk-modal="{target:'+
-	  "'#mapa'"+',modal: false,bgclose:false}"> Ubicacion de Entrega en Mapa</button>'); 
+	  "'#mapa'"+',modal: false,bgclose:false}"> Ubicación de Entrega en Mapa</button>'); 
 	  
        	  
 	  
@@ -1009,7 +1012,7 @@ function detalleCtizacionProductNuevo(idtblordencotizador,idtblcarritoproductnue
           $("#productnuevo_email").append('<span class="md-list-heading">'+item2.tblordencotizador_email+'</span><span class="uk-text-small uk-text-muted">Email</span>');
           $("#productnuevo_telef").append('<span class="md-list-heading">'+item2.tblordencotizador_telefono+'</span><span class="uk-text-small uk-text-muted">Telefono</span>');
           $("#productnuevo_direccion").append('<span class="md-list-heading" id="dirCompletaCotizacionNueva">'+item2.tblordencotizador_pais+", "+item2.tblordencotizador_ciudad+", "+item2.tblordencotizador_direccion+'</span><span class="uk-text-small uk-text-muted">Dirección de Evento</span>');
-          $("#cotizacionnueva_botondeubicacion2").append('<button id="ye" class="md-btn md-btn-block ye" type="button"  data-uk-modal="{target:'+"'#mapa'"+',modal: false,bgclose:false}" onclick="mapaGeo('+3+','+idmapaCotizacionesNuevas+')"> Ubicacion de Entrega en Mapa</button>');
+          $("#cotizacionnueva_botondeubicacion2").append('<button id="ye" class="md-btn md-btn-block ye" type="button"  data-uk-modal="{target:'+"'#mapa'"+',modal: false,bgclose:false}" onclick="mapaGeo('+3+','+idmapaCotizacionesNuevas+')"> Ubicación de Entrega en Mapa</button>');
         
    
 		    });

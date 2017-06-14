@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
 <html lang="en">
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -76,7 +79,7 @@
                                     <h2>Notificaciones</h2>
                                     </div>
 									<div > 
-									<h4>Para mas información del mensaje, hay clic en el destinatario.</h4>
+									<h4>Para más información del mensaje, hay clic en el destinatario.</h4>
 									</div>
                     <br>
                   <div class="uk-text-center oculto" id="esperarMostrarNotifica" >
@@ -350,7 +353,8 @@
 		emisor= $("#enviarmensaje_nombre").val();
 		idSeccion= $("#seccion").val();
 		idProveedor= $("#SelectProveedor").val();
-		emailUsuario="reyna@gmail.com"; 
+		
+		 var emailUsuario = "<?php echo $_SESSION['email']; ?>";		 
 		estatus=0;
 		
 		

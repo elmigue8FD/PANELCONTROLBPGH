@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
 <html lang="en">
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -231,7 +234,7 @@
                 </div>
 				<div class="uk-margin-medium-bottom">
                     <label for="task_title">Repetir Password:</label>
-                    <input type="password" class="md-input" id="alta_password2" name="snippet_title" />
+                    <input type="password" class="md-input" id="alta_passwordDos" name="snippet_title" />
                 </div>
 				
 				<div class="uk-margin-medium-bottom">
@@ -314,7 +317,7 @@
     function mostrarDatosUsuario(idu){
           
     $.ajax({ 
-       method: "POST",dataType: "json",url: "../../../controllers/getTblUsuario.php", 
+       method: "POST",dataType: "json",url: "./../../controllers/getTblUsuario.php", 
 	   data: {solicitadoBy:"WEB",idtblusuario:idu}}) 
             .done(function(msg){ 
                
@@ -346,7 +349,8 @@
 				      cel= $("#modificar_celular").val();
 				   puesto=$("#modificar_puesto").val();
 				   ciudad=$("#modificar_ciudad").val();
-		   emaildeUsuario="Flor@gmail.com";
+		  
+		    var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		 
 				
 		   if( $('#modificar_nombre').val()==""){			  
 		UIkit.modal.alert('Es necesario completar el campo Nombre.');		
@@ -379,7 +383,7 @@
 	   else{    
 			   
 		           $.ajax({ 
-                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblusuarioSinEst.php", 				  
+                   method: "POST",dataType: "json",url: "./../../controllers/setUpdateTblusuarioSinEst.php", 				  
 				   data:{solicitadoBy:"WEB",nombre:nombre,				  
 				   ap:apaterno,am:amaterno,email:email,
 				   cel:cel,puesto:puesto,ciudad:ciudad,id:id, 
@@ -430,11 +434,11 @@
           cel_alta =$("#alta_cel").val();	
 	   puesto_alta =$("#alta_puesto").val();
          pass_alta =$("#alta_password").val();	
-         pass_alta2 =$("#alta_password2").val();
+         pass_alta2 =$("#alta_passwordDos").val();  
              ciudad =$("#alta_ciudad").val();		 
       estatus_alta = $("#alta_estatus").prop('checked'); 	    
-      emailUsuario ="reyna@gmail.com";   
-	
+      
+	var emailUsuario = "<?php echo $_SESSION['email']; ?>";	
 	if(estatus_alta){
 		   estatus_alta=1;		
 		     }
@@ -467,8 +471,8 @@
 			 
 		else if	(  $('#alta_password').val()=="" ){
 			UIkit.modal.alert('Es necesario completar el campo Password.');
-		     }
-         else if	(  $('#alta_password2').val()=="" ){
+		     }            
+        else if	(  $('#alta_passwordDos').val()=="" ){
 			UIkit.modal.alert('Es necesario completar el campo Repetir Password.');
 		     }
          else if( (/\s/.test(pass_alta)) || (/\s/.test(pass_alta2)) ){ 
@@ -488,7 +492,7 @@
 	   else{
 		   
 		 $.ajax({    //inicia ajax  
-       method: "POST",dataType: "json",url: "../../../controllers/getCheckTblusuario.php",
+       method: "POST",dataType: "json",url: "./../../controllers/getCheckTblusuario.php",
 	   data: {solicitadoBy:"WEB",email:email_alta,cel:cel_alta}	         
 	          })
             .done(function(mpa){  
@@ -500,7 +504,7 @@
 					          $("#agregarNUsuario").addClass("oculto");
 					 $.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "../../../controllers/setTblusuariosmount.php", 
+							   url: "./../../controllers/setTblusuariosmount.php", 
 							   data: {solicitadoBy:"WEB",
 							   nombre:nombre_alta,
 	                           apaterno:paterno_alta,
@@ -556,7 +560,7 @@
 		function mostrarPuestos(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblnivelaccesoAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblnivelaccesoAct.php", 
 	 data: {solicitadoBy:"WEB"}}) 
             .done(function(mostC){
 				 
@@ -588,7 +592,7 @@
    function mostrarCiudades(){	
       
      $.ajax({     
-     method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostC){
 				//console.log(mcol);   
@@ -623,7 +627,7 @@
 			    
           $.ajax({     
           method: "POST",dataType: "json",
-	      url: "../../../controllers/getAllTblusuariosmount.php", data: {solicitadoBy:"WEB",ciudad:ciudad},
+	      url: "./../../controllers/getAllTblusuariosmount.php", data: {solicitadoBy:"WEB",ciudad:ciudad},
 		  beforeSend: function(){
 				   $('#esperarMostrarUsuarios').css('display','inline');}	
 		  })
@@ -787,14 +791,14 @@
 					estatus=2;  
                    //ciudad= $("ciudadNombre"+idu).val();
                     var ciudad= $("#selectciudad").val();				   
-		             emaildeUsuario="Flor@gmail.com";	
-					 
+		            
+					var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";	 
            UIkit.modal.confirm('Si desea eliminar al usuario,presione Ok', function(){                      
 			     
 			   
 		          $.ajax({ 
                    method: "POST",dataType:"json",
-				   url: "../../../controllers/setDeleteTblusuariomount.php", 				  
+				   url: "./../../controllers/setDeleteTblusuariomount.php", 				  
 				   data:{solicitadoBy:"WEB",id:idu,email:email,
 				   cel:cel,estatus:estatus,emailmodifico:emaildeUsuario} })
                   .done(function(mg){
@@ -823,8 +827,8 @@
   function ModEstatusUsuario(idu){ 
 		     activoModificar1 =  $("#mostrarEstatus"+idu).prop('checked');		
 										
-			 emaildeUsuario="Flor@gmail.com";
-			 
+			
+			 var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
 			if(activoModificar1){
 		         activoModificar1=1; 
 			     $("#estado"+idu).text("Activo");
@@ -834,7 +838,7 @@
 				}		   
 		  
              $.ajax({ 
-                   method:"POST",dataType: "json",url: "../../../controllers/setUpdateUsuario.php", 				  
+                   method:"POST",dataType: "json",url: "./../../controllers/setUpdateUsuario.php", 				  
 				   data:{solicitadoBy:"WEB",idusuario:idu,activado:activoModificar1,
 				   emailmodifico:emaildeUsuario}})
                   .done(function(mg){

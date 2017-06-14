@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
  <html lang="en"> 
  <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -64,7 +67,7 @@
 								<ul class="uk-tab" class="named_tab" data-uk-tab="{connect:'#settings_users', animation: 'slide-horizontal' }">
                                    
 									<li class="uk-active"><a href="#"> Carritos</a></li>
-                                    <li><a href="#"> Ordenes </a></li>
+                                    <li><a href="#"> Órdenes </a></li>
                                    <li><a href="#"> Pagos </a></li>
 								   <li><a href="#" onclick="resetCamp();"> Reporte </a></li>
                                      
@@ -88,7 +91,7 @@
 					               <div class="md-card-content">
 									<div>           
                                     <h2>Ventas</h2>
-									<span class="uk-text-upper uk-text-small">Ordes no Concretadas por el Cliente</span> 
+									<span class="uk-text-upper uk-text-small">Órdenes no Concretadas por el Cliente</span> 
                                     </div>	
 					
 					              
@@ -104,7 +107,7 @@
 					
 					               <div>
 								   <br/>
-								   <h4> Para mas información, haz clic en el Registro. </h4>
+								   <h4> Para más información, haz clic en el Registro. </h4>
 								    <label class="uk-float-right" id="numeroCarritos"> </label> 
 									<br/>
 									
@@ -353,7 +356,7 @@
 					               <div class="md-card-content">
 									<div>    <!-- id="page_heading" -->         
                                     <h2>Ventas</h2>
-									<span class="uk-text-upper uk-text-small">Ordenes</span> 
+									<span class="uk-text-upper uk-text-small">Órdenes</span> 
                                   </div>	
 					
 					                
@@ -368,7 +371,7 @@
 					                </div>
 									<br/><br/>
 					               <div>								  
-								   <h4> Para mas información de la orden, haz clic en el Registro. </h4>
+								   <h4> Para más información de la orden, haz clic en el Registro. </h4>
 								    
 									<label class="uk-float-right" id="numeroOrdenes"> </label> 
 									<br/>
@@ -388,7 +391,7 @@
 				<div class="md-card">
                 <div class="md-card-content">
                     <div class="uk-overflow-container uk-margin-bottom">
-					   <h3> Ordenes por entregar </h3>
+					   <h3> Órdenes por entregar </h3>
                       <!--  <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair ts_issues2" id="tablaOrdenesPorEntregar">
                            -->
                           <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair " id="tablaOrdenesPorEntregar">
@@ -431,7 +434,7 @@
 			 <div class="md-card">
                 <div class="md-card-content">
                     <div class="uk-overflow-container uk-margin-bottom">
-					   <h3> Ordenes pendientes de entrega por caso de incidentes </h3>
+					   <h3> Órdenes pendientes de entrega por caso de incidentes </h3>
                       <!--  <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair ts_issues2" id="tablaOrdenesEntregarPendientes">
                           -->
                                 <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair " id="tablaOrdenesEntregarPendientes">
@@ -476,7 +479,7 @@
 				<div class="md-card">
                 <div class="md-card-content">
                     <div class="uk-overflow-container uk-margin-bottom">
-					   <h3> Ordenes entregadas (Historial) </h3>
+					   <h3> Órdenes entregadas (Historial) </h3>
                       <!-- <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair ts_issues2" id="tabla_OrdenesHistorial">
                           -->
                           <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair " id="tabla_OrdenesHistorial">
@@ -764,7 +767,7 @@
 				<div class="md-card">
                 <div class="md-card-content">
                     <div class="uk-overflow-container uk-margin-bottom">
-					   <h3> Ordenes pendientes de pago </h3>
+					   <h3> Órdenes pendientes de pago </h3>
                        <!-- <table class="uk-table uk-table-align-vertical uk-table-nowrap tablesorter tablesorter-altair ts_issues2" id="tabla_PagosPendientes">
                            -->
                           <table class="uk-table uk-table-nowrap table_check uk-table-hover tablesorter tablesorter-altair " id="tabla_PagosPendientes">
@@ -1483,15 +1486,16 @@ var tabla3_OrdenesHistorial=3;
 			    identregaproducto= $('#spanIdentregaPend'+identrega).text();				
 	            statusdeposito="Pagado";	
 			     envioCiudad = $("#spanCiudadEnvio").text();
-			    emaildeUsuario="Flor@gmail.com"; //emailusuamodifico
+			   
+				 var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		 
 				
 		tipoN= 1;
 		asunto= "Orden Depositada";
 		mensaje= "Ya se Deposito la Orden Número: "+ idtblordencompra;
 		emisor= "Ventas BePickler";
 		idSeccion= 3;
-		idProveedor= $("#idd"+idtblproveedor).val();
-		emailUsuario="reyna@gmail.com"; 
+		idProveedor= $("#idd"+idtblproveedor).val();		
+		var emailUsuario = "<?php echo $_SESSION['email']; ?>";	
 		estatus=0;
 				
 				UIkit.modal.confirm('Si desea confirmar Orden ya Depositada, presione Ok', function(){ 
@@ -2430,7 +2434,7 @@ var tabla3_OrdenesHistorial=3;
 	  
       $("#botondeubicacion").append('<button id="ye" class="md-btn md-btn-block ye"'+
 	  ' onclick="mapaGeo('+0+','+idmapaOrdenes+')" type="button"  data-uk-modal="{target:'+
-	  "'#mapa'"+',modal: false,bgclose:false}"> Ubicacion de Entrega en Mapa</button>'); 
+	  "'#mapa'"+',modal: false,bgclose:false}"> Ubicación de Entrega en Mapa</button>'); 
 	 //class="md-btn md-btn-primary md-btn-block md-btn-wave-light"class="md-btn md-btn-flat " 
           }
 

@@ -4,12 +4,15 @@
      color:white;
  }
  
-      .rell{  background-color:#CCCCCC;
-    
+      .rell{  background-color:#dd5465;
+    color:white;
        }
+	   
+	   .aba{border-bottom:1 px solid #black;
+	   }
 		 
 		 body { 
-    background-image: url(bepi.jpeg); 
+    background-image: url(fondoBP.jpg); 
 	/*background:url(background.jpg) no-repeat;*/
 	 background-position:center center;
 	background-repeat:no-repeat; 
@@ -35,6 +38,7 @@
 		  width: 100%; /*ancho*/
 		 /*height: 35%;   alto*/
 		 /*margin: auto;*/
+		 border-collapse: collapse;
 		 font-family: Arial;		
 		color: black;
 		font-size:9pt;
@@ -51,12 +55,13 @@
 		 /*height: 35%;   alto*/
 		 /*margin: auto;   */
 		 font-family: Arial;		
-		color: black;  /*letra*/
+		  /*letra*/
+		  
 		font-size:9pt;
 	   	
       }	
-	  .table2 td{ border: solid 1em; 
-                border-color: #333333;
+	  .table2 td{ border:1; 
+                border-color: #CCCCCC;
 		/*  width: 15px; ancho text-align:center;*/
 		/* height: 35%;*/
           }	 

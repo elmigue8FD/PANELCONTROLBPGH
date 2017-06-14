@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
 <html lang="en">
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -584,8 +587,8 @@
  function ModEstatusCiudad(idciudad){
 		     activoModificar =  $("#mostrarEstatus"+idciudad).prop('checked');		
 										
-			 emaildeUsuario="Flor@gmail.com";
 			 
+			 var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		  
 			if(activoModificar){
 		       activoModificar=1; 
                $("#estado"+idciudad).text("Activo");
@@ -624,7 +627,8 @@
 	 ciudadNombre=$("#altaNombreCiudad").val();
       paisId=$("input[name='altaNombrePais']:checked").val(); 
      ciudadEstatus= $("#altaEstatusCiudad").prop('checked'); 	    
-     emailUsuario="reyna@gmail.com";   
+     
+ var emailUsuario = "<?php echo $_SESSION['email']; ?>";	 
 	
 	if(ciudadEstatus){
 		   ciudadEstatus=1;		
@@ -728,7 +732,10 @@
                idciudad= $('#paraIdCiudad').text();
 	           nombreModificar= $("#modificarCiudad").val();
 			   idpais= $('#paraIdPais').text();  
-			    emaildeProveedor="Flor@gmail.com";
+			  
+				var emaildeProveedor = "<?php echo $_SESSION['email']; ?>";	 
+	
+				
 		  if ( $("#modificarCiudad").val()!="")
 		  {
 			   
@@ -877,7 +884,9 @@
    function ModEstatusColonia(idcolonia){ 
 		     activoModificar1 =  $("#mostrarEstatusCo"+idcolonia).prop('checked');		
 										
-			 emaildeUsuario="Flor@gmail.com";
+			
+			 var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";	 
+	
 			 
 			if(activoModificar1){
 		         activoModificar1=1; 
@@ -919,7 +928,9 @@
 	 coloniaNombre=$("#altaColonia").val();
 	 coloniaCodpost=$("#altaCodPostal").val();    
      coloniaEstatus= $("#altaEstatusColonia").prop('checked'); 	    
-     emailUsuario="reyna@gmail.com";   
+     
+	 var emailUsuario = "<?php echo $_SESSION['email']; ?>";	 
+	
 	
 	if(coloniaEstatus){
 		   coloniaEstatus=1;		
@@ -1034,7 +1045,9 @@
 	           modificaCiudad= $("#modificarCiudadColonia").val();
 			   modificaColonia= $('#modificarColoniaNombre').val(); 
 			   modificaCodpos= $('#modificarColoniaCodpos').val(); 
-			   emaildeProveedor="Flor@gmail.com";
+			 
+			   var emaildeProveedor = "<?php echo $_SESSION['email']; ?>";	 
+	
 				
 		  if( $('#modificarCiudadColonia').val()==null){
 			UIkit.modal.alert('Es necesario escoger una ciudad.');

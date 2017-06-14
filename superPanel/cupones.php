@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
 <html lang="en"> 
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -438,7 +441,8 @@ function cantidadCupones(){
 	           nombre= $("#modificarNombre").val();
 			     valor= $("#modificarValor").val(); 
 			   idciudad= $("#selectCiudadMod").val(); 
-			   email="Flor@gmail.com";
+			   
+			    var email = "<?php echo $_SESSION['email']; ?>";		 
 				
 		  if( $('#modificarNombre').val()==null){
 			UIkit.modal.alert('Es necesario completar el campo de Nombre del Cupón.');
@@ -652,7 +656,8 @@ function cantidadCupones(){
    
 		     activoModificar1 =  $("#mostrarEstatus"+idcupon).prop('checked');		
 										
-			 emaildeUsuario="Flor@gmail.com";
+			 
+			  var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		 
 			 
 			if(activoModificar1){
 		         activoModificar1=1; 
@@ -699,8 +704,9 @@ function cantidadCupones(){
 	 ciudad=$("#selectCiudad").val();    
      //estatus= $("#altaEstatus").prop('checked'); 
     cuponEstatus= $("#altaEstatus").prop('checked'); 		 
-     emailUsuario="reyna@gmail.com";   
-	
+      
+	var emailUsuario = "<?php echo $_SESSION['email']; ?>";		 
+			 
 	
 		  
 	if(cuponEstatus){

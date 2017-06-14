@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
 <html lang="en"> 
 <!-- Create by: Reyna Maria Martinez Vazquez-->

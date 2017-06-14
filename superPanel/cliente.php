@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
  <html lang="en"> 
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -150,7 +153,7 @@
                   
 					              
 								   
-								   <h4> Para mas información, haz clic en el nombre del cliente. </h4>
+								   <h4> Para más información, haz clic en el registro del cliente. </h4>
 								    <label class="uk-float-right" id="numeroRegistrados"> </label> 
 									<br/>
 									

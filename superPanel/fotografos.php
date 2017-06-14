@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
 <html lang="en">
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -497,9 +500,8 @@
      telefono= $("#foto_tel").val();    
      precio =$("#foto_precio").val();
      estatus=1;	 
-     emailUsuario="reyna@gmail.com";   
-	 
-	
+     
+	 var emailUsuario = "<?php echo $_SESSION['email']; ?>";		 
 	 
 	  srcimg1=$('#foto1').val().replace(/C:\\fakepath\\/i, '');  //id del input visible
       srcimg2=$('#foto2').val().replace(/C:\\fakepath\\/i, '');
@@ -775,8 +777,7 @@
                          '           <div class="md-list-content">'+
                           '              <span class="uk-text-small uk-text-muted">Ciudad</span>'+
                            '             <span >'+item.tblciudad_nombre+'</span> '+  
-						   '<input type="checkbox" id="estatusFotog'+idfo+'" class="checkbox" name="checkbox" '+item.tblfotografo_activado+'/> '+ 
-                            '        </div> '+
+						    '        </div> '+
                              '   </li><li> '+
                               '      <div class="md-list-content"> '+
                                '         <span class="uk-text-small uk-text-muted">Direcci&oacute;n</span> '+
@@ -807,11 +808,7 @@
 							     
 			            			
                                 	
-						/*if(item.tblfotografo_contacto=="" && item.tblfotografo_direccion=="" ){
-                                           $("#botonEliminarFotografo"+g).remove();
-										   $("#bbMod"+g).remove();										
-										    											
-                                           }*/
+						
 										   
 						          if(parseInt(item.tblfotografo_activado)!=0){
                                           $("#estatusFotog"+idfo).prop("checked", true);										 
@@ -870,7 +867,9 @@
                      estatus = 0;					   
 	           
                                						   
-		             emaildeUsuario="Flor@gmail.com";	
+		             
+             var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		 
+	 					 
 					 
            UIkit.modal.confirm('Si desea eliminar al Fotografo, presione Ok', function(){                      
 			     
@@ -958,8 +957,9 @@
                tel= $("#mod_tel").val();
 			   precio= $("#mod_precio").val();
 			  
-			   emaildeUsuario="Flor@gmail.com";
-			    
+			   
+			 var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		 
+	 			   
    	
 	  var arregloIddeFotografo=[];
       var arregloImagenes=[];

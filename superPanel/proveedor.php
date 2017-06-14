@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
 <html lang="en">
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -949,8 +952,8 @@
       pass=$("#altaPassUsuario").val();	 
 	  pass2 =$("#altaPassUsuario2").val();	 
      estatus= $("#altaEstatusUsuario").prop('checked'); 	    
-     emailUsuario="reyna@gmail.com";   
-	
+     
+	 var emailUsuario = "<?php echo $_SESSION['email']; ?>";		 
 	if(estatus){
 		   estatus=1;		
 		     }
@@ -1106,8 +1109,8 @@
  function ModEstatusUsuario(id){
 		     activoModificar =  $("#mostrarEstatusU"+id).prop('checked');		
 										
-			 emaildeUsuario="Flor@gmail.com";
 			 
+			  var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";	
 			if(activoModificar){
 		       activoModificar=1; 
                $("#estadoU"+id).text("Activo");
@@ -1249,7 +1252,8 @@
 
 			   pass= $('#modPassUsuario').val();
 			   pass2= $('#modPassUsuario2').val();
-			   emaildeUsua="Flor@gmail.com";
+			  
+			 var emaildeUsua = "<?php echo $_SESSION['email']; ?>";		
 				
 		  if( $('#modCiudadUsuario').val()==null){
 			UIkit.modal.alert('Es necesario escoger una ciudad.');
@@ -1398,8 +1402,8 @@
                       email="";
 				      cel= "";
 					  estatus=2;
-		             emaildeUsuario="Flor@gmail.com";	
-					 
+		            
+					var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";	 
            UIkit.modal.confirm('Si desea eliminar al usuario,presione Ok', function(){                      
 			     
 			   
@@ -1888,8 +1892,8 @@
 					  direcc = $("#iddirecc"+idproveedor).val();
 					  estatus=2;
 					  tblciudad_idtblciudad=$("#proveedorCiudad").val();			   
-		             emaildeUsuario="Flor@gmail.com";	
-					 
+		             
+					var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";	 
            UIkit.modal.confirm('Si desea eliminar al usuario,presione Ok', function(){                      
 			     
 			   
@@ -2075,8 +2079,8 @@
 			   ciudadModificar= $("#proveedorCiudadModd").val();
 			   coloniaModificar= $("#proveedorcoloniaMod").val();
 			   paqueteModificar= $("#proveedorpaquetemod").val();
-			   emaildeProveedor="Flor@gmail.com";
-			    	    
+			  
+			   var emaildeProveedor = "<?php echo $_SESSION['email']; ?>";	 	    
 			   servicioModificar= $("input[name='tipodeserviciomodificar']:checked").val();				 
 						if($("#tiendamod").prop('checked')){
 						        servicioModificar=1;
@@ -2391,8 +2395,8 @@
       function actualizarProv(idproveedor){
 		     activoModificar = $("#mar"+idproveedor).prop('checked');		
 										
-			 emaildeProveedor="Flor@gmail.com";
 			 
+			 var emaildeProveedor = "<?php echo $_SESSION['email']; ?>";	 
 			if(activoModificar){
 		       activoModificar=1;             
            $('#estadoProveedor'+idproveedor).text("Activo"); 
@@ -2447,7 +2451,8 @@
     proveedorservico = $("input[name='tipodeservicio']:checked").val(); 
     proveedorpedido = $("input[name='tipopedido']:checked").val();      
      proveedoractivado =$("#idactivado").prop('checked');    
-    var emailUsuario="reyna@gmail.com";
+    
+	 var emailUsuario = "<?php echo $_SESSION['email']; ?>";
 	
 	 imagen=$('#logoproveedorV1').val().replace(/C:\\fakepath\\/i, ''); 	 
 	 imagen='logo_Proveedor_'+proveedornombre+'_'+imagen;	

@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
 <!doctype html>
 <html lang="en"> 
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -450,7 +453,9 @@
       function actualizarProducto(id_detalle){
 		  		    			
 			    estatus = $("#estado"+id_detalle).prop('checked');
-			 emaildeUsuario="Flor@gmail.com";
+			 
+			  var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		
+			 
 			if(estatus){
 		       estatus=1; 
 			   $("#estadoProducto"+id_detalle).text("Activo"); }
@@ -642,7 +647,10 @@
    function actualizarProducto2(id_detalle2){
 		  		    			 
 			    estatus = $("#estado"+id_detalle2).prop('checked');
-			 emaildeUsuario="Flor@gmail.com";
+			 
+			 var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		
+			 
+			 
 			if(estatus){
 		       estatus=1; 
 			   $("#estadoProducto"+id_detalle2).text("Activo"); }
