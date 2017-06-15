@@ -7,29 +7,21 @@ require './InfoSolicitadaBy.php';
 /**
  * Variables Utilizadas
  */
-$solicitadoBy   = '';
-$email = '';
-$cel = '';
-$id = '';
-$estatus  = '';
-$emailmodifico  = '';
-$resultado         = ''; 
+$solicitadoBy= '';
+$idtblusuarioproveedor='';
+$resultado= '';
 /**
  * Validamos que el array $_POST no es null.
  */
 if (!empty($_POST)){
 
-	$solicitadoBy	= $_POST["solicitadoBy"];   
-    $email			= $_POST['email'];
-    $cel			= $_POST['cel'];   
-	$id			= $_POST['id'];
-	$estatus		= $_POST['estatus'];
-	$emailmodifico	= $_POST['emailmodifico'];
+	$solicitadoBy=$_POST["solicitadoBy"];
+    $idtblusuarioproveedor=$_POST["idtblusuarioproveedor"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setDeleteTblusuariomount($email,$cel,$estatus,$emailmodifico,$id);
-    
+    $resultado = FuncionesBePickler::setDeleteTblusuarioproveedor($idtblusuarioproveedor);
+
     if($resultado)
     {
         /**
@@ -49,10 +41,6 @@ if (!empty($_POST)){
  * Desctruimos las variables para liberar memoria
  */
 unset($solicitadoBy);
-unset($email);
-unset($cel);
-unset($id);
-unset($estatus);
-unset($emailmodifico);
+unset($idtblusuarioproveedor);
 unset($resultado);
 ?>
