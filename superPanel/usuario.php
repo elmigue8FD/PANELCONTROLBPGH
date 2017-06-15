@@ -1,5 +1,5 @@
 <?php
-require_once '../php/seguridad.php'; 
+//require_once '../php/seguridad.php'; 
 ?>
 <!doctype html>
 <html lang="en">
@@ -350,7 +350,8 @@ require_once '../php/seguridad.php';
 				   puesto=$("#modificar_puesto").val();
 				   ciudad=$("#modificar_ciudad").val();
 		  
-		    var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		 
+		   // var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
+			var emaildeUsuario = "reyna";
 				
 		   if( $('#modificar_nombre').val()==""){			  
 		UIkit.modal.alert('Es necesario completar el campo Nombre.');		
@@ -438,7 +439,8 @@ require_once '../php/seguridad.php';
              ciudad =$("#alta_ciudad").val();		 
       estatus_alta = $("#alta_estatus").prop('checked'); 	    
       
-	var emailUsuario = "<?php echo $_SESSION['email']; ?>";	
+	//var emailUsuario = "<?php echo $_SESSION['email']; ?>";	
+	var emailUsuario = "reyna";	
 	if(estatus_alta){
 		   estatus_alta=1;		
 		     }
@@ -792,7 +794,9 @@ require_once '../php/seguridad.php';
                    //ciudad= $("ciudadNombre"+idu).val();
                     var ciudad= $("#selectciudad").val();				   
 		            
-					var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";	 
+					//var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
+                    var emaildeUsuario = "reyna";
+					
            UIkit.modal.confirm('Si desea eliminar al usuario,presione Ok', function(){                      
 			     
 			   
@@ -828,7 +832,9 @@ require_once '../php/seguridad.php';
 		     activoModificar1 =  $("#mostrarEstatus"+idu).prop('checked');		
 										
 			
-			 var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
+			// var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
+			  var emaildeUsuario = "reyna";
+			 
 			if(activoModificar1){
 		         activoModificar1=1; 
 			     $("#estado"+idu).text("Activo");

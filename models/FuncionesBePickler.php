@@ -11923,7 +11923,106 @@ AND exists
 		}
 	}
 	
+	/*Consultar usuario para inicio de sesion  */
+	public static function getTblusuariosmountUsuario($email,$pass){
+	    
+		$consulta = "SELECT * FROM tblusuariosmount              
+                WHERE BINARY tblusuariosmount_email=? AND tblusuariosmount_password= ? ";	
+				 
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$email,PDO::PARAM_STR);		
+            $resultado->bindParam(2,$pass,PDO::PARAM_STR);				
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
 	
+	
+	/*verificar usuario  */
+	public static function getTblusuariosmountUsuario1($email,$pass){
+	    
+		$consulta = "SELECT * FROM tblusuariosmount              
+                WHERE tblusuariosmount_email=? AND tblusuariosmount_password= ? ";	
+				 
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$email,PDO::PARAM_STR);		
+            $resultado->bindParam(2,$pass,PDO::PARAM_STR);				
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	//modificar telefono de usuario
+	public static function setUpdateTblusuariosmountCel($idusuario,$cel,$emailmodifico){
+	                      
+     $update = "UPDATE tblusuariosmount SET tblusuariosmount_celular = ?, 
+	           tblusuariosmount_fchmodificacion= NOW(), 
+	      tblusuariosmount_emailusuamodifico = ? WHERE idtblusuariosmount= ?";
+
+
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$cel,PDO::PARAM_STR);
+			$resultado->bindParam(2,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idusuario,PDO::PARAM_INT);			
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	//modificar telefono y pass de usuario
+	public static function setUpdateTblusuariosmountCelP($idusuario,$cel,$emailmodifico,$pass){
+	                       
+     $update = "UPDATE tblusuariosmount SET tblusuariosmount_celular = ?, 
+	      tblusuariosmount_password =?, tblusuariosmount_fchmodificacion= NOW(), 
+	      tblusuariosmount_emailusuamodifico = ? WHERE idtblusuariosmount= ?";
+
+
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);
+			$resultado->bindParam(1,$cel,PDO::PARAM_STR);
+			$resultado->bindParam(2,$pass,PDO::PARAM_STR);
+			$resultado->bindParam(3,$emailmodifico,PDO::PARAM_STR);
+			$resultado->bindParam(4,$idusuario,PDO::PARAM_INT);			
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
+	
+	//modificar pass de usuario
+	public static function setUpdateTblusuariosmountPass($strEmail,$pass){
+	                       
+     $update = "UPDATE tblusuariosmount SET 
+	      tblusuariosmount_password =?, tblusuariosmount_fchmodificacion= NOW(), 
+	      tblusuariosmount_emailusuamodifico = ? WHERE tblusuariosmount_email= ?";
+
+
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);			
+			$resultado->bindParam(1,$pass,PDO::PARAM_STR);
+			$resultado->bindParam(2,$strEmail,PDO::PARAM_STR);
+			$resultado->bindParam(3,$strEmail,PDO::PARAM_STR);			
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+	}
 	
 	
 	

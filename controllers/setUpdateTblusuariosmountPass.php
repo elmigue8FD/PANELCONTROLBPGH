@@ -58,11 +58,14 @@ $pass='';
 
 	    $cabeceras .= 'From:'.'BePickler'. "\n";
 
-	    $destinatario="reyna_law@hotmail.com";
+	    $destinatario="reyna.maria.martinez.vazquez@gmail.com";
 		//$destinatario= $strEmail;
 	    $asunto="Recuperación Password.";
-
-	     mail($destinatario, $asunto, $mensaje, $cabeceras); 
+       // mail($destinatario, $asunto, $mensaje, $cabeceras);
+	  
+	  /*if(mail($destinatario, $asunto, $mensaje, $cabeceras)){
+			 echo "si";
+		 } else{ echo "no"; } */
 		
 		
 

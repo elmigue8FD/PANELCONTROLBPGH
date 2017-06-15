@@ -66,12 +66,12 @@ session_destroy();
           <h2 class="heading_b colorB">Lamentamos que tuvieras problemas para acceder</h2>
           <p>Los usuarios y contraseñas son sensibles a mayúsculas, minúsculas, puntos y comas.</p>
           <p>Primero, intenta lo mas sencillo: Si tu recuerdas tu constraseña pero no funciona, revisa si tu usuario este escrito correctamente, luego intenta de nuevo.</p>
-          <p>Si aún no puedes acceder, puedes <a class="" href="#" id="password_reset_show"> cambiar la contraseña</a>.</p>
+          <p>Si aún no puedes acceder, puedes <a class="" onclick="lim();" id="password_reset_show"> cambiar la contraseña</a>.</p>
         </div>
         <div class="md-card-content large-padding" id="login_password_reset" style="display: none">
           <button type="button" class="uk-position-top-right uk-close uk-margin-right uk-margin-top back_to_login"></button>
           <h2 class="heading_a uk-margin-large-bottom">Cambiar Contraseña</h2>
-          <form>
+          <form id="formCambCont">
             <div class="uk-form-row">
               <label for="login_email_reset">Ingresa tu Dirección de correo electrónico:</label>
               <input class="md-input" type="text" id="login_email_reset" name="login_email_reset" />
@@ -122,7 +122,7 @@ session_destroy();
 	 else  {		
 					 $.ajax({ 
                                method: "POST",dataType: "json",
-							   url: "./../../controllers/getTblusuariosmountUsuario.php", 
+							   url: "../../../controllers/getTblusuariosmountUsuario.php", 
 							   data: {solicitadoBy:"WEB",email:usuario,							   
 							   pass:pass},
 							   beforeSend: function(){
@@ -155,9 +155,10 @@ session_destroy();
 	
 }//fin de la funcion
 
-
-
-
+  function lim(){
+ $("#Solicitar_soporte").removeClass('oculto');
+  $("#formCambCont")[0].reset();
+  }
 function FX_passGenerator() {
 	
 	
@@ -170,17 +171,18 @@ function FX_passGenerator() {
 	
   $("#Solicitar_soporte").addClass('oculto');
        $.ajax({ 
-                   method: "POST",dataType: "json",url: "./../../controllers/solicitudDeSoporteLoginPanel1.php", 				  
+                   method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblusuariosmountPass.php", 				  
 				    data: {solicitadoBy:"WEB",login_email_reset:correo}		   })
                   .done(function(mg){					 
                             if(parseInt(mg.success)==1){  							 
-                              UIkit.modal.alert('Estatus de la Ciudad modificado con Éxito'); 
-							   
-							   
+                              UIkit.modal.alert('Nueva contraseña enviada a tu dirección de correo electronico.'); 
+							   $("#formCambCont")[0].reset(); 
+							  $("#Solicitar_soporte").removeClass('oculto');
 								 
 							} else{
-                              UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
-                                 }     
+                              UIkit.modal.alert('Ocurrio un error, vuelva intentarlo. Verifique su dirección de correo electronico.');
+                                $("#Solicitar_soporte").removeClass('oculto');
+							   }     
 								 }) 	  
                   .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
                

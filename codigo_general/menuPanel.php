@@ -31,7 +31,7 @@
                             <div class="uk-dropdown uk-dropdown-small">
                                 <ul class="uk-nav js-uk-prevent">
                                     <li><a data-uk-modal="{target:'#modificarPerfil',bgclose:false,modal:false,modal:false}" onclick="perfilUsuario();devCel();">Mi perfil</a></li>
-                                    <li><a id="logOut" >Cerrar sesion</a></li>                                                        
+                                    <li><a id="logOut" >Cerrar sesión</a></li>                                                        
                                 </ul>
                             </div>
                         </li>  
