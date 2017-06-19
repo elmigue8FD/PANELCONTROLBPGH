@@ -1,5 +1,5 @@
 <?php
-require_once '../php/seguridad.php'; 
+//require_once '../php/seguridad.php'; 
 ?>
  <!doctype html>
 <html lang="en">
