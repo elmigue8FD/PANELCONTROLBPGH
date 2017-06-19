@@ -12024,6 +12024,24 @@ AND exists
 		}
 	}
 	
+	/*Consulta los proveedores en base a la ciudad a la que pertenecen*/
+	public static function getAllProveedorByCiudadStg($idtblciudad){	             
+		$consulta = "SELECT TP.*
+                     FROM tblproveedor TP                      
+                     INNER JOIN tblcolonia TC ON TP.tblcolonia_idtblcolonia=TC.idtblcolonia
+                     INNER JOIN tblciudad TCDD ON TCDD.idtblciudad=TC.tblciudad_idtblciudad               
+                     WHERE TCDD.tblciudad_nombre= ? ORDER BY TP.tblproveedor_nombre ASC";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
 	
 	
 	
