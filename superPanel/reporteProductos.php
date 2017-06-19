@@ -179,17 +179,7 @@ if (isset($_POST["generar102"]))
 	//-------------Productos complementarios------------
 $productosComplementarios = FuncionesReporte::getAllTblordencompraProCompR($idtblordencompra,$idtblproveedor);  
                foreach( $productosComplementarios as $resPCom){	
-                     
-       //........precio real
-    /*$subtotalcomplem = $resPCom['tblcarritoproductcomplem_cantidad']*$resPCom['tblcarritoproductcomplem_precioreal'];
-    $subtotalReal = $subtotalReal + $subtotalcomplem;
-     
-                     //........precio BP
-    $subtotalcomplemBPan = $resPCom['tblcarritoproductcomplem_cantidad']*$resPCom['tblcarritoproductcomplem_preciobp'];
-    $subtotalCompraBP = $subtotalCompraBP + $subtotalcomplemBPan;	
-
-    $totalCompraBPOK= $subtotalCompraBP + $costoServDom; */	
-	   
+          	   
 	   $categoriaComp="Producto Complementario";
 	   
 	   $nombreProdComp = $resPCom['tblcarritoproductcomplem_nombreproducto'];
