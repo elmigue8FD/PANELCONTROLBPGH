@@ -1,3 +1,6 @@
+<?php
+require_once '../php/seguridad.php'; 
+?>
  <!doctype html>
 <html lang="en">
 <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -306,7 +309,9 @@ function cerrarSesion(){
                     data: {}
                   })
                   .done(function( msg ) {
-                    
+                   
+				   window.location.href = "index.php";
+				   
                   })
                   .fail(function( jqXHR, textStatus ) {
                     console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);

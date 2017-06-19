@@ -1,5 +1,5 @@
 <?php
-//require_once '../php/seguridad.php'; 
+require_once '../php/seguridad.php'; 
 ?>
 <!doctype html>
 <html lang="en">
@@ -80,19 +80,6 @@
 			   </div>
 			   </div></div>     				 
                </div>
-				
-				
-              
-
-           <!-- <div class="pricing_table pricing_table_a uk-grid uk-grid-small uk-grid-width-medium-1-3 uk-grid-width-large-1-3 uk-margin-large-bottom" data-uk-grid-margin id="tarjetaUsuario">
-      
-	       <div class="uk-grid uk-grid-medium uk-grid-width-medium-1-3 uk-grid-width-large-1-3" data-uk-grid-margin id="tarjetaUsuario">    data-uk-grid-match="{target:'.md-card-content'}"
-         -->
-		<!-- <div  class="uk-grid uk-grid-medium uk-grid-width-medium-1-2 uk-grid-width-large-1-3" data-uk-grid-margin>
-            --> 		
-		  
-								 
-				 <!-- del tamao tarjetas data-uk-grid-match="{target:'.md-card-content'}" -->		
 				<div id="tarjetaUsuario" class="uk-grid uk-grid-width-small-1-3 uk-grid-width-medium-1-3 uk-grid-width-large-1-3 uk-grid-width-xlarge-1-3 " data-uk-grid-margin data-uk-grid-match="{target:'.md-card-content'}">			
 			   
                 </div>
@@ -145,14 +132,12 @@
                   <ul class="md-list md-list-addon">
 				   <label class="uk-text-muted uk-text-small">Email:</label>
 				    <div class="uk-margin-medium-bottom">                   
-                   <!-- <input type="text" class="md-input" id="modificar_email" name="snippet_title" /> -->
-				    <input class="md-input" id="modificar_email" name="modificar_email" type="text"  />
+                   <input class="md-input" id="modificar_email" name="modificar_email" type="text"  />
             
                      </div>
 				   <label class="uk-text-muted uk-text-small">Celular (LADA + Número Celular):</label>
                 <div class="uk-margin-medium-bottom">                    
-                   <!-- <input type="text" class="md-input" id="modificar_celular" name="snippet_title" maxlength="10"/>
-                -->
+               
 				<input type="text" class="md-input masked_input" id="modificar_celular" data-inputmask="'mask': '9999999999'" data-inputmask-showmaskonhover="false" />
               
 				</div>
@@ -209,8 +194,7 @@
                     <input type="text" class="md-input" id="alta_amaterno" name="snippet_title" />
                 </div>
 				<div class="uk-margin-medium-bottom">
-                    <label for="task_title">Email:</label>
-              <!-- <input type="text" class="md-input" id="alta_email" name="alta_email" /> -->
+                    <label for="task_title">Email:</label>              
 			  <input class="md-input" id="alta_email" name="alta_email" type="text"  />
             
 				   
@@ -302,13 +286,12 @@
 	<script type="text/javascript" > 
       $( window ).ready(function()
     {
-        //console.log('pagina lista');
-	     //mostrarUsuarios();  //se cargar automaticamente cuando carge la pagina	
+        
 		 mostrarPuestos();	 
 		 mostrarCiudades();
-		// $("#tarjetaUsuario").jPaginate();
+		
       }); 
-	     /* Create by: Reyna Maria Martinez Vazquez*/ 
+	 /* Create by: Reyna Maria Martinez Vazquez*/ 
 		
 	//-----------------------------------Modificar Datos--------------------------------
    //..............Mostrar datos del usuario para posteriormente modificarlos ---------------------- 
@@ -335,7 +318,7 @@
 			   
                    })              
           .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-        //  .always(function(){  console.log("always");});				  
+        			  
 	}	//fin d ela funcion	 
 
 	//---------actualizar datos del usuario
@@ -350,8 +333,8 @@
 				   puesto=$("#modificar_puesto").val();
 				   ciudad=$("#modificar_ciudad").val();
 		  
-		   // var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
-			var emaildeUsuario = "reyna";
+		    var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
+			
 				
 		   if( $('#modificar_nombre').val()==""){			  
 		UIkit.modal.alert('Es necesario completar el campo Nombre.');		
@@ -396,7 +379,7 @@
                   .done(function(mg){					
 					 if(parseInt(mg.success)==1){ 
 					 
-							UIkit.modal("#modificar").hide(); //se oculta el pupop de Modificar usuario                           
+							UIkit.modal("#modificar").hide();                         
                               UIkit.modal.alert('Usuario Modificado con &eacute;xito'); 
 							  
 							
@@ -439,8 +422,8 @@
              ciudad =$("#alta_ciudad").val();		 
       estatus_alta = $("#alta_estatus").prop('checked'); 	    
       
-	//var emailUsuario = "<?php echo $_SESSION['email']; ?>";	
-	var emailUsuario = "reyna";	
+	var emailUsuario = "<?php echo $_SESSION['email']; ?>";	
+	
 	if(estatus_alta){
 		   estatus_alta=1;		
 		     }
@@ -527,24 +510,23 @@
        
                                     if(parseInt(ms.success)==1){	
 									
-									   $('#alta_formu')[0].reset(); //vaciar el formulario
-                                      UIkit.modal("#altaem").hide();  //oculta el pupop                                     
+									   $('#alta_formu')[0].reset(); 
+                                      UIkit.modal("#altaem").hide();                                    
                                       UIkit.modal.alert('Usuario Registrado con éxito');
                                       
-									  $("#paraInicial").remove();
-									  
+									  $("#paraInicial").remove();									  
                                
 								 $('#selectciudad').val(ciudad);				            
 				                 $('#tarjetaUsuario').html("");					
 				                 mostrarUsuarios();								
-								 //cantidadColonias();   
+								
 									
                                     }else {
                                       UIkit.modal.alert('Ocurrio un error, vuelva intentarlo');
                                     }                          
                                })
                               .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-                              .always(function(){  $("#cargarAltaUsuario").hide(); //console.log("always");
+                              .always(function(){  $("#cargarAltaUsuario").hide(); 
 							  });	
 							
 					} //cierra else
@@ -552,7 +534,7 @@
 				
               })
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-      //.always(function(){  console.log("always");}); //fin ajax
+     
 	   }
 }//fin de la funcion	
 
@@ -570,7 +552,6 @@
 				 $('#modificar_puesto').html(""); 
 				  
 				$("#alta_puesto").append('<option value="" disabled selected readonly >Selecciona un puesto...</option>'); 
-				//$("#modificar_puesto").append('<option value="" disabled selected readonly >Selecciona un puesto...</option>'); 
 				
                 $.each(mostC.datos, function(i,item)				
 				 {	  
@@ -588,7 +569,7 @@
                                  
               })
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-      //.always(function(){  console.log("always");});
+      
    } //fin de la funcion
    
    function mostrarCiudades(){	
@@ -597,19 +578,17 @@
      method: "POST",dataType: "json",url: "../../../controllers/getAllTblciudadAct.php", 
 	 data: {solicitadoBy:"WEB"}})
             .done(function(mostC){
-				//console.log(mcol);   
+				
 				  $('#alta_ciudad').html(""); 
 				  $('#modificar_ciudad').html(""); 
 				  
 			$("#alta_ciudad").append('<option value="" disabled selected readonly >Selecciona una ciudad...</option>'); 
-			//$("#modificar_ciudad").append('<option value="" disabled selected readonly >Selecciona una ciudad...</option>'); 
-				//$("#modificarCiudadColonia").append('<option value="" disabled selected readonly >Selecciona...</option>');
-				
+			
                 $.each(mostC.datos, function(i,item)				
 				 {	  
 				 idtblciudad=item.idtblciudad;	
 				 
-				 //muestra ciudades en el encabezado de la interfaz principal
+				
                  $("#alta_ciudad").append('<option value="' + idtblciudad +'">' + item.tblciudad_nombre + '</option>');
 			    $("#modificar_ciudad").append('<option value="' + idtblciudad +'">' + item.tblciudad_nombre + '</option>');  				 
                 $("#selectciudad").append('<option value="' + idtblciudad +'">' + item.tblciudad_nombre + '</option>');  				    
@@ -618,7 +597,7 @@
                                  
               })
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-      //.always(function(){  console.log("always");});
+      
    } 
    
    
@@ -642,7 +621,7 @@
                        $("#nohayUs").empty();						 
                 $.each(mo.datos, function(i,item)
                {				   
-			      //asignamos nombres a las valores
+			      
 			        Nombre=item.tblusuariosmount_nombre;
 				    paterno=item.tblusuariosmount_apellidoPaterno; 
 					materno=item.tblusuariosmount_apellidoMaterno; 
@@ -653,7 +632,7 @@
 					puesto = item.tblniveleacceso_nombre;
                     idu=item.idtblusuariosmount;               
                     
-				 //muestra ciudades en la tabla 
+				
 				                   
 	                   if(item.tblusuariosmount_activado=="2"){ 
 					   nousu=true}else{
@@ -670,28 +649,16 @@
                                '</a> '+	
                        '<button type="button" class="md-fab md-fab-small md-fab-accent uk-float-left" onclick="eliminarUsuario('+idu+')" '+
 				       'id="botonEliminar'+i+'">'+ ' <i class="material-icons">&#xE872;</i>'+   
-					   '</button>'+ 
-					//	'<a class="md-fab md-fab-small md-fab-accent uk-float-left" id="botonEliminar'+i+'" '+
-		              //        ' eliminarUsuario('+idu+'); " >'+  	                                                                            
-						//	  ' <i class="material-icons">&#xE872;</i>'+            					  
-                         //      '</a> '+	
-                       
+					   '</button>'+ 					                       
                     '</div>'+
 						
                               '<div class="uk-text-center"> </br>'+ //
 							  
                               '<img class="md-card-head-avatar" src="../assets/img/delPanel/pk.jpg" alt=""/>'+
                              ' </div>'+
-							/* '<div class="uk-grid uk-grid-medium" >'+	  
-						'<div class="uk-width-large-1-2">'+	  
-                       '<button type="button" class="md-btn md-btn-flat ye" onclick="eliminarUsuario('+idu+')" '+
-				       'id="botonEliminar'+i+'">Eliminar</button>'+ 	 
-			           ' </div>'+
-					   <button type="submit" id="user_edit_delete" data-uk-tooltip="{cls:'uk-tooltip-small',pos:'bottom'}" 
-					   title="Delete"><i class="material-icons md-color-white">&#xE872;</i></button>*/
 							 '</div>'+ 
                          '<div class="md-card-content">'+
-                      '   <ul class="md-list md-list-addon">'+ //md-list-addon
+                      '   <ul class="md-list md-list-addon">'+ 
 						 '<li>'+
 						 '<div class="md-list-addon-element">'+
                          '<i class="md-list-addon-icon material-icons">&#xE7fd;</i>'+
@@ -784,18 +751,18 @@
               })
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
       .always(function(){ $("#esperarMostrarUsuarios").hide(); });
-   }  //fin d ela funcion
+   }  //fin de la funcion
    
    
     function eliminarUsuario(idu){ 	
                    email=$("#m_email"+idu).val();
 				      cel= $("#m_cel"+idu).val();
 					estatus=2;  
-                   //ciudad= $("ciudadNombre"+idu).val();
+                 
                     var ciudad= $("#selectciudad").val();				   
 		            
-					//var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
-                    var emaildeUsuario = "reyna";
+					var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
+                   
 					
            UIkit.modal.confirm('Si desea eliminar al usuario,presione Ok', function(){                      
 			     
@@ -808,7 +775,7 @@
                   .done(function(mg){
                      				  
 					 if(parseInt(mg.success)==1){ 					 
-							//UIkit.modal("#modificar").hide(); //se oculta el pupop de Modificar usuario 
+							
                                 								
                               UIkit.modal.alert('Usuario Eliminado con &eacute;xito'); 
 							  
@@ -832,8 +799,8 @@
 		     activoModificar1 =  $("#mostrarEstatus"+idu).prop('checked');		
 										
 			
-			// var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
-			  var emaildeUsuario = "reyna";
+		var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";
+			  
 			 
 			if(activoModificar1){
 		         activoModificar1=1; 
@@ -858,7 +825,7 @@
                                  }     
 								 }) 	  
                   .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
-                  //.always(function(){  console.log("always");});
+                  
 			 
 	}//fin d ela funcion   
   	

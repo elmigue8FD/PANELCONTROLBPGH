@@ -68,7 +68,7 @@ require_once '../php/seguridad.php';
                                    
 									<li class="uk-active"><a href="#">Inicio</a></li>
                                     <li><a href="#"> Ventas </a></li>
-                                     <li><a href="#"> Ordenes  </a></li>
+                                     <li><a href="#"> Órdenes  </a></li>
 									 <li><a href="#"> Utilidades </a></li>
 									  <li><a href="#"> Registros </a></li>
 									    <li><a href="#"> Cotizaciones </a></li>
@@ -158,7 +158,7 @@ require_once '../php/seguridad.php';
 									
 									<div>  <!-- inicio pag 3 -->
 													
-				                   <h3>Ordenes</h3>
+				                   <h3>Órdenes</h3>
 
                                     </div>  <!-- fin pag 3 -->
 									

@@ -24,7 +24,7 @@ $pass='';
     $longitudCadena=strlen($cadena);
      
     //Se define la variable que va a contener la contraseña
-    $pass = "";
+    $pass1 = "";
     //Se define la longitud de la contraseña, en mi caso 10, pero puedes poner la longitud que quieras
     $longitudPass=10;
      
@@ -34,11 +34,11 @@ $pass='';
         $pos=rand(0,$longitudCadena-1);
      
         //Vamos formando la contraseña en cada iteraccion del bucle, añadiendo a la cadena $pass la letra correspondiente a la posicion $pos en la cadena de caracteres definida.
-        $pass .= substr($cadena,$pos,1);
+        $pass1 .= substr($cadena,$pos,1);
     } 
     //return $pass;	
 	
-	$pass =md5($pass);
+	$pass =md5($pass1);
 		
 	$resultado = FuncionesBePickler::setUpdateTblusuariosmountPass($strEmail,$pass);
    
@@ -51,7 +51,7 @@ $pass='';
          */
     	InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
 		
-		$mensaje = 'Estimado usuario'.$strEmail.'tu nueva contraseña es: '.$pass.' ,puedes cambiarla una vez que accedas a tu cuenta.';
+		$mensaje = 'Estimado usuario'.$strEmail.'tu nueva contraseña es: '.$pass1.' ,puedes cambiarla una vez que accedas a tu cuenta.';
 
 	    $cabeceras  = 'MIME-Version: 1.0' . "\n";
 	    $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\n";
