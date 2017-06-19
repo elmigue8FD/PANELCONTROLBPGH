@@ -1,6 +1,6 @@
 <?php
 require_once '../php/seguridad.php'; 
-?>
+?> 	 
 <!doctype html>
  <html lang="en"> 
  <!-- Create by: Reyna Maria Martinez Vazquez-->
@@ -880,13 +880,23 @@ require_once '../php/seguridad.php';
                      <div class="uk-grid" data-uk-grid-margin>
 							
 							 
-                        <div class="uk-width-medium-1-4"></br></br>						   							 
-                             <select id="selectCiudadG" name="selectCiudadG" class="uk-button uk-form-select" data-uk-form-select >
+                        <div class="uk-width-medium-1-3"></br>
+						     <span class="uk-text-small">Ciudad: </span>
+                             <select id="selectCiudadG" name="selectCiudadG" class="uk-button uk-form-select" data-uk-form-select onchange="mostrar_proveedorLista();">
                              </select>
 				         
                         </div>
-					
-                                <div class="uk-width-medium-1-4"></br>	
+						
+						<div class="uk-width-medium-2-3 oculto" id="provEsc"></br>
+                            <span class="uk-text-small">Proveedor: </span>
+                                   <select id="SelectProveedor" name="SelectProveedor" class="uk-button uk-form-select" data-uk-form-select>
+                                    <option value="" disabled selected readonly >Selecciona...</option>
+								   
+                                   </select>                             
+                              </div>  </div> 
+					 <div class="uk-grid" data-uk-grid-margin>
+						
+                                <div class="uk-width-medium-1-3"></br>	
 								   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								   <label>Fecha Inicial</label>
                                     <div class="uk-input-group"> 
@@ -898,7 +908,7 @@ require_once '../php/seguridad.php';
                                    
 									</div> 
                                 </div>
-                                <div class="uk-width-medium-1-4"></br>
+                                <div class="uk-width-medium-1-3"></br>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								   								
 								<label>Fecha Final </label>
@@ -906,9 +916,9 @@ require_once '../php/seguridad.php';
                                         <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
                                        <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="fecha_finalRango" name="fecha_finalRango"> 
                                     </div>
-                                </div>
+                                </div> 
 								
-								<div class="uk-width-medium-1-4"> </br></br>  
+								<div class="uk-width-medium-1-3"> </br></br>  
 								<button type="submit" class="md-btn md-btn-flat ye" id="generar100" name="generar100" onclick="paraPdf(event);">Generar PDF</button>
                              </div>  <!--<input type="hidden" name="generar_factura" value="true">paraPdf(evt) --> 
                             </div> 
@@ -924,7 +934,7 @@ require_once '../php/seguridad.php';
 			   <div class="md-card-content"> 
 			   <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
 			   <div class="uk-width-medium-1-1 uk-container-center">
-			   <span class="uk-text-medium">Generar Reporte de Ordenes:</span>                    
+			   <span class="uk-text-medium">Generar Reporte de órdenes:</span>                    
 			
 			  <form class="uk-form-stacked" id="formuEnvRepoD1" method="post" action="reporte.php" > 
                      <div class="uk-grid" data-uk-grid-margin>
@@ -1117,7 +1127,41 @@ require_once '../php/seguridad.php';
 		 
       });  
 	   /* Create by: Reyna Maria Martinez Vazquez*/
-	  
+	   function mostrar_proveedorLista(){
+
+	      var idtblciudad=$("#selectCiudadG").val();	//se recibe el id que seleciono el usuario del select de Ciudades            
+          
+     $.ajax({     
+     method: "POST",dataType: "json",url: "../../../controllers/getAllProveedorByCiudadStg.php", 
+	 data: {solicitadoBy:"WEB",idtblciudad:idtblciudad }}) 
+            .done(function(mf){				
+		      if (parseInt(mf.success)==1) {				   
+				  $("#provEsc").removeClass('oculto');
+				   $("#SelectProveedor").html("");	
+				  $("#SelectProveedor").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				  $("#SelectProveedor").append('<option value="todos">Todos</option>');
+				  
+                $.each(mf.datos, function(i,item)
+				 {	idtblproveedor=item.idtblproveedor;	
+				      estatus=item.tblproveedor_activado;     
+				 //muestra ciudades en el encabezado de la interfaz principal 
+				 
+				 if (estatus=="1" || estatus=="0"){ provee=true;
+                 $("#SelectProveedor").append('<option value="' + idtblproveedor +'">' + item.tblproveedor_nombre + '</option>');
+				
+				 
+				 }else{ provee=false;}				 
+				   });
+				   
+				   }else{ 
+				    $("#SelectProveedor").html("");
+					$("#SelectProveedor").append('<option value="" disabled selected readonly >Selecciona...</option>'); 
+				} 
+                                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      
+   } //fin
      
 	  function resetCamp(){
 		   $('#formuEnvRepo')[0].reset(); 
@@ -1132,6 +1176,7 @@ require_once '../php/seguridad.php';
 	var ciudad= document.getElementById("selectCiudadG").value;
    var feInicial= document.getElementById("fecha_inicialRango").value;
    var feFinal = document.getElementById("fecha_finalRango").value;
+   var prove = document.getElementById("SelectProveedor").value;
   
 	
 	  var formato= /^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/;
@@ -1141,7 +1186,13 @@ require_once '../php/seguridad.php';
    evt.preventDefault();
     return false;
      }
-   
+	 
+   if(prove =="") {
+    UIkit.modal.alert("Por favor, seleccione una opcion en Proveedor.");
+	evt.preventDefault();
+    return false;
+     }  
+	 
    if(feInicial == ""){
     UIkit.modal.alert("Por favor, complete el campo Fecha Inicial.");
    evt.preventDefault();
@@ -1153,6 +1204,8 @@ require_once '../php/seguridad.php';
 	evt.preventDefault();
     return false;
      } 
+	 
+	
 	
  
  //.............validacion.............................................
@@ -1168,7 +1221,10 @@ require_once '../php/seguridad.php';
     evt.preventDefault();
               }
       
-    
+    if(ciudad !="" && feInicial != "" && feFinal !="" && formato.test(feInicial) && formato.test(feFinal))
+	{    
+		$("#cargarVerReporte").removeClass("oculto"); 
+	}
 	
 }  //fin para pdf
 
@@ -1375,7 +1431,7 @@ var tabla3_OrdenesHistorial=3;
 	 function inicializarTablas(){	 
 	
 	  $("#tablaCarritos").tablesorter({
-    sortList: [[2,0]], //ordenar por de inicio esa columna 
+    sortList: [[0,1]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
       });
@@ -1393,23 +1449,23 @@ var tabla3_OrdenesHistorial=3;
 	  function inicializarTablas_ordenes(){
 	  
 	  $("#tablaOrdenesPorEntregar").tablesorter({ 
-    sortList: [[3,0]], //ordenar por de inicio esa columna 
+    sortList: [[0,1]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
      });
-  
+   
   
     $("#tablaOrdenesEntregarPendientes").tablesorter({
-    sortList: [[3,0]], //ordenar por de inicio esa columna 
+    sortList: [[0,1]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
      });    
 	 
 	 $("#tabla_OrdenesHistorial").tablesorter({
-    sortList: [[5,0]], //ordenar por de inicio esa columna 
+    sortList: [[0,1]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
-     });
+     }); 
 	 
 	 }
 	 
@@ -1433,13 +1489,13 @@ var tabla3_OrdenesHistorial=3;
 	 function inicializarTablas_Pagos(){	 
 	
 	  $("#tabla_PagosPendientes").tablesorter({
-   // sortList: [[5,0]], //ordenar por de inicio esa columna 
+    sortList: [[0,1]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
       });
 	  
 	  $("#tabla_PagosHistorial").tablesorter({
-   // sortList: [[5,0]], //ordenar por de inicio esa columna 
+   sortList: [[0,1]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
       });
@@ -1486,8 +1542,8 @@ var tabla3_OrdenesHistorial=3;
 			    identregaproducto= $('#spanIdentregaPend'+identrega).text();				
 	            statusdeposito="Pagado";	
 			     envioCiudad = $("#spanCiudadEnvio").text();
-			   
-				 var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		 
+			    
+				var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";	
 				
 		tipoN= 1;
 		asunto= "Orden Depositada";
@@ -1495,7 +1551,7 @@ var tabla3_OrdenesHistorial=3;
 		emisor= "Ventas BePickler";
 		idSeccion= 3;
 		idProveedor= $("#idd"+idtblproveedor).val();		
-		var emailUsuario = "<?php echo $_SESSION['email']; ?>";	
+        var emailUsuario = "<?php echo $_SESSION['email']; ?>";			
 		estatus=0;
 				
 				UIkit.modal.confirm('Si desea confirmar Orden ya Depositada, presione Ok', function(){ 
@@ -1674,9 +1730,12 @@ var tabla3_OrdenesHistorial=3;
 					
 					       }						
 				 
-				   	$("#tabla_PagosPendientes").trigger('updateAll', [true]);//actualiza tabla 	
+				   	
                     totalCompra_pagos(o1.datos[s].idtblordencompra,s,o1.datos[s].idtblproveedor);
-				  inicializarPagPagosPendientes();
+					
+				 
+				  $("#tabla_PagosPendientes").trigger('updateAll', [true]);//actualiza tabla 
+ inicializarPagPagosPendientes();				  
 				  //--------------------------------------------------------------
 			  			  
 			                } 
@@ -1714,11 +1773,12 @@ var tabla3_OrdenesHistorial=3;
 					       }							 
 				                   
 				 
-				   	$("#tabla_PagosHistorial").trigger('updateAll', [true]);//actualiza tabla 					
+				   				
 					 //funcion para calcular el Total de la Orden 
                      totalCompra_pagos(o1.datos[s].idtblordencompra,s,o1.datos[s].idtblproveedor);
+					 $("#tabla_PagosHistorial").trigger('updateAll', [true]);//actualiza tabla 
 				 inicializarPagPagosHistorico();
-				    				           
+				    						           
                                  }  //termina el else  
 							 
 							 //---- ------  -----  ---
@@ -1771,7 +1831,7 @@ var tabla3_OrdenesHistorial=3;
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
       .done(function(msg4) { 
       $.each(msg4.datos, function(i4,item){
-      subtotal = (parseInt(msg4.datos[i4].tblcarritoproduct_cantidad))*(parseFloat(msg4.datos[i4].tblproductdetalle_precioreal))*(0.884);
+      subtotal = (parseInt(msg4.datos[i4].tblcarritoproduct_cantidad))*(parseFloat(msg4.datos[i4].tblcarritoproduct_precioreal))*(0.884);
       totalproveedor = totalproveedor + subtotal;
          
         });
@@ -1798,7 +1858,7 @@ var tabla3_OrdenesHistorial=3;
 				  if (parseInt(msg7.success)==1) {
 					  conprovee=true;
         $.each(msg7.datos, function(i,item){
-       subtotalcomplem = (parseInt(msg7.datos[i].tblcarritoproductcomplem_cantidad))*(parseFloat(msg7.datos[i].tblproductcomplem_precioreal))*(0.884);
+       subtotalcomplem = (parseInt(msg7.datos[i].tblcarritoproductcomplem_cantidad))*(parseFloat(msg7.datos[i].tblcarritoproductcomplem_precioreal))*(0.884);
             
 		 totalproveedor = totalproveedor + subtotalcomplem;
          
@@ -1945,19 +2005,19 @@ var tabla3_OrdenesHistorial=3;
 				             );							
 				                   
 				 
-				   	$("#tabla_OrdenesHistorial").trigger('updateAll', [true]);//actualiza tabla 
-					inicializarPagOrdenHis();
-					
-					if(mg3.datos[u].tblentregaproducto_statusdeposito!="Pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito!="pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito!="PENDIENTE"){
-                    $('#tblstatusdeposito'+s).append('<span class="uk-badge uk-badge-success">'+mg3.datos[u].tblentregaproducto_statusdeposito+'</span>');
-                    }else { 
+				   	
+					    
+					if(mg3.datos[u].tblentregaproducto_statusdeposito=="Pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito=="pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito=="PENDIENTE"){
                     $('#tblstatusdeposito'+s).append('<span class="uk-badge uk-badge-warning">'+mg3.datos[u].tblentregaproducto_statusdeposito+'</span>');
+                    }else { 
+                    $('#tblstatusdeposito'+s).append('<span class="uk-badge uk-badge-success">'+mg3.datos[u].tblentregaproducto_statusdeposito+'</span>');
                      }
 					
 					
-					 //funcion para calcular el Total de la Orden 
+					 //funcion para calcular el Total de la Ordenwarning 
                   totalCompra(o1.datos[s].idtblordencompra,s,o1.datos[s].idtblproveedor);
-				 
+				 $("#tabla_OrdenesHistorial").trigger('updateAll', [true]);//actualiza tabla 
+					inicializarPagOrdenHis();
 				  //--------------------------------------------------------------
 			  			  
 			                } 
@@ -2222,10 +2282,12 @@ var tabla3_OrdenesHistorial=3;
 				  });//fin del each
 
           })
-          .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+          .fail(function( jqXHR, textStatus ) {  //console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus); 
+		  })
           			   
 		//cierra mostrar datos cliente
-  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+  }).fail(function( jqXHR, textStatus ) {  //console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);
+  })
   //.always(function(){  console.log("always");  });
   
 	 
@@ -2847,7 +2909,7 @@ function geocodeResult(results, status) {
                   $("#carrito_telcliente").append('<span class="md-list-heading">'+
 				  item.tblcliente_celular+' </span>');
 					});//fin del each 
-					}else{nph=false;}
+					}else{console.log("noo");}
 
                       })
           .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
