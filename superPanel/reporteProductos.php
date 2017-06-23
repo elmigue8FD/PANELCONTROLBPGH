@@ -1,8 +1,17 @@
 <?php
-header('Content-type: txt/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=Reporte_Productos.csv');
-header('Pragma: no-cache');
+ini_set('display_errors', true);
+header('Pragma: public'); 
+header('Content-type: application/vnd.ms-excel; charset=utf-8');
+header('Content-Disposition: attachment; filename=Reporte_Productos.xls');
+header("Content-Transfer-Encoding: none"); 
+header('Cache-Control: no-store, no-cache, must-revalidate'); // HTTP/1.1 esta
+header('Cache-Control: pre-check=0, post-check=0, max-age=0'); // HTTP/1.1  esta
+header("Pragma: no-cache"); 
 header('Expires: 0');
+error_reporting(E_ALL);
+ob_end_clean();
+flush();
+ob_end_flush();	
 
 include_once 'FuncionesReporte.php';
 if (isset($_POST["generar102"])) 
