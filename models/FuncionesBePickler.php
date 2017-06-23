@@ -11259,7 +11259,7 @@ AND exists
 		$consulta = "SELECT OC.* FROM tblordencompra OC               
                 INNER JOIN tbldatosenvio ENV ON ENV.tbldatosenvio_idtblordencompra = OC.idtblordencompra                
                 WHERE OC.tblordencompra_statuspagado=0 AND ENV.tbldatosenvio_ciudad= ? 
-                GROUP BY OC.idtblordencompra ORDER BY OC.tblordencompra_fchordencompra DESC";	
+                ";	
 					 
 		try{
 
