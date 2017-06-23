@@ -79,7 +79,7 @@ require_once '../php/seguridad.php';
                                     <h2>Notificaciones</h2>
                                     </div>
 									<div > 
-									<h4>Para más información del mensaje, hay clic en el destinatario.</h4>
+									<h4>Para más información del mensaje, haz clic en el destinatario.</h4>
 									</div>
                     <br>
                   <div class="uk-text-center oculto" id="esperarMostrarNotifica" >
