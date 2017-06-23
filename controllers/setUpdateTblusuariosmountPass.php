@@ -51,17 +51,24 @@ $pass='';
          */
     	InfoSolicitadaBy::solicitadaby($solicitadoBy, $resultado);
 		
-		$mensaje = 'Estimado usuario'.$strEmail.'tu nueva contraseña es: '.$pass1.' ,puedes cambiarla una vez que accedas a tu cuenta.';
+		$mensaje = '<!doctype html>
+       <html xmlns="http://www.w3.org/1999/xhtml">
+          <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head><body>
+		Estimado usuario '.$strEmail.' tu nuevo password es: '.$pass1.' ,puedes cambiarlo una vez que accedas a tu cuenta.
+		</body>';
 
 	    $cabeceras  = 'MIME-Version: 1.0' . "\n";
 	    $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\n";
+	    $cabeceras .= 'From: no-responder@bepickler.com';
+	    //$cabeceras .= 'Cc: '.$strEmail.' \n';
 
-	    $cabeceras .= 'From:'.'BePickler'. "\n";
-
-	    $destinatario="reyna.maria.martinez.vazquez@gmail.com";
+	    $destinatario= $strEmail;
 		//$destinatario= $strEmail;
-	    $asunto="Recuperación Password.";
-       // mail($destinatario, $asunto, $mensaje, $cabeceras);
+	    $asunto="Recuperacion Password.";
+		
+        mail($destinatario,$asunto,$mensaje,$cabeceras);
 	  
 	  /*if(mail($destinatario, $asunto, $mensaje, $cabeceras)){
 			 echo "si";

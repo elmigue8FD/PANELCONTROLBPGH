@@ -12,7 +12,7 @@ session_destroy();
     <meta name="msapplication-tap-highlight" content="no"/>
 
      <link rel="stylesheet" href="../assets/css/login_page.min.css" />
-	 <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'> 
+	<!-- <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'> -->
     <link rel="stylesheet" href="../bower_components/uikit/css/uikit.almost-flat.min.css"/>
 
     <!-- altair admin login page -->
@@ -137,7 +137,7 @@ session_destroy();
                                  if(parseInt(ms.success)==1){
 									 
 									$('#formInicio')[0].reset(); 
-   $("#respuesta").append('<span class="uk-badge uk-badge-success"> Iniciando Sesion...</span>');	
+   $("#respuesta").append('<span class="uk-badge uk-badge-success"> Iniciando Sesión...</span>');	
 																	
                                     window.location.href = "index2.php";
 									  
@@ -174,13 +174,16 @@ function FX_passGenerator() {
                    method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblusuariosmountPass.php", 				  
 				    data: {solicitadoBy:"WEB",login_email_reset:correo}		   })
                   .done(function(mg){					 
-                            if(parseInt(mg.success)==1){  							 
-                              UIkit.modal.alert('Nueva contraseña enviada a tu dirección de correo electronico.'); 
+                            if(parseInt(mg.success)==1){ 
+
+							
+                              UIkit.modal.alert('Nueva contraseña enviada a tu dirección de correo electrónico. Si no llega a tu Bandeja de entrada, revisa en Spam.'); 
 							   $("#formCambCont")[0].reset(); 
 							  $("#Solicitar_soporte").removeClass('oculto');
-								 
+						
+                       
 							} else{
-                              UIkit.modal.alert('Ocurrio un error, vuelva intentarlo. Verifique su dirección de correo electronico.');
+                              UIkit.modal.alert('Ocurrio un error, vuelva intentarlo. Verifique su dirección de correo electrónico.');
                                 $("#Solicitar_soporte").removeClass('oculto');
 							   }     
 								 }) 	  

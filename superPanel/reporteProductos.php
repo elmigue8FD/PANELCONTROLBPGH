@@ -1,6 +1,6 @@
 <?php
-header('Content-type: application/vnd.ms-excel; charset=utf-8');
-header('Content-Disposition: attachment; filename=Reporte_Productos.xls');
+header('Content-type: txt/csv; charset=utf-8');
+header('Content-Disposition: attachment; filename=Reporte_Productos.csv');
 header('Pragma: no-cache');
 header('Expires: 0');
 
