@@ -346,7 +346,7 @@ require_once '../php/seguridad.php';
 		 
 		 function inicializarTablas(){
   $("#tabla_cupones").tablesorter({
-    sortList: [[3,0]], //ordenar por de inicio esa columna 
+    sortList: [[0,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
 		 }); 
@@ -359,7 +359,7 @@ require_once '../php/seguridad.php';
 		 
 		 function inicializarTablasHistorico(){
 		 $("#tabla_cuponesHistorico").tablesorter({
-    sortList: [[3,0]], //ordenar por de inicio esa columna 
+    sortList: [[0,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
 		 }); 

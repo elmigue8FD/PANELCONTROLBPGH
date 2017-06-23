@@ -378,7 +378,7 @@ $( window ).ready(function()
 	 /* Create by: Reyna Maria Martinez Vazquez*/ 
 		 function inicializarTablas(){
        $("#tabla_invitados").tablesorter({
-    sortList: [[1,0]], //ordenar por de inicio esa columna 
+    sortList: [[0,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
 		 }); 
