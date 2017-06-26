@@ -9478,7 +9478,7 @@ AND exists
 					INNER JOIN tblciudad TC ON TC.idtblciudad = TCD.tblciudad_idtblciudad
 					INNER JOIN tblcliente TCL ON TCL.tblcliente_ciudad = TC.tblciudad_nombre
 					LEFT JOIN tblhistcupondescuento THCD ON TCD.tblcupondescuento_codigo = THCD.tblhistcupondescuento_cupon
-					WHERE TCD.tblcupondescuento_activado = ? AND THCD.tblhistcupondescuento_idtblcliente= ? is NULL AND (DATEDIFF(TCD.tblcupondescuento_fchexpira,NOW()))>5 AND TCL.idtblcliente=?";
+					WHERE TCD.tblcupondescuento_activado = ? AND THCD.tblhistcupondescuento_idtblcliente= ? is NULL AND (DATEDIFF(TCD.tblcupondescuento_fchexpira,NOW()))>5 AND TCL.idtblcliente=? AND TCD.tblcupondescuento_fchexpira>NOW()";
 		
 		try{
 
@@ -9491,6 +9491,30 @@ AND exists
 		} catch(PDOException $e){
 			return false;
 		}
+	}
+
+	/*Funcion que se obtiene  los cupones no usados por el cliente y no activos */
+	public static function getAllTblcuponesdescuentoPorExpirarByidcliente($idtblcliente){
+
+		$activado=1;
+		$consulta = "SELECT TCD.* FROM tblcupondescuento TCD 
+					INNER JOIN tblciudad TC ON TC.idtblciudad = TCD.tblciudad_idtblciudad
+					INNER JOIN tblcliente TCL ON TCL.tblcliente_ciudad = TC.tblciudad_nombre
+					LEFT JOIN tblhistcupondescuento THCD ON TCD.tblcupondescuento_codigo = THCD.tblhistcupondescuento_cupon
+					WHERE TCD.tblcupondescuento_activado = ? AND THCD.tblhistcupondescuento_idtblcliente= ? is NULL AND (DATEDIFF(TCD.tblcupondescuento_fchexpira,NOW()))<6 AND TCL.idtblcliente=? AND TCD.tblcupondescuento_fchexpira>NOW()";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(2,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(3,$idtblcliente,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+		
 	}
 
 	/*Funcion que se obtiene  los cupones no usados por el cliente y no activos */
