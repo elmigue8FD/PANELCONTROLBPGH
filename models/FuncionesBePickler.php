@@ -9477,7 +9477,8 @@ AND exists
 		$consulta = "SELECT TCD.* FROM tblcupondescuento TCD 
 					INNER JOIN tblciudad TC ON TC.idtblciudad = TCD.tblciudad_idtblciudad
 					INNER JOIN tblcliente TCL ON TCL.tblcliente_ciudad = TC.tblciudad_nombre
-					WHERE TCD.tblcupondescuento_activado = ? AND TCD.tblcupondescuento_codigo NOT IN (SELECT tblhistcupondescuento_cupon FROM tblhistcupondescuento WHERE tblhistcupondescuento_idtblcliente != ?) AND (DATEDIFF(TCD.tblcupondescuento_fchexpira,NOW()))>5 AND TCL.idtblcliente=?";
+					LEFT JOIN tblhistcupondescuento THCD ON TCD.tblcupondescuento_codigo = THCD.tblhistcupondescuento_cupon
+					WHERE TCD.tblcupondescuento_activado = ? AND THCD.tblhistcupondescuento_idtblcliente= ? is NULL AND (DATEDIFF(TCD.tblcupondescuento_fchexpira,NOW()))>5 AND TCL.idtblcliente=?";
 		
 		try{
 
