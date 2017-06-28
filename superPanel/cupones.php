@@ -28,7 +28,10 @@ require_once '../php/seguridad.php';
     <!-- themes -->
     <link rel="stylesheet" href="../assets/css/themes/themes_combined.min.css" media="all">
 	<link rel="stylesheet" href="../assets/css/colorPanel.css" media="all">	
-	
+	<!--estilo cal -->
+	<link rel="stylesheet" href="../bower_components/jquery-ui/themes/base/jquery-ui.css" type="text/css" >
+    
+ 
 
 </head>
 <body class="sidebar_main_open sidebar_main_swipe">
@@ -108,7 +111,8 @@ require_once '../php/seguridad.php';
 						  <thead>
                                 <tr>                                   
                                     <th class="uk-text-center" >Cupón</th>
-                                    <th class="uk-text-center">Valor</th>									
+                                    <th class="uk-text-center">Valor</th>
+                                    <th class="uk-text-center">Fecha de vencimiento</th>										
 									<th class="uk-text-center">Estatus</th>						
                                     
                                 </tr>
@@ -118,6 +122,10 @@ require_once '../php/seguridad.php';
                                
                             </tbody>
                         </table>
+						
+						 
+				
+				
 						<div id="pagerCupones" class="pager oculto">
     	<form>
     		<img src="../bower_components/tablesorter/dist/css/images/first.png" class="first"/>
@@ -160,6 +168,13 @@ require_once '../php/seguridad.php';
                             </div>                
 				  </div>
 				   </br>
+				   <label for="task_title">Fecha de vencimiento</label>				
+				 <div class="uk-input-group">
+                <!-- <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>-->
+               <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="altafechaven" name="altafechaven"> 
+               </div> 								
+				</br>
+												
 				 <div class="uk-width-medium-1-2">
                             
 							<span class="uk-text-small">Selecciona una ciudad: </span><br/>
@@ -216,6 +231,12 @@ require_once '../php/seguridad.php';
                              </select>                
                 </div>
                 <br/> 
+				<label for="task_title">Fecha de vencimiento</label>				
+				 <div class="uk-input-group">
+                <!-- <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>-->
+               <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="modfechaven" name="modfechaven"> 
+               </div> 								
+				</br>
                  <div class="uk-text-center oculto" id="cargarModificarCupon" >
                 <label > Procesando... </label>
 				  <img src="cargando.gif" /> 				 
@@ -313,40 +334,61 @@ require_once '../php/seguridad.php';
    
      <?php include('../codigo_general/script_commonPB.php'); ?>  <!-- llamada para ejecutar el jquery -->
 
+    <script src="../assets/js/pages/forms_advanced2.js"></script>
+     <!--page specific plugins -->
+	
+	  <script src="../bower_components/jquery-ui/jquery-ui.js"></script> 
+	  <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script> 
    
-    <!-- page specific plugins -->
-    <!-- tablesorter -->
 	<script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/jquery.tablesorter.widgets.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/widgets/widget-alignChar.min.js"></script>
     <script src="../bower_components/tablesorter/dist/js/extras/jquery.tablesorter.pager.min.js"></script>
-
-    <!--  issues list functions -->
-   <script src="../assets/js/pages/pages_issues.min.js"></script>
-    <!-- page specific plugins -->
-    <!-- ionrangeslider -->
-    <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
-    <!-- htmleditor (codeMirror) -->
-    <script src="../assets/js/uikit_htmleditor_custom.min.js"></script>
-    <!-- inputmask-->
+	
+	<script src="../bower_components/tablesorter/dist/js/widgets/widget-columnSelector.min.js"></script>
+    <script src="../bower_components/tablesorter/dist/js/widgets/widget-print.min.js"></script>
+    <!--  issues list functions 
+   <script src="../assets/js/pages/pages_issues.min.js"></script>  
+   
+    
+  <!--  kendoui functions -->
+  <script src="../bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
+	
+ 
     <script src="../bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
-
-    <!--  forms advanced functions -->
-    <script src="../assets/js/pages/forms_advanced.min.js"></script>
+  
+   
+	<script src="../assets/js/kendoui_custom.min.js"></script> 
+  <!--  kendoui functions -->
+  <script src="../assets/js/pages/kendoui.min.js"></script>
+  <!--page_contact_list-->
+  <script src="../assets/js/pages/page_contact_list.min.js"></script>
+   
 	
 	
 	<script type="text/javascript" >
    
 	 $( window ).ready(function()
-    {    //console.log('pagina lista');
+    {    
+	
+	         $(".calendarioReporte").datepicker( {dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
+                                     monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo",
+                                         "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
+                                         "Noviembre", "Diciembre" ],
+                                     firstDay: 1,
+                                     dateFormat: "dd/mm/yy"
+	                             });
+								 
+								 
 		 mostrarCiudades();
       }); 
+	 
 	     /* Create by: Reyna Maria Martinez Vazquez*/ 
 		 
 		 function inicializarTablas(){
   $("#tabla_cupones").tablesorter({
-    sortList: [[0,0]], //ordenar por de inicio esa columna 
+    sortList: [[2,0]], //ordenar por de inicio esa columna 
     headers: {1: { sorter: "shortDate", dateFormat: "ddmmyyyy" } }, //cambio de formato de fecha 
     widgets: ['filter']//activar el widget de filtro de busqueda
 		 }); 
@@ -422,11 +464,24 @@ function cantidadCupones(){
                
                 //console.log(msg);
 				$.each(msg.datos, function(x,item){
+					
 				  $("#modificarIdcupon").text(item.idtblcupondescuento );			 
 				  $("#modificarNombre").val(item.tblcupondescuento_codigo); 
 				  $("#modificarValor").val(item.tblcupondescuento_descuento); 
                   $("#selectCiudadMod").val(item.tblciudad_idtblciudad);
+				 
 				  
+				  if(item.tblcupondescuento_fechvencimiento==null || item.tblcupondescuento_fechvencimiento==""){
+                                          	 $("#modfechaven").val("");
+                                           }
+						                  else {  
+										fagendado= msg.datos[x].tblcupondescuento_fechvencimiento;
+                                   fagendado = fagendado.split("-");                 
+				                 fagendado = fagendado[2]+"/"+fagendado[1]+"/"+fagendado[0];	
+                               $("#modfechaven").val(fagendado);  
+										  
+                                            } 
+												
 				  
 				        })
                    })              
@@ -441,6 +496,7 @@ function cantidadCupones(){
 	           nombre= $("#modificarNombre").val();
 			     valor= $("#modificarValor").val(); 
 			   idciudad= $("#selectCiudadMod").val(); 
+			  fecha= $("#modfechaven").val(); 
 			   
 			    var email = "<?php echo $_SESSION['email']; ?>";		 
 				
@@ -456,16 +512,27 @@ function cantidadCupones(){
 		    }  
 	 else if( $('#selectCiudadMod').val()==null){
 			UIkit.modal.alert('Es necesario escoger una ciudad.');
-		       }		   
+		       }
+       else if	(  $('#modfechaven').val()=="" ){
+			UIkit.modal.alert('Es necesario completar el campo de Fecha de vencimiento del Cupón.');
+		     }
+      else if( !(/^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/.test(fecha)) ){    
+			UIkit.modal.alert('Fecha de vencimiento es incorrecta, ejemplo dia/mes/año.');
+		    } 			 
 		   
 				
 	   else{    
 			   
+			            fagendado= fecha;
+                        fagendado = fagendado.split("/");                 
+				        fagendado = fagendado[2]+"-"+fagendado[1]+"-"+fagendado[0];
+						
+						
 		           $.ajax({ 
                    method: "POST",dataType: "json",url: "../../../controllers/setUpdateTblcupondescuentoSinEst.php", 				  
 				   data:{solicitadoBy:"WEB",idcupon:idcupon,				  
 				   nombre:nombre,valor:valor,idciudad:idciudad,
-				   emailmodifico:email},
+				   emailmodifico:email,fecha:fagendado},
 				   beforeSend: function(){
                               $('#cargarModificarCupon').css('display','inline');						 
 							  
@@ -609,6 +676,10 @@ function cantidadCupones(){
 				   idcupon= item.idtblcupondescuento;
 				   nombre= item.tblcupondescuento_codigo;
 				   valor=item.tblcupondescuento_descuento;
+				    //fechav=item.tblcupondescuento_fechvencimiento;
+					
+					    
+					
                      // C.tblcupondescuento_activado
                 $("#body_tablaCupones").append(
 				   ' <tr>'+
@@ -619,7 +690,11 @@ function cantidadCupones(){
                					  ' </td>'+
 				'<td class="uk-width-medium-1-3 uk-text-center" >'+				                      
                                   '<label>$ <span id="mostrarPais">'+ valor +' </span></label>'+
-               					  ' </td>'+                                   
+               					  ' </td>'+ 
+                  ' </td>'+
+				'<td class="uk-width-medium-1-3 uk-text-center" >'+				                      
+                                  '<span id="fechavenci'+idcupon+'"> </span>'+
+               					  ' </td>'+                 
                                   '<td class="uk-width-medium-1-3 ">'+									
                 '<input type="checkbox" data-switchery '+
 				'data-switchery-color="#00CC66" onclick="ModEstatus('+idcupon+');"  id="mostrarEstatus'+idcupon+'" '+ item.tblcupondescuento_activado +' />'+  
@@ -636,6 +711,16 @@ function cantidadCupones(){
                                           $("#mostrarEstatus"+idcupon).prop("checked", false);
 										   $("#estado"+idcupon).text("Desactivado");
                                             } 
+											
+									if(item.tblcupondescuento_fechvencimiento==null || item.tblcupondescuento_fechvencimiento==""){
+                                          	 $("#fechavenci"+idcupon).text('----');
+                                           }
+						                  else {  
+										      fechav= mo.datos[i].tblcupondescuento_fechvencimiento;
+                                              fechav = fechav.split("-");                 
+				                              fechav = fechav[2]+"/"+fechav[1]+"/"+fechav[0];
+										   $("#fechavenci"+idcupon).text(fechav);
+                                            } 		
 				 
 				   		$("#tabla_cupones").trigger('updateAll', [true]);//actualiza tabla 
 				         inicializarPagCupon();
@@ -656,9 +741,8 @@ function cantidadCupones(){
    
 		     activoModificar1 =  $("#mostrarEstatus"+idcupon).prop('checked');		
 										
-			 
+			
 			  var emaildeUsuario = "<?php echo $_SESSION['email']; ?>";		 
-			 
 			if(activoModificar1){
 		         activoModificar1=1; 
 			     $("#estado"+idcupon).text("Activo");
@@ -701,12 +785,12 @@ function cantidadCupones(){
 	  
 	 nombre = $("#altaNombre").val();  
 	 valor=$("#altaValor").val();
-	 ciudad=$("#selectCiudad").val();    
+	 ciudad=$("#selectCiudad").val();  
+    fecha=$("#altafechaven").val();  	 
      //estatus= $("#altaEstatus").prop('checked'); 
     cuponEstatus= $("#altaEstatus").prop('checked'); 		 
-      
-	var emailUsuario = "<?php echo $_SESSION['email']; ?>";		 
-			 
+     
+	var emailUsuario = "<?php echo $_SESSION['email']; ?>";	
 	
 		  
 	if(cuponEstatus){
@@ -725,11 +809,24 @@ function cantidadCupones(){
 		
 	   else if( !(/^([0-9])*$/.test(valor)) ){    
 			UIkit.modal.alert('Es necesario que el campo Valor del Cupón solo contega Digitos (ejemplo:100) .');
-		    }  
+		    } 
+			
+    else if	(  $('#altafechaven').val()=="" ){
+			UIkit.modal.alert('Es necesario completar el campo de Fecha de vencimiento del Cupón.');
+		     }   
+	else if( !(/^[0-9][0-9]\/[0-9][0-9]\/[0-9][0-9][0-9][0-9]$/.test(fecha)) ){    
+			UIkit.modal.alert('Fecha de vencimiento es incorrecta, ejemplo dia/mes/año.');
+		    } 
 	 else if( $('#selectCiudad').val()==null){
 			UIkit.modal.alert('Es necesario escoger una ciudad.');
 		       }
 	   else{
+		   
+		               fagendado= fecha;
+                        fagendado = fagendado.split("/");                 
+				        fagendado = fagendado[2]+"-"+fagendado[1]+"-"+fagendado[0];
+						
+						
 		   
 		 $.ajax({    //inicia ajax  
        method: "POST",dataType: "json",url: "../../../controllers/getCheckTblcuponDesc.php",
@@ -746,7 +843,7 @@ function cantidadCupones(){
                                method: "POST",dataType: "json",
 							   url: "../../../controllers/setTblcuponparaDescuento.php", 
 							   data: {solicitadoBy:"WEB",nombre:nombre, 
-							   valor:valor,
+							   valor:valor,fecha:fagendado,
 							   estatus:cuponEstatus,ciudad:ciudad,emailcreo:emailUsuario},
 							 beforeSend: function(){
                               $('#cargarAltaCupon').css('display','inline'); }

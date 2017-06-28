@@ -35,7 +35,7 @@ if (!empty($_POST)){
 	$pass  = $_POST['pass'];
 	$estatus = $_POST['estatus'];
 	$emailcreo	= $_POST['emailcreo'];
-	 $pass =md5($pass);
+	$pass = hash("sha256",$pass);
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */

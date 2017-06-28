@@ -875,8 +875,9 @@ require_once '../php/seguridad.php';
 			   <div class="uk-grid uk-grid-divider" data-uk-grid-margin>
 			   <div class="uk-width-medium-1-1 uk-container-center">
 			   <span class="uk-text-medium">Generar Reporte de ventas:</span>                    
-			
-			  <form class="uk-form-stacked" id="formuEnvRepo" method="post" action="reporteVentas.php" > 
+			<form class="uk-form-stacked" id="formuEnvRepo" method="post" action="reporteVentas.php" > 
+                
+			 
                      <div class="uk-grid" data-uk-grid-margin>
 							
 							 
@@ -916,11 +917,17 @@ require_once '../php/seguridad.php';
                                         <span class="uk-input-group-addon"><i class="uk-input-group-icon uk-icon-calendar"></i></span>
                                        <input placeholder="dia/mes/año" class="calendarioReporte md-input" type="text" id="fecha_finalRango" name="fecha_finalRango"> 
                                     </div>
-                                </div> 
+                                </div> </div> 
 								
-								<div class="uk-width-medium-1-3"> </br></br>  
-								<button type="submit" class="md-btn md-btn-flat ye" id="generar100" name="generar100" onclick="paraPdf(event);">Generar PDF</button>
-                             </div>  <!--<input type="hidden" name="generar_factura" value="true">paraPdf(evt) --> 
+								 <div class="uk-grid" data-uk-grid-margin>
+								<div class="uk-width-medium-1-3"> 
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="submit" class="md-btn md-btn-flat ye" id="generar100" name="generar100" onclick="paraPdf(event);">Generar PDF Vertical</button>
+                              </div>
+							  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							  <div class="uk-width-medium-1-3"> 
+							  <button type="submit" class="md-btn md-btn-flat ye" id="generar100H" name="generar100H" onclick="paraPdf(event);">Generar PDF Horizontal</button>
+                              </div>  <!--paraPdf v --> 
                             </div> 
 							     </form>
 			   
@@ -1103,21 +1110,21 @@ require_once '../php/seguridad.php';
 	$( window ).ready(function()
     {
 	
-             $(".calendarioReporte").datepicker( {dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
+            $(".calendarioReporte").datepicker( {dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
                                      monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo",
                                          "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
                                          "Noviembre", "Diciembre" ],
                                      firstDay: 1,
                                      dateFormat: "dd/mm/yy"
-	                             });
+	                             }); 
 								 
-             $(".calendarioReporte").datepicker( { dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
+           /*  $(".calendarioReporte").datepicker( { dayNamesMin: [ "Dom","Lun","Mar","Mie","Jue","Vie","Sáb" ],
                                      monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo",
                                          "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
                                          "Noviembre", "Diciembre" ],
                                      firstDay: 1,
                                      dateFormat: "dd/mm/yy"
-                });
+                });*/
 
 		 mostrarCiudadesCarrito();  //se cargar automaticamente cuando carge la pagina
          mostrarCiudadesOrdenes();	
@@ -1169,7 +1176,7 @@ require_once '../php/seguridad.php';
 		   $('#formuEnvRepoD2')[0].reset(); 
 	  }
 	  
-	  
+	
 	   
 	   function paraPdf(evt) { 
    
@@ -1836,10 +1843,10 @@ var tabla3_OrdenesHistorial=3;
          
         });
 
-      $('#totaltabla1'+u).text(totalproveedor);
+      $('#totaltabla1'+u).text(totalproveedor.toFixed(2));
       $("#tabla_PagosHistorial").trigger('updateAll', [true]);  
 	  
-	   $('#totaltabla2'+u).text(totalproveedor);
+	   $('#totaltabla2'+u).text(totalproveedor.toFixed(2));
        $("#tabla_PagosPendientes").trigger('updateAll', [true]);  
 	  
     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
@@ -1864,11 +1871,11 @@ var tabla3_OrdenesHistorial=3;
          
                                    });
           
-		   $('#totaltabla1'+u).text(totalproveedor);
+		   $('#totaltabla1'+u).text(totalproveedor.toFixed(2));
            $("#tabla_PagosHistorial").trigger('updateAll', [true]); 
 		   
 		   
-		   $('#totaltabla2'+u).text(totalproveedor);
+		   $('#totaltabla2'+u).text(totalproveedor.toFixed(2));
            $("#tabla_PagosPendientes").trigger('updateAll', [true]);  
 
          } 
@@ -2007,14 +2014,14 @@ var tabla3_OrdenesHistorial=3;
 				 
 				   	
 					    
-					if(mg3.datos[u].tblentregaproducto_statusdeposito=="Pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito=="pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito=="PENDIENTE"){
-                    $('#tblstatusdeposito'+s).append('<span class="uk-badge uk-badge-warning">'+mg3.datos[u].tblentregaproducto_statusdeposito+'</span>');
-                    }else { 
+					if(mg3.datos[u].tblentregaproducto_statusdeposito!="Pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito!="pendiente" || mg3.datos[u].tblentregaproducto_statusdeposito!="PENDIENTE"){
                     $('#tblstatusdeposito'+s).append('<span class="uk-badge uk-badge-success">'+mg3.datos[u].tblentregaproducto_statusdeposito+'</span>');
+                    }else { 
+                    $('#tblstatusdeposito'+s).append('<span class="uk-badge uk-badge-warning">'+mg3.datos[u].tblentregaproducto_statusdeposito+'</span>');
                      }
 					
 					
-					 //funcion para calcular el Total de la Ordenwarning 
+					 //funcion para calcular el Total de la Orden 
                   totalCompra(o1.datos[s].idtblordencompra,s,o1.datos[s].idtblproveedor);
 				 $("#tabla_OrdenesHistorial").trigger('updateAll', [true]);//actualiza tabla 
 					inicializarPagOrdenHis();
@@ -2126,12 +2133,12 @@ var tabla3_OrdenesHistorial=3;
       data: {solicitadoBy:"WEB",idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
         .done(function(msg4) { 
         $.each(msg4.datos, function(i4,item){
-          subtotal = (parseInt(msg4.datos[i4].tblcarritoproduct_cantidad))*(parseFloat(msg4.datos[i4].tblproductdetalle_preciobepickler));
+          subtotal = (parseInt(msg4.datos[i4].tblcarritoproduct_cantidad))*(parseFloat(msg4.datos[i4].tblcarritoproduct_preciobp));
           totalproveedor = totalproveedor + subtotal;
           
         });
 
-      $('#totaltabla'+u).text(totalproveedor);
+      $('#totaltabla'+u).text(totalproveedor.toFixed(2));
       $("#tabla_OrdenesHistorial").trigger('updateAll', [true]);  
     }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
 	  
@@ -2149,14 +2156,14 @@ var tabla3_OrdenesHistorial=3;
 					  conproveedor=true;
 					  
        $.each(msg7.datos, function(i,item){
-       subtotalcomplem = (parseInt(msg7.datos[i].tblcarritoproductcomplem_cantidad))*(parseFloat(msg7.datos[i].tblproductcomplem_preciobp));
+       subtotalcomplem = (parseInt(msg7.datos[i].tblcarritoproductcomplem_cantidad))*(parseFloat(msg7.datos[i].tblcarritoproductcomplem_preciobp));
             
 				 
         totalproveedor = totalproveedor + subtotalcomplem;
          // console.log("TOTAL"+totalproveedor); 
         });
            
-		   $('#totaltabla'+u).text(totalproveedor);
+		   $('#totaltabla'+u).text(totalproveedor.toFixed(2));
            $("#tabla_OrdenesHistorial").trigger('updateAll', [true]); 
 
 		    }  else{ conproveedor=false;}
@@ -2282,12 +2289,10 @@ var tabla3_OrdenesHistorial=3;
 				  });//fin del each
 
           })
-          .fail(function( jqXHR, textStatus ) {  //console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus); 
-		  })
+          .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
           			   
 		//cierra mostrar datos cliente
-  }).fail(function( jqXHR, textStatus ) {  //console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);
-  })
+  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
   //.always(function(){  console.log("always");  });
   
 	 

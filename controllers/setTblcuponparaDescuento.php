@@ -12,6 +12,7 @@ $nombre= '';
 $valor= '';
 $ciudad= '';
 $estatus= '';
+$fecha= '';
 $emailcreo= '';
 $resultado='';
 /**
@@ -23,12 +24,13 @@ if (!empty($_POST)){
     $nombre=$_POST["nombre"];
     $valor=$_POST["valor"];
     $ciudad=$_POST["ciudad"];
+	$fecha=$_POST["fecha"];
     $estatus=$_POST["estatus"];   
     $emailcreo=$_POST["emailcreo"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setTblcuponparaDescuento($nombre,$valor,$estatus,$ciudad,$emailcreo);
+    $resultado = FuncionesBePickler::setTblcuponparaDescuento($nombre,$valor,$estatus,$ciudad,$emailcreo,$fecha);
        
     if($resultado)
     {
@@ -52,6 +54,7 @@ unset($solicitadoBy);
 unset($nombre);
 unset($valor);
 unset($ciudad);
+unset($fecha);
 unset($estatus);
 unset($emailcreo);
 unset($resultado);

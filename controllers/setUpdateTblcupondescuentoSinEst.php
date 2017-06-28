@@ -13,6 +13,7 @@ $nombre     = '';
 $valor      = '';
 $idciudad  = '';
 $emailmodifico  = '';
+$fecha= '';
 $resultado         = '';
 /**
  * Validamos que el array $_POST no es null.
@@ -25,10 +26,11 @@ if (!empty($_POST)){
 	$valor			= $_POST['valor'];	
     $idciudad        = $_POST['idciudad'];
 	$emailmodifico	= $_POST['emailmodifico'];
+	$fecha=$_POST["fecha"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setUpdateTblcupondescuentoSinEst($idcupon,$nombre,$valor,$idciudad,$emailmodifico);
+    $resultado = FuncionesBePickler::setUpdateTblcupondescuentoSinEst($idcupon,$nombre,$valor,$idciudad,$emailmodifico,$fecha);
 
     if($resultado)
     {
@@ -53,6 +55,7 @@ unset($idcupon);
 unset($nombre);
 unset($valor);
 unset($idciudad);
+unset($fecha);
 unset($emailmodifico);
 unset($resultado);
 ?>

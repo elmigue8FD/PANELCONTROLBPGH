@@ -23,7 +23,9 @@ if (!empty($_POST)){
     $cel=$_POST["cel"];   
     $emailmodifico=$_POST["emailmodifico"];
 	$pass=$_POST["pass"];
-	$pass =md5($pass);
+	$pass = hash("sha256",$pass);
+	
+	
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
