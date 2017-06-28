@@ -471,11 +471,11 @@ function cantidadCupones(){
                   $("#selectCiudadMod").val(item.tblciudad_idtblciudad);
 				 
 				  
-				  if(item.tblcupondescuento_fechvencimiento==null || item.tblcupondescuento_fechvencimiento==""){
+				  if(item.tblcupondescuento_fchexpira==null || item.tblcupondescuento_fchexpira==""){
                                           	 $("#modfechaven").val("");
                                            }
 						                  else {  
-										fagendado= msg.datos[x].tblcupondescuento_fechvencimiento;
+										fagendado= msg.datos[x].tblcupondescuento_fchexpira;
                                    fagendado = fagendado.split("-");                 
 				                 fagendado = fagendado[2]+"/"+fagendado[1]+"/"+fagendado[0];	
                                $("#modfechaven").val(fagendado);  
@@ -712,11 +712,11 @@ function cantidadCupones(){
 										   $("#estado"+idcupon).text("Desactivado");
                                             } 
 											
-									if(item.tblcupondescuento_fechvencimiento==null || item.tblcupondescuento_fechvencimiento==""){
+									if(item.tblcupondescuento_fchexpira==null || item.tblcupondescuento_fchexpira==""){
                                           	 $("#fechavenci"+idcupon).text('----');
                                            }
 						                  else {  
-										      fechav= mo.datos[i].tblcupondescuento_fechvencimiento;
+										      fechav= mo.datos[i].tblcupondescuento_fchexpira;
                                               fechav = fechav.split("-");                 
 				                              fechav = fechav[2]+"/"+fechav[1]+"/"+fechav[0];
 										   $("#fechavenci"+idcupon).text(fechav);

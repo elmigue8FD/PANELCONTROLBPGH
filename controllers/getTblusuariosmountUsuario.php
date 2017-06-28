@@ -22,9 +22,8 @@ $resultado= '';
 if (!empty($_POST)){
 
 	$solicitadoBy=$_POST["solicitadoBy"];
-	$email=$_POST["email"];
-	$pass= md5($_POST["pass"]); 
-	//$pass = hash("sha256",$_POST["pass"]);
+	$email=$_POST["email"];	
+	$pass = hash("sha256",$_POST["pass"]);
 	
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.

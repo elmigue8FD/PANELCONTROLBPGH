@@ -1,5 +1,5 @@
 <?php
-require '../../db/ConexionDB.php';
+require '../../../db/ConexionDB.php';
 //falta requiere 
 class FuncionesReporte{
 
