@@ -10694,11 +10694,11 @@ AND exists
 	
 	
 	/*Actualizar Cupon pero no el estatus*/
-	public static function setUpdateTblcupondescuentoSinEst($idcupon,$nombre,$valor,$idciudad,$emailmodifico){
+	public static function setUpdateTblcupondescuentoSinEst($idcupon,$nombre,$valor,$idciudad,$emailmodifico,$fecha){
 
 		$update = "UPDATE tblcupondescuento SET tblcupondescuento_codigo = ?,
 		  tblcupondescuento_descuento = ?, tblciudad_idtblciudad = ?, 
-		  tblcupondescuento_fchmodificacion = NOW(), tblcupondescuento_emailusuamodifico= ? 
+		  tblcupondescuento_fchmodificacion = NOW(), tblcupondescuento_emailusuamodifico= ?,tblcupondescuento_fechexpira=? 
 		  WHERE idtblcupondescuento = ?";
       
 		try{
@@ -10707,7 +10707,8 @@ AND exists
 			$resultado->bindParam(2,$valor,PDO::PARAM_INT);			
 			$resultado->bindParam(3,$idciudad,PDO::PARAM_INT);
 			$resultado->bindParam(4,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(5,$idcupon,PDO::PARAM_INT);
+			$resultado->bindParam(5,$fecha,PDO::PARAM_STR);
+			$resultado->bindParam(6,$idcupon,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
 		}catch(PDOException $e){
@@ -10791,14 +10792,14 @@ AND exists
 	}
 	
 	
-	/*Insertar una Cupon*/
-	public static function setTblcuponparaDescuento($nombre,$valor,$estatus,$ciudad,$emailcreo){
-
+	/*Insertar una Cupon*/    
+	public static function setTblcuponparaDescuento($nombre,$valor,$estatus,$ciudad,$emailcreo,$fecha){
+     
 		$insert ="INSERT INTO tblcupondescuento (tblcupondescuento_codigo,
                     tblcupondescuento_descuento,tblcupondescuento_activado,tblciudad_idtblciudad,
-					tblcupondescuento_fchmodificacion, 
+					tblcupondescuento_fchmodificacion,
                     tblcupondescuento_fchcreacion,tblcupondescuento_emailusuacreo,
-                     tblcupondescuento_emailusuamodifico) VALUES (?,?,?,?,NOW(),NOW(),?,?)";
+         tblcupondescuento_emailusuamodifico,tblcupondescuento_fechexpira) VALUES (?,?,?,?,NOW(),NOW(),?,?,?)";
 
 		try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -10808,6 +10809,7 @@ AND exists
 			$resultado->bindParam(4,$ciudad,PDO::PARAM_INT);
 			$resultado->bindParam(5,$emailcreo,PDO::PARAM_STR);
 			$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(7,$fecha,PDO::PARAM_STR);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
