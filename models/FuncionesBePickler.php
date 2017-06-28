@@ -10698,7 +10698,7 @@ AND exists
 
 		$update = "UPDATE tblcupondescuento SET tblcupondescuento_codigo = ?,
 		  tblcupondescuento_descuento = ?, tblciudad_idtblciudad = ?, 
-		  tblcupondescuento_fchmodificacion = NOW(), tblcupondescuento_emailusuamodifico= ?,tblcupondescuento_fechexpira=? 
+		  tblcupondescuento_fchmodificacion = NOW(), tblcupondescuento_emailusuamodifico= ?,tblcupondescuento_fchexpira=? 
 		  WHERE idtblcupondescuento = ?";
       
 		try{
@@ -10799,7 +10799,7 @@ AND exists
                     tblcupondescuento_descuento,tblcupondescuento_activado,tblciudad_idtblciudad,
 					tblcupondescuento_fchmodificacion,
                     tblcupondescuento_fchcreacion,tblcupondescuento_emailusuacreo,
-         tblcupondescuento_emailusuamodifico,tblcupondescuento_fechexpira) VALUES (?,?,?,?,NOW(),NOW(),?,?,?)";
+         tblcupondescuento_emailusuamodifico,tblcupondescuento_fchexpira) VALUES (?,?,?,?,NOW(),NOW(),?,?,?)";
 
 		try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
