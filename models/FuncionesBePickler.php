@@ -9474,17 +9474,24 @@ AND exists
 	public static function getAllTblcuponesdescuentoNuevosByidcliente($idtblcliente){
 
 		$activado=1;
-		$consulta = "SELECT TCD.* FROM tblcupondescuento TCD 
-					INNER JOIN tblciudad TC ON TC.idtblciudad = TCD.tblciudad_idtblciudad
-					INNER JOIN tblcliente TCL ON TCL.tblcliente_ciudad = TC.tblciudad_nombre
-					LEFT JOIN tblhistcupondescuento THCD ON TCD.tblcupondescuento_codigo = THCD.tblhistcupondescuento_cupon
-					WHERE TCD.tblcupondescuento_activado = ? AND THCD.tblhistcupondescuento_idtblcliente= ? is NULL AND (DATEDIFF(TCD.tblcupondescuento_fchexpira,NOW()))>5 AND TCL.idtblcliente=? AND TCD.tblcupondescuento_fchexpira>NOW()";
+		$consulta = "SELECT TCD.* FROM tblcupondescuento TCD  
+						INNER JOIN tblciudad TC ON TC.idtblciudad = TCD.tblciudad_idtblciudad
+						INNER JOIN tblcliente TCL ON TCL.tblcliente_ciudad = TC.tblciudad_nombre
+						WHERE NOT EXISTS 
+							(SELECT 1 FROM tblhistcupondescuento THCD  
+						     	WHERE TCD.tblcupondescuento_codigo = THCD.tblhistcupondescuento_cupon 	
+						     		AND THCD.tblhistcupondescuento_idtblcliente = ?) 
+						AND TCD.tblcupondescuento_activado = ? 
+						AND (DATEDIFF(TCD.tblcupondescuento_fchexpira,NOW()))>=6 
+						AND TCD.tblcupondescuento_fchexpira>NOW()
+						AND TCL.idtblcliente=?
+						GROUP BY TCD.idtblcupondescuento";
 		
 		try{
 
-			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
-			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
-			$resultado->bindParam(2,$idtblcliente,PDO::PARAM_INT);
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);		
+			$resultado->bindParam(1,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(2,$activado,PDO::PARAM_INT);
 			$resultado->bindParam(3,$idtblcliente,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
@@ -9497,17 +9504,24 @@ AND exists
 	public static function getAllTblcuponesdescuentoPorExpirarByidcliente($idtblcliente){
 
 		$activado=1;
-		$consulta = "SELECT TCD.* FROM tblcupondescuento TCD 
+		$consulta = "SELECT TCD.* FROM tblcupondescuento TCD  
 					INNER JOIN tblciudad TC ON TC.idtblciudad = TCD.tblciudad_idtblciudad
 					INNER JOIN tblcliente TCL ON TCL.tblcliente_ciudad = TC.tblciudad_nombre
-					LEFT JOIN tblhistcupondescuento THCD ON TCD.tblcupondescuento_codigo = THCD.tblhistcupondescuento_cupon
-					WHERE TCD.tblcupondescuento_activado = ? AND THCD.tblhistcupondescuento_idtblcliente= ? is NULL AND (DATEDIFF(TCD.tblcupondescuento_fchexpira,NOW()))<6 AND TCL.idtblcliente=? AND TCD.tblcupondescuento_fchexpira>NOW()";
+					WHERE NOT EXISTS 
+						(SELECT 1 FROM tblhistcupondescuento THCD  
+					     	WHERE TCD.tblcupondescuento_codigo = THCD.tblhistcupondescuento_cupon 
+					     		AND THCD.tblhistcupondescuento_idtblcliente = ?) 
+					AND TCD.tblcupondescuento_activado = ? 
+					AND (DATEDIFF(TCD.tblcupondescuento_fchexpira,NOW()))<6 
+					AND TCD.tblcupondescuento_fchexpira>NOW()
+					AND TCL.idtblcliente=?
+					GROUP BY TCD.idtblcupondescuento ";
 		
 		try{
 
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
-			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
-			$resultado->bindParam(2,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(1,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(2,$activado,PDO::PARAM_INT);
 			$resultado->bindParam(3,$idtblcliente,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
