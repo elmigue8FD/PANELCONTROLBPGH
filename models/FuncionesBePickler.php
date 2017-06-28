@@ -9291,7 +9291,7 @@ AND exists
 
 
 
-    //Funcion para obtener los datos de un cupon, siempre y cuando el cliente no lo haya utilizado
+    //Funcion para obtener los datos de un cupon, siempre y cuando el cliente no lo haya utilizado, este registrado y la fechadeexpiracion sea valida
     //tblcupondescuento TBCD
     //tblhistcupondescuento TBHCD
     /*Verifica si existe un cupon con de un cliente  */
@@ -9299,28 +9299,55 @@ AND exists
 
     	$conexionPDO = ConexionDB::getInstance()->getDb(); 
     	$activado =1;
-        
-        $check = "SELECT COUNT(*) FROM tblhistcupondescuento WHERE tblhistcupondescuento_cupon = ? AND tblhistcupondescuento_idtblcliente = ? ";
+    	$clienteregistrado=1;
+    	$tipocliente='';
+    	$ciudad='';
 
-		try{
+    	//verificar si el cliente esta registrado y obtenr su ciudad
+    	$check = "SELECT * FROM tblcliente WHERE idtblcliente = ?";
+    	try{
 			$resultado = $conexionPDO->prepare($check);
-			$resultado->bindParam(1,$cupondescuento,PDO::PARAM_STR);
-			$resultado->bindParam(2,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(1,$idtblcliente,PDO::PARAM_INT);
 			$resultado->execute();
-			$existe = $resultado->fetchColumn(); //retorna el numero de count
+			$array= $resultado->fetchAll(PDO::FETCH_ASSOC);
+			//print_r($array);
+			foreach ($array as $row ) {
+				   $tipocliente= $row['tbltipocliente_idtbltipocliente'] ;
+				   $ciudad = $row['tblcliente_ciudad'];
+			}
 
-			if($existe>0){ //Existe un registro de uso de codigo con el cliente
+			//Se verifica que el usuario este registrado para usar el cupon
+			if($tipocliente==$clienteregistrado){
+
+				//se verifica que no se este utilizando por el mismo cliente 
+				$checkH = "SELECT COUNT(*) FROM tblhistcupondescuento WHERE tblhistcupondescuento_cupon = ? AND tblhistcupondescuento_idtblcliente = ? ";
+
+						$resultado = $conexionPDO->prepare($checkH);
+						$resultado->bindParam(1,$cupondescuento,PDO::PARAM_STR);
+						$resultado->bindParam(2,$idtblcliente,PDO::PARAM_INT);
+						$resultado->execute();
+						$existe = $resultado->fetchColumn(); //retorna el numero de count
+
+						if($existe>0){ //Existe un registro de uso de codigo con el cliente
+							return false;
+						}else{
+							
+							$consulta = "SELECT  TCD.* FROM tblcupondescuento TCD
+							INNER JOIN tblciudad TC ON TC.idtblciudad = TCD.tblciudad_idtblciudad
+							WHERE TC.tblciudad_nombre =  ?
+							AND TCD.tblcupondescuento_codigo = ?
+							AND TCD.tblcupondescuento_activado = ? 
+							AND TCD.tblcupondescuento_fchexpira>NOW()";
+
+							$resultado = $conexionPDO->prepare($consulta);
+							$resultado->bindParam(1,$ciudad,PDO::PARAM_STR);
+							$resultado->bindParam(2,$cupondescuento,PDO::PARAM_STR);
+							$resultado->bindParam(3,$activado,PDO::PARAM_INT);
+							$resultado->execute();
+							return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+						}				
+			}else{//else de tipodecliente
 				return false;
-			}else{
-
-				$consulta = "SELECT * FROM tblcupondescuento WHERE tblcupondescuento_codigo = ? AND tblcupondescuento_activado = ?";
-
-				$resultado = $conexionPDO->prepare($consulta);
-				$resultado->bindParam(1,$cupondescuento,PDO::PARAM_STR);
-				$resultado->bindParam(2,$activado,PDO::PARAM_INT);
-				$resultado->execute();
-				return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
-
 			}
 
 		}catch(PDOException $e){
