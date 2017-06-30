@@ -15,7 +15,10 @@ class FuncionesReporte{
    INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = CA.tblcarritoproduct_idtblproductdetalle
    INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto
    INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = TP.tblproveedor_idtblproveedor      
-   WHERE OC.tblordencompra_statuspagado=1 AND ENV.tbldatosenvio_ciudad=? 
+   INNER JOIN tblentregaproducto ET ON ET.tblentregaproducto_idtblordencompra = OC.idtblordencompra
+   WHERE OC.tblordencompra_statuspagado=1 AND tblentregaproducto_status='entregado'
+   AND tblentregaproducto_statusdeposito='pagado' 
+   AND ENV.tbldatosenvio_ciudad=? 
    AND OC.tblordencompra_fchordencompra Between ? AND ?";
    	  	
 				
@@ -111,8 +114,11 @@ class FuncionesReporte{
    INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = CA.tblcarritoproduct_idtblproductdetalle
    INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto
    INNER JOIN tblproveedor PRO ON PRO.idtblproveedor = TP.tblproveedor_idtblproveedor
-   LEFT JOIN tblhistcupondescuento DC ON DC.tblhistcupondescuento_idtblordencompra =OC.idtblordencompra     
-   WHERE OC.tblordencompra_statuspagado=1 AND ENV.tbldatosenvio_ciudad=? AND PRO.idtblproveedor=? 
+   LEFT JOIN tblhistcupondescuento DC ON DC.tblhistcupondescuento_idtblordencompra =OC.idtblordencompra 
+   INNER JOIN tblentregaproducto ET ON ET.tblentregaproducto_idtblordencompra = OC.idtblordencompra
+   WHERE OC.tblordencompra_statuspagado=1 AND tblentregaproducto_status='entregado'
+   AND tblentregaproducto_statusdeposito='pagado'    
+   AND ENV.tbldatosenvio_ciudad=? AND PRO.idtblproveedor=? 
    AND OC.tblordencompra_fchordencompra Between ? AND ?";
    	  	
 				

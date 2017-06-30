@@ -38,7 +38,8 @@ $pass='';
     } 
     //return $pass;	
 	
-	$pass =md5($pass1);
+	
+	$pass = hash("sha256",$pass1);
 		
 	$resultado = FuncionesBePickler::setUpdateTblusuariosmountPass($strEmail,$pass);
    
