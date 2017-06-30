@@ -8164,46 +8164,65 @@ class FuncionesBePickler{
     }
 
     //Funcion para el control de rango de horarios
-    public static function getRangoshorarios($fechapedido){
+    public static function getRangoshorarios($fechapedido)
+    {
 
 		$arrayCompleto=[];
 		$arrayRango1 = [
 		                "idRango" => '1',
 		                "idtblhora_menor" => '1',
 		                "tblhora_menor"=>'9:00',
-		                "idtblhora_mayor" => '4',
-		                "tblhora_mayor"=>'12:00',		                
-		                "rango_hora" => '9:00 a 12:00'
+		                "idtblhora_mayor" => '3',
+		                "tblhora_mayor"=>'11:00',		                
+		                "rango_hora" => '9:00 a 11:00'
 		                ];  
 		
 
 		$arrayRango2 = [
 		                "idRango" => '2',
-		                "idtblhora_menor" => '4',
-		                "tblhora_menor"=>'12:00',
-		                "idtblhora_mayor" => '7',
-		                "tblhora_mayor"=>'15:00',		                
-		                "rango_hora" => '12:00 a 15:00'
+		                "idtblhora_menor" => '3',
+		                "tblhora_menor"=>'11:00',
+		                "idtblhora_mayor" => '5',
+		                "tblhora_mayor"=>'13:00',		                
+		                "rango_hora" => '11:00 a 13:00'
 		                ];  
 		
 
 		$arrayRango3 = [
 		                "idRango" => '3',
-		                "idtblhora_menor" => '7',
-		                "tblhora_menor"=>'15:00',
-		                "idtblhora_mayor" => '10',
-		                "tblhora_mayor"=>'18:00',		                
-		                "rango_hora" => '15:00 a 18:00'
+		                "idtblhora_menor" => '5',
+		                "tblhora_menor"=>'13:00',
+		                "idtblhora_mayor" => '7',
+		                "tblhora_mayor"=>'15:00',		                
+		                "rango_hora" => '13:00 a 15:00'
 		                ];  
 		
 
 		$arrayRango4 = [
 		                "idRango" => '4',
-		                "idtblhora_menor" => '10',
-		                "tblhora_menor"=>'18:00',
+		                "idtblhora_menor" => '7',
+		                "tblhora_menor"=>'15:00',
+		                "idtblhora_mayor" => '9',
+		                "tblhora_mayor"=>'17:00',		                
+		                "rango_hora" => '15:00 a 17:00'
+		                ];  
+
+		$arrayRango5 = [
+		                "idRango" => '5',
+		                "idtblhora_menor" => '9',
+		                "tblhora_menor"=>'17:00',
+		                "idtblhora_mayor" => '11',
+		                "tblhora_mayor"=>'19:00',		                
+		                "rango_hora" => '17:00 a 19:00'
+		                ];  
+
+		$arrayRango6 = [
+		                "idRango" => '6',
+		                "idtblhora_menor" => '11',
+		                "tblhora_menor"=>'19:00',
 		                "idtblhora_mayor" => '13',
 		                "tblhora_mayor"=>'21:00',		                
-		                "rango_hora" => '18:00 a 21:00'
+		                "rango_hora" => '19:00 a 21:00'
 		                ];  
 		
 
@@ -8227,26 +8246,46 @@ class FuncionesBePickler{
         		array_push($arrayCompleto,$arrayRango2);
         		array_push($arrayCompleto,$arrayRango3);
         		array_push($arrayCompleto,$arrayRango4);
+        		array_push($arrayCompleto,$arrayRango5);
+        		array_push($arrayCompleto,$arrayRango6);
 
 			}
-			else if($timefinal>='09:00' && $timefinal<'12:00'){
+			else if($timefinal>='09:00' && $timefinal<'11:00'){
 				
+        		
         		array_push($arrayCompleto,$arrayRango2);
         		array_push($arrayCompleto,$arrayRango3);
         		array_push($arrayCompleto,$arrayRango4);
+        		array_push($arrayCompleto,$arrayRango5);
+        		array_push($arrayCompleto,$arrayRango6);
 
 			}
-			else if($timefinal>='12:00' && $timefinal<'15:00'){ 
+			else if($timefinal>='11:00' && $timefinal<'13:00'){ 
 
+        		
         		array_push($arrayCompleto,$arrayRango3);
         		array_push($arrayCompleto,$arrayRango4);
+        		array_push($arrayCompleto,$arrayRango5);
+        		array_push($arrayCompleto,$arrayRango6);
 			
 			}
-			else if($timefinal>='15:00' && $timefinal<'18:00'){ 
+			else if($timefinal>='13:00' && $timefinal<'15:00'){ 
 
         		array_push($arrayCompleto,$arrayRango4);
+        		array_push($arrayCompleto,$arrayRango5);
+        		array_push($arrayCompleto,$arrayRango6);
 			
-			}else{}
+			}else if($timefinal>='15:00' && $timefinal<'17:00'){ 
+
+        		
+        		array_push($arrayCompleto,$arrayRango5);
+        		array_push($arrayCompleto,$arrayRango6);
+        	}
+        	else if($timefinal>='17:00' && $timefinal<'19:00'){ 
+        		array_push($arrayCompleto,$arrayRango6);
+        	}else{
+        		
+        	}
         	
 
         }else {
@@ -8254,6 +8293,8 @@ class FuncionesBePickler{
         	array_push($arrayCompleto,$arrayRango2);
         	array_push($arrayCompleto,$arrayRango3);
         	array_push($arrayCompleto,$arrayRango4);
+        	array_push($arrayCompleto,$arrayRango5);
+        	array_push($arrayCompleto,$arrayRango6);
         }
 
     	return $resultado=$arrayCompleto;
