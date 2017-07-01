@@ -9398,18 +9398,19 @@ AND exists
     }
 
     /*Insertar un registro en el historico de cupon descuento*/
-	 public static function setTblhistcupondescuento($cupondescuento, $descuento,$idtblcliente,$idtblordencompra,$emailcreo){
+	 public static function setTblhistcupondescuento($cupondescuento, $descuento,$idtblcliente,$idtblordencompra,$idtblcupondescuento,$emailcreo){
         
-        $insert ="INSERT INTO  tblhistcupondescuento (tblhistcupondescuento_cupon,tblhistcupondescuento_descuento, tblhistcupondescuento_idtblcliente, tblhistcupondescuento_idtblordencompra, tblhistcupondescuento_fchmodificacion, tblhistcupondescuento_fchcreacion, tblhistcupondescuento_emailusuacreo, tblhistcupondescuento_emailusuamodifico) VALUES (?,?,?,?,NOW(),NOW(),?,?)"; 
+        $insert ="INSERT INTO  tblhistcupondescuento (tblhistcupondescuento_cupon,tblhistcupondescuento_descuento, 	tblcupondescuento_idtblcupondescuento,tblhistcupondescuento_idtblcliente, tblhistcupondescuento_idtblordencompra, tblhistcupondescuento_fchmodificacion, tblhistcupondescuento_fchcreacion, tblhistcupondescuento_emailusuacreo, tblhistcupondescuento_emailusuamodifico) VALUES (?,?,?,?,?,NOW(),NOW(),?,?)"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
 			$resultado->bindParam(1,$cupondescuento,PDO::PARAM_STR);
 			$resultado->bindParam(2,$descuento,PDO::PARAM_INT);
-			$resultado->bindParam(3,$idtblcliente,PDO::PARAM_INT);
-			$resultado->bindParam(4,$idtblordencompra,PDO::PARAM_INT);
-			$resultado->bindParam(5,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(3,$idtblcupondescuento,PDO::PARAM_INT);
+			$resultado->bindParam(4,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(5,$idtblordencompra,PDO::PARAM_INT);
 			$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(7,$emailcreo,PDO::PARAM_STR);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){

@@ -24,11 +24,12 @@ if (!empty($_POST)){
     $descuento=$_POST["descuento"];
     $idtblcliente=$_POST["idtblcliente"];
     $idtblordencompra=$_POST["idtblordencompra"];
+    $idtblcupondescuento=$_POST["idtblcupondescuento"];
     $emailcreo=$_POST["emailcreo"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setTblhistcupondescuento($cupondescuento, $descuento,$idtblcliente,$idtblordencompra,$emailcreo);
+    $resultado = FuncionesBePickler::setTblhistcupondescuento($cupondescuento, $descuento,$idtblcliente,$idtblordencompra,$idtblcupondescuento,$emailcreo);
 
     if($resultado)
     {
