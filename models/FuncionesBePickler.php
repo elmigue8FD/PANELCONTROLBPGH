@@ -12174,9 +12174,9 @@ AND exists
 
 			if(($resultado->fetchColumn())>0){ //si existe un registro se actualiza el registro
 
-				$update = "UPDATE tbldatosenvio SET tbldatosenvio_tipodepedido = ?,tbldatosenvio_tipodeservicio = ?,tbldatosenvio_calle = ?,tbldatosenvio_numint = ?,tbldatosenvio_fchagendado = ?,tbldatosenvio_horaagendado = ?,tbldatosenvio_numext = ?,tbldatosenvio_colonia = ?,tbldatosenvio_ciudad = ?,tbldatosenvio_pais = ?,tbldatosenvio_codipost = ?,tbldatosenvio_nombreempresa = ?,tbldatosenvio_rfc = ?,tbldatosenvio_nombrerecibe = ?,tbldatosenvio_celularrecibe = ?,tbldatosenvio_referencia1 = ?,tbldatosenvio_referencia2 = ?,tbldatosenvio_fchmodificacion = NOW(),tbldatosenvio_emailusuamodifico = ? WHERE tbldatosenvio_idtblordencompra  = ?";
+				$update1 = "UPDATE tbldatosenvio SET tbldatosenvio_tipodepedido = ?,tbldatosenvio_tipodeservicio = ?,tbldatosenvio_calle = ?,tbldatosenvio_numint = ?,tbldatosenvio_fchagendado = ?,tbldatosenvio_horaagendado = ?,tbldatosenvio_numext = ?,tbldatosenvio_colonia = ?,tbldatosenvio_ciudad = ?,tbldatosenvio_pais = ?,tbldatosenvio_codipost = ?,tbldatosenvio_nombreempresa = ?,tbldatosenvio_rfc = ?,tbldatosenvio_nombrerecibe = ?,tbldatosenvio_celularrecibe = ?,tbldatosenvio_referencia1 = ?,tbldatosenvio_referencia2 = ?,tbldatosenvio_fchmodificacion = NOW(),tbldatosenvio_emailusuamodifico = ? WHERE tbldatosenvio_idtblordencompra  = ?";
 
-				$resultado = $conexionPDO->prepare($update);
+				$resultado = $conexionPDO->prepare($update1);
 				$resultado->bindParam(1,$tipodepedido,PDO::PARAM_STR);
 				$resultado->bindParam(2,$tiposervicio,PDO::PARAM_STR);
 				$resultado->bindParam(3,$calle,PDO::PARAM_STR);
@@ -12198,11 +12198,11 @@ AND exists
 				$resultado->bindParam(19,$idtblordencompra,PDO::PARAM_INT);
 				$resultado->execute();
 
-				if($resultado->rowCount()>0){
+				if(($resultado->rowCount())>0){
 
-					$update = "UPDATE tblcarritoproduct SET tblcarritoproduct_personalizar = ? , tblcarritoproduct_mensajetarjeta  = ? WHERE tblcarritoproduct_idtblordencompra =? ";
+					$update2 = "UPDATE tblcarritoproduct SET tblcarritoproduct_personalizar = ? , tblcarritoproduct_mensajetarjeta  = ? , tblcarritoproduct_fchmodificacion = NOW() WHERE tblcarritoproduct_idtblordencompra = ? ";
 
-					$resultado = $conexionPDO->prepare($update);
+					$resultado = $conexionPDO->prepare($update2);
 					$resultado->bindParam(1,$clavemsg,PDO::PARAM_STR);
 					$resultado->bindParam(2,$msg,PDO::PARAM_STR);
 					$resultado->bindParam(3,$idtblordencompra,PDO::PARAM_INT);
@@ -12243,9 +12243,9 @@ AND exists
 
 			if($resultado->rowCount()>0){
 
-					$update = "UPDATE tblcarritoproduct SET tblcarritoproduct_personalizar = ? , tblcarritoproduct_mensajetarjeta  = ? WHERE tblcarritoproduct_idtblordencompra =? ";
+					$update3 = "UPDATE tblcarritoproduct SET tblcarritoproduct_personalizar = ? , tblcarritoproduct_mensajetarjeta  = ?, tblcarritoproduct_fchmodificacion = NOW() WHERE tblcarritoproduct_idtblordencompra =? ";
 
-					$resultado = $conexionPDO->prepare($update);
+					$resultado = $conexionPDO->prepare($update3);
 					$resultado->bindParam(1,$clavemsg,PDO::PARAM_STR);
 					$resultado->bindParam(2,$msg,PDO::PARAM_STR);
 					$resultado->bindParam(3,$idtblordencompra,PDO::PARAM_INT);
