@@ -1,6 +1,6 @@
 <?php
 /**
- * Recursos utilizados
+ * Recursos utilizados 
  */
 require './../models/FuncionesBePickler.php';
 require './InfoSolicitadaBy.php';

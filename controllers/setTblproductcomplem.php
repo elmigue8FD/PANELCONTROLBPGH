@@ -3,7 +3,7 @@
  * Recursos utilizados
  */
 require './../models/FuncionesBePickler.php';
-require './InfoSolicitadaBy.php';
+require './InfoSolicitadaBy.php'; 
 /**
  * Variables Utilizadas
  */
@@ -30,6 +30,7 @@ if (!empty($_POST)){
     $seo=$_POST["seo"];
     $precioreal=$_POST["precioreal"];
     $preciobp=$_POST["preciobp"];
+    //$preciobp=round(($preciobp1*0.045+4)*1.16);     	
     $srcimg=$_POST["srcimg"];
     $activado=$_POST["activado"];
     $idtblproveedor=$_POST["idtblproveedor"];

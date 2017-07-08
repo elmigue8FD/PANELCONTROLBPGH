@@ -3,7 +3,7 @@ include('./php/seguridad_general.php');
 ?>
 <!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> 
+<!--[if gt IE 9]><!-->  
 <html lang="en"> <!--<![endif]-->
 
 <head>
@@ -827,6 +827,21 @@ include('./php/seguridad_general.php');
                                          <div class="uk-width-large-1-1">
                                           <h5 class="heading_c uk-margin-small-bottom">Otros Detalles</h5>
                                         </div>
+										<div class="uk-width-large-1-1"><br/>
+                                          <label><i class="material-icons md-10">&#xe541;</i> <span class="req"> * </span>&nbsp;Porciones </label><br/>
+                                          <input type="number" class="md-input" min="0" name="alta_porciones_producto_linea" id="alta_porciones_producto_linea"  />
+                                        </div>
+										
+										<div class="uk-width-large-1-1"><br/>
+										
+									
+                                          <label><i class="material-icons md-10">&#xe89e;</i> <span class="req"> * </span>&nbsp;Tamaño </label><br/>
+                                        <select id="alta_tamanio_producto_linea" name="alta_tamanio_producto_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
+                                           <option value="" disabled selected hidden>Selecciona...</option>
+                                           </select> 
+										   
+											  </div>
+										
                                         <div class="uk-width-large-1-1"><br/>
                                           <label><i class="uk-icon-calendar "></i><span class="req"> * </span>&nbsp;Días en elaborar </label><br/>
                                           <input type="number" class="md-input" min="0" name="alta_detalle_diasElborar_producto_linea" id="alta_detalle_diasElborar_producto_linea"  />
@@ -947,6 +962,36 @@ include('./php/seguridad_general.php');
                                     <br/>
                                   <!--</div>-->
                                 </div>
+								
+								<!-- ....reyna--->
+								<div class="uk-form-row">
+                                  <div class="uk-input-group">
+                                    <span class="uk-input-group-addon">
+                                     <i class="material-icons md-10">&#xe541;</i>
+                                    </span>
+                                    <label for="product_edit_quantity_control">           
+                                      <span class="req"> * </span>                          
+                                      Porciones                                                       
+                                    </label>
+                                    <br/>
+                                    <input type="number" min="0" class="md-input" name="alta_detalle_porciones_producto_detalle_linea" id="alta_detalle_porciones_producto_detalle_linea"  />
+                                  </div>
+                                </div>
+								<div class="uk-form-row">
+                                  <div class="uk-input-group">
+                                     <span class="uk-input-group-addon">
+									 <i class="material-icons md-10">&#xe89e;</i> 
+									 </span>
+									 <label for="product_edit_quantity_control">  
+									 <span class="req"> * </span>Tamaño </label><br/>
+                                     <select id="alta_detalle_tamanio_producto_detalle_linea" name="alta_detalle_tamanio_producto_detalle_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
+                                    <option value="" disabled selected hidden>Selecciona...</option>
+                                        </select> 
+								  </div>
+                                </div>
+								
+								
+								<!--........... -->
                                 <div class="uk-form-row">
                                   <div class="uk-input-group">
                                     <span class="uk-input-group-addon">
@@ -1055,7 +1100,7 @@ include('./php/seguridad_general.php');
                                     Caract. Específica                                    
                                   </label><br/>
                                   <select id="modificar_especificingredientes_producto_linea" name="modificar_especificingredientes_producto_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
-                                    <option value="" disabled selected hidden></option>
+                                    <option value="" disabled selected hidden></option> 
                                   </select>
                                   <br/>
                                 </div>
@@ -1098,6 +1143,34 @@ include('./php/seguridad_general.php');
                                     <br/>
                                   <!--</div>-->
                                 </div>
+								<!-- reyna...... -->
+								<div class="uk-form-row">
+                                  <!--<div class="uk-input-group">
+                                    <span class="uk-input-group-addon">
+                                     <i class="material-icons md-10">&#xe541;</i>
+                                    </span> -->
+									
+                                    <label for="product_edit_quantity_control">           
+                                      <span class="req"> * </span>                          
+                                      Porciones                                                        
+                                    </label>
+                                    <br/>
+                                    <input type="number" min="0" class="md-input" name="modificar_detalle_porciones_producto_linea" id="modificar_detalle_porciones_producto_linea"  />
+                                  <!-- </div> -->
+                                </div>
+								
+								 <div class="uk-form-row">
+                                  <label><!--class="uk-form-label" for="product_edit_memory_control"--> 
+                                    <span class="req"> * </span>
+                                    Tamaño                                    
+                                  </label><br/>
+                                  <select id="modificar_detalle_tamanio_producto_linea" name="modificar_detalle_tamanio_producto_linea" class="md-input" data-uk-tooltip="{pos:'top'}" title="Select with tooltip">
+                                    <option value="" disabled selected hidden>Selecciona...</option>
+                                  </select>
+                                  <br/>
+                                </div>
+								
+								<!-- ....... -->
                                 <div class="uk-form-row">
                                   <div class="uk-input-group">
                                     <span class="uk-input-group-addon">
@@ -1109,7 +1182,7 @@ include('./php/seguridad_general.php');
                                     </label>
                                     <br/>
                                     <input type="number" min="0" class="md-input" name="modificar_detalle_diasElborar_producto_linea" id="modificar_detalle_diasElborar_producto_linea"  />
-                                  </div>
+                                  </div>  
                                 </div>
                                 <div class="uk-form-row">
                                   <div class="uk-input-group">
@@ -2229,7 +2302,11 @@ $( window ).ready(function()
     mostrarNotificaciones();
     cargaCalendario();
 
-    
+    //----------------------------reyna----
+	mostrarTamaños();
+	
+	
+	//------------------------------------
   });
   /*
   FUNCIONES MIGUEL
@@ -2275,9 +2352,11 @@ $( window ).ready(function()
     }
     //alert('forma es::'+activaForma+' variable::'+modificar_forma_producto_linea_elegido);
   }
+  
+  
+  /*
   function validarFormaProductoLinea(diametro,largo,ancho,piezas)
   {
-    //alert('bool::'+modificar_forma_producto_linea_elegido+' diametro::'+diametro+' largo::'+largo+' ancho::'+ancho+' piezas::'+piezas);
     if(modificar_forma_producto_linea_elegido=='')
     {
       if(diametro!=''){
@@ -2315,9 +2394,11 @@ $( window ).ready(function()
       ancho='';
       diametro='';
     }
-    //alert('bool::'+modificar_forma_producto_linea_elegido+' diametro::'+diametro+' largo::'+largo+' ancho::'+ancho+' piezas::'+piezas+' porciones::'+porciones);
     return porciones;
-  }
+  }*/
+  
+  
+  
   /**
    * FUNCION USADA PARA VALIDAR LOS FORMULARIOS DE INICIO->PRODCUTOS Y PERFIL DE TIENDA
    * @param  {[STRING]} formularioAValidar [NOMBRE DEL FORMULARIO A VALIDAR]
@@ -2347,6 +2428,12 @@ $( window ).ready(function()
       boolErrorDiasElaboracion=false;
       boolErrorStock=false;
       boolErrorPrecioReal=false;
+	  
+	  //-------------------reyna---------------
+	  boolErrorPorciones2=false;
+	  boolErrorTamanio1=false;
+	  
+	  	  //---------------------------------------
 
       boolErrorEspecifIngrediente=false;
 
@@ -2372,6 +2459,10 @@ $( window ).ready(function()
       diaselaboracion='';
       stock='';
       precioreal='';
+	  //--------------------reyna-------
+	  porciones2='';
+	  tamanio1='';
+	  //---------------------------------
       preciobp='';
       diametro='';
       largo='';
@@ -2410,6 +2501,13 @@ $( window ).ready(function()
       diaselaboracion=$('#alta_detalle_diasElborar_producto_linea').val();
       stock=$('#alta_detalle_stock_producto_linea').val();
       precioreal=$('#alta_detalle_precioreal_producto_linea').val();
+	  
+	  
+	  //-------------------reyna---------------------------------------------
+	  porciones2=$('#alta_porciones_producto_linea').val();
+	  tamanio1=$('#alta_tamanio_producto_linea').val();
+	  //-----------------------------------------------------------------------
+	  
 
       preciobp=precioreal;
       diametro=$('#alta_clasifcategproduct_circular_diametro_producto_linea').val();
@@ -2419,7 +2517,7 @@ $( window ).ready(function()
       activado=1;
       idtblespecificingrediente=$('#alta_especificingredientes_producto_linea').val();
 
-      porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
+      //porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
       /////////////////////////DATOS GENERALES/////////////////////////
       //nombreproduct -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
@@ -2573,6 +2671,48 @@ $( window ).ready(function()
       
       ///////////////////////////////////////////////////////////////////////////
       ////////////////////////////DATOS DETALLES///////////////////////////////
+	  //porciones2 -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(porciones2=='')
+      {
+        boolError=true;
+        boolErrorPorciones2=true;
+      }
+      //VALIDAR RANGO DE DATOS ACEPTABLES
+      if(porciones2<0)
+      {
+        //console.log('menor a cero');
+        boolError=true;
+        boolErrorPorciones2=true;
+      }
+      //VALIDAR CAMPOS NO SON NUMEROS
+      if(!$.isNumeric(porciones2))
+      {
+        boolError=true;
+        boolErrorPorciones2=true;
+
+      }
+      if(boolErrorPorciones2)
+        $("#alta_porciones_producto_linea").addClass("md-input-danger");
+      else
+        $("#alta_porciones_producto_linea").removeClass("md-input-danger");
+	  
+	  //-----------------------------------tamaño---------
+	  
+	   //tamaño -> Select
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(tamanio1==null)
+      {
+        boolError=true;
+        boolErrorTamanio1=true;  
+      }    
+      if(boolErrorTamanio1)
+	   $("#alta_tamanio_producto_linea").addClass("md-input-danger");
+      else
+	  $("#alta_tamanio_producto_linea").removeClass("md-input-danger"); 
+  
+     
+	  //************************************************************************************
       //diaselaboracion -> Number
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       if(diaselaboracion=='')
@@ -2598,6 +2738,7 @@ $( window ).ready(function()
         $( "#alta_detalle_diasElborar_producto_linea" ).addClass( "md-input-danger" );
       else
         $( "#alta_detalle_diasElborar_producto_linea" ).removeClass( "md-input-danger" );
+	//************************************************************************************
       //stock -> Number
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       if(stock=='')
@@ -2648,6 +2789,9 @@ $( window ).ready(function()
         $( "#alta_detalle_precioreal_producto_linea" ).addClass( "md-input-danger" );
       else
         $( "#alta_detalle_precioreal_producto_linea" ).removeClass( "md-input-danger" );
+	
+	//______
+	/*
       //porciones -> Number
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       if(porciones=='')
@@ -2673,6 +2817,8 @@ $( window ).ready(function()
         $( "#alta_forma_producto_linea_titulo" ).css('color','red');
       else
         $( "#alta_forma_producto_linea_titulo" ).css('color','black');
+	
+	*/
       /////////////////////////////////////////////////////////////////////////
       ////////////////////////////DATOS INGREDIENTE ESPECIAL///////////////////
       //idtblclasifproduct -> Select
@@ -2686,6 +2832,7 @@ $( window ).ready(function()
         $( "#alta_especificingredientes_producto_linea" ).addClass( "md-input-danger" );
       else
         $( "#alta_especificingredientes_producto_linea" ).removeClass( "md-input-danger" );
+	
       /////////////////////////////////////////////////////////////////////////
       if(!boolError)
       {
@@ -2699,6 +2846,13 @@ $( window ).ready(function()
         UIkit.modal.alert(mensaje_error_validacion);
 
       }
+	  
+	 
+      /////////////////////////////////////////////////////////////////////////
+   
+	  
+	  
+	  //----------------------------------------------------------
       //registrarProductoLinea();
     }
     else if(formularioAValidar=='form_alta_productos_linea_detalle')
@@ -2706,12 +2860,15 @@ $( window ).ready(function()
       /*
       VARIABLES
       */
-      boolError=false;
-      boolErrorPorciones=false;
+      boolError=false;      
       boolErrorDiasElaboracion=false;
       boolErrorStock=false;
       boolErrorPrecioReal=false;
       boolErrorEspecifIngrediente=false;
+	  //----------reyna-----------
+	  boolErrorPorciones=false;
+	  boolErrorTamanio=false;
+	  //--------------------
       //productodetalle
       diaselaboracion='';
       stock='';
@@ -2720,7 +2877,10 @@ $( window ).ready(function()
       diametro='';
       largo='';
       ancho='';
+	  //-------------reyna--------------
       porciones='';
+	  tamanio='';
+	  //------------------------
       piezas='';
       idtblespecifingrediente='';
       ///////////////////////////////
@@ -2737,7 +2897,12 @@ $( window ).ready(function()
       idtblespecifingrediente=$('#alta_especificingredientes_producto_detalle_linea').val();
       if(idtblespecifingrediente==null)
         idtblespecifingrediente='';
-      porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
+	
+	//----------------reyna----
+      //porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
+	  porciones=$('#alta_detalle_porciones_producto_detalle_linea').val();
+	    tamanio=$('#alta_detalle_tamanio_producto_detalle_linea').val();
+	  
       //console.log('datos porciones::'+porciones+' idtblespecificingrediente::'+idtblespecifingrediente);
       /////////////////////////DATOS GENERALES/////////////////////////
       //nombreproduct -> String
@@ -2745,11 +2910,30 @@ $( window ).ready(function()
       boolErrorDiasElaboracion=validarCamposNumericos(diaselaboracion);      
       if(boolErrorDiasElaboracion){ $( "#alta_detalle_diasElborar_producto_detalle_linea" ).addClass( "md-input-danger" ); boolError=true; }
       else{ $( "#alta_detalle_diasElborar_producto_detalle_linea" ).removeClass( "md-input-danger" ); }
-      //nombreproduct -> String
+      
+	  //stock -> number
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       boolErrorStock=validarCamposNumericos(stock);      
-      if(boolErrorStock){ $( "#alta_detalle_stock_producto_detalle_linea" ).addClass( "md-input-danger" ); boolError=true; }
+      if(boolErrorStock){ $( "#alta_detalle_stock_producto_detalle_linea" ).addClass( "md-input-danger" ); 
+	  boolError=true; }
       else{ $( "#alta_detalle_stock_producto_detalle_linea" ).removeClass( "md-input-danger" ); }
+	  
+	   //porciones---------------------------reyna-----
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorPorciones=validarCamposNumericos(porciones);      
+      if(boolErrorPorciones){ $( "#alta_detalle_porciones_producto_detalle_linea" ).addClass( "md-input-danger" ); 
+	  boolError=true; }
+      else{ $( "#alta_detalle_porciones_producto_detalle_linea" ).removeClass( "md-input-danger" ); }
+	  
+	  //tamaño -> String
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      boolErrorTamanio=validarCamposSelect(tamanio);      
+      if(boolErrorTamanio){ $( "#alta_detalle_tamanio_producto_detalle_linea" ).addClass( "md-input-danger" ); 
+	  boolError=true; }
+      else{ $( "#alta_detalle_tamanio_producto_detalle_linea" ).removeClass( "md-input-danger" ); }
+      
+	  //-----------------------------------------
+	  
       //nombreproduct -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       boolErrorPrecioReal=validarCamposNumericos(precioreal);      
@@ -2757,9 +2941,9 @@ $( window ).ready(function()
       else{ $( "#alta_detalle_precio_producto_detalle_linea" ).removeClass( "md-input-danger" ); }
       //nombreproduct -> Number
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
-      boolErrorPorciones=validarCamposNumericos(porciones);
+     /* boolErrorPorciones=validarCamposNumericos(porciones);
       if(boolErrorPorciones){ $( "#alta_forma_producto_linea_detalle_titulo" ).css('color','red'); boolError=true; }
-      else{ $( "#alta_forma_producto_linea_detalle_titulo" ).css('color','black'); }
+      else{ $( "#alta_forma_producto_linea_detalle_titulo" ).css('color','black'); } */
       //nombreproduct -> String
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       boolErrorEspecifIngrediente=validarCamposSelect(idtblespecifingrediente);      
@@ -2786,7 +2970,10 @@ $( window ).ready(function()
       VARIABLES
        */
       boolError=false;
+	  //--------------reyna---
       boolErrorPorciones=false;
+	  boolErrorTamanio=false;
+	  //----------------------------
       boolErrorDiasElaboracion=false;
       boolErrorStock=false;
       boolErrorPrecioReal=false;
@@ -2800,12 +2987,17 @@ $( window ).ready(function()
       largo='';
       ancho='';
       porciones='';
+	  tamanio='';
       piezas='';
       idtblespecifingrediente='';
       ///////////////////////////////
       //OBTENEMOS LOS DATOS
       diaselaboracion=$('#modificar_detalle_diasElborar_producto_linea').val();
       stock=$('#modificar_detalle_stock_producto_linea').val();
+	  //--------------reyna----
+	  porciones=$('#modificar_detalle_porciones_producto_linea').val();
+	  tamanio=$('#modificar_detalle_tamanio_producto_linea').val();
+	  //-----------------
       precioreal=$('#modificar_detalle_precio_producto_linea').val();
       preciobp=precioreal;
       diametro=$('#modificar_clasifcategproduct_circular_diametro_producto_linea').val();
@@ -2814,9 +3006,22 @@ $( window ).ready(function()
       piezas=$('#modificar_clasifcategproduct_piezas_producto_linea').val();
       activado=1;
       idtblespecificingrediente=$('#modificar_especificingredientes_producto_linea').val();
-      porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
+      //porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
       //////////////////////////////////////////////////////////////////////////////
       ////////////////////////////DATOS DETALLES///////////////////////////////
+	  
+	  //tamanio -> Number
+      //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+      if(tamanio==null)
+      {
+        boolError=true;
+        boolErrorTamanio=true;
+      }
+     
+      if(boolErrorTamanio)
+        $( "#modificar_detalle_tamanio_producto_linea" ).addClass( "md-input-danger" );
+      else
+        $( "#modificar_detalle_tamanio_producto_linea" ).removeClass( "md-input-danger" );
       //diaselaboracion -> Number
       //VALIDAR CAMPOS OBLIGATORIOS VACIOS
       if(diaselaboracion=='')
@@ -2906,9 +3111,9 @@ $( window ).ready(function()
         boolErrorPorciones=true;
       }
       if(boolErrorPorciones)
-        $( "#modificar_forma_producto_linea_titulo" ).css('color','red');
+        $( "#modificar_detalle_porciones_producto_linea" ).addClass( "md-input-danger" );
       else
-        $( "#modificar_forma_producto_linea_titulo" ).css('color','black');
+        $( "#modificar_detalle_porciones_producto_linea" ).removeClass( "md-input-danger" );
       /////////////////////////////////////////////////////////////////////////
       ////////////////////////////DATOS INGREDIENTE ESPECIAL///////////////////
       //idtblclasifproduct -> Select
@@ -3599,7 +3804,8 @@ $( window ).ready(function()
       .fail(function( jqXHR, textStatus ) {  console.log("getAllTblclasifproductAct fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/  });
     // mostar las especific de ingredeinte disponibles
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblespecificingrediente.php",  data: {solicitadoBy:"WEB"}  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblespecificingrediente.php",  
+	data: {solicitadoBy:"WEB"}  })
       .done(function( msg ) {  
         $.each(msg.datos, function(i,item){
           //AGREGAMOS LAS OPCIONES DE ESPEFICICACION DE INGREDIENTE PARA ALTA DE PRODUCTO EN LINEA          
@@ -3683,6 +3889,7 @@ $( window ).ready(function()
             idProductoDetalle=msgTblProductoYDetalles.datos[i].idProductoDetalle;
             diasElaboracion=msgTblProductoYDetalles.datos[i].diaselaboracion;
             stock=msgTblProductoYDetalles.datos[i].stock;
+			
             precioreal=msgTblProductoYDetalles.datos[i].precioreal;
             diamentro=msgTblProductoYDetalles.datos[i].diamentro;
             largo=msgTblProductoYDetalles.datos[i].largo;
@@ -3690,6 +3897,11 @@ $( window ).ready(function()
             piezas=msgTblProductoYDetalles.datos[i].piezas;
             activado =msgTblProductoYDetalles.datos[i].activado;
             nombreIngrediente=msgTblProductoYDetalles.datos[i].nombreIngrediente;
+			
+			//------reyna------------
+			tamanio=msgTblProductoYDetalles.datos[i].tamanio;
+			porciones=msgTblProductoYDetalles.datos[i].porciones;
+			//--------------------------
             //SI EN EL ARREGLO NO ESTA YA EL ID DEL PRODUCTO LO AÑADIMOS AL ARREGLO
             if($.inArray(idProducto,arregloMostrarimagen)==-1)          
               arregloMostrarimagen.push(idProducto);
@@ -3700,6 +3912,10 @@ $( window ).ready(function()
             arregloInfoUnProducto.push(idProductoDetalle);
             arregloInfoUnProducto.push(diasElaboracion);          
             arregloInfoUnProducto.push(stock);
+			//------------reyna-----------
+			arregloInfoUnProducto.push(tamanio);
+			arregloInfoUnProducto.push(porciones);
+			//--------------------
             arregloInfoUnProducto.push(precioreal);
             arregloInfoUnProducto.push(diamentro);
             arregloInfoUnProducto.push(largo);
@@ -3728,8 +3944,13 @@ $( window ).ready(function()
               productdetalle_size=piezas+' piezas';
             productoAcitvado=verificarActivoProducto(idProductoDetalle,activado);
             //alert('parametro nombre::'+nombre) 
-            ProductoJS=productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,productoAcitvado,nombreIngrediente);
-            //LANZA LA PLANTILLA AL DOM
+			
+			//----------reyna------
+            ProductoJS=productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,tamanio,productdetalle_size,productoAcitvado,nombreIngrediente);
+           //-----------------------
+		   
+		   
+		   //LANZA LA PLANTILLA AL DOM
             $("#productoslineaPlantilla").append(ProductoJS);
           });
         }
@@ -3946,10 +4167,34 @@ $( window ).ready(function()
   Funcion para geenerar el cuadro donde se muestran los productos
   '<i class="uk-icon-spinner uk-icon-spin"></i>';
    */
-  function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,productdetalle_size,activado,nombreIngrediente){
+  function productosPlantilla2(idexArreglo,idProducto,idProductoDetalle,nombre,stock,tamanio,productdetalle_size,activado,nombreIngrediente){
     //nombre = nombre.replace(' ', '_');
     //mensajeEliminacion="'¿Realmente deseas eliminar el producto?'"; id="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-content"
-    ProductoJS='<div data-product-name="P2" class="productos"><div class="md-card md-card-hover-img">  <div class="uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top md-fab md-fab-small md-fab-accent" data-uk-modal="{target:popup_nuevoproductodetallelinea,bgclose:false,modal:false,modal:false}" style="z-index: 1;" onclick="altaProductoDetalleLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')" > <i class="material-icons">&#xE145;</i> </div>  <div name="div_imagenPortadaProductoLinea'+idProducto+'" class="md-card-head uk-text-center uk-position-relative">  <i name="load_imagenPortadaProductoLinea'+idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>  </div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+'" class="uk-float-right">'+activado+'</div><label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label></li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+'" class="uk-float-right"><p class="uk-text-small uk-text-bold">'+productdetalle_size+'</p></div></li><li><label class="md-list-heading">Caract. Específica : </label><div class="uk-float-right"><label class="uk-text-small uk-text-bold">'+nombreIngrediente+'</label></div></li><li><div class="md-list-content-horizontal"> <label class="md-list-heading uk-text-bold">Stock</label><div class="uk-float-right"><input id="numeric_stockProductoLinea'+idProductoDetalle+'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+idProductoDetalle+')"/></div> </div></li>    <li> <div class="uk-grid"> <div class="uk-width-1-2"> <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button></div>  <div class="uk-width-1-2"><button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button>   </div> </div> </li>      </ul></div></div></div>';  
+    ProductoJS='<div data-product-name="P2" class="productos">'+
+	'<div class="md-card md-card-hover-img">  '+
+	'<div class="uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top md-fab md-fab-small md-fab-accent" data-uk-modal="{target:popup_nuevoproductodetallelinea,bgclose:false,modal:false,modal:false}" style="z-index: 1;" onclick="altaProductoDetalleLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')" > <i class="material-icons">&#xE145;</i> '+
+	'</div>  <div name="div_imagenPortadaProductoLinea'+idProducto
+	+'" class="md-card-head uk-text-center uk-position-relative">  <i name="load_imagenPortadaProductoLinea'+
+	idProducto+'" class="uk-icon-spinner uk-icon-spin uk-icon-large"></i> '+
+	' </div><div class="md-card-content"><ul class="md-list"><li>'+
+	'<div class="md-list-content"><h4 class="heading_c uk-margin-bottom">'+nombre+
+	'</h4></div></li><li><div id="boton_status_activado'+idProductoDetalle+
+	'" class="uk-float-right">'+activado+'</div>'+
+	'<label class="uk-display-block uk-margin-small-top" for="product_edit_active_control">Activo</label>'+
+	'</li> <li><label class="md-list-heading">Tamaño : </label><div id="sizeProductoLinea'+idProductoDetalle+
+	'" class="uk-float-right"><p class="uk-text-small uk-text-bold">'+productdetalle_size+'-'+tamanio+'</p></div></li><li><label class="md-list-heading">Caract. Específica : </label>'+
+	'<div class="uk-float-right"><label class="uk-text-small uk-text-bold">'+nombreIngrediente
+	+'</label></div></li><li><div class="md-list-content-horizontal"> '+
+	'<label class="md-list-heading uk-text-bold">Stock</label><div class="uk-float-right">'+
+	'<input id="numeric_stockProductoLinea'+idProductoDetalle+
+	'" class="uk-form-width-small" type="number"  min="0" max="100" step="1" value='+stock+
+	' onblur="actualizarStockProductoLinea('+idProductoDetalle+')" onclick="actualizarStockProductoLinea('+
+	idProductoDetalle+')"/></div> </div></li>    <li> <div class="uk-grid"> <div class="uk-width-1-2">'+
+	' <button type="button" class="md-btn md-btn-small" onclick=" UIkit.modal.confirm('+mensajeEliminacion
+	+', function(){ eliminarProductoLinea('+idProducto+','+idProductoDetalle+'); });  ">Eliminar</button></div>'+
+	'  <div class="uk-width-1-2">'+
+	'<button type="button" class="md-btn md-btn-small" data-uk-modal="{target:popup_modificarproductolinea,bgclose:false,modal:false,modal:false}" onclick="modificarProductoLinea('+idexArreglo+','+idProducto+','+idProductoDetalle+','+idProductoDetalle+')">Modificar</button> '+
+	'  </div> </div> </li>      </ul></div></div></div>';  
       return ProductoJS
    }
   function productosPlantillaCotizador(idexArreglo,idProducto,nombre,activado){
@@ -4067,6 +4312,8 @@ $( window ).ready(function()
       .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproductDetalleStock fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
       .always(function(){  /*console.log("always");*/ });
   }
+  
+  
   function registrarProductoLinea(){  
     /*
     VARIABLES
@@ -4091,6 +4338,11 @@ $( window ).ready(function()
     //emailcreo='';
 
     //productodetalle
+	
+	//----------reyna----
+	porciones2='';
+	tamanio1='';
+	//------------------
     diaselaboracion='';
     stock='';
     precioreal='';
@@ -4131,33 +4383,39 @@ $( window ).ready(function()
 
     //alert('imagnees srcimg1::'+srcimg1+' srcim2'+srcimg2+' srcimg3'+srcimg3);
 
+	//---------reyna---------------
+  porciones2=$('#alta_porciones_producto_linea').val();
+  tamanio1= $('#alta_tamanio_producto_linea').val();
+	
+	//----------------------------
     diaselaboracion=$('#alta_detalle_diasElborar_producto_linea').val();
     stock=$('#alta_detalle_stock_producto_linea').val();
     precioreal=$('#alta_detalle_precioreal_producto_linea').val();
 
     preciobp=precioreal;
     diametro=$('#alta_clasifcategproduct_circular_diametro_producto_linea').val();
-    largo=$('#alta_clasifcategproduct_cuadrado_largo_producto_linea').val();
-    ancho=$('#alta_clasifcategproduct_cuadrado_ancho_producto_linea').val();
+   largo=$('#alta_clasifcategproduct_cuadrado_largo_producto_linea').val();
+   ancho=$('#alta_clasifcategproduct_cuadrado_ancho_producto_linea').val();
     piezas=$('#alta_clasifcategproduct_piezas_producto_linea').val();
+ 
     idtblespecificingrediente=$('#alta_especificingredientes_producto_linea').val();
-    if(diametro!=''){
-      porciones=Math.round((Math.PI*diametro)/2);
-      largo='';
+   // if(diametro!=''){
+    //  porciones=Math.round((Math.PI*diametro)/2);
+   /*   largo='';
       ancho='';
       piezas='';
     }
-    else if(largo!=''&&ancho!=''){
-      porciones=largo*ancho/2*5;
-      diametro='';
+    else if(largo!=''&&ancho!=''){*/
+     // porciones=largo*ancho/2*5;
+   /*   diametro='';
       piezas='';
     }
     else if(piezas!=''){
-      porciones=piezas;
+     // porciones=piezas;
       largo='';
       ancho='';
       diametro='';
-    }
+    }*/
 
     var arreglo= new Array();
     arreglo.push(nombreproduct);
@@ -4171,12 +4429,21 @@ $( window ).ready(function()
     arreglo.push(idtblclasifproduct);
     arreglo.push(emailproveedor);
     
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproducto.php",  data: {solicitadoBy:"WEB",nombreproduct:nombreproduct,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:idtblcategproduc,idtblclasifproduct:idtblclasifproduct,emailcreo:emailproveedor}  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproducto.php",  
+	data: {solicitadoBy:"WEB",nombreproduct:nombreproduct,
+	descripcion:descripcion,ingredientes:ingredientes,seo:seo,
+	promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,
+	idtblcategproduc:idtblcategproduc,idtblclasifproduct:idtblclasifproduct,emailcreo:emailproveedor}  })
       .done(function( msgTblProducto ) {
         /////////////////////////////////////////////////////////////////////////
-        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoId.php",  data: {solicitadoBy:"WEB",nombreproduct:nombreproduct,descripcion:descripcion,ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,idtblproveedor:idtblproveedor,idtblcategproduc:idtblcategproduc,idtblclasifproduct:idtblclasifproduct,emailcreo:emailproveedor}  })
+        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoId.php",  
+		data: {solicitadoBy:"WEB",nombreproduct:nombreproduct,descripcion:descripcion,
+		ingredientes:ingredientes,seo:seo,promcalif:promcalif,activado:activado,
+		idtblproveedor:idtblproveedor,idtblcategproduc:idtblcategproduc,
+		idtblclasifproduct:idtblclasifproduct,emailcreo:emailproveedor}  })
           .done(function( msgTblProductoId ) {
             idtblproducto=msgTblProductoId.datos[0].idtblproducto;
+			console.log('realizo msgTblProductoId');
             /////////////////////////////////////////////////////////////////////]
             //imagenes
             //personalizar el nombre del producto
@@ -4185,17 +4452,20 @@ $( window ).ready(function()
             srcimg3='p_'+idtblproducto+'_'+srcimg3;
             //alert('Id unico imagnees srcimg1::'+srcimg1+' srcim2'+srcimg2+' srcimg3'+srcimg3);
             //PARA ONTEBER EL ID MANDAR AL MODAL EL ID DE LAS IMAGNEE JUNTO CON LAS IMAGNES Y DESPUS BTENERLO Y SOLO ASIGANRALO 
-            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
+            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  
+			data: {solicitadoBy:"WEB",srcimg:srcimg1,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
               .done(function( msgTblProductoImg1 )
               {
                 //console.log('msgTblProductoImg1.datos::'+msgTblProductoImg1.datos);
                 srcimg1=$('#alta_srcimg1_producto_lineaBD').val(msgTblProductoImg1.datos);
-                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
+                $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  
+				data: {solicitadoBy:"WEB",srcimg:srcimg2,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
                   .done(function( msgTblProductoImg2 )
                   {
                     //console.log('msgTblProductoImg2.datos::'+msgTblProductoImg2.datos);
                     srcimg2=$('#alta_srcimg2_producto_lineaBD').val(msgTblProductoImg2.datos); 
-                     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
+                     $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductImg.php",  
+					 data: {solicitadoBy:"WEB",srcimg:srcimg3,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
                       .done(function( msgTblProductoImg3 )
                       {
                         //alert('SUBIR LOS ARCHIVOS AL SERVIDOR');
@@ -4245,15 +4515,34 @@ $( window ).ready(function()
                 
               })
               .fail(function( jqXHR, textStatus ) {  console.log("setTblproductImg IMG fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
-              .always(function(){  /*console.log("always");*/ });
+              .always(function(){  /*console.log("always"); setTblproductDetalle*/ });
            
-            //producto detalles
-            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductDetalle.php",  data: {solicitadoBy:"WEB",diaselaboracion:diaselaboracion,stock:stock,precioreal:precioreal,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,piezas:piezas,activado:activado,porciones:porciones,idtblespecificingrediente:idtblespecificingrediente,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
-              .done(function( msgTblProductoDetalle )
-              {
+		   /*
+		   console.log('diaselaboracion:'+diaselaboracion,' stock:'+stock,' precioreal:'+precioreal,
+			' preciobp:'+preciobp,' diametro:'+diametro,' largo:'+largo,' ancho:'+ancho,' piezas:'+piezas,
+			' tamanio:'+tamanio1,
+			' activado:'+activado,
+			' porciones:'+porciones2,' idtblespecificingrediente:'+idtblespecificingrediente,
+			' idtblproducto:'+idtblproducto,' emailcreo:'+emailproveedor); */
+			
+            //producto detalles   dataType: "json",
+            $.ajax({  method: "POST",dataType: "json", url: "./../../controllers/setTblproductDetalle.php",  
+			data: {solicitadoBy:"WEB",diaselaboracion:diaselaboracion,stock:stock,precioreal:precioreal,
+			preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,piezas:piezas,tamanio:tamanio1,
+			activado:activado,
+			porciones:porciones2,idtblespecificingrediente:idtblespecificingrediente,
+			idtblproducto:idtblproducto,emailcreo:emailproveedor}})
+              .done(function( msgTblProductoDetallee ){ 
+			  if(parseInt(msgTblProductoDetallee.success)==1){
+			  console.log('fue 1'); 
+			  }else{   console.log('fue cero');}
+			  
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductDetalle fail detalle jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("aqui setTblproductDetalle fail detalle jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
               .always(function(){  /*console.log("always");*/ });
+			  
+			  
+			 
             /////////////////////////////////////////////////////////////////////
           })
           .fail(function( jqXHR, textStatus ) {  console.log("getTblproductoId fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
@@ -4278,7 +4567,10 @@ $( window ).ready(function()
     diametro='';
     largo='';
     ancho='';
+	//-------reyna-----
     porciones='';
+	tamanio='';
+	//-------------
     piezas='';
     activado='';
     idtblespecifingrediente='';
@@ -4307,7 +4599,15 @@ $( window ).ready(function()
     piezas=$('#alta_clasifcategproduct_piezas_producto_detalle_linea').val();
     //activado=1;
     idtblespecificingrediente=$('#alta_especificingredientes_producto_detalle_linea').val();
-    if(diametro!=''){
+	
+	
+	//------------reyna-----------
+	porciones=$('#alta_detalle_porciones_producto_detalle_linea').val();
+	tamanio=$('#alta_detalle_tamanio_producto_detalle_linea').val();
+	//----------------------------
+	
+	
+   /* if(diametro!=''){
       porciones=Math.round((Math.PI*diametro)/2);
       largo='';
       ancho='';
@@ -4323,13 +4623,17 @@ $( window ).ready(function()
       largo='';
       ancho='';
       diametro='';
-    }    
+    }  */   
     /////////////////////////////////////////////////////////////////////////       
     $('#formAltaProductoDetalleLinea')[0].reset();
                         //cargarValoresDefault();
                         UIkit.modal("#popup_nuevoproductodetallelinea").hide();
     //PRODUCTO DETALLES
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductDetalle.php",  data: {solicitadoBy:"WEB",diaselaboracion:diaselaboracion,stock:stock,precioreal:precioreal,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,piezas:piezas,activado:activado,porciones:porciones,idtblespecificingrediente:idtblespecificingrediente,idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductDetalle.php",  
+	data: {solicitadoBy:"WEB",diaselaboracion:diaselaboracion,stock:stock,precioreal:precioreal,
+	preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,piezas:piezas,
+	activado:activado,porciones:porciones,tamanio:tamanio,idtblespecificingrediente:idtblespecificingrediente,
+	idtblproducto:idtblproducto,emailcreo:emailproveedor}  })
     .done(function( msgTblProductoDetalle )
     {
       //alert('done uploadImgProductoLinea datos::'+datos);
@@ -4499,6 +4803,9 @@ $( window ).ready(function()
     descripcion='';
     seo='';
     preciobp='';
+	preciobp1='';
+	preciobp2='';
+	preciobp3='';
     precioreal='';
     srcimg='';
     activado='';
@@ -4511,11 +4818,24 @@ $( window ).ready(function()
     descripcion=$('#alta_descripcion_producto_Complementario').val();
     seo=$('#alta_nombre_producto_Complementario').val().replace(" ", '');;
     precioreal=$('#alta_precioreal_producto_Complementario').val();
-    preciobp=precioreal;
+	preciobp1=$('#alta_precioreal_producto_Complementario').val();
+    //preciobp=precioreal;
+	preciobp2=parseInt(precioreal)+(parseInt((preciobp1*0.045+4)*1.16));
     //alert('precio::'+preciobp);
-    preciobp=parseInt(precioreal)+parseInt(Math.round(parseInt((precioreal*0.045+4)*1.16)+0.005,2));
+    preciobp=Math.round(parseInt(preciobp2));//el precio que esta en bepickler
     //alert('precio::'+preciobp);
-    preciobp=Math.round(parseInt(preciobp)+0.55,0);//el precio que esta en bepickler
+    //preciobp2=(preciobp1*0.045+4)*1.16;	
+	//preciobp3=preciobp2+precioreal;	
+	//preciobp=Math.round(preciobp3);
+	
+	//console.log('precio-'+precio);
+	/*console.log('precioreal: '+precioreal);
+	console.log('msuma: '+preciobp2);
+	console.log('precioBP: '+preciobp);*/
+	//preciobp=preciobp2.toFixed(2);
+	//$('#totaltabla1'+u).text(totalproveedor.toFixed(2));
+    //alert('precio::'+preciobp);
+   // preciobp=Math.round(parseInt(preciobp)+0.55,0);//el precio que esta en bepickler
     //alert('precio::'+preciobp);
     activado=$('#alta_activado_producto_cotizador').val();
     if(activado=='on'){activado=1;}
@@ -4539,31 +4859,32 @@ $( window ).ready(function()
     arreglo.push(stock);
     arreglo.push(emailproveedor);
      
-    console.log('agergar: nombreproduct::'+nombreproduct+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' preciobp::'+preciobp+' emailcreo+::'+emailproveedor+' arreglo::'+arreglo.length+' srcimg::'+srcimg);
-
-    /*
-    $solicitadoBy=$_POST["solicitadoBy"];
-    $nombreproductcomplem=$_POST["nombreproductcomplem"];
-    $descripcion=$_POST["descripcion"];
-    $seo=$_POST["seo"];
-    $precioreal=$_POST["precioreal"];
-    $preciobp=$_POST["preciobp"];
-    $srcimg=$_POST["srcimg"];
-    $activado=$_POST["activado"];
-    $idtblproveedor=$_POST["idtblproveedor"];
-    $stock=$_POST["stock"];
-    $emailcreo=$_POST["emailcreo"];
-     */
+    /*console.log('agergar: nombreproduct::'+nombreproduct+' descripcion::'+descripcion+' seo::'+seo+
+	' precioreal::'+precioreal+' precioBP::'+preciobp+' img::'+srcimg+' activado::'+activado+
+	' idtblproveedor::'+idtblproveedor+' stock::'+stock+' emailcreo+::'+emailproveedor+
+	' arreglo::'+arreglo.length+' srcimg::'+srcimg);
+      */
     
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcomplem.php",  data: {solicitadoBy:"WEB",nombreproductcomplem:nombreproduct,descripcion:descripcion,seo:seo,precioreal:precioreal, preciobp:preciobp, srcimg:srcimg, activado:activado, idtblproveedor:idtblproveedor, stock:stock, emailcreo:emailproveedor}  })
+    
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblproductcomplem.php",  
+	data: {solicitadoBy:"WEB",nombreproductcomplem:nombreproduct,descripcion:descripcion,seo:seo,
+	precioreal:precioreal,preciobp:preciobp, srcimg:srcimg, activado:activado, 
+	idtblproveedor:idtblproveedor, stock:stock, emailcreo:emailproveedor}  })
       .done(function( msgTblProducto ) 
       {
         console.log('entro al done setTblproductcomplem::'+msgTblProducto);
         
         /////////////////////////////////////////////////////////////////////////
-        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproductoComplementarioId.php",  data: {solicitadoBy:"WEB",nombreproductcomplem:nombreproduct,descripcion:descripcion,seo:seo,precioreal:precioreal, preciobp:preciobp, srcimg:srcimg, activado:activado, idtblproveedor:idtblproveedor, stock:stock, emailcreo:emailproveedor}  })
+        $.ajax({  method: "POST",  dataType: "json",  
+		url: "./../../controllers/getTblproductoComplementarioId.php",  
+		data: {solicitadoBy:"WEB",nombreproductcomplem:nombreproduct,descripcion:descripcion,seo:seo,
+		precioreal:precioreal, preciobp:preciobp, srcimg:srcimg, activado:activado, 
+		idtblproveedor:idtblproveedor, stock:stock, emailcreo:emailproveedor}  })
           .done(function( msgTblProductoId ) {
-              idtblproductcomplem=msgTblProductoId.datos[0].idtblproductcomplem;
+			  
+			  console.log('getTblproductoComplementarioId'+msgTblProductoId);
+              idtblproductcomplem=msgTblProductoId.datos[0].idtblproductcomplem; 
+			  console.log('ides: '+idtblproductcomplem);
             /////////////////////////////////////////////////////////////////////]
             //imagenes
             //personalizar el nombre del producto
@@ -4572,7 +4893,12 @@ $( window ).ready(function()
             /*
             //ACTUALIZAMOS EL NOMBRE DE LA IMAGEN CON EL ULTIMO FORMATO i_idProducto_p_proveedor_nombreImagen.jpg/gif/etc 
             */
-            $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplemImg.php",  data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem, srcimg: srcimg,emailmodifico:emailproveedor}  })
+			
+			console.log('id'+idtblproductcomplem+' img:'+srcimg+' email:'+emailproveedor);
+            $.ajax({  method: "POST",  dataType: "json",  
+			url: "./../../controllers/setUpdateTblproductcomplemImg.php",  
+			data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem, 
+			srcimg:srcimg,emailmodifico:emailproveedor}  })
               .done(function( msgTblProductoComplementarioImg )
               {
                 //console.log('msgTblProductoComplementarioImg.datos::'+msgTblProductoComplementarioImg.datos)
@@ -4603,7 +4929,7 @@ $( window ).ready(function()
                     
                   // ejecutar el ajax de subida pero cuando se pida el mombre en el php consultar el nombre en la bd y asigarlo  
               })
-              .fail(function( jqXHR, textStatus ) {  console.log("setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
+              .fail(function( jqXHR, textStatus ) {  console.log("aquiX setTblproductcotimg1 fail jqXHR::"+jqXHR.status+" IMG textStatus::"+textStatus);  })
               .always(function(){  
               //console.log("always");
                });
@@ -4652,7 +4978,7 @@ $( window ).ready(function()
         1  arregloInfoUnProducto.push(nombre);
         2  arregloInfoUnProducto.push(idProductoDetalle);
         3  arregloInfoUnProducto.push(diasElaboracion);          
-        4  arregloInfoUnProducto.push(stock);
+        4  arregloInfoUnProducto.push(stock);		   
         5  arregloInfoUnProducto.push(precioreal);
         6  arregloInfoUnProducto.push(diamentro);
         7  arregloInfoUnProducto.push(largo);
@@ -4691,33 +5017,51 @@ $( window ).ready(function()
     else
       $('#modificar_activado_producto_linea').prop('checked', false);
 
-    $('#modificar_nombre_producto_linea').val(arregloInfoTodosProducto[idexArreglo][1]);
-    $('#modificar_detalle_diasElborar_producto_linea').val(arregloInfoTodosProducto[idexArreglo][3]);
-    $('#modificar_detalle_precio_producto_linea').val(arregloInfoTodosProducto[idexArreglo][5]);
+    $('#modificar_nombre_producto_linea').val(arregloInfoTodosProducto[idexArreglo][1]); //nombre   
+	$('#modificar_detalle_diasElborar_producto_linea').val(arregloInfoTodosProducto[idexArreglo][3]); //dias
+	 $('#modificar_detalle_precio_producto_linea').val(arregloInfoTodosProducto[idexArreglo][7]);
+	 $('#modificar_detalle_porciones_producto_linea').val(arregloInfoTodosProducto[idexArreglo][6]);
+	 $('#modificar_detalle_tamanio_producto_linea').val(arregloInfoTodosProducto[idexArreglo][5]);
+	 
+	 
+	//$('#modificar_detalle_precio_producto_linea').val(arregloInfoTodosProducto[idexArreglo][5]);
+	 
     //$('#modificar_detalle_stock_producto_linea').val(arregloInfoTodosProducto[idexArreglo][4]);    //dimenciones
     $('#modificar_detalle_stock_producto_linea').val($('#numeric_stockProductoLinea'+idProductoDetalle).val());    //dimenciones numeric_stockProductoLinea6
-    $('#modificar_clasifcategproduct_cuadrado_largo_producto_linea').val(arregloInfoTodosProducto[idexArreglo][7]);    
+    
+	$('#modificar_clasifcategproduct_cuadrado_largo_producto_linea').val(arregloInfoTodosProducto[idexArreglo][9]);    
+    $('#modificar_clasifcategproduct_cuadrado_ancho_producto_linea').val(arregloInfoTodosProducto[idexArreglo][10]);
+    $('#modificar_clasifcategproduct_circular_diametro_producto_linea').val(arregloInfoTodosProducto[idexArreglo][8]);
+    $('#modificar_clasifcategproduct_piezas_producto_linea').val(arregloInfoTodosProducto[idexArreglo][11]);
+	
+	
+	/*$('#modificar_clasifcategproduct_cuadrado_largo_producto_linea').val(arregloInfoTodosProducto[idexArreglo][7]);    
     $('#modificar_clasifcategproduct_cuadrado_ancho_producto_linea').val(arregloInfoTodosProducto[idexArreglo][8]);
     $('#modificar_clasifcategproduct_circular_diametro_producto_linea').val(arregloInfoTodosProducto[idexArreglo][6]);
-    $('#modificar_clasifcategproduct_piezas_producto_linea').val(arregloInfoTodosProducto[idexArreglo][9]);
-    //DEPENDE DE EL TAMAÑO DEL PRODUCTO MUESTRA EL CAMPO
-    if(arregloInfoTodosProducto[idexArreglo][7]!=null&&arregloInfoTodosProducto[idexArreglo][8]!=null)
+    $('#modificar_clasifcategproduct_piezas_producto_linea').val(arregloInfoTodosProducto[idexArreglo][9]);  */
+	
+    //DEPENDE DE EL TAMAÑO DEL PRODUCTO MUESTRA EL CAMPO  ancho y largo
+	//if(arregloInfoTodosProducto[idexArreglo][7]!=null&&arregloInfoTodosProducto[idexArreglo][8]!=null)
+    if(arregloInfoTodosProducto[idexArreglo][9]!=null&&arregloInfoTodosProducto[idexArreglo][10]!=null)
     {
       UIkit.switcher('#modificar_forma_producto').show(0);
-    }else if(arregloInfoTodosProducto[idexArreglo][6]!=null)
+    }
+	//-----------------------------------------------
+	else if(arregloInfoTodosProducto[idexArreglo][8]!=null) //diametro  era 6
     {
-      $("#modificar_tab_circulo").addClass("uk-active");
+      $("#modificar_tab_circulo").addClass("uk-active"); 
       UIkit.switcher('#modificar_forma_producto').show(1);
-    }else if(arregloInfoTodosProducto[idexArreglo][9]!=null)
+    }  //------------------------------------------
+	else if(arregloInfoTodosProducto[idexArreglo][11]!=null)  //piezas era 9
     {
       UIkit.switcher('#modificar_forma_producto').show(2);
     }
 
 
-
+           //modificar_especificingredientes_producto_linea if(arregloInfoTodosProducto[idexArreglo][11]==arregloEspecifiIngredientesNombre[i])
     //CREAMOS LAS OPCIONES PARA INGREDIENTES Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
     $.each(arregloEspecifiIngredientesId, function(i,item){
-      if(arregloInfoTodosProducto[idexArreglo][11]==arregloEspecifiIngredientesNombre[i])
+      if(arregloInfoTodosProducto[idexArreglo][13]==arregloEspecifiIngredientesNombre[i])
         $("#modificar_especificingredientes_producto_linea").append('<option value="'+item+'"selected>'+arregloEspecifiIngredientesNombre[i]+'</option>');
       else
         $("#modificar_especificingredientes_producto_linea").append('<option value="'+item+'">'+arregloEspecifiIngredientesNombre[i]+'</option>');
@@ -4745,22 +5089,22 @@ $( window ).ready(function()
         return false;
       }
     });
-
+      
     $('#modificar_nombre_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][1]);
     //$('#modificar_seo_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][14]);
     //$('#modificar_seo_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][1].replace(" ", ''));
-    $('#modificar_descripcion_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][12]);
-    $('#modificar_ingredientes_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][13]);
+    $('#modificar_descripcion_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][14]); //era 12
+    $('#modificar_ingredientes_producto_linea_general').val(arregloInfoTodosProducto[idexArreglo][15]);  //era13
     //CREAMOS LAS OPCIONES PARA CATEGORIAS Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
-    $.each(arregloCategoriaProductoId, function(i,item){
-      if(arregloInfoTodosProducto[idexArreglo][16]==arregloCategoriaProductoId[i])
+    $.each(arregloCategoriaProductoId, function(i,item){  //tenia 16
+      if(arregloInfoTodosProducto[idexArreglo][18]==arregloCategoriaProductoId[i])
         $("#modificar_categoria_producto_linea_general").append('<option value="'+item+'"selected>'+arregloCategoriaProductoNombre[i]+'</option>');
       else
         $("#modificar_categoria_producto_linea_general").append('<option value="'+item+'">'+arregloCategoriaProductoNombre[i]+'</option>');
     });
     //CREAMOS LAS OPCIONES PARA CLASIFICACI? Y DEJAMOS COMO SELECCIONADA LA DEL PRODUCTO
-    $.each(arregloClasificacionProductoId, function(i,item){
-      if(arregloInfoTodosProducto[idexArreglo][17]==arregloClasificacionProductoId[i])
+    $.each(arregloClasificacionProductoId, function(i,item){  //era 17
+      if(arregloInfoTodosProducto[idexArreglo][19]==arregloClasificacionProductoId[i])
         $("#modificar_clasificacion_producto_linea_general").append('<option value="'+item+'"selected>'+arregloClasificacionProductoNombre[i]+'</option>');
       else
         $("#modificar_clasificacion_producto_linea_general").append('<option value="'+item+'">'+arregloClasificacionProductoNombre[i]+'</option>');
@@ -4890,13 +5234,20 @@ $( window ).ready(function()
     idProductoDetalle=$("#modificar_id_productoDetalle_linea").val();
     diasElborar=$("#modificar_detalle_diasElborar_producto_linea").val();
     stock=$("#modificar_detalle_stock_producto_linea").val();
-    precio=$("#modificar_detalle_precio_producto_linea").val();
-    preciobp=precio;
+    precioreal=$("#modificar_detalle_precio_producto_linea").val();
+	preciobp=$("#modificar_detalle_precio_producto_linea").val();
+    //preciobp=precio;  
     diametro=$("#modificar_clasifcategproduct_circular_diametro_producto_linea").val();
     largo=$("#modificar_clasifcategproduct_cuadrado_largo_producto_linea").val();
     ancho=$("#modificar_clasifcategproduct_cuadrado_ancho_producto_linea").val();
+	
+	//-------------reyna-----------
+	porciones=$("#modificar_detalle_porciones_producto_linea").val();
+	tamanio=$("#modificar_detalle_tamanio_producto_linea").val();
+	
+	//----------------------
     //SI NO SE AH MODIFICAR LA FORMA SE TOMA NORMAL SI SE CAMBIO SE TOMA LA ULTIMA FORMA
-    porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
+    //porciones=validarFormaProductoLinea(diametro,largo,ancho,piezas);
     //alert('forma::'+modificar_forma_producto_linea_elegido);
     piezas=$("#modificar_clasifcategproduct_piezas_producto_linea").val();
     activado=$("#modificar_activado_producto_linea").is(':checked');
@@ -4907,8 +5258,12 @@ $( window ).ready(function()
       activado=0;
     idProducto=$("#modificar_id_producto_linea").val();
     especificingredientes=$("#modificar_especificingredientes_producto_linea").val();
-
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalle.php", data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,diaselaboracion:diasElborar,stock:stock,precioreal:precio,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,porciones:porciones,piezas:piezas,activado:activado,idtblproducto:idProducto, idtblespecifingrediente:especificingredientes ,emailmodifico:emailproveedor }  })
+     
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductDetalle.php", 
+	data: {solicitadoBy:"WEB",idtblproductdetalle:idProductoDetalle,diaselaboracion:diasElborar,
+	stock:stock,precioreal:precioreal,preciobp:preciobp,diametro:diametro,largo:largo,ancho:ancho,
+	porciones:porciones,tamanio:tamanio,piezas:piezas,activado:activado,idtblproducto:idProducto,
+	idtblespecifingrediente:especificingredientes,emailmodifico:emailproveedor}})
     .done(function( msgTblProductoDetalles ) {
       //alert('Elimnaci? Exitosa');
       //$('#productoslineaPlantilla').html("");
@@ -4918,7 +5273,7 @@ $( window ).ready(function()
       $('#productosComplementarioPlantilla').html("");
       $('#productoscotizadorPlantilla').html("");
       $('#productoslineaPlantilla').html("");
-      $('#formActualizarProductoLinea')[0].reset();
+      $('#formActualizarProductoLinea')[0].reset(); 
       UIkit.modal("#popup_spinner_modificando_producto").hide();
       UIkit.modal("#popup_modificarproductolinea").hide();
       cargarValoresDefault();
@@ -5130,7 +5485,7 @@ $( window ).ready(function()
       $solicitadoBy=$_POST["solicitadoBy"];
     $idtblproductcotizador=$_POST["idtblproductcotizador"];
        */
-      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcotimg.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto} })
+      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/controllers/getAllTblproductcotimg.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto} })
         .done(function( msgTblProductoImg )
         {
           //OBTENEMOS TODOS LOS REGISTROS 
@@ -5261,7 +5616,8 @@ $( window ).ready(function()
     descripcion=$("#modificar_descripcion_producto_Complementario").val();
     seo=$("#modificar_nombre_producto_Complementario").val().replace(" ", '');
     precioreal=$("#modificar_precio_producto_Complementario").val();
-    preciobp=precioreal;
+	preciobp=$("#modificar_precio_producto_Complementario").val();
+    //preciobp=precioreal;
     idtblproveedor=$("#modificar_idProveedor_producto_Complementario").val();
     stock=$("#modificar_stock_producto_Complementario").val();
     activado=$('#modificar_activado_producto_Complementario').val();
@@ -5288,7 +5644,9 @@ $( window ).ready(function()
       srcimg1='i_'+idtblproductcomplem+'p_'+idtblproveedor+'_'+srcimg1;
       $('#modificar_srcimg1_producto_ComplementarioBD').val(srcimg1);
       //borramos la actual file de la fotografia del servidor
-      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteFileImgProductoComplementario.php",  data: {solicitadoBy:"WEB",tblproductimg_srcimg:srcimgActual} })
+      $.ajax({ method: "POST",  dataType: "json",  
+	  url: "./../../controllers/setDeleteFileImgProductoComplementario.php",  
+	  data: {solicitadoBy:"WEB",tblproductimg_srcimg:srcimgActual} })
         .done(function( datos ){
           console.log('setDeleteFileImgProductoComplementario datos::'+datos.datos);
         })
@@ -5322,8 +5680,11 @@ $( window ).ready(function()
       srcimg1=srcimgActual;
     }    
     
-    console.log('datos para actualizar:: idtblproductcomplem'+idtblproductcomplem+' nombre::'+nombre+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' preciobp::'+preciobp+' srcimg1::'+srcimg1+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' emailmodifico::'+emailproveedor);
-    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplem.php", data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem,nombreproductcomplem:nombre,descripcion:descripcion,seo:seo,precioreal:precioreal,preciobp:preciobp,srcimg:srcimg1,activado:activado,idtblproveedor:idtblproveedor,stock:stock,emailmodifico:emailproveedor }  })
+    //console.log('datos para actualizar:: idtblproductcomplem'+idtblproductcomplem+' nombre::'+nombre+' descripcion::'+descripcion+' seo::'+seo+' precioreal::'+precioreal+' preciobp::'+preciobp+' srcimg1::'+srcimg1+' activado::'+activado+' idtblproveedor::'+idtblproveedor+' stock::'+stock+' emailmodifico::'+emailproveedor);
+    $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproductcomplem.php", 
+	data: {solicitadoBy:"WEB",idtblproductcomplem:idtblproductcomplem,nombreproductcomplem:nombre,
+	descripcion:descripcion,seo:seo,precioreal:precioreal,preciobp:preciobp,srcimg:srcimg1,
+	activado:activado,idtblproveedor:idtblproveedor,stock:stock,emailmodifico:emailproveedor }  })
       .done(function( msgTblProductoComplementario ) {
         //alert('Elimnaci? Exitosa');
         console.log('setUpdateTblproductcomplem done msgTblProductoComplementario::'+msgTblProductoComplementario.datos);
@@ -5516,7 +5877,7 @@ $( window ).ready(function()
   function eliminarProductoComplementario(idProducto){
     UIkit.modal("#popup_spinner_eliminando_producto", {bgclose: false}).show();
       srcimgActual=$("#imagenPortadaProductoComplementario"+idProducto).attr("src");
-      srcimgActual=srcimgActual.replace('./../assests_general/productos/complementario/', '');
+      srcimgActual=srcimgActual.replace('../assests_general/productos/complementario/', '');
 
       //borramos la actual file de la fotografia del servidor
       
@@ -7527,6 +7888,30 @@ $.ajax({
       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
       .always(function(){  console.log("always");});
 }
+
+//---------------------------------------------
+
+ function mostrarTamaños(){		  
+		                
+    
+     $.ajax({     
+     method: "POST",dataType: "json",url: "./../../controllers/getAllTbltamanios.php", 
+	 data: {solicitadoBy:"WEB"}})
+            .done(function(mostTam){
+				   
+                $.each(mostTam.datos, function(i,item)
+				 {	tamanioname=item.tbltamanios_nombre;	
+				 //muestra ciudades en el encabezado de la interfaz principal
+                 $("#alta_tamanio_producto_linea").append('<option value="' + tamanioname +'">' + tamanioname + '</option>');
+ $("#alta_detalle_tamanio_producto_detalle_linea").append('<option value="' + tamanioname +'">' + tamanioname + '</option>');
+ $("#modificar_detalle_tamanio_producto_linea").append('<option value="' + tamanioname +'">' + tamanioname + '</option>');
+				  				 
+                      });	
+                                 
+              })
+      .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);})
+      
+   } // fin de la funcion 
 
 
 
