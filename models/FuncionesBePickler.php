@@ -12156,6 +12156,110 @@ AND exists
 			return false;
 		}
 	}
+
+
+	/*
+    Funcion para añadir,actualizar y agregar mensaje de envio 
+    */
+    public static function setTbldatosenvioORupdate($tipodepedido,$tiposervicio,$calle,$numint,$fchagendado,$hragendado,$numext,$colonia,$ciudad,$pais,$codipost,$nombreempresa,$rfc,$nombrerecibe,$celularrecibe,$referencia1,$referencia2,$emailcreo,$idtblordencompra,$clavemsg,$msg){
+
+    	$conexionPDO = ConexionDB::getInstance()->getDb();
+
+    	$check ="SELECT COUNT(*) FROM tbldatosenvio WHERE tbldatosenvio_idtblordencompra = ?";
+
+    	try{
+			$resultado = $conexionPDO->prepare($check);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);			
+			$resultado->execute();	
+
+			if(($resultado->fetchColumn())>0){ //si existe un registro se actualiza el registro
+
+				$update = "UPDATE tbldatosenvio SET tbldatosenvio_tipodepedido = ?,tbldatosenvio_tipodeservicio = ?,tbldatosenvio_calle = ?,tbldatosenvio_numint = ?,tbldatosenvio_fchagendado = ?,tbldatosenvio_horaagendado = ?,tbldatosenvio_numext = ?,tbldatosenvio_colonia = ?,tbldatosenvio_ciudad = ?,tbldatosenvio_pais = ?,tbldatosenvio_codipost = ?,tbldatosenvio_nombreempresa = ?,tbldatosenvio_rfc = ?,tbldatosenvio_nombrerecibe = ?,tbldatosenvio_celularrecibe = ?,tbldatosenvio_referencia1 = ?,tbldatosenvio_referencia2 = ?,tbldatosenvio_fchmodificacion = NOW(),tbldatosenvio_emailusuamodifico = ? WHERE tbldatosenvio_idtblordencompra  = ?";
+
+				$resultado = $conexionPDO->prepare($update);
+				$resultado->bindParam(1,$tipodepedido,PDO::PARAM_STR);
+				$resultado->bindParam(2,$tiposervicio,PDO::PARAM_STR);
+				$resultado->bindParam(3,$calle,PDO::PARAM_STR);
+				$resultado->bindParam(4,$numint,PDO::PARAM_STR);
+				$resultado->bindParam(5,$fchagendado,PDO::PARAM_STR);
+				$resultado->bindParam(6,$hragendado,PDO::PARAM_STR);
+				$resultado->bindParam(7,$numext,PDO::PARAM_STR);
+				$resultado->bindParam(8,$colonia,PDO::PARAM_STR);
+				$resultado->bindParam(9,$ciudad,PDO::PARAM_STR);
+				$resultado->bindParam(10,$pais,PDO::PARAM_STR);
+				$resultado->bindParam(11,$codipost,PDO::PARAM_INT);
+				$resultado->bindParam(12,$nombreempresa,PDO::PARAM_STR);
+				$resultado->bindParam(13,$rfc,PDO::PARAM_STR);
+				$resultado->bindParam(14,$nombrerecibe,PDO::PARAM_STR);
+				$resultado->bindParam(15,$celularrecibe,PDO::PARAM_STR);
+				$resultado->bindParam(16,$referencia1,PDO::PARAM_STR);
+				$resultado->bindParam(17,$referencia2,PDO::PARAM_STR);
+				$resultado->bindParam(18,$emailcreo,PDO::PARAM_STR);
+				$resultado->bindParam(19,$idtblordencompra,PDO::PARAM_INT);
+				$resultado->execute();
+
+				if($resultado->rowCount()>0){
+
+					$update = "UPDATE tblcarritoproduct SET tblcarritoproduct_personalizar = ? , tblcarritoproduct_mensajetarjeta  = ? WHERE tblcarritoproduct_idtblordencompra =? ";
+
+					$resultado = $conexionPDO->prepare($update);
+					$resultado->bindParam(1,$clavemsg,PDO::PARAM_STR);
+					$resultado->bindParam(2,$msg,PDO::PARAM_STR);
+					$resultado->bindParam(3,$idtblordencompra,PDO::PARAM_INT);
+					$resultado->execute();
+					return $resultado->rowCount();	
+				}else{
+					return false;
+				}
+			}else{//Si no se crea el registro 
+				
+
+				$insert ="INSERT INTO tbldatosenvio (tbldatosenvio_tipodepedido,tbldatosenvio_tipodeservicio,tbldatosenvio_calle,tbldatosenvio_numint,tbldatosenvio_fchagendado,tbldatosenvio_horaagendado,tbldatosenvio_numext,tbldatosenvio_colonia,tbldatosenvio_ciudad,tbldatosenvio_pais,tbldatosenvio_codipost,tbldatosenvio_nombreempresa,tbldatosenvio_rfc,tbldatosenvio_nombrerecibe,tbldatosenvio_celularrecibe,tbldatosenvio_referencia1,tbldatosenvio_referencia2,tbldatosenvio_fchmodificacion,tbldatosenvio_fchcreacion,tbldatosenvio_emailusuacreo,tbldatosenvio_emailusuamodifico,tbldatosenvio_idtblordencompra) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?,?)"; 
+        
+       
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$tipodepedido,PDO::PARAM_STR);
+			$resultado->bindParam(2,$tiposervicio,PDO::PARAM_STR);
+			$resultado->bindParam(3,$calle,PDO::PARAM_STR);
+			$resultado->bindParam(4,$numint,PDO::PARAM_STR);
+			$resultado->bindParam(5,$fchagendado,PDO::PARAM_STR);
+			$resultado->bindParam(6,$hragendado,PDO::PARAM_STR);
+			$resultado->bindParam(7,$numext,PDO::PARAM_STR);
+			$resultado->bindParam(8,$colonia,PDO::PARAM_STR);
+			$resultado->bindParam(9,$ciudad,PDO::PARAM_STR);
+			$resultado->bindParam(10,$pais,PDO::PARAM_STR);
+			$resultado->bindParam(11,$codipost,PDO::PARAM_INT);
+			$resultado->bindParam(12,$nombreempresa,PDO::PARAM_STR);
+			$resultado->bindParam(13,$rfc,PDO::PARAM_STR);
+			$resultado->bindParam(14,$nombrerecibe,PDO::PARAM_STR);
+			$resultado->bindParam(15,$celularrecibe,PDO::PARAM_STR);
+			$resultado->bindParam(16,$referencia1,PDO::PARAM_STR);
+			$resultado->bindParam(17,$referencia2,PDO::PARAM_STR);
+			$resultado->bindParam(18,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(19,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(20,$idtblordencompra,PDO::PARAM_INT);
+			
+			$resultado->execute();
+
+			if($resultado->rowCount()>0){
+
+					$update = "UPDATE tblcarritoproduct SET tblcarritoproduct_personalizar = ? , tblcarritoproduct_mensajetarjeta  = ? WHERE tblcarritoproduct_idtblordencompra =? ";
+
+					$resultado = $conexionPDO->prepare($update);
+					$resultado->bindParam(1,$clavemsg,PDO::PARAM_STR);
+					$resultado->bindParam(2,$msg,PDO::PARAM_STR);
+					$resultado->bindParam(3,$idtblordencompra,PDO::PARAM_INT);
+					$resultado->execute();
+					return $resultado->rowCount();					
+				}else{
+					return false;
+				}
+			}
+		}catch(PDOException $e){
+			return false;
+		}
+  
+    }
 	
 	
 	
