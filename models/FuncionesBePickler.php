@@ -12260,6 +12260,26 @@ AND exists
 		}
   
     }
+
+    //Funcion para obtener el mensaje dedicado
+    public static function getTblcategproductMensaje($clave){
+		
+
+		$consulta = "SELECT * FROM tblcarritoproduct WHERE tblcarritoproduct_personalizar = ? GROUP BY tblcarritoproduct_idtblordencompra"; //? se declaran en la parte de abajo
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta); 
+			$resultado->bindParam(1,$clave,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+
+
+
+	}
 	
 	
 	
