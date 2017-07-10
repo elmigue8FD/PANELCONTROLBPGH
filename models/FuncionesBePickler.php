@@ -4390,6 +4390,21 @@ class FuncionesBePickler{
 			return false;
 		}
 	}
+
+	//obtener todos los registros de los proveedores de una compra
+    public static function getTblproveedorByCompra($idtblordencompra){
+	 $activado=1;
+		$consulta = "SELECT tblproveedor.* FROM tblproveedor INNER join tblproducto ON tblproducto.tblproveedor_idtblproveedor=tblproveedor.idtblproveedor INNER join tblproductdetalle ON tblproductdetalle.tblproducto_idtblproducto=tblproducto.idtblproducto INNER join tblcarritoproduct ON tblcarritoproduct.tblcarritoproduct_idtblproductdetalle=tblproductdetalle.idtblproductdetalle where tblcarritoproduct.tblcarritoproduct_idtblordencompra=? GROUP BY tblproveedor.idtblproveedor";
+		
+		try{
+	      $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+	      $resultado->bindParam(1,$idtblordencompra,PDO::PARAM_STR);
+	      $resultado->execute();
+	      return $resultado->fetchAll(PDO::FETCH_ASSOC); 
+	    } catch(PDOException $e){
+	      return false;
+	    }
+	}
 	
 	
 ///// FUNCIONES REFRENTE A TABLA tblproveedoreliminado 
