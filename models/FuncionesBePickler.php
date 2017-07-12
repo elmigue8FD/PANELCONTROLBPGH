@@ -3353,8 +3353,13 @@ class FuncionesBePickler{
 
     /*Insertar un registro en tblproductcomplem*/
 	 public static function setTblproductcomplem($nombreproductcomplem, $descripcion, $seo, $precioreal, $preciobp, $srcimg,$activado,$idtblproveedor,$stock,$emailcreo){
-        
-        $insert ="INSERT INTO tblproductcomplem (tblproductcomplem_nombre,tblproductcomplem_descripcion,tblproductcomplem_seo,tblproductcomplem_precioreal,tblproductcomplem_preciobp,tblproductcomplem_srcimg,tblproductcomplem_activado,tblproveedor_idtblproveedor,tblproductcomplem_stock,tblproductcomplem_fchmodificacion,tblproductcomplem_fchcreacion,tblproductcomplem_emailusuacreo,tblproductcomplem_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
+                            
+        $insert ="INSERT INTO tblproductcomplem 
+		(tblproductcomplem_nombre,tblproductcomplem_descripcion,tblproductcomplem_seo,
+		tblproductcomplem_precioreal,tblproductcomplem_preciobp,tblproductcomplem_srcimg,
+		tblproductcomplem_activado,tblproveedor_idtblproveedor,tblproductcomplem_stock,
+		tblproductcomplem_fchmodificacion,tblproductcomplem_fchcreacion,tblproductcomplem_emailusuacreo,
+		tblproductcomplem_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -3375,6 +3380,7 @@ class FuncionesBePickler{
 			return false;
 		}
     }
+	//..........
     
     /*Verifica que no exista un registro en tblproductcomplem */
     public static function setCheckTblproductcomplem($nombreproductcomp, $idtblproveedor){
@@ -3417,6 +3423,7 @@ class FuncionesBePickler{
 			return false;
 		}
     }
+    
     /*Actualizar un registro en tblproductcomplem*/
 	 public static function setUpdateTblproductcomplemImg($idtblproductcomplem, $srcimg,$emailmodifico){
         
@@ -3811,7 +3818,25 @@ class FuncionesBePickler{
     public static function getAllTblproductoTblproductoDetalleOfProveedor($idtblproveedor){
     	
 		//$consulta="SELECT producto.idtblproducto as idProducto, producto.tblproducto_nombre as nombre, detalle.tblproductdetalle_diaselaboracion as diaselaboracion,detalle.idtblproductdetalle as idProductoDetalle,detalle.tblproductdetalle_stock as stock,detalle.tblproductdetalle_precioreal as precioreal,detalle.tblproductdetalle_diametro as diamentro, detalle.tblproductdetalle_largo as largo, detalle.tblproductdetalle_ancho as ancho, detalle.tblproductdetalle_piezas as piezas, detalle.tblproducto_activado as activado, especificingrediente.tblespecificingrediente_nombre as nombreIngrediente FROM tblproducto as producto INNER JOIN tblproductdetalle as detalle ON producto.idtblproducto=detalle.tblproducto_idtblproducto INNER JOIN tblespecificingrediente as especificingrediente ON detalle.tblespecificingrediente_idtblespecificingrediente=especificingrediente.idtblespecificingrediente WHERE producto.tblproveedor_idtblproveedor=? ORDER BY producto.idtblproducto";
-		$consulta="SELECT producto.idtblproducto as idProducto, producto.tblproducto_nombre as nombre, producto.tblproducto_descripcion as descripcion, producto.tblproducto_ingredientes as ingredientes, producto.tblproducto_seo as seo, producto.tblproducto_activado as activadoGeneral, producto.tblcategproduct_idtblcategproduct as idtblcategproduct, producto.tblclasifproduct_idtblclasifproduct as idtblclasifproduct, detalle.tblproductdetalle_diaselaboracion as diaselaboracion,detalle.idtblproductdetalle as idProductoDetalle,detalle.tblproductdetalle_stock as stock,detalle.tblproductdetalle_precioreal as precioreal,detalle.tblproductdetalle_diametro as diamentro, detalle.tblproductdetalle_largo as largo, detalle.tblproductdetalle_ancho as ancho, detalle.tblproductdetalle_piezas as piezas, detalle.tblproductdetalle_activado as activado, especificingrediente.tblespecificingrediente_nombre as nombreIngrediente FROM tblproducto as producto INNER JOIN tblproductdetalle as detalle ON producto.idtblproducto=detalle.tblproducto_idtblproducto INNER JOIN tblespecificingrediente as especificingrediente ON detalle.tblespecificingrediente_idtblespecificingrediente=especificingrediente.idtblespecificingrediente WHERE producto.tblproveedor_idtblproveedor=? ORDER BY producto.idtblproducto";
+		$consulta="SELECT producto.idtblproducto as idProducto, 
+		producto.tblproducto_nombre as nombre, producto.tblproducto_descripcion as descripcion, 
+		producto.tblproducto_ingredientes as ingredientes, producto.tblproducto_seo as seo, 
+		producto.tblproducto_activado as activadoGeneral, 
+		producto.tblcategproduct_idtblcategproduct as idtblcategproduct, 
+		producto.tblclasifproduct_idtblclasifproduct as idtblclasifproduct, 
+		detalle.tblproductdetalle_diaselaboracion as diaselaboracion,
+		detalle.idtblproductdetalle as idProductoDetalle,
+		detalle.tblproductdetalle_stock as stock,
+		detalle.tblproductdetalle_precioreal as precioreal,detalle.tblproductdetalle_diametro as diamentro, 
+		detalle.tblproductdetalle_largo as largo, detalle.tblproductdetalle_ancho as ancho, 
+		detalle.tblproductdetalle_piezas as piezas, detalle.tblproductdetalle_activado as activado, 
+		especificingrediente.tblespecificingrediente_nombre as nombreIngrediente,
+		detalle.tblproductdetalle_porciones as porciones,detalle.tblproductdetalle_tamanio as tamanio FROM 
+		tblproducto as producto 
+		INNER JOIN tblproductdetalle as detalle ON producto.idtblproducto=detalle.tblproducto_idtblproducto 
+		INNER JOIN tblespecificingrediente as especificingrediente 
+		ON detalle.tblespecificingrediente_idtblespecificingrediente=especificingrediente.idtblespecificingrediente 
+		WHERE producto.tblproveedor_idtblproveedor=? ORDER BY producto.idtblproducto";
 		try{
 
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
@@ -3822,6 +3847,7 @@ class FuncionesBePickler{
 			return false;
 		}
 	}
+	//...........
     
     /*Elimina un registro de tblproduct */
     public static function setDeleteTblproducto($idtblproduct){
@@ -3857,10 +3883,16 @@ class FuncionesBePickler{
 ///// FUNCIONES REFRENTE A TABLA tblproductdetalle	
 
     /*Insertar un registro en tblproductdetalle*/
-	 public static function setTblproductDetalle($diaselaboracion,$stock,$precioreal,$preciobp,$diametro,$largo,$ancho,$porciones,$piezas,$activado,$idtblproducto,$idtblespecificingrediente,$emailcreo){
+	 public static function setTblproductDetalle($diaselaboracion,$stock,$precioreal,$preciobp,$diametro,$largo,$ancho,$porciones,$piezas,$tamanio,$activado,$idtblproducto,$idtblespecificingrediente,$emailcreo){
         
-        $insert ="INSERT INTO tblproductdetalle (tblproductdetalle_diaselaboracion,tblproductdetalle_stock,tblproductdetalle_precioreal,tblproductdetalle_preciobepickler,tblproductdetalle_diametro,tblproductdetalle_largo,tblproductdetalle_ancho,tblproductdetalle_porciones,tblproductdetalle_piezas,tblproductdetalle_activado,tblproducto_idtblproducto,tblespecificingrediente_idtblespecificingrediente,tblproductdetalle_fchmodificacion,tblproductdetalle_fchcreacion,tblproductdetalle_emailusuacreo,tblproductdetalle_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
-        
+        $insert ="INSERT INTO tblproductdetalle (tblproductdetalle_diaselaboracion,
+		tblproductdetalle_stock,tblproductdetalle_precioreal,tblproductdetalle_preciobepickler,
+		tblproductdetalle_diametro,tblproductdetalle_largo,tblproductdetalle_ancho,tblproductdetalle_porciones,
+		tblproductdetalle_piezas,tblproductdetalle_tamanio,tblproductdetalle_activado,tblproducto_idtblproducto,
+		tblespecificingrediente_idtblespecificingrediente,tblproductdetalle_fchmodificacion,
+		tblproductdetalle_fchcreacion,tblproductdetalle_emailusuacreo,
+		tblproductdetalle_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
+    
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
 			$resultado->bindParam(1,$diaselaboracion,PDO::PARAM_INT);
@@ -3870,19 +3902,21 @@ class FuncionesBePickler{
 			$resultado->bindValue(5,$diametro,PDO::PARAM_STR);
 			$resultado->bindValue(6,$largo,PDO::PARAM_STR);
 			$resultado->bindValue(7,$ancho,PDO::PARAM_STR);
-			$resultado->bindParam(8,$porciones,PDO::PARAM_INT);
+			$resultado->bindParam(8,$porciones,PDO::PARAM_STR);
 			$resultado->bindValue(9,$piezas,PDO::PARAM_STR);
-			$resultado->bindParam(10,$activado,PDO::PARAM_INT);
-			$resultado->bindParam(11,$idtblproducto,PDO::PARAM_INT);
-			$resultado->bindParam(12,$idtblespecificingrediente,PDO::PARAM_INT);
-			$resultado->bindParam(13,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(10,$tamanio,PDO::PARAM_STR);
+			$resultado->bindParam(11,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(12,$idtblproducto,PDO::PARAM_INT);
+			$resultado->bindParam(13,$idtblespecificingrediente,PDO::PARAM_INT);
 			$resultado->bindParam(14,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(15,$emailcreo,PDO::PARAM_STR);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
 			return false;
 		}
     }
+	//-------------
     
     /*NO FUNCIONAL 
     Verifica que no exista un registro en tblproductdetalle 
@@ -3902,12 +3936,17 @@ class FuncionesBePickler{
     
     
     /*Actualizar un registro en tblproductdetalle*/
-	 public static function setUpdateTblproductDetalle($idtblproductdetalle,$diaselaboracion,$stock,$precioreal,$preciobp,$diametro,$largo,$ancho,$porciones,$piezas,$activado,$idtblproducto,$idtblespecifingrediente,$emailmodifico){
-
-	 	$insert="UPDATE tblproductdetalle SET tblproductdetalle_diaselaboracion=?,tblproductdetalle_stock=?,tblproductdetalle_precioreal=?,tblproductdetalle_preciobepickler=?,tblproductdetalle_diametro=?,tblproductdetalle_largo=?,tblproductdetalle_ancho=?,tblproductdetalle_porciones=?,tblproductdetalle_piezas=?,tblproductdetalle_activado=?,tblproducto_idtblproducto=?,tblespecificingrediente_idtblespecificingrediente=?,tblproductdetalle_fchmodificacion=NOW(),tblproductdetalle_emailusuamodifico=? WHERE idtblproductdetalle= ?";
+	 public static function setUpdateTblproductDetalle($idtblproductdetalle,$diaselaboracion,$stock,$precioreal,$preciobp,$diametro,$largo,$ancho,$porciones,$tamanio,$piezas,$activado,$idtblproducto,$idtblespecifingrediente,$emailmodifico){
+                            
+	 	$insert="UPDATE tblproductdetalle SET tblproductdetalle_diaselaboracion=?,
+		tblproductdetalle_stock=?,tblproductdetalle_precioreal=?,
+		tblproductdetalle_preciobepickler=?,tblproductdetalle_diametro=?,
+		tblproductdetalle_largo=?,tblproductdetalle_ancho=?,tblproductdetalle_porciones=?,
+		tblproductdetalle_piezas=?,tblproductdetalle_activado=?,tblproducto_idtblproducto=?,
+		tblespecificingrediente_idtblespecificingrediente=?,tblproductdetalle_fchmodificacion=NOW(),
+		tblproductdetalle_emailusuamodifico=?,tblproductdetalle_tamanio=? WHERE idtblproductdetalle= ?";
         
-        //$insert ="UPDATE tblproductdetalle SET tblproductdetalle_diaselaboracion = ?,tblproductdetalle_stock = ?,tblproductdetalle_precioreal = ?,tblproductdetalle_bepickler = ?,tblproductdetalle_diametro = ?,tblproductdetalle_largo = ?,tblproductdetalle_ancho = ?,tblproductdetalle_porciones = ?,tblproductdetalle_piezas = ?,tblproducto_idtblproducto = ?,tblespecificingrediente_idtblespecificingrediente= ? ,tblproductdetalle_fchmodificacion = NOW(),tblproductdetalle_emailusuamodifico = ? WHERE idtblproductdetalle = ? "; 
-        
+       
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
 			$resultado->bindParam(1,$diaselaboracion,PDO::PARAM_INT);
@@ -3923,13 +3962,16 @@ class FuncionesBePickler{
 			$resultado->bindParam(11,$idtblproducto,PDO::PARAM_INT);
 			$resultado->bindParam(12,$idtblespecifingrediente,PDO::PARAM_INT);
 			$resultado->bindParam(13,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(14,$idtblproductdetalle,PDO::PARAM_INT);
+			$resultado->bindParam(14,$tamanio,PDO::PARAM_STR);
+			$resultado->bindParam(15,$idtblproductdetalle,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
 			return false;
 		}
     }
+	
+	//-----------
 
     /*Actualizar un registro en tblproductdetalle*/
 	public static function setUpdateTblproductDetalleActivar($idtblproductdetalle,$activado,$emailmodifico){
