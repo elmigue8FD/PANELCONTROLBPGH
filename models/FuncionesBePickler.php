@@ -12337,10 +12337,27 @@ AND exists
 
 
 	}
-	
-	
-	
 	//-----
+
+	/*Consultar todas las tamaños de la tabla Tbltamanios (Activos)**/
+	public static function getAllTbltamanios(){
+		
+		$activado=1;
+		$consulta = "SELECT * FROM tbltamanios WHERE tbltamanios_activado = ?";
+		
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos de todos los registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+	//----------fin funcion
+
+
+
 }
 ?>
 
