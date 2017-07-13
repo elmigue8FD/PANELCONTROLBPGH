@@ -12357,6 +12357,160 @@ AND exists
 	//----------fin funcion
 
 
+	///FUNCIONES DE FER GRAFICAS 
+	/*Función que selecciona los pedidos dado un rango de fecha para la gráfica PEDIDOS*/
+	public static function getTblOrdenCompraGrafico($fchinicio, $fchfinal){
+
+		$consulta = "SELECT * FROM tblordencompra WHERE tblordencompra_fchordencompra BETWEEN ? and ?"; //? se declaran en la parte de abajo
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta); //Hace instancia a la conexión de base de datos y envía la consulta
+			$resultado->bindParam(1,$fchinicio,PDO::PARAM_STR); //PARAM_INT es para entero, PARAM_STR es para otro tipo de variables
+			$resultado->bindParam(2,$fchfinal,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+
+	}
+	
+	/*Función que selecciona los pedidos dado un rango de fecha para la gráfica USUARIOS*/
+	public static function getTblClienteGrafico($fchinicio, $fchfinal){
+
+		$consulta = "SELECT * FROM tblcliente WHERE tblcliente_fchcreacion BETWEEN ? and ?"; //? se declaran en la parte de abajo
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta); //Hace instancia a la conexión de base de datos y envía la consulta
+			$resultado->bindParam(1,$fchinicio,PDO::PARAM_STR); //PARAM_INT es para entero, PARAM_STR es para otro tipo de variables
+			$resultado->bindParam(2,$fchfinal,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+
+	}
+	
+	
+		/*Función que selecciona los pedidos dado un rango de fecha para la gráfica PROVEEDORES*/
+	public static function getTblProveedorGrafico($fchinicio, $fchfinal){
+
+		$consulta = "SELECT * FROM tblproveedor WHERE tblproveedor_fchcreacion BETWEEN ? and ?"; //? se declaran en la parte de abajo
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta); //Hace instancia a la conexión de base de datos y envía la consulta
+			$resultado->bindParam(1,$fchinicio,PDO::PARAM_STR); //PARAM_INT es para entero, PARAM_STR es para otro tipo de variables
+			$resultado->bindParam(2,$fchfinal,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+
+	}
+		/*Función que selecciona los pedidos dado un rango de fecha para la gráfica COTIZACIONES*/
+		public static function getTblMotivoCotizacionGrafico($fchinicio, $fchfinal){
+
+		$consulta = "SELECT * FROM tblcostocotizacionproductnuevo WHERE tblcostocotizacionproductnuevo_fchcreacion BETWEEN ? and ?";//? se declaran en la parte de abajo
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta); //Hace instancia a la conexión de base de datos y envía la consulta
+			$resultado->bindParam(1,$fchinicio,PDO::PARAM_STR); //PARAM_INT es para entero, PARAM_STR es para otro tipo de variables
+			$resultado->bindParam(2,$fchfinal,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+
+	}
+	
+	/*Función que selecciona los pedidos dado un rango de fecha para la gráfica VENTAS TOTALES*/
+		public static function getTblVentasTotales($fchinicio, $fchfinal){
+
+			$status=1;
+		$consulta = "SELECT * FROM tblordencompra WHERE tblordencompra_fchordencompra BETWEEN ? and ? AND tblordencompra_statuspagado=?"; //? se declaran en la parte de abajo
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta); //Hace instancia a la conexión de base de datos y envía la consulta
+			$resultado->bindParam(1,$fchinicio,PDO::PARAM_STR); //PARAM_INT es para entero, PARAM_STR es para otro tipo de variables
+			$resultado->bindParam(2,$fchfinal,PDO::PARAM_STR);
+			$resultado->bindParam(2,$status,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+
+	}
+	
+	/*Función que selecciona los pedidos dado un rango de fecha para la gráfica DELIVERY*/
+		public static function getTblVentasDelivery($fchinicio, $fchfinal){
+
+		$activado=1;
+		$consulta = "SELECT * FROM tblordencompra WHERE tblordencompra_fchordencompra BETWEEN ? and ? AND tblordencompra_statuspagado=?"; //? se declaran en la parte de abajo
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta); //Hace instancia a la conexión de base de datos y envía la consulta
+			$resultado->bindParam(1,$fchinicio,PDO::PARAM_STR); //PARAM_INT es para entero, PARAM_STR es para otro tipo de variables
+			$resultado->bindParam(2,$fchfinal,PDO::PARAM_STR);
+			$resultado->bindParam(3,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+
+	}
+	
+	/*Función que selecciona los pedidos dado un rango de fecha para la gráfica DELIVERY*/
+		public static function getTblproductdetalleGrafico($fchinicio, $fchfinal){
+
+		$activado=1;
+		$consulta = "SELECT TCP.* FROM tblcarritoproduct TCP
+					INNER JOIN tblordencompra TOC ON TCP.tblcarritoproduct_idtblordencompra = TOC.idtblordencompra
+		WHERE TOC.tblordencompra_fchordencompra BETWEEN ? AND ? AND TOC.tblordencompra_statuspagado = ?"; //? se declaran en la parte de abajo
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta); //Hace instancia a la conexión de base de datos y envía la consulta
+			$resultado->bindParam(1,$fchinicio,PDO::PARAM_STR); //PARAM_INT es para entero, PARAM_STR es para otro tipo de variables
+			$resultado->bindParam(2,$fchfinal,PDO::PARAM_STR);
+			$resultado->bindParam(3,$activado,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+
+	} 
+
+
+	/*Función que selecciona los pedidos dado un rango de fecha para la gráfica PRODUCTOS POR CATEOGRÍA*/
+	public static function getTblproductoporcategoria($fchinicio, $fchfinal){
+	$consulta = "SELECT * FROM tblproducto WHERE tblproducto_fchcreacion BETWEEN ? and ?"; //? se declaran en la parte de abajo
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta); //Hace instancia a la conexión de base de datos y envía la consulta
+			$resultado->bindParam(1,$fchinicio,PDO::PARAM_STR); //PARAM_INT es para entero, PARAM_STR es para otro tipo de variables
+			$resultado->bindParam(2,$fchfinal,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	
+	}
+
+
 
 }
 ?>
