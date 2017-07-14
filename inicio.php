@@ -1,9 +1,9 @@
 <?php 
-include('./php/seguridad_general.php');
+include('./php/seguridad_general.php'); 
 ?>
 <!doctype html>
 <!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!-->  
+<!--[if gt IE 9]><!--> 
 <html lang="en"> <!--<![endif]-->
 
 <head>
@@ -104,7 +104,8 @@ include('./php/seguridad_general.php');
            </div>
           </div>           
          </div><!--  end Contenido de Pestaña Inicio -->
-         <div id="contenido_Ordenes"><!-- Contenido de Pestaña Ordenes -->
+         
+		 <div id="contenido_Ordenes"><!-- Contenido de Pestaña Ordenes -->
           <h3 class="heading_b uk-margin-bottom"> Ordenes Por Entregar </h3>
           <div class="md-card uk-margin-medium-bottom" >
             <div class="md-card-content">
@@ -119,6 +120,18 @@ include('./php/seguridad_general.php');
                   <tbody id="tblordenes_item" name="tblordenes_item">
                   </tbody>
                 </table>
+				<!-- -->
+				<div id="pagerOrdenEntregar" class="pager">
+    	<form>
+    		<img src="bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
+				
+				<!-- -->
               </div>
             </div>
           </div>
@@ -136,6 +149,18 @@ include('./php/seguridad_general.php');
                   <tbody id="tblordenespendiente_item" name="tblordenespendiente_item">
                   </tbody>
                 </table>
+				<!--....-->
+				<div id="pagerOrdenesPendientes" class="pager">
+    	<form>
+    		<img src="bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
+				
+				<!--....--->
               </div>
             </div>
           </div>
@@ -155,6 +180,18 @@ include('./php/seguridad_general.php');
              <tbody id="tblordeneshistorial_item" name="tblordeneshistorial_item">
             </tbody>
            </table>
+		   
+		   <!-- ..... -->
+		   <div id="pagerOrdenesHistorial" class="pager">
+    	<form>
+    		<img src="bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
+		   <!--...-->
           </div>
          </div>
         </div>
@@ -337,14 +374,17 @@ include('./php/seguridad_general.php');
             </div>
            </div>
         </div>
+		
         <div id="marcarorden_add"><!--POP MARCAR ORDEN-->
-          <div id="popup_marcarorden" class="uk-modal"><div class="uk-modal-dialog">
+          <div id="popup_marcarorden" class="uk-modal">
+		  <div class="uk-modal-dialog">
            <button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
             <div class="uk-modal-header">
              <h3 class="uk-modal-title"><i class="uk-icon-check-circle-o uk-icon-small"></i>&nbsp;Datos de Entrega</h3>
             </div>
             <form enctype="multipart/form-data" method="post" class="uk-form-horizontal" id="formevidenciaProductos" name="formevidenciaProductos">
-             <div class="uk-form-row"><h4 class="heading_c uk-margin-small-bottom">Evidencias de Productos </h4>
+             <div class="uk-form-row">
+			 <h4 class="heading_c uk-margin-small-bottom">Evidencias de Productos </h4>
               <ul class="md-list md-list-addon">
                <li>
                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
@@ -393,7 +433,8 @@ include('./php/seguridad_general.php');
                   </div>
                  </div>
                 </div>
-               </li>
+				
+              </div> </li>
                <li>
                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
                  <div class="uk-width-large-1-2">
@@ -412,47 +453,17 @@ include('./php/seguridad_general.php');
               </ul>
              </div>
             </form><br>
-            <div id="entrega_complementariosform">
-             <h4 class="heading_c uk-margin-small-bottom">Evidencias de Productos Complementarios</h4>
-             <form enctype="multipart/form-data" method="post" class="uk-form-horizontal" id="formevidenciaComplem">
-              <div class="uk-form-row">
-               <ul class="md-list md-list-addon">
-                <li>
-                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
-                  <div class="uk-width-large-1-2">
-                   <div class="md-list-content">
-                    <div class="md-list-addon-element"><i class="material-icons">&#xE146;</i>
-                    </div>
-                    <div class="md-list-content" >
-                     <div class="md-list-heading" id="diventrega_nocomplempedidos">
-                      <span class="md-list-heading" id="entrega_nocomplempedidos"></span>
-                     </div>
-                     <span class="uk-text-small uk-text-muted">No. Productos Pedidos</span>
-                    </div>
-                   </div>
-                  </div>
-                 </div>
-                </li>
-                <li>
-                <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
-                 <div class="uk-width-large-1-2">
-                 <label id="evidencia1Complementario">1° Evidencia</label>
-                  <input type="file" name="img1Complemv1" id="img1Complemv1" class="dropify"/>
-                 </div>
-                 <div class="uk-width-large-1-2">
-                 <label id="evidencia2Complementario">2° Evidencia </label>
-                  <input type="file" name="img2Complemv1" id="img2Complemv1" class="dropify"/>  
-                 </div>
-                </li>
-               </ul>
-              </div>
-             </form>
-            </div>
+			         
             <div class="uk-modal-footer"><!-- -->
              <button class="md-btn md-btn-block md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" type="button" onclick=marcarordenEntregada()>Enviar</button>
             </div>
            </div>
-          </div>
+           </div></div>
+		  
+		  
+		  
+			
+		   
           <!--MODIFICAR LA ORDEN DE ENTREGA -->  
           <div id="popupmodif_marcarorden" class="uk-modal"><div class="uk-modal-dialog">
            <button type="button" class="uk-modal-close uk-close uk-close-alt"></button>
@@ -508,7 +519,7 @@ include('./php/seguridad_general.php');
                     </select> 
                   </div>
                  </div>
-                </div>
+                </div> </div>
                </li>
                <li>
                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
@@ -525,48 +536,15 @@ include('./php/seguridad_general.php');
               </ul>
              </div>
             </form><br>
-            <div id="entregamodif_complementariosform">
-             <h4 class="heading_c uk-margin-small-bottom">Evidencias de Productos Complementarios</h4>
-             <form enctype="multipart/form-data" method="post" class="uk-form-horizontal" name="formevidenciaComplem_modif" id="formevidenciaComplem_modif">
-              <div class="uk-form-row">
-               <ul class="md-list md-list-addon">
-                <li>
-                 <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
-                  <div class="uk-width-large-1-2">
-                   <div class="md-list-content">
-                    <div class="md-list-addon-element"><i class="material-icons">&#xE146;</i>
-                    </div>
-                    <div class="md-list-content" >
-                     <div class="md-list-heading">
-                      <span class="md-list-heading" id="entregamodif_nocomplempedidos"></span>
-                     </div>
-                     <span class="uk-text-small uk-text-muted">No. Productos Pedidos</span>
-                    </div>
-                   </div>
-                  </div>
-                 </div>
-                </li>
-                <li>
-                <div class="uk-grid uk-grid-divider uk-grid-medium" data-uk-grid-margin>
-                 <div class="uk-width-large-1-2">
-                 <label id="evidencia1Complementariov2">1° Evidencia </label>
-                  <input type="file" name="img1Complemv2" id="img1Complemv2" class="dropify"/>
-                 </div>
-                 <div class="uk-width-large-1-2">
-                 <label id="evidencia2Complementariov2">2° Evidencia </label>
-                  <input type="file" name="img2Complemv2" id="img2Complemv2" class="dropify"/>  
-                 </div>
-                </li>
-               </ul>
-              </div>
-             </form>
-            </div>
+			
+			
             <div class="uk-modal-footer"><!-- -->
              <button class="md-btn md-btn-block md-btn-primary md-btn-wave-light waves-effect waves-button waves-light" type="button" onclick="marcarordenEntregadaModif()"> Modificar </button>
             </div>
            </div>
           </div>
-         </div>
+		  
+         
         </div><!-- end Contenido de Pestaña Ordenes -->
 
         <!--COMIENZA MIGUEL HTML -->
@@ -2019,6 +1997,18 @@ include('./php/seguridad_general.php');
                </thead>
                <tbody id="tblcotizacionesproductos" name="tblcotizacionesproductos"></tbody>
              </table>
+			 
+			  <!-- ..... -->
+		   <div id="pagerCotizaProducto" class="pager">
+    	<form>
+    		<img src="bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
+		   <!--...-->
            </div>
          </div>
        </div>
@@ -2105,6 +2095,19 @@ include('./php/seguridad_general.php');
           </thead>
           <tbody id="tblcotizacionesproductosnuevos" name="tblcotizacionesproductosnuevos"></tbody>
          </table>
+		 
+		 
+		  <!-- ..... -->
+		   <div id="pagerCotizaProNuevos" class="pager">
+    	<form>
+    		<img src="bower_components/tablesorter/dist/css/images/first.png" class="first"/>
+    		<img src="bower_components/tablesorter/dist/css/images/prev.png" class="prev"/>
+    		<input disabled type="text" class="pagedisplay"/>
+    	    <img src="bower_components/tablesorter/dist/css/images/next.png" class="next"/>
+			<img src="bower_components/tablesorter/dist/css/images/last.png" class="last"/>    		
+    	</form>
+       </div>
+		   <!--...-->
         </div>
        </div>
       </div>
@@ -5485,7 +5488,7 @@ $( window ).ready(function()
       $solicitadoBy=$_POST["solicitadoBy"];
     $idtblproductcotizador=$_POST["idtblproductcotizador"];
        */
-      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/controllers/getAllTblproductcotimg.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto} })
+      $.ajax({ method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblproductcotimg.php",  data: {solicitadoBy:"WEB",idtblproductcotizador:idProducto} })
         .done(function( msgTblProductoImg )
         {
           //OBTENEMOS TODOS LOS REGISTROS 
@@ -6167,6 +6170,7 @@ function mostrarListaOrdenes(){
                       '</td><td class="uk-text-center">'+fchagendado+
                       '</td></tr>');
                     $("#tbl_ordenespendiente").trigger('updateAll', [true]);//actualiza tabla
+					inicializarPagOrdenPendientes();
 
                    }else {//Orden entregada
                   //cambio de formato de fechas  pagoproveedor
@@ -6189,6 +6193,7 @@ function mostrarListaOrdenes(){
                   totalCompra(msg.datos[i].idtblordencompra,i);
 
                   $("#tbl_ordeneshistorial").trigger('updateAll', [true]);//actualiza tabla
+				  inicializarPagOrdenHistorial();
                  }
                 });
               }else {
@@ -6206,6 +6211,7 @@ function mostrarListaOrdenes(){
                   '<tr data-uk-modal="{target:'+"'#detalleOrdenPendiente'"+', bgclose:false,modal:false, }" onclick="datosDetalleOrden('+msg.datos[i].idtblordencompra+','+tabla_Ordenes+')"><td class="uk-text-center">'+msg.datos[i].idtblordencompra+
                   '</td><td class="uk-text-center">'+fchagendado+ '</td></tr>');
                 $("#tbl_ordenes").trigger('updateAll', [true]);//actualiza tabla
+				inicializarPagOrdenEntregar();
               }
 
             
@@ -6552,31 +6558,33 @@ function datosDetalleOrden(idtblordencompra,idTabla){
 function botonMarcarStatus(idtblordencompra){
   
   $('#formevidenciaProductos')[0].reset();
-  $('#formevidenciaComplem')[0].reset();
-  $("#entrega_complementariosform").hide();  
+ 
   $("#li_descripcionPendiente").hide();
   $("#evidencia1Producto").css('color','black');
   $("#evidencia2Producto").css('color','black');
-  $("#evidencia1Complementario").css('color','black');
-  $("#evidencia2Complementario").css('color','black');
+ 
   $("#entrega_statusentrega").removeClass("md-input-danger");
 
  totalProductos=0;
  totalProductosComplem=0;
 
   $("#entrega_idorden").text(idtblordencompra);
+//console.log('idorden:'+idtblordencompra);
 
+ 
   $.ajax({//se obtiene la fecha 
     method: "POST",  
     dataType: "json",  
     url: "./../../controllers/getFecha.php",  
-    data: {solicitadoBy:solicitadoBy}})
-    .done(function( msg9) {
-      fch= msg9.datos;
-      fch = fch.split("/");
+    data: {solicitadoBy:"WEB"}})
+    .done(function( msgz) {
+		console.log('h');
+      fch= msgz.datos;
+     fch = fch.split("/");
       fchen = fch[2]+"/"+fch[1]+"/"+fch[0];
       $("#entrega_fchentrega").text(fchen);
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("get fecha boton estatus fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+
 
     $.ajax({//se obtiene la fecha 
     method: "POST",  
@@ -6588,40 +6596,18 @@ function botonMarcarStatus(idtblordencompra){
         totalProductos = totalProductos + parseInt(msg.datos[i].tblcarritoproduct_cantidad); 
       });
        $("#entrega_noproductpedido").text(totalProductos);
-    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
+    }).fail(function( jqXHR, textStatus ) {  console.log("fail ordencompra jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always");  });
 
-    $.ajax({
-      method: "POST",  
-      dataType: "json",  
-      url: "./../../controllers/getCheckTblcarritoproductcomplemByTblordencompra.php",  
-      data: {solicitadoBy:solicitadoBy,idtblordencompra:idtblordencompra}})
-        .done(function(msg) {
-        if (parseInt(msg.success)==1) {
-          $("#entrega_complementariosform").show();
-
-
-          $.ajax({
-            method: "POST",  
-            dataType: "json",  
-            url: "./../../controllers/getAllTblcarritoproductcomplemByTblordencompra.php",  
-            data: {solicitadoBy:solicitadoBy,idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
-              .done(function(msg7) {
-              $.each(msg7.datos, function(i,item){
-                totalProductosComplem = totalProductosComplem + parseInt(msg7.datos[i].tblcarritoproductcomplem_cantidad);                
-              });
-              $("#entrega_nocomplempedidos").text(totalProductosComplem);   
-              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-        }else {productosComplem=false;}
-      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-
+   
+	  
+	  
 }
 
 //funcion para ingresar los registros del status de la orden 
 function marcarordenEntregada(){
 
-  var boleanComplementarios= false; 
-  var boleanVerificacionProductos= false;
-  var boleanVerificacionComplementarios= false;
+  
+  var boleanVerificacionProductos= false; 
   var boleanStatus= false;
   var boleanDescripcioStatus=false;
 
@@ -6633,13 +6619,13 @@ function marcarordenEntregada(){
   numproductosentregados = numproductos; 
   status = $("#entrega_statusentrega").val();
   fchentrega = document.getElementById("entrega_fchentrega").innerHTML;
-  fchpagoproveedor= (sumaFecha(15,fchentrega)).toString();
+  //fchpagoproveedor= (sumaFecha(15,fchentrega)).toString();
   statusdeposito="PENDIENTE";
 
   fchentrega = fchentrega.split("/");
   fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
-  fchpagoproveedor = fchpagoproveedor.split("/");
-  fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
+ // fchpagoproveedor = fchpagoproveedor.split("/");
+  //fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
 
   //Se verifica que contenga algo status 
   if(status!="null"){
@@ -6678,46 +6664,21 @@ function marcarordenEntregada(){
     descripcionPen="";
   }
   
-  //se verifica si el pop_marcarcomoentregado tiene el formulario de entrega para productos complementarios 
-  if($("#entrega_complementariosform").is(':visible')){
-    boleanComplementarios=true;
-
-    //Indicador para ver que no tiene nada la imgs productoscomplementarios 
-    if(($("#img1Complemv1").val()!="")){
-      $("#evidencia1Complementario").css('color','black');
-    }else {
-      $("#evidencia1Complementario").css('color','red');
-    }
-
-    if(($("#img2Complemv1").val()!="")){
-      $("#evidencia2Complementario").css('color','black');
-    }else {
-      $("#evidencia2Complementario").css('color','red');
-    }
-
-  }else{
-    boleanComplementarios=false;
-  }
-
-  
-  if(($("#img1Productv1").val()!="") && ($("#img2Productv1").val()!="")){
+   if(($("#img1Productv1").val()!="") && ($("#img2Productv1").val()!="")){
   //se valida que tenga datos los campos del formulario productos
     boleanVerificacionProductos = true;
-    if(boleanComplementarios){
-      numproductoscomplem = document.getElementById("entrega_nocomplempedidos").innerHTML;
-      numproductosentregadoscomplem = numproductoscomplem;
-      if(($("#img1Complemv1").val()!="") && ($("#img2Complemv1").val()!="")){
-       boleanVerificacionComplementarios = true;
-     }else 
-     boleanVerificacionComplementarios = false;
-   }else boleanVerificacionComplementarios = true;
- }else{
+    	
+ 
+ }
+ 
+ else{
   boleanVerificacionProductos = false;
 } 
 
 
  //si cumple la validacion 
- if(boleanVerificacionComplementarios && boleanVerificacionProductos && boleanStatus && boleanDescripcioStatus){
+ //if(boleanVerificacionComplementarios && boleanVerificacionProductos && boleanStatus && boleanDescripcioStatus){
+if(boleanVerificacionProductos && boleanStatus && boleanDescripcioStatus){
 
   UIkit.modal("#popup_spinner_registrandoOrdenCot", {bgclose: false}).show();
   UIkit.modal("#popup_marcarorden").hide();
@@ -6739,112 +6700,49 @@ function marcarordenEntregada(){
             formData.append("img1Product", srcimg1);
             formData.append("img2Product", srcimg2);
 
-            if(boleanComplementarios){//datos productos complementarios 
-              srcimgComplem1=$("#img1Complemv1").val().replace(/C:\\fakepath\\/i, '');
-              srcimgComplem1='Evidimg1Complem1_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimgComplem1;
-
-              srcimgComplem2=$("#img2Complemv1").val().replace(/C:\\fakepath\\/i, '');
-              srcimgComplem2='Evidimg1Complem2_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimgComplem2;
-
-              var formDataC = new FormData($("#formevidenciaComplem")[0]);
-              formDataC.append("version", 'v1');
-              formDataC.append("img1ProductComple", srcimgComplem1);
-              formDataC.append("img2ProductComple", srcimgComplem2);
-
-             }
 
             $.ajax({ //registrar de tblentregaproduct 
               method: "POST",
               dataType: "json",   
               url: "./../../controllers/setTblentregaproducto.php",  
-              data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status, descripcion:descripcionPen,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
+              data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,
+			  numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,
+			  descripcion:descripcionPen,statusdeposito:statusdeposito,
+			  srcimg1:srcimg1,srcimg2:srcimg2,emailcreo:emailproveedor,idtblordencompra:idorden,
+			  idtblproveedor:idproveedor}}) //fchpagoproveedor:fchpagoproveedor,
               .done(function( datos ){
-                console.log(datos);
+                console.log('datos: '+datos);
                 if(parseInt(datos.success)==1){
                 // si se guarda con exito se guardan las imagenes
-                    $.ajax({ method: "POST", url: './phps/uploadImgEvidencias.php', data: formData,contentType: false,processData: false,})
+                    $.ajax({ method: "POST", url: './phps/uploadImgEvidencias.php', 
+					data: formData,contentType: false,processData: false,})
                     .done(function(datos){//img guardadas con exito
                         if(datos=="success"){
-                          if(boleanComplementarios){//existen productos complementarios
-                             $.ajax({ //actualiza el registro de tblentregaproduct 
-                              method: "POST",dataType: "json",url: "./../../controllers/setTblentregacomplem.php", data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentre:fchentrega,numproductpedidos:numproductoscomplem,numproductentregados:numproductosentregadoscomplem,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimgComplem1,srcimg2:srcimgComplem2,emailcreo:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
-                            .done(function( datos ){
-                               if(parseInt(datos.success)==1){
-                                 //si el registro de complementarios es exitoso entonces guarda las imagenes
-                                 $.ajax({ method: "POST",url: './phps/uploadImgEvidenciasComplementarios.php', data: formDataC ,contentType: false,processData: false,})
-                                  .done(function(datos){
-                                    if(datos=="success"){
-                                      UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();              
-                                      UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
+							
+					UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();              
+                    UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
 
                                       $("#tblordenes_item").empty();
                                       $("#tblordenespendiente_item").empty();
                                       $("#tblordeneshistorial_item").empty();
                                       mostrarListaOrdenes();
-
-                                    }else{    
-
-                                      //elimina el registro en tblentregaproductcomplem
-                                      $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregacomplem.php",  
-                                         data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
-                                        .done(function(msg7) {   
-                                         }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-
-                                      //elimina el registro en tblentregaproduct
-                                      $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
-                                         data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
-                                        .done(function(msg7) {   
-                                         }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-
-                                        UIkit.modal("#popup_spinner_registrandoOrdenCot").hide(); 
-                                        UIkit.modal.alert(datos);
-
-                                    }
-
-                                  }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
-
-                               }else {
-                                  //si no se guarda correctamente el registro de complementarios elimina el registro de productos
-                                $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
-                                 data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
-                                .done(function(msg7) {   
-                                 }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-
-                                UIkit.modal("#popup_spinner_registrandoOrdenCot").hide(); 
-                                UIkit.modal.alert('Error, Vuelva Intenarlo.');
-                                
-
-                               }
-
-                            }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
-
-                          }else{//si no hay lanza msj
-
-                            UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-                            
-                            UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
-
-                            $("#tblordenes_item").empty();
-                            $("#tblordenespendiente_item").empty();
-                            $("#tblordeneshistorial_item").empty();
-                            mostrarListaOrdenes();
-                            
-                          }
+					
                         }else{//sin exito el guardar las fotos, elimina el registro de tblentregaproducet
                            $.ajax({method: "POST", dataType: "json", url: "./../../controllers/setDeleteTblentregaproducto.php",  
                              data: {solicitadoBy:solicitadoBy,idtblordencompra:idorden,idtblproveedor:idtblproveedor}})
                             .done(function(msg7) {   
-                             }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
+                             }).fail(function( jqXHR, textStatus ) {  console.log("elimina el registro de tblentregaproducetfail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
                             UIkit.modal.alert(datos);
                         }
-                    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
-                }else{
+                    }).fail(function( jqXHR, textStatus ) {  console.log("no guardo imagenes fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
+               
+			   }else{
                  UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();  
-                 UIkit.modal.alert('Error Vuelva Intentarlo');
+                 UIkit.modal.alert('Error Vuelva Intentarlo no fue uno');
                 }
                 
 
-              }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
+              }).fail(function( jqXHR, textStatus ) {  console.log("registrar de tblentregaproduct fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
 
 
         }else if(msgEntregaproducto.success==1){
@@ -6852,7 +6750,7 @@ function marcarordenEntregada(){
           UIkit.modal.alert('Orden No. '+idorden+' fue marcada con status diferente, cargue de nuevo la página. ');
         }else{
           UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-          UIkit.modal.alert("Error Vuelva Intentarlo");
+          UIkit.modal.alert("Error Vuelva Intentarlo ni 0 y 1");
         }
 
         
@@ -6866,21 +6764,20 @@ function marcarordenEntregada(){
 //funcion para modificar el status dela orden (LLENAR POP)
 function modificarStatus(idtblordencompra){
 
-  $('#formevidenciaProductos_modif')[0].reset();
-  $('#formevidenciaComplem_modif')[0].reset();
-  $('#entregamodif_complementariosform').hide();
+  $('#formevidenciaProductos_modif')[0].reset();  
   $("#evidencia1Productov2").css('color','black');
   $("#evidencia2Productov2").css('color','black');
-  $("#evidencia1Complementariov2").css('color','black');
-  $("#evidencia2Complementariov2").css('color','black');
-
-$.ajax({//se obtiene la fecha 
+ 
+  
+       
+ $.ajax({//se obtiene la fecha  hola
     method: "POST",  
     dataType: "json",  
     url: "./../../controllers/getFecha.php",  
-    data: {solicitadoBy:solicitadoBy}})
+    data: {solicitadoBy:"WEB"}})
     .done(function( msg9) {
-      fch= msg9.datos;
+		//fchen= msg9.datos;
+      fch= msg9.datos;	
       fch = fch.split("/");
       fchen = fch[2]+"/"+fch[1]+"/"+fch[0];
       $("#entregamodif_fchentrega").text(fchen);
@@ -6904,30 +6801,13 @@ $.ajax({//se obtiene la fecha
       }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
 
-      $.ajax({
-        method: "POST",  
-        dataType: "json",  
-        url: "./../../controllers/getTblentregacomplem.php",  
-        data: {solicitadoBy:solicitadoBy,idtblordencompra:idtblordencompra,idtblproveedor:idtblproveedor}})
-          .done(function(msg8) {
-            console.log(msg8);
-            if(msg8.success==1){
-              $('#entregamodif_complementariosform').show();
-              $.each(msg8.datos, function(i,item){
-                $("#entregamodif_nocomplempedidos").text(item.tblentregacomplem_numproductpedidos);
-              });
-
-            }             
-          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-}
+     
+		  }
 
 //funcion para enviar las modificaciones del status de la orden
 function marcarordenEntregadaModif(){
-
-
-  var boleanComplementarios= false; 
-  var boleanVerificacionProductos= false;
-  var boleanVerificacionComplementarios= false;
+ 
+  var boleanVerificacionProductos= false;  
   var boleanStatus= false;
 
   //obtiene los datos que se requieren
@@ -6938,13 +6818,13 @@ function marcarordenEntregadaModif(){
   numproductosentregados = numproductos; 
   status = $("#entregamodif_statusentrega").val();
   fchentrega = document.getElementById("entregamodif_fchentrega").innerHTML;
-  fchpagoproveedor= (sumaFecha(15,fchentrega)).toString();
+  //fchpagoproveedor= (sumaFecha(15,fchentrega)).toString();
   statusdeposito ="PENDIENTE";
 
   fchentrega = fchentrega.split("/");
   fchentrega = fchentrega[2]+"/"+fchentrega[1]+"/"+fchentrega[0];
-  fchpagoproveedor = fchpagoproveedor.split("/");
-  fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
+  //fchpagoproveedor = fchpagoproveedor.split("/");
+  //fchpagoproveedor = fchpagoproveedor[2]+"/"+fchpagoproveedor[1]+"/"+fchpagoproveedor[0];
 
 
   //Se verifica que contenga algo status 
@@ -6963,38 +6843,15 @@ function marcarordenEntregadaModif(){
     $("#evidencia2Productov2").css('color','red');
   }
   
-   //se verifica si el pop_marcarcomoentregado tiene el formulario de entrega para productos complementarios 
-  if($("#entregamodif_complementariosform").is(':visible')){
-    boleanComplementarios=true; 
-    //Indicador para ver que no tiene nada la imgs productoscomplementarios 
-    if(($("#img1Complemv2").val()!="")){
-      $("#evidencia1Complementariov2").css('color','black');
-    }else {
-      $("#evidencia1Complementariov2").css('color','red');
-    }
-
-    if(($("#img2Complemv2").val()!="")){
-      $("#evidencia2Complementariov2").css('color','black');
-    }else {
-      $("#evidencia2Complementariov2").css('color','red');
-    }
-
-  }else{boleanComplementarios=false;}
+   
 
   if(($("#img1Productv2").val()!="") && ($("#img2Productv2").val()!="")){
   //se valida que tenga datos los campos del formulario productos
-    boleanVerificacionProductos = true;
-    if(boleanComplementarios){
-      numproductoscomplem = document.getElementById("entregamodif_nocomplempedidos").innerHTML;
-      numproductosentregadoscomplem = numproductoscomplem;
-      if(($("#img1Complemv2").val()!="") && ($("#img2Complemv2").val()!="")){
-       boleanVerificacionComplementarios = true;
-     }else 
-     boleanVerificacionComplementarios = false;
-   }else boleanVerificacionComplementarios = true;
+    boleanVerificacionProductos = true;   
  }else boleanVerificacionProductos = false;
 
- if(boleanVerificacionComplementarios && boleanVerificacionProductos && boleanStatus){
+   //if(boleanVerificacionComplementarios && boleanVerificacionProductos && boleanStatus){
+	 if(boleanVerificacionProductos && boleanStatus){
 
   srcimg1=$("#img1Productv2").val().replace(/C:\\fakepath\\/i, '');
   srcimg1='Evid1_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimg1;
@@ -7005,21 +6862,6 @@ function marcarordenEntregadaModif(){
   formDataModif.append("img1Product", srcimg1);
   formDataModif.append("img2Product", srcimg2);
 
-    if(boleanComplementarios){//datos productos complementarios 
-
-      srcimgComplem1=$("#img1Complemv2").val().replace(/C:\\fakepath\\/i, '');
-      srcimgComplem1='Evidimg1Complem1_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimgComplem1;
-
-      srcimgComplem2=$("#img2Complemv2").val().replace(/C:\\fakepath\\/i, '');
-      srcimgComplem2='Evidimg1Complem2_NumOrden'+idorden+'_'+'p'+idtblproveedor+'_'+srcimgComplem2;
-
-      var formDataCModif = new FormData($("#formevidenciaComplem_modif")[0]);
-      formDataCModif.append("version", 'v2');
-      formDataCModif.append("img1ProductComple", srcimgComplem1);
-      formDataCModif.append("img2ProductComple", srcimgComplem2); 
-      
-    }
-
     UIkit.modal("#popupmodif_marcarorden").hide();
     UIkit.modal("#detalleOrdenPendiente").hide();
     UIkit.modal("#popup_spinner_registrandoOrdenCot", {bgclose: false}).show();
@@ -7029,85 +6871,38 @@ function marcarordenEntregadaModif(){
       method: "POST", 
       dataType: "json",  
       url: "./../../controllers/setUpdateTblentregaproducto.php",  
-      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimg1,srcimg2:srcimg2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
+      data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,
+	  numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:status,
+	  statusdeposito:statusdeposito,srcimg1:srcimg1,srcimg2:srcimg2,
+	  emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email,
+	  apellido:apellido, nivel:nivel}})  //fchpagoproveedor:fchpagoproveedor,
       .done(function(datos){
         if(parseInt(datos.success)==1){
+			console.log('guu');
         // si se guarda con exito se guardan las imagenes
-            $.ajax({ method: "POST", url: './phps/uploadImgEvidencias.php', data: formDataModif,contentType: false,processData: false,})
+            $.ajax({ method: "POST", url: './phps/uploadImgEvidencias.php', 
+			data: formDataModif,contentType: false,processData: false,})
             .done(function(datos){//img guardadas con exito
                 if(datos=="success"){ 
-                  if(boleanComplementarios){//existen productos complementarios
-                    $.ajax({ //actualiza el registro de tblentregaproduct 
-                      method: "POST",dataType: "json",url: "./../../controllers/setUpdateTtblentregacomplem.php", data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductoscomplem,numproductentregados:numproductosentregadoscomplem,status:status,fchpagoproveedor:fchpagoproveedor,srcimg1:srcimgComplem1,srcimg2:srcimgComplem2,emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
-                    .done(function( datos ){
-                        if(parseInt(datos.success)==1){ 
-                         
-                         //si el registro de complementarios es exitoso entonces guarda las imagenes
-                         $.ajax({ method: "POST", url: './phps/uploadImgEvidenciasComplementarios.php', data: formDataCModif ,contentType: false,processData: false,})
-                          .done(function(datos){
-                            if(datos=="success"){
-                              UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-                              UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
-
-                              $("#tblordenes_item").empty();
-                              $("#tblordenespendiente_item").empty();
-                              $("#tblordeneshistorial_item").empty();
-                              mostrarListaOrdenes();
-
-                            }else{    
-
-                              //elimina el registro en tblentregaproductcomplem
-                             $.ajax({method: "POST",dataType: "json", 
-                          url: "./../../controllers/setUpdateTtblentregacomplem.php",
-                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor}})
-                                .done(function(msg7) {   
-                                 }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-
-                              //elimina el registro en tblentregaproduct
-                              $.ajax({method: "POST", dataType: "json", 
-                          url: "./../../controllers/setUpdateTblentregaproducto.php",
-                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
-                          .done(function(msg7) {   
-                           }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-                                UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-                                UIkit.modal.alert(datos);
-
-                            }
-
-                          }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
-
-                       }else {
-                          //si no se guarda correctamente el registro de complementarios elimina el registro de productos
-                        $.ajax({method: "POST", dataType: "json", 
-                          url: "./../../controllers/setUpdateTblentregaproducto.php",
-                          data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
-                          .done(function(msg7) {   
-                           }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
-                            
-                            UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
-                            UIkit.modal.alert('Error, Vuelva Intenarlo.');
-                        
-
-                       }
-
-                    }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");});
-
-                  }else{//si no hay lanza msj
-
-                    UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
+				
+				UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
                     UIkit.modal.alert('Exitoso, Orden No. '+idorden+' marcada con diferente status');
 
                     $("#tblordenes_item").empty();
                     $("#tblordenespendiente_item").empty();
                     $("#tblordeneshistorial_item").empty();
                     mostrarListaOrdenes();
-                    
-                  }
+				
+                
                 }else{//sin exito el guardar las fotos, elimina el registro de tblentregaproducet
                    $.ajax({method: "POST", dataType: "json", 
                     url: "./../../controllers/setUpdateTblentregaproducto.php",
-                    data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,numproductpedidos:numproductos,numproductentregados:numproductosentregados,status:'PENDIENTE',statusdeposito:statusdeposito,fchpagoproveedor:fchpagoproveedor,srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
-                    .done(function(msg7) {   
+                    data: {solicitadoBy:solicitadoBy,nombreproveedor:nombreproveedor,fchentrega:fchentrega,
+					numproductpedidos:numproductos,numproductentregados:numproductosentregados,
+					status:'PENDIENTE',statusdeposito:statusdeposito,
+					srcimg1:'NULL',srcimg2:'NULL',emailmodifico:emailproveedor,idtblordencompra:idorden,
+					idtblproveedor:idproveedor,emailmodificohis:email, apellido:apellido, nivel:nivel}})
+                    .done(function(msg7) {    //fchpagoproveedor:fchpagoproveedor,
                      }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);}).always(function(){  console.log("always");  });
 
                     UIkit.modal("#popup_spinner_registrandoOrdenCot").hide();
@@ -7116,7 +6911,7 @@ function marcarordenEntregadaModif(){
             }).fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  }).always(function(){  console.log("always"); });
         }else{
          UIkit.modal("#popup_spinner_registrandoOrdenCot").hide(); 
-         UIkit.modal.alert('Error Vuelva Intentarlo');
+         UIkit.modal.alert('Error Vuelva Intentarlo mm');
         }
         
 
@@ -7210,6 +7005,7 @@ function mostrarCotizaciones(){
         '</td><td class="uk-text-center"><span  class="uk-text-bold" id="statusCotizacion'+i+'"></span></td></tr>');
         $("#tbl_ordenesCotizador").trigger('updateAll', [true]);//actualiza tabla
         statusCotizacion(msg.datos[i].tblmotivocotizacion_idtblmotivocotizacion,i);
+		inicializarPagCotiProducto();
         }); 
 
          
@@ -7507,6 +7303,7 @@ function mostrarCotizacionesProductosNuevos(){
       $("#tbl_ordenesCotizadorNuevos").trigger('updateAll', [true]);//actualiza tabla
 
       statusCotizacionNuevo(idtblcarritoproductnuevocotizador,i);
+	  inicializarPagCotiProNuevo();
     });
 
 
@@ -7889,7 +7686,7 @@ $.ajax({
       .always(function(){  console.log("always");});
 }
 
-//---------------------------------------------
+//--------------------Reyna-------------------------
 
  function mostrarTamaños(){		  
 		                
@@ -7913,8 +7710,36 @@ $.ajax({
       
    } // fin de la funcion 
 
-
-
+   
+   
+  function inicializarPagOrdenEntregar(){  		
+ 		$("#tbl_ordenes")
+		.tablesorterPager({container: $("#pagerOrdenEntregar")})  ;
+		 }
+		 
+		 
+	function inicializarPagOrdenPendientes(){  		
+ 		$("#tbl_ordenespendiente")
+		.tablesorterPager({container: $("#pagerOrdenesPendientes")})  ;
+		 }
+		 
+	function inicializarPagOrdenHistorial(){  		
+ 		$("#tbl_ordeneshistorial")
+		.tablesorterPager({container: $("#pagerOrdenesHistorial")})  ;
+		 }
+		 
+		 
+		 function inicializarPagCotiProducto(){  		
+ 		$("#tbl_ordenesCotizador")
+		.tablesorterPager({container: $("#pagerCotizaProducto")})  ;
+		 }
+		
+		function inicializarPagCotiProNuevo(){  		
+ 		$("#tbl_ordenesCotizadorNuevos")
+		.tablesorterPager({container: $("#pagerCotizaProNuevos")})  ;
+		 }
+		 
+//-----fin Reyna --------
  </script>
 
  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjeDznrCqVmUmnPkqY34STkSMsV2RvFok&callback=initMap" ></script>

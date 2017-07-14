@@ -26,6 +26,10 @@ $idtbltiposervicio='';
 $idtblcolonia='';
 $emailmodifico='';
 $resultado= '';
+$banco='';
+$clave='';
+$titular='';
+$rfc='';
 /**
  * Validamos que el array $_POST no es null.
  */
@@ -50,10 +54,14 @@ if (!empty($_POST)){
     $idtblcolonia=$_POST["idtblcolonia"];
     $idtblpaquete=$_POST['idtblpaquete'];
     $emailmodifico=$_POST["emailmodifico"];
+	$banco=$_POST["banco"];
+	$clave=$_POST["clave"];
+	$titular=$_POST["titular"];
+	$rfc=$_POST["rfc"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::setUpdateTblproveedor($idtblproveedor,$nombreprov,$srclogo,$descripcion,$direccion,$seo,$telftienda,$extencion,$celular,$email,$activado,$idtbltipopedido,$idtbltiposervicio,$idtblcolonia,$idtblpaquete,$emailmodifico);
+    $resultado = FuncionesBePickler::setUpdateTblproveedor($idtblproveedor,$nombreprov,$srclogo,$descripcion,$direccion,$seo,$telftienda,$extencion,$celular,$email,$activado,$idtbltipopedido,$idtbltiposervicio,$idtblcolonia,$idtblpaquete,$emailmodifico,$banco,$clave,$titular,$rfc);
 
     if($resultado)
     {

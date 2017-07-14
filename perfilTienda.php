@@ -12,6 +12,9 @@ include('./php/seguridad_general.php');
     <link rel="stylesheet" href="bower_components/kendo-ui/styles/kendo.common-material.min.css"/>
     <link rel="stylesheet" href="bower_components/kendo-ui/styles/kendo.material.min.css" id="kendoCSS"/>
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	
+	<!-- dropify -->
+    <link rel="stylesheet" href="assets/skins/dropify/css/dropify.css">	
   </head>
 
 
@@ -58,19 +61,52 @@ include('./php/seguridad_general.php');
           </div>
         </div><!-- end SubMenu de INDEX -->
         <div id="tabs_1_content" class="uk-switcher">
-          <div id="contenido_Datos"><!-- Contenido de Pestaña Datos -->              
+          <div id="contenido_Datos"><!-- Contenido de Pestaña Datos class="md-card-head-avatar"-->              
             <div class="uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-medium hierarchical_show" data-uk-grid-margin>
               <div class="uk-grid" data-uk-grid-margin>
                 <div class="uk-width-medium-1-1">
                   <div class="md-card">
                     <div class="md-card-content">
                       <div class="uk-form-row">
+					  <form enctype="multipart/form-data" id="form_datosTienda"  name="form_datosTienda" >
                         <div class="uk-grid " data-uk-grid-margin>
                           <div class="uk-width-medium-1-1">
+						  
+						  <!-- ----------------- 
                             <label>Logo</label>
                             <div class="uk-text-center">
-                              <img class="md-card-head-avatar" id="logoProveedor" name="logoProveedor" src="assets/img/gallery/Image01.jpg" alt=""/>
-                            </div>
+                              <img class="md-card-head uk-text-center uk-position-relative" id="logoProveedor" name="logoProveedor" src="assets/img/gallery/Image01.jpg" alt=""/>
+                            </div>-->
+							<!-- ----------------- 
+							 <img class="md-card-head uk-text-center uk-position-relative" id="logoProveedor" name="logoProveedor" src="assets/img/gallery/Image01.jpg" alt=""/>
+                            -->
+							 <div class="uk-grid" data-uk-grid-margin>
+                             <div class="uk-width-medium-1-3">
+                             
+                                   <label>Logo</label>
+                            <div class="uk-text-center">
+                              <img class="md-card-head uk-text-center uk-position-relative" id="logoProveedor" name="logoProveedor"  src="assets/img/gallery/Image01.jpg" alt=""/>
+                            </div> 
+
+							</div>
+							<div class="uk-width-medium-1-3">
+                             
+							</div>
+                              
+							 
+                             <div class="uk-width-medium-1-3">
+                              
+                                  <h5 id="modificar_srcimg1_producto_linea_titulo">
+                                      Subir nuevo logo
+                                  </h5>
+                                  <input type="file" id="modificar_srcimg1_tienda" name="srcimg1_tienda" class="dropify" data-max-file-size="10000K"/>
+                                  <input type="hidden" id="modificar_srcimg1_tiendaOc" name="srcimg1_tiendaOc" />
+                                
+                              </div> 
+							  
+							</div> 
+							<!-- --------------- -->
+							
                           </div>
                           <div class="uk-width-medium-1-1">
                             <label><strong>Datos Generales</strong></label>
@@ -117,6 +153,31 @@ include('./php/seguridad_general.php');
                             <input type="text" id="modificar_direccion_pasteleria_perfilTienda" name="modificar_direccion_pasteleria_perfilTienda" class="md-input" required/>
                           </div>
                         </div>
+						
+						<!-- .........reyna ....... -->
+						<hr class="uk-grid-divider">
+                        <div class="uk-grid " data-uk-grid-margin>
+                          <div class="uk-width-medium-1-1">
+                            <label><strong>Datos Bancarios</strong></label><br/>
+                          </div>
+                          <div class="uk-width-medium-1-4">
+                            <label>* Banco</label><br/>
+                            <input type="text" id="modificar_banco_perfilTienda" name="modificar_banco_perfilTienda" class="md-input" required />
+                          </div>
+						  <div class="uk-width-medium-1-4">
+                            <label>* CLABE Interbancaria</label><br/>
+                            <input type="text" id="modificar_clave_perfilTienda" name="modificar_clave_perfilTienda" class="md-input" required  />
+                          </div>
+						  <div class="uk-width-medium-1-4">
+                            <label>* Nombre del titular</label><br/>
+                            <input type="text" id="modificar_titular_perfilTienda" name="modificar_titular_perfilTienda" class="md-input" required  />
+                          </div>
+						  <div class="uk-width-medium-1-4">
+                            <label>* RFC</label><br/>
+                            <input type="text" id="modificar_rfc_perfilTienda" name="modificar_rfc_perfilTienda" class="md-input" required />
+                          </div>
+						   </div>
+						<!-- ................... -->
                         <hr class="uk-grid-divider">
                         <div class="uk-grid " data-uk-grid-margin>
                           <div class="uk-width-medium-1-1">
@@ -149,6 +210,7 @@ include('./php/seguridad_general.php');
                             </button>
                           </div>
                         </div>
+						</form>
                       </div>
                     </div>
                   </div>
@@ -347,6 +409,10 @@ include('./php/seguridad_general.php');
           boolErrorCelular=false;
           boolErrorEmail=false;
           boolErrorDireccionPasteleria=false;
+		  boolErrorBanco=false;
+		  boolErrorClave=false;
+		  boolErrorTitular=false;
+		  boolErrorRfc=false;
 
            //tblproducto
           nombrePasteleria='';
@@ -356,6 +422,11 @@ include('./php/seguridad_general.php');
           celular='';
           email='';
           direccionPasteleria='';
+		  banco='';
+		  clave='';
+		  titular='';
+		  rfc='';
+		 
 
           //OBTENEMOS LOS DATOS DEL FORMULARIO
           nombrePasteleria=$('#modificar_nombre_perfilTienda').val();
@@ -365,6 +436,47 @@ include('./php/seguridad_general.php');
           celular=$('#modificar_celular_perfilTienda').val();
           email=$('#modificar_email_perfilTienda').val();
           direccionPasteleria=$('#modificar_direccion_pasteleria_perfilTienda').val();
+		  
+		  //--------------reyna------
+		  banco=$('#modificar_banco_perfilTienda').val();
+		  clave=$('#modificar_clave_perfilTienda').val();
+		  titular=$('#modificar_titular_perfilTienda').val();
+		  rfc=$('#modificar_rfc_perfilTienda').val();
+		  
+		  //---------------------------
+            //banco -> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorBanco = validarCamposString(banco);      
+          if(boolErrorBanco){ 
+		  $( "#modificar_banco_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; 
+		  }
+          else{ $( "#modificar_banco_perfilTienda" ).removeClass( "md-input-danger" ); }
+		  
+		   //titular -> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorTitular = validarCamposString(titular);      
+          if(boolErrorTitular){ 
+		  $( "#modificar_titular_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; 
+		  }
+          else{ $( "#modificar_titular_perfilTienda" ).removeClass( "md-input-danger" ); }
+		  
+		  //clave-> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorClave = validarCamposString(clave);      
+          if(boolErrorClave){ 
+		  $( "#modificar_clave_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; 
+		  }
+          else{ $( "#modificar_clave_perfilTienda" ).removeClass( "md-input-danger" ); }
+		  
+		  //clave-> String
+          //VALIDAR CAMPOS OBLIGATORIOS VACIOS
+          boolErrorRfc = validarCamposString(rfc);      
+          if(boolErrorRfc){ 
+		  $( "#modificar_rfc_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; 
+		  }
+          else{ $( "#modificar_rfc_perfilTienda" ).removeClass( "md-input-danger" ); }
+		  
+		  
           /////////////////////////DATOS GENERALES/////////////////////////
           //nombreproduct -> String
           //VALIDAR CAMPOS OBLIGATORIOS VACIOS
@@ -496,7 +608,7 @@ include('./php/seguridad_general.php');
               $('#colonia_i_'+IdColonia).prop('checked', true);
             });
             console.log('seleccionar todoas');
-            /*
+            
             $('#colonia_i_2').prop('checked', true);
             $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblcoloniaAct.php",  data: {solicitadoBy:"WEB"}  })
             .done(function( msgTblColonia ) { 
@@ -508,7 +620,7 @@ include('./php/seguridad_general.php');
             .always(function(){  
               //console.log("always");
             });
-            */
+            
           }else
           {
             $.each(arregloIdTblcoloniaAct, function(i,IdColonia){
@@ -521,10 +633,13 @@ include('./php/seguridad_general.php');
         });
       }
       function cargarDatosPerfilTienda(){
+      	
         //COSNTANTES
         PROVEEDORLOGOIMGSRC="./../assests_general/proveedor/logoProveedor/";
         ///
-        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproveedor.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
+        ///
+        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproveedor.php",  
+		data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
           .done(function( msgProveedor ) { 
             $.each(msgProveedor.datos, function(i,item){ 
               Idtblproveedor=msgProveedor.datos[i].idtblproveedor;
@@ -542,6 +657,15 @@ include('./php/seguridad_general.php');
               Idtbltiposervicio=msgProveedor.datos[i].tbltiposervicio_idtbltiposervicio;
               Idtblcolonia=msgProveedor.datos[i].tblcolonia_idtblcolonia;
               Idtblpaquete=msgProveedor.datos[i].tblpaquete_idtblpaquete;
+			  //..........reyna......
+			  banco=msgProveedor.datos[i].tblproveedor_banco;
+			  clave=msgProveedor.datos[i].tblproveedor_claveintban;
+			  titular=msgProveedor.datos[i].tblproveedor_nombretitucuen;
+			  elRFC=msgProveedor.datos[i].tblproveedor_rfc;
+			 //............ 
+
+
+
             
 
               //$('#modificar_id_perfilTienda').val(msgProveedor.datos[i].tblproveedor_srclogo);
@@ -558,6 +682,16 @@ include('./php/seguridad_general.php');
               $('#modificar_telefono_extencion_perfilTienda').val(msgProveedor.datos[i].tblproveedor_extencion);          
               $('#modificar_celular_perfilTienda').val(msgProveedor.datos[i].tblproveedor_celular);
               $('#modificar_email_perfilTienda').val(msgProveedor.datos[i].tblproveedor_email);
+			  
+			  //..........reyna......
+			   $('#modificar_banco_perfilTienda').val(msgProveedor.datos[i].tblproveedor_banco);
+			   $('#modificar_clave_perfilTienda').val(msgProveedor.datos[i].tblproveedor_claveintban);
+			   $('#modificar_titular_perfilTienda').val(msgProveedor.datos[i].tblproveedor_nombretitucuen);
+			   $('#modificar_rfc_perfilTienda').val(msgProveedor.datos[i].tblproveedor_rfc);
+			  
+			  //................
+			 
+			  
               //$('#modificar_id_perfilTienda').val(msgProveedor.datos[i].tblproveedor_activado);
               //SERVICIOS
             
@@ -630,7 +764,7 @@ include('./php/seguridad_general.php');
           
       }
       function actualizarPerfilTienda(){
-        //console.log('actualizarPerfilTienda');
+        console.log('funcion actualizarPerfilTienda');
         //SESSION
         //idtblproveedor
         nombreprov=$("#modificar_nombre_perfilTienda").val();
@@ -647,31 +781,152 @@ include('./php/seguridad_general.php');
         idtbltiposervicio=Idtbltipopedido;
         idtblcolonia=Idtblcolonia;
         idtblpaquete=Idtblpaquete;
-        //SESSION
-        //emailmodifico
-        /////////////////////////////////////////////////
-        //nombreCompleto=$('#modificar_nombre_contacto_perfilTienda').val();
-        //console.log('idtblproveedor::'+idtblproveedor+' nombreprov::'+nombreprov+' srclogo::'+srclogo+' descripcion::'+descripcion+' direccion::'+direccion+' seo::'+seo+' telftienda::'+telftienda+' extencion::'+extencion+' celular::'+celular+' email::'+email+' activado::'+activado+' idtbltipopedido::'+idtbltipopedido+' idtbltiposervicio::'+idtbltiposervicio+' idtblcolonia::'+idtblcolonia+' idtblpaquete::'+idtblpaquete+' emailmodifico::'+emailmodifico);
-        //VALIDAR QUE LOS CAMPOS OBLITARIO TENGAN DATOS
-        if(idtblproveedor!=''&&nombreprov!=''&&srclogo!=''&&descripcion!=''&&seo!=''&&telftienda!=''&&celular!=''&&email!=''&&activado!=''&&idtbltipopedido!=''&&idtbltiposervicio!=''&&idtblcolonia!=''&&idtblpaquete!=''&&emailmodifico!=''&&NombreCompleto!='')
-        {    
+		
+		//............reyna...
+		banco=$("#modificar_banco_perfilTienda").val();
+		clave=$("#modificar_clave_perfilTienda").val();
+		titular=$("#modificar_titular_perfilTienda").val();
+		rfc=$("#modificar_rfc_perfilTienda").val();
+		//........................
+		
+		//COSNTANTES
+      //  PROVEEDORLOGOIMGSRC="../assests_general/proveedor/logoProveedor/";
+		
+        // srcimgActual=$("#logoproveedor").attr("src"); //id de ftografia actual se recupera su valor del src
+		
+     //		srcimgActual= PROVEEDORLOGOIMGSRC;
+       
+	   // alert('srcimgActual::'+srcimgActual);
+      // srcimgActual=srcimgActual.replace('./../assests_general/proveedor/logoProveedor/', '');
+     srcimgActual=$("#logoProveedor").attr("src"); //id de ftografia actual se recupera su valor del src
+   // alert('srcimgActual::'+srcimgActual);
+    srcimgActual=srcimgActual.replace('./../assests_general/proveedor/logoProveedor/', '');
+    //alert('srcimgActual::'+srcimgActual);
+
+           // input nuevo
+    srcimg1=$("#modificar_srcimg1_tienda").val().replace(/C:\\fakepath\\/i, '');  //id del file
+    nuevaImagen=$("#modificar_srcimg1_tienda").val().replace(/C:\\fakepath\\/i, '');
+   
+		
+if(srcimg1=='') { //--------no tiene foto el input------------------------------------------------- 
+		
+        if(idtblproveedor !='' && nombreprov !='' && srclogo!='' && descripcion !='' && 
+		   telftienda !='' && celular !='' && email !='' && activado !='' &&
+		   idtbltipopedido !='' && idtbltiposervicio !='' && idtblcolonia !='' && 
+		   idtblpaquete !='' && emailmodifico !='' && NombreCompleto !=''
+		   && banco !='' && clave !='' && titular !='' && rfc !=''
+		   )
+        { 
+        	//console.log('campos completos');
           //ACTUALZIAR DATOS DE PROVEEDOR          
-          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproveedor.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, nombreprov:nombreprov, srclogo:srclogo, descripcion:descripcion, direccion:direccion, seo:seo, telftienda:telftienda, extencion:extencion, celular:celular, email:email, activado:activado, idtbltipopedido:idtbltipopedido, idtbltiposervicio:idtbltiposervicio, idtblcolonia:idtblcolonia, idtblpaquete:idtblpaquete, emailmodifico:emailmodifico}  })
+          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproveedor.php",  
+		  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, nombreprov:nombreprov, srclogo:srclogo, 
+		  descripcion:descripcion, direccion:direccion, seo:seo, telftienda:telftienda, extencion:extencion,
+		  celular:celular, email:email, activado:activado, idtbltipopedido:idtbltipopedido, 
+		  idtbltiposervicio:idtbltiposervicio, idtblcolonia:idtblcolonia, idtblpaquete:idtblpaquete, 
+		  emailmodifico:emailmodifico, banco:banco, titular:titular, clave:clave, rfc:rfc }  })
             .done(function( msgUpdateProveedor ) { 
-              //console.log('done msgUpdateProveedor::'+msgUpdateProveedor.datos);
+              //console.log('done msgUpdateProveedor::');
+              //console.log(msgUpdateProveedor);
               UIkit.modal.alert('Perfil de tienda actualizado');
             })
             .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproveedor fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
             .always(function(){  
               //console.log("always");
-            });            
-        }else
-        {
-          //alert('algun campo con * esta vacio favor de verificar');
+            });
+                  
         }
+	else
+        {
+          alert('algun campo con * esta vacio favor de verificar');
+          alert('idtblproveedor::'+idtblproveedor+' nombreprov::'+nombreprov+' srclogo::'+srclogo+' seo::'+seo+' telftienda::'+telftienda+' celular::'+celular+' email::'+email+' activado::'+activado+' idtbltipopedido::'+idtbltipopedido+' idtbltiposervicio::'+idtbltiposervicio+' idtblcolonia::'+idtblcolonia+' idtblpaquete::'+idtblpaquete+' emailmodifico::'+emailmodifico+' NombreCompleto::'+NombreCompleto);
+        }
+		
+		
+  } //fin del if
+	  else{  //tiene foto el input nuevo 
+	          
+		if (idtblproveedor !='' && nombreprov !='' && srclogo!='' && descripcion !='' && 
+		   telftienda !='' && celular !='' && email !='' && activado !='' &&
+		   idtbltipopedido !='' && idtbltiposervicio !='' && idtblcolonia !='' && 
+		   idtblpaquete !='' && emailmodifico !='' && NombreCompleto !=''
+		   && banco !='' && clave !='' && titular !='' && rfc !='')
+		   
+		   { 
+        	
+			srcimg1='logo-pasteleriaa_'+nombreprov+'_'+srcimg1;
+			
+                       $('#modificar_srcimg1_tiendaOc').val(srcimg1);  //id input oculto
+	  
+                       //borramos el archivo actual de la fotografia en el servidor
+                       $.ajax({ method: "POST",  dataType: "json",  
+	                   url: "./../../controllers/setDeleteFileLogoProveedor.php", 
+	                   data: {solicitadoBy:"WEB",tblproveedorimg_srcimg:srcimgActual} }) 
+                      .done(function( datos ){
+                       borradafoto=true;
+					   
+                       })
+                       .fail(function( jqXHR, textStatus ) {  console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+        
 
-      }
+                       //subimos la nueva fotografia al servidor
+                       var formData = new FormData($("#form_datosTienda")[0]); //id del form
+
+                       //var ruta = "imagen-ajax.php";
+                       $.ajax({  method: "POST",
+		               url: "./../../controllers/uploadImgPerfilTienda.php", 
+		               data: formData ,contentType: false,
+                       processData: false, })
+                      .done(function( datos ){
+						  
+                      		if(datos=="success"){	
+							subioNuevaFoto=true;
+							
+							
+          //ACTUALZIAR DATOS DE PROVEEDOR          
+          $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setUpdateTblproveedor.php",  
+		  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, nombreprov:nombreprov, srclogo:srcimg1, 
+		  descripcion:descripcion, direccion:direccion, seo:seo, telftienda:telftienda, extencion:extencion,
+		  celular:celular, email:email, activado:activado, idtbltipopedido:idtbltipopedido, 
+		  idtbltiposervicio:idtbltiposervicio, idtblcolonia:idtblcolonia, idtblpaquete:idtblpaquete, 
+		  emailmodifico:emailmodifico, banco:banco, titular:titular, clave:clave, rfc:rfc }  })
+            .done(function( msgUpdateProveedor ) { 
+              //console.log('done msgUpdateProveedor::');
+              //console.log(msgUpdateProveedor);
+              UIkit.modal.alert('Perfil de tienda actualizado');
+            })
+            .fail(function( jqXHR, textStatus ) {  console.log("setUpdateTblproveedor fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+            .always(function(){  
+              //console.log("always");
+            });
+        //........
+         } else { subioNuevaFoto=false;
+							     //UIkit.modal.alert(datos);   
+							
+							}
+            
+                      }).fail(function( jqXHR, textStatus )  {console.log("fail jqXHR::"+jqXHR.status+" textStatus::"+textStatus);  })
+                        
+					
+		
+				  
+        } //fin del if
+	       else
+            {
+          alert('algun campo con * esta vacio favor de verificar');
+          alert('idtblproveedor::'+idtblproveedor+' nombreprov::'+nombreprov+' srclogo::'+srclogo+' seo::'+seo+' telftienda::'+telftienda+' celular::'+celular+' email::'+email+' activado::'+activado+' idtbltipopedido::'+idtbltipopedido+' idtbltiposervicio::'+idtbltiposervicio+' idtblcolonia::'+idtblcolonia+' idtblpaquete::'+idtblpaquete+' emailmodifico::'+emailmodifico+' NombreCompleto::'+NombreCompleto);
+             }
+	  
+	      } //fin del else
+	  
+	  
+		
+		
+		
+		
+      } //fin de la funcion
       function cargarDatosServicios(){
+      
         //arregloIdHoraCierra=[];
         arregloIdTblhracierra=[];
         arregloIdTblhraabre=[];
@@ -682,7 +937,8 @@ include('./php/seguridad_general.php');
         contadorColAct=0;
         contadorColProve=0;
         //console.log('cargarDatosServicios');
-        //ACTUALZIAR DATOS DE PROVEEDOR          
+        //ACTUALZIAR DATOS DE PROVEEDOR
+             
           $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblcoloniaAct.php",  data: {solicitadoBy:"WEB"}  })
             .done(function( msgTblColonia ) { 
               $.each(msgTblColonia.datos, function(i,item){
@@ -718,7 +974,7 @@ include('./php/seguridad_general.php');
             .always(function(){  
               //console.log("always");
             });
-
+            
             //MOSTRAR HORAS DE ENTREGA DE DOMICILIO DISPONIBLES
             
             $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getAllTblhrsprovdomWithTblhora.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
@@ -887,6 +1143,7 @@ include('./php/seguridad_general.php');
             
         //$("#colonias_servicio_domicilio").append('<option value="99">Nuevo</option>');
         //$("#colonias").append('<span class="icheck-inline"> <input type="checkbox" name="checkbox_lunes" id="checkbox_demo_inline_1" data-md-icheck /> <label for="checkbox_demo_inline_1" class="inline-label">Lunes</label> </span>');
+      
       }
       function descripcionGeneralServicios(){
         pedidos_habilitados='';
@@ -904,6 +1161,7 @@ include('./php/seguridad_general.php');
       }
       function actualizarPerfilTiendaServicios()
       {
+      
         //REGISTRO DE COLONIAS CON SERVICIO A DOMICILIO
         //ELIMINAR TODAS LAS COLONIAS QUE TIENEN 
         $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setDeleteAllTblcoloniaprovservicioOfProveedor.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
@@ -926,12 +1184,7 @@ include('./php/seguridad_general.php');
                   idtblcolonia=valor.val();
                   //emailcreo=
                   //asginar al arreglo de colonias o REGISTRAR LAS COLONIAS CON EL PROVEEDOR
-                  /*
-                  $solicitadoBy=$_POST["solicitadoBy"];
-                  $idtblproveedor=$_POST["idtblproveedor"];
-                  $idtblcolonia=$_POST["idtblcolonia"];
-                  $emailcreo=$_POST["emailcreo"];
-                   */
+                  
                   arregloIdColoniasRegistrar.push(valor.val());
                   //console.log('idtblcolonia para registro::'+idtblcolonia);
                   //REGISTRAMOS LAS COLONIAS SELECCIONADAS
@@ -1003,12 +1256,7 @@ include('./php/seguridad_general.php');
                   idtbldiasemana=valor.val();
                   //emailcreo=
                   //asginar al arreglo de colonias o REGISTRAR LAS COLONIAS CON EL PROVEEDOR
-                  /*
-                  $solicitadoBy=$_POST["solicitadoBy"];
-                  $idtblproveedor=$_POST["idtblproveedor"];
-                  $idtbldiasemana=$_POST["idtbldiasemana"];
-                  $emailcreo=$_POST["emailcreo"];
-                   */
+                  
                   arregloIdDiasRegistrar.push(valor.val());
                   //console.log('idtbldiasemana para registro::'+idtbldiasemana);
                   //REGISTRAMOS LAS COLONIAS SELECCIONADAS
@@ -1038,6 +1286,7 @@ include('./php/seguridad_general.php');
             console.log('elimino las horas domicilio::'+msgsetDeleteTblhrsprovdomOfProveedor.datos);
             //REGISTRAMOS LAS HORAS SEGUN LAS SELECCIONADAS
             inputHoraDom_9_12=$( "input[id='checkbox_demo_inline_9_12']" ).is(':checked');
+            //inputHoraDom_9_12=$( "#checkbox_demo_inline_9_12" ).is(':checked');
             console.log('inputHoraDom_9_12::'+inputHoraDom_9_12);
             inputHoraDom_12_15=$( "input[id='checkbox_demo_inline_12_15']" ).is(':checked');
             console.log('inputHoraDom_12_15::'+inputHoraDom_12_15);
@@ -1048,15 +1297,17 @@ include('./php/seguridad_general.php');
 
             if(inputHoraDom_9_12)
             {
-              arregloHoras912=[2,3,4,5];
+            	console.log('entro a registrar la hora de 9_12');
+              arregloHoras912=[1,2,3,4];
               $.each(arregloHoras912, function(i,item){ 
                 console.log('arregloHoras912::'+item);
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblhrsprovdom.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, idtblhora:item, emailcreo:emailcreo}  })
-                .done(function( msgsetTblhrsprovdom ) { 
-                  console.log('registro las horas domicilio::'+msgsetTblhrsprovdom.datos);
-                  console.log('imprimir json::'+JSON.stringify(msgsetTblhrsprovdom, null, 4));              
+                .done(function( msgsetTblhrsprovdom_9_12 ) { 
+                  console.log('9_12 registro las horas domicilio:: i::'+i);
+                  console.log(msgsetTblhrsprovdom_9_12);
+                  //console.log('imprimir json::'+JSON.stringify(msgsetTblhrsprovdom, null, 4));              
                 })
-                .fail(function( jqXHR, textStatus ) {  console.log("setTblhrsprovdom fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
+                .fail(function( jqXHR, textStatus ) {  console.log(" 9_12setTblhrsprovdom fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
                 .always(function(){  
                   //console.log("always");
                 });
@@ -1069,7 +1320,7 @@ include('./php/seguridad_general.php');
                 console.log('arregloHoras1215::'+item);
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblhrsprovdom.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, idtblhora:item, emailcreo:emailcreo}  })
                 .done(function( msgsetTblhrsprovdom ) { 
-                  console.log('regsitro las horas domicilio::'+msgsetTblhrsprovdom.datos);              
+                  console.log('12_15 regsitro las horas domicilio::'+msgsetTblhrsprovdom.datos);              
                 })
                 .fail(function( jqXHR, textStatus ) {  console.log("setTblhrsprovdom fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
                 .always(function(){  
@@ -1084,7 +1335,7 @@ include('./php/seguridad_general.php');
                 console.log('arregloHoras1518::'+item);
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblhrsprovdom.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, idtblhora:item, emailcreo:emailcreo}  })
                 .done(function( msgsetTblhrsprovdom ) { 
-                  console.log('regsitro las horas domicilio::'+msgsetTblhrsprovdom.datos);              
+                  console.log('15_18 regsitro las horas domicilio::'+msgsetTblhrsprovdom.datos);              
                 })
                 .fail(function( jqXHR, textStatus ) {  console.log("setTblhrsprovdom fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
                 .always(function(){  
@@ -1099,7 +1350,7 @@ include('./php/seguridad_general.php');
                 console.log('arregloHoras1821::'+item);
                 $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/setTblhrsprovdom.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor, idtblhora:item, emailcreo:emailcreo}  })
                 .done(function( msgsetTblhrsprovdom ) { 
-                  console.log('regsitro las horas domicilio::'+msgsetTblhrsprovdom.datos);              
+                  console.log('18_21 regsitro las horas domicilio::'+msgsetTblhrsprovdom.datos);              
                 })
                 .fail(function( jqXHR, textStatus ) {  console.log("setTblhrsprovdom fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
                 .always(function(){  
@@ -1112,6 +1363,7 @@ include('./php/seguridad_general.php');
           .always(function(){  
             //console.log("always");
           }); 
+      
       }      
     var map;
     var mapOptions ;
@@ -1127,6 +1379,7 @@ include('./php/seguridad_general.php');
     }
     
     function getDireccionProveedor(){
+    	
       var direccion;
        $.ajax({  method: "POST",  dataType: "json",  url: "./../../controllers/getTblproveedordireccion.php",  data: {solicitadoBy:"WEB", idtblproveedor:idtblproveedor}  })
                   .done(function( msg) { 
@@ -1142,7 +1395,8 @@ include('./php/seguridad_general.php');
                   .fail(function( jqXHR, textStatus ) {  console.log("getTblproveedordireccion fail jqXHR::"+jqXHR+" textStatus::"+textStatus);  })
                   .always(function(){  
                     //console.log("always");
-                  });       
+                  }); 
+            
     }
     
     function mapaGeo(direccion){
@@ -1181,7 +1435,10 @@ include('./php/seguridad_general.php');
 
     </script>
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjeDznrCqVmUmnPkqY34STkSMsV2RvFok&sensor=false&callback=initMapa" ></script>
-
+      <script src="assets/js/custom/dropify/dist/js/dropify.min.js"></script>
+    <!--  form file input functions -->
+    <script src="assets/js/pages/forms_file_input.min.js"></script>		
+   	
       <!-- page specific plugins           -->
       <!-- ionrangeslider -->
       <script src="bower_components/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
