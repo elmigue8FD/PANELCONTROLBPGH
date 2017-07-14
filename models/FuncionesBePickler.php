@@ -2138,10 +2138,16 @@ class FuncionesBePickler{
 ///// FUNCIONES REFRENTE A TABLA tblentregaproducto ///////
 	
 	/*Insertar un registro en tblentregaproducto*/
-	 public static function setTblentregaproducto($nombreproveedor, $fchentre,$numproductpedidos,$numproductentregados,$status,$descripcion,$statusdeposito,$fchpagoproveedor,$srcimg1,$srcimg2,$emailcreo,$idtblordencompra,$idtblproveedor){
+	 public static function setTblentregaproducto($nombreproveedor,$fchentre,$numproductpedidos,$numproductentregados,$status,$descripcion,$statusdeposito,$fchcorte,$srcimg1,$srcimg2,$emailcreo,$idtblordencompra,$idtblproveedor,$fchpagoproveedor){
 	 	
         
-        $insert ="INSERT INTO tblentregaproducto (tblentregaproducto_nombreproveedor,tblentregaproducto_fchentrega,tblentregaproducto_numproductpedidos,tblentregaproducto_numproductentregados,tblentregaproducto_status,tblentregaproducto_descripcion,tblentregaproducto_statusdeposito,tblentregaproducto_fchpagoproveedor,tblentregaproducto_srcimgevidencia1,tblentregaproducto_srcimgevidencia2,tblentregaproducto_fchmodificacion,tblentregaproducto_fchcreacion,tblentregaproducto_emailusuacreo,tblentregaproducto_emailusuamodifico,tblentregaproducto_idtblordencompra,tblentregaproducto_idtblproveedor) VALUES (?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?,?,?)"; 
+        $insert ="INSERT INTO tblentregaproducto (tblentregaproducto_nombreproveedor,
+		tblentregaproducto_fchentrega,tblentregaproducto_numproductpedidos,
+		tblentregaproducto_numproductentregados,tblentregaproducto_status,tblentregaproducto_descripcion,  
+		tblentregaproducto_statusdeposito,tblentregaproducto_fchcortepago,tblentregaproducto_srcimgevidencia1,
+		tblentregaproducto_srcimgevidencia2,tblentregaproducto_fchmodificacion,tblentregaproducto_fchcreacion,
+		tblentregaproducto_emailusuacreo,tblentregaproducto_emailusuamodifico,tblentregaproducto_idtblordencompra,
+		tblentregaproducto_idtblproveedor,tblentregaproducto_fchpagoproveedor) VALUES (?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?,?,?,?)"; 
 
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -2152,19 +2158,21 @@ class FuncionesBePickler{
 			$resultado->bindParam(5,$status,PDO::PARAM_STR);
 			$resultado->bindParam(6,$descripcion,PDO::PARAM_STR);
 			$resultado->bindParam(7,$statusdeposito,PDO::PARAM_STR);
-			$resultado->bindParam(8,$fchpagoproveedor,PDO::PARAM_STR);
+			$resultado->bindParam(8,$fchcorte,PDO::PARAM_STR);
 			$resultado->bindParam(9,$srcimg1,PDO::PARAM_STR);
 			$resultado->bindParam(10,$srcimg2,PDO::PARAM_STR);
 			$resultado->bindParam(11,$emailcreo,PDO::PARAM_STR);
 			$resultado->bindParam(12,$emailcreo,PDO::PARAM_STR);
 			$resultado->bindParam(13,$idtblordencompra,PDO::PARAM_INT);
 			$resultado->bindParam(14,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(15,$fchpagoproveedor,PDO::PARAM_STR);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
 			return false;
 		}
     }
+    
     
     
     /*Verifica si existe un registro en tblentregaproducto  */
@@ -2185,9 +2193,16 @@ class FuncionesBePickler{
     }
     
     /*Actualizar un registro en tblentregaproducto*/
-	 public static function setUpdateTblentregaproducto($nombreproveedor,$fchentrega,$numproductpedidos,$numproductentregados,$status,$statusdeposito,$fchpagoproveedor,$srcimg1,$srcimg2,$emailmodifico,$idtblordencompra,$idtblproveedor){
+	 public static function setUpdateTblentregaproducto($nombreproveedor,$fchentrega,$numproductpedidos,$numproductentregados,$status,$statusdeposito,$fchpagoproveedor,$srcimg1,$srcimg2,$emailmodifico,$fchcorte,$idtblordencompra,$idtblproveedor){
         
-        $insert ="UPDATE tblentregaproducto SET tblentregaproducto_nombreproveedor = ?, tblentregaproducto_fchentrega  = ?, tblentregaproducto_numproductpedidos = ?, tblentregaproducto_numproductentregados = ?, tblentregaproducto_status = ?, tblentregaproducto_statusdeposito = ?,tblentregaproducto_fchpagoproveedor = ?, tblentregaproducto_srcimgevidencia1 = ?, tblentregaproducto_srcimgevidencia2 = ?, tblentregaproducto_fchmodificacion = NOW(), tblentregaproducto_emailusuamodifico = ? WHERE tblentregaproducto_idtblordencompra = ? AND tblentregaproducto_idtblproveedor = ?"; 
+        $insert ="UPDATE tblentregaproducto SET tblentregaproducto_nombreproveedor = ?,  
+		tblentregaproducto_fchentrega  = ?, tblentregaproducto_numproductpedidos = ?, 
+		tblentregaproducto_numproductentregados = ?, tblentregaproducto_status = ?, 
+		tblentregaproducto_statusdeposito = ?,tblentregaproducto_fchpagoproveedor = ?, 
+		tblentregaproducto_srcimgevidencia1 = ?, tblentregaproducto_srcimgevidencia2 = ?, 
+		tblentregaproducto_fchmodificacion = NOW(), tblentregaproducto_emailusuamodifico = ?,
+        tblentregaproducto_fchcortepago=?		
+		WHERE tblentregaproducto_idtblordencompra = ? AND tblentregaproducto_idtblproveedor = ?"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -2201,8 +2216,9 @@ class FuncionesBePickler{
 			$resultado->bindParam(8,$srcimg1,PDO::PARAM_STR);
 			$resultado->bindParam(9,$srcimg2,PDO::PARAM_STR);
 			$resultado->bindParam(10,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(11,$idtblordencompra,PDO::PARAM_INT);
-			$resultado->bindParam(12,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(11,$fchcorte,PDO::PARAM_STR);
+			$resultado->bindParam(12,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->bindParam(13,$idtblproveedor,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
@@ -4318,9 +4334,16 @@ class FuncionesBePickler{
     }
     
     /*Actualizar un registro en tblproveedor*/
-	 public static function setUpdateTblproveedor($idtblproveedor,$nombreprov,$srclogo,$descripcion,$direccion,$seo,$telftienda,$extencion,$celular,$email,$activado,$idtbltipopedido,$idtbltiposervicio,$idtblcolonia,$idtblpaquete,$emailmodifico){
+	 public static function setUpdateTblproveedor($idtblproveedor,$nombreprov,$srclogo,$descripcion,$direccion,$seo,$telftienda,$extencion,$celular,$email,$activado,$idtbltipopedido,$idtbltiposervicio,$idtblcolonia,$idtblpaquete,$emailmodifico,$banco,$clave,$titular,$rfc){
         
-        $insert ="UPDATE tblproveedor SET tblproveedor_nombre = ?,tblproveedor_srclogo = ?,tblproveedor_descripcion = ?,tblproveedor_direccion = ?,tblproveedor_seo = ?,tblproveedor_telefonotienda = ?,tblproveedor_extencion = ?,tblproveedor_celular = ?,tblproveedor_email = ?,tblproveedor_activado = ?,tbltipopedido_idtbltipopedido = ?,	tbltipopedido_idtbltipopedido = ?,tblcolonia_idtblcolonia = ?,tblpaquete_idtblpaquete = ?,tblproveedor_fchmodificacion = NOW(),tblproveedor_emailusuamodifico = ? WHERE 	idtblproveedor  = ?"; 
+        $insert ="UPDATE tblproveedor SET tblproveedor_nombre = ?,tblproveedor_srclogo = ?,
+		tblproveedor_descripcion = ?,tblproveedor_direccion = ?,tblproveedor_seo = ?,
+		tblproveedor_telefonotienda = ?,tblproveedor_extencion = ?,tblproveedor_celular = ?,
+		tblproveedor_email = ?,tblproveedor_activado = ?,tbltipopedido_idtbltipopedido = ?,	
+		tbltipopedido_idtbltipopedido = ?,tblcolonia_idtblcolonia = ?,tblpaquete_idtblpaquete = ?,
+		tblproveedor_fchmodificacion = NOW(),tblproveedor_emailusuamodifico = ?,
+        tblproveedor_banco = ?,tblproveedor_claveintban = ?, 
+        tblproveedor_nombretitucuen = ?,tblproveedor_rfc = ? WHERE idtblproveedor = ?"; 
         
         try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
@@ -4339,7 +4362,11 @@ class FuncionesBePickler{
 			$resultado->bindParam(13,$idtblcolonia,PDO::PARAM_INT);
 			$resultado->bindParam(14,$idtblpaquete,PDO::PARAM_INT);
 			$resultado->bindParam(15,$emailmodifico,PDO::PARAM_STR);
-			$resultado->bindParam(16,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(16,$banco,PDO::PARAM_STR);
+			$resultado->bindParam(17,$clave,PDO::PARAM_STR);
+			$resultado->bindParam(18,$titular,PDO::PARAM_STR);
+			$resultado->bindParam(19,$rfc,PDO::PARAM_STR);
+			$resultado->bindParam(20,$idtblproveedor,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
 		} catch(PDOException $e){
