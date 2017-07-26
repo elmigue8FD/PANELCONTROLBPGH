@@ -12546,22 +12546,35 @@ AND exists
 
         $fechahora = $fechapedido;
 
-        //se obtiene la fecha/hora actual
-        $fchactual = new DateTime("now", new DateTimeZone('America/Mexico_City'));	
+        ///se obtiene la fecha/hora actual
+        $horaactual = new DateTime("now", new DateTimeZone('America/Mexico_City'));	
+		//echo $horaactual->format('H:i')."\n";
         //se convierte la fecha/hora en tipo objeto
-		$fchpedido = new DateTime($fechahora, new DateTimeZone('America/Mexico_City'));
-		$diasMinimos= $fchactual->diff($fchpedido)->format('%d');//dias
+		$horapedido = new DateTime($fechahora, new DateTimeZone('America/Mexico_City'));
+		//echo $horapedido->format('H:i')."\n";
+		//se obtiene las horas por transcurrir
+		$horastrascurrir =  $horaactual->diff($horapedido)->format('%H');//horas
+		$diasMinimos= $horaactual->diff($horapedido)->format('%d');//dias		
+		$totalHoras= ($diasMinimos*24)+($horastrascurrir);
+		//echo $totalHoras."\n";
 		//se obtiene el día de la semana 
-		$diasemana= $fchpedido->format('l');
+		$diasemana= $horapedido->format('l');
 		//echo $diasemana;
 
+		$fchactual = $horaactual->format('Y-m-d');
+		$fchpedido = $horapedido->format('Y-m-d');
+
+		if($fchactual==$fchpedido){
+			$tipodepedido=1;
+		}else{
+			$tipodepedido=2;
+		}
+
 		//se tomara en cuenta el stock dependiendo de las horas para el pedido
-		if($fchactual==$fchpedido){ 
-			$tipodepedido = 1;
+		if($totalHoras<24){ 			
             $diasMinimos=0;
             $stock=1;
-        }else{
-        	$tipodepedido = 2;            
+        }else{                
             $stock=0;
         }
 
@@ -12615,22 +12628,35 @@ AND exists
 
         $fechahora = $fechapedido;
 
-        //se obtiene la fecha/hora actual
-        $fchactual = new DateTime("now", new DateTimeZone('America/Mexico_City'));	
+        ///se obtiene la fecha/hora actual
+        $horaactual = new DateTime("now", new DateTimeZone('America/Mexico_City'));	
+		//echo $horaactual->format('H:i')."\n";
         //se convierte la fecha/hora en tipo objeto
-		$fchpedido = new DateTime($fechahora, new DateTimeZone('America/Mexico_City'));
-		$diasMinimos= $fchactual->diff($fchpedido)->format('%d');//dias
+		$horapedido = new DateTime($fechahora, new DateTimeZone('America/Mexico_City'));
+		//echo $horapedido->format('H:i')."\n";
+		//se obtiene las horas por transcurrir
+		$horastrascurrir =  $horaactual->diff($horapedido)->format('%H');//horas
+		$diasMinimos= $horaactual->diff($horapedido)->format('%d');//dias		
+		$totalHoras= ($diasMinimos*24)+($horastrascurrir);
+		//echo $totalHoras."\n";
 		//se obtiene el día de la semana 
-		$diasemana= $fchpedido->format('l');
+		$diasemana= $horapedido->format('l');
 		//echo $diasemana;
 
+		$fchactual = $horaactual->format('Y-m-d');
+		$fchpedido = $horapedido->format('Y-m-d');
+
+		if($fchactual==$fchpedido){
+			$tipodepedido=1;
+		}else{
+			$tipodepedido=2;
+		}
+
 		//se tomara en cuenta el stock dependiendo de las horas para el pedido
-		if($fchactual==$fchpedido){ 
-			$tipodepedido = 1;
+		if($totalHoras<24){ 			
             $diasMinimos=0;
             $stock=1;
-        }else{
-        	$tipodepedido = 2;            
+        }else{                
             $stock=0;
         }
 
@@ -12709,6 +12735,8 @@ AND exists
         	$tipodepedido = 2;            
             $stock=0;
         }
+
+        
 
 
         if($tipodepedido==1){
