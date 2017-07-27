@@ -13174,17 +13174,15 @@ AND exists
             	$resultado->bindParam(3,$activado,PDO::PARAM_INT);
             	$resultado->bindParam(4,$activado,PDO::PARAM_INT);
             	$resultado->bindParam(5,$activado,PDO::PARAM_INT);
-            	$resultado->bindParam(6,$activado,PDO::PARAM_INT);
-            	$resultado->bindParam(7,$stock,PDO::PARAM_INT);
-            	$resultado->bindParam(8,$diasMinimos,PDO::PARAM_INT);
-            	$resultado->bindParam(9,$tipodepedido,PDO::PARAM_INT);
-            	$resultado->bindParam(10,$tipodepedidoCompleto,PDO::PARAM_INT);
-            	$resultado->bindParam(11,$diasemana,PDO::PARAM_STR);
+            	$resultado->bindParam(6,$stock,PDO::PARAM_INT);
+            	$resultado->bindParam(7,$diasMinimos,PDO::PARAM_INT);
+            	$resultado->bindParam(8,$tipodepedido,PDO::PARAM_INT);
+            	$resultado->bindParam(9,$tipodepedidoCompleto,PDO::PARAM_INT);
+            	$resultado->bindParam(10,$diasemana,PDO::PARAM_STR);
+            	$resultado->bindParam(11,$hora,PDO::PARAM_STR);
             	$resultado->bindParam(12,$idtblcolonia,PDO::PARAM_INT);
-            	$resultado->bindParam(13,$hora,PDO::PARAM_STR);
-            	$resultado->bindParam(14,$idtblcolonia,PDO::PARAM_INT);
-            	$resultado->bindParam(15,$idtblproveedor,PDO::PARAM_INT);
-            	$resultado->bindParam(16,$idtblclasifproduct,PDO::PARAM_INT);
+            	$resultado->bindParam(13,$idtblproveedor,PDO::PARAM_INT);
+            	$resultado->bindParam(14,$idtblclasifproduct,PDO::PARAM_INT);
             	$resultado->execute();
                 return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
             } catch(PDOException $e){
