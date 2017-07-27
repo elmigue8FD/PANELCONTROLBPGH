@@ -9962,7 +9962,7 @@ AND exists
 		    AND TCPT.tblcategproduct_activado = ?
 		    AND TPOD.tblproductdetalle_stock >= ?
 		    AND TPOD.tblproductdetalle_diaselaboracion <= ?
-		    AND (TPR.tbltipopedido_idtbltipopedido =  OR TPR.tbltipopedido_idtbltipopedido = ?)
+		    AND (TPR.tbltipopedido_idtbltipopedido = ? OR TPR.tbltipopedido_idtbltipopedido = ?)
 		    AND TDS.tbldiasemana_dia = ?
 		    AND TCA.idtblcolonia = ?
             AND CAST( ? AS TIME) BETWEEN THa.tblhora_hora AND THc.tblhora_hora
