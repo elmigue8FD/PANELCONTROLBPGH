@@ -9414,13 +9414,11 @@ AND exists
 
     }
 
-
-
-    //Funcion para obtener los datos de un cupon, siempre y cuando el cliente no lo haya utilizado, este registrado y la fechadeexpiracion sea valida
+	//Funcion para obtener los datos de un cupon, siempre y cuando el cliente no lo haya utilizado, y la fechadeexpiracion sea valida
     //tblcupondescuento TBCD
     //tblhistcupondescuento TBHCD
     /*Verifica si existe un cupon con de un cliente  */
-    public static function getTBCDAndsetCheckTBHCD($cupondescuento, $idtblcliente){
+    public static function getTBCDAndsetCheckTBHCD($cupondescuento, $idtblcliente, $idtblordencompra){
 
     	$conexionPDO = ConexionDB::getInstance()->getDb(); 
     	$activado =1;
@@ -9428,24 +9426,25 @@ AND exists
     	$tipocliente='';
     	$ciudad='';
 
-    	//verificar si el cliente esta registrado y obtenr su ciudad
-    	$check = "SELECT * FROM tblcliente WHERE idtblcliente = ?";
-    	try{
-			$resultado = $conexionPDO->prepare($check);
-			$resultado->bindParam(1,$idtblcliente,PDO::PARAM_INT);
-			$resultado->execute();
-			$array= $resultado->fetchAll(PDO::FETCH_ASSOC);
-			//print_r($array);
-			foreach ($array as $row ) {
-				   $tipocliente= $row['tbltipocliente_idtbltipocliente'] ;
-				   $ciudad = $row['tblcliente_ciudad'];
-			}
+    	//se obtiene la fecha/hora actual
+        $fchactual = new DateTime("now", new DateTimeZone('America/Mexico_City'));
+        $fchactual = $fchactual->format('Y-m-d');
 
-			//Se verifica que el usuario este registrado para usar el cupon
-			if($tipocliente==$clienteregistrado){
+        //SE busca si el cupon exite y es valido en su fecha de expiracion 
+        $consultaCupon = "SELECT * FROM tblcupondescuento 
+        			  WHERE tblcupondescuento_codigo = ? AND 
+        			  		tblcupondescuento_fchexpira>= ?";
+        try{
 
-				//se verifica que no se este utilizando por el mismo cliente 
-				$checkH = "SELECT COUNT(*) FROM tblhistcupondescuento WHERE tblhistcupondescuento_cupon = ? AND tblhistcupondescuento_idtblcliente = ? ";
+        	$resultado = $conexionPDO->prepare($consultaCupon);
+			$resultado->bindParam(1,$cupondescuento,PDO::PARAM_STR);
+			$resultado->bindParam(2,$fchactual,PDO::PARAM_INT);
+			$resultado->execute();					
+			$existe = $resultado->fetchColumn(); //retorna el numero de count
+
+			//si exite se procede a verificar que el cupon no este usado por el cliente
+			if($existe>0){				
+				$checkH = "SELECT COUNT(*) FROM tblhistcupondescuento WHERE tblhistcupondescuento_cupon = ? AND tblhistcupondescuento_idtblcliente = ?";
 
 						$resultado = $conexionPDO->prepare($checkH);
 						$resultado->bindParam(1,$cupondescuento,PDO::PARAM_STR);
@@ -9455,31 +9454,52 @@ AND exists
 
 						if($existe>0){ //Existe un registro de uso de codigo con el cliente
 							return false;
-						}else{
-							
-							$consulta = "SELECT  TCD.* FROM tblcupondescuento TCD
-							INNER JOIN tblciudad TC ON TC.idtblciudad = TCD.tblciudad_idtblciudad
-							WHERE TC.tblciudad_nombre =  ?
-							AND TCD.tblcupondescuento_codigo = ?
-							AND TCD.tblcupondescuento_activado = ? 
-							AND TCD.tblcupondescuento_fchexpira>NOW()";
-
-							$resultado = $conexionPDO->prepare($consulta);
-							$resultado->bindParam(1,$ciudad,PDO::PARAM_STR);
-							$resultado->bindParam(2,$cupondescuento,PDO::PARAM_STR);
-							$resultado->bindParam(3,$activado,PDO::PARAM_INT);
+						}else{ //De lo contrario del cupon se verifica si es cupon general o por proveedor , si es proveeedor checamso que su compra tenga producos de el mismo. 
+							$resultado = $conexionPDO->prepare($consultaCupon);
+							$resultado->bindParam(1,$cupondescuento,PDO::PARAM_STR);
+							$resultado->bindParam(2,$fchactual,PDO::PARAM_INT);
 							$resultado->execute();
-							return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
-						}				
-			}else{//else de tipodecliente
+							$arrayCupon = $resultado->fetchAll(PDO::FETCH_ASSOC);
+							foreach ($arrayCupon as $row ) {
+				   				$tipoProveedor= (int)$row['tblcupondescuento_idtblproveedor'];
+							}
+							
+							//se regresa el registro de cupon porque es general	
+							if($tipoProveedor==0){
+
+								return $arrayCupon;
+
+							}else{//Se tiene que verificar que la orden tenga productos del proveedor que ofrece el cupon 
+
+								$checkOrden = "SELECT COUNT(*) FROM tblordencompra TOC
+									INNER JOIN tblcarritoproduct TCP ON TOC.idtblordencompra = TCP.tblcarritoproduct_idtblordencompra
+									INNER JOIN tblproductdetalle TPD ON TCP.tblcarritoproduct_idtblproductdetalle = TPD.idtblproductdetalle
+									INNER JOIN tblproducto TP ON TPD.tblproducto_idtblproducto = TP.idtblproducto
+									WHERE TOC.idtblordencompra = ? AND TP.tblproveedor_idtblproveedor = ?";
+
+									$resultado = $conexionPDO->prepare($checkOrden);
+									$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+									$resultado->bindParam(2,$tipoProveedor,PDO::PARAM_INT);
+									$resultado->execute();
+									$existeProduct = $resultado->fetchColumn(); //retorna el numero de count
+									//echo $existeProduct;
+
+									if($existeProduct>0){ //se manda el cupon 
+									return $arrayCupon;
+									}else{
+										return false;
+									}
+							}
+						}
+			}else{
 				return false;
 			}
-
-		}catch(PDOException $e){
+        }catch(PDOException $e){
 			return false;
 		}
         
     }
+
 
     /*Insertar un registro en el historico de cupon descuento*/
 	 public static function setTblhistcupondescuento($cupondescuento, $descuento,$idtblcliente,$idtblordencompra,$idtblcupondescuento,$emailcreo){

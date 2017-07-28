@@ -10,6 +10,7 @@ require './InfoSolicitadaBy.php';
 $solicitadoBy= '';
 $cupondescuento= '';
 $idtblcliente= '';
+$idtblordencompra = '';
 $resultado='';
 /**
  * Validamos que el array $_POST no es null.
@@ -19,10 +20,11 @@ if (!empty($_POST)){
 	$solicitadoBy=$_POST["solicitadoBy"];
     $cupondescuento= $_POST["cupondescuento"];
     $idtblcliente= $_POST["idtblcliente"];
+    $idtblordencompra = $_POST["idtblordencompra"];
     /**
      * Mandamos los parámetros y llamamos a la función que ejecutara la sentencia y retorna el resultado.
      */
-    $resultado = FuncionesBePickler::getTBCDAndsetCheckTBHCD($cupondescuento, $idtblcliente);
+    $resultado = FuncionesBePickler::getTBCDAndsetCheckTBHCD($cupondescuento, $idtblcliente, $idtblordencompra);
 
     if($resultado)
     {
