@@ -9465,7 +9465,7 @@ AND exists
 							}
 							
 							//se regresa el registro de cupon porque es general	
-							if($tipoProveedor==0){
+							if($tipoProveedor<=0){
 
 								return $arrayCupon;
 
