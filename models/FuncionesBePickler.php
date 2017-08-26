@@ -547,6 +547,25 @@ class FuncionesBePickler{
 
 	}
 
+	/*Elimina todos carritoproduct de una orden*/
+	public static function setDeleteAllTblcarritoproductbyTblordencompra($idtblordencompra){
+		
+		$delete = "DELETE FROM tblcarritoproduct WHERE tblcarritoproduct_idtblordencompra = ? ";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($delete);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->rowCount();  //retorna el numero de registros afectado por el delete
+		}catch(PDOException $e){
+			return false;
+		}
+
+	}
+
+
+
+
 ///// FUNCIONES REFRENTE A TABLA tblcarritoproductcomplem ////////
 	
 	 /*Insertar un carritodeproducto*/
@@ -666,6 +685,22 @@ class FuncionesBePickler{
 
 		try{
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($delete);
+			$resultado->execute();
+			return $resultado->rowCount();  //retorna el numero de registros afectado por el delete
+		}catch(PDOException $e){
+			return false;
+		}
+
+	}
+
+	/*Elimina un carritoproductcomplem  por orden */
+	public static function setDeleteTblcarritoproductcomplembytblordencompra($idtblordencompra){
+		
+		$delete = "DELETE FROM tblcarritoproductcomplem WHERE tblcarritoproductcomplem_idtblordencompra = ?";
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($delete);
+			$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount();  //retorna el numero de registros afectado por el delete
 		}catch(PDOException $e){
@@ -13266,6 +13301,32 @@ AND exists
         }
 
 	}
+
+
+	//Funcion para guardar los correos de newsletter y/o los contactos del cliente 
+	public static function setTblcontactoscliente($nombrecompleto,$email,$parentesco,$fchnacimiento,$idtblcliente,$emailcreo){
+	 	
+        
+        $insert ="INSERT INTO tblcontactoscliente (tblcontactoscliente_nombrecompleto,
+		tblcontactoscliente_email,tblcontactoscliente_parentesco,
+		tblcontactoscliente_fchnacimiento,tblcontactoscliente_idtblcliente,tblcontactoscliente_fchmodificacion,tblcontactoscliente_fchcreacion,
+		tblcontactoscliente_emailusuacreo,tblcontactoscliente_emailusuamodifico) VALUES (?,?,?,?,?,NOW(),NOW(),?,?)"; 
+
+        try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+			$resultado->bindParam(1,$nombrecompleto,PDO::PARAM_STR);
+			$resultado->bindParam(2,$email,PDO::PARAM_STR);
+			$resultado->bindParam(3,$parentesco,PDO::PARAM_STR);
+			$resultado->bindParam(4,$fchnacimiento,PDO::PARAM_STR);
+			$resultado->bindParam(5,$idtblcliente,PDO::PARAM_INT);
+			$resultado->bindParam(6,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(7,$emailcreo,PDO::PARAM_STR);
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+		} catch(PDOException $e){
+			return false;
+		}
+    }
 
 
 
