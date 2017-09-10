@@ -7220,6 +7220,8 @@ class FuncionesBePickler{
 
     /*Funcion para obtener todas las ordenes */
     public static function getAllTblordencompraByTbldatosenvio($idtblproveedor){
+
+    	$pagado=1;
         
         $consulta = "SELECT TOC.*, TDE.* FROM tblordencompra TOC
       		INNER JOIN tbldatosenvio TDE ON TOC.idtblordencompra = TDE.tbldatosenvio_idtblordencompra
@@ -7227,12 +7229,14 @@ class FuncionesBePickler{
       		INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = TCP.tblcarritoproduct_idtblproductdetalle
       		INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto
       		WHERE TP.tblproveedor_idtblproveedor = ?
+      		AND TOC.tblordencompra_statuspagado = ?
       		GROUP BY TOC.idtblordencompra ORDER BY TOC.idtblordencompra ASC";
         
         try{
 
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
 			$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(2,$pagado,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
 		} catch(PDOException $e){
@@ -7513,19 +7517,23 @@ class FuncionesBePickler{
 
     /*Funcion para contar las ordenes hechas en el año */
     public static function getNumeroOrdenes($idtblproveedor){
-        
+
+
+        $pagado=1;
          $consulta = "SELECT * FROM tblordencompra TOC
       		INNER JOIN tbldatosenvio TDE ON TOC.idtblordencompra = TDE.tbldatosenvio_idtblordencompra
       		INNER JOIN tblcarritoproduct TCP ON  TCP.tblcarritoproduct_idtblordencompra = TOC.idtblordencompra  
       		INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = TCP.tblcarritoproduct_idtblproductdetalle
       		INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto
-      		WHERE TP.tblproveedor_idtblproveedor = ?
+      		WHERE TP.tblproveedor_idtblproveedor = ?AND
+      		TOC.tblordencompra_statuspagado = ?
       		GROUP BY TOC.idtblordencompra ";
         
         try{
 
 			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
 			$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+			$resultado->bindParam(2,$pagado,PDO::PARAM_INT);
 			$resultado->execute();
 			return $resultado->rowCount(); //retorna los campos del registro 
 		} catch(PDOException $e){
