@@ -6275,7 +6275,7 @@ function totalCompra(idtblordencompra,x){
 function datosDetalleOrden(idtblordencompra,idTabla){
   
   var totalproveedor = 0;
-  nombreservicioTienda='Entrega en Tienda';//para hacer una comparacion con el tipo de servicio
+  nombreservicioTienda='Recoger en Establecimient';//para hacer una comparacion con el tipo de servicio
   var productosComplem=false;   
  var intProducts; //lleva el conteo de los productos de la orden 
  var intProductsComplem; //lleva el conteo de los productos complementarios la orden 
@@ -6316,7 +6316,7 @@ function datosDetalleOrden(idtblordencompra,idTabla){
     .done(function( msg2 ) { 
       $.each(msg2.datos, function(i2,item2){
         $("#ordenactual_emailcliente").text(msg2.datos[i2].tblcliente_email);
-        $("#ordenactual_numtelcliente").text(msg2.datos[i2].tblcliente_telefono);
+        $("#ordenactual_numtelcliente").text(msg2.datos[i2].tblcliente_celular);
           if(facturacion==1){//datos que se requieren para facturacion
             $("#ordenactual_factura").text("Requiere Factura");
               //ciudad
