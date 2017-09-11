@@ -136,7 +136,7 @@ include('./php/seguridad_general.php');
                             <!--<input type="text" class="md-input" />-->
                           </div>
                           <div class="uk-width-medium-1-4">
-                            <label>Extencion</label><br/>
+                            <label>Extensión</label><br/>
                             <input type="text" id="modificar_telefono_extencion_perfilTienda" name="modificar_telefono_extencion_perfilTienda" class="md-input" />
                           </div>
                           <div class="uk-width-medium-1-4">
@@ -232,14 +232,14 @@ include('./php/seguridad_general.php');
                           <div class="uk-width-large-1-1">
                             <br/>
                           </div>
-                          <div class="uk-width-medium-1-1">
+                          <div class="uk-width-medium-1-1" style="display: none">
                               <label><strong>Descripción general de servicios habilitados </strong></label>
                             </div>
-                            <div class="uk-width-medium-1-2">
+                            <div class="uk-width-medium-1-2" style="display: none">
                               <label>Pedidos habilitados</label><br/>
                               <input id="pedidosHabilitados" type="text" class="md-input md-bg-grey-300" readonly/>
                             </div>
-                            <div class="uk-width-medium-1-2">
+                            <div class="uk-width-medium-1-2" style="display: none">
                               <label>Entregas habilitadas</label><br/>
                               <input id="serviciosHabilitados" type="text" class="md-input md-bg-grey-300" readonly/>
                             </div>
@@ -270,7 +270,7 @@ include('./php/seguridad_general.php');
                                </select>
                             </div>
                           </div>
-                          <div class="uk-grid uk-width-medium-1-1">
+                          <div class="uk-grid uk-width-medium-1-1" style="display: none">
                             <div class="uk-width-large-1-1">
                               <form class="uk-form-stacked" id="div_horario_servicio_domicilio">
                                 <div class="uk-width-medium-1-1">                                             
@@ -304,7 +304,7 @@ include('./php/seguridad_general.php');
                           
                           <div class="uk-width-medium-1-1">
                           </div>
-                          <div class="uk-grid uk-width-medium-1-1">
+                          <div class="uk-grid uk-width-medium-1-1" style="display: none">
                             <div class="uk-width-large-1-1" id="div_colonias_servicio_domicilio">
                               <form class="uk-form-stacked">
                                 <div class="uk-width-medium-1-1">
@@ -510,7 +510,7 @@ include('./php/seguridad_general.php');
           else{ $( "#modificar_email_perfilTienda" ).removeClass( "md-input-danger" ); }
           //nombreproduct -> String
           //VALIDAR CAMPOS OBLIGATORIOS VACIOS
-          boolErrorDireccionPasteleria=validarCamposString(direccionPasteleria,50);      
+          boolErrorDireccionPasteleria=validarCamposString(direccionPasteleria,150);      
           if(boolErrorDireccionPasteleria){ $( "#modificar_direccion_pasteleria_perfilTienda" ).addClass( "md-input-danger" ); boolError=true; }
           else{ $( "#modificar_direccion_pasteleria_perfilTienda" ).removeClass( "md-input-danger" ); }
           ///////////////////////////////////////////////////////////////////////////
