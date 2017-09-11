@@ -13,13 +13,6 @@
         </a>
         
     </li>
-    <li title="Fotografos" id="Fotografos" name="menuSection" >
-        <a href="fotografos.php">
-            <span class="menu_icon"><i class="material-icons">&#xE3B0;</i></span>
-            <span class="menu_title">Fotografos</span>
-        </a>
-        
-    </li>
     <li title="Usuarios" id="Usuarios" name="menuSection" >
         <a href="usuarios.php">
             <span class="menu_icon"><i class="material-icons">&#xE7EF;</i></span>
@@ -28,10 +21,32 @@
         
     </li>
     <li title="InformaciónGeneral" id="InformaciónGeneral" name="menuSection" >
+        <a href="materiasprimas.php">
+            <span class="menu_icon"><i class="material-icons">&#xEB4C;</i></span>
+            <span class="menu_title">Materias Primas</span>
+        </a>
+        
+    </li>  
+    <li title="Fotografos" id="Fotografos" name="menuSection" >
+        <a href="fotografos.php">
+            <span class="menu_icon"><i class="material-icons">&#xE3B0;</i></span>
+            <span class="menu_title">Fotografos</span>
+        </a>
+        
+    </li>
+    
+    <li title="InformaciónGeneral" id="InformaciónGeneral" name="menuSection" >
         <a href="informacionGeneral.php">
             <span class="menu_icon"><i class="material-icons">&#xE873;</i></span>
             <span class="menu_title">Información General</span>
         </a>
         
-    </li>     
+    </li> 
+    <!--<li title="InformaciónGeneral" id="InformaciónGeneral" name="menuSection" >
+        <a href="informacionGeneral.php">
+            <span class="menu_icon"><i class="material-icons">&#xE43A;</i></span>
+            <span class="menu_title">Tutoriales</span>
+        </a>
+        
+    </li>      -->
 </ul>
