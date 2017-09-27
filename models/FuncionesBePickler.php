@@ -5065,7 +5065,7 @@ class FuncionesBePickler{
     /*Obtiene todos los registro de tbltiposervicio*/
     public static function getAllTbltiposervicio(){
 	    
-		$consulta = "SELECT * FROM tbltiposervicio";
+		$consulta = "SELECT * FROM tbltiposervicio order by idtbltiposervicio DESC";
 		
 		try{
 
