@@ -11499,11 +11499,12 @@ AND exists
 	 /*Consultar un carritoproduct por idtblordencompra y proveedor */
 	public static function getAllTblcarritoproductByidorden($idtblordencompra,$idtblproveedor){
 	    
-		$consulta = "SELECT TP.*,TCP.*,TPD.* FROM tblcarritoproduct TCP		             
+		$consulta = "SELECT TP.*,TCP.*,TPD.*,TPI.* FROM tblcarritoproduct TCP		             
        				 INNER JOIN tblordencompra TOC ON  TCP.tblcarritoproduct_idtblordencompra = TOC.idtblordencompra  
       				 INNER JOIN tblproductdetalle TPD ON TPD.idtblproductdetalle = TCP.tblcarritoproduct_idtblproductdetalle
-      				 INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto      				 
-					 WHERE TCP.tblcarritoproduct_idtblordencompra = ? AND TP.tblproveedor_idtblproveedor = ? ";
+      				 INNER JOIN tblproducto TP ON TP.idtblproducto = TPD.tblproducto_idtblproducto 
+      				 INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TP.idtblproducto     				 
+					 WHERE TCP.tblcarritoproduct_idtblordencompra = ? AND TP.tblproveedor_idtblproveedor = ? GROUP BY TP.idtblproducto ";
 		
 		try{
 
