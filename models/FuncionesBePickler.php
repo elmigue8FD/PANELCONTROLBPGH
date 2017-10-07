@@ -13337,6 +13337,28 @@ AND exists
     }
 
 
+    public static function setUpdateTblclientenumeroCelular($numerocelular,$idtblcliente){
+
+
+    	$update = "UPDATE tblcliente SET 
+	      tblcliente_celular = ? WHERE idtblcliente= ?";
+
+
+
+		try{
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($update);			
+			$resultado->bindParam(1,$numerocelular,PDO::PARAM_STR);
+			$resultado->bindParam(2,$idtblcliente,PDO::PARAM_INT);			
+			$resultado->execute();
+			return $resultado->rowCount(); //retorna el numero de registros afectado por el update
+		}catch(PDOException $e){
+			return false;
+		}
+
+
+    }
+
+
 
 }
 ?>
