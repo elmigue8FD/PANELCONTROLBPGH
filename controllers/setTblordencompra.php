@@ -53,7 +53,7 @@ if (!empty($_POST)){
     if(!isset($_SESSION["idtblordencompra"]))
     {   
         $resultado = FuncionesBePickler::setTblordencompra($fchordencompra, $toralorden,$totaldelivery,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion
-            ,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo);
+            ,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo,$solicitadoBy);
     }else
     {
         $resultado=$_SESSION["idtblordencompra"];

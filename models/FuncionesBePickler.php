@@ -3250,11 +3250,11 @@ class FuncionesBePickler{
 
 
     /*Insertar un registro en tblordencompra*/
-	 public static function setTblordencompra($fchordencompra, $toralorden,$totaldelivery,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo){
+	 public static function setTblordencompra($fchordencompra, $toralorden,$totaldelivery,$statuspagado,$nombrecliente,$sistemapago,$facturacion,$devolucion,$stripentoken,$emailstripe,$calif,$ordencompracliente,$idtblcliente,$idtblsistpago,$emailcreo,$solicitadoBy){
         
         $conexionPDO = ConexionDB::getInstance()->getDb();
         
-        $insert ="INSERT INTO tblordencompra (tblordencompra_fchordencompra,tblordencompra_totalordencompra,tblordencompra_totaldelivery,tblordencompra_statuspagado,tblordencompra_nombrecliente,tblordencompra_sistemapago,tblordencompra_facturacion,tblordencompra_devolucion,tblordencompra_stripetoken,tblordencompra_stripeemail,tblordencompra_calificacion,tblordencompra_ordencompracliente,tblcliente_idtblcliente,tblsistemapago_idtblsistemapago,tblordencompra_fchmodificacion,tblordencompra_fchcreacion,tblordencompra_emailusuacreo,tblordencompra_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
+        $insert ="INSERT INTO tblordencompra (tblordencompra_fchordencompra,tblordencompra_totalordencompra,tblordencompra_totaldelivery,tblordencompra_statuspagado,tblordencompra_nombrecliente,tblordencompra_sistemapago,tblordencompra_facturacion,tblordencompra_devolucion,tblordencompra_stripetoken,tblordencompra_stripeemail,tblordencompra_calificacion,tblordencompra_ordencompracliente,tblcliente_idtblcliente,tblsistemapago_idtblsistemapago,tblordencompra_fchmodificacion,tblordencompra_fchcreacion,tblordencompra_emailusuacreo,tblordencompra_emailusuamodifico,tblordencompra_medio) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?,?)"; 
         
         try{
 			$resultado = $conexionPDO->prepare($insert);
@@ -3274,6 +3274,7 @@ class FuncionesBePickler{
 			$resultado->bindParam(14,$idtblsistpago,PDO::PARAM_INT);
 			$resultado->bindParam(15,$emailcreo,PDO::PARAM_STR);
 			$resultado->bindParam(16,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(17,$solicitadoBy,PDO::PARAM_STR);
 			$resultado->execute();
 
 			if($resultado->rowCount()>0){
