@@ -12829,7 +12829,8 @@ AND exists
 		    AND TPOD.tblproductdetalle_stock >= ?
 		    AND TPOD.tblproductdetalle_diaselaboracion <= ?
 		    AND (TPR.tbltipopedido_idtbltipopedido = ? OR TPR.tbltipopedido_idtbltipopedido = ?)
-		    AND TDS.tbldiasemana_dia =?    
+		    AND TDS.tbldiasemana_dia =? 
+		    AND TCD.idtblciudad = ?   
 		GROUP BY TCA.idtblcolonia";
 
         try{
@@ -12844,6 +12845,7 @@ AND exists
             	$resultado->bindParam(8,$tipodepedido,PDO::PARAM_INT);
             	$resultado->bindParam(9,$tipodepedidoCompleto,PDO::PARAM_INT);
             	$resultado->bindParam(10,$diasemana,PDO::PARAM_STR);
+            	$resultado->bindParam(11,$idtblciudad,PDO::PARAM_INT);
             	$resultado->execute();
                 return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
             } catch(PDOException $e){
