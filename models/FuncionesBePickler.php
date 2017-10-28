@@ -13364,6 +13364,22 @@ AND exists
     }
 
 
+    /*Consulta los proveedores de insumos en base a la ciudad a la que pertenecen*/
+	public static function getAllProveedorInsumosBytblciudad($idtblciudad){	             
+		$consulta = "SELECT * FROM tblproveedorinsumos WHERE idtblciudad = ?";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->bindParam(1,$idtblciudad,PDO::PARAM_INT);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
+
 
 }
 ?>
