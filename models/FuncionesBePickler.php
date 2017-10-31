@@ -13380,6 +13380,23 @@ AND exists
 	}
 
 
+	/*Consulta  ciudad donde hay proveedores de insumos*/
+	public static function getAllTblciudadProveedorinsumos(){	
+
+		$consulta = "SELECT TC.* FROM tblciudad TC INNER JOIN tblproveedorinsumos TPI ON TC.idtblciudad = TPI.idtblciudad
+			GROUP BY TC.idtblciudad";
+		
+		try{
+
+			$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+			$resultado->execute();
+			return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro 
+		} catch(PDOException $e){
+			return false;
+		}
+	}
+
+
 
 }
 ?>
