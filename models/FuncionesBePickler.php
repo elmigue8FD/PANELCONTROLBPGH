@@ -13398,6 +13398,160 @@ AND exists
 
 
 
+	/*Obtenemos todos los productos de acuerdo al filtr principal*/
+	public static function getAlltblproductoByFiltro($idtblcolonia,$idtbltipodeservicio,$fechapedido,$hora,$idtblciudad){
+
+		$activado=1;
+        $tipodepedidoCompleto=3;
+        $tipodeservicioCompleto=3;
+
+        $fechahora = $fechapedido." ".$hora;
+
+        //se obtiene la fecha/hora actual
+        $horaactual = new DateTime("now", new DateTimeZone('America/Mexico_City'));	
+		//echo $horaactual->format('H:i')."\n";
+        //se convierte la fecha/hora en tipo objeto
+		$horapedido = new DateTime($fechahora, new DateTimeZone('America/Mexico_City'));
+		//echo $horapedido->format('H:i')."\n";
+		//se obtiene las horas por transcurrir
+		$horastrascurrir =  $horaactual->diff($horapedido)->format('%H');//horas
+		$diasMinimos= $horaactual->diff($horapedido)->format('%d');//dias		
+		$totalHoras= ($diasMinimos*24)+($horastrascurrir);
+		//echo $totalHoras."\n";
+		//se obtiene el día de la semana 
+		$diasemana= $horapedido->format('l');
+		//echo $diasemana;
+
+		$fchactual = $horaactual->format('Y-m-d');
+		$fchpedido = $horapedido->format('Y-m-d');
+
+		if($fchactual==$fchpedido){
+			$tipodepedido=1;
+		}else{
+			$tipodepedido=2;
+		}
+
+		//se tomara en cuenta el stock dependiendo de las horas para el pedido
+		if($totalHoras<24){ 			
+            $diasMinimos=0;
+            $stock=1;
+        }else{                
+            $stock=0;
+        }
+
+
+        if($idtbltipodeservicio==1){ //tipodeservicio Pasteleria (se considera al colonia)
+
+
+        	$consulta ="SELECT TPO.*, TPR.* ,TPI.*,TPOD.* FROM  tblhora THs, tblproveedor TPR  
+ 		INNER JOIN tblcolonia TCA ON TCA.idtblcolonia = TPR.tblcolonia_idtblcolonia
+        INNER JOIN tblciudad TCD ON TCD.idtblciudad = TCA.tblciudad_idtblciudad
+ 		INNER JOIN tblproducto TPO ON TPR.idtblproveedor = TPO.tblproveedor_idtblproveedor
+ 		INNER JOIN tblproductdetalle TPOD ON TPO.idtblproducto = TPOD.tblproducto_idtblproducto
+ 		INNER JOIN tbldiaprovservicio TDPS ON TDPS.tblproveedor_idtblproveedor = TPR.idtblproveedor
+ 		INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDPS.tbldiasemana_idtbldiasemana
+        INNER JOIN tblhrsprovtienda THP ON THP.tblproveedor_idtblproveedor = TPR.idtblproveedor
+        INNER JOIN tblhraabre TA ON THP.tblhraabre_idtblhraabre = TA.idtblhraabre
+		INNER JOIN tblhracierra TC ON THP.tblhracierra_idtblhracierra = TC.idtblhracierra
+		INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora 
+		INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora
+        INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TPO.idtblproducto
+		WHERE 
+				TCD.tblciudad_activado = ?
+		    AND TCA.tblcolonia_activado = ?
+		    AND TPR.tblproveedor_activado= ?
+		    AND TPO.tblproducto_activado =  ?
+		    AND TPOD.tblproductdetalle_activado = ?
+		    AND TPOD.tblproductdetalle_stock >= ?
+		    AND TPOD.tblproductdetalle_diaselaboracion <= ?
+		    AND (TPR.tbltipopedido_idtbltipopedido = ? OR TPR.tbltipopedido_idtbltipopedido = ?)
+		    AND TDS.tbldiasemana_dia = ?
+            AND CAST( ? AS TIME) BETWEEN THa.tblhora_hora AND THc.tblhora_hora
+            AND TCA.idtblcolonia = ? 
+            AND TCD.idtblciudad = ?
+            GROUP BY TPO.idtblproducto
+            ORDER BY rand()";
+
+            
+
+        try{
+            	$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+            	$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(3,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(4,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(5,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(6,$stock,PDO::PARAM_INT);
+            	$resultado->bindParam(7,$diasMinimos,PDO::PARAM_INT);
+            	$resultado->bindParam(8,$tipodepedido,PDO::PARAM_INT);
+            	$resultado->bindParam(9,$tipodepedidoCompleto,PDO::PARAM_INT);
+            	$resultado->bindParam(10,$diasemana,PDO::PARAM_STR);
+            	$resultado->bindParam(11,$hora,PDO::PARAM_STR);
+            	$resultado->bindParam(12,$idtblcolonia,PDO::PARAM_INT);
+            	$resultado->bindParam(13,$idtblciudad,PDO::PARAM_INT);
+            	$resultado->execute();
+                return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
+            } catch(PDOException $e){
+                    return false;   
+
+            }
+
+        }else{//tipodeservicio Domicilio
+
+        	$consulta ="SELECT TPO.*, TPR.* ,TPI.*,TPOD.* FROM  tblhora THs, tblproveedor TPR  
+ 		INNER JOIN tblcolonia TCA ON TCA.idtblcolonia = TPR.tblcolonia_idtblcolonia
+        INNER JOIN tblciudad TCD ON TCD.idtblciudad = TCA.tblciudad_idtblciudad
+ 		INNER JOIN tblproducto TPO ON TPR.idtblproveedor = TPO.tblproveedor_idtblproveedor
+ 		INNER JOIN tblproductdetalle TPOD ON TPO.idtblproducto = TPOD.tblproducto_idtblproducto
+ 		INNER JOIN tbldiaprovservicio TDPS ON TDPS.tblproveedor_idtblproveedor = TPR.idtblproveedor
+ 		INNER JOIN tbldiasemana TDS ON TDS.idtbldiasemana = TDPS.tbldiasemana_idtbldiasemana
+        INNER JOIN tblhrsprovtienda THP ON THP.tblproveedor_idtblproveedor = TPR.idtblproveedor
+        INNER JOIN tblhraabre TA ON THP.tblhraabre_idtblhraabre = TA.idtblhraabre
+		INNER JOIN tblhracierra TC ON THP.tblhracierra_idtblhracierra = TC.idtblhracierra
+		INNER JOIN tblhora THa ON THa.idtblhora = TA.tblhora_idtblhora 
+		INNER JOIN tblhora THc ON THc.idtblhora = TC.tblhora_idtblhora
+        INNER JOIN tblproductimg TPI ON TPI.tblproducto_idtblproducto = TPO.idtblproducto
+		WHERE 
+				TCD.tblciudad_activado = ?
+		    AND TCA.tblcolonia_activado = ?
+		    AND TPR.tblproveedor_activado= ?
+		    AND TPO.tblproducto_activado =  ?
+		    AND TPOD.tblproductdetalle_activado = ?
+		    AND TPOD.tblproductdetalle_stock >= ?
+		    AND TPOD.tblproductdetalle_diaselaboracion <= ?
+		    AND (TPR.tbltipopedido_idtbltipopedido = ? OR TPR.tbltipopedido_idtbltipopedido = ?)
+		    AND TDS.tbldiasemana_dia = ?
+            AND CAST( ? AS TIME) BETWEEN THa.tblhora_hora AND THc.tblhora_hora
+            AND TCD.idtblciudad = ?
+            GROUP BY TPO.idtblproducto
+            ORDER BY rand()";
+
+        try{
+            	$resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+            	$resultado->bindParam(1,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(2,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(3,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(4,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(5,$activado,PDO::PARAM_INT);
+            	$resultado->bindParam(6,$stock,PDO::PARAM_INT);
+            	$resultado->bindParam(7,$diasMinimos,PDO::PARAM_INT);
+            	$resultado->bindParam(8,$tipodepedido,PDO::PARAM_INT);
+            	$resultado->bindParam(9,$tipodepedidoCompleto,PDO::PARAM_INT);
+            	$resultado->bindParam(10,$diasemana,PDO::PARAM_STR);
+            	$resultado->bindParam(11,$hora,PDO::PARAM_STR);
+            	$resultado->bindParam(12,$idtblciudad,PDO::PARAM_INT);
+            	$resultado->execute();
+                return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
+            } catch(PDOException $e){
+                    return false;      
+            }
+
+        }
+
+	}
+
+
+
 }
 ?>
 
