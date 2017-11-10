@@ -1,6 +1,6 @@
 <?php
 session_start();
-date_default_timezone_set('America/Monterrey');
+date_default_timezone_set('America/Mexico_City');
 //print_r(getdate());
 /**
  * Recursos utilizados
@@ -48,7 +48,7 @@ if (!empty($_POST)){
     $tipoServicio=$_POST["tipoServicio"];
     $fecha=$_POST["fecha"];
     $hora=$_POST["hora"];
-    $diferenciaDias=$_POST["diferenciaDias"];
+    //$diferenciaDias=$_POST["diferenciaDias"];
     
 
     
@@ -59,8 +59,20 @@ if (!empty($_POST)){
         if(!empty($solicitadoBy) && !empty($pais)  && !empty($ciudad) && !empty($tipoServicio) && !empty($fecha) && !empty($hora))
         {
             $fechaPHP=str_replace("/", "-", $fecha);
-            $fecha_actual = strtotime(date("d-m-Y"));
-            $fecha_entrada = strtotime($fechaPHP);
+            $fecha_actual = new DateTime("now", new DateTimeZone('America/Mexico_City'));
+            $fecha_hora = $fecha." ".$hora;
+            $fecha_entrada = new DateTime($fecha_hora, new DateTimeZone('America/Mexico_City'));
+
+            //se obtiene las horas por transcurrir
+            $horastrascurrir =  $fecha_actual->diff($fecha_entrada)->format('%H');//horas
+            $diasMinimos= $fecha_actual->diff($fecha_entrada)->format('%d');//dias       
+            $totalHoras= ($diasMinimos*24)+($horastrascurrir);
+
+            if($totalHoras<24){             
+                $diferenciaDias=0;
+            }else{                
+                $diferenciaDias=$diasMinimos;
+            }
             //echo json_encode(date("l", strtotime($fecha)).'<br/>fecha::'.$fecha.' fechaPHP::'.$fechaPHP.' fecha_actual::'.$fecha_actual.' fecha_entrada::'.$fecha_entrada);
             if($fecha_entrada >= $fecha_actual)
             {
