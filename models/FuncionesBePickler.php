@@ -13552,6 +13552,25 @@ AND exists
 
 
 
+	//Funcion para obtener el cupon de una orden
+	public static function getTblcupondescuentoByTblordencompra($idtblordencompra){
+
+		$consulta = "SELECT * FROM tblhistcupondescuento THCD INNER JOIN tblcupondescuento TCD ON THCD.tblhistcupondescuento_cupon = TCD.tblcupondescuento_codigo WHERE THCD.tblhistcupondescuento_idtblordencompra = ?";
+
+		try{
+            	
+            $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+            	$resultado->bindParam(1,$idtblordencompra,PDO::PARAM_INT);
+            	$resultado->execute();
+            	return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
+            } catch(PDOException $e){
+                    return false;      
+            }
+
+	}
+
+
+
 }
 ?>
 
