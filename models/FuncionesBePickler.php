@@ -13571,6 +13571,161 @@ AND exists
 
 
 
+	//Obtenemos el numero de productos publicados por el proveedor 
+    public static function getTblproductosNum($idtblproveedor){
+
+		$consulta = "SELECT COUNT(*)+1 FROM tblproducto WHERE tblproveedor_idtblproveedor = ?";
+
+		try{
+            	
+            $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+            	$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+            	$resultado->execute();
+            	return $resultado->fetchColumn(); //retorna los campos del registro
+            } catch(PDOException $e){
+                    return false;      
+            }
+
+	}
+
+	//obtenemos el numero de productos complem por proveedor
+	public static function getTblproductoscomplemNum($idtblproveedor){
+
+		$consulta = "SELECT COUNT(*)+1 as HOLA FROM tblproductcomplem WHERE tblproveedor_idtblproveedor  = ? ";
+
+		try{
+            	
+            $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+            	$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+            	$resultado->execute();
+            	return $resultado->fetchColumn(0); //retorna los campos del registro
+            } catch(PDOException $e){
+                    return false;      
+            }
+	}
+
+	//obtenemos el numero de productos cotizador por proveedor
+	public static function getTblproductoscotizadorNum($idtblproveedor){
+
+		$consulta = "SELECT COUNT(*)+1 FROM tblproductcotizador WHERE tblproveedor_idtblproveedor = ?";
+
+		try{
+            	
+            $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+            	$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+            	$resultado->execute();
+            	return $resultado->fetchColumn(); //retorna los campos del registro
+            } catch(PDOException $e){
+                    return false;      
+            }
+
+	}
+
+	//obtenemos el numero de usuarios por proveedor
+	public static function getTblusuariosproveedorNum($idtblproveedor){
+
+		$consulta = "SELECT COUNT(*)+1 FROM tblusuarioproveedor WHERE tblproveedor_idtblproveedor = ?";
+
+		try{
+            	
+            $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+            	$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+            	$resultado->execute();
+            	return $resultado->fetchColumn(); //retorna los campos del registro
+            } catch(PDOException $e){
+                    return false;      
+            }
+
+	}
+
+	//detalle del paquete que tiene el proveedor 
+	public static function getTblproveedorTblpaquete($idtblproveedor){
+
+		$consulta = "SELECT * FROM tblproveedor TP  
+			INNER JOIN tblpaquete TPQ ON TP.tblpaquete_idtblpaquete = TPQ.idtblpaquete 
+			INNER JOIN tbldetallepaquete TPQD ON TPQ.idtblpaquete = TPQD.tblpaquete_idtblpaquete
+			WHERE TP.idtblproveedor = ?";
+
+		try{
+            	
+            $resultado = ConexionDB::getInstance()->getDb()->prepare($consulta);
+            	$resultado->bindParam(1,$idtblproveedor,PDO::PARAM_INT);
+            	$resultado->execute();
+            	return $resultado->fetchAll(PDO::FETCH_ASSOC); //retorna los campos del registro
+            } catch(PDOException $e){
+                    return false;      
+            }
+
+	}
+
+
+	/*Se inserta un proveedor y un usuario proveedor */
+    public static function setTblproveedorAndTblusuarioproveedor($nombreprov,$srclogo,$descripcion,$direccion,$seo,$telftienda,$extencion,$celular,$email,$rfc,$clave,$banco,$titular,$activado,$idtbltipopedido,$idtbltiposervicio,$idtblcolonia,$idtblpaquete,$emailcreo,$correoacceseo,$contasenia,$nombreduenio,$apellidoduenio,$idtblnivelacceso){
+
+    	$activado=1;
+
+    	$conexionPDO = ConexionDB::getInstance()->getDb();
+
+		$insert ="INSERT INTO tblproveedor (tblproveedor_nombre,tblproveedor_srclogo,tblproveedor_descripcion,tblproveedor_direccion,tblproveedor_seo,tblproveedor_telefonotienda,tblproveedor_extencion,tblproveedor_celular,tblproveedor_email,tblproveedor_rfc,tblproveedor_claveintban,tblproveedor_banco,tblproveedor_nombretitucuen,tblproveedor_activado,tbltipopedido_idtbltipopedido,tbltiposervicio_idtbltiposervicio,tblcolonia_idtblcolonia,tblpaquete_idtblpaquete,tblproveedor_fchmodificacion,tblproveedor_fchcreacion,tblproveedor_emailusuacreo,tblproveedor_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
+        
+        try{
+			$resultado = $conexionPDO->prepare($insert);
+			$resultado->bindParam(1,$nombreprov,PDO::PARAM_STR);
+			$resultado->bindParam(2,$srclogo,PDO::PARAM_STR);
+			$resultado->bindParam(3,$descripcion,PDO::PARAM_STR);
+			$resultado->bindParam(4,$direccion,PDO::PARAM_STR);
+			$resultado->bindParam(5,$seo,PDO::PARAM_STR);
+			$resultado->bindParam(6,$telftienda,PDO::PARAM_STR);
+			$resultado->bindParam(7,$extencion,PDO::PARAM_STR);
+			$resultado->bindParam(8,$celular,PDO::PARAM_STR);
+			$resultado->bindParam(9,$email,PDO::PARAM_STR); 
+			$resultado->bindParam(10,$rfc,PDO::PARAM_STR);
+			$resultado->bindParam(11,$clave,PDO::PARAM_STR);
+			$resultado->bindParam(12,$banco,PDO::PARAM_STR);
+			$resultado->bindParam(13,$titular,PDO::PARAM_STR);
+			$resultado->bindParam(14,$activado,PDO::PARAM_INT);
+			$resultado->bindParam(15,$idtbltipopedido,PDO::PARAM_INT);
+			$resultado->bindParam(16,$idtbltiposervicio,PDO::PARAM_INT);
+			$resultado->bindParam(17,$idtblcolonia,PDO::PARAM_INT);
+			$resultado->bindParam(18,$idtblpaquete,PDO::PARAM_INT);
+			$resultado->bindParam(19,$emailcreo,PDO::PARAM_STR);
+			$resultado->bindParam(20,$emailcreo,PDO::PARAM_STR);
+			$resultado->execute();
+				    
+			if($resultado->rowCount()>0){
+				$idprovedor  = $conexionPDO->lastInsertId();
+
+
+				$insert ="INSERT INTO tblusuarioproveedor (tblusuarioproveedor_nombre,tblusuarioproveedor_apellido,tblusuarioproveedor_email,tblusuarioproveedor_celular,tblusuarioproveedor_activado,tblproveedor_idtblproveedor,tblniveleacceso_idtblniveleacceso,tblusuarioproveedor_password,tblusuarioproveedor_fchmodificacion,tblusuarioproveedor_fchcreacion,tblusuarioproveedor_emailusuacreo,tblusuarioproveedor_emailusuamodifico) VALUES (?,?,?,?,?,?,?,?,NOW(),NOW(),?,?)"; 
+        
+		        try{
+					$resultado = ConexionDB::getInstance()->getDb()->prepare($insert);
+					$resultado->bindParam(1,$nombreduenio,PDO::PARAM_STR);
+					$resultado->bindParam(2,$apellidoduenio,PDO::PARAM_STR);
+					$resultado->bindParam(3,$correoacceseo,PDO::PARAM_STR);
+					$resultado->bindParam(4,$celular,PDO::PARAM_STR);
+					$resultado->bindParam(5,$activado,PDO::PARAM_INT);
+					$resultado->bindParam(6,$idprovedor,PDO::PARAM_INT);
+					$resultado->bindParam(7,$idtblnivelacceso,PDO::PARAM_INT);
+					$resultado->bindParam(8,$contasenia,PDO::PARAM_STR);
+					$resultado->bindParam(9,$emailcreo,PDO::PARAM_STR);
+					$resultado->bindParam(10,$emailcreo,PDO::PARAM_STR);
+					$resultado->execute();
+					return $resultado->rowCount(); //retorna el numero de registros afectado por el insert
+				} catch(PDOException $e){
+					return false;
+				}
+
+			}else{
+				return false;
+			}
+		} catch(PDOException $e){
+					return false;
+		} 
+    }
+
+
+
 }
 ?>
 
